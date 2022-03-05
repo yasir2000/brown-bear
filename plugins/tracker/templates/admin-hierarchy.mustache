@@ -1,0 +1,40 @@
+<h2 class="almost-tlp-title">{{ hierarchy_title }}</h2>
+<div id="tracker-admin-current-full-hierarchy">
+    <h3>{{ current_full_hierarchy_title }}</h3>
+    {{# hierarchy }}
+        <ul class="tracker-hierarchy tracker-hierarchy-admin">{{> tracker-node}}</ul>
+    {{/ hierarchy }}
+</div>
+<div class="tracker-admin-hierarchy-edit-form">
+    <h3>{{# dgettext }} tuleap-tracker | Edit children of %1$s | {{ tracker_being_edited_name }} {{/ dgettext }}</h3>
+    {{# tracker_used_in_trigger_rules_names }}
+    <div class="feedback_warning">
+        {{# dngettext }}
+            tuleap-tracker |
+            The tracker %s is implicated in cross-tracker triggers. You will not be able to remove this tracker from the hierarchy until the triggers implicating it are removed. |
+            The trackers %s are implicated in cross-tracker triggers. You will not be able to remove those trackers from the hierarchy until the triggers implicating them are removed. |
+            {{ tracker_used_in_trigger_rules_nb }} |
+            {{ . }}
+        {{/ dngettext }}
+        <a href="{{ getTrackerUrl }}/?tracker={{ getTrackerId }}&func=admin-workflow-triggers">
+        {{# dgettext }} tuleap-tracker | Go to the administration of the cross-tracker triggers. {{/ dgettext }}
+        </a>
+    </div>
+    {{/ tracker_used_in_trigger_rules_names }}
+
+    <form method="post"
+          action="{{ getTrackerUrl }}/?tracker={{ getTrackerId }}&func=admin-hierarchy-update">
+        <select
+                class="tracker-admin-hierarchy-edit-children"
+                name="children[]"
+                multiple="multiple"
+        >
+            {{# getPossibleChildren }}
+                <option value="{{ id }}"{{ selected }}>{{ name }}</option>
+            {{/ getPossibleChildren }}
+        </select>
+        <p>
+            <input type="submit" class="btn" value="{{ getSubmitLabel }}">
+        </p>
+    </form>
+</div>

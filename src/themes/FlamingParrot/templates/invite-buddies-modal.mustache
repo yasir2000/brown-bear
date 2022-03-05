@@ -1,0 +1,76 @@
+{{# invite_buddies_presenter }}
+{{# can_buddies_be_invited }}
+    <form
+        class="modal hide fade"
+        tabindex="-1"
+        role="dialog"
+        id="invite-buddies-modal"
+        aria-labelledby="invite-buddies-modal-label"
+        aria-hidden="true"
+    >
+        <div class="modal-header">
+            <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-hidden="true"
+            >
+                <i class="fas fa-times modal-close-icon" aria-hidden="true"></i>
+            </button>
+            <h3 id="invite-buddies-modal-label">
+                {{# gettext }}Invite someone to join %s | {{ instance_name }}{{/ gettext }}
+            </h3>
+        </div>
+        <div
+            id="invite-buddies-modal-feedback"
+            data-success-feedback-message="{{# gettext }}Invitation has been successfully sent to:{{/ gettext }}"
+            data-failure-feedback-message="{{# gettext }}Invitation could not be sent to:{{/ gettext }}"
+        ></div>
+        <div class="modal-body invite-buddies-modal-body" id="invite-buddies-modal-body">
+            <p>
+                {{# gettext }}
+                    Enter people to invite to %s. We will send an invitation email on your behalf.
+                    | {{ instance_name }}
+                {{/ gettext }}
+            </p>
+            <p>
+                <label for="invite-buddies-email">
+                    {{# gettext }}Email{{/ gettext }}
+                    <i class="fa fa-asterisk" aria-hidden="true"></i>
+                </label>
+                <input
+                    type="email"
+                    multiple
+                    id="invite-buddies-email"
+                    name="invite_buddies_email"
+                    placeholder="peter@example.com, wendy@example.com, …"
+                    required
+                >
+                <span class="text-info">{{# gettext }}Enter comma separated list of emails{{/ gettext }}</span>
+            </p>
+            <p>
+                <label class="tlp-label" for="invite-buddies-message">
+                    {{# gettext }}Message{{/ gettext }}
+                </label>
+                <textarea
+                    id="invite-buddies-message"
+                    name="invite_buddies_message"
+                    placeholder="{{# gettext }}Optional message…{{/ gettext }}"
+                ></textarea>
+            </p>
+        </div>
+        <div class="modal-footer" id="invite-buddies-modal-footer">
+            <button type="reset" class="btn btn-primary tlp-modal-action invite-buddies-modal-close" data-dismiss="modal">
+                {{# gettext }}Close{{/ gettext }}
+            </button>
+            <button type="reset" class="btn tlp-modal-action" data-dismiss="modal">
+                {{# gettext }}Cancel{{/ gettext }}
+            </button>
+            <button type="submit" class="btn btn-primary tlp-modal-action">
+                <i class="fa fa-paper-plane tlp-button-icon" aria-hidden="true"></i>
+                {{# gettext }}Send invitation{{/ gettext }}
+            </button>
+        </div>
+    </form>
+{{/ can_buddies_be_invited }}
+{{/ invite_buddies_presenter }}

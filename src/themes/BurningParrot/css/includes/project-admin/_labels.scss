@@ -1,0 +1,100 @@
+/**
+ * Copyright (c) Enalean, 2017 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:map";
+@use "sass:color";
+@use "../../../../tlp/src/scss/variables/colors/common-colors";
+
+%color-area {
+    display: block;
+    height: 25px;
+    border-radius: var(--tlp-small-radius);
+
+    @each $color-name, $colors in common-colors.$tlp-swatch-color-map {
+        &.#{$color-name} {
+            border-color: map.get($colors, "primary");
+            background: map.get($colors, "primary");
+
+            &:hover:not(:disabled):not(.disabled):not(:active) {
+                border-color: color.adjust(map.get($colors, "primary"), $lightness: - 5%);
+                background: color.adjust(map.get($colors, "primary"), $lightness: - 5%);
+            }
+        }
+    }
+}
+
+.project-labels-table-name,
+.project-labels-table-is-used {
+    width: 50%;
+}
+
+.project-labels-table-name-icon {
+    margin: 0 5px 0 0;
+
+    @each $color-name, $colors in common-colors.$tlp-swatch-color-map {
+        &.project-labels-table-name-icon-#{$color-name} {
+            color: map.get($colors, "primary");
+        }
+    }
+}
+
+.project-labels-table-is-used-help {
+    cursor: help;
+}
+
+.project-label-name-warning {
+    display: none;
+
+    &.shown {
+        display: block;
+    }
+}
+
+.project-label-color-selector {
+    width: 80px;
+}
+
+.project-label-options {
+    display: flex;
+}
+
+.tlp-form-element.project-label-style {
+    margin: 0 0 var(--tlp-medium-spacing) var(--tlp-x-large-spacing);
+}
+
+.project-label-style-options {
+    display: flex;
+    align-items: center;
+    padding: 8px 0 0;
+}
+
+.project-label-style-option-outline {
+    margin: 0 0 var(--tlp-small-spacing) var(--tlp-medium-spacing);
+}
+
+.project-label-color-results,
+.project-label-color-container {
+    span {
+        @extend %color-area;
+    }
+}
+
+.project-label-color-results {
+    height: 250px;
+}

@@ -1,0 +1,34 @@
+<div id="login-box">
+    <a id="login-help" href="mailto:{{ help_email }}?Subject={{ help_subject }}">
+        <span>{{ need_help }}</span>
+        <i class="fa fa-question-circle"></i>
+    </a>
+
+    <h1 data-test="login-page-title">{{ account_login_login_with_tuleap }}</h1>
+
+    <div id="login-intro">
+        {{{ login_intro }}}
+    </div>
+
+    <form action="/account/login.php" method="post" name="form_login">
+        <input type="hidden" name="return_to" value="{{ return_to }}">
+        <input type="hidden" name="pv" value="{{ pv }}">
+        <input type="hidden" name="{{ csrf_token_name }}" value="{{ csrf_token_value }}">
+        <input type="hidden" name="prompt" value="{{ prompt_parameter }}">
+
+        <input type="text" id="form_loginname" name="form_loginname" data-test="form_loginname"  placeholder="{{ account_login_name }}" value="{{ form_loginname }}"  required autofocus autocomplete="username">
+        <input type="password" id="form_pw" name="form_pw" data-test="form_pw" placeholder="{{ account_login_password }}" value="" required autocomplete="current-password">
+
+        <button type="submit" name="login" class="btn btn-primary">{{ account_login_login_btn }}</button>
+
+        {{# allow_password_recovery }}
+            <a id="login-lost-password" href="lostpw.php">{{ account_login_lost_pw }}</a>
+        {{/ allow_password_recovery }}
+    </form>
+
+    {{{ additional_connectors }}}
+
+    {{# display_new_account_button }}
+        <div class="not-a-member">{{ not_a_member }} <a href="/account/register.php">{{ create_account_label }}</a></div>
+    {{/ display_new_account_button }}
+</div>

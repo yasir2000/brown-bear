@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellDisallowsDropOverlay displays div with an icon and an error message 1`] = `
+<div
+  class="taskboard-drop-not-accepted-overlay"
+>
+  <div
+    class="taskboard-drop-not-accepted-overlay-content"
+  >
+    <i
+      aria-hidden="true"
+      class="fa fa-ban taskboard-drop-not-accepted-icon"
+    />
+     
+    <p
+      data-current-language="en_US"
+      data-msgid="
+            This column does not allow to drop this card here.
+        "
+      data-test="overlay-error-message"
+    >
+      
+            This column does not allow to drop this card here.
+        
+    </p>
+  </div>
+</div>
+`;

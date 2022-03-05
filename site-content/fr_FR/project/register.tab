@@ -1,0 +1,58 @@
+#
+# Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
+# Copyright (c) Enalean, 2019 - Present. All rights reserved
+# This file is licensed under the GNU General Public License version 2. See the file COPYING.
+#
+#-----------------------------------------------
+# Script: src/common/project//confirmation.php
+#
+register_confirmation	registration_complete	Enregistrement terminé
+register_confirmation	upd_fail	MISE A JOUR A ACTIF A ECHOUE. Veuillez en informer $1 $2
+register_confirmation	ins_file_fail	INSERTION DE FILEMODULE A ECHOUE. Veuillez en informer admin@$1 $2
+register_confirmation	set_owner_fail	VOUS METTRE COMME POSSESSEUR A ECHOUE. Veuillez en informer $1 $2
+register_confirmation	get_help	Obtenir de l'aide
+register_confirmation	developers	Développeurs
+register_confirmation	cant_copy_cvs_infos	ERREUR - Impossible de copier les informations CVS par défaut
+register_confirmation	cant_copy_svn_infos	ERREUR - Impossible de copier les informations SVN par défaut
+register_confirmation	cant_copy_truncated_emails	ERREUR - Impossible de copier les informations de courriels tronqués depuis le projet parent
+register_confirmation	cant_copy_msg_to_requester	ERROR - Impossible de copier le message destiné aux utilisateurs qui demandent l'accès à votre projet.
+
+register_project_one_step	services_used	Services utilisés :
+#
+# Script: src/common/mail/MailProjectOneStepRegisterPresenter.php
+#
+mail_register_project_one_step	title	Projet $1 approuvé
+mail_register_project_one_step	section_one	Veuillez prendre un peu de temps pour parcourir la <a href="$1">documentation du site</a> concernant les outils et services offerts par $2 aux équipes de projet (y compris un guide complet l'utilisateur).
+mail_register_project_one_step	section_two	Nous vous invitons maintenant à visiter la <a href="$1">page de sommaire</a> de votre projet, à écrire une courte description de votre projet et à le classer dans l'arbre des projets si vous ne l'avez pas encore fait.
+mail_register_project_one_step	section_three	En tant qu'administrateur de projet, vous avez accès à <a href="$1">toutes les fonctions d'administration</a> comme créer, configurer des trackers pour suivre et gérer n'importe quel type d'activités, créer des dépôts git ou encore planifier vos releases et gérer les tests.
+mail_register_project_one_step	full_name	Nom complet
+mail_register_project_one_step	short_name	Nom court
+mail_register_project_one_step	summary_page	Page de description
+#
+#-----------------------------------------------
+# Script: src/common/mail/MailProjectNotificationPresenter.php
+#
+mail_register_project_one_step_notification	title	Projet enregistré
+mail_register_project_one_step_notification	section_one	Un nouveau projet vient juste d'être enregistré sur $1.
+mail_register_project_one_step_notification	section_two	Nom du projet : $1.
+mail_register_project_one_step_notification	section_three	Conformément à la configuration site, le projet a été automatiquement approuvé.
+mail_register_project_one_step_notification	redirect_button	Aller sur le panneau d'administration
+#
+#-----------------------------------------------
+# Script: src/common/mail/MailProjectNotificationMustBeApprovedPresenter.php
+#
+mail_register_project_one_step_notification_approved	title	Projet enregistré
+mail_register_project_one_step_notification_approved	section_one	Un nouveau projet vient juste d'être enregistré sur $1.
+mail_register_project_one_step_notification_approved	section_two	Nom du projet : $1.
+mail_register_project_one_step_notification_approved	section_three	Veuillez cliquer sur le bouton pour approuver l'enregistrement de ce projet :
+mail_register_project_one_step_notification_approved	redirect_button	Approuver le projet
+#
+#-----------------------------------------------
+# Script:
+#   src/common/mail/MailProjectNotificationMustBeApprovedPresenter.php
+#   src/common/mail/MailProjectNotificationPresenter.php
+#   src/common/mail/MailProjectOneStepRegisterPresenter.php
+#
+mail_outline	help	Pour toute demande d'aide contactez : $1
+mail_outline	thanks	Merci !
+mail_outline	signature	-- L'équipe $1

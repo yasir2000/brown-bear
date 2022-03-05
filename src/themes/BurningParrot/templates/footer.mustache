@@ -1,0 +1,25 @@
+            </main>
+        </div>
+        {{# browser_deprecation_message }}
+            {{> browser-deprecation }}
+        {{/ browser_deprecation_message }}
+        {{# is_footer_shown }}
+            <footer class="footer">
+                {{{ footer }}}
+            </footer>
+        {{/ is_footer_shown }}
+        {{# javascript_in_footer }}
+            {{# is_snippet }}
+                <script type="text/javascript" nonce="{{ csp_nonce }}">
+                        {{{ javascript }}}
+                </script>
+            {{/ is_snippet }}
+            {{^ is_snippet }}
+                <script type="{{ type }}" src="{{ javascript }}" nonce="{{ csp_nonce }}"></script>
+            {{/ is_snippet }}
+        {{/ javascript_in_footer }}
+        {{# stylesheets }}
+            <link rel="stylesheet" href="{{ . }}">
+        {{/ stylesheets }}
+    </body>
+</html>

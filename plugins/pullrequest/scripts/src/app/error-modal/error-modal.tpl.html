@@ -1,0 +1,37 @@
+<div id="pull-requests-error-modal"
+    class="tlp-modal tlp-modal-danger"
+    role="dialog"
+    aria-labelledby="pull-requests-error-title"
+>
+    <div class="tlp-modal-header">
+        <h1 id="pull-requests-error-title"
+            class="tlp-modal-title"
+        >
+            <span translate>Oh snap!</span>
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="{{ 'Close' | translate }}">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="tlp-modal-body">
+        <p translate>An error occured while doing one of your last actions.</p>
+        <p ng-show="! error_modal.details">
+            <button type="button"
+                class="tlp-button-primary tlp-button-outline tlp-button-small"
+                ng-click="error_modal.details = true"
+                translate
+            >Show details</button>
+        </p>
+        <div ng-show="error_modal.details">
+            <h4 translate>Error details</h4>
+            <pre>{{ error_modal.message }}</pre>
+        </div>
+    </div>
+
+    <div class="tlp-modal-footer">
+        <button class="tlp-button-danger tlp-modal-action" data-dismiss="modal">
+            <span translate>OK</span>
+        </button>
+    </div>
+</div>

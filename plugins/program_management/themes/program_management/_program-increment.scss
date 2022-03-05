@@ -1,0 +1,143 @@
+/**
+ * Copyright (c) Enalean, 2021-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.program-increment-display {
+    margin: 0 0 var(--tlp-medium-spacing);
+    border: 1px hidden;
+    border-radius: var(--tlp-large-radius);
+    box-shadow: var(--tlp-pane-shadow);
+}
+
+.program-increment-title-with-button {
+    display: flex;
+}
+
+.program-increment-title-button {
+    margin: 0 0 0 var(--tlp-large-spacing);
+}
+
+.program-increment-header {
+    display: flex;
+    position: sticky;
+    z-index: 2;
+    top: 44px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 100ms ease-in-out;
+    border: 1px solid var(--tlp-neutral-normal-color);
+    border-radius: var(--tlp-large-radius);
+    background: var(--tlp-white-color);
+    cursor: pointer;
+    gap: var(--tlp-small-spacing);
+
+    &:hover {
+        transition: background 100ms ease-in-out;
+        background: var(--tlp-white-color-darker-02);
+    }
+
+    &:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-color: var(--tlp-neutral-light-color);
+    }
+}
+
+.program-increment-header-label {
+    flex: 0 0 auto;
+    color: var(--tlp-dimmed-color);
+}
+
+.program-increment-header-dates {
+    margin: 0 var(--tlp-small-spacing) 0 0;
+    color: var(--tlp-dimmed-color);
+    font-size: 12px;
+}
+
+.program-increment-info {
+    display: flex;
+    align-items: center;
+    padding: var(--tlp-small-spacing) var(--tlp-medium-spacing);
+    border: 1px solid var(--tlp-neutral-normal-color);
+    border-top: 0;
+    border-bottom-color: var(--tlp-neutral-light-color);
+    background: var(--tlp-white-color);
+}
+
+.program-increment-info-link {
+    font-size: 14px;
+    white-space: nowrap;
+
+    &:not(:first-child) {
+        margin: 0 0 0 var(--tlp-medium-spacing);
+    }
+
+    > .program-increment-info-link-icon {
+        margin: 0 6px 0 0;
+        font-size: 12px;
+        text-decoration: none;
+    }
+}
+
+.program-increment-content {
+    position: relative;
+    padding: var(--tlp-small-spacing);
+    border: 1px solid var(--tlp-neutral-normal-color);
+    border-top: 0;
+    border-radius: 0 0 var(--tlp-large-radius) var(--tlp-large-radius);
+    background: var(--tlp-fade-background-color);
+
+    &:last-child {
+        border-bottom: 1px solid var(--tlp-neutral-normal-color);
+    }
+}
+
+.program-increment-content-items
+    > .element-backlog-item.drek-ghost
+    ~ .program-increment-no-content {
+    visibility: hidden;
+}
+
+.program-increment-no-content {
+    display: block;
+    margin: var(--tlp-large-spacing) auto;
+}
+
+#program-increment-error {
+    margin: 0 var(--tlp-large-spacing) 0 0;
+}
+
+.drop-not-accepted {
+    display: flex;
+}
+
+.drop-accepted {
+    display: none;
+}
+
+.drop-not-accepted-overlay {
+    align-items: baseline;
+    justify-content: center;
+    margin: 0 0 var(--tlp-large-spacing) 0;
+    color: var(--tlp-danger-color);
+
+    > .drop-not-accepted-icon {
+        margin: 0 var(--tlp-small-spacing) 0 0;
+    }
+}

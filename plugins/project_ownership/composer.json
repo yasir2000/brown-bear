@@ -1,0 +1,11 @@
+{
+  "name": "tuleap/plugin-project-ownership",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\ProjectOwnership\\": "include/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

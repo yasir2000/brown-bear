@@ -1,0 +1,40 @@
+<form method="POST"
+      action="{{ url }}?action=add-dashboard"
+      id="add-dashboard"
+      class="tlp-modal"
+      aria-labelledby="add-dashboard-label"
+      role="dialog"
+>
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title" id="add-dashboard-label">
+            {{ add_dashboard_label }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="{{ close }}">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/csrf_token}}
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="dashboard-name">{{ dashboard_name_label }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="dashboard-name"
+                   name="dashboard-name"
+                   placeholder="{{ dashboard_name_label }}"
+                   required
+                   data-test="dashboard-add-input-name"
+            >
+        </div>
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">{{ cancel }}</button>
+        <button type="submit" class="tlp-button-primary tlp-modal-action" data-test="dashboard-add-button-submit">
+            <i class="fa fa-plus tlp-button-icon"></i>
+            {{ add_dashboard_label }}
+        </button>
+    </div>
+</form>

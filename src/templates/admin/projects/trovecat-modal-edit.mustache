@@ -1,0 +1,157 @@
+<div class="tlp-modal trove-cats-modal-edit" id="trove-cat-edit-{{ trove_cat_id }}" role="dialog">
+
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title">
+            {{ edit_trove_cat }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close"><i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i></button>
+    </div>
+
+    <form method="post" name="form-trove-cat-edit">
+        <input type="hidden" name="action" value="update">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+        <input type="hidden" name="id" value="{{ trove_cat_id }}">
+        <div class="tlp-modal-body">
+            <div class="trove-cats-general-properties">
+                <div class="tlp-form-element trove-cats-fullname-property">
+                    <label class="tlp-label" for="fullname-{{ trove_cat_id }}">{{ label_fullname }} <i
+                            class="fa fa-asterisk"></i></label>
+                    <input type="text" class="tlp-input" id="fullname-{{ trove_cat_id }}" name="fullname" required
+                           placeholder="{{ label_fullname }}" value="{{ fullname }}">
+                </div>
+                <div class="tlp-form-element trove-cats-shortname-property">
+                    <label class="tlp-label" for="shortname-{{ trove_cat_id }}">{{ label_shortname }} <i
+                            class="fa fa-asterisk"></i></label>
+                    <input type="text" class="tlp-input" id="shortname-{{ trove_cat_id }}" name="shortname" required
+                           placeholder="{{ label_shortname }}" value="{{ shortname }}">
+                </div>
+                <div class="tlp-form-element trove-cats-parent-property">
+                    <label class="tlp-label" for="parent-{{ trove_cat_id }}">{{ parent_category_label }}</label>
+                    <select
+                            class="tlp-select trove-cats-modal-select-parent-category parent"
+                            id="parent-{{ trove_cat_id }}"
+                            name="parent"
+                            data-parent-trove-id="{{ parent }}"
+                            data-id="{{ trove_cat_id }}"
+                            data-is-parent-top-level-id="{{ is_top_level_id }}"
+                            data-is-parent-mandatory="{{ is_parent_mandatory }}"
+                    >
+                        <option value="0">{{ root_label }}</option>
+                        {{# trovecats }}
+                        <option
+                                value="{{ trove_cat_id }}"
+                                data-is-top-level-id="{{ is_top_level_id }}"
+                                data-is-parent-mandatory="{{ is_mandatory }}"
+                                data-parent-id="{{ parent }}"
+                        >
+                            {{ hierarchy }}
+                        {{/ trovecats }}
+                    </select>
+                </div>
+                <div class="tlp-form-element trove-cats-description-property">
+                    <label class="tlp-label" for="description-{{ trove_cat_id }}">{{ label_description }}</label>
+                    <textarea class="tlp-textarea" id="description-{{ trove_cat_id }}" name="description"
+                              placeholder="{{ description_placeholder }}">{{ description }}</textarea>
+                </div>
+            </div>
+
+            <hr class="tlp-modal-separator">
+
+            <div class="tlp-form-element" id="trove-cats-modal-mandatory-checkbox-{{ trove_cat_id }}">
+                <label class="tlp-label tlp-checkbox">
+                    <input
+                            type="checkbox"
+                            name="is-mandatory"
+                            value="1"
+                            id="is-mandatory-{{ trove_cat_id }}"
+                            class="trove-cats-checkbox-modal-edit"
+                            {{# is_mandatory }} checked {{/ is_mandatory }}
+                    > {{ label_mandatory }}
+                </label>
+                <p class="tlp-text-info">{{ mandatory_info }}</p>
+            </div>
+
+            {{# is_top_level_id }}
+                <input type="hidden" name="nb-max-values" value="1">
+                <div class="tlp-form-element">
+                    <label class="tlp-label" for="nb-max-values-{{ trove_cat_id }}">
+                        {{# gettext }}Nb maximum of allowed values{{/ gettext }}
+                    </label>
+                    <input type="number"
+                           min="1"
+                           class="tlp-input trove-cats-nb-max-values-input"
+                           id="nb-max-values-{{ trove_cat_id }}"
+                           data-input-project-flag-id="trove-cats-modal-is-project-flag-{{ trove_cat_id }}"
+                           data-warning-id="nb-max-values-warning-{{ trove_cat_id }}"
+                           name="nb-max-values"
+                           value="{{ nb_max_values }}"
+                           placeholder="3">
+                    <p class="tlp-text-warning trove-cats-nb-max-values-input-warning"
+                       id="nb-max-values-warning-{{ trove_cat_id }}"
+                    >
+                        {{# gettext }}Can only be updated when the category is not used as project flag.{{/ gettext }}
+                    </p>
+                </div>
+            {{/ is_top_level_id }}
+
+            <hr class="tlp-modal-separator">
+
+            <div class="tlp-form-element" id="trove-cats-modal-display-at-project-creation-form-element-{{ trove_cat_id }}">
+                <label class="tlp-label tlp-checkbox">
+                    <input
+                            type="checkbox"
+                            name="display-at-project-creation"
+                            value="1"
+                            id="trove-cats-modal-display-at-project-creation-{{ trove_cat_id }}"
+                            class="trove-cats-checkbox-modal-edit"
+                        {{# display_during_project_creation }} checked {{/ display_during_project_creation }}
+                    > {{ label_display }}
+                </label>
+                <p class="tlp-text-info">{{ display_info }}</p>
+            </div>
+
+            {{# is_top_level_id }}
+                <div class="tlp-form-element
+                        {{# is_quota_of_project_flags_reached }}
+                            {{^ is_project_flag }}
+                                tlp-form-element-disabled
+                            {{/ is_project_flag }}
+                        {{/ is_quota_of_project_flags_reached }}"
+                >
+                    <label class="tlp-label tlp-checkbox">
+                        <input
+                            type="checkbox"
+                            name="is-project-flag"
+                            id="trove-cats-modal-is-project-flag-{{ trove_cat_id }}"
+                            value="1"
+                            {{# is_project_flag }} checked {{/ is_project_flag }}
+                            {{# is_quota_of_project_flags_reached }}
+                                {{^ is_project_flag }}
+                                    disabled
+                                {{/ is_project_flag }}
+                            {{/ is_quota_of_project_flags_reached }}
+                            data-is-permanently-disabled="{{# is_quota_of_project_flags_reached }}{{^ is_project_flag }}1{{/ is_project_flag }}{{/ is_quota_of_project_flags_reached }}"
+                        >
+                        {{# gettext }}Use as project flag{{/ gettext }}
+                    </label>
+                    <p class="tlp-text-info">
+                        {{# gettext }}Project flags are displayed in the navigation bar.{{/ gettext }}<br>
+                        {{# gettext }}Up to 2 categories can be used as flag.{{/ gettext }}<br>
+                        {{# gettext }}Nb maximum of allowed values must be 1.{{/ gettext }}
+                    </p>
+                </div>
+            {{/ is_top_level_id }}
+        </div>
+
+        <div class="tlp-modal-footer">
+            <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+                {{ cancel }}
+            </button>
+            <button type="submit" class="tlp-button-primary tlp-modal-action">
+                <i class="fa fa-save tlp-button-icon"></i> {{ edit }}
+            </button>
+        </div>
+    </form>
+</div>

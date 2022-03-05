@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<phpunit bootstrap="lib/bootstrap.php"
+         verbose="true"
+         convertDeprecationsToExceptions="true"
+>
+    <php>
+        <ini name="date.timezone" value="Europe/Paris"/>
+    </php>
+    <testsuites>
+        <testsuite name="Tuleap REST tests">
+            <directory>tests</directory>
+            <directory>../../plugins/*/tests/rest/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

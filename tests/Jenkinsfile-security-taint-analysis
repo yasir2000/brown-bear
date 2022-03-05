@@ -1,0 +1,86 @@
+#!/usr/bin/env groovy
+
+def actions
+
+pipeline {
+    agent {
+        label 'docker'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Prepare') {
+            agent {
+                dockerfile {
+                    dir 'sources/tools/utils/nix/'
+                    filename 'build-tools.dockerfile'
+                    reuseNode true
+                    args '--tmpfs /tmp/tuleap_build:rw,noexec,nosuid --read-only'
+                }
+            }
+            steps {
+                dir ('results') {
+                    deleteDir()
+                }
+                dir ('sources') {
+                    withCredentials([
+                        usernamePassword(
+                            credentialsId: 'nexus.enalean.com_readonly',
+                            passwordVariable: 'NPM_PASSWORD',
+                            usernameVariable: 'NPM_USER'
+                        ),
+                        string(credentialsId: 'github-token-composer', variable: 'COMPOSER_GITHUB_AUTH')
+                    ]) {
+                        sh 'tools/utils/scripts/generated-files-builder.sh dev'
+                    }
+                }
+            }
+        }
+
+        stage('Psalm taint analysis') {
+            agent {
+                docker {
+                    image 'ghcr.io/enalean/tuleap-test-phpunit:c7-php80'
+                    reuseNode true
+                    args '--network none'
+                }
+            }
+            steps {
+                script {
+                    actions = load 'sources/tests/actions.groovy'
+                    actions.runPsalmTaintAnalysis('tests/psalm/psalm.xml')
+                }
+            }
+            post {
+                always {
+                    recordIssues enabledForFailure: true, minimumSeverity: 'NORMAL', tools: [checkStyle(id: 'checkstyle_psalm', pattern: 'results/psalm/checkstyle.xml')]
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'results/'
+        }
+        failure {
+            withCredentials([string(credentialsId: 'email-notification-rd-team', variable: 'email')]) {
+                mail to: email,
+                subject: "${currentBuild.fullDisplayName} is broken",
+                body: "See ${env.BUILD_URL}"
+            }
+        }
+        unstable {
+            withCredentials([string(credentialsId: 'email-notification-rd-team', variable: 'email')]) {
+                mail to: email,
+                subject: "${currentBuild.fullDisplayName} is unstable",
+                body: "See ${env.BUILD_URL}"
+            }
+        }
+    }
+}

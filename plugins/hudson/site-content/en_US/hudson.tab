@@ -1,0 +1,5 @@
+plugin_hudson	service_lbl_key	Continuous Integration
+plugin_hudson	service_desc_key	Continuous Integration with Hudson/Jenkins
+
+plugin_hudson	reference_job_desc_key	Jenkins Job
+plugin_hudson	reference_build_desc_key	Jenkins Build

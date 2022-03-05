@@ -1,0 +1,63 @@
+<div class="workflow_triggers">
+    <h2 class="almost-tlp-title">{{# dgettext }} tuleap-tracker | Define cross-tracker triggers{{/ dgettext }}</h2>
+    <p class="help">
+        {{# dgettext }} tuleap-tracker | The triggers will be applied on each creation/update of artifacts.{{/ dgettext }}
+        <a href="/plugins/tracker/?tracker={{ tracker_id }}&amp;func=admin-hierarchy">
+            {{# dgettext }} tuleap-tracker | The triggers definitions are based on the tracker hierarchy. {{/ dgettext }}
+        </a>
+    </p>
+    <p class="help">
+        {{# dgettext }} tuleap-tracker | Only children that are part of the defined hierarchy will be taken into account by triggers.{{/ dgettext }}
+    </p>
+    <div id="triggers_existing">
+        <h3>{{# dgettext }} tuleap-tracker | Existing triggers{{/ dgettext }}</h3>
+        <table cellspacing="0" cellpadding="10" border="0">
+            <tbody>
+                <tr>
+                    <td class="trigger_description">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tbody class="trigger_description_triggering_fields">
+                                <tr class="trigger_description_triggering_field">
+                                    <td class="trigger_description_triggering_field_intro">
+                                        <span class="trigger_description_triggering_field_when">{{# dgettext }} tuleap-tracker | When{{/ dgettext }}</span>
+                                        <span class="trigger_description_triggering_field_operator"></span>
+                                    </td>
+                                    <td class="trigger_description_triggering_field_detail">
+                                        <span class="trigger_description_triggering_field_quantity"></span> {{# dgettext }} tuleap-tracker | of type{{/ dgettext }}
+                                        <strong><span class="trigger_description_triggering_field_tracker"></span></strong>
+                                        <span class="trigger_description_triggering_have_field"></span>
+                                        <strong><span class="trigger_description_triggering_field_field_name"></span></strong> {{# dgettext }} tuleap-tracker | set to{{/ dgettext }}
+                                        <strong><span class="trigger_description_triggering_field_field_value"></span></strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="trigger_description_target">
+                            {{# dgettext }} tuleap-tracker | Then the tracker field{{/ dgettext }}
+                            <strong><span class="trigger_description_target_field_name"></span></strong> {{# dgettext }} tuleap-tracker | will be set to{{/ dgettext }}
+                            <strong><span class="trigger_description_target_field_value"></span></strong>
+                        </p>
+                    </td>
+                    <td>
+                        <img border="0" alt="remove" src="/themes/common/images/ic/cross.png" class="trigger_remove">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form method="post" action="{{ triggers_form_action }}" id="triggers_form" style="display:none;">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+        <p class="add_new_trigger">
+            <a href="#add-new-trigger" id="add_new_trigger_title">
+                <i class="fa fa-plus"></i>
+                <span>
+                    {{# dgettext }} tuleap-tracker | Add a new trigger{{/ dgettext }}
+                </span>
+            </a>
+            {{> triggers-create-new}}
+        </p>
+    </form>
+    <p id="triggers_no_children" style="display:none" class="alert alert-info">{{# dgettext }} tuleap-tracker | There are no child trackers defined for this tracker{{/ dgettext }}</p>
+</div>

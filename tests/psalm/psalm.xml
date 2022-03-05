@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<psalm
+    totallyTyped="false"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config file:///../../../src/vendor/vimeo/psalm/config.xsd"
+    autoloader="tests/lib/bootstrap.php"
+    resolveFromConfigFile="false"
+    errorBaseline="./tests/psalm/tuleap-baseline.xml"
+    allowNamedArgumentCalls="false"
+>
+    <projectFiles>
+        <directory name="src/common/" />
+        <directory name="src/www/" />
+        <directory name="src/utils/" />
+        <directory name="src/tuleap-cfg/" />
+        <directory name="plugins/*/include/" />
+        <directory name="plugins/*/bin/" />
+        <directory name="tests/phpcs/TuleapCodingStandard/" />
+        <directory name="tests/unit/common/Project/Registration/" />
+        <directory name="plugins/oauth2_server/tests/unit/" />
+        <directory name="plugins/gitlab/tests/unit/" />
+        <directory name="plugins/jira_import/tests/unit/" />
+        <directory name="plugins/document_generation/tests/unit/" />
+        <directory name="plugins/program_management/tests/unit/" />
+        <directory name="plugins/userlog/tests/unit/" />
+        <directory name="plugins/testplan/tests/unit/" />
+        <directory name="plugins/mediawiki_standalone/tests/unit/" />
+        <ignoreFiles>
+            <directory name="src/common/wiki/phpwiki/"/>
+            <directory name="src/www/assets/"/>
+            <directory name="src/themes/FlamingParrot/vendor/"/>
+            <directory name="src/themes/BurningParrot/vendor/"/>
+            <directory name="src/embedded_vendor/jpgraph/"/>
+            <file name="plugins/tracker/include/Tracker/Report/Query/Advanced/Grammar/Parser.php"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <taintAnalysis>
+        <ignoreFiles>
+            <directory name="src/www/tracker/"/>
+            <directory name="src/common/tracker/"/>
+        </ignoreFiles>
+    </taintAnalysis>
+
+    <stubs>
+        <file name="tests/psalm/stubs/Psr/EventDispatcher/EventDispatcherInterface.phpstub"/>
+        <file name="tests/psalm/stubs/ParagonIE/EasyDB/EasyDB.phpstub"/>
+        <file name="tests/psalm/stubs/FastRoute/RouteCollector.phpstub"/>
+    </stubs>
+
+    <plugins>
+        <plugin filename="tests/lib/Psalm/Plugin/ConcealedString/PreventConcealedStringMisuses.php"/>
+        <plugin filename="tests/lib/Psalm/Plugin/NoWritableRESTRepresentation/DoNotAllowWritableRESTRepresentation.php"/>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+    </plugins>
+
+    <issueHandlers>
+        <DeprecatedMethod errorLevel="info" />
+        <DeprecatedProperty errorLevel="info" />
+        <DeprecatedClass errorLevel="info" />
+        <DeprecatedConstant errorLevel="info" />
+        <DeprecatedInterface errorLevel="info" />
+        <DeprecatedTrait errorLevel="info" />
+
+        <PropertyNotSetInConstructor errorLevel="info" />
+        <MissingConstructor errorLevel="info">
+            <errorLevel type="suppress"> <!-- See https://github.com/psalm/psalm-plugin-phpunit/issues/107 -->
+                <file name="src/vendor/phpunit/phpunit/src/Framework/TestCase.php"/>
+                <directory name="plugins/*/tests/unit/"/>
+                <directory name="tests/unit/"/>
+            </errorLevel>
+        </MissingConstructor>
+
+        <RedundantCondition errorLevel="info" />
+
+        <DocblockTypeContradiction errorLevel="info" />
+        <RedundantConditionGivenDocblockType errorLevel="info" />
+
+        <UnresolvableInclude errorLevel="info" />
+
+        <!-- Unused code detection -->
+        <UnusedMethodCall errorLevel="suppress" />
+        <UnusedFunctionCall errorLevel="suppress" />
+        <UnusedParam errorLevel="suppress" />
+        <UnusedVariable errorLevel="suppress" />
+        <InvalidCast errorLevel="suppress" />
+        <UnusedClass errorLevel="suppress" />
+        <UnnecessaryVarAnnotation errorLevel="suppress" />
+        <PossiblyUnusedMethod errorLevel="suppress" />
+        <UnusedMethod errorLevel="suppress" />
+        <PossiblyUnusedProperty errorLevel="suppress" />
+        <UnusedConstructor errorLevel="suppress" />
+        <UnusedProperty>
+            <errorLevel type="suppress">
+                <file name="plugins/git/include/GitActions.class.php"/>
+                <file name="plugins/tracker/include/Tracker/FormElement/SystemEvent/SystemEvent_BURNDOWN_DAILY.php"/>
+            </errorLevel>
+        </UnusedProperty>
+        <UnusedReturnValue errorLevel="suppress" />
+        <PossiblyUnusedReturnValue errorLevel="suppress" />
+    </issueHandlers>
+</psalm>

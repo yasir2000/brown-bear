@@ -1,0 +1,30 @@
+<form action="permission_delegation.php?action=delete-group"
+      method="post"
+      id="siteadmin-permission-delegation-delete-group-modal"
+      class="tlp-modal tlp-modal-danger"
+      role="dialog"
+>
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title">
+            {{ group_title_delete }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        <p>{{{ purified_group_delete_confirmation }}}</p>
+        <input type="hidden" name="id" value="{{ id }}" />
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="button" class="tlp-button-danger tlp-button-outline tlp-modal-action" data-dismiss="modal">
+            {{ group_cancel_delete }}
+        </button>
+        <button type="submit" class="tlp-button-danger tlp-modal-action">
+            <i class="fas fa-trash-alt tlp-button-icon"></i> {{ group_submit_delete }}
+        </button>
+    </div>
+</form>

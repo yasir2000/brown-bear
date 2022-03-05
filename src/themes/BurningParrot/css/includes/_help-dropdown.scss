@@ -1,0 +1,184 @@
+/**
+ * Copyright (c) Enalean, 2020-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:map";
+@use "../../../tlp/src/scss/variables/colors/swatch-colors";
+
+/* stylelint-disable selector-no-qualifying-type */
+body.reduce-help-button .help-dropdown {
+    right: var(--tlp-small-spacing);
+    bottom: var(--tlp-small-spacing);
+
+    #help {
+        width: 24px; // not related to condensed mode
+        height: 24px; // not related to condensed mode
+
+        > .svg-question-mark {
+            width: 7.5px; // not related to condensed mode
+        }
+
+        > .new-release-note-available-icon {
+            font-size: 0.8rem;
+        }
+    }
+
+    > .tlp-dropdown-menu {
+        right: calc(var(--tlp-small-spacing) / -2);
+
+        &::before,
+        &::after {
+            right: 16px; // not related to condensed mode
+        }
+    }
+}
+
+.help-dropdown {
+    position: fixed;
+    z-index: 1000;
+    right: var(--tlp-medium-spacing);
+    bottom: var(--tlp-medium-spacing);
+
+    #help {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        overflow: visible;
+        border-radius: 50%;
+        border-color: var(--tlp-dark-color);
+        background: var(--tlp-dark-color);
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        &.new-release-note-available {
+            animation: pulse 300ms ease-in-out 1s 3 both;
+            border-color: var(--tlp-warning-color);
+            background: var(--tlp-warning-color);
+            color: var(--tlp-white-color);
+
+            > .new-release-note-available-icon {
+                display: inline-block;
+            }
+
+            > .svg-question-mark {
+                display: none;
+            }
+        }
+
+        > .new-release-note-available-icon {
+            display: none;
+            position: relative;
+            transition: color 200ms ease-in-out;
+            font-size: 1.25rem;
+        }
+    }
+
+    .tlp-dropdown-menu {
+        border-color: var(--tlp-dark-color);
+        background: var(--tlp-dark-color);
+
+        &::before {
+            display: none;
+        }
+
+        &::after {
+            border-top-color: var(--tlp-dark-color);
+        }
+
+        .help-dropdown-link {
+            &.tlp-dropdown-menu-item {
+                background: var(--tlp-dark-color);
+                color: var(--tlp-neutral-dark-color);
+                font-size: 13px;
+
+                &:hover {
+                    background: var(--tlp-dark-color-darker-20);
+                }
+            }
+
+            &.help-dropdown-link-highlight {
+                color: var(--tlp-warning-color);
+            }
+        }
+
+        .tlp-dropdown-menu-separator {
+            opacity: 0.1;
+            background: var(--tlp-neutral-dark-color);
+        }
+
+        .tlp-dropdown-menu-item-alt {
+            display: flex;
+            align-items: baseline;
+            padding: 10px 20px;
+            font-size: 12px;
+
+            > a {
+                margin: 0 10px 0 0;
+                opacity: 0.6;
+                color: var(--tlp-neutral-dark-color);
+            }
+        }
+    }
+}
+
+.help-modal-shortcuts-body {
+    display: flex;
+    padding: 0;
+}
+
+.help-modal-shortcuts-group-head {
+    margin-bottom: var(--tlp-medium-spacing);
+}
+
+.help-modal-shortcuts-group-details {
+    font-size: 0.875rem;
+}
+
+.help-modal-shortcuts-table {
+    margin-bottom: var(--tlp-jumbo-spacing);
+}
+
+.help-modal-shortcuts-section {
+    flex-grow: 1;
+    padding: var(--tlp-medium-spacing);
+}
+
+.help-modal-shortcuts-kbds {
+    width: 190px;
+    white-space: nowrap;
+}
+
+.help-modal-shortcuts-description {
+    width: 100%;
+}

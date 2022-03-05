@@ -1,0 +1,60 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <element name="program_management">
+      <element name="increments">
+        <element name="source_tracker">
+          <attribute name="REF">
+            <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+          </attribute>
+        </element>
+        <element name="plannable_trackers">
+          <oneOrMore>
+            <element name="plannable_tracker">
+              <attribute name="REF">
+                <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+              </attribute>
+            </element>
+          </oneOrMore>
+        </element>
+        <element name="can_prioritize">
+          <oneOrMore>
+            <element name="ugroup">
+              <attribute name="ugroup_name">
+                <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+              </attribute>
+            </element>
+          </oneOrMore>
+        </element>
+        <optional>
+          <element name="section_name">
+            <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+          </element>
+        </optional>
+        <optional>
+          <element name="milestones_name">
+            <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+          </element>
+        </optional>
+      </element>
+      <optional>
+        <element name="iterations">
+          <element name="source_tracker">
+            <attribute name="REF">
+              <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+            </attribute>
+          </element>
+          <optional>
+            <element name="section_name">
+              <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+            </element>
+          </optional>
+          <optional>
+            <element name="milestones_name">
+              <data type="string" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+            </element>
+          </optional>
+        </element>
+      </optional>
+    </element>
+  </start>
+</grammar>

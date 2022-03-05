@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarHeader displays the sidebar header 1`] = `
+<div
+  data-v-app=""
+>
+  
+  <div
+    class="project-sidebar-header-name"
+  >
+    <div
+      class="project-title-container"
+    >
+      <a
+        class="project-sidebar-title"
+        data-test="project-sidebar-title"
+        href="/projects/project1"
+      >
+        <span
+          aria-hidden="true"
+          class="project-sidebar-title-icon"
+        >
+          🌷
+        </span>
+         project1
+      </a>
+      <span
+        class="project-title-spacer"
+      />
+      <a
+        class="project-administration-link"
+        data-test="project-administration-link"
+        href="https://myinstance.example.com/project/admin/?group_id=999"
+      >
+        <i
+          class="fas fa-cog project-administration-link-icon"
+          title="Project administration"
+        />
+      </a>
+    </div>
+    <privacy-badge-stub />
+  </div>
+  <project-announcement-stub />
+  <project-flags-stub />
+  <linked-projects-stub />
+  
+</div>
+`;

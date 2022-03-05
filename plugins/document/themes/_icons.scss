@@ -1,0 +1,76 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+
+.document-folder-icon {
+    color: swatch-colors.$tlp-swatch-inca-silver;
+}
+
+.document-file-icon {
+    color: swatch-colors.$tlp-swatch-chrome-silver;
+}
+
+.document-empty-icon {
+    color: swatch-colors.$tlp-swatch-firemist-silver;
+}
+
+.document-link-icon {
+    color: swatch-colors.$tlp-swatch-flamingo-pink;
+}
+
+.document-audio-icon {
+    color: swatch-colors.$tlp-swatch-lake-placid-blue;
+}
+
+.document-video-icon {
+    color: swatch-colors.$tlp-swatch-ocean-turquoise;
+}
+
+.document-image-icon {
+    color: swatch-colors.$tlp-swatch-graffiti-yellow;
+}
+
+.document-text-icon {
+    color: swatch-colors.$tlp-swatch-inca-silver;
+}
+
+.document-code-icon {
+    color: swatch-colors.$tlp-swatch-daphne-blue;
+}
+
+.document-archive-icon {
+    color: swatch-colors.$tlp-swatch-plum-crazy;
+}
+
+.document-pdf-icon {
+    color: swatch-colors.$tlp-swatch-fiesta-red;
+}
+
+.document-document-icon {
+    color: swatch-colors.$tlp-swatch-deep-blue;
+}
+
+.document-presentation-icon {
+    color: swatch-colors.$tlp-swatch-clockwork-orange;
+}
+
+.document-spreadsheet-icon {
+    color: swatch-colors.$tlp-swatch-sherwood-green;
+}

@@ -1,0 +1,229 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$profile-header-background: var(--tlp-dark-color);
+$main-color-on-dark-background: var(--tlp-main-color-on-dark-background);
+$profile-max-width: 720px;
+
+.body-user-profile {
+    background: linear-gradient(
+        to bottom,
+        $profile-header-background 0,
+        $profile-header-background 195px,
+        var(--tlp-background-color) 195px
+    );
+
+    header:not(.pinned) {
+        #logo {
+            background-color: transparent;
+            background-position: left center;
+        }
+
+        .logo-svg-fill-default-text-color {
+            fill: var(--tlp-white-color);
+        }
+    }
+
+    .full-width + #main-container > main[role="main"]:not(.tlp-framed) > #feedback:not(:empty) {
+        margin: 0;
+        padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-large-spacing);
+        background: $profile-header-background;
+    }
+
+    #nav-dropdown-user-content,
+    #nav-dropdown-new-content {
+        > .tlp-popover-arrow {
+            background: var(--tlp-dark-color-lighter-10);
+        }
+
+        > .tlp-popover-header {
+            background: var(--tlp-dark-color-lighter-10);
+        }
+    }
+}
+
+.user-profile {
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--tlp-jumbo-spacing) var(--tlp-jumbo-spacing);
+    border-bottom: 5px solid var(--tlp-main-color);
+    background: $profile-header-background;
+    color: var(--tlp-white-color);
+}
+
+.user-profile-basic-information {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: $profile-max-width;
+    line-height: 20px;
+}
+
+.user-profile-avatar {
+    flex: 0 0 auto;
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}
+
+.user-profile-identity {
+    $avatar-jumbo-size: 96px;
+
+    flex: 1 0 auto;
+    max-width: $profile-max-width - $avatar-jumbo-size - var(--tlp-medium-spacing);
+}
+
+.user-profile-status-active {
+    visibility: hidden;
+}
+
+.user-profile-email {
+    max-width: 350px;
+    overflow: hidden;
+    color: $main-color-on-dark-background;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-profile-title {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+    overflow: hidden;
+    color: $main-color-on-dark-background;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 38px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-profile-member-information {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 var(--tlp-small-spacing);
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.user-profile-additional-information-label {
+    margin: 0 5px 0 0;
+    color: var(--tlp-dimmed-color);
+}
+
+.user-profile-additional-information-label-icon {
+    margin: 0 0 0 5px;
+}
+
+.user-profile-additional-information-value > a {
+    color: $main-color-on-dark-background;
+}
+
+.user-profile-member-since,
+.user-profile-id {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+    white-space: nowrap;
+}
+
+.user-profile-member-since {
+    position: relative;
+    padding: 0 0 0 20px;
+}
+
+.user-profile-calendar {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    font-size: 12px;
+}
+
+.user-profile-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--tlp-x-large-spacing);
+}
+
+.user-profile-has-projects {
+    width: 100%;
+    max-width: $profile-max-width;
+}
+
+.user-profile-no-project,
+.user-profile-no-project:last-child {
+    max-width: $profile-max-width;
+    margin: 0 var(--tlp-medium-spacing);
+}
+
+.user-profile-project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-profile-project-nb-members {
+    cursor: pointer;
+}
+
+.user-profile-project-title-description {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}
+
+.user-profile-project-description {
+    display: block;
+    max-width: 500px;
+    overflow: hidden;
+    color: var(--tlp-dimmed-color);
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-profile-projects-no-rights {
+    font-size: 20px;
+}
+
+.user-profile-projects-tumbleweed,
+.user-profile-projects-stem,
+.user-profile-projects-earth {
+    stroke: var(--tlp-main-color);
+}
+
+.user-profile-projects-flower {
+    fill: var(--tlp-main-color);
+}
+
+@media screen and (max-width: 800px) {
+    .user-profile-status-active,
+    .user-profile-project-description {
+        display: none;
+    }
+
+    .user-profile-member-information {
+        flex-direction: column;
+    }
+
+    .user-profile-title {
+        margin: 0 0 var(--tlp-small-spacing);
+    }
+
+    .user-profile-member-since,
+    .user-profile-id {
+        margin: var(--tlp-small-spacing) 0 0;
+    }
+}

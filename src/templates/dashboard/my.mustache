@@ -1,0 +1,53 @@
+<div class="tlp-framed-horizontally dashboard-user-title-container">
+    <h1 class="dashboard-user-title" data-test="my-dashboard-title">{{# gettext }}My Dashboard{{/ gettext }}</h1>
+</div>
+{{# has_dashboard }}
+    {{> dashboard-tabs }}
+
+    {{# dashboards }}
+        {{# is_active }}
+            {{# has_widget }}
+                {{> widgets }}
+            {{/ has_widget }}
+            {{^ has_widget }}
+                <section class="empty-state-page">
+                    <h1 class="empty-state-title">{{ no_widget_label }}</h1>
+                    <p class="empty-state-text">{{ no_widget_action_label }}</p>
+                    <button class="empty-state-action tlp-button-primary add-widget-button"
+                            data-target-modal-id="add-widget-modal"
+                            data-href="{{ url_add_widget_content }}"
+                            data-test="dashboard-add-widget-empty-state-button"
+                    >
+                        <i class="fa fa-plus tlp-button-icon"></i>
+                        {{ add_widget_title }}
+                    </button>
+                </section>
+            {{/ has_widget }}
+        {{/ is_active }}
+    {{/ dashboards }}
+{{/ has_dashboard }}
+
+{{^ has_dashboard }}
+    <section class="empty-state-page">
+        <h1 class="empty-state-title">{{ no_dashboard_label }}</h1>
+        <button
+            type="button"
+            id="add-dashboard-button"
+            class="empty-state-action tlp-button-primary"
+            data-target-modal-id="add-dashboard"
+            data-test="dashboard-add-button"
+        >
+            <i class="fa fa-plus tlp-button-icon"></i>
+            {{ add_dashboard_label }}
+        </button>
+    </section>
+{{/ has_dashboard }}
+
+{{> add-dashboard-modal }}
+{{# dashboards }}
+    {{# is_active }}
+        {{> delete-dashboard-modal }}
+        {{> edit-dashboard-modal }}
+        {{> add-widget-modal }}
+    {{/ is_active }}
+{{/ dashboards }}

@@ -1,0 +1,18 @@
+<div class="user-preferences">
+    <h1 class="user-preferences-title">
+        {{# gettext }}Security{{/ gettext }}
+    </h1>
+    <div class="user-preferences-container">
+        {{> user-account-tabs }}
+
+        <div class="user-preferences-section">
+            {{# user_can_change_password }}
+                {{> security/password }}
+            {{/ user_can_change_password }}
+
+            {{> security/session }}
+
+            {{> security/access }}
+        </div>
+    </div>
+</div>

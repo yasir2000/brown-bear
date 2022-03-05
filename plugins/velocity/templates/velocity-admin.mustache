@@ -1,0 +1,30 @@
+{{# can_status_semantic_have_multiple_values }}
+    {{> velocity-status-type-error }}
+{{/ can_status_semantic_have_multiple_values }}
+
+{{^ can_status_semantic_have_multiple_values }}
+    {{^ has_semantic_done_defined }}
+        <div id="tracker-semantic-disabled">
+            <p class="tracker-semantic-content">{{# dgettext }}tuleap-velocity | Tracker semantic velocity{{/ dgettext }}</p>
+            <p class="tracker-semantic-content tracker-semantic-description">
+                {{# dgettext }}
+                    tuleap-velocity |
+                    <b>Done</b> semantic is needed since Velocity computation is made over <b>done</b> artifacts. Please select a <a href="%s">Done</a> semantic first.|
+                    {{ url_done_semantic }}
+                {{/ dgettext }}
+            </p>
+        </div>
+    {{/ has_semantic_done_defined }}
+
+    {{# has_semantic_done_defined }}
+        {{> velocity-chart-information }}
+
+        {{> velocity-children-without-velocity-semantic }}
+
+        {{> velocity-backlog-configuration-problems }}
+
+        {{> velocity-admin-form }}
+    {{/ has_semantic_done_defined }}
+{{/ can_status_semantic_have_multiple_values }}
+
+<p><a href="{{ back_url }}">&laquo; {{# dgettext }} tuleap-velocity | go back to semantic overview{{/ dgettext }}</a></p>

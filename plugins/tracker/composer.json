@@ -1,0 +1,44 @@
+{
+  "name": "tuleap/plugin-tracker",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Tracker\\": ["include/", "include/Tracker/"]
+    },
+    "classmap": ["include/"],
+    "exclude-from-classmap": ["include/Tracker/Report/Query/Advanced/Grammar/Parser.php"],
+    "files": [
+        "include/tracker_permissions.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tuleap\\Tracker\\Test\\": ["./tests/unit/"]
+    }
+  },
+  "require": {
+    "php-mime-mail-parser/php-mime-mail-parser": "^7.0"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ],
+      "exclude": [
+        "/include/Tracker/Semantic/Timeframe/SemanticTimeframeFromXMLBuilder.php",
+        "/include/REST/v1/Workflow/PostAction/PostActionsRepresentationBuilder.php",
+        "/include/Tracker/Notifications/TrackerForceNotificationsLevelCommand.php",
+        "/include/Tracker/Sample.class.php",
+        "/include/Tracker/Artifact/Tracker_Artifact_Changeset_Comment.class.php",
+        "/include/Tracker/Artifact/Tracker_Artifact_Changeset_CommentNull.class.php",
+        "/include/Tracker/Artifact/Tracker_Artifact_Changeset_Null.class.php",
+        "/include/Workflow/PostAction/Transition_PostActionFactory.class.php",
+        "/include/Workflow/PostAction/CIBuild/Transition_PostAction_CIBuild.class.php",
+        "/include/Workflow/PostAction/CIBuild/Transition_PostAction_CIBuildFactory.class.php",
+        "/include/Tracker/Artifact/CodeBlockFeaturesOnArtifact.php"
+      ]
+    }
+  }
+}

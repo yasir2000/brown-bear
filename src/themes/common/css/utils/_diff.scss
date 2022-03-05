@@ -1,0 +1,26 @@
+.diff .context {
+    color: #666666;
+}
+
+.diff .added,
+.diff .final {
+    background: #ddffdd;
+}
+
+.diff .deleted,
+.diff .original {
+    background: #ffdddd;
+}
+
+.diff .added ins,
+.diff .final ins {
+    color: #009900;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.diff .deleted del,
+.diff .original del {
+    color: #cc0000;
+    font-weight: bold;
+}

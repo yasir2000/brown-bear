@@ -1,0 +1,585 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "%(title)s backlog"
+msgstr "Backlog de %(title)s"
+
+msgid "%(title)s tests"
+msgstr "Tests de %(title)s"
+
+msgid "1 bug linked"
+msgid_plural "{{ $count }} bugs linked"
+msgstr[0] "1 bug lié"
+msgstr[1] "{{ $count }} bugs liés"
+
+msgid "1 requirement covered"
+msgid_plural "{{ $count }} requirements covered"
+msgstr[0] "1 exigence couverte"
+msgstr[1] "{{ $count }} exigences couvertes"
+
+msgid "1 test will be added"
+msgid_plural "{{ $count }} tests will be added"
+msgstr[0] "1 test sera ajouté"
+msgstr[1] "{{ $count }} tests seront ajoutés"
+
+msgid "1 test will be removed"
+msgid_plural "{{ $count }} tests will be removed"
+msgstr[0] "1 test sera supprimé"
+msgstr[1] "{{ $count }} tests seront supprimés"
+
+msgid "A campaign label is required"
+msgstr "Le label de la campagne est obligatoire"
+
+msgid "Add a test"
+msgstr "Ajouter un test"
+
+msgid "All tests"
+msgstr "Tous les tests"
+
+msgid ""
+"An authentication token that authorizes Tuleap to trigger this Jenkins job"
+msgstr ""
+"Un jeton d'authentification qui autorise Tuleap à déclencher ce build Jenkins"
+
+msgid ""
+"An error occurred while executing this step. Please try again later. "
+"{{ error }}"
+msgstr ""
+"Une erreur s'est produite pendant l'exécution de cette étape. Veuillez "
+"réessayer plus tard. {{ error }}"
+
+msgid ""
+"An error occurred while loading the campaigns. Please refresh the page. "
+"{{ message }}"
+msgstr ""
+"Une erreur s'est produite pendant le chargement des campagnes. Veuillez "
+"rafraîchir cette page. {{ message }}"
+
+msgid "An error occurred while loading the tests. {{ error }}"
+msgstr "Une erreur est survenue pendant le chargement des tests. {{ error }}"
+
+msgid "Artifact ID"
+msgstr "Artéfact ID"
+
+msgid "Artifacts referenced by “%s”"
+msgstr "Les artéfacts qui sont référencés par “%s”"
+
+msgid "Artifacts that reference “%s”"
+msgstr "Les artéfacts qui référencent “%s”"
+
+msgid "Attach files..."
+msgstr "Joindre des fichiers..."
+
+msgid "Attachment creation errors"
+msgstr "Erreurs de création de fichier"
+
+msgid "Attachment upload error"
+msgstr "Erreur de téléversement de fichier"
+
+msgid "Attachments"
+msgstr "Attachements"
+
+msgid "Authentication Token"
+msgstr "Jeton d'authentification"
+
+msgid "Auto scroll to current test"
+msgstr "Défilement automatique jusqu'au test courant"
+
+msgid "Automated"
+msgstr "Automatisés"
+
+msgid "Blocked"
+msgstr "Bloqué"
+
+msgid "Bug"
+msgstr "Le bug"
+
+msgid "Bug Id"
+msgstr "Id bug"
+
+msgid "Campaign"
+msgstr "Campagne"
+
+msgid "Campaign URL"
+msgstr "URL de la campagne"
+
+msgid "Campaign label"
+msgstr "Label de la campagne"
+
+msgid "Campaigns"
+msgstr "Campagnes"
+
+msgid "Campaigns list"
+msgstr "Liste des campagnes"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Cancel edition"
+msgstr "Annuler l'édition"
+
+msgid "Choose tests"
+msgstr "Sélectionner les tests"
+
+msgid "Click to see the error message"
+msgstr "Cliquer pour voir le message d'erreur"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Close campaign"
+msgstr "Fermer la campagne"
+
+msgid "Collapse"
+msgstr "Réduire"
+
+msgid "Comment"
+msgstr "Commentaire"
+
+msgid "Configure automated tests"
+msgstr "Configurer les tests automatisés"
+
+msgid "Continue to edit your comment"
+msgstr "Continuez à éditer votre commentaire"
+
+msgid "Create a campaign"
+msgstr "Créer une campagne"
+
+msgid "Create a new bug"
+msgstr "Créer un nouveau bug"
+
+msgid "Create campaign"
+msgstr "Créer campagne"
+
+msgid "Dependencies graph of &#34;{{ graph.title }}&#34;"
+msgstr "Graphe de dépendances de &#34;{{ graph.title }}&#34;"
+
+msgid "Dependencies graph of &#34;{{ modal.title }}&#34;"
+msgstr "Graphe de dépendances de &#34;{{ modal.title }}&#34;"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Drop files here to attach them to your comment (max size is %ss)."
+msgstr ""
+"Glissez-déposez des fichiers ici pour les joindre à votre commentaire "
+"(taille maximum %ss)."
+
+msgid "Edit campaign"
+msgstr "Éditer la campagne"
+
+msgid "Edit comment"
+msgstr "Éditer le commentaire"
+
+msgid "Edit test"
+msgstr "Éditer le test"
+
+msgid "Edit this test"
+msgstr "Éditer ce test"
+
+msgctxt "Keyboard input"
+msgid "End"
+msgstr "Fin"
+
+msgid ""
+"Enter the id of the bug you want to link to \"{{ modal.test_summary }}\". "
+"The description of this test will be added as a follow-up comment to the "
+"linked bug."
+msgstr ""
+"Entrez l'id du bug à lier avec \"{{ modal.test_summary }}\". La description "
+"du test sera ajoutée en commentaire du bug lié."
+
+msgid "Error while refreshing the list of linked bugs"
+msgstr "Erreur pendant la récupération des bugs liés"
+
+msgid "Executed By"
+msgstr "Executé par"
+
+msgid "Executed On"
+msgstr "Executé le"
+
+msgid "Expand"
+msgstr "Agrandir"
+
+msgid "Expected results"
+msgstr "Résultats attendus"
+
+msgid "Export as document"
+msgstr "Exporter en tant que document"
+
+msgid "Exported by"
+msgstr "Exporté par"
+
+msgid "Exported on"
+msgstr "Exporté le"
+
+msgid "Exported on %(date)s by %(user)s"
+msgstr "Exporté le %(date)s par %(user)s"
+
+msgid "Failed"
+msgstr "Échoué"
+
+msgid "Filter tests by ID, summary, category…"
+msgstr "Filtrer les tests par Id, résumé, catégorie…"
+
+msgid "Filter tests by status"
+msgstr "Filtrer les tests par statut"
+
+msgid "Focus graph"
+msgstr "Recentrer le graphe"
+
+msgid "From Test definition tracker reports"
+msgstr "Rapports de l’outil de suivi de définition des tests"
+
+msgid "Hide closed campaigns"
+msgstr "Cacher les campagnes fermées"
+
+msgctxt "Keyboard input"
+msgid "Home,↖"
+msgstr "Début,↖"
+
+msgid "Id, summary, category…"
+msgstr "Id, résumé, catégorie…"
+
+msgid "Its status is blocked."
+msgstr "Son statut est bloqué."
+
+msgid "Its status is failed."
+msgstr "Son statut est échoué."
+
+msgid "Its status is passed."
+msgstr "Son statut est passé."
+
+msgid "Jenkins authentication token"
+msgstr "Jeton d'authentification Jenkins"
+
+msgid "Jenkins job"
+msgstr "Projet Jenkins"
+
+msgid "Job URL"
+msgstr "URL du projet"
+
+msgid "Label or status..."
+msgstr "Label ou statut…"
+
+msgid "Launch automated tests"
+msgstr "Lancer les tests automatisés"
+
+msgid "Link"
+msgstr "Lier"
+
+msgid "Link \"{{ modal.test_summary }}\" to an existing bug"
+msgstr "Lier \"{{ modal.test_summary }}\" à un bug existant"
+
+msgid "Link to an existing bug"
+msgstr "Lier à un bug existant"
+
+msgid "Link type"
+msgstr "Type de lien"
+
+msgid "Linked bugs"
+msgstr "Bugs liés"
+
+msgid "Load closed campaigns"
+msgstr "Charger les campagnes fermées"
+
+msgid "Load the new comment"
+msgstr "Charger le nouveau commentaire"
+
+msgid "Mark test as blocked and open next test"
+msgstr "Marquer le test comme bloqué et ouvrir le suivant"
+
+msgid "Mark test as not run and open next test"
+msgstr "Marquer le test comme non-passé et ouvrir le suivant"
+
+msgid "Mark test as passed and open next test"
+msgstr "Marquer le test comme passé avec succès et ouvrir le suivant"
+
+msgid "Milestone tests"
+msgstr "Tests du jalon"
+
+msgid "Navigation in tests list"
+msgstr "Navigation dans la liste de tests"
+
+msgid "Navigation in tests list when a test is selected."
+msgstr "Navigation dans la liste de tests lorsqu'un test est sélectionné."
+
+msgid "New campaign"
+msgstr "Nouvelle campagne"
+
+msgid "No tests"
+msgstr "Aucun test"
+
+msgid "Not run"
+msgstr "Non exécuté"
+
+msgid "Ok, got it"
+msgstr "Ok, j'ai compris"
+
+msgid ""
+"Only the test status has changed, not the comment. Maybe you should have a "
+"look at it."
+msgstr ""
+"Seul le statut du test a changé, pas le commentaire. Vous devriez peut-être "
+"le vérifier."
+
+msgid "Oops, there's an issue"
+msgstr "Oups, il y a eu un problème"
+
+msgid "Open bug options dropdown"
+msgstr "Ouvrir les options de bugs"
+
+msgid "Open campaign"
+msgstr "Ouvrir la campagne"
+
+msgid "Passed"
+msgstr "Succès"
+
+msgid "Platform"
+msgstr "Plateforme"
+
+msgid "Please come back later to see the result."
+msgstr "Revenez plus tard pour voir le résultat."
+
+msgid "Please select a test"
+msgstr "Merci de sélectionner un test"
+
+msgid "Pre-select tests from a tracker report"
+msgstr "Pré-sélectionner les tests d'un rapport"
+
+msgid "Project"
+msgstr "Projet"
+
+msgid "Reload the test"
+msgstr "Recharger le test"
+
+msgid "Remove file"
+msgstr "Supprimer le fichier"
+
+msgid "Rename campaign"
+msgstr "Renommer la campagne"
+
+msgid "Requirements"
+msgstr "Exigences"
+
+msgid "Results"
+msgstr "Résultats"
+
+msgid "Save changes"
+msgstr "Enregistrer les changements"
+
+msgid "Save comment"
+msgstr "Sauvegarder le commentaire"
+
+msgid "Select files to attach or drop them here..."
+msgstr "Sélectionnez des fichier à joindre ou glissez-déposez les ici..."
+
+msgid "Select first test tab from test list"
+msgstr "Sélectionne le premier onglet de test de la liste"
+
+msgid "Select last test tab from test list"
+msgstr "Sélectionne le dernier onglet de test de la liste"
+
+msgid "Select next test tab from test list"
+msgstr "Sélectionne l'onglet de test suivant dans la liste"
+
+msgid "Select previous test tab from test list"
+msgstr "Sélectionne l'onglet de test précédent dans la liste"
+
+msgid "Select tests"
+msgstr "Sélectionner les tests"
+
+msgid "Set focus in comment field"
+msgstr "Donner le focus au champ de saisie de commentaire"
+
+msgid "Set focus in search campaigns field"
+msgstr "Donner le focus au champ de recherche de campagnes"
+
+msgid "Set focus in search filter"
+msgstr "Donner le focus au champ de recherche"
+
+msgid "Set focus in tests list"
+msgstr "Donner le focus à la liste de tests"
+
+msgid "Shortcuts available on the test currently open."
+msgstr "Raccourcis disponibles pour le test affiché."
+
+msgid "Show dependencies graph for this test"
+msgstr "Afficher le graphe de dépendances"
+
+msgid "Show remaining tests only"
+msgstr "N'afficher que les tests restants"
+
+msgid "Show test campaign scores"
+msgstr "Afficher les scores pour la campagne"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Status: %s"
+msgstr "Statut : %s"
+
+msgid "Step"
+msgstr "Étape"
+
+msgid "Step %d"
+msgstr "Étape %d"
+
+msgid "Table of contents"
+msgstr "Table des matières"
+
+msgid "Test Results"
+msgstr "Résultats des tests"
+
+msgid "Test campaign"
+msgstr "Campagne de tests"
+
+msgid "Test campaign %(name)s"
+msgstr "Campagne de tests %(name)s"
+
+msgid "Test campaigns"
+msgstr "Campagne de tests"
+
+msgid "Test description"
+msgstr "Description du test"
+
+msgid "Test execution"
+msgstr "Exécution d'un test"
+
+msgid "Test summary"
+msgstr "Résumé du test"
+
+msgid "Tests"
+msgstr "Tests"
+
+msgid "The URL to a Jenkins job that will execute automated tests"
+msgstr "L'URL vers un projet Jenkins qui exécutera les tests automatisés"
+
+msgid "The campaign is closed."
+msgstr "La campagne est fermée."
+
+msgid ""
+"The comment has been updated by %s. Do you want to continue to edit your "
+"comment, or discard it and load the new one?"
+msgstr ""
+"Le commentaire a été mis à jour par %s. Voulez-vous continuer à modifier "
+"votre commentaire ou le supprimer et charger le nouveau ?"
+
+msgid "The entered id is incorrect."
+msgstr "L’id saisi est incorrect."
+
+msgid "The export did not succeed, please try again."
+msgstr "L'export n'a pas réussi, veuillez réessayer."
+
+msgid "The job at URL {{ job_url }} has been succesfully launched."
+msgstr "Le projet à l'URL {{ job_url }} a été lancé avec succès."
+
+msgid ""
+"The test has been changed by someone else. You should reload the test before "
+"executing it."
+msgstr ""
+"Le test a été changé par quelqu'un d'autre. Vous devez recharger la dernière "
+"version du test avant de pouvoir l’exécuter."
+
+msgid "There are no campaigns"
+msgstr "Il n'existe pas de campagne"
+
+msgid "There are no items."
+msgstr "Il n'y a pas d'élément."
+
+msgid "There are no open campaigns"
+msgstr "Il n’existe pas de campagne ouverte"
+
+msgid "There are no tests you can see."
+msgstr "Il n'y a aucun test visible."
+
+msgid "There are no tests."
+msgstr "Il n'y a pas de test."
+
+msgid "There isn't any requirements to put in the traceability matrix."
+msgstr "Il n'y a aucune exigences pour la matrice de traçabilité."
+
+msgid "This artifact is already linked to this test."
+msgstr "Cet artéfact est déjà lié à ce test."
+
+msgid "This file has already been attached to this comment"
+msgstr "Ce fichier a déjà été attaché à ce commentaire"
+
+msgid "This is an automated test"
+msgstr "Ceci est un test automatisé"
+
+msgid "This item is not a file"
+msgstr "Cet objet n'est pas un fichier"
+
+msgid "This test has no description. Please edit it."
+msgstr "Ce test n'a pas de description. Veuillez l'éditer."
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Toggle all tests in category"
+msgstr "Sélectionner ou déselectionner tous les tests de la catégorie"
+
+msgid "Toggle automated tests"
+msgstr "Afficher ou cacher les tests automatisés"
+
+msgid "Toggle closed campaigns"
+msgstr "Montrer ou cacher les campagnes fermées"
+
+msgid "Toggle filters dropdown"
+msgstr "Ouvrir ou fermer la liste de filtres"
+
+msgid "Traceability matrix"
+msgstr "Matrice de traçabilité"
+
+msgid "Unable to upload the image"
+msgstr "Impossible d'inserer l'image"
+
+msgid "Undo remove file"
+msgstr "Annuler la suppression du fichier"
+
+msgid "You are disconnected from real time. Please reload your page."
+msgstr "Vous êtes déconnecté du temps réel. Rechargez votre page."
+
+msgid "You are not allowed to paste images here"
+msgstr "Vous n'êtes pas autorisé à coller des images ici"
+
+msgid "You are not allowed to upload images bigger than {{ max_size }}"
+msgstr ""
+"Vous n'êtes pas autorisé à insérer des images plus lourdes que {{ max_size }}"
+
+msgid "You cannot execute the tests anymore."
+msgstr "Vous ne pouvez plus exécuter les tests."
+
+msgid ""
+"You have just updated the test definition, so it has been reset. Please "
+"start over."
+msgstr ""
+"Vous venez de mettre à jour la définition du test, veuillez recommencer "
+"l’exécution de ce test."
+
+msgid "Zoom in"
+msgstr "Zoom avant"
+
+msgid "Zoom out"
+msgstr "Zoom arrière"
+
+msgid "by"
+msgstr "par"
+
+msgid "has been successfully linked to this test."
+msgstr "a bien été lié au test."
+
+msgid "{{ modal.title }} test campaign scores"
+msgstr "Scores pour la campagne de tests {{ modal.title }}"

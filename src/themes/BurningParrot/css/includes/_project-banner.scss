@@ -1,0 +1,74 @@
+/**
+ * Copyright (c) Enalean, 2019-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "global-variables";
+
+.project-banner {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--tlp-medium-spacing) 15px var(--tlp-medium-spacing) var(--tlp-medium-spacing);
+    background-color: var(--tlp-warning-color);
+}
+
+.project-banner-clamped {
+    width: calc(
+        100vw - #{global-variables.$sidebar-expanded-width} + var(--tlp-medium-spacing) * 4
+    );
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-collapsed .project-banner-clamped {
+    width: calc(
+        100vw - #{global-variables.$sidebar-collapsed-width} + var(--tlp-medium-spacing) * 4
+    );
+}
+
+.project-banner-can-be-unclamped {
+    cursor: pointer;
+}
+
+.project-banner > p {
+    margin: 0;
+    color: var(--tlp-white-color);
+}
+
+.project-banner > p > a {
+    color: var(--tlp-white-color);
+    text-decoration: underline;
+}
+
+#project-banner-close {
+    position: relative;
+    top: 4px;
+    left: -2px;
+    align-self: baseline;
+    margin-left: var(--tlp-medium-spacing);
+    color: var(--tlp-white-color);
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+.project-banner.project-banner-hidden {
+    display: none;
+}

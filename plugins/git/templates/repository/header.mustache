@@ -1,0 +1,57 @@
+<div class="tlp-framed git-repository-header">
+    <div class="git-repository-subheader">
+        <div>
+            <h1 class="git-repository-name git-repository-forked-name"
+                data-test="git_repo_name">
+                {{ repository_name }}
+            </h1>
+            {{# parent_repository_presenter }}
+                <div class="git-repository-parent">
+                    <i class="fas fa-code-branch"></i>
+                    {{# dgettext }}
+                        tuleap-git
+                        | Forked from %s
+                        | <a href="{{ parent_repository_url }}">{{ parent_repository_name }}</a>
+                    {{/ dgettext }}
+                </div>
+            {{/ parent_repository_presenter }}
+        </div>
+
+        <div class="git-repository-subheader-spacer"></div>
+
+        <div class="git-repository-actions">
+            <div id="git-repository-actions-main-buttons"
+                 data-repository-id="{{ repository_id }}"
+                 data-project-id="{{ project_id }}"
+                 data-is-migrated-to-gerrit="{{ is_migrated_to_gerrit }}"
+                {{# parent_repository_presenter }}
+                    data-parent-repository-id="{{ parent_repository_id }}"
+                    data-parent-repository-name="{{ parent_repository_name }}"
+                    data-parent-project-id="{{ parent_project_id }}"
+                    data-user-can-see-parent-repository="{{ user_can_see_parent_repository }}"
+                {{/ parent_repository_presenter }}
+            ></div>
+            {{# clone_presenter }}
+                {{> repository/clone-bar }}
+            {{/ clone_presenter }}
+            {{^ user_is_anonymous }}
+                {{> repository/fork-button }}
+            {{/ user_is_anonymous }}
+            {{# user_is_admin }}
+                <a href="{{ repository_admin_url }}"
+                   class="tlp-button-primary tlp-button-outline git-repository-actions-button"
+                   role="button"
+                   title="{{# dgettext }}tuleap-git | Settings{{/ dgettext }}"
+                >
+                    <i class="fa fa-cog tlp-button-icon git-repository-actions-settings-icon"></i>
+                    <span class="git-repository-actions-settings-label">{{# dgettext }}tuleap-git | Settings{{/ dgettext }}</span>
+                </a>
+            {{/ user_is_admin }}
+        </div>
+    </div>
+    {{# gerrit_status_presenter }}
+        {{> repository/gerrit-status }}
+    {{/ gerrit_status_presenter }}
+</div>
+
+{{> repository/tabs }}

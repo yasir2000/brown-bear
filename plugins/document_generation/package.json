@@ -1,0 +1,23 @@
+{
+  "author": "Enalean Team",
+  "name": "@tuleap/plugin-document_generation",
+  "homepage": "https://tuleap.org",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "dependencies": {
+    "@tuleap/gettext": "file:../../src/scripts/lib/gettext",
+    "@tuleap/plugin-docgen-docx": "file:./scripts/lib/docx",
+    "@tuleap/tlp-fetch": "file:../../src/scripts/lib/tlp-fetch",
+    "docx": "^7.3.0",
+    "sprintf-js": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/sprintf-js": "^1.1.2"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "test": "jest"
+  }
+}

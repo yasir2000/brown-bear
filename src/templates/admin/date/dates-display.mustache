@@ -1,0 +1,64 @@
+<section class="tlp-framed-vertically">
+    <h1 class="tlp-framed-horizontally">{{# gettext }}Dates display{{/ gettext }}</h1>
+
+    <section class="tlp-framed-horizontally">
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title">
+                        <i class="fas fa-calendar-alt tlp-pane-title-icon"></i>{{# gettext }}Dates display{{/ gettext }}
+                    </h1>
+                </div>
+                <form class="tlp-pane-section" method="POST">
+                    {{# csrf_token }}
+                        {{> csrf_token_input }}
+                    {{/ csrf_token }}
+
+                    <div class="siteadmin-dates-display-preference-with-preview">
+                        <div class="tlp-form-element">
+                            <label for="relative-dates-display" class="tlp-label">{{# gettext }}Default dates display{{/ gettext }}</label>
+                            <select
+                                    id="relative-dates-display"
+                                    class="tlp-select tlp-select-adjusted"
+                                    name="relative-dates-display"
+                            >
+                                {{# relative_dates_display_preference_sb_presenter }}
+                                    <option value="relative_first-absolute_shown" {{# is_relative_first_absolute_shown }}selected{{/ is_relative_first_absolute_shown }}>
+                                        {{# gettext }}Relative date first{{/ gettext }}
+                                    </option>
+                                    <option value="absolute_first-relative_shown" {{# is_absolute_first_relative_shown }}selected{{/ is_absolute_first_relative_shown }}>
+                                        {{# gettext }}Absolute date first{{/ gettext }}
+                                    </option>
+                                    <option value="relative_first-absolute_tooltip" {{# is_relative_first_absolute_tooltip }}selected{{/ is_relative_first_absolute_tooltip }}>
+                                        {{# gettext }}Relative date only{{/ gettext }}
+                                    </option>
+                                    <option value="absolute_first-relative_tooltip" {{# is_absolute_first_relative_tooltip }}selected{{/ is_absolute_first_relative_tooltip }}>
+                                        {{# gettext }}Absolute date only{{/ gettext }}
+                                    </option>
+                                {{/ relative_dates_display_preference_sb_presenter }}
+                            </select>
+                        </div>
+                        <p class="tlp-text-muted siteadmin-dates-display-preference-preview">
+                            {{# gettext }} Preview: {{/ gettext }} {{{ tlp_relative_date_component_purified }}}
+                        </p>
+                    </div>
+                    <div class="tlp-form-element">
+                        <label for="relative-dates-force-preference" class="tlp-label tlp-checkbox">
+                            <input id="relative-dates-force-preference" type="checkbox" name="relative-dates-force-preference" value="1">
+                            {{# gettext }} Force usage? {{/ gettext }}
+                        </label>
+                        <p class="tlp-text-info">
+                            {{# gettext }} Check this option if you want to force the usage of this preference for all users. {{/ gettext }}
+                        </p>
+                    </div>
+                    <section class="tlp-pane-section tlp-pane-section-submit">
+                        <button type="submit" class="tlp-button-primary">
+                            <i class="fa fa-save tlp-button-icon"></i>
+                            {{# gettext }} Save {{/ gettext }}
+                        </button>
+                    </section>
+                </form>
+            </div>
+        </section>
+    </section>
+</section>

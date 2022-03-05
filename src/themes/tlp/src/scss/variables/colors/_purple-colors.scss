@@ -1,0 +1,46 @@
+/**
+ * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "common-colors";
+
+// UI colors
+$tlp-info-color: #1aacd8;
+$tlp-info-dark-color: #007699;
+$tlp-success-color: #1aa350;
+$tlp-success-dark-color: #007b4f;
+$tlp-warning-color: #ee9d00;
+$tlp-warning-dark-color: #996200;
+$tlp-danger-color: #e04b4b;
+$tlp-danger-dark-color: #c72b2b;
+$tlp-dimmed-color: #6c6b71;
+$tlp-neutral-light-color: #f3f2f5;
+$tlp-neutral-normal-color: #e5e7f0;
+$tlp-neutral-dark-color: #cfd2d8;
+$tlp-main-color: common-colors.$tlp-theme-purple;
+$tlp-background-color: common-colors.$tlp-theme-background-purple;
+$tlp-dark-color: common-colors.$tlp-theme-dark-purple;
+$tlp-typo-default-text-color: $tlp-dark-color;
+$tlp-illustration-grey-on-background: #ecebf0;
+$tlp-illustration-grey-on-white: #fbf9fd;
+
+// Deprecated
+$tlp-illustration-primary-color: #d2b7de;
+$tlp-illustration-secondary-light-color: #f5eff8;
+$tlp-illustration-secondary-dark-color: #e9d7f1;
+$tlp-illustration-tertiary-color: #e8e1f1;

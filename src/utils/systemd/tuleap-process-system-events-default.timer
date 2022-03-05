@@ -1,0 +1,11 @@
+[Unit]
+Description=Tuleap default system events
+Documentation=https://docs.tuleap.org
+
+[Timer]
+OnCalendar=*:*:00
+RandomizedDelaySec=1min
+Unit=tuleap-process-system-events-default.service
+
+[Install]
+WantedBy=timers.target

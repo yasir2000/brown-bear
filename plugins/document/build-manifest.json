@@ -1,0 +1,9 @@
+{
+    "name": "document",
+    "gettext-vue": {
+        "document": {
+            "src": "scripts/document",
+            "po": "scripts/document/po"
+        }
+    }
+}

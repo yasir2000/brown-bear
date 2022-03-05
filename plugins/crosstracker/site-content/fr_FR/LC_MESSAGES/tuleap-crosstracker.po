@@ -1,0 +1,246 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Joris MASSON <joris.masson@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2\n"
+
+#, php-format
+msgid "%s cannot be compared to '%s'."
+msgstr "%s ne peut pas être comparé à '%s'."
+
+#, php-format
+msgid "%s cannot be compared to MYSELF()."
+msgstr "%s ne peut pas être comparé à MYSELF()."
+
+#, php-format
+msgid "%s cannot be compared to NOW() with the operator %s."
+msgstr "%s ne peut pas être comparé à NOW() avec l'opérateur %s."
+
+#, php-format
+msgid "%s cannot be compared to NOW()."
+msgstr "%s ne peut pas être comparé à NOW()."
+
+#, php-format
+msgid "%s cannot be compared to OPEN()."
+msgstr "%s ne peut pas être comparé à OPEN()."
+
+#, php-format
+msgid "%s cannot be compared to the empty string with %s operator."
+msgstr "%s ne peut pas être comparé à une chaîne vide avec l'opérateur %s."
+
+#, php-format
+msgid "%s cannot be compared to the string value '%s'."
+msgstr "%s ne peut pas être comparé à '%s'."
+
+#, php-format
+msgid "%s is not supported for the operator %s."
+msgstr "%s ne supporte pas l'opérateur %s."
+
+msgid ""
+"'limit' and 'offset' are required parameters. Please add them in the query."
+msgstr ""
+"'limit' et 'offset' sont des paramètres requis. Merci de les ajouter à la "
+"requête."
+
+msgid "Cross trackers search"
+msgstr "Recherche multi trackers"
+
+msgid "Error while parsing the query"
+msgstr "Erreur pendant l'analyse de la requête"
+
+msgid "Invalid value for 'limit'. It must be an integer"
+msgstr "La valeur pour 'limit' est incorrecte. 'limit' doit être un entier"
+
+msgid "Invalid value for 'offset'. It must be an integer"
+msgstr "La valeur pour 'offset' est incorrecte. 'offset' doit être un entier"
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not expose a last update by "
+"field. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not expose a last update by "
+"field. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'expose pas de champ \"Mis "
+"à jour par\". Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'exposent pas de champ "
+"\"Mis à jour par\". Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not expose a last update date "
+"field. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not expose a last update date "
+"field. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'expose pas de champ \"Mis "
+"à jour le\". Merci de modifier votre requête ou de vérifier la configuration "
+"des outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'exposent pas de champ "
+"\"Mis à jour le\". Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not expose a submitted by "
+"field. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not expose a submitted by field. "
+"Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'expose pas de champ "
+"Auteur. Merci de modifier votre requête ou de vérifier la configuration des "
+"outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'exposent pas de champ "
+"Auteur. Merci de modifier votre requête ou de vérifier la configuration des "
+"outils de suivi."
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not expose a submitted on "
+"field. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not expose a submitted on field. "
+"Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'expose pas de champ Date "
+"de soumission. Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'exposent pas de champ Date "
+"de soumission. Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not have the semantic "
+"contributor/assignee defined.\n"
+"                    Please refine your query or check the configuration of "
+"the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not have the semantic "
+"contributor/assignee defined.\n"
+"                    Please refine your query or check the configuration of "
+"the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'a pas de sémantique "
+"contributeur définie. Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'ont pas de sémantique "
+"contributeur définie. Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not have the semantic "
+"description defined. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not have the semantic "
+"description defined. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'a pas de sémantique "
+"description définie. Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'ont pas de sémantique "
+"description définie. Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not have the semantic status "
+"defined. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not have the semantic status "
+"defined. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'a pas de sémantique état "
+"définie. Merci de modifier votre requête ou de vérifier la configuration des "
+"outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'ont pas de sémantique état "
+"définie. Merci de modifier votre requête ou de vérifier la configuration des "
+"outils de suivi."
+
+#, php-format
+msgid ""
+"One of the trackers involved in the query does not have the semantic title "
+"defined. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgid_plural ""
+"%d of the trackers involved in the query do not have the semantic title "
+"defined. Please refine\n"
+"                    your query or check the configuration of the trackers."
+msgstr[0] ""
+"Un des outils de suivi utilisés pour la requête n'a pas de sémantique titre "
+"définie. Merci de modifier votre requête ou de vérifier la configuration des "
+"outils de suivi."
+msgstr[1] ""
+"%d des outils de suivi utilisés pour la requête n'ont pas de sémantique "
+"titre définie. Merci de modifier votre requête ou de vérifier la "
+"configuration des outils de suivi."
+
+msgid "Project not found"
+msgstr "Le projet n'a pas été trouvé"
+
+#, php-format
+msgid "Report with id %d not found"
+msgstr "Le rapport avec l'identifiant %d n'a pas été trouvé"
+
+msgid "Search artifacts that are in different trackers"
+msgstr "Permet la recherche d'artefacts à travers plusieurs outils de suivi"
+
+msgid "Search into multiple trackers and multiple projects."
+msgstr "Rechercher dans plusieurs outils de suivi et plusieurs projets."
+
+#, php-format
+msgid "The maximum value for 'limit' is %d"
+msgstr "La valeur maximum pour 'limit' est %d"
+
+msgid "You cannot access all projects of the search"
+msgstr "Vous ne pouvez pas accéder à tous les projets de cette recherche"
+
+msgid "You cannot access all the columns displayed in this search"
+msgstr ""
+"Vous ne pouvez pas accéder à toutes les colonnes affichées dans cette "
+"recherche"
+
+msgid "You cannot access all the fields used to filter the search"
+msgstr ""
+"Vous ne pouvez pas accéder à tous les champs utilisés pour filtrer cette "
+"recherche"
+
+msgid "You cannot access all trackers of the search"
+msgstr ""
+"Vous ne pouvez pas accéder à tous les outils de suivi de cette recherche"
+
+msgid "You don't have permission to access this project"
+msgstr "Vous n'avez pas la permission d'accéder à ce projet"

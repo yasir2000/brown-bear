@@ -1,0 +1,11 @@
+[Unit]
+Description=Tuleap launch daily event
+Documentation=https://docs.tuleap.org
+
+[Service]
+Type=simple
+User=codendiadm
+ExecStart=/usr/bin/tuleap daily-job
+
+[Install]
+WantedBy=multi-user.target

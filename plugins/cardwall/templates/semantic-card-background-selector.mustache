@@ -1,0 +1,53 @@
+{{# background_color_presenter }}
+    <h3> {{# dgettext }} tuleap-cardwall | Background color {{/ dgettext }}</h3>
+
+    {{^ has_at_least_one_field_selectable_for_color }}
+        {{# dgettext }}
+            tuleap-cardwall |
+            No field can be chosen for card color background. Only selectbox and radiobutton bind on static values with no value linked to the old color picker can be used.
+        {{/ dgettext }}
+    {{/ has_at_least_one_field_selectable_for_color }}
+
+    {{# has_at_least_one_field_selectable_for_color }}
+        <form action="{{ semantic_url }}" method="POST">
+            {{# csrf_token }}
+                {{> csrf_token_input }}
+            {{/ csrf_token }}
+            <p>
+                {{# dgettext }} tuleap-cardwall | Only selectbox and radiobutton bind on static values with no value linked to
+                    the old color picker can be used.
+                {{/ dgettext }}
+            </p>
+            <p> {{# dgettext }} tuleap-cardwall | Choose a field to define card background color {{/ dgettext }}
+                <select name="choose-color-field">
+                    <option>{{# dgettext }} tuleap-cardwall | Choose a field... {{/ dgettext }}</option>
+                    {{# form_elements }}
+                        <option value="{{ id }}" {{# is_selected }}selected="selected"{{/ is_selected }}>{{ name }}</option>
+                    {{/ form_elements }}
+                </select>
+
+                {{# background_color_presenter }}
+                    {{# has_background_field_defined }}
+                        <a href="{{ field_admin_link }}">
+                            {{# dgettext }}
+                                tuleap-cardwall |
+                                Go to field administration
+                            {{/ dgettext }}
+                        </a>
+                    {{/ has_background_field_defined }}
+                {{/ background_color_presenter }}
+            </p>
+
+            <input type="submit"
+                   class="btn btn-primary"
+                   value="{{# dgettext }} tuleap-cardwall | Submit {{/ dgettext }}"/>
+            {{# has_background_field_defined }}
+                {{# dgettext }} tuleap-cardwall | or {{/ dgettext }}
+                <input type="submit"
+                       class="btn btn-danger"
+                       name="unset-background-color-semantic"
+                       value="{{# dgettext }} tuleap-cardwall | Remove background color {{/ dgettext }}"/>
+            {{/ has_background_field_defined }}
+        </form>
+    {{/ has_at_least_one_field_selectable_for_color }}
+{{/ background_color_presenter }}

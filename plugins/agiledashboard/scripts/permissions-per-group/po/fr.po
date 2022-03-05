@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Thomas Gorka <thomas.gorka@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "%{ user_group } has no permission for agiledashboard plannings"
+msgstr "%{ user_group } n'a pas de permission sur les plannings du tableau de bord agile"
+
+msgid "Agiledashboard has no planning defined"
+msgstr "Le tableau de bord agile n'a pas de planning défini"
+
+msgid "Planning"
+msgstr "Planning"
+
+msgid "See all plannings permissions"
+msgstr "Voir toutes les permissions des plannings"
+
+msgid "Who can prioritize?"
+msgstr "Qui peut prioriser ?"

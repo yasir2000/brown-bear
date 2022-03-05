@@ -1,0 +1,23 @@
+{
+  "author": "Enalean Team",
+  "name": "@tuleap/plugin-frs",
+  "homepage": "https://tuleap.org",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "dependencies": {
+    "@tuleap/angular-tlp": "file:../../src/scripts/lib/angular-tlp",
+    "@uirouter/angularjs": "^1.0.29",
+    "angular": "^1.8.2",
+    "angular-filter": "^0.5.17",
+    "angular-gettext": "^2.4.2",
+    "angular-sanitize": "^1.8.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.8.2"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --config webpack.dev.js --watch",
+    "test": "jest"
+  }
+}

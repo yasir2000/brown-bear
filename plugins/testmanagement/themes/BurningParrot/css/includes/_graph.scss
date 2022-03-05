@@ -1,0 +1,18 @@
+.test-dependency-graph-title {
+    margin: 0;
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-title-spacing);
+}
+
+#graph-container {
+    position: relative;
+    height: 70vh;
+
+    .loader-graph {
+        position: absolute;
+        left: 50%;
+    }
+
+    #graph-utils {
+        position: absolute;
+    }
+}

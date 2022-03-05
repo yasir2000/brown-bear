@@ -1,0 +1,137 @@
+/**
+ * Copyright (c) Enalean, 2017 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#project-admin-ugroup-add-binding {
+    margin: 0 var(--tlp-small-spacing) var(--tlp-medium-spacing) 0;
+}
+
+#project-admin-ugroup-current-binding {
+    display: flex;
+}
+
+#project-admin-ugroup-current-binding-project {
+    margin: 0 var(--tlp-x-large-spacing) 0 0;
+}
+
+.project-admin-ugroup-binding-project-info-icon {
+    margin: 0 3px 0 0;
+    color: var(--tlp-dimmed-color);
+}
+
+.project-admin-ugroup-binding-clones-ugroup {
+    width: 100%;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-admin-ugroup-binding-clones-project {
+    white-space: nowrap;
+}
+
+.project-admin-ugroup-binding-clones-project-icon {
+    margin: 0 3px 0 0;
+}
+
+.project-admin-user-groups-container {
+    display: flex;
+}
+
+.project-admin-user-groups-details {
+    flex: 1 1 auto;
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}
+
+.project-admin-user-groups-member-list-container {
+    flex: 1 1 auto;
+}
+
+.project-admin-user-groups-header {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px;
+}
+
+.project-admin-user-groups-header-title {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+    word-break: break-all;
+}
+
+#project-admin-ugroup-show-permissions-modal {
+    flex: 0 0 auto;
+}
+
+.projectadmin-userlist-result-name-avatar {
+    margin: 0 var(--tlp-small-spacing) 0 0;
+}
+
+.user-group-binding-link,
+.remove-user-from-group-modal-text,
+.remove-binding-modal-text,
+.project-admin-delete-user-group-modal-content {
+    word-wrap: break-word;
+}
+
+.user-group-binding-link {
+    // Wrap even if we are child of a flex element:
+    // https://css-tricks.com/flexbox-truncated-text/
+    min-width: 0;
+}
+
+.project-admin-ugroups-list-table-ugroup-nb-members {
+    width: 20%;
+}
+
+.project-admin-ugroups-list-table-ugroup-description {
+    width: 30%;
+}
+
+.project-admin-ugroups-list-table-ugroup-name {
+    width: 50%;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1200px) {
+    .project-admin-user-groups-container {
+        flex-direction: column;
+    }
+
+    .project-admin-user-groups-member-list-container {
+        order: 1;
+    }
+
+    .project-admin-user-groups-details {
+        order: 2;
+        margin: 0;
+    }
+}
+
+#user-to-add-to-ugroup {
+    font-weight: bold;
+}
+
+.user-group-remove-member-modal {
+    max-width: 1200px;
+}
+
+.project-admin-remove-user-from-group-and-project-hidden-button {
+    display: none;
+}

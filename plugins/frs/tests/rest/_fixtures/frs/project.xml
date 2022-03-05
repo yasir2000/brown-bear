@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project unix-name="frs-test" full-name="Test FRS" description="Test FRS" access="private">
+  <long-description></long-description>
+  <services>
+    <service shortname="file" enabled="true"/>
+  </services>
+  <ugroups>
+    <ugroup name="project_members" description="Project members">
+      <members>
+        <member format="username">rest_api_tester_1</member>
+        <member format="username">rest_api_tester_5</member>
+      </members>
+    </ugroup>
+    <ugroup name="FRS_Admin" description="">
+      <members>
+          <member format="username">rest_api_tester_1</member>
+      </members>
+    </ugroup>
+  </ugroups>
+  <frs>
+      <read-access>
+          <ugroup>project_members</ugroup>
+      </read-access>
+      <admin-access>
+          <ugroup>FRS_Admin</ugroup>
+      </admin-access>
+      <package id="12" name="package1" rank="1" hidden="false">
+          <read-access>
+            <ugroup>project_members</ugroup>
+          </read-access>
+          <release id="30" name="release1" time="2015-12-03T14:55:00" preformatted="false">
+              <notes>Some notes</notes>
+              <changes>Some changes</changes>
+              <user format="username">rest_api_tester_1</user>
+              <read-access>
+                <ugroup>project_members</ugroup>
+              </read-access>
+              <link
+                      name="test"
+                      url="http://example.fr"
+                      release-time="2015-12-08T16:55:00">
+                  <user format="username">rest_api_tester_1</user>
+              </link>
+              <file
+                      src="data/authors.txt"
+                      md5sum="7865eaef28db1b906eaf1e4fa353796d"
+                      name="BooksAuthors.txt"
+                      release-time="2015-12-03T14:55:00"
+                      post-date="2015-12-03T16:46:00"
+                      arch="x86_64"
+                      filetype="text"
+              >
+                  <description>List of book authors</description>
+                  <user format="username">rest_api_tester_1</user>
+              </file>
+              <file
+                      src="data/readme.mkd"
+                      md5sum="a6ac57b52bedbec36d967e4e1a27cdb6"
+                      name="readme.mkd"
+                      release-time="2015-12-03T14:55:00"
+                      post-date="2015-12-03T16:46:00"
+                      arch="x86_64"
+                      filetype="text"
+              >
+                  <description>Sample file</description>
+                  <user format="username">rest_api_tester_1</user>
+              </file>
+          </release>
+      </package>
+  </frs>
+</project>

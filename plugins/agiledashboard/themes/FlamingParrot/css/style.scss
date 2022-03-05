@@ -1,0 +1,116 @@
+/**
+ * Copyright (c) Enalean, 2012-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+@import "./default-style";
+@import "../../../../../src/themes/common/css/utils/colors";
+
+/* stylelint-disable selector-no-qualifying-type */
+div.milestones > fieldset.milestone {
+    legend {
+        border-bottom-color: var(--tlp-main-color);
+        color: var(--tlp-main-color);
+
+        > span.status {
+            &.open {
+                background-color: var(--tlp-main-color);
+            }
+        }
+    }
+
+    &.collapsed {
+        legend {
+            border-bottom-color: #e9e9e9;
+        }
+    }
+}
+/* stylelint-enable */
+
+.tuleap-artifact-modal {
+    .followups-title {
+        color: var(--tlp-main-color);
+    }
+
+    .modal-body fieldset > legend {
+        border-bottom-color: var(--tlp-main-color);
+        color: var(--tlp-main-color);
+    }
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+#details .table > tbody > tr:hover > td.agiledashboard-milestone-details-items-list-is-closed {
+    background: var(--tlp-main-color-transparent-90);
+}
+
+/* stylelint-disable selector-no-qualifying-type, selector-class-pattern */
+body {
+    &.FlamingParrot_Orange {
+        .empty-home {
+            background: transparent url("../images/agile-dashboard-not-configured-orange.png")
+                no-repeat center 20px;
+        }
+    }
+
+    &.FlamingParrot_Blue {
+        .empty-home {
+            background: transparent url("../images/agile-dashboard-not-configured-blue.png")
+                no-repeat center 20px;
+        }
+    }
+
+    &.FlamingParrot_Green {
+        .empty-home {
+            background: transparent url("../images/agile-dashboard-not-configured-green.png")
+                no-repeat center 20px;
+        }
+    }
+
+    &.FlamingParrot_BlueGrey {
+        .empty-home {
+            background: transparent url("../images/agile-dashboard-not-configured-bluegrey.png")
+                no-repeat center 20px;
+        }
+    }
+
+    &.FlamingParrot_Purple {
+        .empty-home {
+            background: transparent url("../images/agile-dashboard-not-configured-purple.png")
+                no-repeat center 20px;
+        }
+    }
+
+    &.FlamingParrot_Red {
+        .empty-home {
+            background: transparent url("../images/agile-dashboard-not-configured-red.png")
+                no-repeat center 20px;
+        }
+    }
+}
+
+body.agiledashboard-body .main .content {
+    padding: 0;
+}
+
+/* stylelint-enable */
+
+.agiledashboard-content {
+    padding: 16px 12px 0;
+}
+
+.agiledashboard-body .project-header-title {
+    padding-top: 0;
+}

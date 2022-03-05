@@ -1,0 +1,12 @@
+{
+  "name": "tuleap/plugin-mediawiki",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Mediawiki\\": ["include/"]
+    },
+    "classmap": ["include/"]
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

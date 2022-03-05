@@ -1,0 +1,32 @@
+<p>{{# gettext }}Hello,{{/ gettext }}</p>
+
+<p>
+    {{# gettext }}
+        %s invited you to register to %s. |
+        {{ current_user_real_name }} |
+        {{ instance_name }}
+    {{/ gettext }}
+</p>
+
+<p>
+    {{# gettext }}To sign up:{{/ gettext }}
+    <br>
+    <a href="{{ register_url }}">{{ register_url }}</a>
+</p>
+
+
+{{# has_custom_message }}
+    <p>
+        {{# gettext }}
+            Message from %s: |
+            {{ current_user_real_name }}
+        {{/ gettext }}
+    </p>
+    <blockquote>{{ custom_message }}</blockquote>
+{{/has_custom_message}}
+
+<p>
+    {{# gettext }}Best regards,{{/ gettext }}
+    <br>
+    {{# gettext }}The %s team. | {{ instance_name }}{{/ gettext }}
+</p>

@@ -1,0 +1,109 @@
+<h1 class="tlp-framed-horizontally tracker-administration-title">{{ title }}</h1>
+<div class="main-project-tabs">
+    <nav class="tlp-tabs">
+        <a href="{{ trackers_url }}" class="tlp-tab">
+            {{# dgettext }}
+                tuleap-tracker |
+                Trackers
+            {{/ dgettext }}
+        </a>
+        <a href="{{ artifact_links_url }}" class="tlp-tab tlp-tab-active">
+            {{# dgettext }}
+                tuleap-tracker |
+                Artifact links
+            {{/ dgettext }}
+        </a>
+    </nav>
+</div>
+<div class="tlp-framed-vertically" id="tracker-artifact-link-type-usages">
+    <div class="tlp-framed-horizontally">
+        {{^ are_artifact_link_types_enabled }}
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="tlp-pane-title-icon fa fa-list"></i> {{ table_title }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <form id="tracker-enable-artifact-link-type-form" action="{{ form_url }}" method="POST">
+                        {{# csrf_token }}
+                            {{> csrf_token_input }}
+                        {{/ csrf_token }}
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="tracker-enable-artifact-link-type-switch">{{ switch_label }}</label>
+                            <div class="tlp-switch">
+                                <input type="checkbox"
+                                       id="tracker-enable-artifact-link-type-switch"
+                                       class="tlp-switch-checkbox"
+                                       data-form-id="tracker-enable-artifact-link-type-form"
+                                       name="enable-artifact-link-types"
+                                       value="1"
+                                >
+                                <label for="tracker-enable-artifact-link-type-switch"
+                                       class="tlp-switch-button" aria-hidden
+                                >{{ switch_label }}</label>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </section>
+        {{/ are_artifact_link_types_enabled }}
+
+        {{# are_artifact_link_types_enabled }}
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="tlp-pane-title-icon fa fa-list"></i> {{ available_types }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    {{# has_at_least_one_disabled_type }}
+                        <div class="tlp-alert-warning">
+                            {{ warning_message }}
+                        </div>
+                    {{/has_at_least_one_disabled_type}}
+                    <table class="tlp-table tracker-types-table">
+                        <thead>
+                        <tr>
+                            <th>{{ shortname_label }}</th>
+                            <th>{{ forward_label_label }}</th>
+                            <th>{{ reverse_label_label }}</th>
+                            <th>{{# dgettext }}tuleap-tracker | Is enabled {{/ dgettext }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{# artifact_link_types }}
+                            <tr>
+                                <td>{{ shortname }}</td>
+                                <td>{{ forward_label }}</td>
+                                <td>{{ reverse_label }}</td>
+                                <td>
+                                    <form id="use-{{ shortname }}-form" data-test="artifact-link-form-{{ shortname }}" action="{{ form_type_url }}" method="POST">
+                                        <input type="hidden" name="type-shortname" value="{{ shortname }}">
+                                        <div class="tlp-form-element">
+                                            <div class="tlp-switch tlp-switch-mini">
+                                                <input type="checkbox"
+                                                       id="use-{{ shortname }}"
+                                                       name="use-{{ shortname }}"
+                                                       class="tlp-switch-checkbox"
+                                                       data-form-id="use-{{ shortname }}-form"
+                                                       data-test="toggle-{{ shortname }}-link"
+                                                       value="1"
+                                                       {{# is_used }} checked="checked" {{/ is_used }}
+                                                       {{^ can_be_unused }} disabled {{/ can_be_unused }}
+                                                >
+                                                <label for="use-{{ shortname }}" class="tlp-switch-button">{{ switch_button_label }} {{ shortname }}</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/artifact_link_types}}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </section>
+        {{/ are_artifact_link_types_enabled }}
+    </div>
+</div>

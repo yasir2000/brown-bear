@@ -1,0 +1,638 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-04-03 14:12+0200\n"
+"PO-Revision-Date: 2021-08-19 13:41+0200\n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "0 or no value means no limits."
+msgstr "0 ou aucune valeur signifie sans limites."
+
+msgid ""
+"A notification already exists for this path. You cannot save it. Please "
+"change the path or update the existing notification."
+msgstr ""
+"Une notification existe déjà pour ce chemin. Vous ne pouvez pas "
+"l’enregistrer. Veuillez modifier le chemin d’accès ou mettre à jour la "
+"notification existante."
+
+#, php-format
+msgid ""
+"A repository backup of '%1$s' will be available in the backup directory %2$s"
+msgstr "Une sauvegarde du dépôt '%1$s' sera disponible dans le répertoire %2$s"
+
+msgid "Access control"
+msgstr "Contrôle d'accès"
+
+msgid "Active notifications list"
+msgstr "Liste des notifications actives"
+
+msgid "Add notification"
+msgstr "Ajouter la notification"
+
+msgid "Admin Groups"
+msgstr "Groupes Administrateurs"
+
+msgid "Administrators"
+msgstr "Administrateurs SVN"
+
+msgid "Allow commit message changes (svn propset --revprop -r X svn:log)"
+msgstr ""
+"Autorise la modification des messages de commit (svn propset --revprop -r X "
+"svn:log)"
+
+msgid "An error occured when deleting repository."
+msgstr "Une erreur est survenue lors de la suppression du dépôt Svn."
+
+msgid "Authentication cache"
+msgstr "Cache d'authentification"
+
+msgid "Be careful"
+msgstr "Attention"
+
+msgid "Browse"
+msgstr "Accès depuis l'interface"
+
+msgid "Cache lifetime (in minutes)"
+msgstr "Durée de vie du cache (en minutes)"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Cannot find changed directories information"
+msgstr "Impossible de trouver les informations des repertoires mis à jour"
+
+msgid "Cannot find changed files information"
+msgstr "Impossible de trouver les informations des fichiers mis à jour"
+
+msgid "Cannot find committer information"
+msgstr "Impossible de trouver les informations du committer"
+
+msgid "Commit rules"
+msgstr "Règles de commit"
+
+msgid "Confirm deletion"
+msgstr "Confirmer la suppression"
+
+msgid "Confirm restore of the svn repository"
+msgstr "Confirmer la restauration du dépôt"
+
+msgid "Core"
+msgstr "Core"
+
+msgid "Core repository cannot be managed by plugin"
+msgstr "Les dépôts \"Core\" ne peuvent être gérés par le plugin SVN"
+
+msgid "Create a new SVN repository"
+msgstr "Créer un nouveau dépôt SVN"
+
+msgid "Create repository"
+msgstr "Créer le dépôt"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Delete the repository"
+msgstr "Supprimer le dépôt"
+
+msgid "Delete this repository"
+msgstr "Supprimer ce dépôt"
+
+msgid "Deleted date"
+msgstr "Date de suppression"
+
+msgid "Deleted svn repositories"
+msgstr "Dépôts svn supprimés"
+
+msgid ""
+"Each commit event can also be notified via email to specific recipients or "
+"mailing lists. A specific subject header for the email message can also be "
+"specified. Please note that you can use the star operator: /folder/to/notify "
+"and /folder/*/notify will be notified the same way."
+msgstr ""
+"Chaque évènement de commit peut être notifié par email à certains "
+"destinataires ou listes de diffusion. Une entête apparaissant dans le sujet "
+"du message peut aussi être spécifiée. Vous pouvez utiliser l'opérateur "
+"étoile. Les chemins /dossier/a/notifier et /dossier/*/notifier seront tout "
+"deux notifiés de la même façon."
+
+msgid "Edit"
+msgstr "Éditer"
+
+msgid "Edit access control file"
+msgstr "Modifier le fichier de contrôle d'accès"
+
+msgid "Email Notification updated successfully"
+msgstr "Notification email mise à jour avec succès"
+
+msgid "Email notifications on commits"
+msgstr "Notifications par email lors des commits"
+
+msgid "Error during new revision file creation"
+msgstr "Erreur lors de la création de la nouvelle révision"
+
+msgid "Force every commit to include a reference."
+msgstr "Requiert une référence dans tous les messages de commit."
+
+msgid "Global permissions"
+msgstr "Permissions globales de SVN"
+
+msgid "Granted groups"
+msgstr "Groupes autorisés"
+
+#, php-format
+msgid "Group '%s' couldn't be added."
+msgid_plural "Groups '%s' couldn't be added."
+msgstr[0] "Le groupe '%s' n’a pas pu être ajouté."
+msgstr[1] "Les groupes '%s' n’ont pas pu être ajouté."
+
+msgid "Groups:"
+msgstr "Groupes :"
+
+msgid "Header update failed."
+msgstr "L'entête n'a pas été mise à jour."
+
+msgid "Header updated successfully"
+msgstr "Entête mise à jour avec succès"
+
+msgid "However you will notice that:"
+msgstr "En revanche, vous constaterez que :"
+
+msgid ""
+"If a file is already bigger than the limit it can no longer be modified. It "
+"can be deleted and re-created (keep in mind the big file will stay in the "
+"history)."
+msgstr ""
+"Si un fichier déjà présent est plus gros que la limite, il ne pourra plus "
+"être modifié. Il pourra toutefois être supprimé et recréé (le gros fichier "
+"restera néanmoins dans l'historique)."
+
+msgid "Immutable tags"
+msgstr "Tags non modifiables"
+
+msgid ""
+"It is recommended to always define permissions on a user group. Applying "
+"permissions to a manually defined group or to a specific user could cause "
+"security issues."
+msgstr ""
+"Il est conseillé de toujours utiliser un groupe d'utilisateurs Tuleap pour "
+"définir des permissions. Attribuer des permissions à un groupe "
+"d'utilisateurs défini manuellement ou à un utilisateur spécifique peut "
+"amener à des problèmes de sécurité."
+
+msgid "Last commit"
+msgstr "Dernier commit"
+
+msgid "Mail to specific recipients or mailing lists (comma separated)"
+msgstr ""
+"Envoyer à certains destinataires ou listes de diffusion (séparés par des "
+"virgules)"
+
+msgid "Max file size"
+msgstr "Taille max de fichier"
+
+msgid "Maximum individual file size (in Megabytes)"
+msgstr "Taille maximum de fichier individuel (en mégaoctets)"
+
+msgid "Maximum number of credentials cached by repository"
+msgstr "Nombre maximum de credentials mis en cache par dépôt"
+
+msgid "Migrate from core"
+msgstr "Migrer Subversion \"Core\""
+
+msgid "Monitored path"
+msgstr "Chemins surveillés"
+
+msgid "Month"
+msgstr "Mois"
+
+msgid "Multi SVN"
+msgstr "Multi SVN"
+
+msgid ""
+"Must start by a letter, have a length of 3 characters minimum, only - _ . "
+"specials characters are allowed."
+msgstr ""
+"Le nom du dépôt doit commencer par une lettre, il doit avoir une longueur "
+"minimum de trois caractères. Seuls les caractères spéciaux - _ . sont "
+"autorisés."
+
+msgid "New repository"
+msgstr "Nouveau dépôt"
+
+msgid "No SVN repository"
+msgstr "Aucun dépôt SVN"
+
+msgid "No restorable svn repositories found."
+msgstr "Aucun dépôt svn à restaurer."
+
+msgid "Notification deleted successfully."
+msgstr "La notification a été correctement supprimée."
+
+msgid "Notification list"
+msgstr "Liste des emails notifiés"
+
+#, php-format
+msgid "Notification to update doesn't exist."
+msgstr "La notification à mettre à jour n’existe pas."
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid ""
+"Once you switch the repository is immediately visible in the plugin "
+"interface with a <span class=\"tlp-badge-secondary tlp-badge-outline\">Core</"
+"span> label. The hooks are replaced by a background job so the email format "
+"as well as new settings might take a few minutes to be applied."
+msgstr ""
+"Dès la migration du dépôt, celui-ci est visible dans la liste des dépôts du "
+"plugin avec un badge <span class=\"tlp-badge-secondary tlp-badge-outline"
+"\">Core</span>. Les <i>hooks</i> sont remplacés par un événement en arrière "
+"plan donc le changement de format des emails ou la nouvelle configuration "
+"peut prendre quelques minutes à être visibles."
+
+msgid "Path"
+msgstr "Chemin"
+
+msgid "Permission"
+msgstr "Permission"
+
+msgid "Project SVN repositories"
+msgstr "Dépôts SVN du projet"
+
+msgid "Project not found."
+msgstr "Projet non trouvé."
+
+msgid "Read"
+msgstr "Lecture"
+
+#, php-format
+msgid "Repository %s successfully created"
+msgstr "Le dépôt %s a été créé avec succès"
+
+#, php-format
+msgid "Repository '%1$s' will be removed in a few seconds"
+msgstr "Le dépôt '%1$s' va être supprimé dans quelques secondes"
+
+msgid "Repository already migrated"
+msgstr "Dépôt déjà migré"
+
+msgid "Repository list"
+msgstr "Liste des dépôts"
+
+msgid ""
+"Repository migrated, please wait a few minutes so the hooks are rewritten"
+msgstr ""
+"Le dépôt a été migré, merci d'attendre quelques minutes que les hooks soient "
+"ré-écrits"
+
+msgid "Repository name"
+msgstr "Nom du dépôt"
+
+#, php-format
+msgid "Repository name `%s` is already used in this project"
+msgstr "Le nom du dépôt `%s` existe déjà dans le projet"
+
+msgid "Repository name is already used in this project."
+msgstr "Le nom du dépôt existe déjà dans le projet."
+
+msgid "Repository not found"
+msgstr "Le dépôt n'a pas été trouvé"
+
+msgid "Repository not found."
+msgstr "Dépôt non trouvé."
+
+msgid "Rules on commit"
+msgstr "Règles lors d'un commit"
+
+msgid "SVN"
+msgstr "SVN"
+
+msgid "SVN Administration"
+msgstr "Administration de SVN"
+
+msgid "SVN Administrators"
+msgstr "Administrateurs SVN"
+
+msgid "SVN authentication cache settings"
+msgstr "Paramètres du cache d'authentification de SVN"
+
+msgid "SVN multi-repositories is disabled for the project."
+msgstr "Le multi-dépôt SVN est désactivé pour le projet."
+
+msgid "SVN plugin to manage multiple SVN repositories"
+msgstr "Module SVN de gestion de dépôts SVN multiple"
+
+msgid ""
+"SVN repository manager. Supports multiple repositories for the same project."
+msgstr ""
+"Un gestionnaire de dépots SVN. Supporte la gestion de plusieurs dépôts "
+"simultanément."
+
+msgid "SVN service is disabled."
+msgstr "Le service SVN est inactif."
+
+#, php-format
+msgid "SVN service is not activated in project %s"
+msgstr "Le service SVN n'est pas activé dans le projet %s"
+
+msgid "SVN with multiple repositories"
+msgstr "SVN avec dépôt multiple"
+
+msgid "SVN with multiple repositories activities"
+msgstr "Activités de SVN avec dépôt multiple"
+
+msgid "Save"
+msgstr "Sauvegarder"
+
+msgid "Save a new version"
+msgstr "Sauvegarder une nouvelle version"
+
+msgid "Save settings"
+msgstr "Sauvegarder les paramètres"
+
+msgid "Save the rules"
+msgstr "Sauvegarder les règles"
+
+msgid "Save the subject"
+msgstr "Sauvegarder le sujet"
+
+msgid "Saved versions:"
+msgstr "Versions sauvegardées :"
+
+msgid "Select a version"
+msgstr "Séléctionnez une version"
+
+msgid ""
+"Select the groups which are allowed to access the SVN administration in "
+"addition to the project administrators."
+msgstr ""
+"Sélectionnez les groupes ayant accès à l'administrateur SVN, en plus des "
+"administrateurs du projet."
+
+msgid "Settings"
+msgstr "Paramètres"
+
+msgid "Settings of %s"
+msgstr "Paramètres de %s"
+
+msgid ""
+"Site administrator defined a limit on allowed file size. One can no longer "
+"commit files bigger than %1$sMB"
+msgstr ""
+"L'administrateur site a définit une limite sur la taille des fichiers "
+"acceptés. Vous ne pourrez pas commiter un fichier de plus de %1$sMo"
+
+msgid "Subject header"
+msgstr "Entête du sujet"
+
+msgid "Subversion"
+msgstr "Subversion"
+
+#, php-format
+msgid ""
+"The default policy is to allow read-write access to all project members on "
+"the entire repository and read-only access to all other %1$s users. You can "
+"tune or even redefine the access permissions below to suit your needs."
+msgstr ""
+"La politique par défaut de %1$s est d'autoriser l'accès en lecture et en "
+"écriture à tous les membres du projet sur l'ensemble du dépôt et l'accès en "
+"lecture seule aux autres utilisateurs de %1$s. Vous pouvez ajuster ou même "
+"redéfinir les permissions d'accès selon vos besoins."
+
+msgid "The given path is not valid"
+msgstr "Le chemin n'est pas valide"
+
+#, php-format
+msgid "The path '%s' already exists."
+msgstr "Le chemin '%s' existe déjà."
+
+msgid "The repository does not exist"
+msgstr "Le dépôt n'existe pas"
+
+msgid ""
+"The repository is in queue for creation. Please check back here in a few "
+"minutes"
+msgstr ""
+"Le dépôt est en attente de création. Veuillez revenir dans quelques minutes"
+
+#, php-format
+msgid "The repository name %s is invalid"
+msgstr "Le nom du dépôt %s est invalide"
+
+msgid ""
+"The requested action can not be understood, you have been redirected to the "
+"homepage"
+msgstr ""
+"L'action demandée ne peut pas être comprise, vous avez été redirigé vers la "
+"page d'accueil"
+
+#, php-format
+msgid ""
+"There is an event in queue for repository '%1$s' deletion, it will be "
+"processed in one minute or two. Please be patient!"
+msgstr ""
+"Un événement est en attente pour la suppression du dépôt '%1$s'. Il sera "
+"traité dans une minute ou deux. Merci de votre patience !"
+
+msgid "There is no notification"
+msgstr "Il n'y a aucune notification"
+
+msgid ""
+"These settings only apply to instance using the modperl authentication mode, "
+"projects having SVN token authentication mode enabled or repositories in the "
+"SVN plugin."
+msgstr ""
+"Ces paramètres s'appliquent uniquement à une instance utilisant le mode "
+"d'authentification modperl, aux projets pouvant utiliser les jetons "
+"d'authentification ou aux dépôts du plugin SVN."
+
+msgid "This action cannot be undone."
+msgstr "Cette action est irréversible."
+
+msgid "This deletion can't be undone. Please confirm the repository deletion."
+msgstr ""
+"Cette suppression est irréversible. Veuillez confirmer la suppresion du "
+"dépôt."
+
+msgid ""
+"This form allows to transfer the management of subversion repository from "
+"the `Subversion` service to this plugin."
+msgstr ""
+"Ce formulaire permet le transfert de la gestion du dépôt subversion du "
+"service \"Subversion\" à ce plugin."
+
+msgid ""
+"This is the historical repository provided by legacy 'Subversion' service."
+msgstr "Correspond au dépôt historique du service \"Subversion\"."
+
+msgid "This limit will apply on all files on all svn plugin repositories."
+msgstr ""
+"Cette limite s'applique sur tous les fichiers de tous les dépôts du plugin "
+"svn."
+
+msgid ""
+"This migration is done in place. All settings are transferred and, more "
+"important <strong>the subversion url</strong> ({{ svn_url }}) <strong>will "
+"not change</strong>."
+msgstr ""
+"La migration est réalisée en place. Toute la configuration est transférée "
+"and, plus important <strong>l'url subversion</strong> ({{ svn_url }}) "
+"<strong>est conservée</strong>."
+
+msgid "Top project"
+msgstr "Top projet"
+
+msgid "Top project (number of write operations)"
+msgstr "Top projet (nombre d'opérations en écriture)"
+
+msgid "Top user"
+msgstr "Top utilisateur"
+
+msgid "Top user (number of write operations)"
+msgstr "Top utilisateur (nombre d'opérations en écriture)"
+
+msgid "Total number of SVN browse operations"
+msgstr "Nombre total d'opérations concernant SVN depuis l'interface"
+
+msgid "Total number of SVN read operations"
+msgstr "Nombre total d'opérations concernant SVN en lecture"
+
+msgid "Total number of SVN write operations"
+msgstr "Nombre total d'opérations concernant SVN en écriture"
+
+msgid "Total number of projects with SVN read operations"
+msgstr "Nombre total de projets avec des opérations SVN en lecture"
+
+msgid "Total number of projects with SVN write operations"
+msgstr "Nombre total de projets avec des opérations SVN en écriture"
+
+msgid "Total number of users with SVN read operations"
+msgstr ""
+"Nombre total d'utilisateurs ayant réalisé des opérations SVN en lecture"
+
+msgid "Total number of users with SVN write operations"
+msgstr ""
+"Nombre total d'utilisateurs ayant réalisé des opérations SVN en écriture"
+
+#, php-format
+msgid "Unable to create repository %s"
+msgstr "Impossible de créer le dépôt %s"
+
+msgid "Unable to delete notification list"
+msgstr "Impossible de supprimer la liste des emails notifiés"
+
+msgid "Unable to find SVN service"
+msgstr "Impossible de trouver le service SVN"
+
+#, php-format
+msgid "Unable to read file %1$s"
+msgstr "Impossible de lire le fichier %1$s"
+
+msgid "Unable to save Notification"
+msgstr "Impossible de sauvegarder la notification"
+
+msgid "Unable to save immutable tags."
+msgstr "Impossible d'enregistrer les tags non modifiables."
+
+msgid "Unable to update Access Control File."
+msgstr "Impossible d'enregistrer les nouveaux droits du dépôt."
+
+msgid "Unable to update Repository data"
+msgstr "Impossible d'enregistrer les données du dépôt"
+
+#, php-format
+msgid "Unable to write into file %1$s"
+msgstr "Impossible d'écrire dans le fichier %1$s"
+
+msgid "Update successful"
+msgstr "Mise à jour réussie"
+
+msgid "Use this selected version"
+msgstr "Utiliser cette version sauvegardée"
+
+#, php-format
+msgid "User '%s' couldn't be added."
+msgid_plural "Users '%s' couldn't be added."
+msgstr[0] "L'utilisateur '%s' n’a pas pu être ajouté."
+msgstr[1] "Les utilisateurs '%s' n’ont pas pu être ajouté."
+
+msgid "User doesn't have permission to create a repository"
+msgstr "L'utilisateur n'a pas les droits pour créer un nouveau dépôt"
+
+msgid "User, group, email"
+msgstr "Utilisateur, groupe, mail"
+
+msgid "Wait a minute..."
+msgstr "Attendez une minute ..."
+
+msgid ""
+"When committing, it is possible to enforce some rules. Check the rules you "
+"want to apply:"
+msgstr ""
+"Lors d'un commit, il est possible de forcer le respect de certaines règles. "
+"Cochez les règles que vous souhaitez voir appliquer :"
+
+msgid "Write"
+msgstr "Écriture"
+
+msgid "You are about to permanently delete the repository:"
+msgstr "Vous êtes sur le point de supprimer définitivement le dépôt :"
+
+msgid "You are about to remove the notification. Please confirm your action."
+msgstr ""
+"Vous êtes sur le point de supprimer la notification. Merci de confirmer "
+"votre action."
+
+#, php-format
+msgid "You are using a previous version (#%1$s):"
+msgstr "Vous utilisez une version antérieure (#%1$s) :"
+
+#, php-format
+msgid "You are using the last version (#%1$s):"
+msgstr "Vous utilisez la dernière version (#%1$s) :"
+
+msgid "You can not browse the repository without being logged."
+msgstr "Vous ne pouvez pas naviguer dans le dépôt sans être authentifié."
+
+msgid "You can't delete."
+msgstr "Vous ne pouvez pas supprimer."
+
+msgid "You don't have permissions to see user groups."
+msgstr "Vous n'avez pas les droits de voir les groupes utilisateurs."
+
+msgid "Your settings could not be saved."
+msgstr "Vos paramètres n'ont pas pu être sauvegardés."
+
+msgid "Your settings have been successfully saved and will be applied shortly."
+msgstr ""
+"Vos paramètres ont été sauvegardés avec succès et vont être appliqués dans "
+"quelques instants."
+
+msgid "Your settings have been successfully saved."
+msgstr "Vos paramètres ont été sauvegardés avec succès."
+
+msgid "`SVN Query`, `My SVN commits` as well as SVN widgets are gone."
+msgstr ""
+"`Mes commits SVN`, `Recherche SVN` ainsi que les widgets subversion sont "
+"discontinués."
+
+msgid "my-new-repository"
+msgstr "mon-depot"
+
+msgid "saved on"
+msgstr "sauvegardée le"
+
+msgid "the commit email format is different."
+msgstr "le format des emails de notification sur commit est différent."
+
+msgid "{{ user_group_name }} has no global permission"
+msgstr "{{ user_group_name }} n'a pas de permissions globales"

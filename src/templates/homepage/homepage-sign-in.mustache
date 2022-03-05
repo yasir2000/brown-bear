@@ -1,0 +1,83 @@
+{{# user_is_anonymous }}
+    <div class="homepage-sign-in">
+        <h2 class="homepage-sign-in-title">{{# gettext }}Login{{/ gettext }}</h2>
+        {{# login_url }}
+            <a
+                href="{{ login_url }}"
+                class="tlp-button-primary tlp-button-large tlp-button-wide sign-in-button"
+            >{{ sign_in_submit }}</a>
+        {{/login_url}}
+
+        {{^ login_url }}
+            <form class="homepage-sign-in-form" action="/account/login.php" method="POST">
+                {{# login }}
+                    <div class="tlp-form-element">
+                        <label for="form_loginname" class="tlp-label">{{ username_placeholder }}</label>
+                        <input
+                            type="text"
+                            class="tlp-input tlp-input-large"
+                            id="form_loginname"
+                            name="form_loginname"
+                            data-test="form_loginname"
+                            placeholder="{{ username_placeholder }}"
+                            tabindex="1"
+                            autocomplete="username"
+                        >
+                    </div>
+                    <div class="tlp-form-element">
+                        <label for="form_pw" class="tlp-label">{{ password_placeholder }}</label>
+                        <input
+                            type="password"
+                            class="tlp-input tlp-input-large"
+                            id="form_pw"
+                            name="form_pw"
+                            data-test="form_pw"
+                            placeholder="{{ password_placeholder }}"
+                            tabindex="2"
+                            autocomplete="current-password"
+                        >
+                        {{# allow_password_recovery }}
+                            <p class="tlp-text-info homepage-sign-in-forgot-password">
+                                <a href="/account/lostpw.php">{{ forgot_password }}</a>
+                            </p>
+                        {{/ allow_password_recovery }}
+                    </div>
+                    <input type="hidden" name="{{ csrf_token_name }}" value="{{ csrf_token_value }}">
+                    <button
+                        type="submit"
+                        name="login"
+                        class="tlp-button-primary tlp-button-large tlp-button-wide homepage-sign-in-button"
+                        tabindex="3"
+                    >{{ sign_in_submit }}</button>
+
+                    {{{ additional_connectors }}}
+                {{/ login }}
+            </form>
+
+            {{# display_new_account_button }}
+                <span class="homepage-sign-in-register">{{ not_a_member }} <a href="/account/register.php">{{ create_account_label }}</a></span>
+            {{/display_new_account_button}}
+        {{/ login_url }}
+    </div>
+{{/ user_is_anonymous }}
+
+{{^ user_is_anonymous }}
+    <div class="homepage-already-signed-in">
+        {{# user }}
+            <div class="tlp-avatar-jumbo">
+                {{# hasAvatar }}
+                    <img src="{{ getAvatarUrl }}" alt="{{ getRealName }}">
+                {{/ hasAvatar }}
+            </div>
+            <h2 class="homepage-already-signed-in-title">
+                {{ welcome_back }}<br>
+                {{ getRealName }}
+            </h2>
+            <a
+                href="/my/"
+                class="tlp-button-primary tlp-button-large homepage-my-personal-page"
+                role="button"
+            >{{ my_personal_page }}</a>
+        {{/ user }}
+    </div>
+{{/ user_is_anonymous }}

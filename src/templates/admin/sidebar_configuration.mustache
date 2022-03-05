@@ -1,0 +1,19 @@
+<section class="admin-sidebar-section">
+    <h1 class="admin-sidebar-section-title">
+        <i class="fa fa-cogs admin-sidebar-section-title-icon"></i> {{ configuration_section_title }}
+    </h1>
+
+    <nav class="admin-sidebar-section-nav">
+        <a href="/admin/forgeaccess.php"
+           class="admin-sidebar-section-nav-item"
+           data-test="global_access_right"
+        >
+            {{ configuration_nav_global_access_rights }}
+        </a>
+        <a href="/admin/homepage.php" class="admin-sidebar-section-nav-item">{{ configuration_nav_homepage }}</a>
+        <a href="/admin/banner" class="admin-sidebar-section-nav-item">{{# gettext }}Platform banner{{/ gettext }}</a>
+        <a href="/admin/dates-display" class="admin-sidebar-section-nav-item">{{# gettext }} Dates display {{/ gettext }}</a>
+        <a href="/admin/release-note/" class="admin-sidebar-section-nav-item">{{# gettext }} Release note link {{/ gettext }}</a>
+        <a href="/admin/invitations/" class="admin-sidebar-section-nav-item">{{# gettext }}Invitations{{/ gettext }}</a>
+    </nav>
+</section>

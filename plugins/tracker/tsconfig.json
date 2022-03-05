@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "esnext",
+        "types": ["jest", "bootstrap", "ckeditor"]
+    },
+    "include": [
+        "scripts/tracker-creation/**/*",
+        "scripts/tracker-homepage/**/*",
+        "scripts/artifact/**/*",
+        "scripts/form-element/**/*",
+        "scripts/semantics/timeframe/**/*"
+    ]
+}

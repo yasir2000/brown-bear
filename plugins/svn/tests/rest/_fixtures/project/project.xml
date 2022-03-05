@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project unix-name="SVN-plugin-test" full-name="SVN Plugin Test" description="SVN Plugin Test" access="private">
+    <long-description></long-description>
+    <ugroups>
+        <ugroup name="project_members" description="">
+            <members>
+                <member format="username">rest_api_tester_1</member>
+                <member format="username">rest_api_tester_3</member>
+            </members>
+        </ugroup>
+        <ugroup name="project_admins" description="Project administrators">
+            <members>
+                <member format="username">rest_api_tester_1</member>
+            </members>
+        </ugroup>
+        <ugroup name="svn_ugroup_1" description="">
+            <members>
+                <member format="username">rest_api_tester_1</member>
+            </members>
+        </ugroup>
+        <ugroup name="svn_ugroup_2" description="">
+            <members>
+                <member format="username">rest_api_tester_1</member>
+                <member format="username">rest_api_tester_3</member>
+            </members>
+        </ugroup>
+    </ugroups>
+    <services>
+        <service shortname="plugin_svn" enabled="1"/>
+    </services>
+    <svn>
+        <repository name="repo01">
+            <access-file>
+                <![CDATA[[/] * = rw @members = rw]]>
+            </access-file>
+            <notification path="/trunk" emails="project-svn@list.example.com"/>
+            <notification path="/tags" emails="project-announce@list.example.com, project-devel@lists.example.com"/>
+        </repository>
+        <repository name="repo02"/>
+    </svn>
+</project>

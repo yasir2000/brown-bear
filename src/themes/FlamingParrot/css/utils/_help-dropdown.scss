@@ -1,0 +1,237 @@
+/**
+ * Copyright (c) Enalean, 2020-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:map";
+@use "../../../tlp/src/scss/variables/colors/swatch-colors";
+
+.dropdown-menu-item {
+    padding: 8px 16px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+        background: #f3f3f3;
+        text-decoration: none;
+    }
+
+    > .tlp-dropdown-menu-item-icon {
+        margin: 0 5px 0 0;
+    }
+}
+
+.tlp-dropdown-menu {
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+    flex-direction: column;
+    margin: 10px 0 0;
+    padding: 8px 0;
+    transform: translateY(-10px);
+    transition: opacity 75ms ease-out;
+    border: 1px solid #e3e5ed;
+    border-bottom: 0;
+    border-radius: var(--tlp-large-radius);
+    opacity: 0;
+    background: var(--tlp-dark-color);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 14px;
+    pointer-events: none;
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 20px;
+        width: 0;
+        height: 0;
+        margin: 0 (-10px);
+        border: 10px solid transparent;
+        border-top-color: var(--tlp-dark-color);
+    }
+
+    &.dropdown-menu-top {
+        top: 0;
+        transform: translateY(-100%);
+
+        &::before {
+            display: none;
+        }
+
+        &::after {
+            top: 100%;
+            border-top-color: var(--tlp-dark-color);
+            border-bottom-color: transparent;
+        }
+    }
+
+    &.dropdown-menu-right {
+        right: 0;
+
+        &::before,
+        &::after {
+            right: 20px;
+            left: auto;
+        }
+    }
+
+    &.tlp-dropdown-shown {
+        transform: translateY(0);
+        opacity: 1;
+        box-shadow: var(--tlp-flyover-shadow);
+        pointer-events: auto;
+
+        &.dropdown-menu-top {
+            transform: translateY(-100%) translateY(-10px) translateY(-#{10px});
+        }
+    }
+
+    .dropdown-menu-separator {
+        margin: 8px 0;
+        border-top: 1px solid #f3f3f3;
+        opacity: 0.1;
+        background: #d4d7e1;
+    }
+
+    .help-dropdown-link {
+        &.dropdown-menu-item {
+            background: var(--tlp-dark-color);
+            color: #d4d7e1;
+            font-size: 13px;
+            text-align: left;
+
+            &:hover {
+                background: var(--tlp-dark-color-darker-05);
+            }
+
+            > .dropdown-menu-item-icon {
+                margin: 0 5px 0 0;
+            }
+        }
+
+        &.help-dropdown-link-highlight {
+            color: var(--tlp-warning-color);
+        }
+    }
+
+    .dropdown-menu-item-alt {
+        display: flex;
+        align-items: baseline;
+        padding: 10px 20px;
+        font-size: 12px;
+
+        > a {
+            margin: 0 10px 0 0;
+            opacity: 0.6;
+            color: var(--tlp-neutral-light-color);
+        }
+    }
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+body.reduce-help-button .help-dropdown {
+    right: var(--tlp-small-spacing);
+    bottom: var(--tlp-small-spacing);
+
+    #help {
+        width: 24px; // not related to condensed mode
+        height: 24px; // not related to condensed mode
+
+        > .svg-question-mark {
+            width: 7.5px; // not related to condensed mode
+        }
+
+        > .new-release-note-available-icon {
+            font-size: 0.8rem;
+        }
+    }
+
+    > .tlp-dropdown-menu {
+        right: calc(var(--tlp-small-spacing) / -2);
+
+        &::before,
+        &::after {
+            right: 16px; // not related to condensed mode
+        }
+    }
+}
+
+.help-dropdown {
+    position: fixed;
+    z-index: 1000;
+    right: 16px;
+    bottom: 16px;
+}
+
+#help {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    border-color: var(--tlp-dark-color);
+    background: var(--tlp-dark-color) !important;
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.15);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    &.new-release-note-available {
+        animation: pulse 300ms ease-in-out 1s 3 both;
+        border-color: var(--tlp-warning-color);
+        background: var(--tlp-warning-color) !important;
+        color: var(--tlp-white-color);
+
+        > .new-release-note-available-icon {
+            display: inline-block;
+        }
+
+        > .svg-question-mark {
+            display: none;
+        }
+    }
+
+    > .new-release-note-available-icon {
+        display: none;
+        margin: 0;
+        transition: color 200ms ease-in-out;
+        font-size: 1.25rem;
+    }
+}
+
+.help-modal-shortcuts-kbds {
+    white-space: nowrap;
+}
+
+.help-modal-shortcuts-action {
+    width: 100%;
+}

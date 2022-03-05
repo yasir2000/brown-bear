@@ -1,0 +1,63 @@
+<div class="oauth2-server-authorization-form">
+    <h1>{{# dgettext }}tuleap-oauth2_server | Authorize application{{/ dgettext }}</h1>
+
+    {{# project_name }}
+        <h2>{{# dgettext }}tuleap-oauth2_server |
+            %s by project %s wants to connect to your Tuleap account. |
+            {{ app_name }} |
+            {{ project_name }}
+        {{/ dgettext }}</h2>
+    {{/ project_name }}
+    {{^ project_name }}
+        <h2>{{# dgettext }}tuleap-oauth2_server |
+            %s wants to connect to your Tuleap account. |
+            {{ app_name }}
+        {{/ dgettext }}</h2>
+    {{/ project_name }}
+
+    <p>{{# dgettext }}tuleap-oauth2_server | Please review the permissions you are about to give to %s: |
+        {{ app_name }}
+    {{/ dgettext }}</p>
+
+    <section class="tlp-pane">
+        <div class="tlp-pane-container">
+            <section class="tlp-pane-section-for-cards">
+                {{# scope_definition_presenters }}
+                    <div class="tlp-card">
+                        <p>
+                            <span class="oauth2-server-scope-label">{{ name }}</span>
+                            <small class="oauth2-server-scope-description">{{ description }}</small>
+                        </p>
+                    </div>
+                {{/ scope_definition_presenters }}
+            </section>
+        </div>
+    </section>
+
+    <form
+        class="oauth2-server-authorization-form-actions"
+        action="/oauth2/authorize-process-consent"
+        method="post"
+    >
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+        <input type="hidden" name="redirect_uri" value="{{ redirect_uri }}">
+        {{# state }}<input type="hidden" name="state" value="{{ state }}">{{/ state }}
+        {{# pkce_code_challenge }}<input type="hidden" name="pkce_code_challenge" value="{{ pkce_code_challenge }}">{{/ pkce_code_challenge }}
+        {{# oidc_nonce }}<input type="hidden" name="oidc_nonce" value="{{ oidc_nonce }}">{{/ oidc_nonce }}
+        <input type="hidden" name="app_identifier" value="{{ app_identifier }}">
+        {{# scope_identifier_presenters }}
+            <input type="hidden" name="scope[]" value="{{ scope_key }}">
+        {{/ scope_identifier_presenters }}
+        <a
+            class="tlp-button-outline tlp-button-primary tlp-button-large"
+            href="{{ deny_authorization_uri }}"
+        >{{# dgettext }}tuleap-oauth2_server | Deny{{/ dgettext }}</a>
+        <button
+            type="submit"
+            class="tlp-button-primary tlp-button-large oauth2-server-authorization-form-action-authorize"
+            data-test="oauth2-authorize-request-submit-button"
+        >{{# dgettext }}tuleap-oauth2_server | Authorize{{/ dgettext }}</button>
+    </form>
+</div>

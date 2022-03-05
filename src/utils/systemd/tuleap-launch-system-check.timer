@@ -1,0 +1,11 @@
+[Unit]
+Description=Tuleap launch system check
+Documentation=https://docs.tuleap.org
+
+[Timer]
+OnCalendar=*:00/30:00
+RandomizedDelaySec=30min
+Unit=tuleap-launch-system-check.service
+
+[Install]
+WantedBy=timers.target

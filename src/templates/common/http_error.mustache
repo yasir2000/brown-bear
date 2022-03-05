@@ -1,0 +1,28 @@
+<h1>{{# gettext }}Ooops an error occured{{/ gettext }}</h1>
+
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">{{ title }}</h1>
+        </div>
+        <section class="tlp-pane-section">
+            <p>{{ message }}</p>
+
+        </section>
+    </div>
+</section>
+
+{{# xdebug_message }}
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">Developers details</h1>
+        </div>
+        <section class="tlp-pane-section">
+            <table class="tlp-table">
+            {{{ xdebug_message }}}
+            </table>
+        </section>
+    </div>
+</section>
+{{/ xdebug_message }}

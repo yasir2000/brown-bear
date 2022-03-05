@@ -1,0 +1,643 @@
+/**
+ * Copyright (c) Enalean, 2011-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import "../../../../../src/themes/tlp/src/scss/variables/colors/common-colors";
+@import "../../../../tracker/themes/default/css/includes/columns-colors";
+
+/* stylelint-disable selector-class-pattern, selector-id-pattern */
+#cardwall {
+    padding-bottom: 1em;
+}
+
+.cardwall_board-actions {
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+.cardwall_board > table {
+    clear: both;
+    border-collapse: separate;
+    border-top: 1px solid #d8d8d8;
+    border-left: 1px solid #d8d8d8;
+    border-color: #d8d8d8;
+}
+
+.cardwall_board > table > thead > tr > th,
+.cardwall > tr > td {
+    border-right: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.cardwall_admin_ontop_mappings th > .cardwall-column-header-color {
+    height: 5px;
+    margin-bottom: 7px;
+}
+
+.cardwall_board p {
+    margin: 0;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+.cardwall_board ul,
+.cardwall_board li {
+    list-style: none;
+}
+
+.cardwall_board ul {
+    padding: 0;
+}
+
+.cardwall_board .toggle-collapse {
+    display: none;
+}
+
+.card {
+    border: 1px solid #cacaca;
+    border-radius: var(--tlp-medium-radius);
+    background: #ffffbb;
+    box-shadow: 0 1px 0 0 rgb(217 217 217 / 50%);
+    cursor: move;
+}
+
+.cardwall_board .nodrag .card {
+    height: 100%;
+    border-top-right-radius: var(--tlp-medium-radius);
+    border-bottom-right-radius: var(--tlp-medium-radius);
+    box-shadow: none;
+    cursor: auto;
+
+    > .card-container {
+        border-top-right-radius: var(--tlp-medium-radius);
+        border-bottom-right-radius: var(--tlp-medium-radius);
+    }
+}
+
+.dashboard-widget .cardwall_board .card,
+.widget .cardwall_board .card {
+    cursor: auto;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+.cardwall_board ul li.error {
+    box-shadow: 5px 5px 12px rgb(254 0 0 / 70%);
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+.cardwall_board ul li p.cardwall_board_title {
+    padding-bottom: 10px;
+    font-size: 140%;
+    font-weight: bold;
+}
+
+.cardwall_board_column_hover {
+    box-shadow: 0 0 20px 0 rgb(0 0 0 / 10%) inset;
+}
+
+#plugin_cardwall_qrcode_toggler {
+    filter: alpha(opacity=20);
+    -khtml-opacity: 0.2;
+    -moz-opacity: 0.2;
+    opacity: 0.2;
+}
+
+.card_element_edit_form > input[type="text"] {
+    width: 40px;
+}
+
+.card_element_edit_form > input[type="submit"] {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.valueOf_remaining_effort {
+    min-width: 30px;
+}
+
+.search-in-cardwall::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+.search-in-cardwall {
+    display: inline-block;
+    width: 330px;
+    height: 20px;
+    margin: 0;
+    padding: 4px 6px;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    border: 1px solid #cccccc;
+    border-radius: var(--tlp-medium-radius);
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 7.5%);
+    color: #555555;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+input[type="text"].search-in-cardwall {
+    margin-bottom: 0;
+}
+
+.search-in-cardwall:focus {
+    border-color: rgb(82 168 236 / 80%);
+    outline: 0;
+    /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
+    outline: thin dotted \9;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 7.5%), 0 0 8px rgb(82 168 236 / 60%);
+}
+
+.cardwall-column-header {
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+.cardwall-cell ul,
+.cardwall-cell ol {
+    margin: 14px 0;
+}
+
+.card-actions ul {
+    margin: 0;
+}
+
+.cardwall-column-header,
+.cardwall-cell-header {
+    background-color: #f8f8f8;
+    color: #595959;
+}
+
+.cardwall-column-header-color {
+    height: 5px;
+}
+
+.cardwall-column-header-container,
+.cardwall-cell-container {
+    position: relative;
+    padding: 10px;
+}
+
+.cardwall-cell-stacked {
+    padding-bottom: 1em;
+    overflow: hidden;
+}
+
+.cardwall-cell-stacked > .cardwall-cell-container > ul {
+    position: relative;
+}
+
+.cardwall-cell-stacked > .cardwall-cell-container > ul > .cardwall_board_postit {
+    position: absolute !important; /* use !important as we want to override inline style (drag 'n drop) */
+    top: 10px;
+    width: 100%;
+}
+
+.cardwall_board_postit_flying {
+    box-shadow: -1px 13px 11px 0 rgb(203 203 203 / 70%);
+}
+
+.cardwall-cell-stacked > .cardwall-cell-container > ul > .cardwall_board_postit:nth-child(1) {
+    top: 0;
+}
+
+.cardwall-cell-stacked > .cardwall-cell-container > ul > .cardwall_board_postit:nth-child(2) {
+    top: 5px;
+}
+
+.cardwall-cell > .cardwall-cell-container > .cardwall-cell-controls > .fa-minus-square-o,
+.cardwall-cell.cardwall-cell-stacked
+    > .cardwall-cell-container
+    > .cardwall-cell-controls
+    > .fa-plus-square-o {
+    display: inline;
+}
+
+.cardwall-cell.cardwall-cell-stacked
+    > .cardwall-cell-container
+    > .cardwall-cell-controls
+    > .fa-minus-square-o,
+.cardwall-cell > .cardwall-cell-container > .cardwall-cell-controls > .fa-plus-square-o {
+    display: none;
+}
+
+.cardwall-column-header-controls {
+    position: absolute;
+    top: 9px;
+    right: 0;
+    padding: 2px 4px;
+    color: #cccccc;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.cardwall-cell-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 4px;
+    color: #cccccc;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.cardwall-column-header-controls:hover,
+.cardwall-cell-controls:hover {
+    color: #333333;
+}
+
+.cardwall-auto-stack-toggle {
+    margin: 0;
+}
+
+.dashboard-widget,
+.widget {
+    .cardwall-column-header-controls,
+    .cardwall-cell-controls {
+        display: none;
+    }
+}
+
+.dashboard-widget {
+    .cardwall_board {
+        font-size: 14px;
+    }
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+body.fullscreen {
+    $cardwall-full-screen-top-color: #e6e6e6;
+    $cardwall-full-screen-bottom-color: #ffffff;
+
+    min-width: 100%;
+    min-height: 100%;
+    padding: 0;
+    background: linear-gradient(
+            to bottom,
+            $cardwall-full-screen-top-color 0%,
+            $cardwall-full-screen-bottom-color 20%,
+            $cardwall-full-screen-bottom-color 100%
+        )
+        repeat-x;
+
+    /* stylelint-disable-next-line selector-no-qualifying-type */
+    #header,
+    #navigation,
+    #feedback,
+    footer,
+    tuleap-project-sidebar,
+    .navbar,
+    .breadcrumb,
+    .toolbar,
+    .agiledashboard > .dropdown,
+    .agiledashboard > .nav,
+    .agiledashboard > .release-date-info {
+        display: none;
+    }
+
+    /* stylelint-disable-next-line selector-no-qualifying-type */
+    .main_body_row {
+        margin: 0;
+    }
+
+    /* stylelint-disable-next-line selector-no-qualifying-type */
+    .main {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* stylelint-disable-next-line selector-no-qualifying-type */
+    #cardwall {
+        min-width: 100%;
+        min-height: 100%;
+
+        /* stylelint-disable-next-line selector-no-qualifying-type */
+        .cardwall_board-actions,
+        .cardwall_board-fullscreen-bar {
+            padding: 20px 10px 0;
+        }
+    }
+}
+
+.cardwall_board-fullscreen-bar {
+    text-align: right;
+
+    i {
+        margin-right: 10px;
+    }
+}
+
+.cardwall_board-milestone-info {
+    $cardwall-points-color: #5aaf5a;
+    $cardwall-border-between-info-panes: 1px solid #dddddd;
+
+    margin: 30px 0;
+
+    > div {
+        height: 90px;
+        padding: 10px 0 0 30px;
+        border-left: $cardwall-border-between-info-panes;
+    }
+
+    > .milestone-burndown {
+        padding-top: 0;
+    }
+
+    > div:first-child,
+    > .milestone-capacity {
+        border-left: 0;
+    }
+
+    .milestone-name {
+        a {
+            display: inline-block;
+            color: #444444;
+            font-size: 2em;
+            line-height: 1em;
+            vertical-align: middle;
+
+            i {
+                color: #888888;
+                font-size: 0.8em;
+            }
+
+            &:hover {
+                color: #666666;
+                text-decoration: none;
+
+                i {
+                    color: #aaaaaa;
+                }
+            }
+        }
+    }
+
+    .date-info,
+    .points-info {
+        margin: 0 0 10px;
+        color: #888888;
+        font-size: 0.9em;
+
+        span {
+            margin-right: 20px;
+        }
+    }
+
+    .line-break {
+        margin: 0;
+        font-size: 0.9em;
+    }
+
+    .progress-bar {
+        width: 40%;
+        margin: 0 10% 0 0;
+        float: left;
+
+        .progress {
+            height: 30px;
+
+            .bar {
+                padding: 5px 0 0;
+            }
+        }
+    }
+
+    .to-go {
+        width: 50%;
+        float: left;
+        color: #444444;
+        font-size: 1.3em;
+
+        @media screen and (max-width: 1230px) {
+            font-size: 1em;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .days,
+        .points {
+            margin: 0 10px 0 0;
+            font-size: 3em;
+            font-weight: bold;
+
+            @media screen and (max-width: 1230px) {
+                font-size: 2.5em;
+            }
+        }
+
+        .days {
+            color: #0989c8;
+        }
+
+        .points {
+            color: $cardwall-points-color;
+        }
+    }
+
+    .no-data {
+        color: #aaaaaa;
+        font-size: 0.9em;
+        font-style: italic;
+        text-align: center;
+    }
+
+    .milestone-capacity .no-data {
+        width: 40%;
+        margin-right: 10%;
+        float: left;
+    }
+
+    .milestone-burndown {
+        .line.actual {
+            stroke: $cardwall-points-color;
+        }
+
+        .circle.actual {
+            stroke: $cardwall-points-color;
+        }
+    }
+
+    &.mini {
+        margin: 15px 0;
+
+        > div {
+            height: 60px;
+        }
+
+        > .milestone-capacity {
+            border-left: $cardwall-border-between-info-panes;
+        }
+
+        .milestone-name {
+            display: none;
+        }
+
+        > div:nth-child(2) {
+            margin-left: 0 !important;
+            border: 0;
+        }
+
+        .date-info,
+        .points-info {
+            margin: 0 0 3px;
+        }
+
+        .progress-bar {
+            .progress {
+                height: 20px;
+
+                .bar {
+                    padding: 0;
+                }
+            }
+        }
+
+        .to-go {
+            font-size: 1em;
+
+            .days,
+            .points {
+                font-size: 2.2em;
+            }
+        }
+    }
+}
+
+#tracker_report_cardwall_settings {
+    clear: both;
+}
+/* stylelint-enable */
+
+.btn-submit-semantic-card {
+    margin: 0 0 7px 10px;
+}
+
+.semantic-card-administration-form {
+    display: flex;
+}
+
+.semantic-card-administration {
+    max-width: 50%;
+}
+
+.semantic-card-administration-preview {
+    margin: 0 0 0 20px;
+}
+
+.card-preview {
+    display: flex;
+    position: relative;
+    width: 360px;
+    margin: 0 0 10px;
+    overflow: hidden;
+    border: 1px solid #e3e5ed;
+    border-radius: var(--tlp-medium-radius);
+    background: #ffffff;
+}
+
+.card-preview-content-fields {
+    width: 100%;
+}
+
+.card-preview-type {
+    flex: 0 0 auto;
+    width: 4px;
+    border-top-left-radius: var(--tlp-medium-radius);
+    border-bottom-left-radius: var(--tlp-medium-radius);
+    background: #5d5d5d;
+}
+
+.card-preview-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.card-preview-blindness {
+    position: absolute;
+    top: 40px;
+    right: 6px;
+    flex: 0 0 auto;
+    align-self: stretch;
+    width: 20px;
+    height: 100%;
+}
+
+.card-preview-id {
+    display: block;
+    flex: 0 0 auto;
+    padding: 10px;
+    color: #747474;
+    font-size: 12px;
+}
+
+.card-preview-fa-clock-o {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #747474;
+    font-size: 12px;
+}
+
+.card-preview-title {
+    display: block;
+    flex: 1 1 auto;
+    margin: 0 0 30px;
+    padding: 10px 10px 10px 0;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    word-break: break-all;
+
+    &.card-preview-title-accessibility {
+        margin: 0 20px 30px;
+    }
+}
+
+.card-content-fields {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+.card-preview-fields {
+    padding: 0 40px 0 10px;
+    font-size: 12px;
+
+    > .card-preview-field-label {
+        display: inline-block;
+        margin: 0 3px 5px 0;
+        color: #747474;
+    }
+
+    > .card-preview-field-value {
+        display: inline-block;
+        margin: 0 10px 5px 0;
+    }
+}
+
+.card-preview-info {
+    margin: 0 0 20px;
+}

@@ -1,0 +1,17 @@
+project_admin_utils	perm_granted_for_git_repository	Permission granted for git repository $1
+project_admin_utils	regexp_activated_for_git_repository	Regexp usage changed for git repository $1
+project_admin_utils	regexp_activated_for_git_template	Regexp usage changed for project $1
+project_admin_utils	perm_reset_for_git_repository	Permission reset for git repository $1
+project_admin_utils	default_git_perms_granted_for_project	Default git permissions granted for project $1
+
+project_admin_utils	git_repo_create	Git repository creation
+project_admin_utils	git_repo_delete	Git repository deletion
+project_admin_utils	git_repo_update	Git repository update
+project_admin_utils	git_repo_mirroring_update	Git repository mirroring update
+project_admin_utils	git_repo_to_gerrit	Git repository to gerrit
+project_admin_utils	git_create_template	Gerrit template created
+project_admin_utils	git_delete_template	Gerrit template deleted
+project_admin_utils	git_disconnect_gerrit_delete	Disconnect to Gerrit and delete repository
+project_admin_utils	git_disconnect_gerrit_read_only	Disconnect to Gerrit and repository in read only
+project_admin_utils	git_admin_groups	Git admin groups
+project_admin_utils	git_fork_repositories	Git fork repositories

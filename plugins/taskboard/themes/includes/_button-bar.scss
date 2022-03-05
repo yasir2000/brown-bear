@@ -1,0 +1,62 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../src/themes/BurningParrot/css/includes/global-variables";
+
+.taskboard-button-bar {
+    display: flex;
+    position: sticky;
+    left: 0;
+    justify-content: space-between;
+    margin: 0 0 var(--tlp-medium-spacing);
+    padding: 0 var(--tlp-medium-spacing);
+}
+
+.taskboard-button-bar-right {
+    display: flex;
+    position: sticky;
+    right: var(--tlp-medium-spacing);
+}
+
+.taskboard-button-bar-left {
+    position: sticky;
+    left: calc(#{global-variables.$sidebar-expanded-width} + var(--tlp-medium-spacing));
+
+    &.taskboard-fullscreen {
+        left: 0;
+    }
+}
+
+.sidebar-collapsed {
+    .taskboard-button-bar-left {
+        left: calc(#{global-variables.$sidebar-collapsed-width} + var(--tlp-medium-spacing));
+
+        &.taskboard-fullscreen {
+            left: 0;
+        }
+    }
+}
+
+.taskboard-button-bar-milestone-title {
+    font-size: 26px;
+}
+
+.taskboard-open-closed-switcher {
+    margin: 0 var(--tlp-small-spacing) 0 0;
+}

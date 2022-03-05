@@ -1,0 +1,12 @@
+{
+  "name": "tuleap/plugin-pluginsadministration",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\PluginsAdministration\\": ["include/"]
+    },
+    "classmap": ["include/"]
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

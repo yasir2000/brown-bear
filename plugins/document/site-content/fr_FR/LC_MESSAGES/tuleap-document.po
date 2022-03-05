@@ -1,0 +1,159 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid ""
+"Above this limit, the archive is considered big enough to display a warning "
+"to the user. The archive can still be downloaded."
+msgstr ""
+"Au dessus de cette limite, l'archive est considérée suffisamment grosse pour "
+"afficher un avertissement à l'utilisateur. L'archive peut quand même être "
+"téléchargée."
+
+msgid "An error occurred while saving configuration."
+msgstr "Une erreur est survenue lors de la sauvegarde de la configuration."
+
+msgid "Document"
+msgstr "Document"
+
+msgid "Document manager"
+msgstr "Gestionnaire de document"
+
+#, php-format
+msgid "Documents service is not activated in project %s"
+msgstr "Le service Documents n'est pas activé pour le projet %s"
+
+msgid "Embedded file"
+msgstr "Fichier embarqué"
+
+msgid "File"
+msgstr "Fichier"
+
+msgid "File download limits"
+msgstr "Limites de téléchargement"
+
+msgid "Filename"
+msgstr "Nom du fichier"
+
+msgid "Files missing in your latest archive download"
+msgstr "Des fichiers manquent dans l'archive récemment téléchargée"
+
+msgid "Folder"
+msgstr "Dossier"
+
+msgid ""
+"Hence, Tuleap will avoid users from forgetting to communicate changes made "
+"in the document."
+msgstr ""
+"Par conséquent, Tuleap évitera aux utilisateur d'oublier de remplir les "
+"changements apportés au document."
+
+msgid "History enforcement"
+msgstr "Historique"
+
+msgid "However, all its content could not have been included in the archive."
+msgstr "Cependant, tout son contenu n'a pas pu être ajouté à l'archive."
+
+msgid "Id"
+msgstr "Id"
+
+msgid "MB"
+msgstr "Mo"
+
+msgid "Maximum file size of the archive"
+msgstr "Taille maximum de l'archive"
+
+msgid "Megabytes"
+msgstr "Mégaoctets"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "Please contact your site administrator."
+msgstr "Veuillez contacter votre administrateur de site."
+
+msgid "Project not found"
+msgstr "Projet non trouvé"
+
+msgid "Propose changelog after new file version drag and drop"
+msgstr ""
+"Proposer de remplir le journal des modifications après le glissé déposé "
+"d'une nouvelle version d'un fichier"
+
+msgid "Provides a modern interface for the Document Manager service"
+msgstr "Fournit une interface moderne au service de gestion des documents"
+
+msgid "Save settings"
+msgstr "Enregistrer"
+
+msgid "Settings have been saved successfully."
+msgstr "Les paramètres ont été sauvegardés avec succès."
+
+msgid ""
+"Submitted maximum file size should be an unsigned integer greater than zero."
+msgstr ""
+"La taille maximum qui a été soumise devrait être un entier positif supérieur "
+"à zéro."
+
+msgid ""
+"Submitted warning threshold should be an unsigned integer greater than zero."
+msgstr ""
+"Le seuil d'avertissement qui a été soumis devrait être un entier positif "
+"supérieur à zéro."
+
+msgid "There was a problem and the following files could not be downloaded:"
+msgstr ""
+"Il y a eu un problème et les fichiers suivants n'ont pas pu être "
+"téléchargés :"
+
+msgid ""
+"This limit prevents a user from downloading a folder with a total size "
+"exceeding x MB."
+msgstr ""
+"Cette limite empêche un utilisateur de télécharger un dossier dont la taille "
+"totale dépasse x Mo."
+
+msgid "Those settings apply when downloading a folder as a zip archive."
+msgstr ""
+"Ces paramètres s'appliquent lors du téléchargement d'un dossier en tant "
+"qu'archive zip."
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Unable to find the root folder of project"
+msgstr "Impossible de trouver le dossier racine du projet"
+
+msgid "Warning threshold"
+msgstr "Seuil d'avertissement"
+
+msgid ""
+"When this option is enabled, a changelog modal will open each time a user "
+"creates a new version of a file by drag and drop."
+msgstr ""
+"Lorsque que cette option est active, la modal du journal des modifications "
+"s'ouvrira à chaque fois qu'un utilisateur créé une nouvelle version d'un "
+"fichier au moyen d'un glissé-déposé."
+
+#, php-format
+msgid ""
+"You have recently downloaded the folder \"%s\" (id: %d) in the project %s."
+msgstr ""
+"Vous avez récemment téléchargé le dossier \"%s\" (id: %d) dans le projet %s."
+
+msgid ""
+"You will find a file named TULEAP_ERRORS.txt at the root of the archive, "
+"listing all the impacted files."
+msgstr ""
+"Vous trouverez un fichier nommé TULEAP_ERRORS.txt à la racine de l'archive, "
+"répertoriant tous les fichiers impactés."

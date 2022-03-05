@@ -1,0 +1,79 @@
+<form action="?action=add-reference"
+      method="post"
+      id="bugzilla-add-reference-modal"
+      class="tlp-modal"
+      role="dialog"
+>
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title">
+            {{ bugzilla_title }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="keyword">{{ keyword }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="keyword"
+                   name="keyword"
+                   placeholder="bz"
+                   required
+                   pattern="{{ reference_pattern }}"
+                   title="{{ allowed_reference_description }}"
+            >
+        </div>
+        <p class="tlp-text-info">{{{ purified_rest_url_helper }}}</p>
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="server">{{ server }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="server"
+                   name="server"
+                   placeholder="https://example.com"
+                   pattern="https?://.+"
+                   required
+            >
+        </div>
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="rest_url">{{ rest_url }}</label>
+            <input type="text"
+                   class="tlp-input"
+                   id="rest_url"
+                   name="rest_url"
+                   placeholder="https://example.com"
+                   pattern="https?://.+"
+            >
+        </div>
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="username">{{ username }} <i class="fa fa-asterisk"></i></label>
+            <input type="text" class="tlp-input" id="username" name="username" placeholder="{{ username }}" required>
+        </div>
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="api_key">{{ api_key }} <i class="fa fa-asterisk"></i></label>
+            <input type="password" class="tlp-input" id="api_key" name="api_key" placeholder="{{ api_key }}"
+                   required>
+        </div>
+        <div class="tlp-form-element">
+            <label class="tlp-label tlp-checkbox">
+                <input type="checkbox" name="are_follow_up_private" value="1"> {{ are_followup_private }}
+            </label>
+        </div>
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+            {{ cancel }}
+        </button>
+        <button type="submit"
+                class="tlp-button-primary tlp-modal-action"
+        >
+            <i class="fa fa-plus tlp-button-icon"></i> {{ bugzilla_add }}
+        </button>
+    </div>
+</form>

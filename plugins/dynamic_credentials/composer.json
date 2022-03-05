@@ -1,0 +1,8 @@
+{
+  "name": "tuleap/plugin-dynamic-credentials",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\DynamicCredentials\\": "include/"
+    }
+  }
+}

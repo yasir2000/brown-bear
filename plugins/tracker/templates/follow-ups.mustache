@@ -1,0 +1,23 @@
+<ul class="tracker_artifact_followups">
+    {{# followups }}
+        <li id="followup_{{ getId }}" data-test="artifact-follow-up" data-changeset-id="followup_{{ getId }}">
+            <div class="tracker_artifact_followup_header">
+                {{{ getAvatar }}}
+
+                <div>
+                    {{{ getUserLink }}}
+                    <p class="tracker_artifact_followup_date">{{{ getTimeAgo }}}</p>
+                </div>
+            </div>
+            <div class="tracker_artifact_followup_content">
+                {{{ getFollowupContent }}}
+            </div>
+            <div style="clear:both;"></div>
+        </li>
+    {{/ followups }}
+    {{^ followups }}
+        <li class="empty-state">
+            {{ no_comment }}
+        </li>
+    {{/ followups }}
+</ul>

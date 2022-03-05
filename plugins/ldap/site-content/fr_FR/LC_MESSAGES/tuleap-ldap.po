@@ -1,0 +1,213 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Thomas Gorka <thomas.gorka@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#, php-format
+msgid "%1$s internal login:"
+msgstr "Login interne %1$s&nbsp;:"
+
+#, php-format
+msgid "%1$s login"
+msgstr "compte %1$s"
+
+msgid "%s group name"
+msgstr "nom du groupe %s"
+
+msgid "<em>Required for CVS, FTP and Subversion accesses</em>."
+msgstr "<em>Nécessaire pour les accès Shell, CVS, FTP et Subversion</em>."
+
+msgid ""
+"<strong>%s</strong> is already linked with %s group <strong>%s</strong>."
+msgstr "<strong>%s</strong> est déjà lié avec le groupe%s <strong>%s</strong>."
+
+msgid "Account details"
+msgstr "Détails du compte"
+
+msgid "Account preferences"
+msgstr "Préférences du compte"
+
+msgid "Add those who are not already member of this %s group."
+msgstr ""
+"Les utilisateurs de l'annuaire non membres de ce groupe y sont ajoutés."
+
+#, php-format
+msgid "An error occured during account update: %1$s."
+msgstr "Une erreur s'est produite pendant la mise à jour du compte: %1$s."
+
+msgid "Bind with group from %s"
+msgstr "Lier avec un groupe %s"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Email Address:"
+msgstr "Adresse email&nbsp;:"
+
+msgid "Every night the group will be synchronized with the %s one."
+msgstr "Chaque nuit, le groupe sera synchronisé avec le groupe %s."
+
+#, php-format
+msgid "Fields marked with %1$s are mandatory."
+msgstr "Les champs marqués %1$s sont obligatoires."
+
+#, php-format
+msgid "First login to %1$s"
+msgstr "Premier login sur %1$s"
+
+#, php-format
+msgid "Group %1$s not found in directory"
+msgstr "Le groupe %1$s n'existe pas dans l'annuaire"
+
+msgid "If you choose to synchronize with a group from %s, it will:"
+msgstr "Lors de la synchronisation avec %s :"
+
+msgid "LDAP Plugin. Provides LDAP information as well as LDAP authentication."
+msgstr ""
+"Plugin LDAP. Permet l'affichage des information LDAP des utilisateurs, ainsi "
+"que l'authentification LDAP."
+
+msgid "LDAP Sync Results"
+msgstr "Résultats LDAP Sync"
+
+msgid "LDAP Sync Results for %projectName%"
+msgstr "Résultats de synchronisation LDAP pour %projectName%"
+
+msgid "Link with %s group"
+msgstr "Liéer avec un groupe %s"
+
+#, php-format
+msgid "No %1$s login found"
+msgstr "Aucun compte %1$s trouvé"
+
+msgid "No users were added"
+msgstr "Aucun utilisateur n'a été ajouté"
+
+msgid "No users were removed"
+msgstr "Aucun utilisateur n'a été supprimé"
+
+msgid "Please select a %s group."
+msgstr "Veuillez sélectionner un groupe %s."
+
+#, php-format
+msgid "Please use your %1$s login (not the %2$s one)."
+msgstr "Merci d'utiliser vos identifiants %1$s (pas ceux de %2$s)."
+
+msgid "Preserve members"
+msgstr "Préserver les membres"
+
+msgid "Preserve users that are not part of the %s group."
+msgstr ""
+"Les membres de ce groupe qui n'appartiennent pas au groupe %s ne seront pas "
+"supprimés."
+
+msgid ""
+"Receive Email about Site Updates <em>(Very low traffic and includes security "
+"notices. Highly Recommended.)</em>"
+msgstr ""
+"Recevoir du courrier électronique à propos des mises à jour du site "
+"<i>(Faible trafic et informations relatives à la sécurité. Fortement "
+"recommandé.)</I>"
+
+msgid "Receive additional community mailings. <em>(Low traffic.)</em>"
+msgstr ""
+"Recevoir du courrier électronique supplémentaire au sujet de la communauté. "
+"<I>(Faible trafic)</I>"
+
+msgid ""
+"Remove all users who belong to this %s group but not to the %s group if you "
+"don't enable\n"
+"                      the 'Preserve members' option."
+msgstr ""
+"Les utilisateurs membres de ce groupe %s mais pas dans %s sont supprimés si "
+"vous ne choisissez pas l'option 'Préserver les membres'."
+
+#, php-format
+msgid "Set %1$s group binding"
+msgstr "Lier avec un groupe %1$s"
+
+msgid "Set directory group binding"
+msgstr "Lier avec un groupe de l'annuaire"
+
+msgid "Synchronize"
+msgstr "Synchroniser"
+
+msgid "Synchronize daily"
+msgstr "Synchroniser journalièrement"
+
+msgid "Thank you to fill the following before accessing your data:"
+msgstr "Merci de remplir les champs suivants avant d'accéder à la suite&nbsp;:"
+
+msgid "Timezone"
+msgstr "Fuseau Horaire"
+
+msgid ""
+"Unable to retrieve LDAP info for your user account, skipping Welcome page"
+msgstr ""
+"Impossible de récupérer les informations vous concernant depuis l'annuaire "
+"LDAP"
+
+msgid "Unlink group and %s"
+msgstr "Supprimer le lien avec %s"
+
+#, php-format
+msgid "Update %1$s group binding (%2$s)"
+msgstr "Mettre à jour le lien avec %1$s (%2$s)"
+
+#, php-format
+msgid "Update directory group binding (%s)"
+msgstr "Mettre à jour le lien avec l'annuaire (%s)"
+
+msgid "Update my account"
+msgstr "Mettre à jour mon compte"
+
+msgid "User group no longer linked with the directory"
+msgstr "Ce groupe n'est plus lié avec l'annuaire"
+
+msgid "User name:"
+msgstr "Nom de l'utilisateur&nbsp;:"
+
+#, php-format
+msgid "User not found: %1$s"
+msgstr "Pas d'utilisateur trouvé: %1$s"
+
+msgid "User settings update error"
+msgstr "Erreur lors de la mise à jour des paramètres de l'utilisateur"
+
+msgid "Users added"
+msgstr "Utilisateurs ajoutés"
+
+msgid "Users removed"
+msgstr "Utilisateurs supprimés"
+
+#, php-format
+msgid "Welcome %1$s"
+msgstr "Bienvenue %1$s"
+
+msgid ""
+"You must supply a timezone.<br /><br />Click on 'Back' to return to the "
+"previous screen and select a timezone."
+msgstr ""
+"Prière de choisir un autre fuseau horaire que 'Aucun'. <br /><br />Cliquez "
+"sur 'Retour' et choisissez un fuseau horaire."
+
+#, php-format
+msgid ""
+"[LDAP Daily Synchronization] %1$s is suspended, please clean up %2$s project."
+msgstr ""
+"[Synchronisation LDAP quotidienne] %1$s est suspendu, veuillez nettoyer le "
+"projet %2$s."
+
+#, php-format
+msgid "[Reminder][LDAP Synch] The user %1$s will be deleted tomorrow"
+msgstr "[Rappel][Synchronisation LDAP] L'utilisateur %1$s sera détruit demain"

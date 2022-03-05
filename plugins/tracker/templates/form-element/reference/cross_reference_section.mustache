@@ -1,0 +1,39 @@
+{{^ has_cross_refs_to_display }}
+<div>
+    <span class='empty_value'>
+        {{# dgettext }}tuleap-tracker | References list is empty{{/ dgettext }}
+    </span>
+</div>
+{{/ has_cross_refs_to_display }}
+
+{{# by_direction }}
+    {{# has_source }}
+        <h5>{{# dgettext }}tuleap-tracker | Referencing {{ artifact_xref }}{{/ dgettext}}</h5>
+        {{# sources_by_nature }}
+
+            {{> cross_reference }}
+
+        {{/ sources_by_nature }}
+    {{/ has_source }}
+
+    {{# has_target }}
+        <div class="tracker-cross-reference-by-section-toggle">
+            <label class="tlp-label" for="toggle-cross-referenced-by">
+                {{# dgettext }}tuleap-tracker | Show items referenced by {{ artifact_xref }}{{/ dgettext }}
+            </label>
+            <div class="tlp-switch tracker-cross-reference-switch">
+                <input type="checkbox" id="toggle-cross-referenced-by" class="tlp-switch-checkbox" autocomplete="off">
+                <label for="toggle-cross-referenced-by" class="tlp-switch-button" aria-hidden></label>
+            </div>
+        </div>
+
+        <div id="tracker-cross-referenced-by-section" class="tracker-cross-reference-hide-referenced-by">
+            <h5>{{# dgettext }}tuleap-tracker | Referenced by {{ artifact_xref }}{{/ dgettext }}</h5>
+            {{# targets_by_nature }}
+
+                {{> cross_reference }}
+
+            {{/ targets_by_nature }}
+        </div>
+    {{/ has_target }}
+{{/ by_direction }}

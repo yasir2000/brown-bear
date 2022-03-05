@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="git">
+    <interleave>
+      <zeroOrMore>
+        <element name="repository">
+          <interleave>
+            <attribute name="bundle-path">
+              <data type="string"/>
+            </attribute>
+            <attribute name="name">
+              <data type="string"/>
+            </attribute>
+            <optional>
+              <attribute name="description">
+                <data type="string"/>
+              </attribute>
+            </optional>
+            <choice>
+              <interleave>
+                <optional>
+                  <element name="read">
+                    <zeroOrMore>
+                      <element name="ugroup">
+                        <data type="string"/>
+                      </element>
+                    </zeroOrMore>
+                  </element>
+                </optional>
+                <optional>
+                  <element name="write">
+                    <zeroOrMore>
+                      <element name="ugroup">
+                        <data type="string"/>
+                      </element>
+                    </zeroOrMore>
+                  </element>
+                </optional>
+                <optional>
+                  <element name="wplus">
+                    <zeroOrMore>
+                      <element name="ugroup">
+                        <data type="string"/>
+                      </element>
+                    </zeroOrMore>
+                  </element>
+                </optional>
+              </interleave>
+              <interleave>
+                <optional>
+                  <element name="permissions">
+                    <interleave>
+                      <optional>
+                        <element name="read">
+                          <zeroOrMore>
+                            <element name="ugroup">
+                              <data type="string"/>
+                            </element>
+                          </zeroOrMore>
+                        </element>
+                      </optional>
+                      <optional>
+                        <element name="write">
+                          <zeroOrMore>
+                            <element name="ugroup">
+                              <data type="string"/>
+                            </element>
+                          </zeroOrMore>
+                        </element>
+                      </optional>
+                      <optional>
+                        <element name="wplus">
+                          <zeroOrMore>
+                            <element name="ugroup">
+                              <data type="string"/>
+                            </element>
+                          </zeroOrMore>
+                        </element>
+                      </optional>
+                      <optional>
+                        <element name="fine_grained">
+                          <interleave>
+                            <attribute name="enabled">
+                              <data type="boolean"/>
+                            </attribute>
+                            <attribute name="use_regexp">
+                              <data type="boolean"/>
+                            </attribute>
+                            <zeroOrMore>
+                              <element name="pattern">
+                                <interleave>
+                                  <attribute name="value">
+                                    <data type="string"/>
+                                  </attribute>
+                                  <attribute name="type">
+                                    <choice>
+                                      <value>branch</value>
+                                      <value>tag</value>
+                                    </choice>
+                                  </attribute>
+                                  <optional>
+                                    <element name="write">
+                                      <zeroOrMore>
+                                        <element name="ugroup">
+                                          <data type="string"/>
+                                        </element>
+                                      </zeroOrMore>
+                                    </element>
+                                  </optional>
+                                  <optional>
+                                    <element name="wplus">
+                                      <zeroOrMore>
+                                        <element name="ugroup">
+                                          <data type="string"/>
+                                        </element>
+                                      </zeroOrMore>
+                                    </element>
+                                  </optional>
+                                </interleave>
+                              </element>
+                            </zeroOrMore>
+                          </interleave>
+                        </element>
+                      </optional>
+                    </interleave>
+                  </element>
+                </optional>
+                <optional>
+                  <element name="references">
+                    <ref name="references"/>
+                  </element>
+                </optional>
+              </interleave>
+            </choice>
+            <optional>
+              <element name="last-push-date">
+                <interleave>
+                  <element name="user">
+                    <ref name="user_last_push_date"/>
+                  </element>
+                  <attribute name="push_date">
+                    <data type="string"/>
+                  </attribute>
+                  <attribute name="commits_number">
+                    <data type="string"/>
+                  </attribute>
+                  <attribute name="refname">
+                    <data type="string"/>
+                  </attribute>
+                  <attribute name="operation_type">
+                    <data type="string"/>
+                  </attribute>
+                  <attribute name="refname_type">
+                    <data type="string"/>
+                  </attribute>
+                </interleave>
+              </element>
+            </optional>
+          </interleave>
+        </element>
+      </zeroOrMore>
+      <optional>
+        <element name="ugroups-admin">
+          <zeroOrMore>
+            <element name="ugroup">
+              <data type="string"/>
+            </element>
+          </zeroOrMore>
+        </element>
+      </optional>
+      <optional>
+        <element name="jenkins-servers-admin">
+          <oneOrMore>
+            <element name="jenkins-server">
+              <attribute name="url">
+                <data type="string"/>
+              </attribute>
+              <empty/>
+            </element>
+          </oneOrMore>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="user_last_push_date">
+    <choice>
+      <attribute name="format">
+        <choice>
+          <value>username</value>
+          <value>ldap</value>
+          <value>id</value>
+          <value>email</value>
+        </choice>
+      </attribute>
+      <group>
+        <attribute name="format">
+          <value>email</value>
+        </attribute>
+        <attribute name="is_anonymous">
+          <data type="boolean"/>
+        </attribute>
+      </group>
+    </choice>
+    <data type="string"/>
+  </define>
+</grammar>

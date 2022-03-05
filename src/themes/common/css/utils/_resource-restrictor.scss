@@ -1,0 +1,70 @@
+#allowed-projects-all-form {
+    margin: 40px 0;
+
+    #allowed-projects-all-allowed-state {
+        margin: 10px 0 0;
+    }
+}
+
+#allowed-projects-list {
+    max-width: 960px;
+
+    > form {
+        > #allowed-projects-list-actions {
+            margin: 0 0 10px;
+
+            > div,
+            > button {
+                display: inline-block;
+                margin: 0;
+            }
+
+            #project-to-allow-autocompleter {
+                > #project-to-allow {
+                    max-width: 200px;
+                }
+
+                > button {
+                    border-radius: 0 var(--tlp-medium-radius) var(--tlp-medium-radius) 0;
+                }
+
+                /* stylelint-disable-next-line selector-id-pattern */
+                #search_indicator {
+                    visibility: hidden;
+                    position: absolute;
+                }
+            }
+
+            > .filter {
+                float: right;
+
+                > .add-on {
+                    font-family: "Font Awesome 5 Free";
+                    font-size: 12px;
+                }
+
+                > #filter-projects {
+                    max-width: 210px;
+                }
+            }
+        }
+
+        > table {
+            .checkbox-cell {
+                width: 15px;
+            }
+
+            .id-cell {
+                width: 50px;
+            }
+
+            #empty-project-list {
+                padding: 40px;
+                color: #bbbbbb;
+                font-size: 0.9em;
+                font-style: italic;
+                text-align: center;
+            }
+        }
+    }
+}

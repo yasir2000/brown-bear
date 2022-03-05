@@ -1,0 +1,36 @@
+{{^ semantic_done_is_defined }}
+    <p>
+        {{# dgettext }}
+            tuleap-velocity |
+            <b>Done</b> semantic is needed since Velocity computation is made over <b>done</b> artifacts. Please select a Done semantic first.
+        {{/ dgettext }}
+    </p>
+{{/ semantic_done_is_defined }}
+
+{{# can_status_semantic_have_multiple_values }}
+    {{> velocity-status-type-error }}
+{{/ can_status_semantic_have_multiple_values }}
+
+{{^ can_status_semantic_have_multiple_values }}
+    {{# semantic_done_is_defined }}
+
+        {{> velocity-chart-information }}
+
+        {{> velocity-children-without-velocity-semantic }}
+
+        {{> velocity-backlog-configuration-problems }}
+
+        {{^ has_at_least_one_tracker_correctly_configured }}
+            <p>
+                {{^ velocity_field }}
+                    {{# dgettext }}tuleap-velocity | No field defined for velocity computation.{{/ dgettext }}
+                {{/ velocity_field }}
+
+                {{# velocity_field }}
+                    {{# dgettext }} tuleap-velocity | Field used for velocity computation: {{/ dgettext }}
+                    <b>{{ velocity_field_label }}</b>
+                {{/ velocity_field }}
+            </p>
+        {{/ has_at_least_one_tracker_correctly_configured }}
+    {{/ semantic_done_is_defined }}
+{{/ can_status_semantic_have_multiple_values }}

@@ -1,0 +1,114 @@
+<div>
+    <p>
+        {{ semantic_usages_description }}
+    </p>
+    <div>
+        <form action="{{ updater_url }}" method="post">
+            {{# csrf_token }}
+                {{> csrf_token_input }}
+            {{/ csrf_token }}
+            {{# dgettext }} tuleap-tracker | The computation of the progression will be {{/ dgettext }}
+            <select id="computation-method" name="computation-method" required>
+                <option value="" disabled selected>{{# dgettext }} tuleap-tracker | Choose a method... {{/ dgettext }}</option>
+                {{# available_computation_methods }}
+                    <option value="{{ name }}" {{# is_selected }}selected{{/ is_selected }}>{{ label }}</option>
+                {{/ available_computation_methods }}
+            </select>:
+            <div
+                id="effort-based-config"
+                class="
+                    semantic-progress-computation-method-config
+                    {{# is_method_effort_based }} selected-computation-method-config {{/ is_method_effort_based }}
+                "
+            >
+                <div class="control-group">
+                    <label class="control-label" for="total-effort">
+                        {{# dgettext }} tuleap-tracker | Total effort{{/ dgettext}}
+                        <span class="highlight">*</span>
+                    </label>
+                    <div class="controls">
+                        <select id="total-effort"
+                                name="total-effort-field-id"
+                                {{^ is_method_effort_based }} disabled {{/ is_method_effort_based }}
+                                required
+                        >
+                            <option value="">{{# dgettext }} tuleap-tracker | Choose a field... {{/ dgettext }}</option>
+                            {{# total_effort_options }}
+                                <option value="{{ id }}"
+                                        {{# is_selected }}selected{{/ is_selected }}>{{ label }}</option>
+                            {{/ total_effort_options }}
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="remaining-effort">
+                        {{# dgettext }} tuleap-tracker | Remaining effort{{/ dgettext}}
+                        <span class="highlight">*</span>
+                    </label>
+                    <div class="controls">
+                        <select id="remaining-effort"
+                                name="remaining-effort-field-id"
+                                {{^ is_method_effort_based }} disabled {{/ is_method_effort_based }}
+                                required
+                        >
+                            <option value="">{{# dgettext }} tuleap-tracker | Choose a field... {{/ dgettext }}</option>
+                            {{# remaining_effort_options }}
+                                <option value="{{ id }}"
+                                        {{# is_selected }}selected{{/ is_selected }}>{{ label }}</option>
+                            {{/ remaining_effort_options }}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div
+                id="links-count-based-config"
+                class="
+                    semantic-progress-computation-method-config
+                    {{# is_method_links_count_based }} selected-computation-method-config {{/ is_method_links_count_based }}
+                    {{^ has_a_link_field }} links-count-based-config-impossible {{/ has_a_link_field }}
+                "
+            >
+                {{# has_a_link_field }}
+                    <div class="alert alert-info">
+                        {{# dgettext }}
+                            tuleap-tracker
+                            | Only artifacts linked with the type "Child" will be taken into account in the computation of the progress.
+                        {{/ dgettext }}
+                        <br>
+                        {{# dgettext }}
+                            tuleap-tracker
+                            | The progress will be computed by dividing the total number of direct children by the number of closed direct children.
+                        {{/ dgettext }}
+                    </div>
+                {{/ has_a_link_field }}
+                {{^ has_a_link_field }}
+                    <div class="alert alert-error">
+                        {{# dgettext }} tuleap-tracker
+                            | Please <a href="{{ tracker_fields_admin_url }}">add an artifact link field</a> to your tracker first.
+                        {{/ dgettext }}
+                    </div>
+                {{/ has_a_link_field }}
+            </div>
+            <div>
+                <button id="update-semantic-progress-button" class="btn btn-primary" type="submit" name="update-semantic-progress">
+                    {{# dgettext }} tuleap-tracker | Save your modifications {{/ dgettext }}
+                </button>
+                {{# is_semantic_defined }}
+                    {{# dgettext }} tuleap-tracker | or {{/ dgettext }}
+                    <button
+                        class="btn btn-danger"
+                        type="submit"
+                        name="reset-semantic-progress"
+                    >
+                        {{# dgettext }} tuleap-tracker | Reset this semantic {{/ dgettext }}
+                    </button>
+                {{/ is_semantic_defined }}
+            </div>
+        </form>
+    </div>
+    <div>
+        <a href="{{ tracker_semantic_admin_url }}">
+            {{# dgettext }} tuleap-tracker | « Go back to semantic overview {{/ dgettext }}
+        </a>
+    </div>
+</div>

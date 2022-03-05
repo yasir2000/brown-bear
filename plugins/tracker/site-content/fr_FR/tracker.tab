@@ -1,0 +1,31 @@
+plugin_tracker	service_lbl_key	Suivi
+plugin_tracker	service_desc_key	Outils de suivi du projet
+
+project_admin_utils	tracker_date_reminder_title	Options de Rappel sur date de tracker
+project_admin_utils	tracker_date_reminder_add	Rappel sur date de tracker ajouté $1
+project_admin_utils	tracker_date_reminder_edit	Rappel sur date de tracker mis a jour $1
+project_admin_utils	tracker_date_reminder_delete	Rappel sur date de tracker supprimé $1
+project_admin_utils	tracker_date_reminder_sent	Rappel de date sur le tracker envoyé $1
+project_admin_utils	tracker_date_reminder_before	Avant
+project_admin_utils	tracker_date_reminder_after	Après
+project_admin_utils	tracker_date_reminder_enabled	Activé
+project_admin_utils	tracker_date_reminder_disabled	Desactivé
+project_admin_utils	tracker_date_reminder_invalid_field	'$1' n'est pas un Id de champs date valide
+project_admin_utils	tracker_date_reminder_invalid_distance	'$1' n'est pas une distance valide
+project_admin_utils	tracker_date_reminder_invalid_Tracker	'$1' n'est pas un Id de tracker valide
+project_admin_utils	tracker_date_reminder_invalid_notification_type	'$1' n'est pas un type de notification valide
+project_admin_utils	tracker_date_reminder_invalid_status	'$1' n'est pas un status valide
+project_admin_utils	tracker_date_reminder_invalid_reminder	'$1' n'est pas un rappel sur un champ de type date valide
+project_admin_utils	tracker_date_reminder_invalid_ugroup	'$1' n'est pas un groupe d'utilisateurs projet valide
+project_admin_utils	tracker_date_reminder_invalid_role_param	Vous devez sélectionner un rôle de Tracker valide
+project_admin_utils	tracker_date_reminder_empty_people_param	Vous devez sélectionner au moins un ugroup valid ou un rôle de Tracker valide
+project_admin_utils	tracker_date_reminder_before_submittedOn	Impossible d'ajouter un rappel sur date de tracker avant le champ 'SubmittedOn'
+project_admin_utils	tracker_date_reminder_duplicated	Un rappel sur date avec les mêmes paramètres existe déjà, vous devez le mettre à jour
+project_admin_utils	tracker_date_reminder_optgroup_label_ugroup	Groupes d'utilisateurs
+project_admin_utils	tracker_date_reminder_optgroup_label_role	Rôles
+project_admin_utils	global_notification_update	Mise à jour des notifications globales pour l'outil de suivi $1.
+project_admin_utils	user_notification_update	L'utilisateur $1($2) a mis à jour la configuration de ses notifications pour l'outil de suivi $3
+project_admin_utils	global_notification_update_with_force	Mise à jour des notifications globales en écrasant les paramètres de notification des utilisateurs pour l'outil de suivi $1.
+project_admin_utils	tracker_formelement_update	Mise à jour du champ
+project_admin_utils	artifact_delete_log	Artéfact supprimé
+project_admin_utils	tracker_promotion	Promotion de l'outil de suivi $1

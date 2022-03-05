@@ -1,0 +1,11 @@
+{
+  "name": "tuleap/plugin-referencealias-mediawiki",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\ReferenceAliasMediawiki\\": [
+        "include/",
+        "include/ReferenceAliasMediawiki/"
+      ]
+    }
+  }
+}

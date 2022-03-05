@@ -1,0 +1,136 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+@use "sass:map";
+@use "sass:color";
+
+.release-number-artifact {
+    grid-column: 1;
+    grid-row: 1;
+
+    .tlp-pane-subtitle {
+        margin: 0 0 var(--tlp-small-spacing) 0;
+    }
+}
+
+.release-number-artifacts-tracker {
+    display: flex;
+    align-items: center;
+    width: inherit;
+    margin: 0 var(--tlp-medium-spacing) var(--tlp-small-spacing) 0;
+}
+
+.release-number-artifacts-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin: 0 5px 0 0;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+//  stylelint-disable-next-line selector-no-qualifying-type
+body.theme-condensed .release-number-artifacts-value {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+}
+
+@each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+    .release-number-artifacts-tracker-#{$color-name} > .release-number-artifacts-value {
+        border: 1px solid color.adjust(map.get($colors, "primary"), $alpha: - 0.4);
+        background: color.adjust(map.get($colors, "primary"), $alpha: - 0.9);
+        color: map.get($colors, "text");
+    }
+
+    .release-number-artifacts-tracker-#{$color-name} .release-number-artifacts-text {
+        display: inline-block;
+        width: max-content;
+        max-width: 160px;
+        padding: calc(var(--tlp-small-spacing) / 2) 0 calc(var(--tlp-small-spacing) / 2) 0;
+        overflow: hidden;
+        color: map.get($colors, "text");
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.release-number-artifact-container {
+    display: flex;
+    flex-flow: column wrap;
+
+    @media screen and (max-width: 1800px) {
+        flex-direction: row;
+    }
+}
+
+.project-milestones-display-description .release-number-artifact-container {
+    flex-direction: column;
+}
+
+.project-milestones-display-on-line-tracker .release-number-artifact-container {
+    flex-direction: row;
+}
+
+.project-milestones-display-burndown-chart.project-milestones-display-burnup-chart.project-milestones-display-ttm-chart
+    .release-number-artifact-container {
+    flex-direction: column;
+
+    @media screen and (max-width: 1800px) {
+        flex-direction: row;
+    }
+}
+
+.project-milestones-display-description.project-milestones-display-burndown-chart.project-milestones-display-burnup-chart.project-milestones-display-ttm-chart
+    .release-number-artifact-container {
+    flex-direction: column;
+}
+
+.two-columns-small-big > div:first-of-type,
+.two-columns-big-small > div:nth-of-type(2),
+.three-columns,
+.three-columns-big-small-small > div:nth-of-type(2),
+.three-columns-big-small-small > div:nth-of-type(3),
+.three-columns-small-big-small > div:first-of-type,
+.three-columns-small-big-small > div:nth-of-type(3),
+.three-columns-small-small-big > div:first-of-type,
+.three-columns-small-small-big > div:nth-of-type(2) {
+    .project-milestones-display-burndown-chart.project-milestones-display-burnup-chart
+        .release-number-artifact-container,
+    .project-milestones-only-trackers-to-display .release-number-artifact-container {
+        flex-direction: row;
+    }
+
+    .project-milestones-display-description.project-milestones-display-burndown-chart.project-milestones-display-burnup-chart
+        .release-number-artifact-container {
+        flex-direction: column;
+    }
+
+    .release-number-artifact-color {
+        flex-direction: column;
+
+        @media screen and (max-width: 1800px) {
+            flex-direction: row;
+        }
+    }
+}

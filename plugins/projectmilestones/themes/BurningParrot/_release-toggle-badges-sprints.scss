@@ -1,0 +1,300 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "release-chart";
+
+$border-width-px: calc(12px - 1px * var(--tlp-is-condensed));
+$heigh-bar-px: calc(32px - 6px * var(--tlp-is-condensed));
+$top-compress-icon-px: calc(6px - 2px * var(--tlp-is-condensed));
+$width-bar-left-sprints: 16px;
+
+.project-release-infos-badges .project-release-info-badge-open-sprint {
+    position: relative;
+    align-self: start;
+    cursor: pointer;
+}
+
+.project-release-infos-badges .project-release-info-badge-open-sprint::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 11px;
+    left: -25px;
+    width: 25px;
+    height: 2px;
+    background: var(--tlp-main-color);
+}
+
+.project-release-open-sprint-badge-icon-toggle {
+    content: "";
+    display: flex;
+    position: relative;
+    z-index: 3;
+    top: 5px;
+    left: -15px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--tlp-main-color);
+    color: var(--tlp-white-color);
+    line-height: normal;
+
+    &::before {
+        content: "";
+    }
+}
+
+.project-release-open-sprint-badges .project-release-open-sprint-badge-icon-toggle::before {
+    content: "\f141"; // fa-ellipsis-h
+    font-size: 0.8rem;
+}
+
+.can-close-sprint
+    .project-release-open-sprint-badges:hover
+    .project-release-open-sprint-badge-icon-toggle {
+    cursor: pointer;
+
+    &::before {
+        content: "\f065"; // fa-expand
+        position: relative;
+        top: -1px;
+        font-size: 0.6rem;
+    }
+}
+
+.on-open-sprints-details
+    .project-release-open-sprint-badges
+    .project-release-open-sprint-badge-icon-toggle::before {
+    content: "";
+}
+
+.on-open-sprints-details
+    .project-release-open-sprint-badges:hover
+    .project-release-open-sprint-badge-icon-toggle {
+    cursor: default;
+
+    &::before {
+        content: "";
+    }
+}
+
+.can-close-sprint .open-badges-sprints:hover .project-release-open-sprint-badge-icon-toggle {
+    background: transparent;
+}
+
+.on-open-sprints-details .project-release-info-badge-open-sprint {
+    display: flex;
+    width: calc(100% - #{$width-bar-left-sprints});
+    margin: 0 0 var(--tlp-small-spacing) 0;
+    border-radius: 15px 0 0 15px;
+    cursor: default;
+
+    &.tlp-badge-outline {
+        border-right: 0;
+
+        &::after {
+            right: -11px;
+            border-color: transparent transparent transparent var(--tlp-main-color-lighter-90);
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -13px;
+        width: 0;
+        height: 0;
+        border-width: $border-width-px 0 $border-width-px 12px;
+        border-style: solid;
+        border-color: transparent transparent transparent var(--tlp-main-color);
+    }
+}
+
+.label-open-sprints {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.project-release-open-sprint-badges {
+    display: inline-flex;
+    margin: 0 0 0 #{- $width-bar-left-sprints};
+}
+
+.project-release-badges-open-closed.open-badges-sprints .project-release-open-sprint-badges {
+    margin: 0 0 0 #{- $width-bar-left-sprints};
+}
+
+.milestone-badges-sprints-separator {
+    width: calc(100% + var(--tlp-medium-spacing) + (var(--tlp-medium-spacing) + 6px));
+    height: 1px;
+    margin: var(--tlp-small-spacing) calc(-1 * var(--tlp-medium-spacing)) var(--tlp-medium-spacing)
+        calc(-1 * var(--tlp-medium-spacing) - 6px);
+    border: 0;
+    background: linear-gradient(
+        to right,
+        release-chart.$timeline-color,
+        var(--tlp-neutral-normal-color)
+    );
+}
+
+.project-release-closed-sprint-badge {
+    position: relative;
+    width: min-content;
+    margin: 0;
+    background: var(--tlp-neutral-dark-color);
+    color: var(--tlp-dimmed-color);
+}
+
+.project-release-closed-sprint-badge::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 11px;
+    left: -25px;
+    width: 25px;
+    height: 2px;
+    background: var(--tlp-dimmed-color);
+}
+
+.project-release-closed-sprint-badge::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 4px;
+    left: -32px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--tlp-dimmed-color);
+}
+
+.can-close-sprint .open-badges-sprints:hover .project-release-closed-sprint-badge::before {
+    display: none;
+}
+
+.container-icon-badge-button-to-close {
+    position: relative;
+    top: -5px;
+    left: -31px;
+    width: 17px;
+    height: 52px;
+    margin: calc(-1 * var(--tlp-medium-spacing)) 0;
+    padding-right: 35px;
+}
+
+.can-close-sprint .icon-badge-sprint-to-close {
+    content: "";
+    display: flex;
+    position: absolute;
+    z-index: 5;
+    top: calc((100% + #{$top-compress-icon-px}) / 2);
+    left: 4px;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin: calc(-1 * var(--tlp-medium-spacing)) 0;
+    background: transparent;
+    color: var(--tlp-white-color);
+
+    &::before {
+        content: "";
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.can-close-sprint .open-badges-sprints:hover .icon-badge-sprint-to-close,
+.can-close-sprint .icon-badge-sprint-to-close:hover {
+    &::before {
+        content: "\f066"; // fa-compress
+        font-size: 0.6rem;
+    }
+}
+
+.project-release-badges-open-closed {
+    display: flex;
+}
+
+.project-release-badges-open-closed.open-badges-sprints {
+    position: relative;
+    flex-direction: column;
+    margin: 0 0 0 -35px;
+    padding: 0 0 0 35px;
+}
+
+.project-release-badge-open-sprint {
+    display: flex;
+    width: 100%;
+}
+
+.on-open-sprints-details .project-release-open-sprint-badges {
+    max-width: 50%;
+}
+
+.project-release-badge-open-sprint-buttons {
+    margin: calc(var(--tlp-small-spacing) / 2) 0 0 var(--tlp-large-spacing);
+}
+
+.project-release-infos-badges-all-sprint-badges {
+    display: flex;
+    flex-direction: column;
+}
+
+.can-close-sprint .open-badges-sprints:hover {
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 12px;
+        left: 10px;
+        width: 4px;
+        height: calc(100% - #{$heigh-bar-px});
+        background: var(--tlp-main-color);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: calc(calc(100% - (25px - (6px * var(--tlp-is-condensed)))) / 2);
+        left: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--tlp-main-color);
+    }
+}
+
+.project-release-badges-capacity-effort {
+    display: flex;
+    align-items: baseline;
+
+    > .release-description-link {
+        margin: 0 0 0 var(--tlp-small-spacing);
+    }
+}

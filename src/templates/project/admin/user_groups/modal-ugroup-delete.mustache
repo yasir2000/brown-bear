@@ -1,0 +1,39 @@
+<form method="POST"
+      action="/project/admin/ugroup.php?group_id={{ project_id }}&ugroup_id={{ id }}&func=delete"
+      class="tlp-modal tlp-modal-danger"
+      role="dialog"
+      id="project-admin-delete-ugroups-modal-{{ id }}"
+      aria-labelledby="project-admin-delete-user-group-modal-title-{{ id }}"
+>
+    {{# csrf }}
+        {{> csrf_token_input }}
+    {{/ csrf }}
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title" id="project-admin-delete-user-group-modal-title-{{ id }}">
+            {{# gettext }} Delete users group {{/ gettext }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="{{# gettext }}Close{{/ gettext }}">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body project-admin-delete-user-group-modal-content">
+        <p>{{# gettext }}
+            You are about to delete <b>%s</b> users group. Please, confirm your action.
+            | {{ name }}
+        {{/ gettext }}</p>
+        {{# is_synchronized_project_membership }}
+            <p class="tlp-alert-warning">{{# gettext }}
+                All members of %s will remain project members.
+                | {{ name }}
+            {{/ gettext }}</p>
+        {{/ is_synchronized_project_membership }}
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="reset" class="tlp-button-danger tlp-button-outline tlp-modal-action" data-dismiss="modal">
+            {{# gettext }}Cancel{{/ gettext }}
+        </button>
+        <button type="submit" class="tlp-button-danger tlp-modal-action user-group-modal-button">
+            <i class="far fa-trash-alt tlp-button-icon"></i> {{# gettext }}Delete users group{{/ gettext }}
+        </button>
+    </div>
+</form>

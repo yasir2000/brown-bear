@@ -1,0 +1,91 @@
+<section class="tlp-pane tracker-cross-reference-nature nature">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">
+                {{# icon }}
+                    <i class="tlp-pane-title-icon {{ . }}" aria-hidden="true"></i>
+                {{/ icon }}
+                {{ label }}
+            </h1>
+        </div>
+        {{# sections }}
+            <section class="tlp-pane-section-for-cards">
+                {{# label }}
+                    <h2 class="tlp-pane-subtitle">{{ . }}</h2>
+                {{/ label }}
+                {{# cross_references }}
+                    <div class="tlp-card-container" id="{{ id }}">
+                        <a
+                            class="tlp-card tlp-card-selectable cross-reference tracker-cross-reference-card {{# can_delete }}tracker-cross-reference-card-deletable{{/ can_delete }}"
+                            href="{{ url }}"
+                        >
+                            <div class="tracker-cross-reference-card-main">
+                                {{# title_badge }}
+                                    {{# icon }}
+                                        <span class="tracker-cross-reference-title-icon tracker-cross-reference-title-icon-{{ color }}">
+                                            <i class="{{ . }}" aria-hidden="true"></i>
+                                        </span>
+                                    {{/ icon }}
+                                    {{^ icon }}
+                                        <span class="cross-ref-badge-{{ color }} cross-ref-badge tracker-cross-reference-title-badge">
+                                            {{ label }}
+                                        </span>
+                                    {{/ icon }}
+                                {{/ title_badge }}
+
+                                <span class="tracker-cross-reference-title cross-reference-title">
+                                    {{ title }}
+                                </span>
+
+                                {{# additional_badges }}
+                                    <span class="
+                                        {{# is_primary }}tlp-badge-primary{{/ is_primary }}
+                                        {{# is_secondary }}tlp-badge-secondary{{/ is_secondary }}
+                                        {{# is_danger }}tlp-badge-danger{{/ is_danger }}
+                                        {{# is_success }}tlp-badge-success{{/ is_success }}
+                                        {{^ is_plain }}tlp-badge-outline{{/ is_plain }}
+                                        tracker-cross-reference-additional-badge"
+                                    >
+                                        {{ label }}
+                                    </span>
+                                {{/ additional_badges }}
+                            </div>
+
+                            {{# creation_metadata }}
+                                <div class="tracker-cross-reference-creation-metadata">
+                                    {{# created_by }}
+                                        <span class="tracker-cross-reference-created-by-tlp-avatar-mini">
+                                            {{# has_avatar }}
+                                                <img src="{{ avatar_url }}" alt="{{# gettext }}User avatar{{/ gettext }}">
+                                            {{/ has_avatar }}
+                                        </span>
+                                        <span>
+                                        {{ display_name }}
+                                        </span>
+                                    {{/ created_by }}
+                                    {{# created_on }}
+                                        <span>
+                                            {{# created_by}},
+                                            {{/ created_by}}
+                                                {{> tlp_relative_date }}
+                                        </span>
+                                    {{/ created_on }}
+                                </div>
+                            {{/ creation_metadata }}
+                        </a>
+                        {{# can_delete }}
+                            <a
+                                class="tracker-cross-reference-delete-link delete_ref"
+                                href='{{ delete_url }}'
+                                onClick="return delete_ref('{{ id }}', '{{# dgettext }}tuleap-tracker | Delete the reference?{{/ dgettext }}');"
+                                title="{{# dgettext }}tuleap-tracker | Delete{{/ dgettext }}"
+                            >
+                                <i class="far fa-trash-alt" aria-hidden="true"></i>
+                            </a>
+                        {{/ can_delete }}
+                    </div>
+                {{/ cross_references }}
+            </section>
+        {{/ sections }}
+    </div>
+</section>

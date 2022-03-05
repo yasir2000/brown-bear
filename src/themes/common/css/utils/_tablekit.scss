@@ -1,0 +1,19 @@
+/* stylelint-disable-next-line selector-no-qualifying-type */
+th.resize-handle-active {
+    cursor: e-resize;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+div.resize-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    border-right: 1px dashed #1e90ff;
+    cursor: e-resize;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+th.drop-over {
+    background-color: #eeeef0;
+}

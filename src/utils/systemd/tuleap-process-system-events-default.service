@@ -1,0 +1,11 @@
+[Unit]
+Description=Tuleap default system events
+Documentation=https://docs.tuleap.org
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/tuleap process-system-event default
+
+[Install]
+WantedBy=multi-user.target

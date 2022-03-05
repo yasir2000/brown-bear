@@ -1,0 +1,200 @@
+# Please see https://docs.tuleap.org/installation-guide/docker-image.html
+#
+# This docker-compose file is meant to be used by developers working on the Tuleap codebase
+version: "2"
+
+services:
+  reverse-proxy:
+    build:
+      context: tools/docker/reverse-proxy
+    volumes:
+      - ./tools/docker/reverse-proxy/nginx.conf:/etc/nginx/nginx.conf:ro,cached
+      - reverse-proxy-cert:/etc/pki/tls
+    depends_on:
+    - web
+    - realtime
+
+  web:
+    image: ghcr.io/enalean/tuleap-aio-dev:c7-php80-nginx
+    volumes:
+      - .:/usr/share/tuleap:cached
+      - tuleap-data:/data
+      - realtime-cert:/etc/pki/ca-trust/source/anchors
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - .env:/root/.tuleap_env:ro
+    tmpfs: /run
+    env_file:
+    - .env
+    environment:
+    - TULEAP_SYS_DBHOST=db
+    depends_on:
+    - ldap
+    - db
+    - realtime
+
+  realtime:
+    build:
+      context: tools/docker/realtime
+    command: /tuleap/tools/docker/realtime/run.sh
+    volumes:
+      - .:/tuleap:ro,cached
+      - realtime-conf:/etc/tuleap-realtime
+      - realtime-cert:/published-certificate
+    env_file:
+      - .env
+
+  mailhog:
+    image: mailhog/mailhog
+
+  ldap:
+    image: ghcr.io/enalean/ldap
+    env_file:
+    - .env
+    volumes:
+      - ldap-data:/data
+
+  gerrit:
+    build:
+      context: tools/docker/gerrit
+    env_file:
+      - .env
+    environment:
+      - CANONICAL_WEB_URL=http://gerrit.tuleap-aio-dev.docker:8080
+    volumes:
+      - gerrit-data:/data
+    depends_on:
+      - ldap
+
+  jenkins:
+    build:
+      context: tools/docker/jenkins
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"
+    volumes:
+    - jenkins-data:/var/jenkins_home
+    - reverse-proxy-cert:/opt/reverse-proxy-cert:ro
+  
+  nexus: 
+    build:
+      context: tools/docker/nexus
+    image: sonatype/nexus3:3.30.0
+    volumes:
+    - ${NEXUS_VOLUME_DATA:-nexus-volume-data}:/nexus-data:Z
+    environment:
+    - INSTALL4J_ADD_VM_PARAMS
+  
+  sonarqube:   
+   build:
+      context: tools/docker/sonarqube
+   image: sonarqube:community
+   depends_on:
+   - sonarpgdb
+   volumes:
+   - ${SONAR_VOLUME_CONFIG:-sonar-volume-config}:/opt/sonarqube/conf:Z
+   - ${SONAR_VOLUME_DATA:-sonar-volume-data}:/opt/sonarqube/data:Z
+   - ${SONAR_VOLUME_EXT:-sonar-volume-ext}:/opt/sonarqube/extensions:Z
+   environment: 
+   - SONAR_WEB_JAVAOPTS
+   - SONAR_CE_JAVAOPTS
+   - SONAR_SEARCH_JAVAOPTS
+   - SONARQUBE_JDBC_USERNAME=${SONAR_PGUSER}
+   - SONARQUBE_JDBC_PASSWORD=${SONAR_PGPASS}
+   - SONARQUBE_JDBC_URL=jdbc:postgresql://sonarpgdb:5432/sonar
+      
+  sonarpgdb:
+   build:
+      context: tools/docker/sonarpgdb
+   image: postgres:13.2
+   ports:
+   - "5438:5432"
+   volumes:
+   - ${SONAR_VOLUME_DB:-sonar-volume-dbdata}:/var/lib/postgresql/data
+   environment: 
+   - POSTGRES_USER=${SONAR_PGUSER}
+   - POSTGRES_PASSWORD=${SONAR_PGPASS}
+   logging:
+     options:
+       max-size: 10m
+       max-file: "5"
+
+  gitlab:
+    build:
+      context: tools/docker/gitlab
+    hostname: 'gitlab.local'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.local'
+        letsencrypt['enable'] = false
+    volumes:
+      - gitlab-config:/etc/gitlab
+      - gitlab-data:/var/opt/gitlab
+    networks:
+      default:
+        aliases:
+          - gitlab.local
+
+  db55:
+    image: mysql:5.5
+    env_file:
+    - .env
+    volumes:
+      - db-data:/var/lib/mysql
+
+  db:
+    image: mysql:5.7
+    env_file:
+      - .env
+    volumes:
+      - ./src/etc/tuleap-mysql57-dev.cnf:/etc/mysql/mysql.conf.d/tuleap.cnf:ro,cached
+      - db57-data:/var/lib/mysql
+
+  db-maria-10.3:
+     image: mariadb:10.3
+     env_file:
+       - .env
+     volumes:
+       - ./src/etc/tuleap-mysql57-dev.cnf:/etc/mysql/mariadb.conf.d/tuleap.cnf:ro,cached
+       - mariadb103-data:/var/lib/mysql
+
+  redis:
+    image: redis:3.2
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --auto-aof-rewrite-percentage 20 --auto-aof-rewrite-min-size 200kb
+
+  prometheus:
+    image: prom/prometheus:v2.3.0
+    volumes:
+      - .metrics_secret.key:/metrics_secret.key
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prom-data:/prometheus
+
+  ldap-admin:
+    image: osixia/phpldapadmin:0.7.1
+    volumes:
+      - ldap-data:/data
+    ports:
+      - "6443:443"
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap
+
+volumes:
+  tuleap-data:
+  ldap-data:
+  gerrit-data:
+  gitlab-config:
+  gitlab-data:
+  db-data:
+  db57-data:
+  mariadb103-data:
+  redis-data:
+  realtime-conf:
+  realtime-cert:
+  reverse-proxy-cert:
+  prom-data:
+  jenkins-data:
+  nexus-volume-data:
+  sonar-volume-config:
+  sonar-volume-data:
+  sonar-volume-ext:
+  sonar-volume-dbdata:

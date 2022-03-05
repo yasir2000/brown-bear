@@ -1,0 +1,23 @@
+<div
+    ng-app="kanban"
+    ng-controller="MainCtrl"
+>
+    <div class="kanban-init-data" ng-non-bindable
+         data-user-id="{{ user_id }}"
+         data-kanban="{{ kanban_representation }}"
+         data-dashboard-dropdown="{{ dashboard_dropdown_representation }}"
+         data-user-is-admin="{{ user_is_kanban_admin }}"
+         data-widget-id="{{ widget_id }}"
+         data-project-id="{{ project_id }}"
+         data-view-mode="{{ view_mode }}"
+         data-kanban-url="{{ kanban_url }}"
+         data-tracker-reports="{{ tracker_reports }}"
+         data-language="{{ language }}"
+         data-nodejs-server="{{ nodejs_server }}"
+         data-user-accessibility-mode="{{ user_accessibility_mode }}"
+         data-is-list-picker-enabled="{{ is_list_picker_enabled }}"
+         data-is-links-field-v2-enabled="{{ is_links_field_v2_enabled }}"
+         data-has-current-project-parents="{{ has_current_project_parents }}"
+    ></div>
+    <kanban class="kanban"></kanban>
+</div>

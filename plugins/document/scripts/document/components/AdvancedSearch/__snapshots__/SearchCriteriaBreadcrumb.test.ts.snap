@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchCriteriaBreadcrumb should display a link to each ascendant folder plus a link to search in root folder 1`] = `
+<p
+  class="document-search-breadcrumbs"
+>
+  <span
+    class="document-search-breadcrumbs-label"
+    data-current-language="en_US"
+    data-msgid="Searching in"
+  >
+    Searching in
+  </span>
+   
+  <!---->
+   
+  <a
+    class="document-search-breadcrumbs-crumb tlp-badge-secondary tlp-badge-outline"
+  >
+    
+                Foo
+            
+  </a>
+  <i
+    aria-hidden="true"
+    class="fas fa-chevron-right document-search-breadcrumbs-separator"
+  />
+   
+  <a
+    class="document-search-breadcrumbs-crumb tlp-badge-secondary tlp-badge-outline"
+  >
+    
+                Bar
+            
+  </a>
+   
+  <span
+    class="document-search-breadcrumbs-final-separator"
+  >
+    .
+  </span>
+   
+  <a
+    data-current-language="en_US"
+    data-msgid="
+            Search in whole project documentation
+        "
+  >
+    
+            Search in whole project documentation
+        
+  </a>
+  
+        .
+    
+</p>
+`;
+
+exports[`SearchCriteriaBreadcrumb should display a spinner while ascendant hierarchy is loading 1`] = `
+<p
+  class="document-search-breadcrumbs"
+>
+  <span
+    class="document-search-breadcrumbs-label"
+    data-current-language="en_US"
+    data-msgid="Searching in"
+  >
+    Searching in
+  </span>
+   
+  <i
+    aria-hidden="true"
+    class="fas fa-circle-notch fa-spin"
+  />
+</p>
+`;

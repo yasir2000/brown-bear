@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project unix-name="rest-xml-api" full-name="RESTXMLAPI" description="RESTXMLAPI" access="public">
+  <long-description></long-description>
+  <services>
+    <service shortname="plugin_tracker" enabled="1"/>
+  </services>
+  <ugroups>
+    <ugroup name="project_members" description="">
+        <members>
+            <member format="username">rest_api_tester_1</member>
+        </members>
+    </ugroup>
+  </ugroups>
+  <trackers>
+    <tracker id="T6665" parent_id="0" instantiate_for_new_projects="1" log_priority_changes="1" stop_notification="1">
+      <name><![CDATA[Epic]]></name>
+      <item_name>epic</item_name>
+      <description><![CDATA[Portfolio abstraction of a complex activity that could expand multiple releases. It typically requires an opportunity analysis before the execution decision is taken and it is broken down into "Features" (or minimum market features).
+    Examples: A focal point requirement coming from Opportunity board, a prototype activity, etc.]]></description>
+      <color>clockwork_orange</color>
+      <cannedResponses/>
+      <formElements>
+        <formElement type="staticrichtext" ID="F222358" rank="4033">
+          <name>epic_logo</name>
+          <label><![CDATA[Epic logo]]></label>
+          <properties static_value="&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT17VzY8J_9_h3POAhumLJPuT8xG4qvg_PvFO45Ggoblxvqr4uvaeUatw&quot; style=&quot;height:91px; width:80px&quot; /&gt;&lt;/p&gt;&#13;&#10;&#13;&#10;&lt;h2&gt;Epic&lt;/h2&gt;&#13;&#10;&#13;&#10;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&#13;&#10;"/>
+        </formElement>
+        <formElement type="column" ID="F222359" rank="4045">
+          <name>header_col1</name>
+          <label><![CDATA[Header Col1]]></label>
+          <formElements>
+            <formElement type="aid" ID="F222360" rank="0">
+              <name>artifact_id</name>
+              <label><![CDATA[Artifact Id:]]></label>
+            </formElement>
+            <formElement type="subby" ID="F222361" rank="1">
+              <name>submited_by</name>
+              <label><![CDATA[Submited By:]]></label>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="column" ID="F222362" rank="4052">
+          <name>header_col2</name>
+          <label><![CDATA[Header Col2]]></label>
+          <formElements>
+            <formElement type="subon" ID="F222363" rank="0">
+              <name>submitted_on</name>
+              <label><![CDATA[Submitted On:]]></label>
+            </formElement>
+            <formElement type="lud" ID="F222364" rank="1">
+              <name>last_modified_on</name>
+              <label><![CDATA[Last Modified On:]]></label>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="fieldset" ID="F222365" rank="4056">
+          <name>summary_1</name>
+          <label><![CDATA[Summary]]></label>
+          <formElements>
+            <formElement type="column" ID="F222366" rank="0">
+              <name>submitted_info_col2</name>
+              <label><![CDATA[Summary Col1]]></label>
+              <formElements>
+                <formElement type="string" ID="F222367" rank="0" required="1">
+                  <name>slogan</name>
+                  <label><![CDATA[Slogan]]></label>
+                  <properties size="30"/>
+                </formElement>
+                <formElement type="sb" ID="F222369" rank="1" required="0">
+                  <name>status</name>
+                  <label><![CDATA[Status]]></label>
+                  <bind type="static" is_rank_alpha="0">
+                    <items>
+                      <item ID="V255268" label="SM New" is_hidden="0"/>
+                      <item ID="V255269" label="SM Queue" is_hidden="0"/>
+                      <item ID="V255270" label="SM Started" is_hidden="0"/>
+                      <item ID="V255271" label="SM Completed" is_hidden="0"/>
+                      <item ID="V255272" label="Execution Queue" is_hidden="0"/>
+                      <item ID="V255273" label="Execution Started" is_hidden="0"/>
+                      <item ID="V273524" label="Execution Started - Hold" is_hidden="0"/>
+                      <item ID="V268786" label="SM Cancel" is_hidden="0"/>
+                      <item ID="V255274" label="Feature Done" is_hidden="0"/>
+                      <item ID="V255275" label="Feature Released" is_hidden="0"/>
+                      <item ID="V255276" label="Parked" is_hidden="0"/>
+                      <item ID="V334876" label="SM Closed" is_hidden="0"/>
+                    </items>
+                    <decorators>
+                      <decorator REF="V255268" r="204" g="204" b="204"/>
+                      <decorator REF="V255269" r="51" g="255" b="255"/>
+                      <decorator REF="V255270" r="51" g="153" b="255"/>
+                      <decorator REF="V255271" r="0" g="51" b="102"/>
+                      <decorator REF="V255272" r="255" g="255" b="102"/>
+                      <decorator REF="V255273" r="255" g="204" b="51"/>
+                      <decorator REF="V255274" r="255" g="153" b="51"/>
+                      <decorator REF="V255275" r="0" g="255" b="0"/>
+                      <decorator REF="V255276" r="255" g="0" b="0"/>
+                    </decorators>
+                  </bind>
+                </formElement>
+              </formElements>
+            </formElement>
+            <formElement type="column" ID="F222373" rank="1">
+              <name>summary_col2</name>
+              <label><![CDATA[Summary Col2]]></label>
+              <formElements>
+                <formElement type="date" ID="F246941" rank="10">
+                  <name>epic_creation_date</name>
+                  <label><![CDATA[EPIC Creation Date]]></label>
+                  <properties default_value="today" display_time="0"/>
+                </formElement>
+              </formElements>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="column" ID="F226911" rank="4063">
+          <name>release_col1</name>
+          <label><![CDATA[Release col1]]></label>
+          <formElements>
+            <formElement type="sb" ID="F226914" rank="0">
+              <name>release_indicated_by_pl</name>
+              <label><![CDATA[Main release indicated by PL]]></label>
+              <bind type="static" is_rank_alpha="0">
+                <items>
+                  <item ID="V259384" label="17A" is_hidden="0"/>
+                  <item ID="V259385" label="16B" is_hidden="0"/>
+                  <item ID="V259386" label="16A" is_hidden="0"/>
+                  <item ID="V259387" label="15B" is_hidden="0"/>
+                  <item ID="V259388" label="15A" is_hidden="0"/>
+                  <item ID="V259389" label="14B" is_hidden="0"/>
+                  <item ID="V259390" label="14A" is_hidden="0"/>
+                  <item ID="V259391" label="13B" is_hidden="0"/>
+                  <item ID="V259392" label="12B" is_hidden="0"/>
+                  <item ID="V259393" label="12A" is_hidden="0"/>
+                  <item ID="V259394" label="11B" is_hidden="0"/>
+                  <item ID="V259395" label="11A" is_hidden="0"/>
+                  <item ID="V259396" label="COTS" is_hidden="0"/>
+                  <item ID="V259397" label="Future" is_hidden="0"/>
+                  <item ID="V259398" label="MDE" is_hidden="0"/>
+                  <item ID="V259399" label="Old" is_hidden="0"/>
+                </items>
+              </bind>
+            </formElement>
+            <formElement type="sb" ID="F226915" rank="1">
+              <name>fd_indicated_by_pl</name>
+              <label><![CDATA[FD Indicated by PL]]></label>
+              <bind type="static" is_rank_alpha="0">
+                <items>
+                  <item ID="V261439" label="FD4" is_hidden="0"/>
+                  <item ID="V259400" label="FD3" is_hidden="0"/>
+                  <item ID="V259401" label="FD2" is_hidden="0"/>
+                  <item ID="V259402" label="FD1" is_hidden="0"/>
+                  <item ID="V259403" label="FD0" is_hidden="0"/>
+                </items>
+              </bind>
+            </formElement>
+            <formElement type="string" ID="F227440" rank="5">
+              <name>release_info_indicated_by_pl</name>
+              <label><![CDATA[Release info indicated by PL]]></label>
+              <properties size="30"/>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="column" ID="F226912" rank="4064">
+          <name>release_col2</name>
+          <label><![CDATA[Release col2]]></label>
+          <formElements>
+            <formElement type="sb" ID="F226916" rank="0">
+              <name>planned_release</name>
+              <label><![CDATA[Main release planned by PDU]]></label>
+              <bind type="static" is_rank_alpha="0">
+                <items>
+                  <item ID="V259404" label="17A" is_hidden="0"/>
+                  <item ID="V259405" label="16B" is_hidden="0"/>
+                  <item ID="V259406" label="16A" is_hidden="0"/>
+                  <item ID="V259407" label="15B" is_hidden="0"/>
+                  <item ID="V259408" label="15A" is_hidden="0"/>
+                  <item ID="V259409" label="14B" is_hidden="0"/>
+                  <item ID="V259410" label="14A" is_hidden="0"/>
+                  <item ID="V259411" label="13B" is_hidden="0"/>
+                  <item ID="V259412" label="12B" is_hidden="0"/>
+                  <item ID="V259413" label="12A" is_hidden="0"/>
+                  <item ID="V259414" label="11B" is_hidden="0"/>
+                  <item ID="V259415" label="11A" is_hidden="0"/>
+                  <item ID="V259416" label="COTS" is_hidden="0"/>
+                  <item ID="V259417" label="Future" is_hidden="0"/>
+                  <item ID="V259418" label="MDE" is_hidden="0"/>
+                  <item ID="V259419" label="Old" is_hidden="0"/>
+                </items>
+              </bind>
+            </formElement>
+            <formElement type="sb" ID="F226917" rank="1">
+              <name>planned_fd</name>
+              <label><![CDATA[FD Planned by PDU]]></label>
+              <bind type="static" is_rank_alpha="0">
+                <items>
+                  <item ID="V261440" label="FD4" is_hidden="0"/>
+                  <item ID="V259420" label="FD3" is_hidden="0"/>
+                  <item ID="V259421" label="FD2" is_hidden="0"/>
+                  <item ID="V259422" label="FD1" is_hidden="0"/>
+                  <item ID="V259423" label="FD0" is_hidden="0"/>
+                </items>
+              </bind>
+            </formElement>
+            <formElement type="string" ID="F226918" rank="5">
+              <name>release_info_planned</name>
+              <label><![CDATA[Release info planned by PDU]]></label>
+              <properties size="30"/>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="column" ID="F226913" rank="4066">
+          <name>release_col3</name>
+          <label><![CDATA[Release col3]]></label>
+          <formElements>
+            <formElement type="sb" ID="F226919" rank="0">
+              <name>committed_release</name>
+              <label><![CDATA[Committed main release]]></label>
+              <bind type="static" is_rank_alpha="0">
+                <items>
+                  <item ID="V259424" label="17A" is_hidden="0"/>
+                  <item ID="V259425" label="16B" is_hidden="0"/>
+                  <item ID="V259426" label="16A" is_hidden="0"/>
+                  <item ID="V259427" label="15B" is_hidden="0"/>
+                  <item ID="V259428" label="15A" is_hidden="0"/>
+                  <item ID="V259429" label="14B" is_hidden="0"/>
+                  <item ID="V259430" label="14A" is_hidden="0"/>
+                  <item ID="V259431" label="13B" is_hidden="0"/>
+                  <item ID="V259432" label="12B" is_hidden="0"/>
+                  <item ID="V259433" label="12A" is_hidden="0"/>
+                  <item ID="V259434" label="11B" is_hidden="0"/>
+                  <item ID="V259435" label="11A" is_hidden="0"/>
+                  <item ID="V259436" label="COTS" is_hidden="0"/>
+                  <item ID="V259437" label="Future" is_hidden="0"/>
+                  <item ID="V259438" label="MDE" is_hidden="0"/>
+                  <item ID="V259439" label="Old" is_hidden="0"/>
+                </items>
+              </bind>
+            </formElement>
+            <formElement type="sb" ID="F226920" rank="1">
+              <name>committed_fd</name>
+              <label><![CDATA[Committed FD]]></label>
+              <bind type="static" is_rank_alpha="0">
+                <items>
+                  <item ID="V261441" label="FD4" is_hidden="0"/>
+                  <item ID="V259440" label="FD3" is_hidden="0"/>
+                  <item ID="V259441" label="FD2" is_hidden="0"/>
+                  <item ID="V259442" label="FD1" is_hidden="0"/>
+                  <item ID="V259443" label="FD0" is_hidden="0"/>
+                </items>
+              </bind>
+            </formElement>
+            <formElement type="string" ID="F226921" rank="6">
+              <name>release_info_commited</name>
+              <label><![CDATA[Release info commited]]></label>
+              <properties size="30"/>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="fieldset" ID="F222380" rank="5112">
+          <name>details_1</name>
+          <label><![CDATA[Details:]]></label>
+          <formElements>
+            <formElement type="text" ID="F222381" rank="0">
+              <name>focal_point_id</name>
+              <label><![CDATA[Focal Point Id (Url)]]></label>
+              <description><![CDATA[URL to the FP requirement. Select "HTML" format if you would like to introduce the link within the Focal Point ID rather than the URL]]></description>
+              <properties rows="5" cols="80" default_value="https://example.com/fp/servlet/Login?go="/>
+            </formElement>
+            <formElement type="text" ID="F222382" rank="1">
+              <name>epic_desc</name>
+              <label><![CDATA[Epic Description]]></label>
+              <properties rows="2" cols="80"/>
+            </formElement>
+            <formElement type="text" ID="F222383" rank="8">
+              <name>rationale</name>
+              <label><![CDATA[Rationale]]></label>
+              <properties rows="4" cols="80"/>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="fieldset" ID="F222419" rank="5122">
+          <name>status_details</name>
+          <label><![CDATA[Milestone dates]]></label>
+          <formElements>
+            <formElement type="column" ID="F222420" rank="0">
+              <name>history_col1</name>
+              <label><![CDATA[History_col1]]></label>
+              <formElements>
+                <formElement type="date" ID="F222421" rank="0">
+                  <name>sq_date</name>
+                  <label><![CDATA[SM QUEUE Date:]]></label>
+                  <properties display_time="0"/>
+                </formElement>
+                <formElement type="date" ID="F222422" rank="1">
+                  <name>ss_date</name>
+                  <label><![CDATA[SM STARTED Date:]]></label>
+                  <properties display_time="0"/>
+                </formElement>
+              </formElements>
+            </formElement>
+            <formElement type="column" ID="F222424" rank="3">
+              <name>history_col4</name>
+              <label><![CDATA[History_col4]]></label>
+              <formElements>
+                <formElement type="date" ID="F222425" rank="0">
+                  <name>eq_date</name>
+                  <label><![CDATA[EXECUTION QUEUE Date:]]></label>
+                  <properties display_time="0"/>
+                </formElement>
+              </formElements>
+            </formElement>
+            <formElement type="column" ID="F222427" rank="4">
+              <name>history_col6</name>
+              <label><![CDATA[History_col6]]></label>
+              <formElements>
+                <formElement type="date" ID="F222428" rank="0">
+                  <name>fd_date</name>
+                  <label><![CDATA[DONE Date:]]></label>
+                  <properties display_time="0"/>
+                </formElement>
+              </formElements>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="column" ID="F226938" rank="5129">
+          <name>parked_col2</name>
+          <label><![CDATA[Parked col2]]></label>
+          <formElements>
+            <formElement type="date" ID="F226940" rank="0">
+              <name>parked_date</name>
+              <label><![CDATA[Parked date]]></label>
+              <properties default_value="today" display_time="0"/>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="fieldset" ID="F222430" rank="16688">
+          <name>references_and_attachments</name>
+          <label><![CDATA[References and Attachments:]]></label>
+          <formElements>
+            <formElement type="art_link" ID="F222432" rank="1">
+              <name>linked_artifacts</name>
+              <label><![CDATA[Linked Artifacts:]]></label>
+            </formElement>
+            <formElement type="cross" ID="F222433" rank="2">
+              <name>cross_references</name>
+              <label><![CDATA[Cross References:]]></label>
+            </formElement>
+          </formElements>
+        </formElement>
+        <formElement type="priority" ID="F222434" rank="16689">
+          <name>rank</name>
+          <label><![CDATA[Epic Priority]]></label>
+          <properties size="5"/>
+        </formElement>
+      </formElements>
+      <semantics>
+        <semantic type="title">
+          <shortname>title</shortname>
+          <label>Title</label>
+          <description>Define the title of an artifact</description>
+          <field REF="F222367"/>
+        </semantic>
+        <semantic type="status">
+          <shortname>status</shortname>
+          <label>Status</label>
+          <description>Define the status of an artifact</description>
+          <field REF="F222369"/>
+          <open_values>
+            <open_value REF="V255268"/>
+            <open_value REF="V255269"/>
+            <open_value REF="V255270"/>
+            <open_value REF="V255271"/>
+            <open_value REF="V255272"/>
+            <open_value REF="V255273"/>
+            <open_value REF="V273524"/>
+          </open_values>
+        </semantic>
+        <semantic type="tooltip">
+          <field REF="F222367"/>
+          <field REF="F222360"/>
+        </semantic>
+        <semantic type="initial_effort">
+          <shortname>initial_effort</shortname>
+          <label>Initial Effort</label>
+          <description>Define the initial effort of an artifact.</description>
+          <field REF="F222369"/>
+        </semantic>
+        <semantic type="plugin_cardwall_card_fields"/>
+      </semantics>
+      <rules>
+        <date_rules/>
+        <list_rules/>
+      </rules>
+      <reports>
+        <report is_default="0">
+          <name>CUDB Reqs</name>
+          <description>The system default artifact report</description>
+          <criterias>
+            <criteria rank="0">
+              <field REF="F222360"/>
+            </criteria>
+          </criterias>
+          <renderers>
+            <renderer type="table" rank="0" chunksz="15">
+              <name>Results</name>
+              <columns>
+                <field REF="F222360"/>
+                <field REF="F222381"/>
+                <field REF="F222382"/>
+                <field REF="F222432"/>
+              </columns>
+            </renderer>
+            <renderer type="plugin_cardwall" rank="1" field_id="F222369">
+              <name>Requirements by status</name>
+            </renderer>
+            <renderer type="plugin_graphontrackersv5" rank="2">
+              <name>Requirements by status</name>
+              <charts>
+                <chart type="pie" width="600" height="400" rank="0">
+                  <title>Requirements by status</title>
+                </chart>
+              </charts>
+            </renderer>
+          </renderers>
+        </report>
+        <report is_default="0">
+          <name>Default</name>
+          <description>The system default artifact report</description>
+          <criterias>
+            <criteria rank="0">
+              <field REF="F222369"/>
+            </criteria>
+            <criteria rank="1">
+              <field REF="F222381"/>
+            </criteria>
+            <criteria rank="2">
+              <field REF="F226914"/>
+            </criteria>
+            <criteria rank="3">
+              <field REF="F222367"/>
+            </criteria>
+          </criterias>
+          <renderers>
+            <renderer type="table" rank="0" chunksz="100">
+              <name>Results</name>
+              <columns>
+                <field REF="F222360"/>
+                <field REF="F222381"/>
+                <field REF="F222367"/>
+                <field REF="F222369"/>
+                <field REF="F226914"/>
+              </columns>
+            </renderer>
+            <renderer type="plugin_graphontrackersv5" rank="1">
+              <name>Requirements by status</name>
+              <charts>
+                <chart type="pie" width="600" height="400" rank="0" base="F222369">
+                  <title>Requirements by status</title>
+                </chart>
+              </charts>
+            </renderer>
+            <renderer type="plugin_graphontrackersv5" rank="2">
+              <name>UDM Epic flow</name>
+              <charts>
+                <chart type="cumulative_flow" width="800" height="400" rank="0" start_date="1413151200" scale="1">
+                  <title>UDP Epic Flow</title>
+                </chart>
+              </charts>
+            </renderer>
+          </renderers>
+        </report>
+        <report is_default="0">
+          <name>Epics with RedFlags</name>
+          <description>The system default artifact report</description>
+          <criterias>
+            <criteria rank="0">
+              <field REF="F222360"/>
+            </criteria>
+            <criteria rank="1">
+              <field REF="F222382"/>
+            </criteria>
+          </criterias>
+          <renderers>
+            <renderer type="table" rank="0" chunksz="15">
+              <name>Results</name>
+              <columns>
+                <field REF="F222367"/>
+                <field REF="F222369"/>
+              </columns>
+            </renderer>
+            <renderer type="plugin_graphontrackersv5" rank="1">
+              <name>Requirements by status</name>
+              <charts>
+                <chart type="pie" width="600" height="400" rank="0" base="F222369">
+                  <title>Requirements by status</title>
+                </chart>
+              </charts>
+            </renderer>
+            <renderer type="plugin_graphontrackersv5" rank="2">
+              <name>UDM Epic flow</name>
+              <charts>
+                <chart type="cumulative_flow" width="800" height="400" rank="0" start_date="1412114400" scale="1">
+                  <title>UDP Epic Flow</title>
+                </chart>
+              </charts>
+            </renderer>
+          </renderers>
+        </report>
+        <report is_default="0">
+          <name>OTS Report</name>
+          <description>The system default artifact report</description>
+          <criterias>
+            <criteria rank="0">
+              <field REF="F222360"/>
+            </criteria>
+            <criteria rank="1">
+              <field REF="F222382"/>
+            </criteria>
+            <criteria rank="2">
+              <field REF="F222369"/>
+            </criteria>
+            <criteria rank="3" is_advanced="1">
+              <field REF="F226919"/>
+            </criteria>
+          </criterias>
+          <renderers>
+            <renderer type="table" rank="0" chunksz="150">
+              <name>Results</name>
+              <columns>
+                <field REF="F226916"/>
+                <field REF="F222367"/>
+                <field REF="F222369"/>
+                <field REF="F222421"/>
+                <field REF="F222422"/>
+                <field REF="F222428"/>
+                <field REF="F222425"/>
+                <field REF="F226914"/>
+                <field REF="F226919"/>
+              </columns>
+              <sort>
+                <field REF="F226919"/>
+              </sort>
+            </renderer>
+          </renderers>
+        </report>
+        <report is_default="0" is_query_displayed="0">
+          <name>UDM Impediment Report</name>
+          <description>The system default artifact report</description>
+          <criterias>
+            <criteria rank="0">
+              <field REF="F222360"/>
+            </criteria>
+          </criterias>
+          <renderers>
+            <renderer type="table" rank="0" chunksz="100" multisort="1">
+              <name>Results</name>
+              <columns>
+                <field REF="F222367"/>
+                <field REF="F222369"/>
+                <field REF="F222381"/>
+                <field REF="F222360"/>
+              </columns>
+              <sort>
+                <field REF="F222369"/>
+              </sort>
+            </renderer>
+            <renderer type="plugin_graphontrackersv5" rank="1">
+              <name>Impediments</name>
+              <charts>
+                <chart type="pie" width="600" height="400" rank="0">
+                  <title>Impediments</title>
+                </chart>
+              </charts>
+            </renderer>
+            <renderer type="plugin_cardwall" rank="2" field_id="F222369">
+              <name>Impedimet by status</name>
+            </renderer>
+            <renderer type="table" rank="3" chunksz="15">
+              <name>Impediment summary</name>
+              <columns>
+                <field REF="F222367"/>
+              </columns>
+            </renderer>
+          </renderers>
+        </report>
+      </reports>
+      <workflow>
+        <field_id REF="F222369"/>
+        <is_used>0</is_used>
+        <transitions>
+          <transition>
+            <from_id REF="null"/>
+            <to_id REF="V255268"/>
+            <postactions>
+              <postaction_field_date valuetype="2">
+                <field_id REF="F246941"/>
+              </postaction_field_date>
+            </postactions>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255268"/>
+            <to_id REF="V255269"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255269"/>
+            <to_id REF="V255270"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255270"/>
+            <to_id REF="V255271"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255272"/>
+            <to_id REF="V255273"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255273"/>
+            <to_id REF="V255274"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255274"/>
+            <to_id REF="V255275"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255274"/>
+            <to_id REF="V255276"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255270"/>
+            <to_id REF="V255276"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255273"/>
+            <to_id REF="V273524"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V273524"/>
+            <to_id REF="V255273"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255269"/>
+            <to_id REF="V255268"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255269"/>
+            <to_id REF="V268786"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255270"/>
+            <to_id REF="V255269"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255270"/>
+            <to_id REF="V268786"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255271"/>
+            <to_id REF="V255276"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255272"/>
+            <to_id REF="V255276"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255273"/>
+            <to_id REF="V255276"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255276"/>
+            <to_id REF="V255270"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255271"/>
+            <to_id REF="V268786"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255276"/>
+            <to_id REF="V268786"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V273524"/>
+            <to_id REF="V255276"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255276"/>
+            <to_id REF="V255271"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255276"/>
+            <to_id REF="V255272"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255276"/>
+            <to_id REF="V255273"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255271"/>
+            <to_id REF="V255270"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255273"/>
+            <to_id REF="V255272"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255274"/>
+            <to_id REF="V255273"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="V255268"/>
+            <to_id REF="V268786"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="null"/>
+            <to_id REF="V255269"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+          <transition>
+            <from_id REF="null"/>
+            <to_id REF="V255272"/>
+            <conditions>
+              <condition type="perms">
+                <permissions>
+                  <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+                </permissions>
+              </condition>
+            </conditions>
+          </transition>
+        </transitions>
+      </workflow>
+      <permissions>
+        <permission scope="tracker" ugroup="UGROUP_ANONYMOUS" type="PLUGIN_TRACKER_ACCESS_FULL"/>
+        <permission scope="field" REF="F222360" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_READ"/>
+        <permission scope="field" REF="F222367" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222367" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222367" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222367" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222369" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222369" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222369" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222369" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226914" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226914" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226914" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226914" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226915" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226915" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226915" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226915" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F227440" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F227440" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F227440" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F227440" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226916" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226916" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226916" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226916" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226917" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226917" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226917" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226917" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226918" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226918" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226918" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226918" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226919" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226919" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226919" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226919" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226920" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226920" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226920" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226920" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226921" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226921" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F226921" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F226921" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222381" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222381" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222381" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222381" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222382" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222382" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222382" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222382" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222383" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222383" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222383" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222383" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222432" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222432" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222432" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_UPDATE"/>
+        <permission scope="field" REF="F222432" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_SUBMIT"/>
+        <permission scope="field" REF="F222433" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_READ"/>
+        <permission scope="field" REF="F222434" ugroup="UGROUP_PROJECT_MEMBERS" type="PLUGIN_TRACKER_FIELD_READ"/>
+        <permission scope="field" REF="F222434" ugroup="UGROUP_PROJECT_ADMIN" type="PLUGIN_TRACKER_FIELD_READ"/>
+      </permissions>
+    </tracker>
+  </trackers>
+</project>

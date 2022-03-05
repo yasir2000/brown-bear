@@ -1,0 +1,214 @@
+#
+# Translators:
+# Benjamin Dauton <benjamin.dauton@enalean.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: AgileDashboard Planning\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2022-02-24 15:56+0100\n"
+"Last-Translator: Joris MASSON <joris.masson@enalean.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/test-188/language/"
+"fr/)\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+msgid "%(usage)s of %(quota)s"
+msgstr "%(usage)s sur %(quota)s"
+
+msgid "(auto-computed)"
+msgstr "(calculé automatiquement)"
+
+msgid "...to get"
+msgstr "...pour voir"
+
+msgid "Add another file"
+msgstr "Ajouter un autre fichier"
+
+msgid "Add link"
+msgstr "Ajouter le lien"
+
+msgid "An error occurred while saving the artifact."
+msgstr "Une erreur s'est produite pendant la sauvegarde de cet artéfact."
+
+msgid "An error occurred while uploading this file: {{ file_name }}."
+msgstr ""
+"Une erreur s'est produite pendant le téléversement de ce fichier : "
+"{{ file_name }}."
+
+msgid "Auto-compute"
+msgstr "Calcul automatique"
+
+msgid "By: %s"
+msgstr "Par: %s"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Comment"
+msgstr "Commenter"
+
+msgid "Computed value:"
+msgstr "Valeur calculée :"
+
+msgid "Confirm to apply your modifications"
+msgstr "Confirmer pour appliquer vos modifications"
+
+msgid "Create a new {{ modal.title }}"
+msgstr "Créer un nouveau {{ modal.title }}"
+
+msgid "Edit"
+msgstr "Editer"
+
+msgid "Edited by"
+msgstr "Modifié par"
+
+msgid "Empty"
+msgstr "Aucun(e)"
+
+msgid "Enter artifact ids separated by a comma"
+msgstr "Entrer des ids d'artefacts séparés par une virgule"
+
+msgid "Error:"
+msgstr "Erreur :"
+
+msgid "Field under implementation, please come back later"
+msgstr "Champ en cours de construction, revenez plus tard"
+
+msgid "File description"
+msgstr "Description du fichier"
+
+msgid "File upload quota allowed"
+msgstr "Quota d'envoi de fichiers autorisé"
+
+msgid "Follow-ups"
+msgstr "Commentaires"
+
+msgid "For your information..."
+msgstr "Pour votre information..."
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "Hidden fieldsets:"
+msgstr "Groupes de champs cachés :"
+
+msgid "Keep the file"
+msgstr "Garder le fichier"
+
+msgid "Linked to"
+msgstr "Lié à"
+
+msgid "Mark for removal"
+msgstr "Marquer pour suppression"
+
+msgid "Markdown"
+msgstr "Markdown"
+
+msgid "Max allowed upload size: %s"
+msgstr "Taille max d'envoi de fichiers : %s"
+
+msgid "No follow-ups"
+msgstr "Aucun commentaire"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "Only comments are displayed"
+msgstr "Seuls les commentaires sont affichés"
+
+msgid "Parent artifact"
+msgstr "Artéfact parent"
+
+msgid "Please choose a parent…"
+msgstr "Veuillez choisir un parent…"
+
+msgid "Please select a date"
+msgstr "Veuillez choisir une date"
+
+msgid "Please select an item in the list"
+msgstr "Veuillez choisir un élément dans la liste"
+
+msgid "Preview"
+msgstr "Aperçu"
+
+msgid "References list is empty."
+msgstr "Cet artefact n'est pas référencé, et n'est pas source de références."
+
+msgid "Reset"
+msgstr "Annuler"
+
+msgid "Restrict access to this artifact for the following user groups:"
+msgstr ""
+"Restreindre l'accès à cet artefact pour les groupes d'utilisateurs suivants :"
+
+msgid "Save changes"
+msgstr "Enregistrer les changements"
+
+msgid "Select parent"
+msgstr "Sélectionner un parent"
+
+msgid "Size: %s"
+msgstr "Taille: %s"
+
+msgid ""
+"Someone updated this artifact while you were editing it. Please note that "
+"your modifications will be applied on top of previous changes. You need to "
+"confirm your action to submit your modification."
+msgstr ""
+"Quelqu'un a modifié l'artéfact pendant que vous l'éditiez. Merci de noter "
+"que vos modification seront appliquées par dessus les autres changements. "
+"Vous devez confirmer pour soumettre vos modifications."
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "The artifact will be linked to %s"
+msgstr "L'artefact sera lié à %s"
+
+msgid "There is no link yet"
+msgstr "Il n'y a pas encore de liens"
+
+msgid "There was an error in the Markdown preview:"
+msgstr "Il y a eu une erreur dans l'aperçu Markdown :"
+
+msgid "Type..."
+msgstr "Ecrivez..."
+
+msgid "Unable to retrieve the linked artifacts: %s"
+msgstr "Impossible de récupérer les artéfacts liés: %s"
+
+msgid "Unable to upload the file"
+msgstr "Impossible de téléverser le fichier"
+
+msgid "Undo removal"
+msgstr "Annuler la suppression"
+
+msgid "You are not allowed to paste images here"
+msgstr "Vous n'êtes pas autorisé à coller des images ici"
+
+msgid "You are not allowed to upload files bigger than %s."
+msgstr ""
+"Vous n'êtes pas autorisé à téléverser des fichiers avec une taille excédant "
+"%s."
+
+msgid "You can drag 'n drop or paste image directly in the editor."
+msgstr ""
+"Vous pouvez glisser-déposer ou coller une image directement dans l'éditeur."
+
+msgid ""
+"You exceeded your current file upload quota. Please remove existing "
+"temporary files or wait until they are cleaned up."
+msgstr ""
+"Vous avez dépassé votre quota actuel de téléversement de fichiers. Veuillez "
+"supprimer des fichiers temporaires existants ou attendre jusqu'à ce qu'ils "
+"soient nettoyés."
+
+msgid "{{ project_label }} - open {{ tracker_label }}"
+msgstr "{{ project_label }} - {{ tracker_label }} ouvert·e·s"

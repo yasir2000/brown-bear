@@ -1,0 +1,8 @@
+{
+  "name": "tuleap/plugin-velocity",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Velocity\\": "include/Velocity/"
+    }
+  }
+}

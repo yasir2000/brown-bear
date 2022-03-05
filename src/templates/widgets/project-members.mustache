@@ -1,0 +1,34 @@
+        <div class="widget-project-members-members">
+            <span class="widget-project-members-members-count">{{ project_member_count }}</span>
+            <span class="widget-project-members-members-label">
+                {{# ngettext }}Member | Members | {{ project_member_count }}{{/ ngettext }}
+            </span>
+        </div>
+        <a href="{{ view_members_link }}"
+           class="tlp-button-primary tlp-button-outline tlp-button-wide"
+        >{{# gettext }}View members{{/ gettext }}</a>
+    </section>
+</div>
+<div class="tlp-pane-container dashboard-widget-container widget-project-members-administrators">
+    <div class="tlp-pane-header dashboard-widget-header">
+        <h2 class="tlp-pane-subtitle widget-project-members-administrators-title">{{# gettext }}Administrators{{/ gettext }}</h2>
+    </div>
+    <section class="tlp-pane-section-for-cards">
+        {{# administrators }}
+            <a class="tlp-card tlp-card-selectable widget-project-members-administrators-card" href="/users/{{ user_name }}">
+                <div class="tlp-avatar widget-project-members-avatar">
+                    {{# has_avatar }}
+                        <img src="{{ avatar_url }}">
+                    {{/ has_avatar }}
+                </div>
+                <span class="widget-project-members-username">{{ username_display }}</span>
+                <span class="widget-project-members-spacer"></span>
+                {{# star_badge_presenter }}
+                    <span class="tlp-badge-warning tlp-badge-rounded widget-project-members-badge tlp-tooltip tlp-tooltip-left"
+                          data-tlp-tooltip="{{ tooltip_text }}"
+                    >
+                        <i class="fa fa-star tlp-badge-icon"></i> {{ label }}
+                    </span>
+                {{/ star_badge_presenter }}
+            </a>
+        {{/ administrators }}

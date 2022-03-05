@@ -1,0 +1,18 @@
+<form action="/project/admin/labels.php?group_id={{ project_id }}"
+      method="POST"
+      class="tlp-modal"
+      id="project-label-add"
+      role="dialog"
+>
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+    <input type="hidden" name="action" value="add">
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title">
+            {{ add_label }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="{{ cancel }}"><i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i></button>
+    </div>
+    {{> label-modal-form }}
+</form>

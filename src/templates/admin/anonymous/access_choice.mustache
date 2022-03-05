@@ -1,0 +1,167 @@
+<h1>{{ title }}</h1>
+
+<form action=""
+    method="POST"
+    id="siteadmin-access-anonymous"
+    data-current-access-mode="{{ current_access_mode }}"
+    data-nb-restricted-users="{{ nb_restricted_users }}"
+    data-ugroup_authenticated_users="{{ ugroup_authenticated_users }}"
+    data-ugroup_registered_users="{{ ugroup_registered_users }}"
+>
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+
+    {{# is_localinc_obsolete }}
+    <div class="alert alert-error">
+        {{{ localinc_obsolete_message }}}
+    </div>
+    {{/ is_localinc_obsolete }}
+
+    <div class="tlp-pane">
+        <div class="tlp-pane-container">
+            <div class="tlp-pane-header">
+                <h1 class="tlp-pane-title"><i class="fa fa-lock tlp-pane-title-icon"></i> {{ platform_access_control_label }}</h1>
+            </div>
+            <section class="tlp-pane-section">
+                <div class="tlp-form-element">
+                    <label class="tlp-label tlp-radio">
+                        <input
+                            type="radio"
+                            name="access_mode"
+                            value="anonymous"
+                            data-test="access_mode-anonymous"
+                            {{# access_anonymous }}checked{{/ access_anonymous }}
+                        > {{ access_anonymous_label }}
+                    </label>
+                    <p class="tlp-text-info siteadmin-access-option-desc">{{ access_anonymous_desc }}</p>
+                </div>
+                <div class="tlp-form-element">
+                    <label class="tlp-label tlp-radio">
+                        <input
+                            type="radio"
+                            name="access_mode"
+                            value="regular"
+                            {{# access_regular }}checked{{/ access_regular }}
+                        > {{ access_regular_label }}
+                    </label>
+                    <p class="tlp-text-info siteadmin-access-option-desc">{{ access_regular_desc }}</p>
+                </div>
+                <div class="tlp-form-element">
+                    <label class="tlp-label tlp-radio">
+                        <input
+                            type="radio"
+                            name="access_mode"
+                            data-test="access_mode-restricted"
+                            value="restricted"
+                            {{# access_restricted }}checked{{/ access_restricted }}
+                        > {{ access_restricted_label }}
+                    </label>
+                    <p class="tlp-text-info siteadmin-access-option-desc">{{ access_restricted_desc }}</p>
+
+                    <div id="siteadmin-access-customize-ugroup-labels">
+                        <p>{{ customize_ugroups_label_info }}</p>
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="siteadmin-authenticated-ugroup-name">
+                                {{ ugroup_authenticated_users_label }}
+                            </label>
+                            <input
+                                type="text"
+                                class="tlp-input"
+                                id="siteadmin-authenticated-ugroup-name"
+                                name="ugroup_authenticated_users"
+                                value="{{ ugroup_authenticated_users }}"
+                                placeholder="{{ ugroup_authenticated_users_placeholder }}"
+                                size="30"
+                            >
+                        </div>
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="siteadmin-restricted-ugroup-name">
+                                {{ ugroup_registered_users_label }}
+                            </label>
+                            <input
+                                type="text"
+                                class="tlp-input"
+                                id="siteadmin-restricted-ugroup-name"
+                                name="ugroup_registered_users"
+                                value="{{ ugroup_registered_users }}"
+                                placeholder="{{ ugroup_registered_users_placeholder }}"
+                                size="30"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div id="siteadmin-access-submit-panel" class="tlp-pane-section-submit">
+                    {{# access_restricted }}
+                        {{# nb_restricted_users }}
+                            <div id="siteadmin-access-submit-panel-message">
+                                {{{ current_restricted_users_message }}}
+                            </div>
+                        {{/ nb_restricted_users }}
+                    {{/ access_restricted }}
+
+                    <button
+                        type="submit"
+                        class="tlp-button-primary"
+                        name="update"
+                        data-test="update_forge_access_button"
+                        value="1"
+                        disabled
+                    ><i class="fa fa-save tlp-button-icon"></i>
+                    {{ btn_submit }}</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</form>
+
+<form action="" method="POST">
+    <input type="hidden" name="update-anonymous-access" value="1">
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+
+    <div class="tlp-pane">
+        <div class="tlp-pane-container">
+            <div class="tlp-pane-header">
+                <h1 class="tlp-pane-title"><i class="fa fa-eye tlp-pane-title-icon"></i> {{# gettext }}Page accessible to anonymous{{/ gettext}}</h1>
+            </div>
+            <section class="tlp-pane-section">
+                <p class="tlp-text-info">{{# gettext }}You can configure some pages to be accessible by anyone, even if the platform would forbid it.{{/ gettext}}</p>
+                <div class="tlp-form-element">
+                    <label class="tlp-label" for="toggle-anonymous-can-see-site-homepage">
+                        {{# gettext }}Site homepage{{/ gettext}}
+                    </label>
+                    <div class="tlp-switch">
+                        <input
+                                type="checkbox"
+                                name="anonymous_can_see_site_homepage"
+                                id="toggle-anonymous-can-see-site-homepage"
+                                class="tlp-switch-checkbox"
+                                value="1"
+                                {{# anonymous_can_see_site_homepage }}checked{{/ anonymous_can_see_site_homepage }}
+                        >
+                        <label for="toggle-anonymous-can-see-site-homepage" class="tlp-switch-button" aria-hidden></label>
+                    </div>
+                </div>
+                <div class="tlp-form-element">
+                    <label class="tlp-label" for="toggle-anonymous-can-see-contact">
+                        {{# gettext }}Contact (help menu){{/ gettext}}
+                    </label>
+                    <div class="tlp-switch">
+                        <input
+                                type="checkbox"
+                                name="anonymous_can_see_contact"
+                                id="toggle-anonymous-can-see-contact"
+                                class="tlp-switch-checkbox"
+                                value="1"
+                                {{# anonymous_can_see_contact }}checked{{/ anonymous_can_see_contact }}
+                        >
+                        <label for="toggle-anonymous-can-see-contact" class="tlp-switch-button" aria-hidden></label>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</form>

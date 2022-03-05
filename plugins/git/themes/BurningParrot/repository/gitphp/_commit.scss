@@ -1,0 +1,148 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.git-repository-commit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.git-repository-commit-header-actions {
+    white-space: nowrap;
+}
+
+.git-repository-commit-title {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 20px;
+
+    > a[class*="tlp-badge"] {
+        margin: 0 0 0 5px;
+
+        &:first-of-type {
+            margin: 0 0 0 var(--tlp-small-spacing);
+        }
+    }
+}
+
+.git-repository-commit-action {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+    overflow: auto;
+}
+
+.git-repository-commit-info {
+    display: flex;
+    align-items: flex-start;
+
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
+}
+
+.git-repository-commit-metadata {
+    flex: 0 1 auto;
+}
+
+.git-repository-commit-metadata-properties {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.git-repository-commit-metadata-properties-group {
+    margin: 0;
+
+    &:first-child {
+        margin: 0 var(--tlp-x-large-spacing) var(--tlp-medium-spacing) 0;
+    }
+}
+
+.git-repository-commit-description {
+    min-width: 300px;
+    margin: 0 var(--tlp-x-large-spacing) 0 0;
+    padding: 0 0 0 var(--tlp-medium-spacing);
+    border-left: 2px solid var(--tlp-main-color);
+    white-space: pre-wrap;
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+        margin: 0 0 var(--tlp-medium-spacing);
+    }
+}
+
+.git-repository-commit-reference {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.git-repository-commit-metadata-username-date {
+    display: flex;
+    align-items: center;
+}
+
+.git-repository-commit-metadata-username-avatar {
+    flex: 0 0 auto;
+    margin: 0 5px 0 0;
+}
+
+.git-repository-commit-metadata-date {
+    margin: 0 0 0 var(--tlp-small-spacing);
+    font-size: 14px;
+
+    > .fa-clock-o {
+        margin: 0 2px 0 0;
+        font-size: 12px;
+    }
+}
+
+.git-repository-commit-metadata-changes {
+    margin: 0 0 var(--tlp-large-spacing);
+    font-size: 24px;
+}
+
+.git-repository-commit-file-stat-added,
+.git-repository-commit-file-added,
+.git-repository-commit-metadata-changes-added {
+    color: var(--tlp-success-color);
+}
+
+.git-repository-commit-file-stat-removed,
+.git-repository-commit-file-deleted,
+.git-repository-commit-metadata-changes-removed {
+    color: var(--tlp-danger-color);
+}
+
+.git-repository-commit-file-changed {
+    color: var(--tlp-warning-color);
+}
+
+.git-repository-commit-file-stat-binary {
+    color: var(--tlp-dimmed-color);
+}
+
+.git-repository-commit-metadata-changes-added {
+    margin: 0 5px 0 0;
+}
+
+.git-repository-commit-file-status {
+    width: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}

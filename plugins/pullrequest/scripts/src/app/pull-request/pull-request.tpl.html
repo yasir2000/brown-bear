@@ -1,0 +1,32 @@
+<div class="tlp-framed">
+    <div class="tlp-pane">
+        <div class="tlp-pane-container">
+            <pull-request-header pull-request-id="{{ pull_request.$state.params.id }}"></pull-request-header>
+
+            <nav class="tlp-tabs">
+                <a class="tlp-tab"
+                   ng-class="{'tlp-tab-active': pull_request.$state.includes('overview')}"
+                   ui-sref="overview"
+                >
+                    {{ ::'Overview' | translate }}
+                </a>
+                <a class="tlp-tab"
+                   ng-class="{'tlp-tab-active': pull_request.$state.includes('commits')}"
+                   ui-sref="commits"
+                >
+                    {{ ::'Commits' | translate }}
+                </a>
+                <a class="tlp-tab"
+                   ng-class="{'tlp-tab-active': pull_request.$state.includes('files')}"
+                   ui-sref="files"
+                >
+                    {{ ::'Changes' | translate }}
+                </a>
+            </nav>
+
+            <div ui-view="overview" ng-show="pull_request.$state.includes('overview')"></div>
+            <div ui-view="commits" ng-show="pull_request.$state.includes('commits')"></div>
+            <div ui-view="files" ng-show="pull_request.$state.includes('files')" class="tlp-pane-section"></div>
+        </div>
+    </div>
+</div>

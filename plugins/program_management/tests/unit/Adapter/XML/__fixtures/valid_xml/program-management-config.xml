@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<program_management>
+  <increments>
+    <source_tracker REF="T36277"/>
+    <plannable_trackers>
+      <plannable_tracker REF="T36280"/>
+      <plannable_tracker REF="T37001"/>
+    </plannable_trackers>
+    <can_prioritize>
+      <ugroup ugroup_name="project_members"/>
+    </can_prioritize>
+  </increments>
+</program_management>

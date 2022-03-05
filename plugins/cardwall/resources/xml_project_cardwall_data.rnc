@@ -1,0 +1,33 @@
+cardwall = element trackers  {
+
+    element tracker {
+        attribute id { xsd:string },
+
+        element columns {
+            element column {
+                attribute id { xsd:string }?,
+                attribute label { xsd:string },
+                (legacy_columns_headers_color | attribute tlp_color_name { xsd:string }?)
+            }*
+        }?,
+
+        element mappings {
+            element mapping {
+                attribute tracker_id { xsd:string },
+                attribute field_id { xsd:string },
+
+                element values {
+                    element value {
+                        attribute value_id { xsd:string },
+                        attribute column_id { xsd:string }
+                    }*
+                }?
+            }*
+        }?
+    }*
+}
+
+legacy_columns_headers_color =
+    attribute bg_red { xsd:long }?,
+    attribute bg_green { xsd:long }?,
+    attribute bg_blue { xsd:long }?

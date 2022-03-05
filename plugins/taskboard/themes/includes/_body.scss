@@ -1,0 +1,140 @@
+/**
+ * Copyright (c) Enalean, 2019 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.taskboard-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+.taskboard-swimlane {
+    display: flex;
+    flex: 1;
+
+    &:first-child > .taskboard-cell {
+        border-top: 0;
+    }
+
+    &:only-child > .taskboard-cell,
+    &:last-child > .taskboard-cell {
+        border-bottom: 0;
+    }
+
+    &:focus {
+        z-index: 10;
+        box-shadow: var(--tlp-shadow-focus);
+    }
+}
+
+.taskboard-swimlane-collapsed {
+    max-height: 62px;
+
+    > .taskboard-cell-swimlane-header {
+        border-right: unset;
+    }
+}
+
+.taskboard-cell {
+    flex: 1;
+    min-width: 250px;
+    min-height: 40px;
+    padding: var(--tlp-small-spacing);
+    border-right: 1px solid var(--tlp-neutral-normal-color);
+    border-bottom: 3px solid var(--tlp-neutral-normal-color);
+    vertical-align: top;
+
+    &.taskboard-drop-not-accepted {
+        > .taskboard-drop-not-accepted-overlay {
+            display: block;
+        }
+
+        > .taskboard-draggable-item {
+            display: none;
+        }
+    }
+
+    &:first-child {
+        background: var(--tlp-background-color-lighter-50);
+
+        &:hover,
+        &:focus-within {
+            > .taskboard-swimlane-toggle {
+                opacity: 1;
+                background: var(--tlp-background-color-lighter-50);
+            }
+        }
+    }
+
+    &:last-child {
+        border-right: 0;
+    }
+}
+
+.taskboard-cell-collapsed {
+    flex: 0 0 auto;
+    width: 50px;
+    min-width: unset;
+    min-height: 100px;
+    background: var(--tlp-white-color);
+    cursor: pointer;
+
+    &.taskboard-cell-collapsed-hover,
+    &:hover {
+        background: var(--tlp-white-color-darker-02);
+    }
+
+    &.taskboard-cell-collapsed-hover[data-drek-over] {
+        background: var(--tlp-main-color-lighter-90);
+    }
+
+    // This includes drek-ghost
+    > .taskboard-draggable-item {
+        display: none;
+    }
+}
+
+.taskboard-swimlane-toggle {
+    position: absolute;
+    z-index: 10;
+    top: 5px;
+    left: 6px;
+    padding: 0 2px;
+    transition: opacity ease-in-out 100ms;
+    border: 0;
+    opacity: 0;
+    color: var(--primary-color);
+    font-size: 14px;
+    cursor: pointer;
+
+    &::before {
+        color: var(--primary-color);
+    }
+
+    &:focus {
+        box-shadow: var(--tlp-shadow-focus);
+    }
+}
+
+.taskboard-no-mapping:last-child,
+.taskboard-no-mapping {
+    margin: var(--tlp-small-spacing) 0 0;
+    padding: 0 var(--tlp-small-spacing) 0 calc(var(--tlp-small-spacing) + 3px);
+    font-size: 14px;
+    line-height: 20px;
+}

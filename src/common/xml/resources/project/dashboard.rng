@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="dashboards">
+    <oneOrMore>
+      <element name="dashboard">
+        <attribute name="name">
+          <data type="string"/>
+        </attribute>
+        <zeroOrMore>
+          <element name="line">
+            <optional>
+              <attribute name="layout">
+                <data type="string"/>
+              </attribute>
+            </optional>
+            <oneOrMore>
+              <element name="column">
+                <oneOrMore>
+                  <element name="widget">
+                    <attribute name="name">
+                      <data type="string"/>
+                    </attribute>
+                    <zeroOrMore>
+                      <element name="preference">
+                        <attribute name="name">
+                          <data type="string"/>
+                        </attribute>
+                        <oneOrMore>
+                          <choice>
+                            <element name="value">
+                              <attribute name="name">
+                                <data type="string"/>
+                              </attribute>
+                              <data type="string"/>
+                            </element>
+                            <element name="reference">
+                              <attribute name="name">
+                                <data type="string"/>
+                              </attribute>
+                              <attribute name="REF">
+                                <data type="IDREF"/>
+                              </attribute>
+                            </element>
+                          </choice>
+                        </oneOrMore>
+                      </element>
+                    </zeroOrMore>
+                  </element>
+                </oneOrMore>
+              </element>
+            </oneOrMore>
+          </element>
+        </zeroOrMore>
+      </element>
+    </oneOrMore>
+  </define>
+</grammar>

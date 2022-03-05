@@ -1,0 +1,99 @@
+#
+# Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
+# This file is licensed under the GNU General Public License version 2. See the file COPYING.
+#
+#-----------------------------------------------
+# Script: SF/www/my/index.php
+#
+my_index	my_dashboard	Mon tableau de bord
+my_index	account_maintenance	Mon compte
+my_index	title	Page personnelle de $1
+my_index	message	Votre page personnelle contient la liste des artefacts que vous avez [<b>S</b>]oumis ou qui vous ont été [<b>A</b>]ssignés avec leur niveau de complétion, les forums et les fichiers que vous surveillez et les projets dont vous êtes membre.<P>
+my_index	err_artf	Impossible de créer un ArtifactTypeFactory
+my_index	my_bugs	Mes bugs
+my_index	my_srs	Mes demandes de support
+my_index	my_forums	Forums sous surveillance
+my_index	my_forums_msg	<b>Vous ne surveillez aucun forum.</b><P>En surveillant un forum, vous recevrez tous les messages postés sous forme de e-mail avec un lien vers le nouveau message.<P>Vous pouvez surveiller un forum en cliquant sur le lien approprié dans ce même forum de discussion.<BR>&nbsp;
+my_index	stop_forum	Arrêter la surveillance du forum ?
+my_index	my_files	Fichiers sous surveillance
+my_index	my_files_msg	<b>Vous ne surveillez aucun fichier.</b><P>En surveillant un fichier, vous recevrez par e-mail une note signalant la publication d'une nouvelle version et un lien vers l'espace de téléchargement.<P>Vous pouvez surveiller un fichier en visitant la page de &quot;Sommaire&quot; et en cliquant sur l'icône appropriée dans la section fichiers.<BR>&nbsp;
+my_index	stop_file	Arrêter la surveillance du paquet ?
+my_index	stop_monitor	Arrêter la surveillance
+my_index	my_tasks	Mes Tâches
+my_index	my_arts	Mes artefacts (anciens trackers)
+my_index	display_arts	Afficher les artefacts :
+my_index	my_bookmarks	Mes favoris
+my_index	no_bookmark	Vous n'avez pas encore de favori enregistré
+my_index	edit_link	Editer
+my_index	del_bookmark	Confirmez vous que vous voulez détruire ce favori ?
+my_index	add_bookmark	Ajouter un favori
+my_index	my_projects	Mes projets
+my_index	not_member	Vous n'êtes membre d'aucun projet
+my_index	admin_link	Admin
+my_index	quit_proj	Quitter ce projet ?
+my_index	priv_proj	<em>Projet privé</em>
+my_index	my_projects_legend	Légende :
+#my_index	a	A
+#my_index	s	S
+#my_index	as	AS
+my_index	no_info	N'afficher aucun artefact
+my_index	a_info	assignés à moi [A]
+my_index	s_info	soumis par moi [S]
+my_index	as_info	assignés à moi ou soumis par moi [AS]
+my_index	my_admin	Utilisateurs, projets et annonces en attente
+my_index	my_admin_non_super	Projets en attente
+my_index	my_admin_description	Liste et donne un accès rapide aux utilisateurs, projets et annonces en attente.
+my_index	no_bug	Pas encore de bug
+my_index	no_task	Pas encore de tâche
+my_index	no_support	Pas encore de demande de support
+my_index	my_latest_svn_commit	Mes derniers commits SVN
+my_index	my_latest_svn_commit_desc	Affiche les commits que vous avez réalisés, par projet.
+my_index	my_latest_svn_commit_on	le
+my_index	my_latest_svn_commit_by	par
+my_index	my_latest_commit_empty	Aucun commit trouvé
+my_index	my_latest_svn_commit_nb_prefs	Nombre maximum de commits SVN à afficher par projet
+my_index	send_mail	Envoyer un email aux membres du projet $1
+my_index	mail_sent	Email envoyé aux membres du projet $1
+my_index	mail_not_sent	Echec de l'envoi de mail aux membres du projet $1
+my_index	subject_label	Sujet
+my_index	body_label	Corps du message
+my_index	mass_mail_label	Envoyer le mail aux administrateurs du projet
+my_index	massmail_not_sent_max_users	Vous avez dépassé le nombre maximum ($1) de personnes à qui envoyer le message. L'email n'est pas envoyé.
+my_index	massmail_form_title	Envoi d'un email aux membres du projet
+
+#-----------------------------------------------
+# Script: SF/www/my/my_utils.php
+#
+my_utils	collapse	Replier
+my_utils	expand	Déplier
+my_utils	new_items	$1 nouveau(x)
+#
+#-----------------------------------------------
+# Script: SF/www/my/bookmark_add.php
+#
+bookmark_add	title	Ajouter un nouveau favori
+bookmark_add	message	Favori ajouté pour <b>'$1'</b> avec le titre <b>'$2'</b>.
+bookmark_add	visit	Visiter le favori
+bookmark_add	edit	Modifier ce favori
+bookmark_add	bkm_url	Adresse du favori
+bookmark_add	bkm_title	Titre du favori
+bookmark_add	favorite	Ma page favorite...
+bookmark_add	invalid_uri	L'URL n'est pas valide.
+
+#
+#-----------------------------------------------
+# Script: SF/www/my/bookmark_delete.php
+#
+bookmark_delete	title	Détruire un favori
+bookmark_delete	deleted	Favori détruit !
+#
+#-----------------------------------------------
+# Script: SF/www/my/bookmark_edit.php
+#
+bookmark_edit	title	Modifier un favori
+#
+#-----------------------------------------------
+# Script: SF/www/my/stop_monitor.php
+#
+my_monitored_forum	title	Arrêt de la surveillance d'un forum.
+my_monitored_forum	stop_monitoring	La surveillance du forum est arrêtée. Vous ne recevrez plus de courrier électronique en provenance de ce forum.

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testmanagement>
+  <configuration>
+    <campaigns>T75</campaigns>
+    <definitions>T72</definitions>
+    <executions>T73</executions>
+  </configuration>
+  <executions>
+    <execution execution_artifact_id="710" definition_changeset_id="CHANGESET_2376"/>
+  </executions>
+</testmanagement>

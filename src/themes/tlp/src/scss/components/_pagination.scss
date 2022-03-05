@@ -1,0 +1,53 @@
+/**
+ * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "buttons";
+
+$tlp-pagination-margin: 2px;
+
+.tlp-pagination {
+    text-align: center;
+}
+
+.tlp-pagination-button[class*="tlp-button"] {
+    width: $tlp-button-normal-height;
+    height: $tlp-button-normal-height;
+    margin: 0 $tlp-pagination-margin;
+    border-radius: 50%;
+
+    > .fas {
+        line-height: 38px;
+    }
+}
+
+.tlp-pagination-pages {
+    margin: 0 calc(var(--tlp-medium-spacing) - #{2 * $tlp-pagination-margin});
+    font-size: 0.875rem;
+}
+
+.tlp-pagination-number {
+    margin: 0 $tlp-pagination-margin;
+    color: #444444;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.tlp-table + .tlp-pagination {
+    margin: var(--tlp-large-spacing) 0 0;
+}

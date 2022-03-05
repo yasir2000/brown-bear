@@ -1,0 +1,22 @@
+{
+  "name": "tuleap/plugin-svn",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\SVN\\": ["include/", "include/SVN/"]
+    },
+    "classmap": ["include/"]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ],
+      "exclude": [
+        "/include/SVN/AccessControl/SVNRefreshAllAccessFilesCommand.php"
+      ]
+    }
+  }
+}

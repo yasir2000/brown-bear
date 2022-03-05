@@ -1,0 +1,43 @@
+<div class="user-preferences">
+    <h1 class="user-preferences-title" data-test="user-preferences-title">
+        {{# gettext }}Preferences{{/ gettext }}
+    </h1>
+    <div class="user-preferences-container">
+        {{> user-account-tabs }}
+
+        <div class="user-preferences-section">
+            <section class="tlp-pane">
+                <form class="tlp-pane-container" action="/account/appearance" method="post">
+                    <div class="tlp-pane-header">
+                        <h1 class="tlp-pane-title">
+                            <i class="tlp-pane-title-icon fa fa-paint-brush" aria-hidden="true"></i>
+                            {{# gettext }}Appearance & language{{/ gettext }}
+                        </h1>
+                    </div>
+                    <section class="tlp-pane-section user-preferences-section-appearance-form">
+                        <div class="user-preferences-section-appearance-fields">
+                            {{> appearance/language }}
+                            {{> appearance/color }}
+                            {{> appearance/condensed }}
+                            {{> appearance/accessibility }}
+                            {{> appearance/username }}
+                            {{> appearance/relative-dates }}
+                        </div>
+                        <div class="user-preferences-section-appearance-preview">
+                            {{> appearance/preview }}
+                        </div>
+                    </section>
+                    <section class="tlp-pane-section tlp-pane-section-submit user-preferences-section-submit">
+                        {{# csrf_token }}
+                            {{> csrf_token_input }}
+                        {{/ csrf_token }}
+
+                        <button type="submit" class="tlp-button-primary" data-test="user-prefs-appearance-section-submit">
+                            <i class="far fa-save tlp-button-icon"></i> {{# gettext }}Update{{/ gettext }}
+                        </button>
+                    </section>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

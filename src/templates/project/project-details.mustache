@@ -1,0 +1,182 @@
+<div class="tlp-framed-horizontally">
+    <form
+        action="?group_id={{ group_id }}"
+        method="post"
+        id="project_info_form"
+        class="project-admin-details-form"
+    >
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+        <div class="project-admin-details-container">
+            <section class="tlp-pane project-admin-details-public-info">
+                <div class="tlp-pane-container">
+                    <div class="tlp-pane-header">
+                        <h3 class="tlp-pane-title">{{ public_information_label }}</h3>
+                    </div>
+                    <section class="tlp-pane-section">
+                        <div class="project-admin-details-public-info-meta">
+                            <div class="tlp-property project-admin-details-public-info-meta-type">
+                                <label class="tlp-label">{{ project_type_label }}</label>
+                                <p>{{ project_type }}</p>
+                            </div>
+
+                            <div class="tlp-property">
+                                <label class="tlp-label">{{ template_project_label }}</label>
+                                {{# built_from_project }}
+                                    <p><a href="{{ template_project_url }}">{{ template_project_name }}</a></p>
+                                {{/ built_from_project }}
+                                {{# built_from_xml_template }}
+                                    <p>{{ name }}</p>
+                                {{/ built_from_xml_template }}
+                            </div>
+                        </div>
+                        <div class="project-admin-project-name-container">
+                        <div
+                            class="tlp-form-element form-group-name-element">
+                            <label for="form_group_name" class="tlp-label">
+                                {{ project_name_label }} <i class="fa fa-asterisk"></i>
+                            </label>
+                            <input
+                                type="text"
+                                class="tlp-input"
+                                maxlength="40"
+                                id="form_group_name"
+                                name="form_group_name"
+                                required
+                                placeholder="{{ project_name_placeholder }}"
+                                value="{{ group_name }}"
+                            />
+                            <p class="tlp-text-info">{{ project_name_info }}</p>
+                        </div>
+                            <div class="tlp-form-element">
+                                <label class="tlp-label" for="icon-input">{{ icon_label_name }}</label>
+                                <div id="form-group-name-icon-input-container" class="tlp-form-element {{# project_icon }} tlp-form-element-append {{/ project_icon }}" data-all-project-icons="{{all_project_icon}}">
+                                    <input id="icon-input"
+                                           type="text"
+                                           readonly
+                                           maxlength="1"
+                                           class="tlp-input form-group-name-icon-input"
+                                           name="form-group-name-icon"
+                                           value="{{ project_icon }}"
+                                    />
+                                    <button
+                                        id="icon-removal-button"
+                                        type="button"
+                                        class="tlp-append tlp-button-primary tlp-button-outline tlp-button-danger {{# project_icon }} show {{/ project_icon }}"
+                                    >
+                                        <i class="fas fa-trash-alt tlp-button-icon" aria-hidden="true"></i>
+                                        {{# gettext }} Remove {{/ gettext }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tlp-form-element">
+                            <label for="form_shortdesc" class="tlp-label">
+                                {{ short_description_label }}
+                                {{# is_description_mandatory }} <i class="fa fa-asterisk"></i>{{/ is_description_mandatory }}
+                            </label>
+                            <textarea
+                                class="tlp-textarea"
+                                rows="3"
+                                maxlength="255"
+                                id="form_shortdesc"
+                                name="form_shortdesc"
+                                {{# is_description_mandatory }}required{{/ is_description_mandatory }}
+                                data-test="project-details-short-description-input"
+                            >{{ project_short_description }}</textarea>
+                            <p class="tlp-text-info">{{ short_description_info }}</p>
+                        </div>
+
+                        {{# description_fields_representation }}
+                            <div class="tlp-form-element">
+                                <label for="{{ field_name }}" class="tlp-label">
+                                    {{ field_label }}{{# field_description_required }}<i class="fa fa-asterisk"></i>{{/field_description_required}}
+                                </label>
+                                {{# is_field_line_typed }}
+                                    <input
+                                        type="text"
+                                        class="tlp-input"
+                                        maxlength="70"
+                                        name="{{ field_name }}"
+                                        {{# field_description_required }}required{{/ field_description_required }}
+                                        value="{{ field_value }}"
+                                    />
+                                {{/ is_field_line_typed }}
+                                {{# is_field_text_typed }}
+                                    <textarea
+                                        class="tlp-textarea"
+                                        rows="8"
+                                        id="{{ field_name }}"
+                                        name="{{ field_name }}"
+                                        {{# field_description_required }}required{{/ field_description_required }}
+                                    >{{ field_value }}</textarea>
+                                {{/ is_field_text_typed }}
+                                <p class="tlp-text-info">{{{ purified_field_description }}}</p>
+                            </div>
+                        {{/ description_fields_representation }}
+
+                        {{# are_project_categories_used }}
+                            <div class="tlp-property">
+                                <label class="tlp-label">{{ project_trove_category_label }}</label>
+                                {{^ project_trove_categories }}
+                                    <p class="tlp-text-muted">{{ empty_project_trove_categories }}</p>
+                                {{/ project_trove_categories }}
+                                <ul>
+                                    {{# project_trove_categories }}
+                                        <li>{{ trove_category_full_path }}</li>
+                                    {{/ project_trove_categories }}
+                                </ul>
+                            </div>
+                        {{/are_project_categories_used}}
+                    </section>
+                </div>
+            </section>
+
+            <div class="project-admin-details-right-container">
+                <section class="tlp-pane project-admin-details-visibility">
+                    {{# project_global_visibility_presenter }}
+                        {{> project-visibility-pane }}
+                    {{/ project_global_visibility_presenter}}
+                </section>
+
+                {{# project_hierarchy_presenter }}
+                    {{# is_hierarchy_shown }}
+                        {{> project-hierarchy }}
+                    {{/is_hierarchy_shown}}
+                {{/ project_hierarchy_presenter }}
+
+                {{# has_projects }}
+                    <section class="tlp-pane">
+                        <div class="tlp-pane-container">
+                            <div class="tlp-pane-header">
+                                <h1 class="tlp-pane-title">{{ template_label }}</h1>
+                            </div>
+                            <section class="tlp-pane-section">
+                                <ul>
+                                    {{# projects_created_from_this_template }}
+                                        <li>
+                                            <a href="/projects/{{ unix_group_name }}">{{ group_name }}</a>
+                                        </li>
+                                    {{/ projects_created_from_this_template }}
+                                </ul>
+                            </section>
+                        </div>
+                    </section>
+                {{/ has_projects }}
+
+                {{# project_global_visibility_presenter }}
+                    {{> truncated_emails }}
+                {{/ project_global_visibility_presenter }}
+            </div>
+        </div>
+        <input type="hidden" name="pane" value="details"/>
+        <button
+            type="submit"
+            class="tlp-button-primary tlp-button-large project-admin-details-submit"
+            data-test="project-details-submit-button"
+        >
+            <i class="fa fa-save tlp-button-icon"></i> {{ update_button }}
+        </button>
+    </form>
+</div>

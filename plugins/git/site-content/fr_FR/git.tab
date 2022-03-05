@@ -1,0 +1,17 @@
+project_admin_utils	perm_granted_for_git_repository	Permission accordée pour le dépôt git $1
+project_admin_utils	regexp_activated_for_git_repository	Modification dans l'utilisation des expressions régulières pour le dépôt git $1
+project_admin_utils	regexp_activated_for_git_template	Modification dans l'utilisation des expressions régulières pour le projet $1
+project_admin_utils	perm_reset_for_git_repository	Réinitialisation des permissions pour le dépôt git $1
+project_admin_utils	default_git_perms_granted_for_project	Permissions git par défaut définies pour le projet $1
+
+project_admin_utils	git_repo_create	Création d'un dépôt Git
+project_admin_utils	git_repo_delete	Suppression d'un dépôt Git
+project_admin_utils	git_repo_update	Mise à jour d'un dépôt Git
+project_admin_utils	git_repo_mirroring_update	Mise à jour des miroirs d'un dépôt Git
+project_admin_utils	git_repo_to_gerrit	Migration d'un dépôt Git vers Gerrit
+project_admin_utils	git_create_template	Création d'un template Gerrit
+project_admin_utils	git_delete_template	Suppression d'un template Gerrit
+project_admin_utils	git_disconnect_gerrit_delete	Déconnexion de Gerrit et suppression du dépôt
+project_admin_utils	git_disconnect_gerrit_read_only	Déconnexion de Gerrit et lecture seule du dépôt
+project_admin_utils	git_admin_groups	Groupes administrateurs Git
+project_admin_utils	git_fork_repositories	Fork de dépôts Git

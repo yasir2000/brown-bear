@@ -1,0 +1,253 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kanban\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Joris MASSON <joris.masson@enalean.com>\n"
+"Language-Team: Enalean <crew@enalean.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+
+msgid ""
+"A card has been updated by another user. As your kanban is filtered you "
+"can't see modifications."
+msgstr ""
+"Une carte a été modifiée par un autre utilisateur. Comme votre kanban est "
+"filtré, vous ne pouvez pas voir les modifications."
+
+msgid "Add"
+msgstr "Ajouter"
+
+msgid "Add a column"
+msgstr "Ajouter une colonne"
+
+msgid "Add new {{ kanban.kanban.tracker.item_name }}"
+msgstr "Ajouter un(e) {{ kanban.kanban.tracker.item_name }}"
+
+msgid ""
+"An error occured while saving one of your last action. <br>We're afraid that "
+"you will have to reload the page in order to bring you back to a consistent "
+"state."
+msgstr ""
+"Une erreur est survenue lors de la sauvegarde de votre dernière action. "
+"<br>Vous allez devoir rafraichir la page afin de retrouver un état cohérent."
+
+msgid "Archive"
+msgstr "Archive"
+
+msgid "Backlog"
+msgstr "Backlog"
+
+msgid "Based on the {{ trackerLink }} tracker."
+msgstr "Basé sur l’outil de suivi {{ trackerLink }}."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Card summary"
+msgstr "Titre de la carte"
+
+msgid "Column name"
+msgstr "Nom de la colonne"
+
+msgid "Columns configuration"
+msgstr "Configuration des colonnes"
+
+msgid "Compact view"
+msgstr "Vue compacte"
+
+msgid "Confirm deletion"
+msgstr "Confirmer la suppression"
+
+msgid "Confirm deletion of this Kanban"
+msgstr "Confirmer la suppression de ce Kanban"
+
+msgid "Cumulative flow chart"
+msgstr "Diagramme de flux cumulé"
+
+msgid "Danger zone"
+msgstr "Zone de danger"
+
+msgid "Define max:"
+msgstr "Maximum :"
+
+msgid "Delete this Kanban"
+msgstr "Supprimer ce Kanban"
+
+msgid "Detailed view"
+msgstr "Vue détaillée"
+
+msgid "Edit"
+msgstr "Éditer"
+
+msgid "Edit this Kanban"
+msgstr "Éditer ce Kanban"
+
+msgid "Error details"
+msgstr "Détails de l'erreur"
+
+msgid "Expand/collapse the card"
+msgstr "Afficher/cacher les détails de la carte"
+
+msgid "Filters:"
+msgstr "Filtres :"
+
+msgid "General configuration"
+msgstr "Configuration générale"
+
+msgid "Go to Kanban"
+msgstr "Aller sur le Kanban"
+
+msgid "In Kanban since:"
+msgstr "Dans le Kanban depuis :"
+
+msgid "In column since:"
+msgstr "Dans la colonne depuis :"
+
+msgid "Kanban label:"
+msgstr "Label du Kanban :"
+
+msgid "Kanban {{ label }} successfuly deleted"
+msgstr "Le Kanban {{ label }} a été supprimé"
+
+msgid "Last 3 months"
+msgstr "3 derniers mois"
+
+msgid "Last 6 months"
+msgstr "6 derniers mois"
+
+msgid "Last 7 days"
+msgstr "7 derniers jours"
+
+msgid "Last month"
+msgstr "Dernier mois"
+
+msgid "Last year"
+msgstr "Dernière année"
+
+#. moment.js Date format
+msgid "MM/DD"
+msgstr "DD/MM"
+
+msgid ""
+"More information about columns are available in the field administration "
+"used by the semantic status in the {{ trackerLink }} tracker."
+msgstr ""
+"Plus d’informations concernant les colonnes sont disponibles dans "
+"l’administration du champ utilisé par la sémantique de statut dans l’outil "
+"de suivi {{ tracker_link }}."
+
+msgid "Move to bottom"
+msgstr "Déplacer en bas"
+
+msgid "Move to top"
+msgstr "Déplacer en haut"
+
+msgid "Nb. of cards"
+msgstr "Nb. de cartes"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "OK, reload the page"
+msgstr "OK, rafraichir la page"
+
+msgid "Oh snap!"
+msgstr "Oups !"
+
+msgid "Please reload your page."
+msgstr "Veuillez recharger votre page."
+
+msgid "Remove"
+msgstr "Supprimer"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Save the selected reports"
+msgstr "Sauvegarder les rapports sélectionnés"
+
+msgid "Select tracker reports"
+msgstr "Sélectionnez des rapports d'outil de suivi"
+
+msgid "Select which tracker reports can be used to filter this kanban."
+msgstr ""
+"Sélectionnez quels rapports d'outil de suivi peuvent être utilisées pour "
+"filtrer ce kanban."
+
+msgid "Show details"
+msgstr "Afficher plus de détails"
+
+msgid "Show reports"
+msgstr "Afficher les rapports"
+
+msgid "The card has been created below."
+msgstr "La carte a été créée ci-dessous."
+
+msgid ""
+"The deletion of a Kanban is irreversible. Please be certain before doing it."
+msgstr ""
+"La suppression d'un Kanban est irréversible. Veuillez être certain de ce que "
+"vous faites."
+
+msgid ""
+"There was an error while loading the Edit Kanban modal. Please check your "
+"network connection."
+msgstr ""
+"Une erreur est survenue pendant le chargement de la modale d'édition du "
+"Kanban. Veuillez vérifier votre connexion au réseau."
+
+msgid ""
+"There was an error while loading the Reports modal. Please check your "
+"network connection."
+msgstr ""
+"Une erreur est survenue pendant le chargement de la modale des Rapports. "
+"Veuillez vérifier votre connexion au réseau."
+
+msgid "Timeframe:"
+msgstr "Période de temps :"
+
+msgid "Toggle the archive"
+msgstr "Basculer l'affichage de l'archive"
+
+msgid "Toggle the backlog"
+msgstr "Basculer l'affichage du backlog"
+
+msgid "Toggle this column"
+msgstr "Basculer l'affichage de cette colonne"
+
+msgid "Tracker report filters"
+msgstr "Rapports de l'outil de suivi"
+
+msgid "You are disconnected from real time. Please reload your page."
+msgstr "Vous êtes déconnecté du temps réel. Rechargez votre page."
+
+msgid ""
+"You can't manage columns of the tracker configuration. More information "
+"about columns are available in the field administration used by the semantic "
+"status in the {{ trackerLink }} tracker."
+msgstr ""
+"Vous ne pouvez pas gérer les colonnes. Plus d’informations concernant les "
+"colonnes sont disponibles dans l’administration du champ utilisé par la "
+"sémantique de statut dans l’outil de suivi {{ tracker_link }}."
+
+msgid "You have reached the work in progress limit for this column!"
+msgstr "Vous avez atteint la limite du nombre de carte de cette colonne !"
+
+msgid "Your kanban is filtered, there is no update of WIP."
+msgstr "Votre kanban est filtré, il n'y a pas de mise à jour du WIP."
+
+msgid ""
+"Your kanban is filtered, there is no update of cards in real time or WIP."
+msgstr ""
+"Votre kanban est filtré, il n'y a pas de mise à jour des cartes en temps "
+"réel, ou du WIP."
+
+msgid "id, title, ..."
+msgstr "id, titre, ..."
+
+msgid "{{ reports_modal.kanban_label }} reports"
+msgstr "Rapports de {{ reports_modal.kanban_label }}"

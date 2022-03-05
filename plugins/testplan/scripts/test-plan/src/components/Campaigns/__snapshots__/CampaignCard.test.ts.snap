@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CampaignCard Displays a campaign as a card 1`] = `
+<a
+  class="tlp-pane test-plan-campaign"
+  data-test="campaign"
+  href="http://localhost/plugins/testmanagement/?group_id=102&milestone_id=74#!/campaigns/470"
+>
+  <div
+    class="tlp-pane-container"
+  >
+    <div
+      class="tlp-pane-header test-plan-campaign-header"
+    >
+      <h1
+        class="tlp-pane-title"
+      >
+        My campaign
+      </h1>
+       
+      <div
+        class="test-plan-campaign-header-stats"
+      >
+        <span
+          class="test-plan-campaign-header-stats-info"
+        >
+          <i
+            aria-hidden="true"
+            class="fa fa-check"
+          />
+          
+                    14 tests
+                
+        </span>
+      </div>
+    </div>
+     
+    <div
+      class="tlp-pane-section"
+    >
+      <campaign-progression-stub
+        campaign="[object Object]"
+      />
+    </div>
+  </div>
+</a>
+`;

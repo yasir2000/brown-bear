@@ -1,0 +1,25 @@
+{
+  "name": "tuleap/plugin-cardwall",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Cardwall\\": "include/"
+    },
+    "classmap": ["include/"]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tuleap\\Cardwall\\": "tests/unit/"
+    },
+    "classmap": ["tests/unit/"]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ]
+    }
+  }
+}

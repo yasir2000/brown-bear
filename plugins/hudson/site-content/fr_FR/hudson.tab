@@ -1,0 +1,5 @@
+plugin_hudson	service_lbl_key	Intégration Continue
+plugin_hudson	service_desc_key	Intégration Continue avec Hudson/Jenkins
+
+plugin_hudson	reference_job_desc_key	Job Jenkins
+plugin_hudson	reference_build_desc_key	Build Jenkins

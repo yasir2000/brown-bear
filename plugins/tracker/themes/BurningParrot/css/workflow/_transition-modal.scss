@@ -1,0 +1,59 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.tlp-select.tracker-workflow-transition-modal-authorized-ugroups {
+    $size-of-one-option: 19px;
+
+    height: 8 * $size-of-one-option;
+}
+
+.tracker-workflow-transition-modal-actions-section {
+    background-color: var(--tlp-background-color);
+    background-image: linear-gradient(to bottom, rgb(255 255 255 / 70%), transparent 100%);
+}
+
+.tracker-workflow-transition-modal-action-card {
+    padding: 0;
+}
+
+.tracker-workflow-transition-modal-action-type {
+    display: flex;
+    align-items: center;
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) 0;
+}
+
+.tracker-workflow-transition-modal-action-details {
+    display: flex;
+    padding: var(--tlp-medium-spacing);
+    border-top: 1px solid var(--tlp-neutral-light-color);
+}
+
+.tracker-workflow-transition-modal-action-details-element {
+    flex-grow: 1;
+
+    &:not(:first-child) {
+        margin-left: var(--tlp-medium-spacing);
+    }
+}
+
+.tracker-workflow-transition-modal-action-remove {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+    color: var(--tlp-danger-color);
+    font-size: 16px;
+}

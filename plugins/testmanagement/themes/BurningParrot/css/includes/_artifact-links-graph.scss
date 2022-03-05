@@ -1,0 +1,82 @@
+@use "sass:map";
+@use "sass:color";
+@use "../../src/themes/common/css/utils/colors";
+@use "../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+
+.artifact-links-graph-modal {
+    height: 70vh;
+    max-height: 70vh;
+}
+
+.graph {
+    display: block;
+    height: 100%;
+    max-height: 100%;
+}
+
+.link {
+    stroke-width: 1.5px;
+    stroke: var(--tlp-dimmed-color);
+    fill: var(--tlp-dimmed-color);
+}
+
+circle {
+    transition: stroke-width linear 0.05s;
+    stroke-width: 2px;
+    cursor: pointer;
+
+    &:hover {
+        stroke-width: 5px;
+    }
+
+    @each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+        &.#{$color-name} {
+            stroke: color.adjust(map.get($colors, "primary"), $lightness: - 20%);
+        }
+    }
+}
+
+text {
+    font: 12px sans-serif;
+    text-shadow: 0 1px 0 #ffffff, 1px 0 0 #ffffff, 0 -1px 0 #ffffff, -1px 0 0 #ffffff;
+    cursor: pointer;
+}
+
+.loader-node {
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+}
+
+#artifact-links-graph-utils {
+    position: absolute;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.graph-label {
+    opacity: 0.8;
+
+    .ref-name {
+        fill: #ffffff;
+        font-weight: bold;
+        text-shadow: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        > text:not(.ref-name) {
+            text-decoration: underline;
+        }
+    }
+}
+
+@each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+    .#{$color-name} {
+        fill: color.adjust(map.get($colors, "primary"), $lightness: - 20%);
+    }
+}

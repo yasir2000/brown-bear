@@ -1,0 +1,61 @@
+lockfileVersion: 5.3
+
+specifiers:
+  '@tuleap/angular-tlp': file:../../src/scripts/lib/angular-tlp
+  '@uirouter/angularjs': ^1.0.29
+  angular: ^1.8.2
+  angular-filter: ^0.5.17
+  angular-gettext: ^2.4.2
+  angular-mocks: ^1.8.2
+  angular-sanitize: ^1.8.2
+
+dependencies:
+  '@tuleap/angular-tlp': link:../../src/scripts/lib/angular-tlp
+  '@uirouter/angularjs': 1.0.29_angular@1.8.2
+  angular: 1.8.2
+  angular-filter: 0.5.17
+  angular-gettext: 2.4.2
+  angular-sanitize: 1.8.2
+
+devDependencies:
+  angular-mocks: 1.8.2
+
+packages:
+
+  /@uirouter/angularjs/1.0.29_angular@1.8.2:
+    resolution: {integrity: sha512-RImWnBarNixkMto0o8stEaGwZmvhv5cnuOLXyMU2pY8MP2rgEF74ZNJTLeJCW14LR7XDUxVH8Mk8bPI6lxedmQ==}
+    engines: {node: '>=4.0.0'}
+    peerDependencies:
+      angular: '>=1.2.0'
+    dependencies:
+      '@uirouter/core': 6.0.7
+      angular: 1.8.2
+    dev: false
+
+  /@uirouter/core/6.0.7:
+    resolution: {integrity: sha512-KUTJxL+6q0PiBnFx4/Z+Hsyg0pSGiaW5yZQeJmUxknecjpTbnXkLU8H2EqRn9N2B+qDRa7Jg8RcgeNDPY72O1w==}
+    engines: {node: '>=4.0.0'}
+    dev: false
+
+  /angular-filter/0.5.17:
+    resolution: {integrity: sha1-YMDHOA/UWHLLjxCAHP4H4VQGKTU=}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      angular: 1.8.2
+    dev: false
+
+  /angular-gettext/2.4.2:
+    resolution: {integrity: sha512-J9Zy76VmN5otw6GyIqJjoLjl+0wwsZSCUPgPfQwM4Mx//hP3leqyS/fgf2MDiMLLyKgoHWkMMzzWbP4iH3+5vQ==}
+    dev: false
+
+  /angular-mocks/1.8.2:
+    resolution: {integrity: sha512-I5L3P0l21HPdVsP4A4qWmENt4ePjjbkDFdAzOaM7QiibFySbt14DptPbt2IjeG4vFBr4vSLbhIz8Fk03DISl8Q==}
+    dev: true
+
+  /angular-sanitize/1.8.2:
+    resolution: {integrity: sha512-OB6Goa+QN3byf5asQ7XRl7DKZejm/F/ZOqa9z1skqYVOWA2hoBxoCmt9E7+i7T/TbxZP5zYzKxNZVVJNu860Hg==}
+    dev: false
+
+  /angular/1.8.2:
+    resolution: {integrity: sha512-IauMOej2xEe7/7Ennahkbb5qd/HFADiNuLSESz9Q27inmi32zB0lnAsFeLEWcox3Gd1F6YhNd1CP7/9IukJ0Gw==}
+    dev: false

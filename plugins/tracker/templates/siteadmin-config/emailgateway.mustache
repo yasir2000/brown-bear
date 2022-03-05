@@ -1,0 +1,69 @@
+<div class="tlp-framed-vertically">
+
+    {{> siteadmin-config/site-admin-navbar }}
+
+    <div class="tlp-framed-horizontally">
+        {{# is_localinc_obsolete }}
+        <div class="tlp-alert-danger">
+            {{{ localinc_obsolete_message }}}
+        </div>
+        {{/ is_localinc_obsolete }}
+
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="far fa-envelope tlp-pane-title-icon"></i> {{ email_gateway_pane_title }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <p>{{ email_gateway_desc }}</p>
+
+                    <form method="POST" action="">
+                        <input type="hidden" name="action" value="update-emailgateway" />
+                        {{{ csrf_token }}}
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-radio">
+                                <input type="radio"
+                                    name="emailgateway_mode"
+                                    value="disabled"
+                                    {{# is_emailgateway_disabled }}checked{{/ is_emailgateway_disabled }}
+                                >
+                                {{ disable }}
+                            </label>
+                            <p class="tlp-text-info">{{ disable_desc }}</p>
+                        </div>
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-radio">
+                                <input type="radio"
+                                    name="emailgateway_mode"
+                                    value="token"
+                                    {{# is_token_based_emailgateway_enabled }}checked{{/ is_token_based_emailgateway_enabled }}
+                                >
+                                {{ token }}
+                            </label>
+                            <p class="tlp-text-info">{{{ token_desc }}}</p>
+                        </div>
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-radio">
+                                <input type="radio"
+                                    name="emailgateway_mode"
+                                    value="insecure"
+                                    {{# is_insecure_emailgateway_enabled }}checked{{/ is_insecure_emailgateway_enabled }}
+                                >
+                                {{ insecure }}
+                            </label>
+                            <p class="tlp-text-info">{{{ insecure_desc }}}</p>
+                        </div>
+
+                        <div class="tlp-pane-section-submit">
+                            <button type="submit" class="tlp-button-primary">
+                                <i class="fa fa-save tlp-button-icon" aria-hidden="true"></i>
+                                {{# dgettext }}tuleap-tracker | Save configuration{{/ dgettext }}
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>

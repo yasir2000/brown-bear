@@ -1,0 +1,55 @@
+{{# milestone_presenter }}
+    <h1 class="taskboard-root-title">
+        <div class="tlp-dropdown">
+            <div id="agiledashboard-scrum-milestone-menu">
+                {{ milestoneTitle }}
+                <i class="fa fa-fw fa-caret-down" id="agiledashboard-scrum-milestone-menu-caret" aria-hidden="true"></i>
+            </div>
+            <div class="tlp-dropdown-menu" role="menu">
+                <a href="{{ editArtifactUrl }}"
+                   class="backlog-item-link tlp-dropdown-menu-item"
+                   data-artifact-id="{{ milestoneId }}"
+                   role="menuitem"
+                >
+                    {{ editArtifact }}
+                </a>
+            </div>
+        </div>
+        {{# displayMilestoneDates }}
+            <small>
+                {{startDate}} – {{endDate}}
+            </small>
+        {{/ displayMilestoneDates }}
+    </h1>
+
+    <div class="main-project-tabs">
+        <nav class="tlp-tabs">
+            {{# getPaneInfoList }}
+                <a href="{{ getUri }}" class="tlp-tab {{# isActive }}tlp-tab-active{{/ isActive }}">
+                    {{ getTitle }}
+                    {{# isExternalLink }}
+                        <i class="fas fa-external-link-alt tlp-tab-icon" aria-hidden="true"></i>
+                    {{/ isExternalLink }}
+                </a>
+            {{/ getPaneInfoList }}
+            <a href="/plugins/tracker/?aid={{ milestoneId }}" class="tlp-tab">
+            {{ artifact }}
+            <i class="fas fa-external-link-alt tlp-tab-icon" aria-hidden="true"></i>
+            </a>
+        </nav>
+    </div>
+{{/ milestone_presenter }}
+
+<div class="taskboard-root">
+    <div id="taskboard"
+         data-user-is-admin="{{ user_is_admin }}"
+         data-admin-url="{{ admin_url }}"
+         data-columns="{{ json_encoded_columns }}"
+         data-trackers="{{ json_encoded_trackers }}"
+         data-has-content="{{ has_content }}"
+         data-milestone-id="{{# milestone_presenter }}{{ milestoneId }}{{/milestone_presenter}}"
+         data-milestone-title="{{# milestone_presenter }}{{ milestoneTitle }}{{/ milestone_presenter }}"
+         data-are-closed-items-displayed="{{ are_closed_items_displayed }}"
+         data-backlog-items-have-children="{{ backlog_items_have_children }}"
+    ></div>
+</div>

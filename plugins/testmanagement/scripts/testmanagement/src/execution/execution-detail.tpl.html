@@ -1,0 +1,431 @@
+<div class="tlp-alert-danger" ng-if="execution.error">{{ execution.error }}</div>
+
+<div class="tuleap-modal-loading"
+     ng-if="artifact_links_graph_modal_loading.is_loading || edit_artifact_modal_loading.loading"></div>
+
+<div class="linked-issue-alert tlp-alert-success" ng-if="linkedIssueAlertVisible">
+    <span class="linked-issue-alert-text">
+    {{ "Bug" | translate }} <a ng-href="/plugins/tracker/?aid={{ linkedIssueId }}">#{{ linkedIssueId }}</a> {{ "has been successfully linked to this test." | translate }}
+    </span>
+    <button type="button"
+            class="linked-issue-alert-close tlp-button-success tlp-button-outline tlp-button-mini"
+            ng-click="closeLinkedIssueAlert()"
+    >
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+    </button>
+</div>
+
+<section id="test"
+    class="tlp-pane current-test"
+    ng-class="{
+        'passed': execution.status === 'passed',
+        'failed': execution.status === 'failed',
+        'blocked': execution.status === 'blocked',
+        'notrun': execution.status === 'notrun',
+        'comment-expanded': isCommentAreaExpanded }"
+    data-test="current-test"
+>
+    <div class="tlp-pane-container"
+         role="tabpanel"
+         id="{{ execution.definition.id }}-tabpanel"
+         aria-labelledby="{{ execution.definition.id }}-tab"
+    >
+        <section class="current-test-header-container">
+            <div class="loader" ng-if="! execution.id"></div>
+
+            <div class="current-test-header">
+                <h1 class="current-test-header-title" data-test="current-test-header-title">
+                    <i ng-if="execution.is_automated" class="fa current-test-title-icon-auto" ng-class="{
+                        'fa-tlp-robot notrun': execution.status === 'notrun',
+                        'fa-tlp-robot blocked': execution.status === 'blocked',
+                        'fa-tlp-robot-happy passed': execution.status ===  'passed',
+                        'fa-tlp-robot-unhappy failed': execution.status ===  'failed'
+                    }"></i>
+                    {{ execution.definition.summary }}
+                </h1>
+
+                <div class="current-test-header-actions">
+                    <div class="tlp-dropdown" ng-if="linkMenuIsVisible">
+                        <button class="current-test-header-action tlp-button-secondary"
+                                type="button"
+                                id="dropdown-link-bug"
+                                title="{{ 'Open bug options dropdown' | translate }}"
+                                open-tlp-dropdown
+                        >
+                            <i class="fa fa-fw fa-tlp-new-bug" aria-hidden="true"></i>
+                        </button>
+                        <div class="tlp-dropdown-menu tlp-dropdown-menu-right tlp-dropdown-menu-on-icon" role="menu">
+                            <button class="tlp-dropdown-menu-item"
+                                    type="button"
+                                    role="menuitem"
+                                    ng-if="canCreateIssue"
+                                    ng-click="showLinkToNewBugModal()"
+                                    data-shortcut-new-bug
+                            >
+                                <i class="tlp-dropdown-menu-item-icon fa fa-fw fa-plus" aria-hidden="true"></i>
+                                <span translate>Create a new bug</span>
+                            </button>
+                            <button class="tlp-dropdown-menu-item"
+                                    type="button"
+                                    role="menuitem"
+                                    ng-if="canLinkIssue"
+                                    ng-click="showLinkToExistingBugModal()"
+                                    data-shortcut-link-bug
+                            >
+                                <i class="tlp-dropdown-menu-item-icon fa fa-fw fa-link" aria-hidden="true"></i>
+                                <span translate>Link to an existing bug</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="current-test-header-action tlp-button-secondary"
+                            type="button"
+                            ng-if="! linkMenuIsVisible && canCreateIssue"
+                            ng-click="showLinkToNewBugModal()"
+                            title="{{ 'Create a new bug' | translate }}"
+                            data-shortcut-new-bug
+                    >
+                        <i class="fa fa-fw fa-tlp-new-bug" aria-hidden="true"></i>
+                    </button>
+
+                    <a href="/plugins/tracker/?aid={{ execution.definition.id }}"
+                    class="current-test-header-action tlp-button-secondary"
+                    data-test="current-test-edit"
+                    ng-click="showEditArtifactModal($event, execution.definition)"
+                    title="{{ 'Edit this test' | translate }}"
+                    data-shortcut-edit-test
+                    >
+                        <i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>
+                    </a>
+
+                    <button class="current-test-header-action tlp-button-secondary"
+                            type="button"
+                            ng-click="showArtifactLinksGraphModal(execution)"
+                            title="{{ 'Show dependencies graph for this test' | translate }}"
+                            data-shortcut-dependency-graph
+                    >
+                        <i class="fa fa-tlp-dependencies-graph" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <section ng-if="execution.definition.all_requirements.length + execution.linked_bugs.length > 2 && execution.is_automated === false"
+                     class="current-test-requirement-or-bug"
+             >
+                <div class="tlp-dropdown">
+                    <button ng-if="execution.definition.all_requirements.length > 0"
+                          ng-class="{
+                              'tlp-badge-success': execution.status === 'passed',
+                              'tlp-badge-danger': execution.status === 'failed',
+                              'tlp-badge-info': execution.status === 'blocked',
+                              'tlp-badge-secondary': execution.status === 'notrun'
+                          }"
+                        type="button"
+                        open-tlp-dropdown
+                    >
+                        <span translate translate-n="execution.definition.all_requirements.length" translate-plural="{{ $count }} requirements covered">1 requirement covered</span>
+                    </button>
+                    <div class="tlp-dropdown-menu">
+                        <a class="tlp-dropdown-menu-item"
+                            role="menuitem"
+                            href="/plugins/tracker/?aid={{ requirement.id }}"
+                            ng-repeat="requirement in execution.definition.all_requirements track by requirement.id"
+                        >
+                            <span ng-class="['cross-ref-badge', 'cross-ref-badge-' + requirement.tracker.color_name, 'linked-issues-dropdown-content-badge']">
+                                {{ requirement.xref }}
+                            </span> {{ requirement.title }}
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tlp-dropdown">
+                    <button ng-if="execution.linked_bugs.length > 0"
+                          ng-class="{
+                              'tlp-badge-success': execution.status === 'passed',
+                              'tlp-badge-danger': execution.status === 'failed',
+                              'tlp-badge-info': execution.status === 'blocked',
+                              'tlp-badge-secondary': execution.status === 'notrun'
+                          }"
+                        type="button"
+                        open-tlp-dropdown
+                    >
+                        <span translate translate-n="execution.linked_bugs.length" translate-plural="{{ $count }} bugs linked">1 bug linked</span>
+                    </button>
+                    <div class="tlp-dropdown-menu">
+                        <a class="tlp-dropdown-menu-item"
+                            role="menuitem"
+                            href="/plugins/tracker/?aid={{ bug.id }}"
+                            ng-repeat="bug in execution.linked_bugs track by bug.id"
+                        >
+                            <span ng-class="['cross-ref-badge', 'cross-ref-badge-' + bug.tracker.color_name, 'linked-issues-dropdown-content-badge']">
+                                {{ bug.xref }}
+                            </span> {{ bug.title }}
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section ng-if="execution.definition.all_requirements.length > 0 && execution.definition.all_requirements.length + execution.linked_bugs.length <= 2 && execution.is_automated === false"
+                     class="current-test-requirement-or-bug"
+                     ng-repeat="requirement in execution.definition.all_requirements track by requirement.id"
+                     data-test="current-test-requirement"
+            >
+                <i class="fas fa-fw fa-long-arrow-alt-right current-test-requirement-or-bug-icon" aria-hidden="true"></i>
+                <a href="/plugins/tracker/?aid={{ requirement.id }}">
+                    <span ng-class="['current-test-requirement-or-bug-badge', 'cross-ref-badge', 'cross-ref-badge-' + requirement.tracker.color_name]">
+                        {{ requirement.xref }}
+                    </span>
+                    <span>{{ requirement.title }}</span>
+                </a>
+            </section>
+
+            <section ng-if="execution.linked_bugs.length > 0 && execution.definition.all_requirements.length + execution.linked_bugs.length <= 2 && execution.is_automated === false"
+                     class="current-test-requirement-or-bug"
+                     ng-repeat="bug in execution.linked_bugs track by bug.id"
+                     data-test="current-test-bug"
+            >
+                <i class="fas fa-fw fa-bug current-test-requirement-or-bug-icon" aria-hidden="true"></i>
+                <a href="/plugins/tracker/?aid={{ bug.id }}">
+                    <span ng-class="['current-test-requirement-or-bug-badge', 'cross-ref-badge', 'cross-ref-badge-' + bug.tracker.color_name]">
+                        {{ bug.xref }}
+                    </span>
+                    <span>{{ bug.title }}</span>
+                </a>
+            </section>
+
+            <section ng-if="execution.previous_result.has_been_run_at_least_once"
+                class="current-test-latest-result"
+            >
+                <i class="fa fa-check-circle current-test-status" ng-if="execution.status === 'passed'"></i>
+                <i class="fa fa-times-circle current-test-status" ng-if="execution.status === 'failed'"></i>
+                <i class="fa fa-exclamation-circle current-test-status" ng-if="execution.status === 'blocked'"></i>
+                <div class="current-test-header-who">
+                    <span ng-if="execution.previous_result.submitted_on">
+                        {{ execution.previous_result.submitted_on | amCalendar }}
+                    </span>
+                    <span ng-if="execution.previous_result.submitted_by.real_name">
+                        <span translate>by</span> {{ execution.previous_result.submitted_by.real_name }}
+                    </span>
+                </div>
+            </section>
+        </section>
+
+        <section ng-if="! execution.definition.steps.length && execution.is_automated === false" class="current-test-content tlp-pane-section">
+            <section ng-class="{'empty-state-pane': execution.definition.description.length === 0}">
+                <execution-detail-just-updated></execution-detail-just-updated>
+                <p class="empty-state-text"
+                   ng-if="execution.definition.description.length === 0"
+                   translate
+                >
+                    This test has no description. Please edit it.
+                </p>
+                <div ng-bind-html="execution.definition.description"></div>
+            </section>
+        </section>
+
+        <execution-with-steps class="current-test-content"
+                              ng-if="execution.definition.steps.length && execution.is_automated === false"
+                              execution="execution"
+                              campaign="campaign"
+                              tabindex="-1"
+        ></execution-with-steps>
+
+        <section
+            class="tlp-pane-section current-test-footer-section current-test-footer-section-comment current-test-footer-top"
+            ng-class="{'current-test-footer-section-readonly-comment-container': ! displayTestCommentEditor }"
+            ng-if="shouldCommentSectionBeDisplayed() && execution.is_automated === false && ! execution.userCanReloadTestBecauseDefinitionIsUpdated"
+            data-test="comment-footer-section"
+            execution-attachments-drop-zone
+            execution-attachments-drop-zone-allow-dnd="displayTestCommentEditor && execution.upload_url !== null"
+        >
+            <div class="tlp-alert-warning current-test-message-warning"
+                    ng-if="onlyStatusHasBeenChanged"
+                    data-test="warning-status-changed"
+            >
+                <span translate>Only the test status has changed, not the comment. Maybe you should have a look at it.</span>
+                <div class="current-test-message-warning-actions">
+                    <button
+                        type="button"
+                        class="tlp-button-warning tlp-button-small"
+                        ng-click="userIsAcceptingThatOnlyStatusHasBeenChanged()"
+                    >
+                        <i class="fas fa-check tlp-button-icon" aria-hidden="true"></i>
+                        <span translate>Ok, got it</span>
+                    </button>
+                </div>
+            </div>
+            <div class="tlp-alert-warning current-test-message-warning"
+                    ng-if="displayTestCommentWarningOveriding">
+                {{ getWarningTestCommentHasBeenUpdatedMessage(execution) }}
+                <div class="current-test-message-warning-actions">
+                    <button type="button"
+                            class="tlp-button-warning tlp-button-small"
+                            ng-click="onLoadNewComment(execution)">
+                        <span translate>Load the new comment</span>
+                    </button>
+                    <button type="button"
+                            class="tlp-button-warning tlp-button-small"
+                            ng-click="onContinueToEditComment()">
+                        <span translate>Continue to edit your comment</span>
+                    </button>
+                </div>
+            </div>
+            <div class="current-comment-header-section">
+                <label class="tlp-label" for="execution_{{execution.id}}" translate>Comment</label>
+                <button
+                    type="button"
+                    class="current-comment-header-toggler tlp-button-secondary tlp-button-outline"
+                    data-test="expand-details-button"
+                    ng-click="toggleCommentArea()"
+                    title="{{ getToggleTitle() }}"
+                >
+                    <i
+                        class="fas tlp-button-icon"
+                        ng-class="{'fa-compress-alt': isCommentAreaExpanded, 'fa-expand-alt': !isCommentAreaExpanded}"
+                        aria-hidden="true"
+                    ></i>
+                </button>
+            </div>
+            <div class="current-test-results-container">
+                <div
+                    ng-show="displayTestCommentEditor && campaign.is_open"
+                    class="current-test-comment"
+                    id="execution_{{execution.id}}"
+                    data-test="current-test-comment"
+                    data-shortcut-current-test-comment
+                >
+                </div>
+                <div
+                    ng-if="! displayTestCommentEditor"
+                    class="current-test-comment-displayer"
+                    data-test="current-test-comment-preview"
+                    ng-bind-html="execution.previous_result.result"
+                >
+                </div>
+                <execution-attachments
+                    execution="execution"
+                    is-in-comment-mode="displayTestCommentEditor"
+                ></execution-attachments>
+            </div>
+        </section>
+
+        <section
+            ng-if="execution.userCanReloadTestBecauseDefinitionIsUpdated"
+            class="tlp-pane-section current-test-footer-section current-test-footer-bottom"
+        >
+            <div class="tlp-alert-warning current-test-message-warning">
+                <span translate>The test has been changed by someone else. You should reload the test before executing it.</span>
+                <div class="current-test-message-warning-actions">
+                    <button type="button"
+                            class="tlp-button-warning tlp-button-small current-test-should-be-reloaded-button"
+                            ng-click="onReloadTestBecauseDefinitionIsUpdated(execution)">
+                        <i class="fas fa-fw fa-sync tlp-button-icon"></i> <span translate>Reload the test</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section
+            ng-if="execution.is_automated === false && campaign.is_open && ! execution.userCanReloadTestBecauseDefinitionIsUpdated"
+            class="tlp-pane-section current-test-footer-section current-test-footer-section-buttons-container current-test-footer-bottom"
+            execution-attachments-drop-zone
+            execution-attachments-drop-zone-allow-dnd="displayTestCommentEditor && execution.upload_url !== null"
+        >
+            <div class="current-test-edit-comment-buttons" ng-if="! displayTestCommentWarningOveriding">
+                <button
+                    type="button"
+                    ng-if="! displayTestCommentEditor"
+                    class="tlp-button-secondary tlp-button-small tlp-button-outline"
+                    data-test="edit-comment-button"
+                    ng-click="showTestCommentEditor(execution)"
+                    data-shortcut-edit-comment-button
+                >
+                    {{ 'Edit comment' | translate }}
+                </button>
+                <button
+                    type="button"
+                    ng-show="shouldCancelEditionCommentBeDisplayed(execution)"
+                    class="tlp-button-secondary tlp-button-small tlp-button-outline"
+                    data-test="cancel-edit-comment-button"
+                    ng-click="onCancelEditionComment(execution)"
+                    ng-disabled="execution.saving || areFilesUploading(execution)"
+                >
+                    {{ 'Cancel edition' | translate }}
+                </button>
+                <button
+                    type="button"
+                    ng-if="displayTestCommentEditor"
+                    class="tlp-button-secondary tlp-button-small tlp-button-outline"
+                    data-test="save-comment-button"
+                    ng-click="updateComment($event, execution)"
+                    ng-disabled="execution.saving || areFilesUploading(execution)"
+                >
+                    {{ 'Save comment' | translate }}
+                </button>
+            </div>
+            <div class="current-test-results">
+                <button id="test-result-passed" type="button"
+                        data-test="mark-test-as-passed"
+                        class="current-test-result tlp-button-large tlp-button-success"
+                        title="{{ 'Passed' | translate }}"
+                        ng-click="pass($event, execution)"
+                        data-shortcut-passed
+                        ng-disabled="execution.saving || areFilesUploading(execution)">
+                    <i class="fas fa-fw fa-check"></i>
+                </button>
+                <button id="test-result-failed" type="button"
+                        data-test="mark-test-as-failed"
+                        class="current-test-result tlp-button-large tlp-button-danger"
+                        title="{{ 'Failed' | translate }}"
+                        ng-click="fail($event, execution)"
+                        ng-disabled="execution.saving || areFilesUploading(execution)">
+                    <i class="fas fa-fw fa-times"></i>
+                </button>
+                <button id="test-result-blocked" type="button"
+                        data-test="mark-test-as-blocked"
+                        class="current-test-result tlp-button-large tlp-button-info"
+                        title="{{ 'Blocked' | translate }}"
+                        ng-click="block($event, execution)"
+                        data-shortcut-blocked
+                        ng-disabled="execution.saving || areFilesUploading(execution)">
+                    <i class="fas fa-fw fa-exclamation"></i>
+                </button>
+                <button id="test-result-notrun" type="button"
+                        data-test="mark-test-as-notrun"
+                        class="current-test-result tlp-button-large tlp-button-secondary"
+                        title="{{ 'Not run' | translate }}"
+                        ng-click="notrun($event, execution)"
+                        data-shortcut-not-run
+                        ng-disabled="execution.saving || areFilesUploading(execution)">
+                    <i class="fas fa-fw fa-question"></i>
+                </button>
+            </div>
+            <execution-attachments-drop-zone-message></execution-attachments-drop-zone-message>
+        </section>
+
+        <section ng-if="execution.is_automated === false && ! campaign.is_open" class="tlp-pane-section current-test-footer-section current-test-footer-bottom current-test-footer-section-closed-campaign">
+            <span translate>The campaign is closed.</span>
+            <span translate>You cannot execute the tests anymore.</span>
+        </section>
+        <div ng-if="execution.is_automated === true" class="current-test-empty-pane">
+            <div class="empty-state-page current-test-automated-message">
+                <robot-svg-displayer class="empty-state-icon "test-status="execution.status"></robot-svg-displayer>
+
+                <h1 class="empty-state-title">{{ "This is an automated test" | translate }}</h1>
+
+                <span ng-if="execution.status === 'notrun'" class="empty-state-text">
+                    {{ "Please come back later to see the result." | translate }}
+                </span>
+                <span ng-if="execution.status === 'passed'" class="empty-state-text">
+                    {{ "Its status is passed." | translate }}
+                </span>
+                <span ng-if="execution.status === 'failed'" class="empty-state-text">
+                    {{ "Its status is failed." | translate }}
+                </span>
+                <span ng-if="execution.status === 'blocked'" class="empty-state-text">
+                    {{ "Its status is blocked." | translate }}
+                </span>
+            </div>
+        </div>
+    </div>
+</section>

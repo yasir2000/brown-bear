@@ -1,0 +1,96 @@
+{{# user_nav_presenter }}
+<nav id="user-nav">
+    {{# is_user_logged_in }}
+        <button id="nav-dropdown-user"
+                class="tlp-avatar tlp-button-secondary tlp-button-outline"
+                data-shortcut-mydashboard
+                data-test="my-dashboard"
+                title="{{# gettext }}Open user dropdown{{/ gettext }}"
+        >
+            {{# user_has_avatar }}
+                <img src="{{ user_avatar_url }}" alt="">
+            {{/ user_has_avatar }}
+        </button>
+
+        <div id="nav-dropdown-user-content" class="tlp-popover nav-dropdown">
+                <div class="tlp-popover-arrow"></div>
+                <div class="tlp-popover-header">
+                    <div class="tlp-avatar" aria-hidden="true">
+                        {{# user_has_avatar }}
+                            <img src="{{ user_avatar_url }}" alt="">
+                        {{/ user_has_avatar }}
+                    </div>
+                    <div class="nav-dropdown-user-names">
+                        <span class="name">{{ user_real_name }}</span>
+                        <span class="username">@{{ user_user_name }}</span>
+                    </div>
+                </div>
+                <div class="tlp-popover-body">
+                    {{# has_no_dashboards }}
+                        <a href="/my/"
+                        class="tlp-dropdown-menu-item nav-dropdown-item nav-dropdown-item-unique-dashboard"
+                        data-shortcut-mydashboard-option
+                        data-test="my-dashboard-option"
+                        >
+                            {{# gettext }}My dashboard{{/ gettext }}
+                        </a>
+                    {{/ has_no_dashboards }}
+                    {{^ has_no_dashboards }}
+                        {{^ has_one_dashboard }}
+                            <div class="tlp-dropdown-menu-title nav-dropdown-title">Dashboards</div>
+                        {{/ has_one_dashboard }}
+                        <div>
+                            {{# dashboards }}
+                                <a href="/my/?dashboard_id={{ getId }}"
+                                    class="tlp-dropdown-menu-item nav-dropdown-item {{# has_one_dashboard }}nav-dropdown-item-unique-dashboard{{/ has_one_dashboard }}"
+                                    data-shortcut-mydashboard-option
+                                    data-test="my-dashboard-option"
+                                >
+                                    {{ getName }}
+                                </a>
+                            {{/ dashboards }}
+                        </div>
+                    {{/ has_no_dashboards }}
+
+                    <hr class="tlp-dropdown-menu-separator">
+
+                    <a href="/account/" class="tlp-dropdown-menu-item nav-dropdown-item">
+                        <i class="fa fa-fw fa-cog tlp-dropdown-menu-item-icon" aria-hidden="true"></i>
+                        {{# gettext }}Preferences{{/ gettext }}
+                    </a>
+                    {{# logout_menu_item }}
+                        <form
+                            action="/account/logout"
+                            method="POST"
+                        >
+                            {{# csrf_token }}
+                                {{> csrf_token_input }}
+                            {{/ csrf_token }}
+                            <button
+                                class="tlp-dropdown-menu-item nav-dropdown-item"
+                                type="submit"
+                                title="{{ label }}"
+                                data-test="user_logout"
+                            >
+                                <i class="fa fa-fw fa-power-off tlp-dropdown-menu-item-icon" aria-hidden="true"></i>
+                                {{# gettext }}Logout{{/gettext}}
+                            </button>
+                        </form>
+                    {{/ logout_menu_item }}
+                </div>
+            </div>
+    {{/ is_user_logged_in }}
+
+    {{^ is_user_logged_in }}
+        {{# login_menu_item }}
+            {{> navbar/menu-item }}
+        {{/ login_menu_item }}
+
+        {{# display_new_user_menu_item }}
+            {{# new_user_menu_item }}
+                {{> navbar/menu-item }}
+            {{/ new_user_menu_item }}
+        {{/ display_new_user_menu_item }}
+    {{/ is_user_logged_in }}
+</nav>
+{{/ user_nav_presenter }}

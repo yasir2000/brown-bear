@@ -1,0 +1,239 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "%{ nb } blocked"
+msgid_plural "%{ nb } blocked"
+msgstr[0] "%{ nb } bloqué"
+msgstr[1] "%{ nb } bloqués"
+
+msgid "%{ nb } failed"
+msgid_plural "%{ nb } failed"
+msgstr[0] "%{ nb } échoué"
+msgstr[1] "%{ nb } échoués"
+
+msgid "%{ nb } not run"
+msgid_plural "%{ nb } not run"
+msgstr[0] "%{ nb } non executé"
+msgstr[1] "%{ nb } non executés"
+
+msgid "%{ nb } passed"
+msgid_plural "%{ nb } passed"
+msgstr[0] "%{ nb } passé"
+msgstr[1] "%{ nb } passés"
+
+msgid "%{ nb } planned test"
+msgid_plural "%{ nb } planned tests"
+msgstr[0] "%{ nb } test planifié"
+msgstr[1] "%{ nb } tests planifiés"
+
+msgid "%{ nb } test"
+msgid_plural "%{ nb } tests"
+msgstr[0] "%{ nb } test"
+msgstr[1] "%{ nb } tests"
+
+msgid "All tests"
+msgstr "Tous les tests"
+
+msgid "All tests in %{ milestone_title }"
+msgstr "Tous les tests dans %{ milestone_title }"
+
+msgid "An error occurred while creating the campaign."
+msgstr "Une erreur est survenue lors de la création de la campagne."
+
+msgid "An error occurred while loading the backlog items"
+msgstr "Une erreur est survenue lors du chargement des éléments du backlog"
+
+msgid "An error occurred while loading the campaigns."
+msgstr "Une erreur est survenue lors du chargement des campagnes."
+
+msgid "An error occurred while loading the tests."
+msgstr "Une erreur est survenue lors du chargement des tests."
+
+msgid "An error occurred while retrieving information of the new campaign."
+msgstr ""
+"Une erreur est survenue lors de la récupération des informations de la "
+"nouvelle campagne."
+
+msgid "Blocked"
+msgstr "Bloqué"
+
+msgid "Campaign ID"
+msgstr "ID de la campagne"
+
+msgid "Campaign Name"
+msgstr "Nom de la campagne"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Create a new test"
+msgstr "Créer un nouveau test"
+
+msgid "Create campaign"
+msgstr "Créer la campagne"
+
+msgid "Create new campaign"
+msgstr "Créer une nouvelle campagne"
+
+msgid "Edit %{ item_type } #%{ item_id }"
+msgstr "Éditer %{ item_type } #%{ item_id }"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Export as document"
+msgstr "Exporter en tant que document"
+
+msgid "Export as spreadsheet"
+msgstr "Exporter en tant que feuille de calcul"
+
+msgid "Exported by"
+msgstr "Exporté par"
+
+msgid "Exported on"
+msgstr "Exporté le"
+
+msgid "Failed"
+msgstr "Échoué"
+
+msgid "From %{ tracker_name } tracker report"
+msgid_plural "From %{ tracker_name } tracker reports"
+msgstr[0] "Rapport de l’outil de suivi %{ tracker_name }"
+msgstr[1] "Rapports de l’outil de suivi %{ tracker_name }"
+
+msgid "Go to the last execution in release %{ release_name }"
+msgstr "Se rendre à la dernière exécution dans la release %{ release_name }"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Justification comment"
+msgstr "Commentaire de justification"
+
+msgid "Justifications (for planned tests that are not-run, failed, blocked)"
+msgstr ""
+"Justifications (pour les tests planifiés qui sont non exécutés, échoués ou "
+"bloqués)"
+
+msgid "Milestone"
+msgstr "Jalon"
+
+msgid "Milestone URL"
+msgstr "URL du jalon"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "New campaign"
+msgstr "Nouvelle campagne"
+
+msgid "No tests"
+msgstr "Aucun test"
+
+msgid "Not planned in release %{ release_name }"
+msgstr "Non planifié dans la release %{ release_name }"
+
+msgid "Not run"
+msgstr "Non executé"
+
+msgid "Oops, there's an issue"
+msgstr "Oups, il y a eu un problème"
+
+msgid "Passed"
+msgstr "Passé"
+
+msgid "Platform"
+msgstr "Plateforme"
+
+msgid "Project"
+msgstr "Projet"
+
+msgid "Report extracted by"
+msgstr "Rapport extrait par"
+
+msgid "Report extracted on"
+msgstr "Rapport extrait le"
+
+msgid "Requirements"
+msgstr "Exigences"
+
+msgid "Test Report %{ milestone_title }"
+msgstr "Rapport de test %{ milestone_title }"
+
+msgid "Test Results (planned tests)"
+msgstr "Résultats des tests (tests planifiés)"
+
+msgid "Test campaigns"
+msgstr "Campagnes de test"
+
+msgid "Test case ID"
+msgstr "ID du cas de test"
+
+msgid "Test case title"
+msgstr "Titre du cas de test"
+
+msgid "Test execution ID"
+msgstr "ID de l'exécution du test"
+
+msgid "Test execution date"
+msgstr "Date de l'exécution du test"
+
+msgid "Test execution runner"
+msgstr "Personne ayant exécuté le test"
+
+msgid "Test execution status"
+msgstr "Statut de l'exécution du test"
+
+msgid "Test plan"
+msgstr "Plan de test"
+
+msgid "Tests"
+msgstr "Tests"
+
+msgid "Tests status"
+msgstr "Statut des tests"
+
+msgid "The export did not succeed, please try again."
+msgstr "L'export n'a pas réussi, veuillez réessayer."
+
+msgid ""
+"The retrieval of the test definition tracker reports has failed, try again "
+"later"
+msgstr ""
+"La récupération des rapports de l'outil de suivi de définition de test a "
+"échoué, veuillez réessayer plus tard"
+
+msgid "There is no backlog item yet"
+msgstr "Il n'y a pas d'élément dans le backlog"
+
+msgid "There is no test campaign yet"
+msgstr "Il n'y a pas de campagne de test"
+
+msgid "This item isn't covered yet"
+msgstr "Cet élément n'est pas encore couvert"
+
+msgid ""
+"This requirement have multiple fields with this label, only one value is "
+"visible"
+msgstr ""
+"Cette exigence a plusieurs champs avec ce label, seule une valeur est visible"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Type"
+msgstr "Type"

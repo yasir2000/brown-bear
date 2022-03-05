@@ -1,0 +1,129 @@
+<form class="tlp-modal tlp-modal-medium-sized" ng-submit="editCampaign(campaign)">
+    <div class="tlp-modal-header">
+      <h1 class="tlp-modal-title">
+          <span translate>Select tests</span>
+      </h1>
+      <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="{{ 'Close' | translate }}"><i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i></button>
+    </div>
+
+    <div class="tlp-modal-body">
+        <div class="tlp-table-actions">
+            <button type="button"
+                    class="tlp-button-primary tlp-table-actions-element"
+                    data-test="add-test-button"
+                    ng-click="showAddTestModal()">
+                <i class="fas fa-plus tlp-button-icon" aria-hidden="true"></i>
+                {{ 'Add a test' | translate }}
+            </button>
+            <div class="tlp-table-actions-spacer"></div>
+            <div class="tlp-form-element tlp-table-actions-element">
+                <select class="tlp-select tlp-select-adjusted"
+                        ng-model="filters.selected_report"
+                        ng-disabled="is_loading"
+                        ng-change="selectReportTests()">
+                    <option value="" translate>Pre-select tests from a tracker report</option>
+                    <option ng-repeat="report in test_reports" ng-value="report.id">{{ report.label }}</option>
+                </select>
+            </div>
+            <div class="tlp-table-actions-spacer edit-campaign-tests-list-actions-spacer-small"></div>
+            <div class="tlp-form-element edit-campaign-tests-search-container">
+                <input type="search"
+                       class="tlp-search tlp-table-actions-element"
+                       enable-tlp-table-filter
+                       data-target-table-id="edit-campaign-tests-list"
+                       autocomplete="off"
+                       placeholder="{{ 'Id, summary, category…' | translate }}"
+                       aria-label="{{ 'Filter tests by ID, summary, category…' | translate }}"
+                >
+            </div>
+        </div>
+        <table class="tlp-table edit-campaign-tests-list" id="edit-campaign-tests-list">
+            <tbody>
+                <tr class="tlp-table-empty-filter">
+                    <td class="tlp-table-cell-empty">There aren't any matching tests</td>
+                </tr>
+            </tbody>
+            <tbody ng-if="is_loading">
+                <tr ng-repeat="i in [].constructor(5) track by $index">
+                    <td>
+                        <i class="far fa-square tlp-skeleton-icon" aria-hidden="true"></i>
+                        <span class="tlp-skeleton-text"></span>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody ng-repeat-start="category in tests_list">
+                <tr>
+                    <td class="tlp-table-cell-section tlp-table-cell-filterable">
+                        <button type="button" ng-click="toggleCategory(category)"
+                                class="edit-campaign-tests-list-section-toggle-button"
+                                title="{{ 'Toggle all tests in category' | translate }}"
+                        >
+                            <i class="fas fa-circle-notch fa-spin fa-fw edit-campaign-tests-list-category-check"
+                               ng-show="is_selecting_from_report" aria-hidden="true"
+                            ></i>
+                            <i class="fa fa-fw edit-campaign-tests-list-category-check"
+                               ng-hide="is_selecting_from_report" aria-hidden="true"
+                               ng-class="categoryCheckmark(category)"
+                            ></i>
+                            {{ category.label }}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody ng-repeat-end="">
+                <tr class="edit-campaign-tests-list-test"
+                    ng-repeat="test in category.tests
+                        | toArray:false
+                        | unique:'definition.id'
+                        track by test.definition.id"
+                    ng-class="diffState(test)">
+                    <td class="tlp-table-cell-filterable">
+                        <label class="tlp-checkbox">
+                            <i ng-show="is_selecting_from_report" class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
+                            <input ng-hide="is_selecting_from_report" type="checkbox" ng-model="test.selected">
+                            <span class="tests-list-test-id">#{{ test.definition.id }} -</span>
+                            {{ test.definition.summary }}
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tlp-modal-footer edit-campaign-footer">
+        <div class="edit-campaign-tests-diff">
+            <div class="tlp-badge-success tlp-badge-outline"
+                ng-if="addedTests().length > 0"
+                translate
+                translate-n="addedTests().length"
+                translate-plural="{{ $count }} tests will be added"
+            >
+                1 test will be added
+            </div>
+            <div class="tlp-badge-danger tlp-badge-outline"
+                ng-if="removedTests().length > 0"
+                translate
+                translate-n="removedTests().length"
+                translate-plural="{{ $count }} tests will be removed"
+            >
+                1 test will be removed
+            </div>
+        </div>
+        <button type="button"
+                class="tlp-button-primary tlp-button-outline tlp-modal-action"
+                data-dismiss="modal"
+                data-test="close-select-tests-modal"
+        >
+            {{ 'Cancel' | translate }}
+        </button>
+        <button type="submit"
+                data-test="edit-campaign-save-button"
+                class="tlp-button-primary tlp-modal-action"
+                ng-disabled="is_loading || submitting_changes"
+        >
+            <i class="tlp-button-icon fas fa-circle-notch fa-spin" ng-if="submitting_changes" aria-hidden="true"></i>
+            {{ 'Save changes' | translate }}
+        </button>
+    </div>
+</form>
+

@@ -1,0 +1,39 @@
+{{^ is_planning_removal_dangerous }}
+    <a {{^ is_planning_administration_delegated }}href="{{ delete_url }}"{{/ is_planning_administration_delegated }}
+        class="tlp-table-cell-actions-button tlp-button-small tlp-button-danger tlp-button-outline {{# is_planning_administration_delegated }} disabled tlp-tooltip tlp-tooltip-left {{/ is_planning_administration_delegated }}"
+        data-tlp-tooltip="{{# dgettext }} tuleap-agiledashboard | Deletion of this planning is prohibited because this project is part of a program backlog. {{/ dgettext }}"
+    >
+        <i class="far fa-trash-alt tlp-button-icon"></i> {{# dgettext }} tuleap-agiledashboard | Delete {{/ dgettext }}
+    </a>
+{{/ is_planning_removal_dangerous }}
+{{# is_planning_removal_dangerous }}
+    <a class="tlp-table-cell-actions-button tlp-button-small tlp-button-danger tlp-button-outline {{# is_planning_administration_delegated }} disabled tlp-tooltip tlp-tooltip-left {{/ is_planning_administration_delegated }}"
+       id="agiledashboard-administration-remove-planning-button"
+       data-target-modal-id="agiledashboard-drop-root-planning"
+       data-tlp-tooltip="{{# dgettext }} tuleap-agiledashboard | Deletion of this planning is prohibited because this project is part of a program backlog. {{/ dgettext }}"
+    >
+        <i class="far fa-trash-alt tlp-button-icon"></i> {{# dgettext }} tuleap-agiledashboard | Delete {{/ dgettext }}
+    </a>
+
+    <div id="agiledashboard-drop-root-planning" class="tlp-modal tlp-modal-danger" role="dialog" aria-labelledby="scrum-admin-drop-root-planning">
+        <div class="tlp-modal-header">
+            <h1 class="tlp-modal-title" id="scrum-admin-drop-root-planning">
+                <i class="far fa-trash-alt tlp-button-icon"></i> {{# dgettext }} tuleap-agiledashboard | Planning deletion {{/ dgettext }}
+            </h1>
+            <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+                <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="tlp-modal-body">
+            <p>{{# dgettext }} tuleap-agiledashboard | You are going to remove the top backlog planning permanently (no possible rollback). Top backlog will be empty after the deletion of the top level planning. Please confirm your action. {{/ dgettext }}</p>
+        </div>
+        <div class="tlp-modal-footer">
+            <button type="button" class="tlp-button-danger tlp-button-outline tlp-modal-action" data-dismiss="modal">
+                {{# dgettext }} tuleap-agiledashboard | Cancel {{/ dgettext }}
+            </button>
+            <a class="tlp-button-danger tlp-modal-action" href="{{ delete_url }}">
+                <i class="far fa-trash-alt tlp-button-icon"></i> {{# dgettext }} tuleap-agiledashboard | Continue {{/ dgettext }}
+            </a>
+        </div>
+    </div>
+{{/ is_planning_removal_dangerous }}

@@ -1,0 +1,35 @@
+{{# project_context }}
+    {{> project-sidebar}}
+{{/ project_context }}
+
+<div class="main container-fluid {{ main_classes }}">
+
+{{> switch-to-modal }}
+
+{{# project_context }}
+    {{# has_project_banner }}
+        <div class="project-banner {{^ project_banner_is_visible }}project-banner-hidden{{/ project_banner_is_visible }}">
+            <p id="current-project-banner-message" class="project-banner-clamped">{{{ purified_banner }}}</p>
+            {{# current_user_id }}
+                <i
+                        id="project-banner-close"
+                        class="fas fa-times"
+                        aria-label="{{# gettext }}Close{{/ gettext }}"
+                        data-project-id="{{ project_id }}"
+                        data-user-id="{{ current_user_id }}"
+                ></i>
+            {{/ current_user_id }}
+        </div>
+    {{/ has_project_banner }}
+{{/ project_context }}
+    <div class="row-fluid">
+        <div class="span12">
+            {{#hasBreadcrumbs}}
+                {{> breadcrumbs/breadcrumbs }}
+            {{/hasBreadcrumbs}}
+
+            {{> toolbar}}
+
+            {{{feedback}}}
+
+            <div id="main-content" class="content skip-to-main-link-target" data-test="main-content">

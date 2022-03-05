@@ -1,0 +1,161 @@
+/*
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.tracker-workflow-transition-spinner {
+    color: var(--tlp-dimmed-color);
+}
+
+.tlp-table.tracker-workflow-transition-table {
+    position: relative;
+    width: auto;
+
+    > thead > tr > th {
+        position: sticky;
+        z-index: 5;
+        top: 45px;
+        height: 50px;
+        padding-bottom: 0;
+        text-align: center;
+        vertical-align: top;
+        white-space: nowrap;
+    }
+}
+
+.tracker-workflow-transition-column-button {
+    margin: var(--tlp-small-spacing) 0;
+}
+
+.tracker-workflow-transition-tbody {
+    position: relative;
+
+    > tr {
+        > .tracker-workflow-transition-row-label {
+            &,
+            &:first-child {
+                position: sticky;
+                z-index: 4;
+                top: 10px;
+                left: 250px;
+                min-width: 100px;
+                padding: 10px;
+                border-right: 2px solid var(--tlp-main-color-transparent-15);
+                color: var(--tlp-main-color);
+                font-weight: 600;
+                text-align: right;
+                white-space: nowrap;
+            }
+        }
+
+        > .tracker-workflow-transition-cell {
+            position: relative;
+            width: 100px;
+            min-width: 100px;
+            transition: background ease-in-out 100ms;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 16px;
+            text-align: center;
+
+            &.tracker-workflow-transition-action-updated {
+                background: var(--tlp-success-color-transparent-90);
+            }
+        }
+    }
+}
+
+@mixin tracker-workflow-transition-cell-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.tracker-workflow-transition-cell-forbidden {
+    @include tracker-workflow-transition-cell-content;
+
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translate(-50%, -50%);
+    color: var(--tlp-neutral-dark-color);
+    font-size: 16px;
+    cursor: not-allowed;
+}
+
+.tracker-workflow-transition-cell-empty {
+    @include tracker-workflow-transition-cell-content;
+
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 4px;
+        height: 4px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: var(--tlp-neutral-dark-color);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.6);
+    }
+
+    100% {
+        transform: scale(1.4);
+    }
+}
+
+.tracker-workflow-transition-mark {
+    transition: color ease-in-out 100ms;
+    color: var(--tlp-main-color);
+    font-size: 1rem;
+    cursor: pointer;
+
+    &.tracker-workflow-transition-action-updated {
+        animation: bounce ease-in-out 500ms infinite alternate;
+        color: var(--tlp-success-color);
+    }
+}
+
+.tracker-workflow-transition-action-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tracker-workflow-advanced-transition-button {
+    margin: var(--tlp-small-spacing) 0 0;
+}
+
+.sidebar-collapsed
+    .tracker-workflow-transition-tbody
+    > tr
+    > .tracker-workflow-transition-row-label:first-child {
+    left: 50px;
+}

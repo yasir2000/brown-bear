@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simple_workflow>
+    <field_id REF="F32"/>
+    <is_used>1</is_used>
+    <states>
+        <state>
+            <to_id REF="F32-V0"/>
+            <transitions>
+                <transition>
+                    <from_id REF="null"/>
+                </transition>
+                <transition>
+                    <from_id REF="F32-V1"/>
+                </transition>
+            </transitions>
+            <postactions>
+                <postaction_field_date valuetype="1">
+                    <field_id REF="F1"/>
+                </postaction_field_date>
+            </postactions>
+            <permissions>
+                <permission ugroup="UGROUP_PROJECT_MEMBERS"/>
+            </permissions>
+        </state>
+    </states>
+</simple_workflow>

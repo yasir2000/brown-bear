@@ -1,0 +1,125 @@
+/**
+ * Copyright (c) Enalean, 2018-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "buttons";
+
+.tlp-button-bar {
+    display: flex;
+    transition: box-shadow buttons.$tlp-button-box-shadow-timing ease-in-out;
+
+    &:focus-within {
+        box-shadow: var(--tlp-shadow-focus);
+    }
+}
+
+.tlp-button-bar-item {
+    margin: 0 -1px 0 0;
+
+    &:first-child > [class*="tlp-button"] {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &:last-child > [class*="tlp-button"] {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) > [class*="tlp-button"] {
+        border-radius: 0;
+    }
+}
+
+.tlp-button-bar-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked {
+        $button-bar-checked-box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 0 1px rgb(0 0 0 / 8%),
+            0 -1px 0 rgb(0 0 0 / 3%);
+
+        + .tlp-button-primary {
+            border-color: var(--tlp-main-color-darker-10);
+            background: var(--tlp-main-color-darker-10);
+            box-shadow: $button-bar-checked-box-shadow;
+
+            &.tlp-button-outline {
+                border: 1px solid var(--tlp-white-color);
+                background: var(--tlp-main-color-lighter-80);
+            }
+        }
+
+        + .tlp-button-secondary {
+            border-color: var(--tlp-neutral-light-color-darker-10);
+            background: var(--tlp-neutral-light-color-darker-10);
+            box-shadow: $button-bar-checked-box-shadow;
+
+            &.tlp-button-outline {
+                border: 1px solid var(--tlp-white-color);
+                background: var(--tlp-dark-color-lighter-90);
+                color: var(--tlp-dark-color);
+            }
+        }
+
+        + .tlp-button-info {
+            border-color: var(--tlp-info-color-darker-10);
+            background: var(--tlp-info-color-darker-10);
+            box-shadow: $button-bar-checked-box-shadow;
+
+            &.tlp-button-outline {
+                border: 1px solid var(--tlp-white-color);
+                background: var(--tlp-info-color-transparent-80);
+            }
+        }
+
+        + .tlp-button-success {
+            border-color: var(--tlp-success-color-darker-10);
+            background: var(--tlp-success-color-darker-10);
+            box-shadow: $button-bar-checked-box-shadow;
+
+            &.tlp-button-outline {
+                border: 1px solid var(--tlp-white-color);
+                background: var(--tlp-success-color-lighter-80);
+            }
+        }
+
+        + .tlp-button-warning {
+            border-color: var(--tlp-warning-color-darker-10);
+            background: var(--tlp-warning-color-darker-10);
+            box-shadow: $button-bar-checked-box-shadow;
+
+            &.tlp-button-outline {
+                border: 1px solid var(--tlp-white-color);
+                background: var(--tlp-warning-color-lighter-80);
+            }
+        }
+
+        + .tlp-button-danger {
+            border-color: var(--tlp-danger-color-darker-10);
+            background: var(--tlp-danger-color-darker-10);
+            box-shadow: $button-bar-checked-box-shadow;
+
+            &.tlp-button-outline {
+                border: 1px solid var(--tlp-white-color);
+                background: var(--tlp-danger-color-lighter-80);
+            }
+        }
+    }
+}

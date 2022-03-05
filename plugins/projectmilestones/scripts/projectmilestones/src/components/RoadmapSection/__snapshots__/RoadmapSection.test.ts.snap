@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoadmapSection Given user display widget, Then a good link to top planning of the project is rendered 1`] = `
+<div
+  class="project-release-timeframe"
+>
+  <translate-stub
+    class="project-release-label"
+    tag="span"
+  >
+    Roadmap
+  </translate-stub>
+   
+  <div
+    class="project-other-releases"
+  >
+    <div
+      class="project-release-time-stripe-icon"
+    >
+      <i
+        class="fa fa-angle-double-up"
+      />
+    </div>
+     
+    <a
+      class="releases-link"
+      data-test="backlog-link"
+      href="/plugins/agiledashboard/?action=show-top&group_id=102&pane=topplanning-v2"
+    >
+      <translate-stub
+        tag="span"
+        translateparams="[object Object]"
+        translateplural="%{ nb_backlog_items } items in the backlog."
+      >
+        
+                %{nb_backlog_items} item in the backlog.
+            
+      </translate-stub>
+       
+      <translate-stub
+        tag="span"
+        translateparams="[object Object]"
+        translateplural="%{nb_upcoming_releases} upcoming %{label_tracker}."
+      >
+        
+                %{nb_upcoming_releases} upcoming %{label_tracker}.
+            
+      </translate-stub>
+    </a>
+  </div>
+</div>
+`;

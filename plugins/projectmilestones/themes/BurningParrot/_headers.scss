@@ -1,0 +1,230 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+
+.project-release-toggle-closed > .project-release-header {
+    background: none;
+}
+
+.project-release-header.disabled {
+    border-bottom-color: transparent;
+    cursor: not-allowed;
+
+    > .project-release-title,
+    > .project-release-date {
+        @keyframes blink-text {
+            from {
+                color: var(--tlp-dimmed-color-lighter-70);
+            }
+
+            to {
+                color: var(--tlp-dimmed-color-lighter-95);
+            }
+        }
+
+        animation: blink-text 750ms linear infinite alternate;
+    }
+
+    > .project-release-whats-hot-icon {
+        @keyframes blink-icon {
+            from {
+                background: var(--tlp-dimmed-color-lighter-70);
+            }
+
+            to {
+                background: var(--tlp-dimmed-color-lighter-95);
+            }
+        }
+
+        animation: blink-icon 750ms linear infinite alternate;
+    }
+}
+
+.project-release-whats-hot-icon::before {
+    content: "\f141"; // fa-ellipsis-h
+}
+
+.project-release-toggle-closed
+    > .project-release-header.disabled:hover
+    > .project-release-whats-hot-icon::before {
+    content: "\f141"; // fa-ellipsis-h
+}
+
+.project-release-toggle-closed
+    > .project-release-header:hover
+    > .project-release-whats-hot-icon::before {
+    content: "\f0da"; // fa-caret-right
+}
+
+.project-release-header:hover > .project-release-whats-hot-icon::before {
+    content: "\f0d7"; // fa-caret-down
+}
+
+.project-release-header {
+    display: flex;
+    align-items: baseline;
+    margin: 0 calc(-1 * var(--tlp-medium-spacing)) var(--tlp-medium-spacing) 0;
+    padding: var(--tlp-small-spacing) var(--tlp-medium-spacing) var(--tlp-small-spacing) 0;
+    overflow: hidden;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--tlp-background-color-transparent-50) 50%
+    );
+    cursor: pointer;
+}
+
+.project-release-whats-hot-icon {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    top: -2px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin: 0 var(--tlp-small-spacing) 0 0;
+    border-radius: 50%;
+    background: var(--tlp-main-color);
+    color: var(--tlp-white-color);
+    font-size: 100%;
+}
+
+.project-release-title {
+    display: inline-block;
+    margin: 0 var(--tlp-small-spacing) 0 0;
+    font-size: 26px;
+    line-height: 28px;
+}
+
+.project-release-date {
+    display: inline-block;
+    color: var(--tlp-dimmed-color);
+    font-size: 12px;
+}
+
+.release-date-icon {
+    margin: 0 5px;
+}
+
+.release-spacer {
+    flex: 1 0 auto;
+}
+
+.closed-release-header-badges,
+.release-remaining-effort-badges {
+    display: flex;
+}
+
+.release-remaining {
+    margin: 0 0 0 var(--tlp-small-spacing);
+}
+
+.release-remaining-value {
+    margin: 0 2px 0 0;
+    color: var(--tlp-main-color);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.past-release > .release-remaining-value {
+    color: var(--tlp-success-color);
+}
+
+.release-remaining-value-danger {
+    color: var(--tlp-danger-color);
+}
+
+.release-remaining-value-disabled {
+    color: var(--tlp-dimmed-color);
+}
+
+.release-remaining-value-success {
+    color: var(--tlp-success-color);
+}
+
+.release-remaining-header {
+    display: flex;
+    align-items: baseline;
+    width: 110px;
+    margin: 0 0 5px;
+    padding: 0 2px;
+}
+
+.release-remaining-icon {
+    align-self: center;
+    margin: 0 5px 0 0;
+    opacity: 0.9;
+    color: var(--tlp-dimmed-color);
+    font-size: 12px;
+}
+
+.past-release > .release-remaining-icon {
+    color: var(--tlp-success-color);
+}
+
+.release-remaining-text {
+    padding: 0 0 2px;
+    overflow: hidden;
+    color: var(--tlp-dimmed-color);
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.past-release > .release-remaining-text {
+    color: var(--tlp-success-color);
+}
+
+.release-remaining-progress {
+    width: 100%;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 3px;
+    background: swatch-colors.$tlp-swatch-firemist-silver;
+}
+
+.release-remaining-progress-value {
+    height: 3px;
+    background: var(--tlp-main-color);
+}
+
+.release-remaining-progress-value-danger {
+    background: var(--tlp-danger-color);
+}
+
+.release-remaining-progress-value-disabled {
+    background: var(--tlp-dimmed-color);
+}
+
+.release-remaining-progress-value-success {
+    background: var(--tlp-success-color);
+}
+
+.release-remaining-disabled {
+    width: 80px;
+}
+
+.closed-release-header-badge {
+    display: flex;
+    align-items: baseline;
+    margin: 0 0 5px var(--tlp-medium-spacing);
+}

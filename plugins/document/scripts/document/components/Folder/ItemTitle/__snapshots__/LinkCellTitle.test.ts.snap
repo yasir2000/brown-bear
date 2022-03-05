@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkCellTitle should render link title 1`] = `
+<div>
+  <fake-caret-stub
+    item="[object Object]"
+  />
+   
+  <i
+    class="fa fa-fw document-folder-content-icon fa-link document-link-icon"
+  />
+   
+  <a
+    class="document-folder-subitem-link"
+    draggable="false"
+    href="/plugins/docman/?group_id=101&action=show&id=42"
+  >
+    
+        my link
+    
+  </a>
+</div>
+`;

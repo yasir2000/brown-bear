@@ -1,0 +1,12 @@
+{{# required_field_errors }}
+    <li>
+        {{# dgettext }}
+            tuleap-program_management |
+            Field <a href='%s'>%s</a> of tracker %s of project %s is required but cannot be synchronized |
+            {{ field_admin_url }} |
+            {{ field_label }} |
+            {{ tracker_name }} |
+            {{ team_project_label }} |
+        {{/ dgettext }}
+    </li>
+{{/ required_field_errors }}

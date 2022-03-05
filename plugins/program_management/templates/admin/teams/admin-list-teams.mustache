@@ -1,0 +1,37 @@
+<div class="tlp-pane-container">
+    {{# has_aggregated_teams }}
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">{{# dgettext }}tuleap-program_management | Aggregated projects{{/ dgettext }}</h1>
+        </div>
+        <section class="tlp-pane-section-for-cards">
+            {{# aggregated_teams }}
+                <a class="tlp-card tlp-card-selectable program-management-card-teams" href="{{ url }}">
+                    {{# project_icon}}
+                        <span class="program-management-card-teams-icon" aria-hidden="true">{{project_icon}}</span>
+                    {{/ project_icon}}
+                    {{^ project_icon}}
+                        <i class="program-management-card-teams-icon fas fa-fw fa-archive" aria-hidden="true"></i>
+                    {{/ project_icon}}
+                    {{ public_name }}
+                    <button
+                        type="button"
+                        class="tlp-button-danger tlp-button-small tlp-button-outline program-management-admin-remove-teams-open-modal-button"
+                        data-target-modal-id="program-management-delete-team-{{ id }}"
+                        data-team-id="{{ id }}"
+                    >
+                        <i class="far fa-trash-alt tlp-button-icon" aria-hidden="true"></i>
+                        {{# dgettext }}tuleap-program_management | Remove team from program {{/ dgettext }}
+                    </button>
+                </a>
+            {{/ aggregated_teams }}
+        </section>
+    {{/ has_aggregated_teams }}
+    {{^ has_aggregated_teams }}
+        <section class="empty-state-pane program-management-empty-state">
+            {{> svg-empty-state-tumbleweed }}
+            <p class="empty-state-text">
+                {{# dgettext }}tuleap-program_management | No project have been aggregated yet.{{/dgettext}}
+            </p>
+        </section>
+    {{/ has_aggregated_teams }}
+</div>

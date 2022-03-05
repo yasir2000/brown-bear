@@ -1,0 +1,9 @@
+{
+    "name": "crosstracker",
+    "gettext-vue": {
+        "cross-tracker": {
+            "src": "scripts/cross-tracker/src",
+            "po": "scripts/cross-tracker/po"
+        }
+    }
+}

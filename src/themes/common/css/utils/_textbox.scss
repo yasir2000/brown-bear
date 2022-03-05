@@ -1,0 +1,160 @@
+/* stylelint-disable selector-no-qualifying-type */
+
+/* TextboxList CSS */
+*:first-child + html div.holder {
+    padding-bottom: 2px;
+}
+
+* html div.holder {
+    padding-bottom: 2px;
+}
+
+/* ie7 and below */
+
+div.holder *,
+div.autocomplete * {
+    font: 11px "Lucida Grande", Verdana;
+}
+
+/* DIV holder */
+div.holder {
+    width: 500px;
+    min-height: 25px;
+    margin: 0;
+    padding: 4px 5px 0;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+    border-radius: var(--tlp-medium-radius);
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 7.5%);
+    cursor: text;
+}
+
+div.holder a {
+    margin: 0 5px 4px 0;
+    float: left;
+}
+
+div.holder a.bit {
+    z-index: 900;
+    color: #000000;
+    text-decoration: none;
+}
+
+div.holder a.bit:active,
+div.holder a.bit:focus {
+    outline: none;
+}
+
+div.holder a.bit-box {
+    position: relative;
+    padding: 2px 15px 3px 4px;
+    padding-right: 15px;
+    border: 1px solid #cad8f3;
+    border-radius: var(--tlp-medium-radius);
+    background: #dee7f8;
+}
+
+div.holder a.bit-box-focus {
+    border-color: #598bec;
+    background: #598bec;
+    color: #ffffff;
+}
+
+div.holder a.bit-input input {
+    width: 150px;
+    height: 20px;
+    margin: 0;
+    padding: 2px 0;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+/* no left/right padding here please */
+div.holder a.bit-input input.smallinput {
+    width: 20px;
+}
+
+div.holder a.bit-hover {
+    border: 1px solid #6d95e0;
+    background: #bbcef1;
+}
+
+div.holder a.bit-box a.closebutton {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 7px;
+    height: 7px;
+    background: url("#{$tuleap-common-theme-basepath}images/ic/textboxlist-close.gif");
+    font-size: 1px;
+}
+
+div.holder a.bit-box a.closebutton:hover {
+    background-position: 7px;
+}
+
+div.holder a.bit-box a.closebutton:active {
+    outline: none;
+}
+
+div.holder a.bit-box-focus a.closebutton,
+div.holder a.bit-box-focus a.closebutton:hover {
+    background-position: bottom;
+}
+
+/* Autocompleter CSS */
+div.textboxlist-auto {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    width: 512px;
+    background: #eeeeee;
+}
+
+div.textboxlist-auto .default {
+    padding: 5px 7px;
+    border: 1px solid #cccccc;
+    border-width: 0 1px 1px;
+}
+
+div.textboxlist-auto ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+div.textboxlist-auto ul li {
+    z-index: 1000;
+    margin: 0;
+    padding: 5px 12px;
+    list-style-type: none;
+    border: 1px solid #cccccc;
+    border-width: 0 1px 1px;
+    cursor: pointer;
+}
+
+div.textboxlist-auto ul li em {
+    background: #cccccc;
+    font-style: normal;
+    font-weight: bold;
+}
+
+div.textboxlist-auto ul li.auto-focus {
+    background: #4173cc;
+    color: #ffffff;
+}
+
+div.textboxlist-auto ul li.auto-focus em {
+    background: none;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+input.inputMessage {
+    color: #cccccc;
+    font-size: 11px;
+}
+/* stylelint-enable */

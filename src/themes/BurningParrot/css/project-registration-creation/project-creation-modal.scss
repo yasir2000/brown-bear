@@ -1,0 +1,87 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ *  This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+#project-creation-success-modal {
+    transition: opacity 100ms ease-out, transform 200ms ease-out, box-shadow 100ms ease-out;
+
+    &.tlp-modal-shown {
+        transform: translateY(30%);
+    }
+}
+
+.project-creation-success-modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    border-radius: var(--tlp-x-large-radius);
+}
+
+.project-creation-success-modal-illustration {
+    flex: 0 1 auto;
+    max-width: 50%;
+    margin: 0 0 var(--tlp-jumbo-spacing) 0;
+
+    > svg {
+        width: 100%;
+    }
+}
+
+.project-creation-success-modal-content {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.project-creation-success-modal-content-title {
+    color: var(--tlp-success-color);
+    font-size: 34px;
+}
+
+.project-creation-success-modal-content-welcome {
+    margin: 0 0 var(--tlp-x-large-spacing);
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.project-creation-success-modal-content-welcome-project-name {
+    display: block;
+    font-weight: 600;
+}
+
+.project-creation-success-modal-custom-primary-action-button {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+@keyframes move-stars {
+    from {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.project-creation-success-modal-illustration-stars {
+    transform-origin: center bottom;
+    animation: 8s ease-out forwards move-stars;
+}

@@ -1,0 +1,118 @@
+/**
+ * Copyright (c) Enalean, 2021 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.planned-iteration-display {
+    margin: 0 0 var(--tlp-medium-spacing);
+    border: 1px hidden;
+    border-radius: var(--tlp-large-radius);
+    box-shadow: var(--tlp-pane-shadow);
+}
+
+.planned-iteration-header {
+    display: flex;
+    position: sticky;
+    z-index: 2;
+    top: 44px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 100ms ease-in-out;
+    border: 1px solid var(--tlp-neutral-normal-color);
+    border-radius: var(--tlp-large-radius);
+    background: var(--tlp-white-color);
+    cursor: pointer;
+    gap: var(--tlp-small-spacing);
+
+    &:hover {
+        transition: background 100ms ease-in-out;
+        background: var(--tlp-white-color-darker-02);
+    }
+
+    &:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-color: var(--tlp-neutral-light-color);
+    }
+}
+
+.planned-iteration-header-label {
+    flex: 0 0 auto;
+    color: var(--tlp-dimmed-color);
+}
+
+.planned-iteration-header-dates {
+    margin: 0 var(--tlp-small-spacing) 0 0;
+    color: var(--tlp-dimmed-color);
+    font-size: 12px;
+}
+
+.iteration-fetch-error {
+    margin: 0 var(--tlp-large-spacing) 0 0;
+}
+
+.new-iteration-button {
+    margin: 0 0 0 var(--tlp-large-spacing);
+}
+
+.planned-iteration-header-with-button {
+    display: flex;
+}
+
+.planned-iteration-content {
+    position: relative;
+    padding: var(--tlp-small-spacing);
+    border: 1px solid var(--tlp-neutral-normal-color);
+    border-top: 0;
+    border-radius: 0 0 var(--tlp-large-radius) var(--tlp-large-radius);
+    background: var(--tlp-fade-background-color);
+
+    &:last-child {
+        border-bottom: 1px solid var(--tlp-neutral-normal-color);
+    }
+}
+
+.planned-iteration-info {
+    display: flex;
+    align-items: center;
+    padding: var(--tlp-small-spacing) var(--tlp-medium-spacing);
+    border: 1px solid var(--tlp-neutral-normal-color);
+    border-top: 0;
+    border-bottom-color: var(--tlp-neutral-light-color);
+    background: var(--tlp-white-color);
+}
+
+.planned-iteration-no-content {
+    display: block;
+    margin: var(--tlp-large-spacing) auto;
+}
+
+.planned-iteration-info-link {
+    font-size: 14px;
+    white-space: nowrap;
+
+    &:not(:first-child) {
+        margin: 0 0 0 var(--tlp-medium-spacing);
+    }
+
+    > .planned-iteration-info-link-icon {
+        margin: 0 6px 0 0;
+        font-size: 12px;
+        text-decoration: none;
+    }
+}

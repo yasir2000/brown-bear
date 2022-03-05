@@ -1,0 +1,192 @@
+/**
+ * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:color";
+
+@use "../global-variables";
+
+.sidebar {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    top: var(--platform-banner-offset-height, 0);
+    left: 0;
+    flex-direction: column;
+    width: global-variables.$sidebar-expanded-width;
+    height: calc(100vh - var(--platform-banner-offset-height, 0px));
+    background: var(--tlp-dark-color);
+}
+
+.sidebar-about {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-around;
+    margin: var(--tlp-medium-spacing) 0 var(--tlp-small-spacing);
+    padding: 0 var(--tlp-medium-spacing);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    > .sidebar-about-logo,
+    .sidebar-about-logo-without-product-name {
+        height: 20px;
+
+        > .tuleap-logo {
+            transition: fill ease-in-out 100ms;
+            fill: var(--tlp-theme-orange);
+        }
+    }
+}
+
+.sidebar-about-logo-without-product-name {
+    display: none;
+}
+
+.sidebar-copyright {
+    margin: 0 var(--tlp-medium-spacing) var(--tlp-small-spacing);
+    text-align: center;
+}
+
+.sidebar-about > .sidebar-about-version,
+.sidebar-copyright,
+.sidebar-copyright a {
+    transition: color ease-in-out 100ms;
+    color: var(--tlp-neutral-dark-color-transparent-40);
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+}
+
+.sidebar-about:hover > .sidebar-about-version,
+.sidebar-copyright a:hover {
+    color: var(--tlp-white-color);
+    text-decoration: none;
+}
+
+.sidebar-content-vertical-scroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tlp-dark-color-lighter-10) transparent;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--tlp-dark-color-lighter-10);
+    }
+}
+
+.admin-sidebar-section {
+    flex: 0 0 auto;
+    padding: var(--tlp-medium-spacing) 0;
+    border-top: 1px solid var(--tlp-dark-color-lighter-05);
+
+    &:first-child {
+        border-top: 0;
+    }
+
+    .tlp-badge-outline {
+        margin: 0 0 0 5px;
+    }
+}
+
+.admin-sidebar-section-title {
+    display: flex;
+    align-items: center;
+    margin: 0 var(--tlp-medium-spacing) calc(var(--tlp-medium-spacing) / 2);
+    color: var(--tlp-neutral-normal-color-transparent-50);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    > .admin-sidebar-section-title-icon {
+        margin: 0 5px 0 0;
+    }
+
+    > .tlp-badge-primary {
+        margin: 0 0 0 10px;
+    }
+}
+
+.admin-sidebar-form {
+    margin: 0 var(--tlp-medium-spacing) calc(var(--tlp-medium-spacing) / 2);
+}
+
+.tlp-search.tlp-search-small.admin-sidebar-search {
+    border-color: var(--tlp-dark-color-darker-10);
+    background: color.adjust(#ffffff, $alpha: - 0.95)
+        url("../images/admin-sidebar-search-background.png") no-repeat 10px center;
+    color: color.adjust(#ffffff, $alpha: - 0.2);
+}
+
+.admin-sidebar-section-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+%admin-sidebar-nav-item {
+    padding: 0 var(--tlp-medium-spacing);
+    border-left: 3px solid transparent;
+    font-size: 14px;
+    line-height: 28px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:not(.tlp-text-warning) {
+        color: var(--tlp-neutral-dark-color);
+    }
+
+    &:hover {
+        background: var(--tlp-dark-color-darker-20);
+        text-decoration: none;
+    }
+}
+
+.admin-sidebar-section-nav-item {
+    @extend %admin-sidebar-nav-item;
+}
+
+.admin-sidebar-links-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-sidebar-links-nav-item {
+    @extend %admin-sidebar-nav-item;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
+    &:hover {
+        opacity: 0.7;
+        background: none;
+    }
+
+    > .fa-life-saver {
+        margin: 0 0 15px;
+        font-size: 30px;
+    }
+}

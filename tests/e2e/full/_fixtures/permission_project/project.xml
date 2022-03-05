@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project access="public" description="" full-name="Permissions Project 01" unix-name="permissions-project-01">
+    <long-description/>
+    <ugroups>
+        <ugroup name="project_members" description="">
+            <members>
+                <member format="username">ProjectAdministrator</member>
+                <member format="username">ProjectMember</member>
+                <member format="username">PermissionDelegation</member>
+            </members>
+        </ugroup>
+        <ugroup name="project_admins" description="">
+            <members>
+                <member format="username">ProjectAdministrator</member>
+            </members>
+        </ugroup>
+    </ugroups>
+    <services>
+        <service shortname="summary" enabled="true"/>
+        <service shortname="admin" enabled="true"/>
+        <service shortname="forum" enabled="true"/>
+        <service shortname="mail" enabled="true"/>
+        <service shortname="wiki" enabled="true"/>
+        <service shortname="news" enabled="true"/>
+        <service shortname="file" enabled="true"/>
+    </services>
+</project>

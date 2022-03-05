@@ -1,0 +1,68 @@
+{{# access_key_presenter }}
+    {{# last_access_key }}
+        <div class="tlp-alert-success" data-test="user-prefs-add-personal-access-key-feedback">
+            <p>{{# gettext }}Here is your new access key. Please make sure to copy it, you won't be able to see it again!{{/ gettext }}</p>
+            <p>
+                <code><strong data-test="user-prefs-new-api-key">{{ last_access_key }}</strong></code>
+                <copy-to-clipboard
+                        value="{{ last_access_key }}"
+                        class="user-preferences-copy-secret"
+                        aria-label="{{# gettext }}Copy the access key{{/ gettext }}"
+                >
+                    <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{# gettext }}Copy the access key{{/ gettext }}">
+                        <i class="fa fa-fw fa-copy" aria-hidden="true"></i>
+                    </span>
+                    <span class="tlp-tooltip tlp-tooltip-right user-preferences-copy-secrets-hide" data-tlp-tooltip="{{# gettext }}Access key copied!{{/ gettext }}">
+                        <i class="fa fa-fw fa-check" aria-hidden="true"></i>
+                    </span>
+                </copy-to-clipboard>
+            </p>
+        </div>
+    {{/ last_access_key }}
+{{/ access_key_presenter }}
+
+{{# svn_tokens_presenter }}
+    {{# last_svn_token }}
+        <div class="tlp-alert-success" data-test="user-prefs-add-svn-token-feedback">
+            <p>{{# gettext }}Here is your new SVN token. Please make sure you copy it, you won't be able to see it again!{{/ gettext }}</p>
+            <p>
+                <code><strong data-test="user-prefs-new-svn-token">{{ last_svn_token }}</strong></code>
+                <copy-to-clipboard
+                        value="{{ last_svn_token }}"
+                        class="user-preferences-copy-secret"
+                        aria-label="{{# gettext }}Copy the SVN token{{/ gettext }}"
+                >
+                    <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{# gettext }}Copy the SVN token{{/ gettext }}">
+                        <i class="fa fa-fw fa-copy" aria-hidden="true"></i>
+                    </span>
+                    <span class="tlp-tooltip tlp-tooltip-right user-preferences-copy-secrets-hide" data-tlp-tooltip="{{# gettext }}SVN token copied!{{/ gettext }}">
+                        <i class="fa fa-fw fa-check" aria-hidden="true"></i>
+                    </span>
+                </copy-to-clipboard>
+            </p>
+        </div>
+    {{/ last_svn_token }}
+{{/ svn_tokens_presenter }}
+
+<div class="user-preferences">
+    <h1 class="user-preferences-title">
+        {{# gettext }}Preferences{{/ gettext }}
+    </h1>
+    <div class="user-preferences-container">
+        {{> user-account-tabs }}
+
+        <div class="user-preferences-section">
+            {{# ssh_keys_presenter }}
+                {{> ssh-keys }}
+            {{/ ssh_keys_presenter }}
+
+            {{# access_key_presenter }}
+                {{> access-keys }}
+            {{/ access_key_presenter }}
+
+            {{# svn_tokens_presenter }}
+                {{> svn-tokens }}
+            {{/ svn_tokens_presenter }}
+        </div>
+    </div>
+</div>

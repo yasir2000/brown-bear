@@ -1,0 +1,11 @@
+{
+    "name": "tuleap/plugin-taskboard",
+    "autoload": {
+        "psr-4": {
+            "Tuleap\\Taskboard\\": "include/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

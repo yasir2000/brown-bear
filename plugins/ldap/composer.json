@@ -1,0 +1,19 @@
+{
+  "name": "tuleap/plugin-label",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\LDAP\\": ["include/"]
+    },
+    "classmap": ["include/"]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ]
+    }
+  }
+}

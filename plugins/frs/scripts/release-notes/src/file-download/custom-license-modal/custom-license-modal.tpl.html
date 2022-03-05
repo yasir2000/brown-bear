@@ -1,0 +1,29 @@
+<div class="tlp-modal" role="dialog" aria-labelledby="custom-license-modal-label">
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title" id="custom-license-modal-label">{{ $ctrl.title }}</h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        <ng-bind-html ng-bind-html="$ctrl.content"></ng-bind-html>
+    </div>
+    <div class="tlp-modal-footer frs-license-modal-footer">
+        <button
+            type="button"
+            class="tlp-button-primary tlp-button-outline tlp-modal-action"
+            data-dismiss="modal"
+            translate
+        >
+            I decline
+        </button>
+        <button
+            type="button"
+            class="tlp-button-primary tlp-modal-action"
+            ng-click="$ctrl.accept()"
+            translate
+        >
+            I accept
+        </button>
+    </div>
+</div>

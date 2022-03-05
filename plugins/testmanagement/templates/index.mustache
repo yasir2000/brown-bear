@@ -1,0 +1,33 @@
+<div id="testmanagement-app"
+     ng-app="testmanagement"
+     ng-controller="TestManagementCtrl"
+>
+    <div class="testmanagement-init-data" ng-non-bindable
+         data-nodejs-server="{{ nodejs_server }}"
+         data-project-id="{{ project_id }}"
+         data-project-url="{{ project_url }}"
+         data-project-public-name="{{ project_name }}"
+         data-project-icon="{{ project_icon }}"
+         data-tracker-ids="{{ tracker_ids }}"
+         data-issue-tracker-config="{{ issue_tracker_config }}"
+         data-language="{{ lang }}"
+         data-current-user="{{ current_user }}"
+         data-current-milestone="{{ current_milestone }}"
+         data-ttm-admin-url="{{ ttm_admin_url }}"
+         data-ttm-admin-label="{{# gettext }}Administration{{/ gettext }}"
+         data-trackers-using-list-picker="{{ trackers_ids_using_list_picker }}"
+         data-csrf-token-campaign-status="{{ csrf_token_campaign_status }}"
+         data-has-current-project-parents="{{ has_current_project_parents }}"
+         data-file-upload-max-size="{{ file_upload_max_size }}"
+         data-is-links-field-v2-enabled="{{ is_links_field_v2_enabled }}"
+         data-platform-name="{{ platform_name }}"
+         data-platform-logo-url="{{ platform_logo_url }}"
+         data-base-url="{{ base_url }}"
+    ></div>
+
+    <div id="testmanagement-breadcrumb" class="breadcrumb-container">
+        {{> breadcrumbs/breadcrumbs-privacy }}
+        <div ncy-breadcrumb></div>
+    </div>
+    <ui-view data-test-management-main-content tabindex="-1"></ui-view>
+</div>

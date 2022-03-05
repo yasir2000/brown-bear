@@ -1,0 +1,181 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+msgid "%s templates"
+msgstr "Modèles de %s"
+
+msgid "API Token (or password for Jira Server)"
+msgstr "Jeton d'API (ou mot de passe Jira Server)"
+
+msgid "Avoid spaces and punctuation"
+msgstr "Évitez les espaces et la ponctuation"
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Choose a project..."
+msgstr "Choisissez un projet ..."
+
+msgid "Choose a starting point"
+msgstr "Choisissez un point de départ"
+
+msgid "Choose a tracker..."
+msgstr "Choisissez un outil de suivi ..."
+
+msgid "Choose an issue type..."
+msgstr "Choisissez un type de ticket ..."
+
+msgid "Choose one tracker template among ones available in your platform."
+msgstr ""
+"Choisissez un modèle d'outil de suivi parmi ceux disponibles sur votre plate-"
+"forme."
+
+msgid "Chosen template"
+msgstr "Modèle choisi"
+
+msgid "Color"
+msgstr "Couleur"
+
+msgid "Connect"
+msgstr "Connexion"
+
+msgid "Create my tracker"
+msgstr "Créer mon outil de suivi"
+
+msgid "Create your new tracker and import its issues from Jira server"
+msgstr ""
+"Créez votre nouvel outil de suivi et importez ses tickets depuis un serveur "
+"Jira"
+
+msgid "Create your new tracker based on a tracker template XML file."
+msgstr "Créez votre nouvel outil de suivi basé sur un fichier au format XML."
+
+msgid ""
+"Create your new tracker by replicating the configuration of an existing one."
+msgstr ""
+"Créez votre nouvel outil de suivi en répliquant la configuration d'un autre "
+"déjà existant."
+
+msgid "Create your new tracker without any configuration."
+msgstr "Créez votre nouvel outil de suivi sans aucune configuration."
+
+msgid "Custom templates"
+msgstr "Modèles personnalisés"
+
+msgid "Description"
+msgstr "Description"
+
+msgid ""
+"Don't worry, you will still be able to modify your tracker after it has been "
+"created."
+msgstr ""
+"Ne vous inquiétez pas, vous serez toujours en mesure de modifier votre outil "
+"de suivi après sa création."
+
+msgid "Empty"
+msgstr "Vide"
+
+msgid "For advanced users"
+msgstr "Pour les utilisateurs avancés"
+
+msgid "From Jira"
+msgstr "Depuis Jira"
+
+msgid "Give your tracker some basic info"
+msgstr "Donnez à votre outil de suivi quelques infos de base"
+
+msgid "I want to migrate a tracker v3"
+msgstr "Je veux migrer un outil de suivi v3"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Issue type"
+msgstr "Type de ticket"
+
+msgid "My %{ tracker_name } tracker description..."
+msgstr "Ma description de l'outil de suivi %{ tracker_name } ..."
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Project"
+msgstr "Projet"
+
+msgid "Shortname"
+msgstr "Nom court"
+
+msgid "Source project"
+msgstr "Projet source"
+
+msgid "Template"
+msgstr "Modèle"
+
+msgid ""
+"The chosen name already exist in this project, please choose another one."
+msgstr ""
+"Le nom choisi existe déjà dans ce projet, veuillez en choisir un autre."
+
+msgid ""
+"The chosen shortname already exist in this project, please choose another "
+"one."
+msgstr ""
+"Le nom court choisi existe déjà dans ce projet, veuillez en choisir un autre."
+
+msgid "The provided file is not a valid XML file"
+msgstr "Le fichier fourni n'est pas un fichier XML valide"
+
+msgid ""
+"The tracker shortname must have a length between 1 and 25 characters. It can "
+"only\n"
+"            contain alphanumerical characters and underscores."
+msgstr ""
+"Le nom court de l'outil de suivi doit avoir une longueur comprise entre 1 et "
+"25 caractères.\n"
+"            Il ne peut contenir que des caractères alphanumériques et des "
+"tirets bas."
+
+msgid ""
+"The tracker template you will select provides preconfigured fields, "
+"permissions,\n"
+"        workflow..."
+msgstr ""
+"Le modèle de l'outil de suivi que vous sélectionnez fournit des champs "
+"préconfigurés, des permissions, des règles de transitions ..."
+
+msgid "Tracker XML file"
+msgstr "Fichier XML"
+
+msgid "Tracker from another project"
+msgstr "Outil de suivi d'un autre project"
+
+msgid "Tracker shortname:"
+msgstr "Nom court de l'outil de suivi :"
+
+msgid "Trackers from template projects"
+msgstr "Outils de suivi des modèles de projet"
+
+msgid "Tuleap template"
+msgid_plural "Tuleap templates"
+msgstr[0] "Modèle d'outil de suivi Tuleap"
+msgstr[1] "Modèles d'outils de suivi Tuleap"
+
+msgid "User email (or jira login for Jira Server)"
+msgstr "Email utilisateur (ou identifiant Jira Server)"
+
+msgid "Your Jira server url"
+msgstr "L'url de votre serveur Jira"

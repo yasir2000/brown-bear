@@ -1,0 +1,25 @@
+{{# non_submittable_field_errors }}
+    <li>
+        {{# dgettext }}
+            tuleap-program_management |
+            User can not submit the field <a href='%s'>%s</a> of tracker %s of project %s |
+            {{ field_url }} |
+            {{ label }} |
+            {{ tracker_name }} |
+            {{ project_name }}
+        {{/ dgettext }}
+    </li>
+{{/ non_submittable_field_errors }}
+
+{{# non_updatable_field_errors }}
+    <li>
+        {{# dgettext }}
+            tuleap-program_management |
+            User can not update the field <a href='%s'>%s</a> of tracker %s of project %s |
+            {{ field_url }} |
+            {{ label }} |
+            {{ tracker_name }} |
+            {{ project_name }}
+        {{/ dgettext }}
+    </li>
+{{/ non_updatable_field_errors }}

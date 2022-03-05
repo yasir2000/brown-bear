@@ -1,0 +1,9 @@
+{
+  "label": "Colors",
+  "children": [
+    "ui",
+    "theme",
+    "business",
+    "illustrations"
+  ]
+}

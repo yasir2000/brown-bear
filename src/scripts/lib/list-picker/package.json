@@ -1,0 +1,22 @@
+{
+  "author": "Enalean Team",
+  "name": "@tuleap/list-picker",
+  "homepage": "https://tuleap.org",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "version": "0.0.0",
+  "types": "dist/index.d.ts",
+  "module": "dist/list-picker.es.js",
+  "main": "dist/list-picker.umd.js",
+  "style": "dist/style.css",
+  "dependencies": {
+    "@tuleap/gettext": "file:../gettext",
+    "lit": "^2.0.2"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "watch": "vite build --watch --mode development --minify false",
+    "test": "jest"
+  }
+}

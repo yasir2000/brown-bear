@@ -1,0 +1,100 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see http://www.gnu.org/licenses/.
+ *
+ *
+ */
+
+.document-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: var(--tlp-large-spacing) var(--tlp-medium-spacing) var(--tlp-title-spacing);
+}
+
+.document-header-title {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}
+
+.document-header-actions {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+}
+
+.document-header-spacer {
+    flex: 1 1 auto;
+    min-width: var(--tlp-medium-spacing);
+}
+
+.document-header-global-progress {
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    margin: 0 var(--tlp-medium-spacing) 0;
+    cursor: pointer;
+}
+
+.document-header-filter-container {
+    position: relative;
+}
+
+.document-advanced-link {
+    position: absolute;
+    top: 50%;
+    right: var(--tlp-medium-spacing);
+    max-width: 60px;
+    overflow: hidden;
+    transform: translateY(-50%);
+    font-size: 12px;
+    line-height: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.document-search-box {
+    padding: 0 80px 0 33px;
+}
+
+.document-display-lock {
+    display: flex;
+    position: relative;
+    top: 2px;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 0 var(--tlp-small-spacing) 0 0;
+    border-radius: 50%;
+    background: var(--tlp-dark-color);
+    color: var(--tlp-white-color);
+    font-size: 20px;
+}
+
+.document-header-embedded-actions {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.document-approval-badge {
+    align-self: center;
+    height: 25px;
+}
+
+.document-view-switcher {
+    margin: 0 0 0 var(--tlp-small-spacing);
+}

@@ -1,0 +1,210 @@
+#!/usr/bin/env groovy
+
+// See https://issues.jenkins.io/browse/JENKINS-44085 and
+// and https://github.com/jenkinsci/bom/blob/542369a68d4c8b604626b4dbc00a109cc8833836/Jenkinsfile#L47-L71
+semaphore_max_test_stages = 5;
+def execTestWithLimitedConcurrency(Closure testToExecute) {
+    waitUntil { if (semaphore_max_test_stages > 0) { semaphore_max_test_stages--; true } else { false } }
+    assert semaphore_max_test_stages >= 0
+    try {
+        testToExecute.call()
+    } finally {
+        semaphore_max_test_stages++
+    }
+}
+
+def actions
+
+pipeline {
+    agent {
+        label 'docker'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Prepare') {
+            agent {
+                dockerfile {
+                    dir 'sources/tools/utils/nix/'
+                    filename 'build-tools.dockerfile'
+                    reuseNode true
+                    args '--tmpfs /tmp/tuleap_build:rw,noexec,nosuid --read-only'
+                }
+            }
+            steps {
+                dir ('results') {
+                    deleteDir()
+                }
+                dir ('sources') {
+                    withCredentials([
+                        usernamePassword(
+                            credentialsId: 'nexus.enalean.com_readonly',
+                            passwordVariable: 'NPM_PASSWORD',
+                            usernameVariable: 'NPM_USER'
+                        ),
+                        string(credentialsId: 'github-token-composer', variable: 'COMPOSER_GITHUB_AUTH')
+                    ]) {
+                        sh 'tools/utils/scripts/generated-files-builder.sh dev'
+                    }
+                }
+            }
+        }
+
+        stage('Check lockfiles') {
+            steps { script {
+                actions = load 'sources/tests/actions.groovy'
+                actions.runFilesStatusChangesDetection('.', 'lockfiles', 'composer.lock')
+            } }
+            post {
+                failure {
+                    dir ('sources') {
+                        sh 'git diff'
+                    }
+                }
+            }
+        }
+
+        stage('Tests') {
+            failFast false
+            parallel {
+                stage('UT PHPUnit PHP 8.0') {
+                    steps { script { execTestWithLimitedConcurrency({ actions.runPHPUnitTests('80') }) } }
+                    post { always { junit 'results/ut-phpunit/*/phpunit_tests_results.xml' } }
+                }
+                stage('REST PHP 8.0 MySQL 5.7') {
+                    steps { script { execTestWithLimitedConcurrency({ actions.runRESTTests('mysql57', '80') }) } }
+                    post { always { junit 'results/api-rest/*/*' } }
+                }
+                stage('DB/Integration CentOS 7 PHP 8.0 MySQL 5.7') {
+                    steps { script { execTestWithLimitedConcurrency({ actions.runDBTests('mysql57', '80') }) } }
+                    post { always { junit 'results/db/*/db_tests.xml' } }
+                }
+                stage('SOAP PHP 8.0') {
+                    steps { script { execTestWithLimitedConcurrency({ actions.runSOAPTests('mysql57', '80') }) } }
+                    post { always { junit "results/soap/*/soap_tests.xml" } }
+                }
+                stage('Build and run CentOS 7') { steps { script { execTestWithLimitedConcurrency({ actions.runBuildAndRun('centos7') }) } } }
+                stage('Translations: check .po files') {
+                    steps { script {
+                        actions.runFilesStatusChangesDetection('.', 'translation files', '"*.po\$"')
+                    } }
+                }
+                stage('Translations: check .tab files') {
+                    agent {
+                        docker {
+                            image 'perl:5.34-slim'
+                            reuseNode true
+                            args '--network none'
+                        }
+                    }
+                    steps { script { execTestWithLimitedConcurrency({
+                        sh 'sources/src/utils/analyse_language_files.pl sources/'
+                    }) } }
+                }
+                stage('PHP coding standards') {
+                    steps {
+                        script {
+                            execTestWithLimitedConcurrency({
+                                def filesToAnalyze = '.'
+                                if (env.GIT_BRANCH != 'origin/master') {
+                                    def helpers = load 'sources/tests/helpers.groovy'
+                                    filesToAnalyze = helpers.getModifiedFilesSinceFirstParentOfCurrentCommit('sources/')
+                                }
+                                actions.runPHPCodingStandards(
+                                    './src/vendor/bin/phpcs',
+                                    './tests/phpcs/tuleap-ruleset-minimal.xml',
+                                    filesToAnalyze
+                                )
+                            })
+                        }
+                    }
+                }
+                stage('Psalm static analysis') {
+                    agent {
+                        docker {
+                            image 'ghcr.io/enalean/tuleap-test-phpunit:c7-php80'
+                            reuseNode true
+                            args '--network none'
+                        }
+                    }
+                    steps {
+                        script {
+                            execTestWithLimitedConcurrency({
+                                def filesToAnalyze = '.'
+                                if (env.GIT_BRANCH != 'origin/master') {
+                                    def helpers = load 'sources/tests/helpers.groovy'
+                                    filesToAnalyze = helpers.getModifiedFilesSinceFirstParentOfCurrentCommit('sources/')
+                                }
+                                actions.runPsalm('tests/psalm/psalm.xml', filesToAnalyze)
+                        }) }
+                    }
+                    post {
+                        always {
+                            recordIssues enabledForFailure: true, minimumSeverity: 'NORMAL', tools: [checkStyle(id: 'checkstyle_psalm', pattern: 'results/psalm/checkstyle.xml')]
+                        }
+                    }
+                }
+                stage('Architecture: deptrac') {
+                    agent {
+                        docker {
+                            image 'ghcr.io/enalean/tuleap-test-phpunit:c7-php80'
+                            reuseNode true
+                            args '--network none'
+                        }
+                    }
+                    steps { script { execTestWithLimitedConcurrency({ actions.runDeptrac() }) } }
+                    post { failure { junit 'results/deptrac/*.xml' } }
+                }
+                stage('ESLint static analysis') {
+                    agent {
+                        dockerfile {
+                            dir 'sources/tools/utils/nix/'
+                            filename 'build-tools.dockerfile'
+                            reuseNode true
+                            args '--network none'
+                        }
+                    }
+                    steps { script { execTestWithLimitedConcurrency({ actions.runESLint() }) } }
+                    post {
+                        always {
+                            recordIssues enabledForFailure: true, tools: [checkStyle(id: 'checkstyle_eslint', pattern: 'results/eslint/checkstyle.xml')]
+                        }
+                    }
+                }
+                stage('SCSS coding standards') {
+                    agent {
+                        dockerfile {
+                            dir 'sources/tools/utils/nix/'
+                            filename 'build-tools.dockerfile'
+                            reuseNode true
+                            args '--network none'
+                        }
+                    }
+                    steps { script { execTestWithLimitedConcurrency({ actions.runStylelint() }) } }
+                }
+                stage ('Jest') {
+                    agent {
+                        dockerfile {
+                            dir 'sources/tools/utils/nix/'
+                            filename 'build-tools.dockerfile'
+                            reuseNode true
+                            args '--network none --tmpfs /tmp/jest_cache:rw,noexec,nosuid -e TMPDIR=/tmp/jest_cache/'
+                        }
+                    }
+                    steps { script { execTestWithLimitedConcurrency({ actions.runJestTests('Tuleap', '.') }) } }
+                    post { always { junit 'results/jest/junit-*.xml' } }
+                }
+            }
+            post {
+                always {
+                    archiveArtifacts allowEmptyArchive: true, artifacts: 'results/'
+                }
+            }
+        }
+    }
+}

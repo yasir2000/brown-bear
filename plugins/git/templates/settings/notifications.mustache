@@ -1,0 +1,86 @@
+<h2>{{ title }}</h2>
+
+<form id="mail_prefix_form" action="/plugins/git/" method="POST">
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+    <input type="hidden" id="action" name="action" value="mail" />
+    <input type="hidden" name="pane" value="{{ identifier }}" />
+    <input type="hidden" id="group_id" name="group_id" value="{{ repository_project_id }}" />
+    <input type="hidden" id="repo_id" name="repo_id" value="{{ repository_id }}" />
+
+    <label for="mail_prefix">{{ mail_prefix_label }}</label>
+    <input name="mail_prefix" id="mail_prefix" class="plugin_git_mail_prefix" type="text" value="{{ mail_prefix }}" />
+
+    <h3>{{ notified_mails_title }}</h3>
+
+    <table id="git-notification-mail-list" class="table">
+        <thead>
+            <tr>
+                <th><i class="far fa-trash-alt"></i></th>
+                <th class="git-notification-mail-list-people">{{ notified_people }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{# has_notifications }}
+            {{# groups_to_be_notified }}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="remove_ugroup[]" value="{{ ugroup_id }}" />
+                    </td>
+                    <td>
+                        <i class="fa fa-users git-notification-mail-list-group-icon"></i>
+                        {{ label }}
+                    </td>
+                </tr>
+            {{/ groups_to_be_notified }}
+            {{# users_to_be_notified }}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="remove_user[]" value="{{ user_id }}" />
+                    </td>
+                    <td class="git-notification-mail-list-user">
+                        <div
+                            class="avatar git-notification-mail-list-user-avatar"
+                        ><img src="{{ avatar_url }}" /></div>
+                        {{ label }}
+                    </td>
+                </tr>
+            {{/ users_to_be_notified }}
+            {{# list_of_mails }}
+                <tr>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="remove_mail[]" value="{{ mail }}" title="delete" />
+                        </label>
+                    </td>
+                    <td>{{ mail }}</td>
+                </tr>
+            {{/ list_of_mails }}
+        {{/ has_notifications }}
+
+        {{^ has_notifications }}
+            <tr>
+                <td class="table-cell-empty" colspan="2">
+                     {{ empty_notification }}
+                </td>
+            </tr>
+        {{/ has_notifications }}
+            <tr>
+                {{# has_notifications }}<td></td>{{/ has_notifications }}
+                <td {{^ has_notifications }}colspan="2"{{/ has_notifications }}>
+                    <input type="hidden"
+                           id="add_mail"
+                           name="add_mail"
+                           class="autocompleter-users-and-ugroups-input"
+                           placeholder="{{ placeholder }}"
+                           data-project-id="{{ repository_project_id }}"
+                           multiple
+                    />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="submit" class="btn btn-primary git-notification-mail-list-submit" value="{{ btn_submit }}" />
+</form>

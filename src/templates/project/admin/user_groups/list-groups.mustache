@@ -1,0 +1,85 @@
+<div class="tlp-framed-horizontally">
+    {{> synchronized_project_membership }}
+    <section class="tlp-pane">
+        <div class="tlp-pane-container">
+            <div class="tlp-pane-header">
+                <h1 class="tlp-pane-title">
+                    <i class="fa fa-users tlp-pane-title-icon"></i>{{# gettext }}Users groups{{/ gettext }}
+                </h1>
+            </div>
+            <section class="tlp-pane-section">
+                <div class="tlp-table-actions">
+                    <button
+                            id="project-admin-ugroups-modal"
+                            data-test="project-admin-ugroups-modal"
+                            type="button"
+                            data-target-modal-id="user-group-modal"
+                            class="tlp-button-primary tlp-table-actions-element">
+                        <i class="tlp-button-icon fa fa-plus"></i>
+                        {{# gettext }}Add users group{{/ gettext }}
+                    </button>
+                    {{> modal-ugroup }}
+                    <div class="tlp-table-actions-spacer"></div>
+                    <div class="tlp-form-element tlp-table-actions-element">
+                        <input type="search"
+                               class="tlp-search tlp-table-actions-filter"
+                               id="project-admin-ugroups-list-table-filter"
+                               data-target-table-id="project-admin-ugroups-list-table"
+                               autocomplete="off"
+                               placeholder="{{# gettext }}Name or description{{/ gettext }}">
+                    </div>
+                </div>
+                <table class="tlp-table" id="project-admin-ugroups-list-table" data-test="project-admin-groups">
+                    <thead>
+                        <tr>
+                            <th class="tlp-table-cell-filterable">{{# gettext }}Name{{/ gettext }}</th>
+                            <th class="tlp-table-cell-filterable">{{# gettext }}Description{{/ gettext }}</th>
+                            <th class="tlp-table-cell-numeric">{{# gettext }}Nb members{{/ gettext }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tlp-table-empty-filter">
+                            <td colspan="4" class="tlp-table-cell-empty">
+                                {{# gettext }}There isn't any matching users groups{{/ gettext }}
+                            </td>
+                        </tr>
+                        {{^ has_ugroups }}
+                            <tr>
+                                <td colspan="4" class="tlp-table-cell-empty">
+                                    {{# gettext }}There isn't any users groups yet{{/ gettext }}
+                                </td>
+                            </tr>
+                        {{/ has_ugroups }}
+                    </tbody>
+                    {{# has_ugroups }}
+                        {{# has_dynamic_ugroups }}
+                            <tbody>
+                                <tr>
+                                    <td class="tlp-table-cell-section tlp-table-cell-filterable" colspan="4">{{# gettext }}System groups{{/ gettext }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                {{# dynamic_ugroups }}
+                                    {{> list-groups-row }}
+                                {{/ dynamic_ugroups }}
+                            </tbody>
+                        {{/ has_dynamic_ugroups }}
+                        {{# has_static_ugroups }}
+                            <tbody>
+                                <tr>
+                                    <td class="tlp-table-cell-section tlp-table-cell-filterable" colspan="4">{{# gettext }}Custom groups{{/ gettext }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody data-test="custom-groups">
+                                {{# static_ugroups }}
+                                    {{> list-groups-row }}
+                                {{/ static_ugroups }}
+                            </tbody>
+                        {{/ has_static_ugroups }}
+                    {{/ has_ugroups }}
+                </table>
+            </section>
+        </div>
+    </section>
+</div>

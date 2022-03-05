@@ -1,0 +1,19 @@
+{
+    "name": "tuleap/plugin-webdav",
+    "autoload": {
+        "psr-4": {
+            "Tuleap\\WebDAV\\": [
+                "include/"
+            ]
+        },
+        "classmap": [
+            "include/"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "sabre/dav": "^4.3"
+    }
+}

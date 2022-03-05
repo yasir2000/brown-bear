@@ -1,0 +1,109 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.git-repository-commit-diff-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.git-repository-commit-diff-file-header {
+    display: flex;
+    padding: var(--tlp-medium-spacing);
+    background: var(--tlp-background-color-lighter-50);
+
+    .git-repository-commit-file-status {
+        font-size: 16px;
+    }
+}
+
+.git-repository-commit-diff-file-header-spacer {
+    flex: 1;
+}
+
+.git-repository-commit-diff-file-header-element:not(:first-child) {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+.git-repository-diff-side-by-side,
+.git-repository-diff {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.git-repository-diff-line {
+    white-space: pre-wrap;
+}
+
+.git-repository-diff-side-by-side-line {
+    display: flex;
+    width: 100%;
+    margin: 0 var(--tlp-medium-spacing);
+}
+
+.git-repository-diff-line-left,
+.git-repository-diff-line-right {
+    width: calc(50% - var(--tlp-medium-spacing));
+    min-height: 20px;
+    white-space: pre-wrap;
+}
+
+.git-repository-diff-line-left {
+    padding: 0 var(--tlp-small-spacing) 0 0;
+    border-right: 1px solid var(--tlp-neutral-light-color);
+}
+
+.git-repository-diff-line-right {
+    padding: 0 0 0 var(--tlp-small-spacing);
+}
+
+.git-repository-diff-side-by-side > .git-repository-diff-side-by-side-line {
+    &:first-child {
+        > .git-repository-diff-line-left {
+            padding: var(--tlp-medium-spacing) var(--tlp-small-spacing) 0 0;
+        }
+
+        > .git-repository-diff-line-right {
+            padding: var(--tlp-medium-spacing) 0 0 var(--tlp-small-spacing);
+        }
+    }
+
+    &:last-child {
+        > .git-repository-diff-line-left {
+            padding: 0 var(--tlp-small-spacing) var(--tlp-medium-spacing) 0;
+        }
+
+        > .git-repository-diff-line-right {
+            padding: 0 0 var(--tlp-medium-spacing) var(--tlp-small-spacing);
+        }
+    }
+}
+
+.git-repository-diff-line-added {
+    color: var(--tlp-success-color);
+}
+
+.git-repository-diff-line-deleted {
+    color: var(--tlp-danger-color);
+}
+
+.git-repository-diff-line-at {
+    color: #990099;
+}

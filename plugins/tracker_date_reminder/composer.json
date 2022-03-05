@@ -1,0 +1,9 @@
+{
+  "name": "tuleap/plugin-tracker-date-reminder",
+  "autoload": {
+    "classmap": ["include/"]
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

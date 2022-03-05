@@ -1,0 +1,15 @@
+{
+  "name": "tuleap/plugin-tracker-encryption",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\TrackerEncryption\\": ["include/", "include/TrackerEncryption/"]
+    },
+    "classmap": ["include/"]
+  },
+  "require": {
+    "phpseclib/phpseclib": "^3.0"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

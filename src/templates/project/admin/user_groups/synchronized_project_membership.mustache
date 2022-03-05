@@ -1,0 +1,34 @@
+{{# synchronized_project_membership_presenter }}
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <div class="tlp-pane-title">
+                <i class="fa fa-cog tlp-pane-title-icon"></i>
+                {{# gettext }}Synchronized project membership management{{/ gettext }}
+            </div>
+        </div>
+        <form action="{{ form_url }}" method="post">
+            {{# csrf_token }}
+                {{> csrf_token_input }}
+            {{/ csrf_token }}
+
+            <section class="tlp-pane-section">
+                    <p>{{# gettext }}When this setting is active, whenever you add someone in any user group, they will be automatically added in project members.{{/ gettext }}</p>
+                    <div class="tlp-form-element">
+                        <label class="tlp-label tlp-checkbox">
+                            <input
+                                type="checkbox"
+                                name="activation"
+                                {{# is_enabled }}checked="checked"{{/ is_enabled }}
+                            />
+                            {{# gettext }}Activate synchronized project membership management{{/ gettext }}
+                        </label>
+                    </div>
+                    <button type="submit" class="tlp-button-primary" >
+                        <i class="fa fa-save tlp-button-icon"></i>{{# gettext }}Save configuration{{/gettext}}
+                    </button>
+            </section>
+        </form>
+    </div>
+</section>
+{{/ synchronized_project_membership_presenter }}

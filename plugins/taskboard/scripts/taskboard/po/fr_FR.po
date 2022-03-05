@@ -1,0 +1,196 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Add child"
+msgstr "Ajouter un enfant"
+
+msgid "Add new card"
+msgstr "Ajouter une nouvelle carte"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Card label…"
+msgstr "Label de la carte…"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Collapse \"%{ label }\" column"
+msgstr "Réduire la colonne \"%{ label }\""
+
+msgid "Collapse \"%{ label }\" swimlane"
+msgstr "Réduire la ligne \"%{ label }\""
+
+msgid "Define columns"
+msgstr "Définir les colonnes"
+
+msgid "Edit assignee"
+msgid_plural "Edit assignees"
+msgstr[0] "Éditer l'assigné"
+msgstr[1] "Éditer les assignés"
+
+msgid "Edit card"
+msgstr "Modifier la carte"
+
+msgid "Edit remaining efforts"
+msgstr "Éditer l'effort restant"
+
+msgid "Expand"
+msgstr "Étendre"
+
+msgid "Expand \"%{ label }\" column"
+msgstr "Agrandir la colonne \"%{ label }\""
+
+msgid "Hide closed items"
+msgstr "Cacher les éléments clos"
+
+msgid "Incompatible usage of color"
+msgstr "Incompatibilité dans le choix de la couleur"
+
+msgid "Initial effort"
+msgstr "Effort estimé"
+
+msgid "It seems an action you tried to perform can't be done"
+msgstr ""
+"Il semble que l'action que vous venez de tenter ne peut pas être réalisée"
+
+msgid "It seems an action you tried to perform can't be done."
+msgstr ""
+"Il semble que l'action que vous venez de tenter ne peut pas être réalisée."
+
+msgid "John"
+msgstr "Jean"
+
+msgid "Move card down"
+msgstr "Déplacer la carte vers le bas"
+
+msgid "Move card to the left cell"
+msgstr "Déplacer la carte à gauche"
+
+msgid "Move card to the right cell"
+msgstr "Déplacer la carte à droite"
+
+msgid "Move card up"
+msgstr "Déplacer la carte vers le haut"
+
+msgid "Move to left cell"
+msgstr "Aller à la cellule de gauche"
+
+msgid "Move to next swimlane or card"
+msgstr "Aller à la ligne ou carte suivante"
+
+msgid "Move to previous swimlane or card"
+msgstr "Aller à la ligne ou carte précédente"
+
+msgid "Move to right cell"
+msgstr "Aller à la cellule de droite"
+
+msgid "Navigation in Taskboard"
+msgstr "Navigation dans Taskboard"
+
+msgid "New remaining effort"
+msgstr "Nouvel effort restant"
+
+msgid "Only colors from the new palette can be used."
+msgstr "Seules les couleurs de la nouvelle palette peuvent être utilisées."
+
+msgid "Oops, there's an issue"
+msgstr "Oups, il y a eu un problème"
+
+msgid "Place focus on first swimlane"
+msgstr "Placer le focus sur la première ligne"
+
+msgid "Place focus on the first swimlane card"
+msgstr "Placer le focus sur la première carte de la ligne"
+
+msgid ""
+"Please <a href=\"%{ admin_url }\">adjust configuration</a> to use a suitable "
+"color."
+msgstr ""
+"Merci <a href=\"%{ admin_url }\">d'ajuster la configuration</a> afin "
+"d'utiliser une bonne couleur."
+
+msgid "Please choose…"
+msgstr "Veuillez choisir…"
+
+msgid "Please edit the card to change the status, or add children if possible."
+msgstr ""
+"Veuillez éditer la carte pour changer son statut, ou ajouter des enfants si "
+"possible."
+
+msgid "Quick access"
+msgstr "Accès rapide"
+
+msgid "Reload the page"
+msgstr "Recharger la page"
+
+msgid "Remaining effort"
+msgstr "Effort restant"
+
+msgid "Return to parent card or swimlane"
+msgstr "Retourner à la carte parente ou à la ligne"
+
+msgid "Save"
+msgstr "Sauver"
+
+msgid "Set card label"
+msgstr "Assigner un label à la carte"
+
+msgid "Show error details"
+msgstr "Voir les détails de l'erreur"
+
+msgid ""
+"The column is configured to use a color (%{ color }) from the legacy palette."
+msgstr ""
+"La colonne est configurée pour utiliser une couleur (%{ color }) qui fait "
+"partie de l'ancienne palette."
+
+msgid "This card does not have any status."
+msgstr "Cette carte n'a pas de statut."
+
+msgid ""
+"This card has status <strong>%{ label }</strong> that does not map to "
+"current taskboard columns."
+msgstr ""
+"Cette carte a pour statut <strong>%{ label }</strong> qui ne correspond pas "
+"aux colonnes de ce tableau de tâches."
+
+msgid "This column does not allow to drop this card here."
+msgstr "Cette colonne ne permet pas de déposer cette carte ici."
+
+msgid "This taskboard is empty"
+msgstr "Ce tableau de tâches est vide"
+
+msgid "This taskboard is not properly configured"
+msgstr "Ce tableau de tâches n'est pas correctement configuré"
+
+msgid "This taskboard is not ready to be used"
+msgstr "Ce tableau de tâches n'est pas prêt à être utilisé"
+
+msgid "Toggle closed items"
+msgstr "Afficher ou cacher les éléments clos"
+
+msgid "Toggle fullscreen mode"
+msgstr "Basculer le mode plein écran"
+
+msgid "View closed items"
+msgstr "Afficher les éléments clos"
+
+msgid "You have to configure the columns mapping."
+msgstr "Vous devez configurer les colonnes."
+
+msgid "Your project administrator needs to finish the planning configuration."
+msgstr ""
+"Votre administrateur de projet doit finir la configuration du planning."

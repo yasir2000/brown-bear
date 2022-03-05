@@ -1,0 +1,9 @@
+{
+  "label": "Badges",
+  "children": [
+    "types",
+    "outline",
+    "rounded",
+    "dark-background"
+  ]
+}

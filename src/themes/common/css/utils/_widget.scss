@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:color";
+
+// stylelint-disable-next-line selector-class-pattern
+.emptyPlaceMarker {
+    border: 2px dashed #cccccc;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.widget {
+    margin-bottom: 20px;
+    border: 1px solid #bcbcad;
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.widget_content {
+    padding: 0.5em;
+    clear: both;
+    background: #ffffff;
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.widget_titlebar {
+    height: 18px;
+    padding-right: 4px;
+    padding-left: 40px;
+    background: #e0ddd2 url("../../common/images/widget-header.png") left top repeat-x;
+    color: #555555;
+    font-weight: bold;
+    text-align: left;
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.widget_titlebar_title {
+    float: left;
+}
+
+/* stylelint-disable selector-class-pattern */
+.widget_titlebar_close,
+.widget_titlebar_prefs,
+.widget_titlebar_minimize,
+.widget_titlebar_maximize {
+    margin-left: 10px;
+    float: right;
+
+    a,
+    button {
+        color: color.adjust(#cccccc, $lightness: 5%);
+
+        &:hover {
+            color: #aaaaaa;
+            text-decoration: none;
+        }
+    }
+}
+/* stylelint-enable */
+
+.add-widget-to-dashboard {
+    margin: 5px 20px 0;
+    color: #747474;
+    white-space: nowrap;
+}

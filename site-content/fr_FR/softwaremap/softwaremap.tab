@@ -1,0 +1,15 @@
+#
+# Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
+# This file is licensed under the GNU General Public License version 2. See the file COPYING.
+#
+#-----------------------------------------------
+# Script: SF/www/softwaremap/trove_list.php
+#
+softwaremap_trove_list	map	Arbre des projets publics
+softwaremap_trove_list	invalid_cat	Catégorie invalide
+softwaremap_trove_list	cat_not_exist	Cette catégorie n'existe pas.
+softwaremap_trove_list	projs	projets
+softwaremap_trove_list	browse_by	Afficher par
+softwaremap_trove_list	projs_in_res	<B>$1</B> projets dans la liste des résultats.
+softwaremap_trove_list	register_date	Date de création
+softwaremap_trove_list	not_categorized	Non précisé

@@ -1,0 +1,259 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+msgid "Add Azure Active Directory provider"
+msgstr "Ajouter un fournisseur s'appuyant sur Azure Active Directory"
+
+msgid "Add provider"
+msgstr "Ajouter un fournisseur"
+
+#, php-format
+msgid "An error occurred while removing the link with %1$s."
+msgstr "Une erreur est survenue lors de la suppression du lien avec %1$s."
+
+msgid "An error occurred, please retry"
+msgstr "Une erreur est survenue, merci de réessayer"
+
+msgid ""
+"Any users with a work/school account from Azure Active Directory or a "
+"personal Microsoft account"
+msgstr ""
+"Tout utilisateur disposant d'un compte professionnel/scolaire de Azure "
+"Active Directory ou d'un compte Microsoft personnel"
+
+msgid "Authenticate users with OpenID Connect"
+msgstr "Authentifie des utilisateurs à l'aide d'OpenID Connect"
+
+msgid "Authentication allowed for"
+msgstr "Authentification autorisée pour"
+
+msgid "Authorization endpoint"
+msgstr "Route de gestion de l'autorisation"
+
+msgid ""
+"Be sure that your provider can provide the profile and email scopes "
+"otherwise users will not have an account created automatically."
+msgstr ""
+"Soyez certains que ce fournisseur est capable de fournir les scopes profile "
+"et email sans quoi les comptes utilisateur ne pourront pas être créés."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Client ID"
+msgstr "Id du client"
+
+msgid "Client secret"
+msgstr "Clé secrète du client"
+
+msgid "Color"
+msgstr "Couleur"
+
+msgid "Create the provider"
+msgstr "Créer le fournisseur"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Delete a provider"
+msgstr "Supprimer un fournisseur"
+
+msgid "Disabled"
+msgstr "Désactivé"
+
+msgid "Edit provider"
+msgstr "Éditer le fournisseur"
+
+msgid "Empty"
+msgstr "Vide"
+
+msgid ""
+"Following information have to be generated on the OpenID Connect provider "
+"side. You'll need to give a callback url to do that, here it is:"
+msgstr ""
+"Les informations suivantes doivent être générées du côté du fournisseur "
+"OpenID Connect. Vous allez avoir besoin d'une url de callback, la voici :"
+
+msgid "Icon"
+msgstr "Icône"
+
+msgid "If you no longer trust one of those provider, you can unlink it."
+msgstr ""
+"Si vous ne faites plus confiance à un fournisseur, vous pouvez supprimer le "
+"lien."
+
+msgid "JWKS endpoint"
+msgstr "Route du document JWKS"
+
+msgid "Last login date"
+msgstr "Dernière connexion"
+
+msgid "Link an account"
+msgstr "Liez un compte"
+
+msgid "List all OpenID Connect providers you authorized for authentication."
+msgstr ""
+"Liste de tous les fournisseurs OpenID Connect que vous avez autorisés à vous "
+"identifier."
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "No provider"
+msgstr "Aucun fournisseur"
+
+msgid "Only users with a personal Microsoft account"
+msgstr "Uniquement les utilisateurs disposant d'un compte Microsoft personnel"
+
+msgid "Only users with a work/school account from Azure Active Directory"
+msgstr ""
+"Uniquement les utilisateurs disposant d'un compte professionnel/scolaire de "
+"Azure Active Directory"
+
+msgid "OpenID Connect"
+msgstr "OpenID Connect"
+
+msgid "OpenID Connect Client"
+msgstr "OpenID Connect Client"
+
+msgid "OpenID Connect provider last login information."
+msgstr "Dernière information de connexion au fournisseur OpenID Connect."
+
+msgid "OpenID Connect providers"
+msgstr "Fournisseurs OpenID Connect"
+
+msgid "Preview"
+msgstr "Aperçu"
+
+msgid "Preview of the login page button"
+msgstr "Aperçu du bouton de la page de connexion"
+
+msgid "Provider"
+msgstr "Fournisseur"
+
+msgid "Register a new account"
+msgstr "Créer un nouveau compte"
+
+msgid "Request seems invalid, please retry"
+msgstr "La requête semble invalide, merci de réessayer"
+
+msgid "Tenant ID"
+msgstr "Id du locataire"
+
+msgid "The data you provided are not valid."
+msgstr "Les données que vous avez fournies ne sont pas valides."
+
+#, php-format
+msgid "The link with %1$s have been removed."
+msgstr "Le lien avec %1$s a été supprimé."
+
+#, php-format
+msgid "The new provider %1$s have been successfully created."
+msgstr "Le nouveau fournisseur %1$s a été créé avec succès."
+
+#, php-format
+msgid "The provider %1$s have been removed."
+msgstr "Le fournisseur %1$s a été supprimé."
+
+#, php-format
+msgid "The provider %1$s have been successfully updated."
+msgstr "Le fournisseur %1$s a été mis à jour avec succès."
+
+msgid "There are no authorized providers yet"
+msgstr "Il n'y a aucun fournisseur autorisé pour le moment"
+
+msgid "This provider is the only authentication method."
+msgstr "Ce fournisseur est le seul moyen d'authentification."
+
+msgid "Token endpoint"
+msgstr "Route de génération du jeton"
+
+msgid "Unique authentication source"
+msgstr "Source d'authentification unique"
+
+msgid "Unlink"
+msgstr "Supprimer le lien"
+
+msgid "Update the provider"
+msgstr "Mettre à jour le fournisseur"
+
+msgid "User information endpoint"
+msgstr "Route des informations utilisateur"
+
+msgid "Users from your specific Azure Active Directory"
+msgstr "Tout utilisateur de votre Azure Active Directory spécifique"
+
+msgid ""
+"You are about to delete a provider. This action is irreversible. Do you "
+"confirm this deletion?"
+msgstr ""
+"Vous êtes sur le point de supprimer un fournisseur. Cette action est "
+"irréversible. Confirmez-vous cette action ?"
+
+msgid ""
+"You can only enable this provider as unique authentication method if you are "
+"yourself linked to it."
+msgstr ""
+"Vous ne pouvez activer ce fourniseur comme seul moyen d'authentification que "
+"si vous y êtes vous même lié."
+
+#, php-format
+msgid ""
+"You have successfully been authenticated by %1$s. The only remaining step is "
+"to create a link with an existing %2$s account or register a new one."
+msgstr ""
+"Vous avez été authentifié avec succès par %1$s. Vous devez maintenant créer "
+"un lien avec un compte %2$s existant ou en créer un nouveau."
+
+#, php-format
+msgid ""
+"You have successfully been authenticated by %1$s. The only remaining step is "
+"to create a link with an existing %2$s account."
+msgstr ""
+"Vous avez été authentifié avec succès par %1$s. Vous devez maintenant créer "
+"un lien avec un compte %2$s existant."
+
+msgid "You must link another account to be able to remove this link"
+msgstr "Vous devez lier un autre compte pour pouvoir supprimer ce lien"
+
+#, php-format
+msgid "Your account has been successfully linked to %1$s"
+msgstr "Votre compte a bien été lié à %1$s"
+
+msgid ""
+"Your account have been created but needs to be approved by an administrator"
+msgstr "Votre compte a été créé mais doit être approuvé par un administrateur"
+
+msgid ""
+"Your account is linked to an OpenID Connect provider, you must use it to "
+"authenticate"
+msgstr ""
+"Votre compte est associé à un fournisseur OpenID Connect, vous devez "
+"utiliser celui ci pour vous identifier"
+
+#, php-format
+msgid "Your new user account will be linked with %1$s."
+msgstr "Votre nouveau compte utilisateur sera lié avec %1$s."
+
+msgid "https://"
+msgstr "https://"
+
+msgid "or"
+msgstr "ou"
+
+msgid "or login with"
+msgstr "ou connectez-vous avec"
+
+msgid "to OpenID Connect"
+msgstr "à OpenID Connect"

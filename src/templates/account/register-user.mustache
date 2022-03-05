@@ -1,0 +1,76 @@
+{{> register-form-start }}
+
+    {{# prefill_values }}
+    <div class="fields">
+        {{# form_pw }}
+            {{# has_error }}
+                <div class="control-group error">
+                    <div class="controls">
+            {{/has_error }}
+                        <input type="password" value="" placeholder="{{ new_password }} *" id="form_pw" name="form_pw" required autocomplete="new-password" data-password-validators="{{ json_password_strategy_keys }}" />
+                        <input type="password" value="" placeholder="{{ new_password2 }} *" name="form_pw2" required autocomplete="new-password" />
+            {{# has_error }}
+                        <span class="help-inline">{{ error }}</span>
+                    </div>
+                </div>
+            {{/has_error }}
+        {{/ form_pw }}
+        {{> register-choose-password }}
+    </div>
+
+    <div class="fields">
+        {{# form_realname }}
+            {{# has_error }}
+                <div class="control-group error">
+                    <div class="controls">
+            {{/has_error }}
+                        <input type="text" name="form_realname" placeholder="{{ realname }} *" value="{{ value }}" required="required" autocomplete="name" />
+            {{# has_error }}
+                        <span class="help-inline">{{ error }}</span>
+                    </div>
+                </div>
+            {{/has_error }}
+        {{/ form_realname }}
+
+        {{# form_timezone }}
+            {{# has_error }}
+                <div class="control-group error">
+                    <div class="controls">
+            {{/has_error }}
+                        {{# timezone_selector }}
+                            {{> timezone }}
+                        {{/ timezone_selector }}
+            {{# has_error }}
+                    </div>
+                </div>
+            {{/has_error }}
+        {{/ form_timezone }}
+    </div>
+
+    <div class="fields">
+        <label class="checkbox">
+            {{# form_mail_site }}
+                {{# has_error }}
+                    <div class="control-group error">
+                        <div class="controls">
+                {{/has_error }}
+                            <input type="checkbox" name="form_mail_site" value="1" {{# form_mail_site }} checked="checked"{{/ form_mail_site }} />
+                {{# has_error }}
+                            <span class="help-inline">{{ error }}</span>
+                        </div>
+                    </div>
+                {{/has_error }}
+            {{/ form_mail_site }}
+
+            {{{ siteupdate }}}
+        </label>
+    </div>
+
+    {{> register-purpose-directions }}
+    {{/ prefill_values }}
+
+    {{{ extra_plugin_field }}}
+
+    <p class="mandatory">{{ mandatory }}</p>
+
+{{> register-form-end }}

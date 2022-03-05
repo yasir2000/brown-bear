@@ -1,0 +1,11 @@
+{
+  "name": "tuleap/plugin-gitlfs",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\GitLFS\\": "include/"
+    }
+  },
+  "require": {
+    "league/flysystem": "^3.0"
+  }
+}

@@ -1,0 +1,31 @@
+#
+# -- WARNING -- WARNING -- WARNING -- WARNING -- WARNING -- WARNING --
+# DO NOT EDIT
+# This file is deployed and managed by Tuleap.
+#
+
+#
+# The launch of the tasks is randomized to avoid high load on servers running multiple Tuleap instances
+# Tasks expected to be launched at specific moment are started within a half four (1799 seconds) of the expected time
+#
+
+# The delay should be managed as an env variable so command line and process name will be the same if the command is
+# run with delay (cron) or without (CLI). This way the concurrent process check will work
+TLP_DELAY_CRON_CMD=1
+
+# Once a minute, process Tuleap system events
+* * * * * root /usr/bin/tuleap process-system-event default
+* * * * * root /usr/bin/tuleap process-system-event statistics
+* * * * * codendiadm /usr/bin/tuleap process-system-event tv3_tv5_migration
+* * * * * codendiadm /usr/bin/tuleap process-system-event git
+* * * * * codendiadm /usr/bin/tuleap process-system-event grokmirror
+
+# Ask plugins if they have something to execute each minute
+* * * * * codendiadm /usr/bin/tuleap launch-every-minute-job
+
+# Regularly launch a system_check event (e.g. every half-hour)
+0,30 * * * * codendiadm /usr/bin/tuleap queue-system-check
+
+# Daily Tuleap PHP cron (obsolete documents...)
+10 0 * * * codendiadm /usr/bin/tuleap daily-job
+

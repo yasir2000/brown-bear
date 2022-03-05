@@ -1,0 +1,366 @@
+/**
+ * Copyright (c) Enalean, 2019 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+@use "sass:map";
+@use "sass:color";
+
+@mixin pencil-background($color) {
+    background: $color;
+    box-shadow: 0 0 8px 2px $color;
+}
+
+.taskboard-card-label-editor {
+    margin: var(--tlp-small-spacing) 0 0;
+}
+
+.taskboard-card-edit-mode-assignees {
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-end;
+    transition: color ease-in-out 100ms;
+    color: var(--tlp-main-color);
+
+    > .taskboard-card-assignees-avatars:last-child {
+        margin: -3px 0 8px 5px;
+    }
+
+    &.taskboard-card-assignees-editable {
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            color: var(--tlp-main-color-darker-15);
+        }
+    }
+
+    &.taskboard-card-assignees-edit-mode {
+        position: absolute;
+        z-index: 11;
+        bottom: calc(100% - 30px);
+        left: 12px;
+        width: calc(100% - 2 * var(--tlp-small-spacing) - 2px);
+
+        /* stylelint-disable-next-line selector-class-pattern */
+        .select2-search__field {
+            width: 100% !important;
+        }
+
+        /* stylelint-disable-next-line selector-class-pattern */
+        .select2-selection--multiple > .select2-selection__rendered > .select2-selection__choice {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+    }
+}
+
+.taskboard-cell:last-child .taskboard-card-edit-mode-assignees.taskboard-card-assignees-edit-mode {
+    right: 10px;
+    left: auto;
+}
+
+.taskboard-card-assignees-loading-icon {
+    margin: -10px 0 0;
+    font-size: 14px;
+
+    &:first-child {
+        margin: 0 2px 11px 0;
+    }
+}
+
+.taskboard-card-assignees-add-icon,
+.taskboard-card-assignees-edit-icon {
+    height: 25px;
+    font-size: 14px;
+}
+
+.taskboard-card.taskboard-card-editable:not(.taskboard-card-edit-mode) {
+    $assignee-avatar-size: 25px;
+    $additional-size-to-hide-assignee: 1px;
+    $card-info-margin-right: 5px;
+    $assignee-negative-margin: -3px;
+
+    > .taskboard-card-edit-trigger {
+        @include pencil-background(var(--secondary-color, var(--tlp-white-color)));
+
+        display: flex;
+        position: absolute;
+        z-index: 10;
+        top: calc(
+            var(--tlp-small-spacing) + #{$assignee-negative-margin} - #{$additional-size-to-hide-assignee}
+        );
+        right: calc(var(--tlp-small-spacing) - #{$additional-size-to-hide-assignee});
+        justify-content: center;
+        width: $assignee-avatar-size + ($additional-size-to-hide-assignee * 2);
+        height: $assignee-avatar-size + ($additional-size-to-hide-assignee * 2);
+        padding: 0;
+        transition: opacity ease-in-out 100ms;
+        border: 0;
+        border-radius: 50%;
+        opacity: 0;
+        color: var(--text-color, var(--card-text-color, var(--tlp-dimmed-color)));
+        font-size: 14px;
+        cursor: pointer;
+
+        > .fa-pencil-alt {
+            position: relative;
+            top: 6px;
+        }
+
+        &:focus {
+            background: var(--tlp-main-color-lighter-50);
+        }
+    }
+
+    &.taskboard-card-with-accessibility > .taskboard-card-edit-trigger {
+        right: calc(
+            var(--tlp-medium-spacing) + #{$card-info-margin-right} - #{$additional-size-to-hide-assignee}
+        );
+    }
+
+    &:hover,
+    &:focus-within {
+        .taskboard-card-inital-effort {
+            opacity: 0;
+        }
+
+        > .taskboard-card-edit-trigger {
+            opacity: 1;
+        }
+    }
+}
+
+.taskboard-cell:first-child
+    > .taskboard-cell-parent-card
+    > .taskboard-card.taskboard-card-edit-mode,
+.taskboard-card.taskboard-card-edit-mode {
+    margin: 0;
+    border: 1px solid var(--tlp-main-color);
+    background: var(--tlp-background-color-lighter-10);
+
+    &::before,
+    > .taskboard-card-progress {
+        background: var(--tlp-main-color);
+    }
+
+    > .taskboard-card-edit-trigger {
+        display: none;
+    }
+
+    &.taskboard-card-with-accessibility {
+        padding: var(--tlp-small-spacing) var(--tlp-small-spacing) var(--tlp-small-spacing)
+            calc(var(--tlp-small-spacing) + 2px);
+    }
+
+    > .taskboard-card-content > .taskboard-card-xref-label {
+        flex-shrink: 0;
+
+        /* stylelint-disable-next-line selector-max-compound-selectors */
+        > .taskboard-card-xref {
+            color: var(--tlp-main-color);
+        }
+    }
+
+    /* stylelint-disable-next-line selector-max-compound-selectors */
+    > .taskboard-card-content > .taskboard-card-info > .taskboard-card-inital-effort {
+        border-color: var(--tlp-main-color);
+        background: var(--tlp-main-color-transparent-90);
+        color: var(--tlp-main-color);
+    }
+
+    > .taskboard-card-accessibility {
+        display: none;
+    }
+}
+
+.taskboard-cell:first-child
+    > .taskboard-cell-parent-card
+    > .taskboard-card:not([class*="taskboard-card-background-"])
+    > .taskboard-card-edit-trigger {
+    @include pencil-background(var(--tlp-background-color));
+
+    &:focus {
+        background: var(--tlp-main-color-lighter-90);
+    }
+}
+
+.taskboard-cell:first-child > .taskboard-cell-parent-card > .taskboard-card,
+.taskboard-card {
+    transition: border-color 75ms ease-in-out, background-color 75ms ease-in-out;
+
+    &.taskboard-card-is-being-saved {
+        animation: blink-card 1200ms ease-in-out alternate infinite;
+    }
+
+    &.taskboard-card-is-just-saved {
+        animation: pulse-card 500ms ease-in-out;
+        border-color: var(--tlp-success-color);
+        background: var(--tlp-success-color-lighter-90);
+
+        &.taskboard-card-editable:not(.taskboard-card-edit-mode) > .taskboard-card-edit-trigger {
+            @include pencil-background(var(--tlp-success-color-lighter-90));
+        }
+    }
+}
+
+.taskboard-card-cancel-save-buttons {
+    margin: calc(var(--tlp-small-spacing) - 5px) 0 0;
+    text-align: right;
+
+    &.taskboard-card-cancel-save-buttons-for-child {
+        margin: calc(var(--tlp-small-spacing) - 5px) 0 var(--tlp-medium-spacing);
+    }
+}
+
+.taskboard-child:last-child > .taskboard-card-cancel-save-buttons-for-child {
+    margin: calc(var(--tlp-small-spacing) - 5px) 0 0;
+}
+
+.taskboard-child:focus > .taskboard-card {
+    outline: solid var(--tlp-main-color) 2px;
+}
+
+.taskboard-card-cancel-button {
+    margin: 5px 0 0;
+}
+
+.taskboard-card-save-button {
+    margin: 5px 0 0 5px;
+    float: right;
+}
+
+.taskboard-card-remaining-effort-editable {
+    cursor: pointer;
+
+    &::before {
+        content: "\f303"; // fa-pencil-alt
+        display: flex;
+        position: absolute;
+        top: calc(-2px - (1px * var(--tlp-is-condensed)));
+        left: -18px;
+        align-items: center;
+        width: 20px;
+        height: 26px;
+        transition: opacity ease-in-out 100ms;
+        opacity: 0;
+        font-family: "Font Awesome 5 Free";
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    &:not(.taskboard-card-remaining-effort-edit-mode) {
+        &:hover,
+        &:focus {
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+
+    > .fa-long-arrow-alt-right {
+        margin: 0 2px;
+    }
+
+    @each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+        &.tlp-badge-#{$color-name}::before {
+            color: color.adjust(map.get($colors, "text"), $lightness: - 5%);
+        }
+
+        &.taskboard-card-remaining-effort-edit-mode,
+        &:focus,
+        &:hover {
+            &.tlp-badge-#{$color-name} {
+                background: color.adjust(map.get($colors, "text"), $lightness: - 5%);
+
+                &::after {
+                    background: color.adjust(map.get($colors, "text"), $lightness: - 5%);
+                }
+            }
+        }
+    }
+}
+
+.taskboard-card-label-input,
+.taskboard-card-label-input-mirror {
+    width: 100%;
+    overflow: hidden;
+    resize: none;
+
+    &:focus {
+        border-color: var(--tlp-main-color-transparent-70);
+    }
+}
+
+.taskboard-card-label-input-mirror {
+    visibility: hidden;
+    position: absolute;
+    pointer-events: none;
+}
+
+.taskboard-card-remaining-effort-input {
+    width: 30px;
+    padding: 2px 5px;
+    border: 0;
+    border-radius: 2px;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 14px;
+}
+
+@for $width from 4 through 6 {
+    $width: $width * 10;
+
+    .taskboard-card-remaining-effort-input-width-#{$width} {
+        width: #{$width}px;
+    }
+}
+
+@keyframes blink-card {
+    0% {
+        border-color: var(--tlp-info-color);
+        background: var(--tlp-info-color-transparent-90);
+    }
+
+    50% {
+        border-color: transparent;
+        background: var(--tlp-white-color);
+    }
+
+    100% {
+        border-color: var(--tlp-info-color);
+        background: var(--tlp-info-color-transparent-90);
+    }
+}
+
+@keyframes pulse-card {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

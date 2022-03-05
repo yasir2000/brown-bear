@@ -1,0 +1,96 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.git-repository-files-readme {
+    display: flex;
+    align-items: flex-start;
+
+    @media screen and (max-width: 1400px) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.git-repository-files {
+    flex: 0 0 auto;
+    width: calc(50% - var(--tlp-small-spacing));
+    margin: 0 var(--tlp-small-spacing) var(--tlp-small-spacing) 0;
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+        margin: 0 0 var(--tlp-small-spacing);
+    }
+
+    &:only-child {
+        width: 100%;
+        margin: 0 0 var(--tlp-small-spacing);
+    }
+
+    td {
+        word-break: break-all;
+    }
+}
+
+.git-repository-files-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400;
+
+    > a {
+        color: inherit;
+    }
+}
+
+.git-repository-tree-icon {
+    margin: 0 3px 0 0;
+}
+
+.git-repository-readme {
+    flex: 1 1 auto;
+    width: calc(50% - var(--tlp-small-spacing));
+    margin: 0 0 var(--tlp-medium-spacing) var(--tlp-small-spacing);
+
+    @media screen and (max-width: 1400px) {
+        width: 100%;
+        margin: 0 0 var(--tlp-medium-spacing);
+    }
+}
+
+.git-repository-readme-content {
+    h1 {
+        margin: 0 0 20px;
+        font-size: 40px;
+    }
+
+    pre {
+        margin: 0 0 20px;
+        overflow-x: auto;
+    }
+
+    p,
+    ol,
+    ul,
+    pre,
+    blockquote {
+        + h2,
+        + h3 {
+            margin-top: 40px;
+        }
+    }
+}

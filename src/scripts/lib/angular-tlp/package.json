@@ -1,0 +1,29 @@
+{
+  "author": "Enalean Team",
+  "name": "@tuleap/angular-tlp",
+  "homepage": "https://tuleap.org",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "version": "0.0.0",
+  "module": "dist/angular-tlp.es.js",
+  "main": "dist/angular-tlp.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/angular-tlp.es.js",
+      "require": "./dist/angular-tlp.umd.js"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "angular": "^1.8.0"
+  },
+  "devDependencies": {
+    "angular": "^1.8.2",
+    "angular-mocks": "^1.8.2"
+  },
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch --mode development --minify false",
+    "test": "jest"
+  }
+}

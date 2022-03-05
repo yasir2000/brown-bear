@@ -1,0 +1,52 @@
+.kanban-item {
+    &.gu-transit {
+        border-radius: var(--tlp-medium-radius);
+        border-color: transparent;
+        opacity: 1;
+        background: var(--tlp-neutral-normal-color);
+        box-shadow: none;
+
+        > kanban-item {
+            visibility: hidden;
+        }
+    }
+
+    &.gu-mirror {
+        opacity: 1;
+        line-height: 24px;
+
+        > kanban-item {
+            border: 0;
+            box-shadow: var(--tlp-flyover-shadow);
+        }
+
+        .kanban-item-content-expand-collapse {
+            height: 0;
+        }
+
+        .kanban-item-content-moves {
+            opacity: 0;
+        }
+    }
+}
+
+.kanban-column {
+    &.kanban-column-closed .kanban-item.gu-transit {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+        background: var(--tlp-main-color-transparent-90);
+    }
+
+    &.wip-reached .kanban-item.gu-transit {
+        background: var(--tlp-warning-color-transparent-85);
+    }
+
+    &.wip-reached.kanban-column-closed .kanban-item.gu-transit {
+        background: var(--tlp-warning-color-transparent-90);
+    }
+}

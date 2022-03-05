@@ -1,0 +1,323 @@
+<h1 id="siteadmin-user-title">
+    <div class="tlp-avatar-large" id="siteadmin-user-avatar">
+        {{# has_avatar }}
+            <img src="{{ avatar_url }}">
+        {{/ has_avatar }}
+    </div>
+    <span>
+        {{ name }} <small>@{{ login }}</small>
+    </span>
+</h1>
+
+{{> user-change-password }}
+
+{{# user_has_rest_read_only_administration_delegation }}
+    <div class="tlp-alert-warning">
+        {{# gettext }} This user has the global REST read only administration permission and should not browse the application. {{/ gettext }}
+    </div>
+{{/ user_has_rest_read_only_administration_delegation }}
+
+<div id="siteadmin-user">
+    <div id="siteadmin-user-details">
+        <form action="" method="POST" class="tlp-pane" id="siteadmin-user-details-form">
+            {{# csrf_token }}
+                {{> csrf_token_input }}
+            {{/ csrf_token }}
+            <input type="hidden" name="action" value="update_user">
+            <input type="hidden" name="user_id" value="{{ id }}">
+
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="tlp-pane-title-icon far fa-address-card"></i> {{ account_details }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <div class="siteadmin-user-details-row">
+                        <div class="tlp-property siteadmin-user-details-row-field">
+                            <label class="tlp-label">Id</label>
+                            <p>#{{ id }}</p>
+                        </div>
+                    </div>
+
+                    <div class="siteadmin-user-details-row">
+                        <div class="tlp-form-element siteadmin-user-details-row-field">
+                            <label class="tlp-label" for="login">{{ login_label }} <i class="fa fa-asterisk"></i></label>
+                            <input type="text" data-test="user-login" class="tlp-input" id="login" name="form_user_login_name" placeholder="{{ login }}" value="{{ login }}">
+                        </div>
+                        {{# is_in_limbo }}
+                            <div class="tlp-property siteadmin-user-details-row-field">
+                                <label class="tlp-label">{{ status_label }}</label>
+                                <input type="hidden" name="form_status" value="{{ current_status_id }}">
+                                <p>{{ current_status_label }}</p>
+                            </div>
+                        {{/ is_in_limbo }}
+                        {{^ is_in_limbo }}
+                            <div class="tlp-form-element siteadmin-user-details-row-field">
+                                <label class="tlp-label" for="status">{{ status_label }}
+                                    {{^ is_in_limbo }}<i class="fa fa-asterisk"></i>{{/ is_in_limbo }}
+                                </label>
+                                <select class="tlp-select" id="status" name="form_status" data-test="user-status">
+                                    {{# status }}
+                                        <option value="{{ key }}" {{# is_current }}selected{{/ is_current }}>
+                                            {{ status }}
+                                        </option>
+                                    {{/ status }}
+                                </select>
+                            </div>
+                            <div class="tlp-modal tlp-modal-danger" role="dialog"
+                                 aria-labelledby="modal-warning-removal-project-not-including-restricted-label"
+                                 id="modal-warning-removal-project-not-including-restricted"
+                                 data-nb-project-not-accepting-restricted="{{ nb_project_user_is_member_of_that_dont_accept_restricted }}"
+                            >
+                                <div class="tlp-modal-header">
+                                    <h1 class="tlp-modal-title" id="modal-warning-removal-project-not-including-restricted-label">
+                                        {{# gettext }}Removal from projects{{/ gettext }}
+                                    </h1>
+                                    <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="{{# gettext }}Close{{/ gettext }}">
+                                        <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tlp-modal-body">
+                                    <p>
+                                        {{# ngettext }}You are about to mark this user as restricted, he will be removed from %s project not allowing restricted users. Please confirm your action. |
+                                            You are about to mark this user as restricted, he will be removed from %s projects not allowing restricted users. Please confirm your action.
+                                            | {{ nb_project_user_is_member_of_that_dont_accept_restricted }}
+                                        {{/ ngettext }}
+                                    </p>
+                                </div>
+                                <div class="tlp-modal-footer">
+                                    <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action tlp-button-danger" data-dismiss="modal">
+                                        {{# gettext }}Cancel{{/ gettext }}
+                                    </button>
+                                    <button type="submit" class="tlp-button-primary tlp-modal-action tlp-button-danger" id="modal-warning-removal-project-not-including-restricted-confirm">
+                                        <i class="far fa-trash-alt tlp-button-icon"></i>
+                                        {{# gettext }}Confirm{{/ gettext }}
+                                    </button>
+                                </div>
+                            </div>
+                        {{/ is_in_limbo }}
+                    </div>
+
+                    <div class="siteadmin-user-details-row">
+                        <div class="tlp-form-element siteadmin-user-details-row-field">
+                            <label class="tlp-label" for="name">{{ name_label }} <i class="fa fa-asterisk"></i></label>
+                            <input type="text" class="tlp-input" id="name" name="form_realname" placeholder="{{ name }}" value="{{ name }}">
+                        </div>
+                        <div class="tlp-form-element siteadmin-user-details-row-field">
+                            <label for="expiry" class="tlp-label">{{ expiry_date_label }}</label>
+                            <div class="tlp-form-element tlp-form-element-prepend">
+                                <span class="tlp-prepend"><i class="fas fa-calendar-alt"></i></span>
+                                <input type="text" id="expiry" class="tlp-input tlp-input-date" size="11" name="expiry_date"
+                                       value="{{ expiry }}" placeholder="yyyy-mm-dd">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="siteadmin-user-details-row">
+                        <div class="tlp-form-element siteadmin-user-details-row-field">
+                            <label class="tlp-label" for="email">{{ email_label }} <i class="fa fa-asterisk"></i></label>
+                            <input type="email" class="tlp-input" id="email" name="email" placeholder="{{ email }}" value="{{ email }}">
+                        </div>
+                    </div>
+
+                    <div class="tlp-property">
+                        <label class="tlp-label">{{ password_label }}</label>
+                        <button type="button" class="tlp-button-primary tlp-button-outline" id="siteadmin-user-details-change-password" data-target-modal-id="user-change-password-modal">
+                            <i class="fa fa-lock tlp-button-icon"></i> {{ change_passwd }}
+                        </button>
+                    </div>
+                </section>
+
+                {{# has_additional_details }}
+                    <section class="tlp-pane-section">
+                        {{# additional_details }}
+                            <div class="siteadmin-user-details-row">
+                                <div class="tlp-property siteadmin-user-details-row-field">
+                                    <label class="tlp-label"> {{ login_label }} </label>
+                                    <p class="{{^ has_login_info }} tlp-property-empty {{/has_login_info}}">
+                                        {{ login_info }}
+                                    </p>
+                                </div>
+                                <div class="tlp-form-element siteadmin-user-details-row-field">
+                                    <label class="tlp-label" for="ldap_id"> {{ ldap_id_label }} </label>
+                                    <input type="text" class="tlp-input" id="ldap_id" name="ldap_id" value="{{ ldap_id }}">
+                                </div>
+                            </div>
+                        {{/ additional_details }}
+                    </section>
+                {{/ has_additional_details }}
+
+                <section class="tlp-pane-section">
+                    <div class="siteadmin-user-details-row">
+                        <div class="tlp-form-element siteadmin-user-details-row-unix">
+                            <label class="tlp-label" for="unixstatus">{{ unix_status_label }} <i class="fa fa-asterisk"></i></label>
+                            <select class="tlp-select" id="unixstatus" name="form_unixstatus">
+                                {{# unix_status }}
+                                    <option value="{{ key }}" {{# is_current }}selected{{/ is_current }}>
+                                        {{ status }}
+                                    </option>
+                                {{/ unix_status }}
+                            </select>
+                        </div>
+                        <div class="tlp-form-element siteadmin-user-details-row-unix">
+                            <label class="tlp-label" for="shell">{{ shell }} <i class="fa fa-asterisk"></i></label>
+                            <select class="tlp-select" id="shell" name="form_shell">
+                                {{# shells }}
+                                    <option value="{{ shell }}" {{# is_current }}selected{{/ is_current }}>
+                                        {{ shell }}
+                                    </option>
+                                {{/ shells }}
+                            </select>
+                        </div>
+                    </div>
+                    {{# display_purpose }}
+                        <div class="tlp-property" id="siteadmin-user-purpose">
+                            <label class="tlp-label">{{ purpose_label }}</label>
+                            {{# purpose }}
+                                <p>{{ purpose }}</p>
+                            {{/ purpose }}
+                            {{^ purpose }}
+                                <p class="tlp-property-empty">{{ empty_purpose }}</p>
+                            {{/ purpose }}
+                        </div>
+                    {{/ display_purpose }}
+                </section>
+
+                <section class="tlp-pane-section tlp-pane-section-submit">
+                    <button type="submit" class="tlp-button-primary" data-test="save-user">
+                        <i class="fa fa-save tlp-button-icon"></i> {{ update_information }}
+                    </button>
+                </section>
+            </div>
+        </form>
+    </div>
+
+    <div id="siteadmin-user-additional-info">
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="tlp-pane-title-icon fa fa-info-circle"></i> {{ more_title }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <ul>
+                        {{# more }}
+                            <li><a href="{{ href }}">{{ label }}</a></li>
+                        {{/more}}
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="tlp-pane-title-icon fa fa-key"></i> {{ access_title }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    {{# access }}
+                        <div class="tlp-property">
+                            <label class="tlp-label">{{ last_access_date_label }}</label>
+                            <p>
+                                <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{ last_access_date }}">
+                                    {{{ purified_last_access_date_ago }}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="tlp-property">
+                            <label class="tlp-label">{{ last_pwd_update_label }}</label>
+                            <p>
+                                <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{ last_pwd_update }}">
+                                    {{{ purified_last_pwd_update_ago }}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="tlp-property">
+                            <label class="tlp-label">{{ auth_attempt_last_success_label }}</label>
+                            <p>
+                                <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{ auth_attempt_last_success }}">
+                                    {{{ purified_auth_attempt_last_success_ago }}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="siteadmin-user-access-row">
+                            <div class="tlp-property" id="siteadmin-user-access-row-nb-fail">
+                                <label class="tlp-label">{{ auth_attempt_nb_failure_label }}</label>
+                                <p>{{ auth_attempt_nb_failure }}</p>
+                            </div>
+                            <div class="tlp-property">
+                                <label class="tlp-label">{{ auth_attempt_last_failure_label }}</label>
+                                <p>
+                                    <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{ auth_attempt_last_failure }}">
+                                        {{{ purified_auth_attempt_last_failure_ago }}}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tlp-property">
+                            <label class="tlp-label">{{ auth_attempt_prev_success_label }}</label>
+                            <p>
+                                <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{ auth_attempt_prev_success }}">
+                                    {{{ purified_auth_attempt_prev_success_ago }}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="tlp-property">
+                            <label class="tlp-label">{{ member_since_label }}</label>
+                            <p>
+                                <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{ member_since }}">
+                                    {{{ purified_member_since_ago }}}
+                                </span>
+                            </p>
+                        </div>
+                        {{# invited_by }}
+                            <div class="tlp-property">
+                                <label class="tlp-label">{{# gettext }}Invited by{{/gettext}}</label>
+                                {{# has_been_invited }}
+                                    {{# invited_by_users }}
+                                        <div>
+                                            <div class="tlp-avatar-mini">
+                                                {{# has_avatar }}
+                                                    <img src="{{ avatar_url }}">
+                                                {{/ has_avatar }}
+                                            </div>
+                                            {{ display_name }}
+                                        </div>
+                                    {{/ invited_by_users }}
+                                {{/ has_been_invited }}
+                                {{^ has_been_invited }}
+                                    <span class="tlp-property-empty">{{# gettext }}Nobody{{/ gettext }}</span>
+                                {{/ has_been_invited }}
+                            </div>
+                        {{/ invited_by }}
+                    {{/ access }}
+                </section>
+            </div>
+        </section>
+
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="tlp-pane-title-icon fa fa-archive"></i> {{ current_projects }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    {{# has_projects }}
+                        <ul>
+                            {{# projects }}
+                                <li>
+                                    <a href="groupedit.php?group_id={{ id }}">{{ name }}</a>
+                                    {{# is_admin }}
+                                        <span class="tlp-tooltip tlp-tooltip-top" data-tlp-tooltip="{{ administrator }}">
+                                            <i class="fa fa-id-badge siteadmin-user-project-icon"></i>
+                                        </span>
+                                    {{/ is_admin }}
+                                </li>
+                            {{/ projects }}
+                        </ul>
+                    {{/ has_projects }}
+                    {{^ has_projects }}
+                        <p id="siteadmin-user-project-nope">{{ no_project }}</p>
+                    {{/has_projects}}
+                </section>
+            </div>
+        </section>
+    </div>
+</div>

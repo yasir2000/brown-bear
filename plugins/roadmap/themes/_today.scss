@@ -1,0 +1,52 @@
+/**
+ * Copyright (c) Enalean, 2021 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "roadmap-variables";
+
+.roadmap-gantt-today {
+    position: absolute;
+    z-index: roadmap-variables.$z-index-today;
+    top: 0;
+    bottom: 0;
+    width: roadmap-variables.$today-pin-head-size;
+    transform: translateX(-3px);
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: (roadmap-variables.$today-pin-head-size - roadmap-variables.$today-pin-shaft-size) / 2;
+        width: roadmap-variables.$today-pin-shaft-size;
+        height: 100%;
+        background: var(--tlp-main-color);
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: roadmap-variables.$today-pin-head-size;
+        height: roadmap-variables.$today-pin-head-size;
+        border-radius: 50%;
+        background: var(--tlp-main-color);
+    }
+}

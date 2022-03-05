@@ -1,0 +1,240 @@
+/**
+ * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "buttons";
+
+$tlp-modal-padding: var(--tlp-medium-spacing);
+$tlp-modal-radius: var(--tlp-x-large-radius);
+
+.tlp-modal {
+    display: none;
+    position: fixed;
+    z-index: 2006;
+    top: 0;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    width: 600px;
+    max-height: 90vh;
+    margin: 5vh auto;
+    border: 0;
+    border-radius: $tlp-modal-radius;
+    background: var(--tlp-white-color);
+    box-shadow: var(--tlp-modal-shadow);
+    text-align: left;
+    white-space: normal;
+
+    &.tlp-modal-shown {
+        display: flex;
+    }
+}
+
+.tlp-modal-danger {
+    .tlp-modal-title {
+        color: var(--tlp-danger-dark-color);
+    }
+
+    .tlp-modal-subtitle {
+        color: var(--tlp-dark-color);
+    }
+}
+
+.tlp-modal-warning {
+    .tlp-modal-title {
+        color: var(--tlp-warning-dark-color);
+    }
+
+    .tlp-modal-subtitle {
+        color: var(--tlp-dark-color);
+    }
+}
+
+.tlp-modal-success {
+    .tlp-modal-title {
+        color: var(--tlp-success-dark-color);
+    }
+
+    .tlp-modal-subtitle {
+        color: var(--tlp-dark-color);
+    }
+}
+
+.tlp-modal-info {
+    .tlp-modal-title {
+        color: var(--tlp-info-dark-color);
+    }
+
+    .tlp-modal-subtitle {
+        color: var(--tlp-dark-color);
+    }
+}
+
+.tlp-modal-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: $tlp-modal-padding;
+    border-bottom: 1px solid var(--tlp-neutral-light-color);
+    border-top-left-radius: $tlp-modal-radius;
+    border-top-right-radius: $tlp-modal-radius;
+    color: var(--tlp-dark-color);
+}
+
+.tlp-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    transition: border-color 100ms linear, box-shadow 350ms, opacity 100ms ease-in-out;
+    border: 0;
+    border-radius: 50%;
+    background-color: unset;
+    color: var(--tlp-dimmed-color);
+    cursor: pointer;
+
+    &:hover {
+        transition: border-color 100ms linear, box-shadow 350ms, opacity 100ms ease-in-out;
+        opacity: 0.5;
+    }
+
+    &:focus {
+        transition: border-color 100ms linear, box-shadow 350ms, opacity 100ms ease-in-out;
+        border-color: var(--tlp-main-color);
+        box-shadow: var(--tlp-shadow-focus);
+    }
+}
+
+.tlp-modal-close-icon {
+    font-size: 0.85rem;
+    line-height: 0;
+}
+
+.tlp-modal-title {
+    margin: 0;
+    color: var(--tlp-dark-color);
+    font-size: 1.375rem;
+    font-weight: 500;
+    line-height: 1.75rem;
+}
+
+.tlp-modal-subtitle {
+    color: var(--tlp-main-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.tlp-modal-feedback {
+    padding: $tlp-modal-padding;
+    border-bottom: 1px solid var(--tlp-neutral-light-color);
+
+    &:empty {
+        display: none;
+    }
+}
+
+.tlp-modal-body {
+    height: 100%;
+    max-height: 70vh;
+    padding: $tlp-modal-padding;
+    overflow-y: auto;
+}
+
+.tlp-modal-body-with-sections {
+    display: flex;
+    padding: 0;
+    overflow-y: unset;
+}
+
+.tlp-modal-body-section {
+    flex: 0 1 50%;
+    padding: $tlp-modal-padding;
+    overflow-y: auto;
+    border-right: 1px solid var(--tlp-neutral-light-color);
+
+    &:last-child {
+        border-right: 0;
+    }
+}
+
+.tlp-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    min-height: calc(2 * #{$tlp-modal-padding} + #{buttons.$tlp-button-normal-height});
+    padding: $tlp-modal-padding;
+    border-top: 1px solid var(--tlp-neutral-light-color);
+    border-bottom-right-radius: $tlp-modal-radius;
+    border-bottom-left-radius: $tlp-modal-radius;
+
+    &.tlp-modal-footer-large {
+        min-height: calc(2 * #{$tlp-modal-padding} + #{buttons.$tlp-button-large-height});
+    }
+}
+
+.tlp-modal-action {
+    margin: 0 calc(var(--tlp-medium-spacing) / 2) 0 0;
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.tlp-modal-medium-sized {
+    width: calc(75% - 2 * var(--tlp-medium-spacing));
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 2 * var(--tlp-medium-spacing));
+    }
+}
+
+.tlp-modal-full-screen {
+    width: calc(100% - 2 * var(--tlp-medium-spacing));
+    height: calc(100% - 2 * var(--tlp-medium-spacing));
+    max-height: calc(100% - 2 * var(--tlp-medium-spacing));
+    margin: var(--tlp-medium-spacing);
+
+    > .tlp-modal-body {
+        max-height: none;
+    }
+}
+
+#tlp-modal-backdrop {
+    display: none;
+    position: fixed;
+    z-index: 2005;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--tlp-backdrop-color);
+
+    &.tlp-modal-backdrop-shown {
+        display: block;
+    }
+}
+
+.tlp-modal-separator {
+    height: 1px;
+    margin: 0 calc(-1 * var(--tlp-medium-spacing)) var(--tlp-medium-spacing);
+    border: 0;
+    background-color: var(--tlp-neutral-light-color);
+    color: var(--tlp-neutral-light-color);
+}

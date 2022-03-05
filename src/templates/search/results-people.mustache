@@ -1,0 +1,18 @@
+{{# results_intro }}
+    {{> results_intro }}
+{{/ results_intro }}
+{{# has_results }}
+    <ul id="search_results_list">
+    {{# results }}
+        {{> people_result }}
+    {{/ results }}
+    </ul>
+    {{# maybe_more_results }}
+        <div id="search-more">
+            <button class="btn btn-primary" id="search-more-button">{{ more_results }}</button>
+        </div>
+    {{/ maybe_more_results }}
+    <div id="no_more_results" style="display:none;">
+        <p><i class="far fa-frown"></i> {{ no_more_results }}</p>
+    </div>
+{{/ has_results }}

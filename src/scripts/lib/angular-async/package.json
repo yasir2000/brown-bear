@@ -1,0 +1,25 @@
+{
+  "author": "Enalean Team",
+  "name": "@tuleap/angular-async",
+  "homepage": "https://tuleap.org",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "version": "0.0.0",
+  "module": "dist/angular-async.es.js",
+  "main": "dist/angular-async.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/angular-async.es.js",
+      "require": "./dist/angular-async.umd.js"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "angular": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch --mode development --minify false"
+  }
+}

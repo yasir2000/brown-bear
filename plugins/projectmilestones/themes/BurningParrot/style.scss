@@ -1,0 +1,138 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../../plugins/tracker/themes/default/css/includes/burndown-chart";
+@use "../../../../plugins/agiledashboard/themes/FlamingParrot/css/burnup-chart";
+@use "headers";
+@use "release-toggle";
+@use "release-toggle-tracker-artifacts-badges";
+@use "release-chart";
+@use "release-toggle-badges-sprints";
+
+.dashboard-widget-content-dashboardprojectmilestone {
+    margin: 0;
+    padding: var(--tlp-medium-spacing);
+    overflow-x: initial;
+}
+
+.project-release-label {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    margin: 0 0 var(--tlp-medium-spacing);
+    padding: 5px;
+    border-radius: var(--tlp-small-radius);
+    background: release-chart.$timeline-color;
+    color: var(--tlp-main-color);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 7px;
+    text-transform: uppercase;
+}
+
+.dashboard-widget-content.dashboard-widget-content-release {
+    margin: 0 0 var(--tlp-medium-spacing) var(--tlp-medium-spacing);
+}
+
+.project-release-widget-content {
+    position: relative;
+    padding: var(--tlp-medium-spacing) 0 var(--tlp-medium-spacing) 0;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(
+                to top,
+                var(--tlp-white-color) 0,
+                release-chart.$timeline-color var(--tlp-medium-spacing),
+                transparent calc(var(--tlp-medium-spacing) + 1px)
+            ),
+            linear-gradient(
+                to bottom,
+                var(--tlp-white-color) 0,
+                release-chart.$timeline-color var(--tlp-medium-spacing)
+            );
+    }
+}
+
+.project-release-timeframe {
+    margin: 0 0 var(--tlp-medium-spacing);
+}
+
+.project-release {
+    position: relative;
+    margin: 0 0 var(--tlp-x-large-spacing);
+}
+
+.project-release.project-release-toggle-closed {
+    margin: 0 0 var(--tlp-medium-spacing);
+}
+
+.project-other-releases {
+    display: flex;
+    align-items: baseline;
+    margin: 0 0 var(--tlp-medium-spacing);
+    padding: 0 0 0 5px;
+}
+
+.project-release-time-stripe-icon {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    top: -1px;
+    left: -1px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin: 0 var(--tlp-small-spacing) 0 0;
+    border-radius: 50%;
+    background: var(--tlp-main-color);
+    color: var(--tlp-white-color);
+    font-size: 12px;
+}
+
+.project-other-releases .releases-link {
+    color: var(--tlp-dimmed-color);
+    font-size: 16px;
+}
+
+.releases-link {
+    display: inline-block;
+    color: var(--tlp-dimmed-color);
+    font-size: 16px;
+}
+
+.release-loader {
+    height: 100px;
+    background: url("../../../../src/www/themes/BurningParrot/images/spinner.gif") no-repeat center
+        center;
+}
+
+.button-backlog-link {
+    &:hover {
+        text-decoration: none;
+    }
+}

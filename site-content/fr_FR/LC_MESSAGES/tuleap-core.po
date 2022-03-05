@@ -1,0 +1,5113 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid ""
+"       Sorry - Expiration Date entry could not be parsed. It must be in YYYY-"
+"MM-DD format."
+msgstr ""
+"\tDésolé, le format de la date du d'expiration est incorrect. Il doit suivre "
+"le format AAAA-MM-JJ."
+
+msgid " New user"
+msgstr " Nouvel utilisateur"
+
+msgid " Please avoid to upload too big file (< 500kB)."
+msgstr " Merci de ne pas uploader un trop gros fichier (<500Ko)."
+
+#, php-format
+msgid ""
+"\"%s\" label already exists. If you save your modifications, both labels "
+"will be merged."
+msgstr ""
+"Le label \"%s\" existe déjà. Si vous sauvegardez vos modifications, alors "
+"les labels seront fusionnés."
+
+#, php-format
+msgid "\"%s\" label already exists. Please choose another one."
+msgstr "Le label \"%s\" label exist déjà. Merci de choisir un autre nom."
+
+msgid "## Some notes"
+msgstr "## Du contenu en Markdown"
+
+#, php-format
+msgid "%1$s Password Verification"
+msgstr "Vérification du mot de passe de %1$s"
+
+#, php-format
+msgid "%1$s message(s) deleted"
+msgstr "%1$s message(s) détruit(s)"
+
+#, php-format
+msgid "%1$s users will receive this email."
+msgstr "%1$s utilisateurs vont recevoir ce courrier électronique."
+
+#, php-format
+msgid "%d Aggregated project"
+msgid_plural "%d Aggregated projects"
+msgstr[0] "%d Projet regroupé"
+msgstr[1] "%d Projets regroupés"
+
+#, php-format
+msgid "%d Parent project"
+msgid_plural "%d Parent projects"
+msgstr[0] "%d Projet parent"
+msgstr[1] "%d Projets parents"
+
+#, php-format
+msgid "%d does not belong to %s (%d) category hierarchy"
+msgstr "%d n'appartient pas à la hiérarchie de la catégorie %s (%d)"
+
+#, php-format
+msgid "%d member"
+msgid_plural "%d members"
+msgstr[0] "%d membre"
+msgstr[1] "%d membres"
+
+#, php-format
+msgid "%d message"
+msgid_plural "%d messages"
+msgstr[0] "%d message"
+msgstr[1] "%d messages"
+
+#, php-format
+msgid "%s (opens in a new tab)"
+msgstr "%s (s'ouvre dans un nouvel onglet)"
+
+#, php-format
+msgid "%s - Account suspension"
+msgstr "%s - Suspension de compte"
+
+#, php-format
+msgid "%s - Account suspension notification"
+msgstr "%s - Notification de suspension de compte"
+
+#, php-format
+msgid "%s : user %s removed from project '%s'"
+msgstr "%s : utilisateur %s enlevé du projet '%s'"
+
+#, php-format
+msgid "%s ago"
+msgstr "il y a %s"
+
+#, php-format
+msgid "%s full project listing"
+msgstr "Liste complète des projets %s"
+
+#, php-format
+msgid "%s has multiple corresponding users."
+msgstr "%s a plusieurs utilisateurs associés."
+
+msgid "%s invited you to %s."
+msgstr "%s vous a invité sur %s."
+
+msgid "%s invited you to register to %s."
+msgstr "%s vous invite à vous enregistrer sur %s."
+
+#, php-format
+msgid "%s new projects"
+msgstr "Annonces %s"
+
+#, php-format
+msgid "%s news"
+msgstr "Annonces site %s"
+
+#, php-format
+msgid "%s project news highlights"
+msgstr "Annonces phares des projets %s"
+
+msgid "%s with email %s created an account on %s."
+msgstr "%s avec l'email %s a créé un compte sur %s."
+
+msgid "(Un)Subscribe/Preferences"
+msgstr "(Dés)Abonnement/Préférences"
+
+msgid "(day/month/year)"
+msgstr "(jour/mois/année)"
+
+msgid "(month/day/year)"
+msgstr "(mois/jour/année)"
+
+#, php-format
+msgid ""
+"*********** WARNING ***********  Do you want to delete the reference "
+"pattern? This will remove this reference pattern (%s) from ALL projects of "
+"this server. Are you SURE you want to continue ?"
+msgstr ""
+"*********** ATTENTION ***********  Voulez-vous détruire ce modèle de "
+"référence ? Cela supprimera le modèle de référence (%s) de TOUS les projets "
+"de ce serveur. Êtes-vous SUR de vouloir continuer ?"
+
+#, php-format
+msgid "- The team at %1$s."
+msgstr "- L'équipe %1$s."
+
+msgid "-- None --"
+msgstr "-- Aucun --"
+
+msgid "."
+msgstr "."
+
+msgid "5 days ago"
+msgstr "il y a 5 jours"
+
+#, php-format
+msgid ""
+"<A HREF=\"%1$s\"><u>Log in first</u></A><span class=\"highlight\"> to post "
+"messages</span>"
+msgstr ""
+"<A HREF=\"%1$s\"><u>Connectez-vous en premier</u></A><span class=\"highlight"
+"\"> pour poster un message</span>"
+
+msgid ""
+"<B>Confirmation mailed</B><P>An email has been sent to the address you have "
+"on file. Follow the instructions in the email to change your account "
+"password."
+msgstr ""
+"<B>Demande de confirmation envoyée</B><P>Un message électronique vient "
+"d'être envoyé à l'adresse e-mail de votre compte utilisateur. Suivez les "
+"instructions incluses dans ce message pour changer votre mot de passe."
+
+msgid ""
+"<B>Lost your password?</B><P>Hey... losing your password is serious "
+"business. It compromises the security of your account, your projects, and "
+"this site.<P>Clicking on the button below will email a URL to the email "
+"address we have on file for you. In this URL is a 128-bit confirmation hash "
+"key for your account. Visiting the URL will allow you to change your "
+"password online and login."
+msgstr ""
+"<B>Mot de passe perdu ?</B><P>Hé... la perte d'un mot de passe est à prendre "
+"au sérieux. Cela peut compromettre la sécurité de votre compte, de vos "
+"projets et du site.<P>En cliquant sur le bouton ci-dessous, un message "
+"électronique comportant un lien (URL). Dans ce lien se trouve une clé de "
+"confirmation unique à 128 bits. En visitant ce lien vous serez en mesure de "
+"changer mot de passe puis de vous connecter."
+
+msgid ""
+"<em><strong>Remark:</strong> The account will be suspended when the date is "
+"reached. Leave blank if you don't want an expiration date.</em>"
+msgstr ""
+"<em><strong>Remarque&nbsp;:</strong> Une fois cette date passée, le compte "
+"sera suspendu.</em>"
+
+#, php-format
+msgid ""
+"<h4><i class=\"fa fa-exclamation-triangle\"></i> Your local.inc file is "
+"outdated!</h4><p>It appears that your local.inc file contains definitions of "
+"variables that are unused and it may lead to confusion.</p><p>Please edit "
+"<code>%1$s</code> and remove the following variables: <code>$sys_allow_anon</"
+"code> and <code>$sys_allow_restricted_users</code>.</p>"
+msgstr ""
+"<h4><i class=\"fa fa-exclamation-triangle\"></i> Votre fichier local.inc "
+"n'est pas à jour !</h4><p>Il semble que votre fichier local.inc contient des "
+"définitions de variables qui ne sont plus utilisées et pourrait entraîner "
+"des confusions.</p><p>Merci d'éditer <code>%1$s</code> et de supprimer les "
+"variables suivantes : <code>$sys_allow_anon</code> et <code>"
+"$sys_allow_restricted_users</code>.</p>"
+
+msgid ""
+"<h4>ForgeUpgrade was not run!</h4><p>It seems that someone upgraded Tuleap "
+"RPMs without running forgeupgrade command. Please check <a href=\"/doc/en/"
+"installation-guide/update.html\">upgrade documentation</a>.</p>"
+msgstr ""
+"<h4>ForgeUpgrade n'a pas été exécuté!</h4><p>Il semble que les paquets RPMs "
+"de Tuleap ont été mis à jour mais que forgeupgrade n'as pas été exécuté. "
+"Merci de vous référer à <a href=\"/doc/fr/installation-guide/update.html"
+"\">la documentation sur la procédure de mise à jour</a>.</p>"
+
+#, php-format
+msgid ""
+"<h4>Heads up!</h4><p>Currently there are <a href=\"/admin/userlist.php?"
+"status_values[]=R\">%1$s user(s)</a> that have restricted status. Changing "
+"current access mode will not change their status, they will need to be dealt "
+"with manually.</p>"
+msgstr ""
+"<h4>Attention !</h4><p>Il y a actuellement <a href=\"/admin/userlist.php?"
+"status_values[]=R\">%1$s utilisateur(s)</a> qui ont le status restreint. "
+"Changer le mode d'accès ne modifiera pas leur status, ils devront être gérés "
+"manuellement.</p>"
+
+msgid "<i>Disabled</i>"
+msgstr "<i>Inactif</i>"
+
+msgid "<strong>Monitor this thread</strong>"
+msgstr "<strong>Surveiller ce fil de discussion</strong>"
+
+msgid "A deleted project can not be restored."
+msgstr "Un projet détruit ne peut être restoré."
+
+#, php-format
+msgid ""
+"A mailing list will be created on %1$s in a few minutes\n"
+"and you are the list administrator.\n"
+"\n"
+"Your mailing list info is at:\n"
+"%3$s\n"
+"\n"
+"List administration can be found at:\n"
+"%4$s\n"
+"\n"
+"Your list password is: %5$s\n"
+"You are encouraged to change this password as soon as possible.\n"
+"\n"
+"Thank you for using %1$s.\n"
+"\n"
+" -- The %1$s Team"
+msgstr ""
+"Une liste de diffusion sera créée sur %1$s dans quelques minutes\n"
+" et vous en êtes l'administrateur. Cette liste est : %3$s \n"
+"\n"
+"Les informations concernant cette liste de diffusion sont sur : \n"
+"%4$s\n"
+"\n"
+"Votre mot de passe d'administration est : %5$s\n"
+"Nous vous invitons à changer ce mot de passe par défaut dès que possible.\n"
+"\n"
+"Merci d'utiliser %1$s.\n"
+"\n"
+" -- L'équipe %1$s"
+
+#, php-format
+msgid ""
+"A new user has just registered on %1$s.\n"
+"\n"
+"User Name:"
+msgstr ""
+"Un nouveau compte utilisateur vient juste d'être créé sur %1$s.\n"
+"\n"
+"Nom de l'utilisateur :"
+
+msgid ""
+"A non available service cannot be enabled. To enable this service, switch it "
+"to available before."
+msgstr ""
+"Un service non disponible ne peut être activé. Pour activer ce service, vous "
+"devez au préalable le rendre disponible."
+
+msgid ""
+"A parameter is missing, please press the \"Back\" button and complete the "
+"form"
+msgstr ""
+"Il manque un paramètre. Merci de revenir en arrière et de compléter le "
+"formulaire"
+
+#, php-format
+msgid ""
+"A personal access key (%s) with the %s scope was recently added to your "
+"account %s.\n"
+"\n"
+"Visit %s for more information."
+msgid_plural ""
+"A personal access key (%s) with the %s scopes was recently added to your "
+"account %s.\n"
+"\n"
+"Visit %s for more information."
+msgstr[0] ""
+"Une clé personnelle d'accès (%s) ayant la portée %s a récemment été ajoutée "
+"à votre compte %s.\n"
+"\n"
+"Visitez %s pour plus d'informations."
+msgstr[1] ""
+"Une clé personnelle d'accès (%s) ayant les portées %s a récemment été "
+"ajoutée à votre compte %s.\n"
+"\n"
+"Visitez %s pour plus d'informations."
+
+msgid "A personal access key has been added to your account"
+msgstr "Une clé personnelle d'accès a été ajoutée à votre compte"
+
+msgid ""
+"A personal access key will be automatically generated at the form "
+"submission. The description is not required but it can help you to manage "
+"your access keys."
+msgstr ""
+"Une nouvelle clé d'accès sera généré lors de soumission du formulaire. La "
+"description n'est pas requise mais peut vous aider à gérer vos clés d'accès."
+
+msgid "A project cannot be its own parent."
+msgstr "Un projet ne peut être son propre parent."
+
+msgid ""
+"A service displayed in a iframe cannot be the first service of a project"
+msgstr ""
+"Un service affiché dans un contexte de navigation imbriqué ne peut pas être "
+"le premier service d'un projet"
+
+msgid "A template without any service enabled."
+msgstr "Un template sans aucun service activé."
+
+msgid ""
+"A token will be automatically generated at the form submission. The comment "
+"is not required but it can help you to manage your tokens."
+msgstr ""
+"Un nouveau jeton sera généré lors de la soumission du formulaire. La "
+"description n'est pas requise mais peut vous aider à gérer vos jetons."
+
+msgid "API"
+msgstr "API"
+
+msgid "Absolute date first"
+msgstr "Date absolue en premier"
+
+msgid "Absolute date only"
+msgstr "Date absolue seulement"
+
+msgid "Access"
+msgstr "Accès"
+
+msgid "Access Denied"
+msgstr "Accès refusé"
+
+msgid "Access control"
+msgstr "Droits d'accès"
+
+msgid "Access controls"
+msgstr "Droits d'accès"
+
+msgid "Access history"
+msgstr "Historique d'accès"
+
+msgid "Access key copied!"
+msgstr "Clé d'accès copiée !"
+
+msgid "Access key description"
+msgstr "Description de la clé d'accès"
+
+msgid "Access key expiration date"
+msgstr "Date d'expiration de la clé d'accès"
+
+msgid "Access key scopes"
+msgstr "Portées de la clé d'accès"
+
+msgid "Access key scopes are not well formed."
+msgstr "Les informations de portées de la clé d'accès ne sont pas correctes."
+
+msgid "Access keys have been successfully deleted."
+msgstr "Les clés d'accès ont été supprimées avec succès."
+
+msgid "Access logs"
+msgstr "Journal des accès"
+
+msgid "Access to the REST API"
+msgstr "Accès à l'API REST"
+
+msgid "Access to your email address"
+msgstr "Accès à votre adresse e-mail"
+
+msgid ""
+"Access to your user profile. Includes access to your real name, avatar "
+"picture, language and timezone."
+msgstr ""
+"Accès à votre profil utilisateur. Inclus l'accès à votre nom complet, image "
+"d'avatar, langue et fuseau horaire."
+
+msgid "Accesses from less than %s might not be visible"
+msgstr "Les accès d'il y a moins de %s peuvent ne pas apparaître"
+
+msgid "Account"
+msgstr "Compte"
+
+#, php-format
+msgid ""
+"Account %s is restricted and the project does not allow restricted users. "
+"User not added."
+msgstr ""
+"Le compte %s est restreint et le project n'autorise pas les utilisateurs "
+"restreints. L'utilisateur n'a pas été ajouté."
+
+msgid "Account creation!"
+msgstr "Création de compte !"
+
+msgid "Account information"
+msgstr "Informations personnelles"
+
+msgid "Account must be active to change password"
+msgstr "Le compte doit être actif pour changer le mot de passe"
+
+msgid "Account status"
+msgstr "Statut du compte utilisateur"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Activate"
+msgstr "Activer le compte"
+
+msgid "Activate synchronized project membership management"
+msgstr "Activer la gestion synchronisée de l'appartenance au projet"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "Active sessions browser statistics"
+msgstr "Statistiques navigateur sur les sessions actives"
+
+msgid "Add"
+msgstr "Ajouter"
+
+msgid "Add Forum"
+msgstr "Ajouter un forum"
+
+msgid "Add SSH key"
+msgstr "Ajouter une clef SSH"
+
+msgid "Add This Forum"
+msgstr "Ajouter ce forum"
+
+msgid "Add a Forum"
+msgstr "Ajouter un forum"
+
+msgid "Add a mailing list"
+msgstr "Créer une liste de diffusion"
+
+msgid "Add a new service"
+msgstr "Ajouter un nouveau service"
+
+msgid "Add binding"
+msgstr "Ajouter le lien"
+
+msgid "Add dashboard"
+msgstr "Ajouter un tableau de bord"
+
+msgid "Add label"
+msgstr "Ajouter un label"
+
+msgid "Add link"
+msgstr "Ajouter un lien"
+
+msgid "Add member"
+msgstr "Ajouter un membre"
+
+msgid "Add new key"
+msgstr "Ajouter une nouvelle clef"
+
+msgid "Add parent project"
+msgstr "Ajouter projet parent"
+
+msgid "Add this list"
+msgstr "Créer cette liste"
+
+msgid "Add users group"
+msgstr "Ajouter un groupe"
+
+msgid "Add users group binding"
+msgstr "Ajouter un lien à un groupe"
+
+msgid "Add widget"
+msgstr "Ajouter un widget"
+
+msgid "Added Lines"
+msgstr "Lignes ajoutées"
+
+msgid "Adding a non-project member"
+msgstr "Ajouter un utilisateur non membre du projet"
+
+msgid "Admin service cannot be disabled."
+msgstr "Le service admin ne peut pas être désactivé."
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Administration in Mailman"
+msgstr "Administrer cette liste depuis Mailman"
+
+msgid "Administrator"
+msgstr "Administrateur"
+
+msgid "Administrators"
+msgstr "Administrateurs"
+
+msgid "Agile Enterprise Planning - Full ALM"
+msgstr "Agile Enterprise Planning - ALM complet"
+
+msgid "All fields are mandatory."
+msgstr "Tous les champs marqués sont obligatoires."
+
+msgid "All groups"
+msgstr "Tous les groupes"
+
+msgid "All members of %s will remain project members."
+msgstr "Tous les membres de %s resteront membres du projet."
+
+msgid "All projects"
+msgstr "Tous les projets"
+
+msgid "All users"
+msgstr "Tous les utilisateurs"
+
+msgid "All users must be logged in"
+msgstr "Authentification requise"
+
+msgid "All users must be logged in and restricted users are enabled"
+msgstr "Authentification requise et utilisateurs restreints"
+
+#, php-format
+msgid "All users, regardless of their preferences (%1$s users)"
+msgstr ""
+"Tous les utilisateurs quelles que soient leurs préférences (%1$s "
+"utilisateurs)"
+
+msgid "Allow for all projects"
+msgstr "Autoriser pour tous les projets"
+
+msgid ""
+"Allow the app to access resources on your behalf for an extended period of "
+"time even while you are disconnected"
+msgstr ""
+"Autoriser l'application à accéder aux ressources en votre nom pendant une "
+"période prolongée même lorsque vous êtes déconnecté"
+
+msgid "Allow to connect to apps and services using your account"
+msgstr ""
+"Autoriser à se connecter à des applications et services à l'aide de votre "
+"compte"
+
+msgid "Allow to write informations for users on your dashboards using Markdown"
+msgstr "Permet d'écrire des informations en Markdown sur les dashboards"
+
+msgid "Allow to write notes on your dashboard using Markdown"
+msgstr "Permet d'écrire des informations en Markdown sur votre dashboard"
+
+msgid "Allowing for all projects"
+msgstr "Autorisation pour tous les projets"
+
+msgid "Already used"
+msgstr "Déjà utilisé"
+
+msgid ""
+"An email change was requested, please check your inbox to complete the "
+"change."
+msgstr ""
+"Un changement d'adresse de courriel a été demandé, vérifiez vos messages "
+"pour finaliser le changement."
+
+msgid "An error occurred during the SVN token deletion"
+msgstr "Une erreur est survenue lors de la suppression des jetons SVN"
+
+msgid "An error occurred during the SVN token generation."
+msgstr "Une erreur est survenue lors de la suppression des jetons SVN."
+
+msgid ""
+"An error occurred in form submission, a link is not valid. Please retry."
+msgstr ""
+"Une erreur est survenue, un lien n'est pas valide. Merci de recommencer."
+
+msgid "An error occurred when saving user group."
+msgstr "Une erreur est survenue lors de la sauvegarde du groupe utilisateur."
+
+msgid "An error occurred while clearing the content of your history"
+msgstr "Une erreur est survenue lors de la suppression de votre historique"
+
+msgid "An error occurred while fetching the content of your history"
+msgstr "Une erreur est survenue lors de la récupération de votre historique"
+
+msgid "An error occurred while trying to add the label."
+msgstr "Une erreur est survenue lors de l'ajout du label."
+
+msgid "An error occurred while trying to add the widget to the dashboard"
+msgstr ""
+"Une erreur est survenue lors de l'ajout du widget sur le tableau de bord"
+
+msgid "An error occurred while trying to edit the label."
+msgstr "Une erreur est survenue lors de l'édition du label."
+
+msgid "An error occurred while trying to remove the label."
+msgstr "Une erreur est survenue lors de la suppression du label."
+
+msgid "An error occurred while trying to send invitation"
+msgid_plural "An error occurred while trying to send invitations"
+msgstr[0] "Une erreur est survenue lors de l'envoi de l'invitation"
+msgstr[1] "Une erreur est survenue lors de l'envoi des invitations"
+
+msgid "An error occurred while trying to update permissions delegations."
+msgstr ""
+"Une erreur est survenue lors de la mise à jour des délégations de "
+"permissions."
+
+msgid "An error occurred while updating the settings."
+msgstr "Une erreur est survenue lors de sauvegarde de la configuration."
+
+msgid ""
+"An error occurred with your upload. Please try again or choose another image."
+msgstr ""
+"Une erreur est survenue lors de votre téléversement. Merci d'essayer à "
+"nouveau ou de choisir une autre image."
+
+msgid "An error occurred, please retry"
+msgstr "Une erreur est survenue, veuillez réessayer"
+
+msgid "An issue occurred while retrieving the RSS feed"
+msgstr "Une erreur est survenue lors de la récupération du flux RSS"
+
+msgid "And one other users group you are not allowed to administrate."
+msgid_plural "And %d other users groups you are not allowed to administrate."
+msgstr[0] "Et un autre groupe que vous ne pouvez pas administrer."
+msgstr[1] "Et %d autres groupes que vous ne pouvez pas administrer."
+
+msgid "Anonymous user"
+msgstr "Utilisateur anonyme"
+
+msgid "Anonymous users are not allowed."
+msgstr "Les utilisateurs anonymes ne sont pas autorisés."
+
+msgid "Anonymous users can access the platform"
+msgstr "Accès anonyme autorisé"
+
+msgid ""
+"Anonymous users can browse the public part of the site without logging in."
+msgstr ""
+"Les utilisateurs anonymes peuvent accéder aux parties publiques de la "
+"plateforme."
+
+msgid "Appearance & language"
+msgstr "Apparence et langue"
+
+msgid "Archives"
+msgstr "Archives"
+
+msgid ""
+"As notified %s days ago and without any connection from you since, your user "
+"account is now suspended, in compliance with %s policies."
+msgstr ""
+"Comme notifié(e) il y a %s jours et sans aucune connexion de votre part "
+"depuis, votre compte est suspendu conformément aux règles de %s."
+
+msgid ""
+"As the Forum creator it is <u>strongly recommend</u> that you monitor this "
+"forum to be instantly notified via email of any new message posted to the "
+"Forum."
+msgstr ""
+"En tant que créateur de ce forum, il vous est <u>fortement recommandé</u> de "
+"le surveiller pour recevoir immédiatement par e-mail tout nouveau message "
+"posté sur ce forum."
+
+msgid "Ask to join"
+msgstr "Demander à rejoindre"
+
+msgid "Ask to join this project"
+msgstr "Demander à rejoindre ce projet"
+
+msgid "Authenticated users (Registered + Restricted) label"
+msgstr "Label pour les utilisateurs authentifiés (enregistrés + retreints)"
+
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Automatically extract this keyword?"
+msgstr "Extraire automatiquement ce mot-clé ?"
+
+msgid "Available?"
+msgstr "Disponible ?"
+
+msgid "Avatar changed!"
+msgstr "Avatar changé !"
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Background"
+msgstr "Fond"
+
+msgid "Bad"
+msgstr "Mauvaise"
+
+msgid "Banner"
+msgstr "Bannière"
+
+msgid "Best Regards."
+msgstr "Cordialement."
+
+msgid "Best regards,"
+msgstr "Cordialement."
+
+msgid "Beyond 3 columns, each column<br>will have the same size."
+msgstr "Au-delà de 3 colonnes, chaque colonne<br>aura la même taille."
+
+msgid "Block usage of passwords known as compromised"
+msgstr "Bloquer l'utilisation des mots de passe connus comme compromis"
+
+msgid "Blue"
+msgstr "Bleu"
+
+msgid "Bound to service"
+msgstr "Lié au service"
+
+msgid "Branch"
+msgstr "Branche"
+
+msgid "Broken Thread"
+msgstr "Fil de discussion brisée"
+
+msgid "Browse CVS Tree"
+msgstr "Affichage de l'arbre CVS"
+
+msgid "Browse commits by"
+msgstr "Afficher les commits par"
+
+msgid "Browse the CVS Tree"
+msgstr "Naviguer dans l'arbre CVS"
+
+msgid ""
+"Browsing the CVS tree gives you a great view into the current status of this "
+"project's code. You may also view the complete histories of any file in the "
+"repository."
+msgstr ""
+"La navigation dans l'arbre CVS donne un bon aperçu de l'état courant du code "
+"source de ce projet. Vous pouvez aussi voir l'historique complet des "
+"fichiers du dépôt."
+
+msgid "Built from template"
+msgstr "Créé à partir du modèle"
+
+msgid "By"
+msgstr "De"
+
+msgid "By %s"
+msgstr "Par %s"
+
+msgid "By default, its content is available to all authenticated users."
+msgstr "Par défaut, son contenu est accessible à tout utilisateur authentifié."
+
+msgid ""
+"By default, its content is available to all authenticated, but not "
+"restricted, users."
+msgstr ""
+"Par défaut, son contenu est accessible à tout utilisateur authentifié non "
+"restreint."
+
+msgid ""
+"By default, its content is available to everyone (authenticated or not)."
+msgstr ""
+"Par défaut, son contenu est accessible à tout utilisateur (authentifié ou "
+"non)."
+
+msgid ""
+"By downloading this software you implicitly recognize that you have <a href="
+"\"%s\"><b>read the Policy</b></a> and agree with the terms and conditions."
+msgstr ""
+"En téléchargeant ce logiciel vous reconnaissez implicitement <a href=\"%s"
+"\"><b>avoir lu cette politique d'échange de code</b></a> et être en accord "
+"avec son contenu."
+
+msgid "Bypass filters <em>(Site administrators only)</em>:"
+msgstr "Ignore les filtres <em>(Administrateurs Site seulement)</em>&nbsp;:"
+
+msgid "CSV date format"
+msgstr "Format de date CSV"
+
+msgid "CSV separator"
+msgstr "Séparateur CSV"
+
+msgid "CVS"
+msgstr "CVS"
+
+msgid "CVS Administration"
+msgstr "Administration CVS"
+
+#, php-format
+msgid "CVS Commit #%1$s - Details"
+msgstr "Commit CVS #%1$s - Détails"
+
+msgid "CVS Commit Browsing"
+msgstr "Affichage des commits CVS"
+
+msgid "CVS Information"
+msgstr "Information CVS"
+
+msgid "CVS Permissions"
+msgstr "Permissions CVS"
+
+msgid "CVS Preamble"
+msgstr "Préambule CVS"
+
+msgid "CVS Tracking"
+msgstr "Suivi CVS"
+
+msgid "CVS Watch Mode"
+msgstr "Mode CVS Watch"
+
+msgid ""
+"CVS creates working copies of project files read-only, to remind developers "
+"to run the cvs edit command before working on them."
+msgstr ""
+"CVS crée une copie des fichiers du projet en mode lecture seule, cela pour "
+"rappeler aux développeurs d'utiliser la commande cvs edit avant de "
+"travailler sur un fichier."
+
+msgid "Can only be updated when the category is not used as project flag."
+msgstr ""
+"Ne peut être mis à jour que lorsque la catégorie n'est pas utilisée en tant "
+"que marqueur de projet."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Cannot bind a ugroup with another located on a non active project."
+msgstr ""
+"Impossible de lier ce groupe d'utilisateurs à un autre se trouvant dans un "
+"projet non actif."
+
+#, php-format
+msgid ""
+"Cannot create the label \"%s\" because another one already exists with same "
+"name."
+msgstr ""
+"Impossible de créer le label  \"%s\" car il existe un autre label avec le "
+"même nom."
+
+msgid "Cannot delete the requested dashboard."
+msgstr "Impossible de supprimer le tableau de bord demandé."
+
+msgid "Cannot delete the widget."
+msgstr "Impossible de supprimer le widget."
+
+msgid "Cannot maximize the widget."
+msgstr "Impossible d'agrandir le widget."
+
+msgid "Cannot minimize the widget."
+msgstr "Impossible de réduire le widget."
+
+msgid ""
+"Cannot remove project admin from project. Must be removed from project "
+"administration first"
+msgstr ""
+"Les administrateurs ne peuvent pas être retirés du projet. Vous devez "
+"d'abord les retirer du groupe Administrateurs du projet"
+
+msgid "Cannot remove user from group"
+msgstr "Impossible d'enlever l'utilisateur du groupe"
+
+msgid "Cannot remove users from bound groups"
+msgstr "Impossible d'enlever des utilisateurs d'un group lié"
+
+msgid "Cannot update the requested dashboard."
+msgstr "Impossible d'éditer le tableau de bord demandé."
+
+msgid "Cannot update users group."
+msgstr "Impossible de mettre à jour le groupe utilisateur"
+
+msgid "Catchy email subject line"
+msgstr "Phrase d'accroche"
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "Categories successfully updated."
+msgstr "Les catégories ont été mises à jour avec succès."
+
+msgid ""
+"Categorizing your project will help potential developers and users to find "
+"your project and engage."
+msgstr ""
+"Catégoriser votre projet permettra aux développeurs et utilisateurs de plus "
+"facilement le trouver et y participer."
+
+msgid "Change"
+msgstr "Changer"
+
+msgid "Change Forum Status"
+msgstr "Changer le statut du forum"
+
+msgid "Change View"
+msgstr "Changer de format"
+
+msgid "Change avatar"
+msgstr "Changer l'avatar"
+
+msgid "Change email address"
+msgstr "Changer l'adresse e-mail"
+
+msgid ""
+"Check this option if you want to force the usage of this preference for all "
+"users."
+msgstr ""
+"Cochez cette option si vous souhaitez forcer l'utilisation de cette "
+"préférence pour tous les utilisateurs."
+
+msgid "Checkin -"
+msgstr "Checkin -"
+
+msgid "Child projects"
+msgstr "Projets enfants"
+
+msgid "Choose a category…"
+msgstr "Choisissez une catégorie…"
+
+msgid "Choose a forum First"
+msgstr "Veuillez d'abord choisir un forum"
+
+msgid "Choose a forum and you can browse, search, and post messages."
+msgstr ""
+"Choisissez un forum et vous pourrez le parcourir, effectuer une recherche et "
+"poster un message."
+
+msgid "Clear history"
+msgstr "Effacer l'historique"
+
+#, php-format
+msgid ""
+"Click a column heading to sort results (up or down), or <A HREF=\"%1$s"
+"\"><b>Reset sort</b></a>. You can also <a href=\"%2$s\"><b>%3$s multicolumn "
+"sort</b></a>."
+msgstr ""
+"Cliquer sur une entête de colonne pour trier les résultats (ascendant ou "
+"descendant), ou <A HREF=\"%1$s\"><b>réinitialiser le tri</b></a>. Vous "
+"pouvez aussi utiliser le <a href=\"%2$s\"><b>%3$s tri multi-colonnes</b></a>."
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Close sidebar"
+msgstr "Fermer la barre latérale"
+
+msgid ""
+"Collect stories, plan releases, monitor sprints with a ready-to-use Scrum "
+"area"
+msgstr ""
+"Collectez les stories, planifiez les releases, suivez les sprints avec un "
+"environnement Scrum prêt-à-l'emploi"
+
+msgid "Color"
+msgstr "Couleur"
+
+msgid "Comfortable"
+msgstr "Confortable"
+
+msgid "Comma"
+msgstr "Virgule"
+
+msgid "Comment"
+msgstr "Commentaire"
+
+msgid "Commit #"
+msgstr "Commit #"
+
+#, php-format
+msgid "Commit #%1$s not found in this project"
+msgstr "Commit #%1$s introuvable dans ce projet"
+
+msgid "Commits"
+msgstr "Commits"
+
+msgid "Compromised password"
+msgstr "Mot de passe compromis"
+
+msgid "Condensed"
+msgstr "Élevée"
+
+msgid "Configuration updated"
+msgstr "Configuration mise à jour"
+
+msgid "Configure homepage"
+msgstr "Configurer la page d'accueil"
+
+msgid "Configure how project creation is controlled by administrators"
+msgstr ""
+"Paramètrage du contrôle de la création de projets par les administrateurs"
+
+msgid "Configure services"
+msgstr "Configurer les services"
+
+msgid "Confirm"
+msgstr "Confirmer"
+
+msgid "Confirm the account creation"
+msgstr "Confirmez la création de compte"
+
+msgid "Congratulations!"
+msgstr "Félicitations !"
+
+msgid ""
+"Congratulations, you don't have any customisations in your language files!"
+msgstr "Félicitations, vous n'avez pas personnalisé vos fichiers de langue !"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact (help menu)"
+msgstr "Contact (menu \"Aide\")"
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Copy the SVN token"
+msgstr "Copier le jeton SVN"
+
+msgid "Copy the access key"
+msgstr "Copier la clé d'accès"
+
+#, php-format
+msgid "Copyright (c) %s, %s Team, 2001-%d. All Rights Reserved"
+msgstr "Copyright (c) %s, Equipe %s, 2001-%d. Tous droits réservés."
+
+msgid "Could not commit repository initial layout"
+msgstr "Impossible de commiter la structure initiale du dépôt"
+
+msgid "Could not create/initialize SVN repository"
+msgstr "Impossible de créer/initialiser le dépôt SVN"
+
+msgid "Could not the access file of the SVN repository"
+msgstr "Impossible d'accèder au fichier de contrôle d'accès du dépôt SVN"
+
+msgid "Could not update hooks of the SVN repository"
+msgstr "Impossible de mettre à jour les hooks du dépôt SVN"
+
+msgid "Create"
+msgstr "Créer"
+
+msgid "Create a new reference pattern"
+msgstr "Créer un nouveau modèle de référence"
+
+msgid "Create a new reference pattern."
+msgstr "Créer un nouveau modèle de référence."
+
+msgid "Create a new user"
+msgstr "Créer un nouvel utilisateur"
+
+msgid "Create an account"
+msgstr "Créer un compte"
+
+msgid "Create from"
+msgstr "Créer à partir de"
+
+msgid "Create label"
+msgstr "Créer le label"
+
+msgid "Create new License Agreement"
+msgstr "Créer une nouvelle licence"
+
+msgid "Create user group"
+msgstr "Ajouter un groupe utilisateur"
+
+msgid "Current and new passwords are identical"
+msgstr "L'ancien et le nouveau mot de passe sont identiques"
+
+msgid "Current password"
+msgstr "Ancien mot de passe"
+
+msgid "Current password is incorrect"
+msgstr "L'ancien mot de passe est incorrect"
+
+msgid "Custom groups"
+msgstr "Groupes personnalisés"
+
+msgid "Custom release note link successfully updated."
+msgstr "Le lien vers la release note a été mis à jour avec succès."
+
+msgid "Customisation"
+msgstr "Personnalisation"
+
+msgid "Customize homepage"
+msgstr "Personnalisation de la page d'accueil"
+
+msgid "DELETE FAILED!"
+msgstr "Échec de la destruction !"
+
+msgid "Dashboard creation failed."
+msgstr "La création du tableau de bord a échouée."
+
+msgid "Dashboard has been successfully created."
+msgstr "Le tableau de bord a correctement été créé."
+
+msgid "Dashboard has been successfully deleted."
+msgstr "Le tableau de bord a correctement été supprimé."
+
+msgid "Dashboard has been successfully updated."
+msgstr "Le tableau de bord a correctement été modifié."
+
+msgid "Dashboard name"
+msgstr "Nom du tableau de bord"
+
+msgid "Data"
+msgstr "Données"
+
+msgid "Data (like artifacts or users) won't be included."
+msgstr ""
+"Les données (comme les artéfacts ou les utilisateurs) ne seront pas inclus."
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Dates display"
+msgstr "Affichage des dates"
+
+msgid "Day"
+msgstr "Jour"
+
+msgid "Dear   {{ tuleap_server_name}} user,"
+msgstr "Cher utilisateur {{tuleap_server_name}},"
+
+msgid "Dear %s user,"
+msgstr "Cher utilisateur %s,"
+
+#, php-format
+msgid ""
+"Dear Files service user,\n"
+"\n"
+" An error occurs while trying to compute md5sum in your uploaded file %1$s.\n"
+"Please try to upload it again."
+msgstr ""
+"Cher utilisateur du servcie Fichiers,\n"
+"\n"
+" Une erreur est survenue lors du calcul du md5sum de votre fichier %1$s.\n"
+"Veuillez le télécharger une autre fois."
+
+#, php-format
+msgid ""
+"Dear Files service user,\n"
+"\n"
+"The entered reference md5sum for the file %1$s differs from the computed one "
+"which equals = %2$s.\n"
+" Note that an error message will be shown each time you display the release "
+"content in the web interface.\n"
+"If you consider that the upload has been well done, you can modify the value "
+"in the md5sum field by putting the right value."
+msgstr ""
+"Cher utilisateur du servcie Fichiers, \n"
+"\n"
+"La référence md5sum donnée pour le fichier %1$s diffère de celle calculée "
+"sur le serveur qui est équale = %2$s.\n"
+" Il est à noter qu'un message d'erreur sera affiché chaque fois  que vous "
+"tenterez d'accéder à partir du web au contenu de la release en question. \n"
+"Si vous considérez que l'upload du fichier s'est bien passé, vous pouvez "
+"modifier la valeur du champ md5sum en soumettant la bonne valeur."
+
+msgid "Default dates display"
+msgstr "Affichage des dates relatives par défaut"
+
+msgid "Default format for trackers text fields"
+msgstr "Format par défaut pour les champs texte des trackers"
+
+msgid "Default license agreement"
+msgstr "Licence par défaut"
+
+msgid "Default project visibility"
+msgstr "Visibilité du projet par défaut"
+
+msgid "Default relative dates display preference saved successfully."
+msgstr ""
+"Préférence par défaut de l'affichage des dates relatives sauvegardée avec "
+"succès."
+
+msgid "Delete"
+msgstr "Supprimer"
+
+#, php-format
+msgid "Delete %s"
+msgstr "Supprimer %s"
+
+msgid "Delete Message"
+msgstr "Détruire un message"
+
+msgid "Delete a mailing list"
+msgstr "Supprimer une liste de diffusion"
+
+msgid "Delete a message"
+msgstr "Détruire un message"
+
+msgid "Delete binding"
+msgstr "Supprimer le lien"
+
+msgid "Delete current logo"
+msgstr "Supprimer le logo"
+
+msgid "Delete dashboard"
+msgstr "Supprimer le tableau de bord"
+
+msgid "Delete parent"
+msgstr "Supprimer le parent"
+
+msgid "Delete selected SSH keys"
+msgstr "Supprimer les clefs SSH sélectionnées"
+
+msgid "Delete service"
+msgstr "Supprimer le service"
+
+msgid "Delete this reference pattern?"
+msgstr "Détruire ce modèle de référence ?"
+
+msgid "Delete users group"
+msgstr "Supprimer un groupe utilisateurs"
+
+msgid "Delete widget"
+msgstr "Supprimer le widget"
+
+msgid "Delete?"
+msgstr "Détruire ?"
+
+msgid "Deleted"
+msgstr "Détruit"
+
+msgid "Deleted Account"
+msgstr "Compte utilisateur détruit"
+
+msgid "Deleted files"
+msgstr "Fichiers supprimés"
+
+msgid "Deleted wiki attachments"
+msgstr "Pièces jointes wiki supprimées"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "Developer Commits (Last 7 days/Total)"
+msgstr "Commits (Derniers 7 jours/Total)"
+
+msgid "Disallow for all projects"
+msgstr "Restreindre pour tous les projets"
+
+msgid "Disallowing for all projects"
+msgstr "Restriction pour tous les projets"
+
+msgid "Discussion Forums"
+msgstr "Forums de discussions"
+
+msgid "Display density"
+msgstr "Densité d'affichage"
+
+msgid "Display platform statistics on home page."
+msgstr "Afficher les statistiques de la plateforme sur la page d'accueil."
+
+msgid "Display site news on home page."
+msgstr "Afficher les news du site sur la page d'accueil."
+
+msgid "Displays the 30 last updated or created items in the project."
+msgstr "Affiche les 30 derniers éléments modifiés ou créés dans le projet."
+
+msgid "Do not reply to this mail."
+msgstr "Ne répondez pas à ce courriel."
+
+msgid "Doc"
+msgstr "Doc"
+
+msgid "Documentation"
+msgstr "Documentation"
+
+msgid "Done events"
+msgstr "Evénements terminés"
+
+msgid "Download agreement"
+msgstr "Accord de téléchargement"
+
+msgid "E-mail notification on commits"
+msgstr "Notification e-mail sur les commits"
+
+#, php-format
+msgid "E.g %1$s employees"
+msgstr "E.g employés %1$s"
+
+#, php-format
+msgid "E.g %1$s employees & subco"
+msgstr "E.g employés %1$s & présta"
+
+msgid "ERROR - no group_id"
+msgstr "ERREUR - pas de group_id"
+
+msgid ""
+"Each commit event can also be notified via email to specific recipients or "
+"mailing lists (comma separated). A specific subject header for the email "
+"message can also be specified."
+msgstr ""
+"Chaque commit peut faire l'objet d'une notification par courrier "
+"électronique vers certains destinataires ou vers une liste de diffusion "
+"(séparer les adresses avec une virgule). Une entête spécifique apparaissant "
+"au début du sujet du message peut aussi être spécifiée."
+
+msgid ""
+"Edge Legacy is not supported. Please upgrade to the latest version of Edge "
+"or use another modern alternative such as Firefox or Chrome."
+msgstr ""
+"Edge Legacy n'est pas supporté. Veuillez mettre à niveau vers la dernière "
+"version de Edge ou utiliser une alternative moderne tel que Firefox ou "
+"Chrome."
+
+msgid "Edit"
+msgstr "Éditer"
+
+#, php-format
+msgid "Edit %s"
+msgstr "Éditer %s"
+
+msgid "Edit dashboard"
+msgstr "Éditer le tableau de bord"
+
+msgid "Edit license agreement"
+msgstr "Editer la licence"
+
+msgid "Edit reference pattern"
+msgstr "Éditer le modèle de référence"
+
+msgid "Edit settings"
+msgstr "Éditer les paramètres"
+
+msgid "Edit widget"
+msgstr "Éditer le widget"
+
+msgid "Editing Project"
+msgstr "Editer un projet"
+
+msgid "Editing reference patterns"
+msgstr "Éditer les modèles de référence"
+
+#, php-format
+msgid "Editing reference patterns for <B>%s</B>"
+msgstr "Edition des modèles de référence de <B>%s</B>"
+
+msgid "Editing system reference patterns"
+msgstr "Éditer les modèles de référence système"
+
+msgid "Edition & CSV"
+msgstr "Édition & CSV"
+
+msgid "Email"
+msgstr "E-mail"
+
+#, php-format
+msgid "Email %s is not valid"
+msgstr "L'email %s n'est valide"
+
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+msgid "Email format preference successfully updated"
+msgstr "La préférence de format de courriel a été mise à jour"
+
+msgid "Email not sent"
+msgstr "E-mail pas envoyé"
+
+msgid "Email sent"
+msgstr "E-mail envoyé"
+
+#, php-format
+msgid "Email sent with details to: %1$s"
+msgstr "Note détaillée envoyée par e-mail à : %1$s"
+
+msgid "Email was not updated"
+msgstr "L'adresse de courriel n'a pas été mise à jour"
+
+msgid "Email, username..."
+msgstr "Email, nom d'utilisateur…"
+
+msgid "Emergency"
+msgstr "Urgent"
+
+msgid "Empty"
+msgstr "Vide"
+
+msgid "Empty group"
+msgstr "Groupe vide"
+
+msgid ""
+"Enable \"remember me\" so your session is kept open and you don't have to "
+"login too often."
+msgstr ""
+"Active l'option \"se souvenir de moi\" qui conserve votre session ouverte "
+"afin de limiter le besoin de vous identifier à nouveau."
+
+msgid "Enable accessibility mode"
+msgstr "Activer le mode d'accessiblilité"
+
+msgid "Enabled"
+msgstr "Activé"
+
+msgid "Enabled?"
+msgstr "Activé ?"
+
+msgid "Enter comma separated list of emails"
+msgstr "Entrez une liste d'emails séparés par une virgule"
+
+msgid "Enter meaningful headline..."
+msgstr "Entrez une accroche percutante..."
+
+msgid ""
+"Enter people to invite to %s. We will send an invitation email on your "
+"behalf."
+msgstr ""
+"Entrez les personnes à inviter sur %s. Nous leur enverrons un email "
+"d'invitation."
+
+msgid "Enter the Message ID"
+msgstr "Entrer l'identifiant (ID) du message"
+
+msgid "Error"
+msgstr "Erreur"
+
+msgid "Error - choose a forum first"
+msgstr "Erreur - Veuillez d'abord choisir un forum"
+
+msgid "Error - this news item was not found"
+msgstr "Erreur - cette annonce est introuvable"
+
+#, php-format
+msgid "Error Adding Forum '%1$s'."
+msgstr "Erreur lors de l'ajout du forum '%1$s'."
+
+msgid "Error Adding List"
+msgstr "Erreur lors de la création de la liste"
+
+msgid "Error Updating Forum Info"
+msgstr "Erreur lors de la mise à jour des informations du forum"
+
+msgid "Error inserting into forum_monitoring"
+msgstr "Erreur lors de l'insertion dans forum_monitoring"
+
+msgid "Error inserting into forum_saved_place"
+msgstr "Erreur lors de l'insertion dans forum_saved_place"
+
+msgid "Error updating time in forum_saved_place"
+msgstr "Erreur lors de la mise de la date et de l'heure dans forum_saved_place"
+
+msgid "Errors"
+msgstr "Erreurs"
+
+msgid "Events in error"
+msgstr "Evénements en erreur"
+
+msgid "Events in warning"
+msgstr "Evénements en alerte"
+
+msgid "Existing Forums"
+msgstr "Forums existants"
+
+msgid "Existing mailing lists"
+msgstr "Listes de diffusion existantes"
+
+msgid "Expiration date"
+msgstr "Date d'expiration"
+
+msgid "Expiration date is not well formed."
+msgstr "La date d'expiration n'est pas au bon format."
+
+msgid "Expire on"
+msgstr "Expire le"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Export project structure"
+msgstr "Exporter la structure du projet"
+
+msgid "External system references"
+msgstr "Références systèmes externes"
+
+msgid "FRS"
+msgstr "FRS"
+
+msgid "Fields"
+msgstr "Champs personnalisés"
+
+msgid "File"
+msgstr "Fichier"
+
+#, php-format
+msgid "File upload error (error code: %1$s)"
+msgstr "Erreur lors de l'upload du fichier (erreur %1$s)"
+
+msgid "Files"
+msgstr "Fichiers"
+
+msgid "Files Administration"
+msgstr "Administration du gestionnaire de fichiers"
+
+msgid "Files service is disabled for this project."
+msgstr "Le service fichiers est désactivé pour ce projet."
+
+msgid "Filled"
+msgstr "Rempli"
+
+msgid "Filter by name"
+msgstr "Filtrer par nom"
+
+msgid "Flat"
+msgstr "A plat"
+
+msgid "Forbidden"
+msgstr "Interdit"
+
+msgid "Force reference pattern creation"
+msgstr "Force la création du modèle de la référence"
+
+msgid "Force usage?"
+msgstr "Forcer l'utilisation ?"
+
+msgid "Forum"
+msgstr "Forum"
+
+#, php-format
+msgid "Forum '%1$s' Added."
+msgstr "Forum '%1$s' Ajouté."
+
+msgid "Forum Administration"
+msgstr "Administration des forums"
+
+msgid "Forum Info Updated Successfully"
+msgstr "Informations du forum mises à jour avec succès"
+
+msgid "Forum Name"
+msgstr "Nom du forum"
+
+msgid "Forum already monitored"
+msgstr "Forum déjà sous surveillance"
+
+msgid "Forum is now being monitored"
+msgstr "La surveillance du forum est maintenant activée"
+
+msgid "Forum is restricted"
+msgstr "Forum restreint"
+
+msgid "Forums"
+msgstr "Forums"
+
+#, php-format
+msgid "Forums for '%1$s'"
+msgstr "Forums pour '%1$s'"
+
+msgid "Full name"
+msgstr "Nom Complet"
+
+msgid "General"
+msgstr "Général"
+
+msgid "Generate"
+msgstr "Générer"
+
+msgid "Generate an SVN token"
+msgstr "Générer un jeton SVN"
+
+msgid "Generate new key"
+msgstr "Générer une nouvelle clé"
+
+msgid "Generate new token"
+msgstr "Générer un nouveau jeton"
+
+msgid "Generated on"
+msgstr "Générée le"
+
+msgid "Get help"
+msgstr "Rubriques d'aide"
+
+msgid "Global access"
+msgstr "Accès global"
+
+msgid "Global access rights"
+msgstr "Droits d'accès globaux"
+
+msgid "Global configuration"
+msgstr "Configuration globale"
+
+msgid "Global permissions"
+msgstr "Permissions globales"
+
+msgid "Global utils"
+msgstr "Utilitaires globaux"
+
+msgid "Go to my home page"
+msgstr "Aller à ma page personnelle"
+
+msgid "Go to the admin page"
+msgstr "Aller sur la page d'administration"
+
+msgid "Go to the home page"
+msgstr "Aller sur la page d'accueil"
+
+msgid "Go up"
+msgstr "Niveau supérieur"
+
+msgid "Good"
+msgstr "Bonne"
+
+msgid "Granted groups"
+msgstr "Groupes autorisés"
+
+msgid "Green"
+msgstr "Vert"
+
+msgid "Grey"
+msgstr "Gris"
+
+msgid "Group"
+msgstr "Groupes"
+
+msgid "Group binding"
+msgstr "Lien entre groupes"
+
+msgid "Group details"
+msgstr "Détails du groupe"
+
+msgid "Group members"
+msgstr "Membres du groupe"
+
+msgid "Groups"
+msgstr "Groupes"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "HTML tags will display in your post as text"
+msgstr ""
+"Les balises HTML seront affichées sous forme de texte dans vos messages"
+
+msgid "Header background"
+msgstr "Image de fond de l'entête"
+
+msgid "Headline"
+msgstr "Accroche"
+
+msgid "Heartbeat"
+msgstr "Activité"
+
+msgid "Hello,"
+msgstr "Bonjour,"
+
+msgid "Help"
+msgstr "Aide"
+
+msgid ""
+"Here is your new SVN token. Please make sure you copy it, you won't be able "
+"to see it again!"
+msgstr ""
+"Voici votre nouveau jeton SVN. Assurez-vous de l'avoir copié, vous ne "
+"pourrez plus le voir de nouveau !"
+
+msgid ""
+"Here is your new access key. Please make sure to copy it, you won't be able "
+"to see it again!"
+msgstr ""
+"Voici votre nouvelle clé d'accès. Assurez-vous de l'avoir copiée, vous ne "
+"pourrez plus la voir de nouveau !"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Homepage"
+msgstr "Page d'accueil"
+
+msgid "Homepage logo"
+msgstr "Logo de la page d'accueil"
+
+msgid "How many invitations a user can send per day?"
+msgstr "Combien d'invitations un utilisateur peut-il envoyer par jour ?"
+
+msgid "I accept"
+msgstr "Je suis d'accord"
+
+msgid "I decline"
+msgstr "Je refuse"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "INSERT FAILED"
+msgstr "L'insertion a échoué"
+
+msgid "Icon"
+msgstr "Icône"
+
+msgid "Id"
+msgstr "Id"
+
+msgid "Id group"
+msgstr "Identifiant du groupe"
+
+msgid "Id, unix name..."
+msgstr "Id, nom unix…"
+
+msgid ""
+"If enabled, an email will be sent to all the project members if the "
+"visibility of the project is changed."
+msgstr ""
+"Si activé, un email sera envoyé à tous les membres du projet lorsque sa "
+"visibilité change."
+
+msgid "If the reference pattern is specific to one service, select it here"
+msgstr ""
+"Si le modèle de référence est spécifique à un service, le spécifier ici"
+
+msgid ""
+"If your instance can not access the Internet, it is preferable to disable "
+"the verification to avoid a slowness during password compliance check."
+msgstr ""
+"Si votre instance ne peut pas accèder à Internet, il est préférable de "
+"désactiver ce contrôle afin d'éviter de ralentir la vérification de la "
+"conformité d'un mot de passe avec les politiques de sécurité."
+
+msgid ""
+"If, in your organization, the strict privacy of the projects must be "
+"preserved by 'design', then you should uncheck this option so that project "
+"admins cannot disclose confidential resources to other platform users."
+msgstr ""
+"Si, dans votre organisation, la confidentialité des projets doit être "
+"impérativement préservée, alors vous pouvez décocher cette option afin que "
+"les administrateurs projets ne puissent pas divulguer par mégarde des "
+"ressources confidentielles aux autres utilisateurs de la plateforme."
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Import"
+msgstr "Importer"
+
+msgid "Import members"
+msgstr "Importer des membres"
+
+msgid "Inactive service cannot be enabled."
+msgstr "Un service indisponible ne peut pas être activé."
+
+msgid "Info"
+msgstr "Information"
+
+msgid "Inherited?"
+msgstr "Hérité?"
+
+msgid "Initial layout creation"
+msgstr "Création de la structure initiale"
+
+msgid "Internal error: Could not update password"
+msgstr "Erreur interne : le mot de passe n'a pas été mis à jour"
+
+msgid "Internal server error"
+msgstr "Erreur interne du serveur"
+
+msgid ""
+"Internet Explorer is not supported. Please upgrade to a modern, fully "
+"supported browser such as Firefox, Chrome or Edge."
+msgstr ""
+"Internet Explorer n'est pas supporté. Veuillez utiliser un navigateur "
+"moderne tel que Firefox, Chrome ou Edge."
+
+#, php-format
+msgid ""
+"Introductory message to replace the default one on the <a href=\"%1$s\">CVS "
+"welcome page</a>. (HTML tags allowed)"
+msgstr ""
+"Message d'introduction sur l'utilisation de CVS en remplacement du message "
+"par défaut figurant sur la <a href=\"%1$s\">page d'accueil de CVS</a>. "
+"(balises HTML autorisées)"
+
+msgid "Invalid Email Address"
+msgstr "Adresse e-mail invalide"
+
+msgid "Invalid List Name"
+msgstr "Nom de liste invalide"
+
+msgid "Invalid Short Name"
+msgstr "Nom court du projet invalide"
+
+msgid "Invalid confirmation hash."
+msgstr "Clé de confirmation invalide."
+
+#, php-format
+msgid "Invalid group name: %s. Please use only alphanumerical characters."
+msgstr ""
+"Le nom du groupe %s est invalide. Merci d'utiliser uniquement des caractères "
+"alphanumériques."
+
+msgid "Invalid project was passed in."
+msgstr "Projet invalide passé en paramètre."
+
+msgid "Invalid selection of categories"
+msgstr "La selection de catégories n'est pas valide"
+
+#, php-format
+msgid "Invitation complete!"
+msgstr "Invitation terminée !"
+
+msgid "Invitation could not be sent to:"
+msgstr "L'invitation n'a pas pu être envoyée à :"
+
+msgid "Invitation has been successfully sent to:"
+msgstr "L'invitation a été envoyée à :"
+
+#, php-format
+msgid "Invitation to log on to %s"
+msgstr "Invitation pour vous connecter sur %s"
+
+#, php-format
+msgid "Invitation to register to %s"
+msgstr "Invitation pour vous enregistrer sur %s"
+
+msgid "Invitations"
+msgstr "Invitations"
+
+msgid "Invitations are not enabled"
+msgstr "Les invitations ne sont pas activées"
+
+msgid "Invitations settings"
+msgstr "Configuration des invitations"
+
+msgid "Invitations settings successfully updated."
+msgstr "La configuration des invitations a été sauvegardée avec succès."
+
+msgid "Invite"
+msgstr "Inviter"
+
+msgid "Invite someone to join %s"
+msgstr "Inviter quelqu'un à rejoindre %s"
+
+msgid "Invited by"
+msgstr "Invitation envoyée par"
+
+msgid "Is Public?"
+msgstr "Publique ?"
+
+msgid "Is default?"
+msgstr "Par défaut ?"
+
+msgid "Is this email not displaying correctly?"
+msgstr "Ce message ne s'affiche pas correctement?"
+
+msgid "Is used?"
+msgstr "Utilisé ?"
+
+msgid "Issue tracking"
+msgstr "Suivi des tickets"
+
+#, php-format
+msgid "JpGraph error for graph \"%s\": %s"
+msgstr "Erreur JpGraph pour le graphique \"%s\": %s"
+
+msgid "Kanban"
+msgstr "Kanban"
+
+msgid "Key"
+msgstr "Clef"
+
+#, php-format
+msgid "Key %1$s already existing for user"
+msgstr "La clé %1$s est déja présente pour l'utilisateur"
+
+msgid "Keyboard shortcuts"
+msgstr "Raccourcis clavier"
+
+msgid "Keys & Tokens"
+msgstr "Clefs et Tokens"
+
+msgid "Keys & tokens"
+msgstr "Clefs et jetons"
+
+msgid "Keyword"
+msgstr "Mot clé"
+
+msgid "Keyword that will trigger a reference creation"
+msgstr "Mot clé qui déclenche la création d'une référence"
+
+msgid "Keywords in log messages"
+msgstr "Mots-clés dans les messages de log"
+
+msgid "Label"
+msgstr "Label"
+
+msgid "Label has been added."
+msgstr "Le label a été ajouté."
+
+msgid "Label has been deleted from the project."
+msgstr "Le label a été supprimé du projet."
+
+msgid "Label has been edited."
+msgstr "Le label a été édité."
+
+msgid "Label has not been edited."
+msgstr "Le label n'a pas été édité."
+
+msgid "Labels"
+msgstr "Labels"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Last login failure"
+msgstr "Dernier échec de connexion"
+
+msgid "Last login failure:"
+msgstr "Dernier echec de connexion :"
+
+msgid "Last successful login"
+msgstr "Dernière connexion"
+
+msgid "Last successful login:"
+msgstr "Dernière connexion :"
+
+msgid "Last used by"
+msgstr "Utilisée pour la dernière fois par"
+
+msgid "Last used on"
+msgstr "Utilisée pour la dernière fois le"
+
+msgid "Leave project"
+msgstr "Quitter le project"
+
+msgid "Legacy default template"
+msgstr "Modèle par défaut (déprécié)"
+
+#, php-format
+msgid "License \"%s\" was successfully deleted"
+msgstr "La licence \"%s\" a été supprimée avec succès"
+
+msgid "License Agreements"
+msgstr "Licences"
+
+msgid "License Approval:"
+msgstr "Approbation licence :"
+
+msgid "Link"
+msgstr "Lien"
+
+msgid "Links"
+msgstr "Liens"
+
+msgid "List"
+msgstr "Liste"
+
+msgid "List about development of…"
+msgstr "Liste à propos du développement de…"
+
+msgid "List added"
+msgstr "Liste créée avec succès"
+
+msgid "List already exists"
+msgstr "La liste existe déjà"
+
+msgid ""
+"List name contains bad characters. Authorized characters are: letters, "
+"numbers, -, _, ."
+msgstr ""
+"Le nom de la liste contient des caractères non autorisés. Les caractères "
+"autorisés sont : lettres, nombres, -, _, ."
+
+msgid "List of impacted files"
+msgstr "Liste des fichiers concernés"
+
+msgid "Lists"
+msgstr "Listes"
+
+msgid "Lists the project members."
+msgstr "Affiche la liste des membres du projet."
+
+msgid "Log message"
+msgstr "Message de commit"
+
+msgid "Login"
+msgstr "Se connecter"
+
+msgid "Login Name"
+msgstr "Nom de login"
+
+msgid "Logout"
+msgstr "Se déconnecter"
+
+msgid "Lost Account Password"
+msgstr "Mot de passe perdu"
+
+msgid "Lost Password"
+msgstr "Mot de passe perdu"
+
+msgid "Lost Password Confirmation"
+msgstr "Confirmation de la perte du mot de passe"
+
+msgid "Low traffic, highly recommended."
+msgstr "Trafic faible, fortement recommandé."
+
+msgid "Low traffic."
+msgstr "Trafic faible."
+
+msgid "ML Administration"
+msgstr "Administration de la liste"
+
+msgid "Mail To"
+msgstr "Envoyer à"
+
+msgid "Mailing list name"
+msgstr "Nom de la liste de diffusion"
+
+msgid "Mailing lists"
+msgstr "Listes de diffusions"
+
+msgid "Mailing lists (Lists Service)"
+msgstr "Listes de diffusion (Service Listes)"
+
+msgid "Mailing lists administration"
+msgstr "Administration des listes de diffusion"
+
+msgid "Manage all plugins"
+msgstr "Gérer tous les plugins"
+
+msgid "Manage help links"
+msgstr "Gestion des liens d'aide"
+
+msgid "Manage project reference patterns"
+msgstr "Gestion des modèles de référence projet"
+
+msgid "Manage system reference patterns"
+msgstr "Gestion des modèles de référence système"
+
+#, php-format
+msgid "Mandatory categories where missing: %s"
+msgstr "Les catégories obligatoires sont manquantes : %s"
+
+#, php-format
+msgid "Mandatory field where missing: %s"
+msgstr "Des champs obligatoires sont manquants : %s"
+
+msgid "Mass emailing"
+msgstr "Envoi d'emails en masse"
+
+msgid "Massmail sending"
+msgstr "Envoi du courrier"
+
+msgid "Massmail to project members is disabled."
+msgstr "L'envoi de mails vers les membres du projet est désactivé."
+
+msgid "Maximum number of projects waiting for validation (-1 means no limits)"
+msgstr ""
+"Nombre maximum de projets dans la file d'attente de validation (-1 pour pas "
+"de limites)"
+
+msgid ""
+"Maximum number of projects waiting for validation for one requester (-1 "
+"means no limits)"
+msgstr ""
+"Nombre maximum de projets dans la file d'attente de validation pour un "
+"utilisateur (-1 pour pas de limites)"
+
+msgid "Meaningful description of the group"
+msgstr "Description du groupe"
+
+msgid "Member"
+msgid_plural "Members"
+msgstr[0] "Membre"
+msgstr[1] "Membres"
+
+msgid "Member name"
+msgstr "Nom du membre"
+
+msgid "Member of {{ nb_projects }} project"
+msgid_plural "Member of {{ nb_projects }} projects"
+msgstr[0] "Membre de {{ nb_projects }} projet"
+msgstr[1] "Membre de {{ nb_projects }} projets"
+
+msgid "Member removal"
+msgstr "Suppression de membre"
+
+msgid "Member since"
+msgstr "Membre depuis"
+
+msgid "Member since %s"
+msgstr "Membre depuis le %s"
+
+msgid "Members"
+msgstr "Membres"
+
+msgid "Members of user groups"
+msgstr "Membre des groupes"
+
+msgid "Membership in user groups (read only)"
+msgstr "Appartenance aux groupes d'utilisateurs (lecture seule)"
+
+msgid "Membership management"
+msgstr "Gestion des membres"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Message Posted"
+msgstr "Message posté"
+
+msgid "Message from %s:"
+msgstr "Message de la part de %s :"
+
+msgid "Message is not in your group"
+msgstr "Ce message n'est pas de votre projet"
+
+msgid "Message not found"
+msgstr "Message introuvable"
+
+msgid "Message sent to administrator should not be empty."
+msgstr "Le message envoyé à l'administrateur ne doit pas être vide."
+
+msgid "Message to project administrators"
+msgstr "Message aux administrateurs de projet"
+
+msgid "Message..."
+msgstr "Message..."
+
+msgid "Missing Information. PLEASE fill in all required information."
+msgstr "Information manquante. Veuillez saisir les informations demandées."
+
+msgid ""
+"Missing forum name or description, please press the \"Back\" button and "
+"complete this information"
+msgstr ""
+"Nom ou description du forum manquant, veuillez appuyez sur le bouton \"Retour"
+"\" de votre navigateur et compléter ces informations"
+
+msgid "Moderation"
+msgstr "Moderation"
+
+msgid "Monitor Forum"
+msgstr "Surveiller Forum"
+
+msgid "Monitor a forum"
+msgstr "Surveiller un forum"
+
+msgid "Monitor?"
+msgstr "Surveiller?"
+
+msgid "Monitoring has been turned off"
+msgstr "La surveillance du forum est arrêté"
+
+msgid "Month"
+msgstr "Mois"
+
+msgid "Must choose a message first"
+msgstr "Veuillez d'abord choisir un message"
+
+msgid "Must include a message body and subject"
+msgstr "Veuillez remplir le sujet et le corps du message"
+
+msgid "Must provide list name that is 4 or more characters long"
+msgstr "Le nom de la liste doit comporter au moins 4 caractères"
+
+msgid "My Dashboard"
+msgstr "Mon tableau de bord"
+
+msgid "My comment so I won't forget the purpose of this token..."
+msgstr ""
+"Mon commentaire qui me permettra de ne pas oublier l'utilité de ce token..."
+
+msgid "My dashboard"
+msgstr "Mon tableau de bord"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Name or description"
+msgstr "Nom ou description"
+
+msgid "Name, type..."
+msgstr "Nom, type …"
+
+msgid "Nature"
+msgstr "Nature"
+
+msgid "Nb maximum of allowed values"
+msgstr "Nb maximum de valeurs autorisées"
+
+msgid "Nb maximum of allowed values must be 1."
+msgstr "Nb maximum de valeurs autorisées doit être à 1."
+
+msgid "Nb members"
+msgstr "Nb membres"
+
+msgid "Nested"
+msgstr "Hiérarchisé"
+
+msgid "Never"
+msgstr "Jamais"
+
+msgid "New"
+msgstr "Nouveau"
+
+msgid "New Password"
+msgstr "Nouveau mot de passe"
+
+msgid "New Password (repeat)"
+msgstr "Nouveau mot de passe (confirmez)"
+
+#, php-format
+msgid "New User Registered: %1$s"
+msgstr "Création du nouveau compte : %1$s"
+
+msgid "New avatar"
+msgstr "Nouvel avatar"
+
+msgid ""
+"New email was successfully saved. To complete the change, <strong>please "
+"click on the confirmation link</strong> you will receive by email (new "
+"address)."
+msgstr ""
+"La nouvelle adresse de courriel a été enregistrée. Pour finaliser le "
+"changement, <strong>cliquez sur le lien</strong> qui se trouvera dans le "
+"message de confirmation que vous allez recevoir (à la nouvelle adresse)."
+
+msgid "New events"
+msgstr "Nouveaux événements"
+
+msgid "New mailing list"
+msgstr "Nouvelle liste de diffusion"
+
+msgid "New messages will be highlighted when you return."
+msgstr "Les nouveaux messages seront mis en valeur lorsque vous reviendrez."
+
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+msgid "New personal access key"
+msgstr "Nouvelle clé personnelle d'accès"
+
+#, php-format
+msgid "New project registered: %s"
+msgstr "Nouveau projet enregistré : %s"
+
+msgid "New reference pattern"
+msgstr "Nouveau modèle de référence"
+
+msgid "New user"
+msgstr "Nouvel utilisateur"
+
+msgid "News"
+msgstr "Annonces"
+
+msgid "News approval"
+msgstr "Approbation des annonces"
+
+msgid "News {{ user_group_name }} can see"
+msgstr "Annonces que {{ user_group_name }} peuvent voir"
+
+msgid "Next Messages"
+msgstr "Messages suivants"
+
+msgid "No"
+msgstr "Non"
+
+msgid "No Comments"
+msgstr "Sans message"
+
+msgid "No Commit matches your criteria"
+msgstr "Aucun commit ne correspond à vos critères"
+
+msgid "No Forums Found"
+msgstr "Forum introuvable"
+
+#, php-format
+msgid "No Messages in %1$s"
+msgstr "Aucun message dans %1$s"
+
+msgid "No activity yet"
+msgstr "Pas encore d'activité"
+
+msgid "No background"
+msgstr "Pas d'image de fond"
+
+msgid "No children projects"
+msgstr "Aucun projet enfant"
+
+msgid "No email for user account"
+msgstr "Pas d'adresse email pour ce compte"
+
+msgid "No followup ID present when trying to post to an existing thread."
+msgstr "Identifiant de fil de discussion manquant pour une réponse."
+
+msgid "No forum for this project"
+msgstr "Aucun forum pour ce projet"
+
+#, php-format
+msgid "No forums found for '%1$s'"
+msgstr "Aucun forum pour '%1$s'"
+
+msgid "No items can use labels in this project."
+msgstr "Aucun éléments dans ce projet ne peux utiliser les labels."
+
+msgid "No labels defined in this project"
+msgstr "Il n'y a pas de label défini dans ce projet"
+
+msgid "No license to approve"
+msgstr "Pas de licence à approuver"
+
+msgid "No matching labels"
+msgstr "Il n'y a aucun label correspondant"
+
+msgid "No one monitoring"
+msgstr "Forum non surveillé"
+
+msgid "No project ID has been provided for the template"
+msgstr "Aucun ID de projet a été fourni pour servir de modèle"
+
+msgid "No project trove categories"
+msgstr "Aucune catégorie de projet"
+
+msgid "No projects to validate"
+msgstr "Aucun projet à valider"
+
+msgid "No template information have been provided to create the project"
+msgstr "Aucune information de template a été fournie pour créer le projet"
+
+msgid "No users to validate"
+msgstr "Aucun utilisateur à valider"
+
+msgid "No valid email to send the preview."
+msgstr ""
+"Aucune adresse valide à laquelle envoyer le message de prévisualisation."
+
+msgid "Nobody"
+msgstr "Personne"
+
+msgid "Not Found"
+msgstr "Introuvable"
+
+msgid "Not a member yet?"
+msgstr "Pas encore membre ?"
+
+msgid "Not categorized"
+msgstr "Non catégorisé"
+
+msgid "Not found"
+msgstr "Page non trouvée"
+
+msgid "Note"
+msgstr "Note"
+
+msgid "Nothing changed"
+msgstr "Rien n'a changé"
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "Number of login failure:"
+msgstr "Nombre de connexions échouées :"
+
+msgid "Offline access"
+msgstr "Accès hors-ligne"
+
+msgid "Ok, got it"
+msgstr "Ok, j'ai compris"
+
+msgid ""
+"Once approved click the confirm button in this email.<i class=\"fa fa-"
+"envelope-o\"></i>"
+msgstr ""
+"Une fois approuvé cliquez sur le bouton de confirmation présent dans l'email."
+"<i class=\"fa fa-envelope-o\"></i>"
+
+msgid "Once you add a forum, it cannot be modified or deleted!"
+msgstr "Une fois ajouté, un forum ne peut être ni modifié ni détruit !"
+
+msgid "Only project members can access its content."
+msgstr "Seuls les membres du projet peuvent accéder à son contenu."
+
+msgid "Only site administrators can create projects."
+msgstr "Seuls les administrateurs de la plateforme peuvent créer des projets."
+
+msgid "Ooops an error occured"
+msgstr "Ouuups une erreur est survenue"
+
+msgid "Oops, I forgot my password"
+msgstr "Oups, j'ai perdu mon mot de passe"
+
+msgid "Open sidebar"
+msgstr "Ouvrir la barre latérale"
+
+msgid "Open user dropdown"
+msgstr "Ouvrir le menu utilisateur"
+
+msgid "Optional message…"
+msgstr "Message optionnel…"
+
+msgid "Orange"
+msgstr "Orange"
+
+msgid "Original"
+msgstr "Original"
+
+msgid "Outline"
+msgstr "Contour"
+
+msgid "Owner"
+msgstr "Propriétaire"
+
+msgid "PHPWiki"
+msgstr "PHPWiki"
+
+msgid "Page accessible to anonymous"
+msgstr "Pages accessible aux anonymes"
+
+msgid "Page permissions are not listed."
+msgstr "Les permissions par page ne sont pas listées."
+
+msgid "Parent project"
+msgstr "Projet parent"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Password policy"
+msgstr "Politique des mots de passe"
+
+msgid "Password robustness"
+msgstr "Robustesse du mot de passe"
+
+msgid "Password successfully updated"
+msgstr "Le mot de passe a été mis à jour avec succès"
+
+msgid "Passwords do not match"
+msgstr "Les deux mots de passe soumis sont différents"
+
+msgid "Passwords do not match."
+msgstr "Les mots de passe ne sont pas identiques."
+
+msgid "Pending"
+msgstr "En attente"
+
+msgid "Pending projects"
+msgstr "Projets en attente"
+
+msgid "Pending trackers removal"
+msgstr "Outils de suivi en attente"
+
+msgid "Pending users"
+msgstr "Utilisateurs en attente"
+
+msgid "People in this group will be able to manage project members."
+msgstr ""
+"Les personnes dans ce groupe seront capables de gérer les membres du projet."
+
+msgid "Per activities"
+msgstr "Utilisateurs actifs"
+
+msgid "Per group"
+msgstr "Par groupe"
+
+msgid "Permission"
+msgstr "Permission"
+
+msgid "Permission Request"
+msgstr "Demande de permission"
+
+msgid "Permission delegation"
+msgstr "Délégation de permission"
+
+msgid "Permission denied"
+msgstr "Permission refusée"
+
+msgid "Permissions delegation"
+msgstr "Délégation des permissions"
+
+msgid "Permissions delegations have been successfully updated."
+msgstr "Les délégations de permissions ont été mises à jour."
+
+msgid "Permissions for deprecated services"
+msgstr "Permissions pour les services dépréciés"
+
+msgid "Permissions per group"
+msgstr "Permissions par groupe"
+
+msgid "Personal access keys"
+msgstr "Clés personnelles d'accès"
+
+msgid ""
+"Personalize your project by adding a background image in the header of "
+"dashboard and administration pages."
+msgstr ""
+"Personnalisez votre projet en ajoutant une image de fond dans l'entête des "
+"tableaux de bord et de l'administration."
+
+msgid "Platform access control"
+msgstr "Droits d'accès de la plateforme"
+
+msgid "Platform administration"
+msgstr "Administration de la plateforme"
+
+msgid "Platform banner"
+msgstr "Bannière de plateforme"
+
+msgid "Platform banner configuration"
+msgstr "Administration de la bannière de la plateforme"
+
+msgid "Platform configuration forbid users to change password"
+msgstr ""
+"La configuration de la plateforme ne permet pas de changer de mot de passe"
+
+msgid "Platform statistics"
+msgstr "Statistiques de la plateforme"
+
+msgid "Please accept term of service"
+msgstr "Merci d'accepter les conditions d'utilisation"
+
+msgid "Please avoid spaces and punctuation in users groups name."
+msgstr ""
+"Veuillez éviter les espaces et les signes de ponctuation dans les noms de "
+"groupe."
+
+msgid ""
+"Please be aware that, in order to comply with {{ organization_name }} "
+"policies, all user accounts are subjected to a periodic renewal process. "
+"Inactive accounts are considered no longer used and will be suspended."
+msgstr ""
+"Veuillez noter qu’afin de respecter les règles de {{ organization_name }}, "
+"tous les comptes d'utilisateurs passent par une procédure de renouvellement  "
+"automatique. Les comptes inactifs sont considérés comme non utilisés et "
+"seront désactivés."
+
+msgid "Please categorize it."
+msgstr "Merci de le catégoriser."
+
+msgid "Please choose a valid text file"
+msgstr "Veuillez choisir un fichier texte valide"
+
+msgid "Please click on the following URL to approve the registration:"
+msgstr ""
+"Veuillez cliquer sur le lien ci-dessous pour confirmer la création de ce "
+"compte :"
+
+msgid "Please confirm your action."
+msgstr "Merci de confirmer votre action."
+
+msgid "Please explain why you are applying for registration on this site<br>"
+msgstr ""
+"Veuillez expliquer la raison pour laquelle vous souhaitez créer un compte "
+"sur ce site<br>"
+
+msgid ""
+"Please make sure the users who will be imported are already registered and "
+"have an active account."
+msgstr ""
+"Veuillez vous assurer que les utilisateurs qui seront importés sont déjà "
+"enregistrés et possèdent un compte actif."
+
+msgid ""
+"Please note that more restrictive permissions might exist on some items."
+msgstr ""
+"Veuillez noter que des permissions plus restrictives peuvent être apposées "
+"sur certains items."
+
+#, php-format
+msgid ""
+"Please note the login <span class=\"confirmation-user\">%3$s</span> and "
+"password <span class=\"confirmation-user\">%4$s</span>"
+msgstr ""
+"Veuillez noter son login <span class=\"confirmation-user\">%3$s</span> et "
+"son mot de passe <span class=\"confirmation-user\">%4$s</span>"
+
+msgid "Please select a file to upload"
+msgstr "Veuillez sélectionner un fichier à téléverser"
+
+msgid ""
+"Please select a picture for your avatar. The uploaded image will be shrunk "
+"to 100×100 pixels."
+msgstr ""
+"Veuillez sélectionner une image pour votre avatar. L'image sera réduite à "
+"100×100 pixels."
+
+msgid "Please update your password first"
+msgstr "Merci de mettre à jour votre mot de passe d'abord"
+
+msgid "Please write something meaningful for the admin."
+msgstr "Veuillez soumettre un message pertinent afin d'aider l'administrateur."
+
+msgid "Please, enter a http:// or https:// link"
+msgstr "Veuillez utiliser un lien http:// ou https://"
+
+msgid "Plugins"
+msgstr "Plugins"
+
+msgid "Post Comment"
+msgstr "Poster un commentaire"
+
+msgid "Post a followup to this message"
+msgstr "Poster une réponse dans cette discussion"
+
+msgid "Posted By"
+msgstr "Posté par"
+
+msgid "Posting Failed"
+msgstr "L'envoi du message a échoué"
+
+msgid "Predefined project references"
+msgstr "Références de projets prédéfinis"
+
+msgid "Preferences"
+msgstr "Préférences"
+
+msgid "Preview"
+msgstr "Aperçu"
+
+msgid "Preview could not be sent"
+msgstr "La prévisualisation n'a pas pu être envoyée"
+
+msgid "Preview sent"
+msgstr "La prévisualisation a été envoyée"
+
+msgid "Preview:"
+msgstr "Aperçu :"
+
+msgid "Previous Messages"
+msgstr "Messages précédents"
+
+msgid "Previous successful login"
+msgstr "Connexion précédente"
+
+msgid "Previous successful login:"
+msgstr "Connexion précédente :"
+
+msgid "Private"
+msgstr "Privé"
+
+msgid "Private archives"
+msgstr "Archives privées"
+
+msgid "Private incl. restricted"
+msgstr "Privé incl. les utilisateurs restreints"
+
+msgid "Private including restricted"
+msgstr "Privé incluant les utilisateurs restreints"
+
+msgid "Private projects can't make their repository public."
+msgstr "Les projets privés ne peuvent rendre leur dépôt public."
+
+msgid "Processors"
+msgstr "Processeurs"
+
+msgid "Project"
+msgstr "Projet"
+
+#, php-format
+msgid "Project #%d is not active and is not a template"
+msgstr "Le project #%d n'est pas actif et n'est pas un modèle"
+
+msgid "Project (read only)"
+msgstr "Projet (lecture seule)"
+
+msgid "Project Data Export"
+msgstr "Export des données"
+
+msgid "Project Latest News"
+msgstr "Dernières annonces du projet"
+
+msgid "Project Name"
+msgstr "Nom du projet"
+
+msgid "Project Registration"
+msgstr "Enregistrement d'un projet"
+
+msgid "Project Team"
+msgstr "Équipe du projet"
+
+msgid "Project Type"
+msgstr "Type de projet"
+
+msgid "Project XML export"
+msgstr "Export XML du projet"
+
+msgid "Project access error"
+msgstr "Erreur d'accès au projet"
+
+msgid "Project administration"
+msgstr "Administration du projet"
+
+#, php-format
+msgid "Project administrators (%1$s users)"
+msgstr "Administrateurs des projets (%1$s utilisateurs)"
+
+msgid "Project administrators can choose project visibility"
+msgstr "Les administrateurs de projet peuvent choisir la visibilité du projet"
+
+msgid ""
+"Project admins can't be removed from project. You must remove them from "
+"Project administrators group first."
+msgstr ""
+"Les administrateurs ne peuvent pas être retirés du projet. Vous devez "
+"d'abord les retirer du groupe Administrateurs du projet."
+
+msgid "Project announcement"
+msgstr "Annonce du projet"
+
+msgid "Project background"
+msgstr "Image de fond du projet"
+
+msgid "Project banner"
+msgstr "Bannière du projet"
+
+msgid "Project categories"
+msgstr "Catégories de projet"
+
+msgid "Project creation moderation"
+msgstr "Modération de la création de projets"
+
+msgid "Project creation moderation settings"
+msgstr "Paramètres de création de projets"
+
+#, php-format
+msgid "Project developers (%1$s users)"
+msgstr "Développeurs des projets (%1$s utilisateurs)"
+
+msgid "Project does not exist"
+msgstr "Le projet n'existe pas"
+
+msgid "Project export"
+msgstr "Export projet"
+
+msgid "Project field has been successfully updated."
+msgstr "Le champ de projet a correctement été modifié."
+
+msgid "Project fields"
+msgstr "Champs de projet"
+
+msgid "Project flag?"
+msgstr "Marqueur de projet ?"
+
+msgid "Project flags are displayed in the navigation bar."
+msgstr "Les marqueurs de projet sont affichés dans la barre de navigation."
+
+#, php-format
+msgid "Project fullname is invalid. The reason is: %s"
+msgstr "Le nom complet de project n'est pas valide. La raison est : %s"
+
+msgid "Project hierarchy"
+msgstr "Hierarchie de projets"
+
+msgid "Project history"
+msgstr "Historique du projet"
+
+msgid ""
+"Project members and group members are synchronized. Whenever you add someone "
+"in a user group, they are automatically added here in project members."
+msgstr ""
+"Les membres de projet et de groupes utilisateurs sont synchronisés. Dès lors "
+"que vous ajoutez un utilisateur dans un groupe, il est automatiquement "
+"ajouté en tant que membre de projet."
+
+msgid ""
+"Project members and group members are synchronized. Whenever you add someone "
+"in a user group, they are automatically added in project members."
+msgstr ""
+"Les membres de projet et de groupes utilisateurs sont synchronisés. Dès lors "
+"que vous ajoutez un utilisateur dans un groupe, il est automatiquement "
+"ajouté en tant que membre de projet."
+
+msgid "Project must be approved by administrators"
+msgstr "Les projets doivent être approuvés par les administrateurs"
+
+msgid "Project name"
+msgstr "Nom du projet"
+
+msgid "Project name shouldn't exceed 40 characters."
+msgstr "Le nom du projet ne doit pas dépasser 40 caractères."
+
+msgid ""
+"Project name update will be effective only after system event processing."
+msgstr ""
+"La mise à jour du nom du projet ne sera effective qu'après le traitement de "
+"l'événement système correspondant."
+
+msgid "Project name..."
+msgstr "Nom du projet..."
+
+msgid "Project privacy set to private including restricted."
+msgstr ""
+"La visibilité du projet est : privé incluant les utilisateurs restreints."
+
+msgid "Project privacy set to private."
+msgstr "La visibilité du projet est : privé."
+
+msgid "Project privacy set to public including restricted."
+msgstr ""
+"La visibilité du projet est : publique incluant les utilisateurs restreints."
+
+msgid "Project privacy set to public."
+msgstr "La visibilité du projet est : publique."
+
+msgid "Project registration is disabled"
+msgstr "L'enregistrement de project est désactivé"
+
+msgid "Project settings"
+msgstr "Configuration des projets"
+
+#, php-format
+msgid "Project shortname is invalid. The reason is: %s"
+msgstr "Le nom court de projet n'est pas valide. La raison est : %s"
+
+msgid "Project templates"
+msgstr "Modèles de projet"
+
+msgid "Project trove categories"
+msgstr "Catégories de projet"
+
+msgid "Project type"
+msgstr "Type du projet"
+
+msgid "Project visibility"
+msgstr "Visibilité du projet"
+
+msgid "Project web pages (Home Page Service)"
+msgstr "Pages web de project (Service Site Web)"
+
+msgid "Projects"
+msgstr "Projets"
+
+msgid "Projects created from this template"
+msgstr "Projets créés à partir de ce modèle"
+
+#, php-format
+msgid "Projects in <a href=\"%1$s\"><B>P</B> (pending) status</A>"
+msgstr "Projets en statut <a href=\"%1$s\"><B>P</B> (en attente)</A>"
+
+msgid "Projects in category"
+msgstr "Projets dans la catégorie selectionnée"
+
+msgid "Projects statistics"
+msgstr "Statistiques projets"
+
+msgid "Projects visibility"
+msgstr "Visibilité des projets"
+
+msgid "Projects…"
+msgstr "Projets…"
+
+#, php-format
+msgid ""
+"Propagation of project's name update on system queued (%1$s -> %2$s). It "
+"will be processed in a little while."
+msgstr ""
+"Le changement du nom du projet sur le système va être traité dans quelques "
+"instants (%1$s -> %2$s)."
+
+msgid "Provided release note URL is not well formed"
+msgstr "Le lien de la release note n'est pas au bon format."
+
+msgid "Public"
+msgstr "Publique"
+
+msgid "Public archives"
+msgstr "Archives publiques"
+
+msgid "Public incl. restricted"
+msgstr "Publique, incluant les utilisateurs restreints"
+
+msgid "Public including restricted"
+msgstr "Publique, incluant les utilisateurs restreints"
+
+msgid "Public information"
+msgstr "Informations publiques"
+
+msgid ""
+"Public means subscription right is granted to any user, and archives are "
+"public"
+msgstr ""
+"Publique signifie que tous les utilisateurs peuvent s'abonner, et que les "
+"archives sont publiques"
+
+msgid "Public project categories"
+msgstr "Catégories de projet publics"
+
+msgid "Public?"
+msgstr "Public ?"
+
+msgid "Purple"
+msgstr "Violet"
+
+msgid "Purpose"
+msgstr "Motif"
+
+msgid "REST"
+msgstr "REST"
+
+msgid "REST Read only administrator"
+msgstr "Administrateur lecture seule via REST"
+
+msgid "REST projects management"
+msgstr "Gestion des projets via REST"
+
+msgid "RSS"
+msgstr "RSS"
+
+msgid "Rank"
+msgstr "Rang"
+
+msgid "Read and respond to this message at"
+msgstr "Pour lire et répondre à ce message aller sur"
+
+msgid "Read only access to information about projects"
+msgstr "Accès en lecture seule aux informations concernant les projets"
+
+msgid "Read only access to your membership in user groups"
+msgstr "Accès en lecture seule à votre présence dans des groupes utilisateurs"
+
+msgid "Real Name"
+msgstr "Nom Complet"
+
+msgid "Real Name (login)"
+msgstr "Nom Complet (login)"
+
+msgid "Real name"
+msgstr "Nom complet"
+
+msgid "Real name contains illegal characters."
+msgstr "Le nom complet contient des caractères non autorisés."
+
+msgid "Real name is not valid"
+msgstr "Le nom complet n'est pas valide"
+
+msgid "Real name successfully updated"
+msgstr "Le nom complet a été mis à jour avec succès"
+
+msgid "Real name was not updated"
+msgstr "Le nom complet n'a pas été mis à jour"
+
+msgid ""
+"Receive Email about Site Updates <span class=\"label-help\">Very low "
+"traffic, includes security notices. Highly Recommended.</span>"
+msgstr ""
+"Recevoir du courrier électronique à propos des mises à jour du site <span "
+"class=\"label-help\">Faible trafic, informations relatives à la sécurité. "
+"Fortement recommandé.</span>"
+
+msgid "Receive additional community mailing"
+msgstr ""
+"Recevoir du courrier électronique supplémentaire au sujet de la communauté"
+
+msgid "Receive emails about site updates, including security notices"
+msgstr ""
+"Recevoir du courrier électronique à propos des mises à jour du site mais "
+"également des informations relatives à la sécurité"
+
+msgid "Recently"
+msgstr "Récemment"
+
+msgid "Red"
+msgstr "Rouge"
+
+msgid "Redirecting..."
+msgstr "Redirection…"
+
+msgid "Reference ID"
+msgstr "Identifiant"
+
+msgid ""
+"Reference pattern creation failed: the selected keyword is invalid "
+"(reserved, or already exists)"
+msgstr ""
+"Échec lors de la création du modèle de référence : le mot clé choisi est "
+"invalide (réservé, ou déjà affecté)"
+
+msgid "Reference pattern deleted"
+msgstr "Modèle de référence détruit"
+
+msgid ""
+"Reference pattern edition failed: the selected keyword is invalid (reserved, "
+"or already exists)"
+msgstr ""
+"Échec lors de l'édition du modèle de référence&nbsp;: le mot clé choisi est "
+"invalide (réservé, ou déjà affecté)"
+
+msgid "References"
+msgstr "Références"
+
+msgid "Register"
+msgstr "Nouveau compte"
+
+msgid "Registered users"
+msgstr "Utilisateurs enregistrés"
+
+msgid "Registered users label"
+msgstr "Label pour les utilisateurs enregistrés"
+
+msgid "Relative date first"
+msgstr "Date relative en premier"
+
+msgid "Relative date only"
+msgstr "Date relative seulement"
+
+msgid "Relative dates display"
+msgstr "Affichage des dates relatives"
+
+msgid "Release Note"
+msgstr "Information de mise à jour"
+
+msgid "Release note link"
+msgstr "Lien de la release note"
+
+msgid "Release note link configuration"
+msgstr "Configuration du lien de release note"
+
+msgid "Removal from projects"
+msgstr "Retrait de projets"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Remove from project"
+msgstr "Retirer du projet"
+
+msgid "Remove from this group"
+msgstr "Retirer du groupe"
+
+msgid "Remove from this group and project"
+msgstr "Retirer du groupe et du projet"
+
+msgid "Remove from users group"
+msgstr "Retirer du groupe"
+
+msgid "Remove group member"
+msgstr "Retirer un membre du groupe"
+
+msgid "Removed Lines"
+msgstr "Lignes supprimées"
+
+msgid "Repeat new password"
+msgstr "Répétez le nouveau mot de passe"
+
+msgid "Repeat password"
+msgstr "Répétez le mot de passe"
+
+msgid "Replace the current logo"
+msgstr "Remplacer le logo actuellement utilisé"
+
+msgid "Repository History"
+msgstr "Historique du dépôt"
+
+#, php-format
+msgid ""
+"Requested page currently loading. If it does not, try <a href=\"%1$s\">%1$s</"
+"a>."
+msgstr ""
+"La page demandée est en cours de chargement. Si ce n’est pas le cas, essayez "
+"<a href=\"%1$s\">%1$s</a>."
+
+msgid "Restricted user"
+msgstr "Utilisateur restreint"
+
+msgid "Restricted users are allowed in this project."
+msgstr "Les utilisateurs restreints sont autorisés dans ce projet."
+
+msgid "Restricted users are not allowed in this project."
+msgstr "Les utilisateurs restreints ne sont pas autorisés dans ce projet."
+
+msgid "Restricted users can create projects"
+msgstr "Les utilisateurs restreints peuvent créer des projets"
+
+msgid "Restricted users cannot create projects."
+msgstr "Les utilisateurs restreints ne peuvent pas créer de projets."
+
+msgid "Restricted users removal"
+msgstr "Suppression des utilisateurs restreints"
+
+msgid "Review pending projects"
+msgstr "Valider les projets"
+
+msgid "Review pending users"
+msgstr "Valider les utilisateurs"
+
+msgid "Revision"
+msgstr "Révision"
+
+msgid "Revoke selected SVN token"
+msgstr "Supprimer les jetons SVN sélectionnés"
+
+msgid "Revoke selected access keys"
+msgstr "Révoquer les clés d'accès sélectionnées"
+
+msgid "Running events"
+msgstr "Evénements en cours d'exécution"
+
+msgid "SOAP API"
+msgstr "API SOAP"
+
+msgid "SSH key"
+msgstr "Clef SSH"
+
+msgid ""
+"SSH key(s) updated in database, will be propagated on filesystem in a few "
+"minutes, please be patient."
+msgstr ""
+"Le(s) clé(s) SSH ont été mise à jour dans la base de donnée. Elle seront "
+"propagées sur le système de fichiers dans quelques minutes."
+
+msgid "SSH keys"
+msgstr "Clefs SSH"
+
+msgid "SVN Commits"
+msgstr "Commits SVN"
+
+msgid "SVN token copied!"
+msgstr "Jeton SVN copié !"
+
+msgid "SVN tokens"
+msgstr "Jetons SVN"
+
+msgid "SVN tokens have been successfully deleted"
+msgstr "Les clés d'accès ont été supprimées avec succès"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Save Place"
+msgstr "Sauvegarder cette position"
+
+msgid "Save Your Place"
+msgstr "Sauvegarder cette position"
+
+msgid "Save categories"
+msgstr "Sauvegarder les catégories"
+
+msgid "Save configuration"
+msgstr "Sauvegarder la configuration"
+
+msgid "Save delegated permissions"
+msgstr "Sauvegarder les permissions déléguées"
+
+msgid "Save header background"
+msgstr "Sauvegarder l'image de fond"
+
+msgid "Save information"
+msgstr "Enregistrer les informations"
+
+msgid "Save new avatar"
+msgstr "Sauvegarder le nouvel avatar"
+
+msgid "Save settings"
+msgstr "Enregister"
+
+msgid "Save the link"
+msgstr "Enregister le lien"
+
+msgid "Save your place"
+msgstr "Sauvegarder cette position"
+
+msgid "Scope"
+msgstr "Portée"
+
+msgid "Scope of the reference pattern: project only or system-wide"
+msgstr "Portée du modèle de référence&nbsp;: projet seulement ou système"
+
+msgid "Scopes"
+msgstr "Portées"
+
+msgid "Scrum"
+msgstr "Scrum"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Security"
+msgstr "Sécurité"
+
+msgid "See permissions"
+msgstr "Voir les permissions"
+
+msgid "Select"
+msgstr "Sélectionner"
+
+msgid "Semicolon"
+msgstr "Point virgule"
+
+msgid "Send Lost Password Hash"
+msgstr "Envoyer la clé pour le mot de passe perdu"
+
+msgid "Send a welcome email to the user"
+msgstr "Envoyer un mail de bienvenue à l'utilisateur"
+
+msgid "Send an email when the project visibility changes"
+msgstr "Envoyer un email lorsque la visibilité d'un projet change"
+
+msgid "Send email"
+msgstr "Envoyer le courrier électronique"
+
+msgid "Send invitation"
+msgstr "Envoyer l'invitation"
+
+#, php-format
+msgid ""
+"Send only to users subscribed to \"Additional Community Mailings\" (%1$s "
+"users)"
+msgstr ""
+"Abonnés à l'option \"Courrier électronique supplémentaire au sujet de la "
+"communauté\" (%1$s utilisateurs)"
+
+msgid "Send preview"
+msgstr "Envoyer une prévisualisation"
+
+msgid "Send to"
+msgstr "Destinataires"
+
+msgid "Service is not allowed in project."
+msgstr "Le service n'est pas autorisé dans le projet."
+
+msgid "Service news is disabled for this project."
+msgstr "Le service annonces est désactivé pour ce projet."
+
+msgid "Service not found in database"
+msgstr "Le service n'existe pas dans la base de données"
+
+msgid "Service permissions"
+msgstr "Permissions des services"
+
+msgid "Services"
+msgstr "Services"
+
+msgid "Session"
+msgstr "Session"
+
+msgid "Set default"
+msgstr "Enregistrer la valeur par défaut"
+
+msgid "Settings saved"
+msgstr "Paramètres enregistrés"
+
+msgid "Short description"
+msgstr "Description courte"
+
+msgid "Short description shouldn't exceed 255 characters."
+msgstr "La description courte ne doit pas dépasser 255 caractères."
+
+msgid "Shortcut"
+msgstr "Raccourci"
+
+msgid "Shortcuts"
+msgstr "Raccourcis"
+
+msgid "Shortname edition is not allowed :"
+msgstr "L'édition du nom court n'est pas autorisée :"
+
+msgid ""
+"Should you still need this account, please connect once to "
+"{{ tuleap_server_name}} web interface, this will automatically renew your "
+"access. Moreover we strongly advise you to take this opportunity to update "
+"your password."
+msgstr ""
+"Si vous voulez garder ce compte, connectez-vous au moins une fois à "
+"'interface web de {{ tuleap_server_name}} pour réactiver votre compte "
+"automatiquement. Par ailleurs, nous recommandons de profiter cette occasion "
+"pour mettre à jour votre mot de passe."
+
+msgid ""
+"Should you still need your account, please notify your %s contact for this "
+"project."
+msgstr ""
+"Si vous voulez garder votre compte, notifiez votre contact %s pour ce projet."
+
+#, php-format
+msgid "Show %1$s"
+msgstr "Afficher %1$s"
+
+msgid "Show format"
+msgstr "Voir le format"
+
+msgid "Show project announcement"
+msgstr "Afficher l'annonce du projet"
+
+msgid "Sign you in"
+msgstr "Se connecter"
+
+msgid "Site administration"
+msgstr "Administration du site"
+
+#, php-format
+msgid "Site administrators (%1$s users)"
+msgstr "Administrateurs du site (%1$s utilisateurs)"
+
+msgid "Site content customisations"
+msgstr "Personnalisations du site content"
+
+msgid "Site homepage"
+msgstr "Page d'accueil"
+
+msgid "Site news"
+msgstr "News du site"
+
+msgid "Site news approval"
+msgstr "Approbation annonces site"
+
+#, php-format
+msgid "Skip invalid key %1$s"
+msgstr "Clé invalide ignorée : %1$s"
+
+msgid "Skip to main content"
+msgstr "Aller au contenu principal"
+
+#, php-format
+msgid "Some fields does not exists: %s"
+msgstr "Des champs n'existent pas : %s"
+
+msgid "Some mandatory categories are missing"
+msgstr "Des catégories sont manquantes"
+
+#, php-format
+msgid ""
+"Someone (presumably you) on the %1$s site requested a\n"
+"password change through email verification. If this was\n"
+"not you,ignore this message and nothing will happen.\n"
+"\n"
+"If you requested this verification, visit the following URL\n"
+"to change your password:\n"
+"\n"
+"%2$s\n"
+"\n"
+" -- The %1$s Team"
+msgstr ""
+"Quelqu'un (nous supposons qu'il s'agit de vous) sur le site %1$s a demandé "
+"le\n"
+"changement de mot de passe avec vérification par e-mail. Si vous n'avez\n"
+"pas fait cette demande, ignorez tout simplement ce message.\n"
+"\n"
+"Si vous êtes bien à l'origine de cette demande, veuillez visiter le lien ci-"
+"dessous\n"
+"pour changer votre mot de passe :\n"
+"\n"
+"%2$s\n"
+"\n"
+" -- L'équipe %1$s"
+
+msgid "Source code management"
+msgstr "Gestion de code source"
+
+msgid "Specify the nature of the reference, or Other if any."
+msgstr "pécifiez la nature de la référence, ou Autre sinon."
+
+msgid "Start New Thread"
+msgstr "Commencer une nouvelle discussion"
+
+msgid "Start a New Thread"
+msgstr "Commencer une nouvelle discussion"
+
+msgid "Start a new project"
+msgstr "Démarrer un nouveau projet"
+
+msgid "Start by choosing a widget"
+msgstr "Commencez par choisir un widget"
+
+msgid "Start working"
+msgstr "Commencez le travail"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Stop Monitoring Forum"
+msgstr "Arrêter la surveillance"
+
+msgid ""
+"Streamline your workflow and focus on what's hot with an easy-to-use board"
+msgstr ""
+"Optimisez votre workflow et concentrez vous sur ce qui est important avec un "
+"tableau facile à utiliser"
+
+msgid "Style"
+msgstr "Style"
+
+msgid "Subject"
+msgstr "Sujet"
+
+msgid "Subject header"
+msgstr "Entête du sujet"
+
+msgid "Submitted CSV date format is not valid"
+msgstr "Le format de date CSV n'est pas valide"
+
+msgid "Submitted CSV separator is not valid"
+msgstr "Le séparateur CSV n'est pas valide"
+
+msgid "Submitted by"
+msgstr "Soumis par"
+
+msgid "Submitted relative dates display is not valid."
+msgstr "Le format d'affichage des dates relatives n'est pas valide"
+
+msgid "Submitted text format is not valid"
+msgstr "Le formal de texte n'est pas valide"
+
+msgid "Submitted username display is not valid."
+msgstr "Le formal d'affichage des noms n'est pas valide"
+
+#, php-format
+msgid ""
+"Subversion Core is deprecated, it will be removed on march 2022. Please <a "
+"href=\"/project/%d/admin/services\">install and activate `SVN` plugin.</a>"
+msgstr ""
+"Ce service est déprécié, il sera supprimé en mars 2022. Merci <a href=\"/"
+"project/%d/admin/services\">d'installer et activer le plugin`SVN`.</a>"
+
+#, php-format
+msgid ""
+"Subversion Core is deprecated, it will be removed on march 2022. Please "
+"install and activate `SVN` plugin and <a href=\"/plugins/svn/%s/admin-migrate"
+"\">migrate your repository.</a>"
+msgstr ""
+"Ce service est déprécié, is sera supprimé en mars 2022. Merci d'installer et "
+"activer le plugin`SVN` et de <a href=\"/plugins/svn/%s/admin-migrate"
+"\">migrer votre dépôt.</a>"
+
+msgid "Successfully created reference pattern"
+msgstr "Modèle de référence créé avec succès"
+
+msgid ""
+"Successfully created system reference pattern - reference pattern added to "
+"all projects"
+msgstr ""
+"Modèle de référence système créé avec succès, et ajouté à tous les projets"
+
+msgid "Successfully updated."
+msgstr "Mis à jour avec succès."
+
+msgid "Summary"
+msgstr "Résumé"
+
+msgid "Suspended"
+msgstr "Suspendu"
+
+msgid "Switch to…"
+msgstr "Accéder à…"
+
+msgid "Switching the project status back to \"pending\" is not possible."
+msgstr "Remettre le projet au statut \"en attente\" n'est pas possible."
+
+msgid ""
+"Synchronized project membership configuration has been updated successfully."
+msgstr ""
+"La gestion synchronisée de l'appartenance au projet a été mise à jour avec "
+"succès."
+
+msgid "Synchronized project membership management"
+msgstr "Gestion synchronisée de l'appartenance au projet"
+
+msgid "System"
+msgstr "Système"
+
+msgid "System events"
+msgstr "Évènements système"
+
+msgid "System events (last 48 hours)"
+msgstr "Evénements système (dernières 48 heures)"
+
+msgid "System groups"
+msgstr "Groupes système"
+
+msgid "System reference pattern deleted"
+msgstr "Modèle de référence système détruit"
+
+msgid "Tab"
+msgstr "Tabulation"
+
+#, php-format
+msgid "Template #%d is not valid"
+msgstr "Le modèle #%d n'est pas valide"
+
+msgid "Template used by project"
+msgstr "Modèle utilisé par ce projet"
+
+msgid "Templates"
+msgstr "Modèles de projet"
+
+msgid "Terms"
+msgstr "Conditions"
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "Text file export"
+msgstr "Exporter au format texte"
+
+msgid "Thank you for using Tuleap"
+msgstr "Nous vous remercions d'utiliser Tuleap"
+
+msgid "Thanks!"
+msgstr "Merci !"
+
+msgid "That user does not exist."
+msgstr "Cet utilisateur n'existe pas"
+
+msgid "The %s team."
+msgstr "L'équipe %s."
+
+#, php-format
+msgid "The XML template \"%s\" provided is not valid"
+msgstr "Le name modèle XML \"%s\" n'est pas valide"
+
+#, php-format
+msgid "The category %d only allows %d values"
+msgstr "La catégorie %d autorise seulement %d valeurs"
+
+#, php-format
+msgid "The category id %d is not a valid root category"
+msgstr "L'id de catégorie %d n'est pas une catégorie racine valide"
+
+msgid "The chosen color is not allowed."
+msgstr "La couleur choisie n'est pas autorisée."
+
+msgid ""
+"The confirmation key is expired, please renew if needed your request for the "
+"retrieval of your lost password"
+msgstr ""
+"La clé de confirmation a expirée, veuillez si nécessaire faire une nouvelle "
+"demande de récupération de mot de passe"
+
+#, php-format
+msgid "The dashboard \"%s\" already exists."
+msgstr "Le tableau de bord \"%s\" existe déjà."
+
+#, php-format
+msgid "The dashboard '%s' doesn't exist."
+msgstr "Le tableau de bord \"%s\" n’existe pas."
+
+#, php-format
+msgid "The directory %s is not valid"
+msgstr "Le répertoire %s n'est valide"
+
+msgid "The display preference has been forced for each user successfully."
+msgstr ""
+"La préférence d'affichage a été forcée pour chaque utilisateur avec succès"
+
+#, php-format
+msgid "The entered value '%s' is invalid."
+msgstr "La valeur saisie '%s' est invalide."
+
+#, php-format
+msgid "The file '%s' is already being uploaded"
+msgstr "Le fichier '%s' est déjà en cours d'upload"
+
+msgid "The file cannot be found"
+msgstr "Le fichier ne peut pas être trouvé"
+
+msgid "The given license agreement is not valid for this project"
+msgstr "La license associée au fichier n'est pas valide pour ce projet"
+
+msgid ""
+"The given parent project does not exist or you are not its administrator."
+msgstr ""
+"Le projet parent n'existe pas ou alors vous n'en êtes pas administrateur."
+
+msgid "The group id is missing"
+msgstr "L'identifiant du groupe utilisateur est requis"
+
+msgid "The group name is missing"
+msgstr "Le nom du groupe utilisateur est requis"
+
+msgid "The header background has been successfully changed"
+msgstr "L'image de fond a été modifiée avec succès"
+
+msgid ""
+"The key will expire at the end of the selected date. Keep it empty if you "
+"don't want that this key will expire."
+msgstr ""
+"La clé expirera à la fin de la date selectionnée. Laissez le champ vide si "
+"vous ne souhaitez pas que la clé expire."
+
+msgid "The last project administrator cannot be removed."
+msgstr ""
+"Il n'est pas possible de supprimer le dernier administrateur du projet."
+
+msgid ""
+"The legacy default template. No more available soon. To be recreated as a "
+"\"Custom template\""
+msgstr ""
+"L'ancien modèle par défaut. Ne sera bientôt plus disponible. A recréer en "
+"tant que \"Modèle de projet personnalisé\""
+
+msgid ""
+"The list of projects that were previously whitelisted will be permanently "
+"lost."
+msgstr ""
+"La liste des projets qui étaient explicitement autorisés sera définitivement "
+"perdue."
+
+#, php-format
+msgid ""
+"The mail was not accepted for the delivery. Please contact the administrator "
+"at %s."
+msgstr ""
+"L'e-mail n'a pas pu être envoyé. Veuillez contacter les administrateurs à "
+"l'adresse %s."
+
+#, php-format
+msgid "The maximum number of invitations per day is %s."
+msgstr "Le nombre maximal d'invitation par jour est de %s."
+
+msgid ""
+"The most complete project workspace to plan, build and ship quality "
+"products. Include Tuleap Test Management, Time Tracking and Cross-Tracker "
+"Search. Reach end-to-end traceability."
+msgstr ""
+"L'environnement le plus complet pour planifier, suivre et créer des produits "
+"de qualité. Inclus Tuleap Test Management, Time Tracking et Cross-Tracker "
+"Search. Pour une traçabilité de bout en bout."
+
+msgid "The name is missing for creating a dashboard."
+msgstr "Il manque le nom pour créer un tableau de bord."
+
+msgid "The name is missing for editing the dashboard."
+msgstr "Il manque le nom pour éditer le tableau de bord."
+
+msgid "The page you are looking for does not exist"
+msgstr "La page demandée n'existe pas"
+
+msgid ""
+"The password must not be considered as compromised (this password is present "
+"in known data breaches)"
+msgstr ""
+"Le mot de passe ne doit pas être considéré comme compromis (le mot de passe "
+"est présent dans des fuites d'informations connues)."
+
+msgid "The password policy has been successfully updated."
+msgstr "La politique des mots de passe a correctement été mise à jour."
+
+msgid "The platform mandates a license agreement, none given"
+msgstr ""
+"La plateforme impose la selection d'une license, aucune n'a été fournit"
+
+#, php-format
+msgid ""
+"The project \"%s\" is not in a valid state and cannot be displayed in the "
+"list. Please do the necessary."
+msgstr ""
+"Le projet %s n'est pas dans un état valide et ne peut pas être affiché dans "
+"la liste. Veuillez faire le nécessaire."
+
+#, php-format
+msgid ""
+"The project visibility \"%s\" can only be used when the instance have "
+"enabled the restricted users"
+msgstr ""
+"La visibilité de project \"%s\" peut seulement être utilisé quand la "
+"plateforme a activé les utilisateurs restreints"
+
+#, php-format
+msgid ""
+"The project visibility cannot be chosen by the project administrator, only "
+"the access level \"%s\" can be used"
+msgstr ""
+"La visibilité du projet ne peut pas être choisie par l'administrateur de "
+"projet, seul le niveau d'accès \"%s\" peut être utilisé"
+
+msgid "The requested dashboard does not exist."
+msgstr "Le tableau de bord demandé n’existe pas."
+
+#, php-format
+msgid "The sending of the mail has been <a href=\"%1$s\">put in the queue</a>"
+msgstr "L'envoi du message a été <a href=\"%1$s\">placé en file d'attente</a>"
+
+msgid ""
+"The service cannot be opened in a new tab and in an iframe simultaneously. "
+"Please choose one."
+msgstr ""
+"Ce service ne peut pas être ouvert à la fois dans un nouvel onglet et dans "
+"une iframe. Veuillez choisir l'un des deux."
+
+msgid "The submitted language is not supported."
+msgstr "La langue requise n'est pas supportée."
+
+msgid "The user account was created."
+msgstr "Le compte utilisateur a été créé."
+
+msgid "The user will automatically be added as project member."
+msgstr "L'utilisateur sera ajouté automatiquement aux membres du projet."
+
+msgid "The widget has been added successfully"
+msgstr "Le widget a correctement été ajouté"
+
+msgid "The widget is already used"
+msgstr "Le widget est déjà utilisé"
+
+msgid "The widget is disabled in project dashboard."
+msgstr "Le widget est désactivé dans les tableaux de bord de projet."
+
+msgid "The {{tuleap_server_name}} team."
+msgstr "L'équipe de {{tuleap_server_name}}."
+
+msgid "Theme color"
+msgstr "Couleur du thème"
+
+msgid "There are no items you can see"
+msgstr "Il n'y a aucun élément visible"
+
+msgid "There are no projects in this category"
+msgstr "Aucun projet dans cette catégorie"
+
+msgid "There are no widgets here"
+msgstr "Il n’y a aucun widget"
+
+msgid ""
+"There is already an event scheduled to rename this project. Please check <a "
+"href=\"/admin/system_events/\">System Event Monitor</a>."
+msgstr ""
+"Il y a déjà une opération de renommage prévue pour ce projet. Merci de "
+"consulter les <a href=\"/admin/system_events/\">Événements Système</a>."
+
+msgid "There is no users group bound to this one."
+msgstr "Il n'y a pas de groupe lié à celui-ci."
+
+msgid "There isn't any activity yet"
+msgstr "Il n'y a pas encore d'activité"
+
+msgid "There isn't any mailing list yet"
+msgstr "Il n'y a aucune liste de diffusion pour l'instant"
+
+msgid "There isn't any mailing lists yet"
+msgstr "Il n'y a aucune liste de diffusion pour l'instant"
+
+msgid ""
+"There isn't any mailing lists yet or you don't have permissions to see them."
+msgstr ""
+"Il n’y a aucune liste de diffusion pour l’instant ou vous n'avez pas la "
+"permission pour les voir."
+
+msgid "There isn't any matching members"
+msgstr "Il n'y a aucun membre correspondant"
+
+msgid "There isn't any matching users groups"
+msgstr "Il n'y a aucun groupe correspondant"
+
+msgid "There isn't any matching widgets"
+msgstr "Il n'y a aucun widget correspondant"
+
+msgid "There isn't any users groups yet"
+msgstr "Aucun groupe n'est actuellement défini"
+
+msgid "These projects are already related."
+msgstr "Un lien de parenté existe déjà entre ces projets."
+
+msgid "This Project Has Turned CVS Off"
+msgstr "Ce projet a désactivé CVS"
+
+msgid "This Project Has Turned Off Mailing Lists"
+msgstr "Ce projet a désactivé les listes de diffusion"
+
+msgid "This archive is ready to be imported in a Tuleap instance."
+msgstr "Cette archive est prête à être importé dans une instance de Tuleap."
+
+msgid "This description will be displayed in a tooltip above reference."
+msgstr ""
+"La description sera affichée dans une bulle lorsque le pointeur est au "
+"dessus d'une référence extraite."
+
+msgid ""
+"This feature aims to provide a way to structure projects organizations from\n"
+"            permissions, user groups and control point of view. As of today, "
+"it's only used by Git/Gerrit for umbrella\n"
+"            projects (if relevant to your platform/project). However, "
+"setting a hierarchy between projects might have\n"
+"            future impacts (e.g. members of the parent project could "
+"possibly have access to all sub-projects even\n"
+"            without explicit permissions granted)."
+msgstr ""
+"Cette fonctionnalité permet d'organiser vos projets les uns par rapport aux "
+"autres en termes de permissions, groupes d'utilisateurs et de contrôle. "
+"Cependant, à l'heure actuelle, elle n'est exploitée que par Git/Gerrit pour "
+"les projets \"parapluies\" (si ces services sont activés/disponibles sur "
+"votre plate-forme). Veuillez noter que la définition d'une hiérarchie pourra "
+"avoir un impact futur sur l'organisation des enfants (ex. les "
+"administrateurs d'un projet parent pourraient avoir automatiquement accès à "
+"l'administration de tous les sous-projets)."
+
+msgid ""
+"This feature allows you to prevent the usage of passwords commonly found in "
+"known data breaches as these passwords are privileged targets."
+msgstr ""
+"Cette fonctionnalité vous permet d'empêcher l'utilisation de mots de passe "
+"fréquemment présent dans des fuites d'information, ces mots de passe étant "
+"considérés comme faible."
+
+msgid "This group does not have any members yet."
+msgstr "Ce groupe n'a pas encore de membres."
+
+msgid "This is a preview"
+msgstr "Ceci est un aperçu"
+
+msgid "This is a private project"
+msgstr "Ce projet est privé"
+
+msgid "This is a system group, you cannot delete it."
+msgstr "Ceci est un groupe système, vous ne pouvez pas le supprimer."
+
+msgid "This is a system service, you cannot delete it."
+msgstr "Ceci est un service système, vous ne pouvez pas le supprimer."
+
+msgid "This label is used in the project"
+msgstr "Ce label est utilisé dans le projet"
+
+msgid ""
+"This license agreement cannot be deleted because it's used by following "
+"packages:"
+msgstr ""
+"Ce texte de licence ne peut être supprimé car il est utilisé par les paquets "
+"suivants :"
+
+msgid "This mail has been automatically sent from %s application"
+msgstr "Cet e-mail a été envoyé automatiquement par l'application %s"
+
+msgid ""
+"This mail has been automatically sent from {{tuleap_server_name}} application"
+msgstr ""
+"Cet e-mail a été envoyé automatiquement par l'application "
+"{{tuleap_server_name}}"
+
+msgid "This message cannot be hidden until it has been taken into account"
+msgstr ""
+"Ce message ne peut pas être caché tant qu'il n'a pas été pris en compte."
+
+#, php-format
+msgid ""
+"This message is being sent to notify the administrator(s) of\n"
+"project '%s' that user %s has chosen to\n"
+"remove him/herself from the project.\n"
+"\n"
+"Follow this link to see the current members of your project:\n"
+"%s\n"
+"\n"
+msgstr ""
+"Ce message est envoyé pour prévenir le(s) administrateurs du\n"
+"projet '%s' que l'utilisateur '%s' a quitté le projet.nSuivez le lien ci-"
+"dessous pour voir la liste des membres actuels du projet :\n"
+"%s\n"
+"\n"
+
+msgid "This operation cannot be undone."
+msgstr "Cette opération ne peut pas être annulée."
+
+msgid ""
+"This option displays special patterns on colored cards in Agiledashboard and "
+"Cardwall tracker reports. This helps distinguish between colors and their "
+"variants."
+msgstr ""
+"Cette option affiche des motifs sur les cartes ayant un fond coloré dans "
+"l'Agiledashboard et sur les rapports de type cardwall dans les outils de "
+"suivi. Ceci permet de mieux différencier les couleurs ainsi que leurs "
+"variantes."
+
+msgid ""
+"This permission grants the right to manage platform administration users. "
+"Every single user added here will be a platform administrator."
+msgstr ""
+"Cette permission donne le droit de gérer les administrateurs de la "
+"plateforme. Chaque utilisateur ajouté sera un adminstrateur de la plateforme."
+
+msgid ""
+"This permission grants the right to manage projects through the REST api"
+msgstr "Cette permission donne le droit de gérer les projets via l'api REST"
+
+msgid ""
+"This permission grants the user the right to see all the platform content "
+"through the REST API (GET/OPTIONS)"
+msgstr ""
+"Cette permission donne le droit de voir (GET/OPTIONS) l'ensemble du contenu "
+"de la plateforme via l'API REST"
+
+msgid "This project doesn't allow short name edition."
+msgstr "Ce projet n'autorise pas l'édition du nom court."
+
+msgid "This project doesn't use any services with permissions"
+msgstr "Ce project n'utilise pas de service avec des permissions"
+
+msgid "This project has no CVS history."
+msgstr "Ce projet n'a pas d'historique CVS."
+
+msgid "This project is not categorized yet."
+msgstr "Ce projet n'est pas encore catégorisé."
+
+msgid ""
+"This project is suspended. Only site administrators may access it.\n"
+"                However, the following services are not blocked and may "
+"still be used:"
+msgstr ""
+"Ce projet est suspendu. Seuls les administrateurs de la plateforme y ont "
+"accès. Cependant, les services suivants ne sont pas bloqués et pourraient "
+"encore être utilisés :"
+
+msgid "This reference does not exist"
+msgstr "La référence demandée n'existe pas"
+
+msgid "This service icon name is not allowed."
+msgstr "Cette icône de service n'est pas autorisée."
+
+msgid "This service is a system service, it cannot be deleted."
+msgstr "Ce service est un service système, il ne peut pas être supprimé."
+
+msgid "This user can't be restricted."
+msgstr "Cet utilisateur ne peut être restreint."
+
+msgid ""
+"This user has the global REST read only administration permission and should "
+"not browse the application."
+msgstr ""
+"Cet utilisateur a la permission globale d'administrateur lecture seule via "
+"REST et ne devrait pas naviguer dans l'application."
+
+msgid ""
+"This users group is bound to a group you are not allowed to administrate."
+msgstr "Ce groupe est lié à un groupe que vous ne pouvez pas administrer."
+
+msgid "This users group is bound to the following group:"
+msgstr "Ce groupe est lié aux groupe suivant :"
+
+msgid "This users group is not bound to any users group."
+msgstr "Ce groupe n'a pas lié à un autre groupe."
+
+msgid ""
+"This users group is the source of one other users group you are not allowed "
+"to administrate."
+msgid_plural ""
+"This users group is the source of %d other users groups you are not allowed "
+"to administrate."
+msgstr[0] ""
+"Ce groupe est la source d'un autre groupe que vous ne pouvez pas administrer."
+msgstr[1] ""
+"Ce groupe est la source de %d autres groupes que vous ne pouvez pas "
+"administrer."
+
+msgid "This widget is deprecated, you should remove it."
+msgstr "Ce widget est déprécié, vous devriez le supprimer."
+
+msgid ""
+"This will generate a zip archive with a project.xml file that contains "
+"project structure."
+msgstr ""
+"Ceci générera une archive zip avec un fichier project.xml qui contient la "
+"structure du projet."
+
+msgid "This will remove this service from all projects."
+msgstr "Ceci supprimera ce service de tous les projets."
+
+msgid "Thread"
+msgstr "Fil de discussion"
+
+msgid "Thread Monitoring Panel"
+msgstr "Ecran de surveillance des fils de discussion"
+
+msgid "Thread View"
+msgstr "Vue des fils de discussion"
+
+msgid "Thread monitoring update failed."
+msgstr "Echec de la mise à jour de la surveillance des fils de discussion."
+
+msgid "Thread monitoring updated."
+msgstr "Mise à jour de la surveillance des fils de discussion."
+
+msgid "Threaded"
+msgstr "En fils de discussions"
+
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+msgid "Timezone successfully updated"
+msgstr "Le fuseau horaire a été mis à jour avec succès"
+
+msgid "Timezone was not updated"
+msgstr "Le fuseau horaire n'a pas été mis à jour"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid ""
+"To determine if a password is compromised, the Have I Been Pwned service is "
+"used."
+msgstr ""
+"Pour déterminer si un mot de passe est compromis, le service Have I Been "
+"Pwned est utilisé."
+
+msgid ""
+"To do this click the confirm button in the email. <i class=\"fa fa-envelope-o"
+"\"></i>"
+msgstr ""
+"Pour cela cliquez sur le bouton de confirmation présent dans le mail.<i "
+"class=\"fa fa-envelope-o\"></i>"
+
+msgid ""
+"To proceed with the file download, click on '<b>I accept</b>'. If you do not "
+"want to download the file click on '<b>I decline</b>' and <a href=\"mailto:%s"
+"\"><b>contact us</b></a> if you need clarification or want to explain why "
+"you declined the agreement."
+msgstr ""
+"Pour débuter le téléchargement, cliquer sur '<b>Je suis d'accord</b>'. Si "
+"vous ne souhaitez pas télécharger le fichier cliquer sur '<b>Je refuse</b>' "
+"et <a href=\"mailto:%s\"><b>contactez-nous</b></a> si vous avez besoin de "
+"clarifications ou si vous souhaitez expliquer les raisons de votre refus."
+
+msgid "To sign in (your username is %s):"
+msgstr "Pour vous connecter (votre nom d'utilisateur est %s) :"
+
+msgid "To sign up:"
+msgstr "Pour vous enregistrer :"
+
+msgid "To turn off monitoring, simply click the <B>Stop Monitoring Forum</B>."
+msgstr ""
+"Pour arrêter la surveillance, cliquer sur le lien <b>Arrêter la "
+"surveillance</B>."
+
+msgid "Today"
+msgstr "Aujourd'hui"
+
+msgid "Token comment"
+msgstr "Commentaire du jeton"
+
+msgid "Too many projects are waiting to be approved."
+msgstr "Trop de projets sont en attente de validation."
+
+msgid "Too many projects for the user are waiting to be approved."
+msgstr "Trop de projets créés par l'utilisateur sont en attente de validation."
+
+msgid "Tools"
+msgstr "Outils"
+
+msgid "Trace and Track all types of activities."
+msgstr "Suivez et gérez tous types d'activités."
+
+#, php-format
+msgid "Tracker %s"
+msgstr "Outils de suivi %s"
+
+msgid "Tracker email format"
+msgstr "Format des notifications de l'outil de suivi"
+
+msgid "Trackers"
+msgstr "Outils de suivi"
+
+msgid "Trackers v3 import"
+msgstr "Import outils de suivi v3"
+
+msgid "Tree"
+msgstr "Arborescence"
+
+msgid "Trove categories"
+msgstr "Catégories"
+
+msgid "Trying to followup to a message that doesn't exist."
+msgstr "Tentative de poster une réponse sur un fil de discussion inexistant."
+
+msgid "Trying to post without a forum ID"
+msgstr "Tentative de poster un message sans identifiant (ID) de forum"
+
+msgid ""
+"Tuleap helps teams to deliver awesome applications, better, faster, and "
+"easier.\n"
+"Here you plan, track, code, and collaborate on software projects."
+msgstr ""
+"Avec Tuleap, les équipes livrent les applications plus rapidement, plus "
+"efficacement et de meilleure qualité.\n"
+"Venez planifier, suivre, développer & collaborer sur vos projets logiciels."
+
+msgid "Type"
+msgstr "Type"
+
+msgid "URL pointed by the reference"
+msgstr "URL pointée par la référence"
+
+msgid "Unable to fetch the latest activities of the project"
+msgstr "Impossible de récupérer les dernières activités du projet"
+
+#, php-format
+msgid "Unable to login under %1$s"
+msgstr "Impossible de se connecter sur %1$s"
+
+#, php-format
+msgid "Unable to send email to user, please contact %s"
+msgstr "Impossible d'envoyer l'email à l'utilisateur, veuillez contacter %s"
+
+msgid "Unable to update user preferences"
+msgstr "La mise à jour des préférences utilisateur a échoué"
+
+msgid "Unauthorized action for anonymous"
+msgstr "Cette action n'est pas autorisée pour les anonymes"
+
+msgid "Unix Group Name"
+msgstr "Nom du groupe unix"
+
+msgid "Unix name"
+msgstr "Now unix"
+
+msgid "Up to 2 categories can be used as flag."
+msgstr "Jusqu'à 2 catégories peuvent être utilisées en tant que marqueur."
+
+msgid "Update"
+msgstr "Mettre à jour"
+
+msgid "Update Forum Info/Status"
+msgstr "Mettre à jour les infos et le statut du forum"
+
+msgid "Update Forum Status"
+msgstr "Mettre à jour le statut du forum"
+
+msgid "Update failed"
+msgstr "La mise à jour a échoué"
+
+msgid "Update failed: icon conversion error"
+msgstr "La mise à jour a échoué : erreur lors de la conversion de l'icône"
+
+msgid "Update failed: invalid project icon selected"
+msgstr "La mise à jour a échoué : l'icône de projet selectionné est invalide"
+
+msgid "Update information"
+msgstr "Mettre à jour les informations"
+
+msgid "Update label"
+msgstr "Mettre à jour le label"
+
+msgid "Update mailing list"
+msgstr "Modifier la liste de diffusion"
+
+msgid "Update notifications settings"
+msgstr "Mettre à jour les paramètres de notification"
+
+msgid "Update of service label is not supported"
+msgstr "La mise à jour du label du service n'est pas supportée"
+
+msgid "Update of service name is not supported"
+msgstr "La mise à jour du nom du service n'est pas supportée"
+
+msgid "Update password"
+msgstr "Mettre à jour le mot de passe"
+
+msgid "Update successful"
+msgstr "Mis à jour avec succès"
+
+msgid "Update your email preferences"
+msgstr "Mettre à jour vos préférences"
+
+msgid "Updating Project Info"
+msgstr "Mise à jour des infos du projet"
+
+msgid "Upload text file"
+msgstr "Téléverser un fichier texte"
+
+msgid "Upload your own logo"
+msgstr "Uploadez votre propre logo"
+
+msgid "Uploaded file is too big"
+msgstr "Le fichier est trop gros"
+
+msgid "Use as project flag"
+msgstr "Utilisée en tant que marqueur de projet"
+
+msgid "Use default avatar"
+msgstr "Utiliser l'avatar par défaut"
+
+#, php-format
+msgid "User #%d is not administrator of project #%d"
+msgstr "L'utilisateur #%d n'est pas administrateur du projet #%d"
+
+#, php-format
+msgid "User '%s' does not exist"
+msgstr "L'utilisateur '%s' n’existe pas"
+
+msgid "User added"
+msgstr "Utilisateur ajouté"
+
+msgid "User and date"
+msgstr "Utilisateur et date"
+
+msgid "User avatar"
+msgstr "Avatar de l'utilisateur"
+
+msgid "User cannot be found"
+msgstr "L'utilisateur n'a pas été trouvé"
+
+msgid "User does not exist"
+msgstr "L'utilisateur n’existe pas"
+
+msgid "User email address"
+msgstr "Adresse e-mail de l'utilisateur"
+
+msgid "User group"
+msgstr "Groupe d'utilisateurs"
+
+msgid "User group already exists in this project. Please choose another name."
+msgstr ""
+"Le groupe utilisateur existe déjà dans ce projet. Merci de choisir un autre "
+"nom."
+
+msgid "User group created but cannot get Id."
+msgstr "Groupe utilisateur crée, mais impossible de retrouver son Id"
+
+msgid "User group does not exist"
+msgstr "Le groupe d'utilisateurs n'existe pas"
+
+msgid "User groups definition"
+msgstr "Définition des groupes"
+
+msgid "User is already member of the project"
+msgstr "L'utilisateur est déjà membre du projet"
+
+msgid "User name"
+msgstr "Nom d'utilisateur"
+
+msgid "User preferences successfully updated"
+msgstr "Les préférences utilisateur ont été mises à jour"
+
+msgid "User profile"
+msgstr "Profil utilisateur"
+
+msgid "User status"
+msgstr "Statut de l'utilisateur"
+
+msgid "Username"
+msgstr "Nom utilisateur"
+
+msgid "Username display"
+msgstr "Affichage des noms"
+
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgid "Users group"
+msgstr "Groupe d'utilisateurs"
+
+msgid "Users groups"
+msgstr "Groupes d'utilisateurs"
+
+msgid "Users groups bound to this one"
+msgstr "Groupes liés à celui-ci"
+
+#, php-format
+msgid "Users in <a href=\"%1$s\"><B>P</B> (pending) status</a>"
+msgstr "Utilisateurs en statut <a href=\"%1$s\"><B>P</B> (en attente)</a>"
+
+msgid "Users must be able to send at least one invitation by day."
+msgstr ""
+"Les utilisateurs doivent être en mesure d'envoyer au moins une invitation "
+"par jour."
+
+msgid "Users must first login before going further."
+msgstr ""
+"Tous les utilisateurs doivent s'authentifier avant de pouvoir accéder au "
+"contenu."
+
+msgid ""
+"Users must first login before going further. Some users may be restricted "
+"(restricted users have to be specifically granted access to projects and "
+"services)."
+msgstr ""
+"Tous les utilisateurs doivent s'authentifier avant de pouvoir accéder au "
+"contenu. Certains utilisateurs peuvent être restreints (les utilisateurs "
+"restreints ont accès uniquement aux projets et aux services auxquels les "
+"autorisations leur sont spécifiquement accordées)."
+
+msgid "Users pending email activation"
+msgstr "Utilisateurs validés en attente"
+
+msgid "Users statistics"
+msgstr "Statistiques utilisateurs"
+
+#, php-format
+msgid "Users that agreed to receive \"Site Updates\" (%1$s users)"
+msgstr ""
+"Abonnés à l'option \"Courrier électronique à propos des mises à jour du site"
+"\" (%1$s utilisateurs)"
+
+#, php-format
+msgid "Validated users <a href=\"%1$s\"><B>pending email activation</B></a>"
+msgstr ""
+"Utilisateurs validés en <a href=\"%1$s\"> attente d'activation par e-mail</a>"
+
+msgid "View all projects"
+msgstr "Voir tous les projets"
+
+msgid "View all system events"
+msgstr "Voir tous les événements système"
+
+msgid "View all users"
+msgstr "Voir tous les utilisateurs"
+
+msgid "View members"
+msgstr "Voir les membres"
+
+msgid "View most recent logins"
+msgstr "Afficher les connections récentes"
+
+msgid "View recommended browsers"
+msgstr "Voir les navigateurs recommandés"
+
+msgid "Visibility"
+msgstr "Visibilité"
+
+msgid ""
+"WARNING! You are about to permanently delete a message and all of its "
+"followups!!"
+msgstr ""
+"ATTENTION ! Vous êtes sur le point de détruire un message et tout son fil de "
+"discussion !!"
+
+msgid "Want to monitor this forum?"
+msgstr "Surveiller ce forum ?"
+
+msgid ""
+"Warning! This section will be deleted in June 2022. If this feature is "
+"important to you, please contact your administrator or raise your concern on "
+"the following ticket:"
+msgstr ""
+"Attention ! Cette section sera supprimée en juin 2022. Si cette "
+"fonctionnalité est important pour vous, veuillez contacter votre "
+"administrateur ou exprimez-vous sur le ticket suivant :"
+
+msgid "Warnings"
+msgstr "Alertes"
+
+msgid ""
+"We are sorry you caught an error, something meaningful was logged for site "
+"administrators. You may want got get in touch with them."
+msgstr ""
+"Nous sommes désolé que vous ayez rencontré un problème. Une information a "
+"été enregistrée à destination des administrateurs sites. Vous pouvez "
+"éventuellement rentrer en contact avec eux."
+
+msgid "We cannot find any edition information for the requested widget."
+msgstr "Impossible de trouver comment éditer le widget requis."
+
+msgid "We cannot find any widgets."
+msgstr "Impossible de trouver des widgets."
+
+msgid "We need at least one email to send an invitation"
+msgstr "Nous avons besoin d'au moins un email pour envoyer une invitation"
+
+msgid "We will send an email at this address to confirm your account."
+msgstr ""
+"Nous allons envoyer un email à cette adresse afin de confirmer votre compte."
+
+msgid "Webhooks"
+msgstr "Webhooks"
+
+msgid "Week"
+msgstr "Semaine"
+
+msgid "Welcome aboard"
+msgstr "Bienvenue à bord"
+
+msgid "Welcome message and information for users"
+msgstr "Message de bienvenue et informations générales pour les utilisateurs"
+
+#, php-format
+msgid "Welcome to %1$s"
+msgstr "Bienvenue sur %1$s"
+
+#, php-format
+msgid "Welcome to %1$s!"
+msgstr "Bienvenue sur %1$s!"
+
+msgid "Welcome to your new project"
+msgstr "Bienvenue dans votre nouveau projet"
+
+#, php-format
+msgid "Welcome, %1$s. You may now change your lost password."
+msgstr ""
+"Bienvenue, %1$s. Vous pouvez changer votre mot de passe perdu maintenant."
+
+msgid "What is the purpose of your project?"
+msgstr "Quel est le but de ce projet?"
+
+msgid "What's this access key for?"
+msgstr "À quel usage cette clé d'accès est destiné ?"
+
+#, php-format
+msgid ""
+"When CVS tracking is on, the commits (file change, addition and removal) are "
+"registered in the %1$s database so that they can be browsed and searched. "
+"Else commits are not logged in the database; only the CVS history is "
+"available"
+msgstr ""
+"Lorsque le suivi de CVS est activé, les commits (modification, ajout ou "
+"suppression de fichiers ou répertoires) sont enregistrés dans la base de "
+"données %1$s de façon à pouvoir les visualiser et effectuer des recherches "
+"avancées. Dans le cas contraire aucune information n'est conservée dans la "
+"base de données ; vous disposez uniquement de l'historique CVS."
+
+msgid ""
+"When this setting is active, whenever you add someone in any user group, "
+"they will be automatically added in project members."
+msgstr ""
+"Lorsque cette option est activée, dès lors que vous ajoutez un utilisateur "
+"dans un groupe, il sera automatiquement ajouté en tant que membre de projet."
+
+msgid "Why don't you start by editing your dashboard by adding some widgets?"
+msgstr ""
+"Pourquoi ne pas commencer par éditer votre tableau de bord en y ajoutant des "
+"widgets ?"
+
+msgid "Widget has been successfully deleted."
+msgstr "Le widget a correctement été supprimé."
+
+msgid "Widget not found."
+msgstr "Widget non trouvé."
+
+msgid "Widget successfully disabled."
+msgstr "Le widget a été désactivé avec succès."
+
+msgid "Widget successfully enabled."
+msgstr "Le widget a été activé avec succès."
+
+msgid "Widgets"
+msgstr "Widgets"
+
+msgid "Widgets availability"
+msgstr "Disponibilité des widgets"
+
+msgid "Wiki"
+msgstr "Wiki"
+
+msgid "Without any action from you,"
+msgstr "Si vous n'intervenez pas,"
+
+msgid ""
+"Wow, wait a minute. You are about to remove the parent. Please confirm your "
+"action."
+msgstr ""
+"Wow, attendez une minute. Vous êtes sur le point de supprimer le parent. "
+"Merci de confirmer votre action."
+
+#, php-format
+msgid ""
+"Wow, wait a minute. You're about to delete the label <b>%s</b>. Please "
+"confirm your action."
+msgstr ""
+"Wow, attendez une minute. Vous êtes sur le point de supprimer le label <b>"
+"%s</b>. Merci de confirmer votre action."
+
+msgid ""
+"Writing a compelling headline is a necessary step in order to encourage your "
+"users to sign in. Choose a catchy headline to summarize what Tuleap in your "
+"context is about. Don't be verbose though, keep the headline short."
+msgstr ""
+"Écrire une accroche percutante est nécessaire pour inciter les visiteurs à "
+"s'inscrire. Choisissez une accroche attirante qui décrit ce qu'est Tuleap "
+"dans votre environnement. Ne soyez pas trop verbeux cependant ;)"
+
+msgid "Year"
+msgstr "Année"
+
+msgid "Yesterday"
+msgstr "Hier"
+
+msgid ""
+"You appear to be double-posting this message, since it has the same subject "
+"and followup information as a prior post."
+msgstr ""
+"Il semble que vous tentiez de poster ce message deux fois, car il a le même "
+"sujet et les mêmes information d fil de discussion qu'un précédent message."
+
+msgid ""
+"You are about to allow access to a resource for every projects on the "
+"platform."
+msgstr ""
+"Vous êtes sur le point d'autoriser l'accès à une ressource pour tous les "
+"projets de la plateforme."
+
+msgid "You are about to delete <b>%s</b> binding. Please, confirm your action."
+msgstr ""
+"Vous êtes sur le point de supprimer le lien <b>%s</b>. Merci de confirmer "
+"votre action."
+
+msgid ""
+"You are about to delete <b>%s</b> users group. Please, confirm your action."
+msgstr ""
+"Wow, attendez une minute. Vous êtes sur le point de supprimer le groupe "
+"utilisateurs <b>%s</b>. Merci de confirmer votre action."
+
+#, php-format
+msgid ""
+"You are about to delete the dashboard \"%s\".\n"
+"                This action is irreversible. Please confirm this deletion."
+msgstr ""
+"Vous êtes sur le point de supprimer le tableau de bord \"%s\". Cette action "
+"est irréversible. Merci de confirmez cette suppression."
+
+#, php-format
+msgid ""
+"You are about to delete the widget \"%s\".\n"
+"                This action is irreversible. Please confirm this deletion."
+msgstr ""
+"Vous êtes sur le point de supprimer le widget \"%s\". Cette action est "
+"irréversible. Merci de confirmer cette suppression."
+
+msgid ""
+"You are about to disallow access to a resource for every projects on the "
+"platform."
+msgstr ""
+"Vous êtes sur le point de restreindre l'accès à une ressource pour tous les "
+"projets de la plateforme."
+
+msgid ""
+"You are about to download software from this site. Software re-use and "
+"sharing <b>inside</b> %s is subject to the <a href=\"%s\"><b>Code eXchange "
+"Corporate Policy</b></a>."
+msgstr ""
+"Vous êtes sur le point de télécharger un logiciel depuis ce site. Le partage "
+"et la réutilisation de logiciels <b>à l'intérieur</b> de %s est soumis à la "
+"<a href=\"%s\"><b>Politique d'échange de code</b></a>."
+
+msgid ""
+"You are about to mark this user as restricted, he will be removed from %s "
+"project not allowing restricted users. Please confirm your action."
+msgid_plural ""
+"You are about to mark this user as restricted, he will be removed from %s "
+"projects not allowing restricted users. Please confirm your action."
+msgstr[0] ""
+"Vous êtes sur le point de restreindre cet utilisateur, il sera supprimé de "
+"%s projet n'acceptant pas les utilisateurs restreints. Merci de confirmer "
+"votre action."
+msgstr[1] ""
+"Vous êtes sur le point de restreindre cet utilisateur, il sera supprimé de "
+"%s projets n'acceptant pas les utilisateurs restreints. Merci de confirmer "
+"votre action."
+
+msgid ""
+"You are about to remove %s restricted user from this project. Please confirm "
+"your action. The removal will be done a few minutes after your confirmation."
+msgid_plural ""
+"You are about to remove %s restricted users from this project. Please "
+"confirm your action. The removal will be done a few minutes after your "
+"confirmation."
+msgstr[0] ""
+"Vous êtes sur le point de supprimer %s utilisateur restreint. Merci de "
+"confirmer votre action. La suppression sera effective quelques minutes après "
+"votre confirmation."
+msgstr[1] ""
+"Vous êtes sur le point de supprimer %s utilisateurs restreints. Merci de "
+"confirmer votre action. La suppression sera effective quelques minutes après "
+"votre confirmation."
+
+msgid "You are about to remove the mailing list %s."
+msgstr "Vous êtes sur le point de supprimer la liste de diffusion %s."
+
+msgid "You are going be redirected"
+msgstr "Vous allez être redirigé(e)"
+
+msgid ""
+"You are monitoring the whole forum. If you want to monitor only specific "
+"threads, Stop Monitoring Forum."
+msgstr ""
+"Vous surveillez tout le forum. Si vous souhaitez seulement surveiller "
+"certains fils de discussion, stoppez la surveillance du forum."
+
+msgid "You are not allowed to access this resource"
+msgstr "Vous n'avez pas l'autorisation d'accéder à cette resource"
+
+#, php-format
+msgid ""
+"You are not authorized to access this file. Please contact a <A HREF=\"%1$s"
+"\">Project Administrator</A>."
+msgstr ""
+"Vous n'avez pas l'autorisation d'accès pour ce fichier. Veuillez contacter "
+"un <A HREF=\"%1$s\">administrateur du projet</A>."
+
+msgid "You are not the user who asked for email change"
+msgstr ""
+"Vous n'etes pas l'utilisateur à l'origine de la demande de changement d'e-"
+"mail"
+
+msgid ""
+"You are on the redirection page. You may found useful links on your <a href="
+"\"/my\">personal page</a>."
+msgstr ""
+"Vous êtes sur la page de redirection. Vous trouverez des liens utiles sur "
+"votre <a href=\"/my\">page personnelle</a>."
+
+#, php-format
+msgid ""
+"You are receiving this email because you elected to monitor this forum or "
+"this thread.\n"
+"To stop monitoring this forum, login and visit:\n"
+" %1$s .\n"
+"To change thread monitoring settings, visit:\n"
+" %2$s."
+msgstr ""
+"Vous recevez ce courrier électronique car vous avez choisi de surveiller ce "
+"forum ou ce fil de discussion. \n"
+"Pour arrêter la surveillance, connectez-vous et aller sur :\n"
+" %1$s .\n"
+"Pour modifier les paramètres de surveillance des fils de discussion, aller "
+"sur :\n"
+" %2$s."
+
+#, php-format
+msgid "You are trying to send %s invitations, but the maximum is %s per day."
+msgstr ""
+"Vous êtes en train d'envoyer %s invitations, mais le maximum est de %s par "
+"jour."
+
+#, php-format
+msgid "You are trying to send one invitation."
+msgid_plural "You are trying to send %s invitations."
+msgstr[0] "Vous essayez d'envoyer une invitation."
+msgstr[1] "Vous essayez d'envoyer %s invitations."
+
+#, php-format
+msgid ""
+"You are using an outdated version of %s. You might encounter issues if you "
+"continue."
+msgstr ""
+"Vous utilisez une version obsolète de %s. Vous pouvez rencontrer divers bugs "
+"si vous continuez."
+
+msgid "You can add a comment on this user registration<br>"
+msgstr ""
+"Vous pouvez ajouter un commentaire sur la création de ce compte "
+"utilisateur<br>"
+
+msgid "You can choose up to %s category"
+msgid_plural "You can choose up to %s categories"
+msgstr[0] "Vous pouvez choisir au plus %s catégorie"
+msgstr[1] "Vous pouvez choisir au plus %s catégories"
+
+msgid ""
+"You can configure some pages to be accessible by anyone, even if the "
+"platform would forbid it."
+msgstr ""
+"Vous pouvez rendre accessible aux anonymes les pages ci-dessous même si la "
+"plateforme force l'authentification"
+
+msgid ""
+"You can delegate to this group several permissions. All the members of this\n"
+"                        group will take advantage of these permissions."
+msgstr ""
+"Vous pouvez déléguer à ce groupe des permissions. Tous les membres de ce "
+"groupe  bénéficieront alors de ces permissions."
+
+msgid ""
+"You can edit the release note link. It will change this link on the Help "
+"Drop-down.\n"
+"                            This link is auto updated on each major upgrade. "
+"By default, the official Tuleap release note link is used."
+msgstr ""
+"Vous pouvez mettre à jour le lien de la release note. Il sera utilisé dans "
+"le bouton d'aide. \n"
+"                            Ce lien sera automatiquement mis à jour lors de "
+"chaque montée de version majeur de Tuleap. Par défault, le lien de la "
+"release note officielle de Tuleap est utilisé."
+
+msgid "You can import users into your project by specifying a text file."
+msgstr ""
+"Vous pouvez importer des utilisateurs dans votre projet en spécifiant un "
+"fichier texte."
+
+msgid "You can include empty lines in the import file."
+msgstr "Vous pouvez inclure des lignes vides dans le fichier d'import."
+
+msgid ""
+"You can make forums private from here. Please note that private forums can "
+"still be viewed by members of your project, not the general public."
+msgstr ""
+"Vous pouvez rendre un forum privé. veuillez noter que les forums privés ne "
+"sont visibles que pour les membres du projet."
+
+msgid ""
+"You can no longer invite people to use %s you have reached the limit of %s "
+"invitations by day."
+msgstr ""
+"Vous ne pouvez plus inviter de nouvelles personnes sur %s, vous avez déjà "
+"atteints la limite de %s invitations par jour."
+
+msgid "You can not delete system user groups"
+msgstr "Vous ne pouvez pas supprimer un groupe utilisateurs système"
+
+msgid "You can only edit your own widgets."
+msgstr "Vous ne pouvez éditer que vos propres widgets."
+
+#, php-format
+msgid "You can only send one more invitation."
+msgid_plural "You can only send %s more invitations."
+msgstr[0] "Vous ne pouvez envoyer plus qu'une seule invitation."
+msgstr[1] "Vous pouvez encore envoyer %s invitations."
+
+msgid ""
+"You can override default names for the two special groups. This only applies "
+"for git permissions at the moment."
+msgstr ""
+"Vous pouvez redéfinir les noms des deux groups spéciaux suivants. Pour le "
+"moment, cela s'applique uniquement au service Git."
+
+msgid ""
+"You can upload your own logo. In order to not ruin the design of the "
+"homepage, your logo should have a transparent background and a height of "
+"100px."
+msgstr ""
+"Vous pouvez afficher votre propre logo sur la page d'accueil. Afin de ne pas "
+"trop perturber le design de la page d'accueil, nous vous demandons "
+"d'uploader une image au format png avec un fond transparent et une hauteur "
+"de 100px."
+
+msgid "You can use Markdown to format your text"
+msgstr "Vous pouvez utiliser du Markdown pour formater votre texte"
+
+msgid ""
+"You can use SVN tokens as a replacement for your password on projects "
+"selected by the administrator."
+msgstr ""
+"Les jetons SVN sont utilisables en remplacement de votre mot de passe "
+"uniquement sur les projets définis par l'administrateur."
+
+msgid ""
+"You can use access keys to access resources from scripts or command line. "
+"However, these access keys are like password and should be guarded carefully."
+msgstr ""
+"Vous pouvez utiliser les clés d'accès pour accéder aux ressources à partir "
+"de scripts ou de la ligne de commande. Cependant ces clés sont similaires à "
+"des mots de passe et doivent être conservés précautionneusement."
+
+msgid ""
+"You can't remove the last group containing site administrator permissions"
+msgstr ""
+"Vous ne pouvez pas supprimer le dernier groupe ayant les droits "
+"d'administration de la plateforme."
+
+msgid ""
+"You can't remove the last group containing site administrator permissions."
+msgstr ""
+"Vous ne pouvez pas supprimer le dernier groupe ayant les droits "
+"d'administration de la plateforme."
+
+msgid "You can't remove the last platform administration permission."
+msgstr ""
+"Vous ne pouvez pas supprimer la dernière permission d'administration de la "
+"plateforme."
+
+msgid "You cannot access to this page."
+msgstr "Vous ne pouvez pas accéder à cette page."
+
+msgid "You cannot create an already expired access key."
+msgstr "Vous ne pouvez pas créer une clé déja expirée."
+
+msgid "You could post if you were logged in"
+msgstr "Vous pourriez poster un message si vous étiez connecté"
+
+msgid "You do not have permission to access the site administration."
+msgstr ""
+"Vous n'avez pas la permission d'accéder à l'administration de cette instance."
+
+msgid "You don't have any SSH keys yet."
+msgstr "Vous n'avez pas de clef SSH."
+
+msgid "You don't have any SVN tokens yet."
+msgstr "Vous n'avez pas de jetons SVN."
+
+msgid "You don't have any access keys yet."
+msgstr "Vous n'avez pas de clef d'accès."
+
+msgid "You don't have any dashboards"
+msgstr "Vous n'avez aucun tableau de bord"
+
+msgid "You don't have permission to access administration of this project."
+msgstr ""
+"Vous n'avez pas la permission d'accéder à l'administration de ce projet."
+
+msgid "You don't have permissions to see user groups."
+msgstr "Vous n'avez pas la permission de voir les groupes d'utilisateurs."
+
+msgid "You have a restricted user account"
+msgstr "Vous avez un compte utilisateur restreint"
+
+#, php-format
+msgid "You have not rights to update dashboards of the project \"%s\"."
+msgstr ""
+"Vous n’avez pas les droits pour mettre à jour des tableaux de bord du projet "
+"\"%s\"."
+
+#, php-format
+msgid ""
+"You have requested a change of email address on %s.\n"
+"Please visit the following URL to complete the email change:\n"
+"\n"
+"%s%s\n"
+"\n"
+"-- The %s Team"
+msgstr ""
+"Vous avez demandé a changer votre adresse e-mail en %s.\n"
+"Merci de visiter le lien ci-dessous pour confirmer ce changement :\n"
+"\n"
+"%s%s\n"
+"\n"
+"-- L'équipe %s"
+
+msgid "You may only have access to private projects you are member of."
+msgstr ""
+"Vous pouvez seulement accéder aux projets privés dont vous êtes membre."
+
+msgid "You may only have access to projects you are member of."
+msgstr "Vous pouvez seulement accéder aux projets dont vous êtes membre."
+
+msgid "You must be a project admin to edit this widget."
+msgstr ""
+"Vous devez être administrateur du projet pour pouvoir éditer ce widget."
+
+msgid "You must explain the purpose of your registration."
+msgstr ""
+"Vous devez indiquer la raison pour laquelle vous souhaitez créer un compte."
+
+msgid "You must supply a password."
+msgstr "Vous devez donner un mot de passe."
+
+msgid "You must supply a timezone."
+msgstr "Vous devez indiquer un fuseau horaire."
+
+msgid "You need to logout & login again for this to be taken into account"
+msgstr ""
+"Vous devez vous déconnecter et reconnecter pour que cette option soit prise "
+"en compte"
+
+msgid ""
+"You need to provide a simple file, containing in each line the email address "
+"or the username of the user."
+msgstr ""
+"Vous devez fournir un fichier simple, contenant pour chaque ligne l'adresse "
+"email ou le nom de l'utilisateur à importer."
+
+msgid ""
+"You receive this mail because you have not accessed the %s application since "
+"%s."
+msgstr ""
+"Vous recevez ce courriel car vous n'avez pas accédé à l'application %s "
+"depuis %s."
+
+msgid ""
+"You receive this mail because you have not accessed the "
+"{{ tuleap_server_name }} application since {{last_access_date }}."
+msgstr ""
+"Vous recevez ce courriel car vous n'avez pas accédé à l'application "
+"{{ tuleap_server_name }} depuis {{last_access_date }}."
+
+#, php-format
+msgid ""
+"You should not browse the platform with this user, you may experience "
+"inconsistent behaviour (%s)"
+msgstr ""
+"Il est fortement déconseillé de naviguer la plateforme avec cet utilisateur, "
+"vous pourriez rencontrer des comportements incohérents (%s)"
+
+msgid "You should provide a file in entry."
+msgstr "Vous devez fournir un fichier en entrée."
+
+msgid ""
+"You should remove user from news administrators before being able to remove "
+"him from writers."
+msgstr ""
+"Vous devez supprimer l'utilisateur des administrateurs d'annonces avant de "
+"pouvoir l'enlever des rédacteurs"
+
+msgid "You should send a png image"
+msgstr "Merci d'uploader une image au format png"
+
+msgid "You should send an image with height smaller than 100px"
+msgstr "L'image excède les 100px de hauteur"
+
+msgid ""
+"You still have <code>$sys_display_homepage_news</code> variable defined in "
+"local.inc. It's now stored in DB, you should remove it from the file to "
+"avoid confusion."
+msgstr ""
+"La variable <code>$sys_display_homepage_news</code> est toujours définie "
+"dans local.inc. La valeur est désormais stockée en base de données, vous "
+"devriez supprimer l'entrée dans local.inc pour éviter la confusion."
+
+msgid "You will not receive any more emails from this forum."
+msgstr ""
+"Vous ne recevrez plus de courrier électronique en provenance de ce forum."
+
+msgid "You will now be emailed followups to this entire forum."
+msgstr ""
+"Vous recevrez désormais un courrier électronique pour chaque message posté "
+"sur ce forum."
+
+#, php-format
+msgid "Your account has been created on %s"
+msgstr "Votre compte a été créé sur %s"
+
+msgid ""
+"Your account has been created,</br> it must be approved by an administrator."
+msgstr ""
+"Votre compte a été crée, </br>il doit être approuvé par un administrateur."
+
+#, php-format
+msgid ""
+"Your account has been deleted. If you have questions regarding your "
+"deletion, please email <A HREF=\"mailto:%1$s\">%2$s</A>."
+msgstr ""
+"Votre compte utilisateur a été détruit. Si vous avez des questions à ce "
+"propos, merci d'envoyer un message à <A HREF=\"mailto:%1$s\">%2$s</A>."
+
+msgid "Your account has been successfully confirmed."
+msgstr "Votre compte a été confirmé avec succès."
+
+#, php-format
+msgid ""
+"Your account has been suspended. If you have questions regarding your "
+"suspension, please email <a href=\"mailto:%s\">the site administrators</a>."
+msgstr ""
+"Votre compte utilisateur a été suspendu. Si vous avez des questions à ce "
+"sujet, veuillez envoyez un e-mail aux <a href=\"mailto:%s\">administrateurs "
+"du site</a>."
+
+msgid "Your account is created, </br>it now needs to be activated."
+msgstr "Votre compte est créé, </br> il ne reste plus qu'à l'activer."
+
+msgid "Your avatar"
+msgstr "Votre avatar"
+
+msgid "Your catchy headline"
+msgstr "Votre accroche"
+
+#, php-format
+msgid ""
+"Your email change is complete. Your new email address is <strong>%s</strong>"
+msgstr ""
+"Votre changement d'adresse e-mail est confirmé. Votre nouvelle adresse e-"
+"mail est <strong>%s</strong>"
+
+msgid "Your history is empty"
+msgstr "Votre historique est vide"
+
+#, php-format
+msgid ""
+"Your old Tuleap login was not valid against the configuration of your "
+"platform. It will be changed to \"%s\". If you use Ldap, it will not change "
+"your ldap login."
+msgstr ""
+"Votre ancien login Tuleap n'était plus valide par rapport à la configuration "
+"de votre plateforme. Il a été changé pour \"%s\". Si vous utilisez Ldap pour "
+"vous connecter, le login Ldap n'a pas changé."
+
+msgid "Your place was saved"
+msgstr "Position dans le forum sauvegardée."
+
+msgid "Your platform does not allow restricted users."
+msgstr "Votre plateforme n'authorise pas les utilisateurs restreints"
+
+msgid "Your request is invalid"
+msgstr "Votre requête n'est pas valide"
+
+msgid ""
+"Your web browser is no longer supported. Please upgrade to a modern, fully "
+"supported browser such as Firefox, Chrome or Edge."
+msgstr ""
+"Votre navigateur n'est plus supporté. Veuillez utiliser un navigateur "
+"moderne tel que Firefox, Chrome ou Edge."
+
+msgid "Your web browser is not supported"
+msgstr "Votre navigateur web n'est pas supporté"
+
+#, php-format
+msgid "[%s] Email change confirmation"
+msgstr "[%s] Confirmation de changement d'e-mail"
+
+msgid "`description` is required."
+msgstr "`description` est requis."
+
+msgid "activate"
+msgstr "activer"
+
+msgid "active"
+msgstr "actif"
+
+msgid "active last 24 hours"
+msgstr "actifs les dernières 24 heures"
+
+msgid "active last 3 months"
+msgstr "actifs les 3 derniers mois"
+
+msgid "active last month"
+msgstr "actifs le mois dernier"
+
+msgid "active last week"
+msgstr "actifs la semaine dernière"
+
+msgid "commits at once"
+msgstr "commits à la fois"
+
+msgid "deactivate"
+msgstr "désactiver"
+
+msgid "deleted"
+msgstr "supprimés"
+
+msgid "edit"
+msgstr "éditer"
+
+msgid "fields required"
+msgstr "champs obligatoires"
+
+#, php-format
+msgid "in %s"
+msgstr "dans %s"
+
+msgid "last<br>month"
+msgstr "le mois<br>dernier"
+
+msgid "login"
+msgstr "login"
+
+msgid "login (Real Name)"
+msgstr "login (Nom Complet)"
+
+msgid "matching commits"
+msgstr "commit(s) correspondant(s)"
+
+msgid "or"
+msgstr "ou"
+
+#, php-format
+msgid "parameter \"query\" syntax error: \"%s\" property not found"
+msgstr ""
+"erreur de syntaxe avec le paramètre \"query\": la propriété \"%s\" est "
+"introuvable"
+
+#, php-format
+msgid "parameter \"query\", property \"%s\" invalid type: boolean expected"
+msgstr ""
+"type invalide de la propriété \"%s\", paramètre \"query\": booléen attendu"
+
+msgid "partly<br>Email Address Appears Invalid, e-mail notification is off."
+msgstr ""
+"en partie<br>L'adresse e-mail semble invalide. la notification e-mail est "
+"désactivée."
+
+msgid "pending"
+msgstr "en attente"
+
+msgid "people monitoring"
+msgstr "Forum sous surveillance"
+
+msgid "permissions"
+msgstr "permissions"
+
+msgid "private repository"
+msgstr "dépôt privé"
+
+msgid "project"
+msgstr "projet"
+
+msgid "reply"
+msgstr "répondre"
+
+msgid "restricted"
+msgstr "restreint"
+
+msgid "sorted by"
+msgstr "trié par"
+
+msgid "successfully"
+msgstr "avec succès"
+
+msgid "supported browsers"
+msgstr "navigateurs supportés"
+
+msgid "suspended"
+msgstr "suspendu"
+
+msgid "system"
+msgstr "système"
+
+msgid "unsupported browsers"
+msgstr "navigateurs non supportés"
+
+msgid "view"
+msgstr "consulter"
+
+msgid "waiting"
+msgstr "en attente"
+
+msgid "your account will be automatically suspended on {{suspension_date}}."
+msgstr "votre compte sera désactivé automatiquement le {{suspension_date}}."
+
+msgid "{{ nb_members }} members"
+msgstr "{{ nb_members }} membres"
+
+msgid "{{ real_name }} doesn't seem to be member of any projects you can see."
+msgstr ""
+"{{ real_name }} ne semble pas être membre d'un projet que vous pouvez voir."
+
+msgid "{{ user_group_name }} has no global permission"
+msgstr "{{ user_group_name }} n'a pas de permissions globales"

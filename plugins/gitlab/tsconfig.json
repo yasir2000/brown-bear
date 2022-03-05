@@ -1,0 +1,10 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "esnext",
+        "types": ["jest", "bootstrap"]
+    },
+    "include": [
+        "scripts/artifact-create-branch-action/**/*"
+    ]
+}

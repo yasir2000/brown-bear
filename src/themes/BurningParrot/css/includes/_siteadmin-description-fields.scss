@@ -1,0 +1,24 @@
+.siteadmin-description-fields-name-column {
+    width: 30%;
+}
+
+.siteadmin-description-fields-description-column {
+    width: 70%;
+}
+
+.siteadmin-description-fields-type-column {
+    white-space: nowrap;
+}
+
+.modal-description-field-modal-row {
+    display: flex;
+
+    > .tlp-form-element {
+        margin: 0 var(--tlp-x-large-spacing) var(--tlp-medium-spacing) 0;
+
+        &:last-child {
+            flex: 1 1 auto;
+            margin: 0 0 var(--tlp-medium-spacing);
+        }
+    }
+}

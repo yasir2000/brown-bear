@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) Enalean, 2017 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+@import "query-edition";
+
+.cross-tracker-writing-mode {
+    padding: var(--tlp-medium-spacing);
+    border-bottom: 1px solid var(--tlp-neutral-light-color);
+}
+
+.cross-tracker-selector {
+    display: flex;
+
+    > :first-child {
+        margin-right: var(--tlp-x-large-spacing);
+    }
+}
+
+.cross-tracker-selector-project-input,
+.cross-tracker-selector-tracker-input.tlp-select {
+    min-width: 200px;
+}
+
+.cross-tracker-please-choose-option {
+    color: var(--tlp-dimmed-color);
+}
+
+.cross-tracker-selected-tracker {
+    margin: 0 10px 10px 0;
+
+    &:last-child {
+        margin: 0 0 10px;
+    }
+
+    .cross-tracker-report-archive-icon {
+        margin: 0 3px 0 5px;
+    }
+}
+
+.cross-tracker-remove-tracker {
+    cursor: pointer;
+}
+
+.cross-tracker-form-trackers-selected {
+    margin: 0 0 var(--tlp-small-spacing);
+}
+
+.writing-mode-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.writing-mode-actions-cancel {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}

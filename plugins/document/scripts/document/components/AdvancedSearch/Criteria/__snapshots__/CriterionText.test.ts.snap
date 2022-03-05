@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CriterionText should render the component 1`] = `
+<div
+  class="tlp-form-element document-search-criterion document-search-criterion-text"
+>
+  <label
+    class="tlp-label"
+    for="document-criterion-text-title"
+  >
+    Title
+  </label>
+   
+  <input
+    class="tlp-input"
+    data-test="document-criterion-text-title"
+    id="document-criterion-text-title"
+    type="text"
+  />
+</div>
+`;

@@ -1,0 +1,141 @@
+<div class="backlog-item-details-metadata">
+    <div class="backlog-item-details-metadata-container">
+        <div class="backlog-item-details-shortname">
+            <div class="tlp-dropdown"
+                data-nodrag="true"
+                ng-if="details.backlog_item.accept.trackers.length > 0 || details.canShowRemoveFromExplicitBacklog()"
+            >
+                <a href="/plugins/tracker/?aid={{ details.backlog_item.id }}"
+                    class="backlog-item-details-shortname-content"
+                    data-test="backlog-item-details-link"
+                    data-artifact-id="{{ details.backlog_item.id }}"
+                    open-tlp-dropdown
+                >
+                    <span class="backlog-item-details-shortname-content-text"
+                        ng-bind-html="details.backlog_item.short_type + ' #' + details.backlog_item.id | tuleapHighlight:details.backlog_filter.terms"
+                    ></span>
+                    <i class="fas fa-caret-down backlog-item-details-shortname-icon"
+                        ng-class="{'fa-circle-notch fa-spin': details.backlog_item.updating}"
+                    ></i>
+                </a>
+                <div class="tlp-dropdown-menu" role="menu">
+                    <a href="/plugins/tracker/?aid={{ details.backlog_item.id }}"
+                        ng-click="details.showEditModal($event, details.backlog_item, details.current_milestone)"
+                        class="tlp-dropdown-menu-item"
+                        role="menuitem"
+                    >
+                        <i class="tlp-dropdown-menu-item-icon fas fa-fw fa-pencil-alt"></i>
+                        <span translate>Edit this item</span>
+                    </a>
+                    <a href=""
+                        ng-if="details.canShowRemoveFromExplicitBacklog()"
+                        ng-click="details.removeElementFromExplicitBacklog($event, details.backlog_item)"
+                        class="tlp-dropdown-menu-item"
+                        role="menuitem"
+                    >
+                        <i class="tlp-dropdown-menu-item-icon fa fa-fw fa-tlp-remove-from-backlog"></i>
+                        <span translate>Remove from top backlog</span>
+                    </a>
+                    <span class="tlp-dropdown-menu-title" ng-if="details.backlog_item.accept.trackers.length > 0" translate>Children</span>
+                    <a href=""
+                        ng-repeat="accepted_type in details.backlog_item.accept.trackers"
+                        ng-click="details.showAddChildModal($event, accepted_type, details.backlog_item)"
+                        class="tlp-dropdown-menu-item"
+                        role="menuitem"
+                    >
+                        <i class="tlp-dropdown-menu-item-icon fa fa-fw fa-plus"></i>
+                        <span translate>Add {{ accepted_type.label }}</span>
+                    </a>
+                </div>
+            </div>
+
+            <a href="/plugins/tracker/?aid={{ details.backlog_item.id }}"
+                ng-if="details.backlog_item.accept.trackers.length === 0 && ! details.canShowRemoveFromExplicitBacklog()"
+                ng-click="details.showEditModal($event, details.backlog_item, details.current_milestone)"
+                class="backlog-item-details-shortname-content"
+                data-nodrag="true"
+            >
+                <span class="backlog-item-details-shortname-content-text"
+                    ng-bind-html="details.backlog_item.short_type + ' #' + details.backlog_item.id | tuleapHighlight:details.backlog_filter.terms"
+                ></span>
+                <i ng-if="details.backlog_item.updating"
+                    class="fas fa-circle-notch fa-spin backlog-item-details-shortname-icon"
+                    aria-hidden="true"
+                ></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="backlog-item-details-metadata-container">
+        <card-parent-link ng-if="details.backlog_item.parent.label"
+            text="{{ details.backlog_item.parent.label }}"
+            url="{{ '/plugins/tracker/?aid=' + details.backlog_item.parent.id }}"
+            parent_project_label="{{ details.backlog_item.parent.tracker.project.label }}"
+            parent_project_id="{{ details.backlog_item.parent.tracker.project.id }}"
+            parent_project_color_name="{{ details.backlog_item.parent.tracker.project.background.identifier }}"
+            parent_project_icon="{{details.backlog_item.parent.tracker.project.icon}}"
+            project_id="{{ details.backlog_item.project.id }}"
+            filter-terms="{{ details.backlog_filter.terms }}"
+        ></card-parent-link>
+
+        <div class="backlog-item-details-effort-container">
+            <span ng-if="details.backlog_item.initial_effort"
+                class="tlp-badge-rounded backlog-item-details-effort-container-content-initial-effort"
+                ng-class="'tlp-badge-' + details.getCardColorName()"
+                title="{{::'Initial effort' | translate }}"
+                ng-bind-html="(details.backlog_item.initial_effort | tuleapHighlight:details.backlog_filter.terms)"
+            ></span>
+
+            <span ng-if="! details.backlog_item.initial_effort"
+                class="tlp-badge-secondary tlp-badge-rounded tlp-badge-outline backlog-item-details-effort-container-content-no-initial-effort"
+                title="{{::'No initial effort defined' | translate }}"
+            >
+                <i class="fas fa-question backlog-item-details-effort-container-content-no-initial-effort-icon"></i>
+            </span>
+        </div>
+    </div>
+</div>
+
+<span class="backlog-item-details-title"
+    tuleap-simple-field
+    value="{{ details.backlog_item.label }}"
+    filter-terms="{{ details.backlog_filter.terms }}"
+></span>
+
+<card-fields item="details.backlog_item" filter-terms="details.backlog_filter.terms"></card-fields>
+
+<div ng-if="details.user_has_accessibility_mode" class="card-accessibility {{ details.backlog_item.background_color_name }}"></div>
+
+<div class="backlog-item-details-moves" data-nodrag="true">
+    <span class="tlp-button-primary backlog-item-details-move"
+        title="{{::'Move to top' | translate }}"
+        aria-label="{{::'Move to top' | translate }}"
+        role="button"
+        ng-click="details.moveToTop()"
+        ng-hide="details.backlog_item.moving_to"
+    >
+        <i class="fa backlog-item-details-move-icon"
+            ng-class="{
+                'fa-chevron-up': ! details.backlog_item.selected,
+                'fa-angle-double-up': details.backlog_item.selected
+            }"></i>
+    </span>
+    <span class="tlp-button-primary backlog-item-details-move"
+        title="{{::'Move to bottom' | translate }}"
+        aria-label="{{::'Move to bottom' | translate }}"
+        role="button"
+        ng-click="details.moveToBottom()"
+    >
+        <i class="fa backlog-item-details-move-icon"
+            ng-class="{
+                'fa-chevron-down': ! details.backlog_item.moving_to && ! details.backlog_item.selected,
+                'fa-angle-double-down': ! details.backlog_item.moving_to && details.backlog_item.selected,
+                'fa-spinner fa-spin': details.backlog_item.moving_to
+            }"></i>
+    </span>
+</div>
+
+<item-progress color-name="{{ details.getCardColorName() }}"
+    value="details.backlog_item.remaining_effort"
+    max-value="details.backlog_item.initial_effort"
+></item-progress>

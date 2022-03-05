@@ -1,0 +1,79 @@
+<div class="tlp-framed-vertically">
+
+    {{> siteadmin-config/site-admin-navbar }}
+
+    <div class="tlp-framed-horizontally">
+
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="far fa-trash-alt tlp-pane-title-icon"></i>{{# dgettext }} tuleap-tracker | Artifacts deletion configuration {{/ dgettext }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <div class="tlp-alert-warning">
+                        {{# dgettext }}
+                            tuleap-tracker
+                            | Be careful: An artifact deletion is an action hardly reversible. Choose wisely.
+                        {{/ dgettext }}
+                    </div>
+
+                    {{# is_archiving_enabled }}
+                        <div class="tlp-alert-info">
+                            {{# dgettext }}
+                                tuleap-tracker
+                                |  Archive deleted items plugin is enabled. Each deleted artifact will be archived in the folder defined in the plugin configuration.
+                            {{/ dgettext }}
+                        </div>
+                    {{/ is_archiving_enabled }}
+                    {{^ is_archiving_enabled }}
+                        <div class="tlp-alert-info">
+                            {{# dgettext }}
+                                tuleap-tracker
+                                |  Archive deleted items plugin is not installed or enabled. Each deleted artifact will be exported and placed in the temporary folder defined in the local.inc file. They will be purged automatically accordingly to the settings of the machine on which the server is running.
+                            {{/ dgettext }}
+                        </div>
+                    {{/is_archiving_enabled}}
+
+                    <form method="POST" action="">
+                        <input type="hidden" name="action" value="artifacts-deletion-update-limit" />
+                        {{# csrf_token }}
+                            {{> csrf_token_input }}
+                        {{/ csrf_token }}
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="input-artifacts-limit">
+                                {{# dgettext }}
+                                    tuleap-tracker
+                                    | Limit
+                                {{/ dgettext }}
+                            </label>
+                            <input type="number"
+                                   id="input-artifacts-limit"
+                                   data-test="input-artifacts-limit"
+                                   class="tlp-input"
+                                   name="artifacts_limit"
+                                   placeholder="0"
+                                   size="5"
+                                   value="{{ artifacts_limit }}"
+                                   min="0"
+                            />
+                            <p class="tlp-text-info">
+                                {{# dgettext }}
+                                    tuleap-tracker
+                                    | Maximum number of artifacts users can delete or move from the REST API on a 24 hours sliding window.
+                                {{/ dgettext }}
+                            </p>
+                        </div>
+
+                        <div class="tlp-pane-section-submit">
+                            <button type="submit" class="tlp-button-primary" data-test="artifact-deletion-button">
+                                <i class="fa fa-save tlp-button-icon"></i>
+                                 {{# gettext }}Save configuration{{/ gettext }}
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>

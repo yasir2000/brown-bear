@@ -1,0 +1,21 @@
+{
+  "name": "tuleap/plugin-agiledashboard",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\AgileDashboard\\": ["include/", "include/AgileDashboard/"]
+    },
+    "classmap": ["include/"]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tuleap\\AgileDashboard\\": "tests/unit/"
+    }
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ]
+    }
+  }
+}

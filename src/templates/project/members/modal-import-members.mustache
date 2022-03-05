@@ -1,0 +1,62 @@
+<div id="modal-import-users"
+     class="tlp-modal tlp-modal-medium-sized"
+     role="dialog"
+     aria-labelledby="modal-import-users-label"
+>
+    <form method="POST"
+          enctype="multipart/form-data"
+          id="project-admin-user-import-form"
+          action=""
+    >
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+        <div class="tlp-modal-header">
+            <h1 class="tlp-modal-title" id="modal-import-users-label">
+                <i class="fa fa-upload tlp-modal-title-icon"></i > {{# gettext }}Import members{{/ gettext }}
+            </h1>
+            <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+                <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="tlp-modal-body">
+            <p{{# gettext }}You can import users into your project by specifying a text file.{{/ gettext }}</p>
+            <input type="hidden" name="project_id" value="{{ project_id}}"/>
+
+            <div class="tlp-form-element" id="project-admin-members-upload-file-form-element">
+                <label for="input-file" class="tlp-label">
+                    {{# gettext }}Upload text file{{/ gettext }}
+                </label>
+                <input type="file"
+                       accept="text/plain"
+                       id="project-admin-members-import-users-file"
+                       name="user_filename"
+                />
+                <p class="tlp-text-danger" id="file-input-bad-type" hidden>{{# gettext }}Please choose a valid text file{{/ gettext }}</p>
+                <p class="tlp-text-info" id="project-admin-members-input-file-helper"><i class="fa fa-info-circle"></i>
+                    {{# gettext }}You need to provide a simple file, containing in each line the email address or the username of the user.{{/ gettext }}
+                    {{# gettext }}You can include empty lines in the import file.{{/ gettext }}
+                    {{# gettext }}Please make sure the users who will be imported are already registered and have an active account.{{/ gettext }}
+                </p>
+            </div>
+            <section id="modal-import-users-preview"></section>
+        </div>
+
+        <div class="tlp-modal-footer">
+            <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+                {{# gettext }}Cancel{{/ gettext }}
+            </button>
+            <button type="submit"
+                    name="action"
+                    value="import"
+                    class="tlp-button-primary tlp-modal-action"
+                    id="project-admin-import-members-load-validation"
+                    title="{{# gettext }}Please select a file to upload{{/ gettext }}"
+                    disabled
+            >
+                <i class="tlp-button-icon fa fa-upload"></i> {{# gettext }}Import{{/ gettext }}
+            </button>
+        </div>
+    </form>
+</div>

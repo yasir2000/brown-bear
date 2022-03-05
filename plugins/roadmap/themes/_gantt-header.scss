@@ -1,0 +1,294 @@
+/**
+ * Copyright (c) Enalean, 2021 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:map";
+@use "sass:color";
+@use "../../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+@use "roadmap-variables";
+
+$border-width: 4px;
+$caret-width: 20px;
+
+.roadmap-gantt-header {
+    $padding-for-time-units: 2 * roadmap-variables.$time-unit-height;
+
+    position: relative;
+    margin: (roadmap-variables.$today-pin-head-size + 2px) 0 0;
+    padding: $padding-for-time-units 0 0;
+    border-right: 2px solid var(--tlp-neutral-normal-color);
+
+    &.roadmap-gantt-header-with-1-ribbons {
+        padding: $padding-for-time-units + roadmap-variables.$iteration-height 0 0;
+    }
+
+    &.roadmap-gantt-header-with-2-ribbons {
+        padding: $padding-for-time-units + 2 * roadmap-variables.$iteration-height 0 0;
+    }
+
+    &.roadmap-gantt-header-is-scrolling::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: roadmap-variables.$z-index-scroll-indicator;
+        top: 0;
+        right: -14px;
+        width: 12px;
+        height: 100%;
+        opacity: 0.075;
+        background: linear-gradient(to right, var(--tlp-dark-color), transparent);
+    }
+}
+
+.roadmap-gantt-task-header {
+    display: flex;
+    align-items: baseline;
+    width: roadmap-variables.$task-header-width;
+    min-width: roadmap-variables.$task-header-width;
+    height: roadmap-variables.$task-height;
+    padding: calc(var(--tlp-small-spacing) - 2px) var(--tlp-medium-spacing)
+        calc(var(--tlp-small-spacing) - 2px) calc(var(--tlp-small-spacing) - 4px);
+    border-bottom: 1px solid var(--tlp-neutral-normal-color);
+    color: var(--tlp-typo-default-text-color);
+    white-space: nowrap;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    &.roadmap-gantt-task-header-with-subtasks {
+        cursor: pointer;
+
+        &:hover {
+            background: var(--tlp-fade-background-color);
+        }
+    }
+}
+
+.roadmap-gantt-task-header-caret {
+    flex: 0 0 auto;
+    width: $caret-width;
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    text-align: center;
+
+    + .roadmap-gantt-task-header-link {
+        max-width: calc(
+            #{roadmap-variables.$task-header-width - $caret-width} - var(--tlp-medium-spacing)
+        );
+    }
+}
+
+.roadmap-gantt-task-header-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: calc(#{roadmap-variables.$task-header-width} - var(--tlp-medium-spacing));
+    color: var(--tlp-typo-default-text-color);
+
+    &:hover {
+        text-decoration: none;
+
+        > .roadmap-gantt-task-header-title {
+            text-decoration: underline;
+        }
+    }
+}
+
+.roadmap-gantt-subtask-header-for-invalid-task > .roadmap-gantt-task-header-link {
+    max-width: calc(
+        #{roadmap-variables.$task-header-width} - var(--tlp-medium-spacing) - var(--tlp-jumbo-spacing)
+    );
+}
+
+.roadmap-gantt-task-header-for-invalid-task > .roadmap-gantt-task-header-link {
+    max-width: calc(
+        #{roadmap-variables.$task-header-width} - var(--tlp-medium-spacing) - var(--tlp-x-large-spacing)
+    );
+}
+
+.roadmap-gantt-task-header-for-invalid-task
+    > .roadmap-gantt-task-header-caret
+    + .roadmap-gantt-task-header-link {
+    max-width: calc(
+        #{roadmap-variables.$task-header-width - $caret-width} - var(--tlp-medium-spacing) - var(--tlp-large-spacing)
+    );
+}
+
+.roadmap-gantt-task-header-xref {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: baseline;
+    max-width: calc(100% - var(--tlp-small-spacing));
+    margin: 0 var(--tlp-small-spacing) 2px 0;
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+}
+
+.roadmap-gantt-task-header-xref-project {
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.roadmap-gantt-task-header-xref-separator {
+    flex: 0 0 auto;
+    margin: 0 2px;
+    font-size: 0.7em;
+}
+
+.roadmap-gantt-task-header-xref-reference {
+    flex: 0 0 auto;
+}
+
+.roadmap-gantt-task-header-title {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    text-overflow: ellipsis;
+
+    > .tlp-skeleton-text {
+        width: 100%;
+    }
+}
+
+.roadmap-gantt-task-header-invalid-icon {
+    display: flex;
+    flex: 1 0 auto;
+    align-self: center;
+    justify-content: flex-end;
+    color: var(--tlp-warning-color);
+}
+
+.roadmap-gantt-subtask-header {
+    $offset-to-align-border-with-parent-caret: 4.5px;
+
+    position: relative;
+    padding: 0 var(--tlp-medium-spacing) 0
+        calc(
+            var(--tlp-small-spacing) + #{$offset-to-align-border-with-parent-caret} + #{$border-width}
+        );
+    background: var(--tlp-fade-background-color);
+
+    &.roadmap-gantt-subtask-header-last-one {
+        box-shadow: inset 0 -3px 0 var(--tlp-neutral-normal-color);
+
+        &:last-child {
+            box-shadow: inset 0 -1px 0 var(--tlp-neutral-normal-color);
+        }
+
+        > .roadmap-gantt-task-header-link::before {
+            bottom: 2px;
+        }
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: $border-width;
+    }
+
+    > .roadmap-gantt-task-header-link {
+        position: relative;
+        align-items: flex-start;
+        padding: calc(var(--tlp-small-spacing) - 2px) 0 calc(var(--tlp-small-spacing) - 2px)
+            calc(var(--tlp-small-spacing) + #{$border-width});
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: $border-width;
+        }
+
+        &.roadmap-gantt-task-header-link-skeleton::before {
+            animation: skeletonBlink 750ms linear infinite alternate;
+            background: var(--tlp-neutral-normal-color);
+        }
+    }
+}
+
+.roadmap-gantt-task-header-link-skeleton {
+    > .roadmap-gantt-task-header-xref {
+        width: 50%;
+    }
+}
+
+.roadmap-gantt-subtask-header-error-message,
+.roadmap-gantt-subtask-header-info-message {
+    display: flex;
+    position: absolute;
+    z-index: roadmap-variables.$z-index-task-messages;
+    left: var(--tlp-medium-spacing);
+    align-items: center;
+    width: calc(100% - var(--tlp-medium-spacing));
+    height: roadmap-variables.$task-height;
+    padding: 0 var(--tlp-medium-spacing);
+    font-size: 0.875rem;
+}
+
+.roadmap-gantt-subtask-header-error-message {
+    border-left: var(--tlp-alert-danger-border);
+    background: var(--tlp-alert-danger-background);
+    color: var(--tlp-alert-danger-color);
+}
+
+.roadmap-gantt-subtask-header-info-message {
+    border-left: var(--tlp-alert-info-border);
+    background: var(--tlp-alert-info-background);
+    color: var(--tlp-alert-info-color);
+}
+
+.roadmap-gantt-subtask-header-message-icon {
+    margin: 0 6px 0 0;
+}
+
+.roadmap-gantt-subtask-header-message-button {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+@each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+    .roadmap-gantt-task-header-#{$color-name} {
+        &:not(.roadmap-gantt-subtask-header) {
+            border-left: $border-width solid map.get($colors, "border");
+        }
+
+        &.roadmap-gantt-subtask-header::before {
+            background: color.adjust(map.get($colors, "border"), $alpha: - 0.85);
+        }
+    }
+
+    .roadmap-gantt-task-header-link-#{$color-name} {
+        > .roadmap-gantt-task-header-xref {
+            color: map.get($colors, "text");
+        }
+    }
+
+    .roadmap-gantt-subtask-header > .roadmap-gantt-task-header-link-#{$color-name}::before {
+        background: map.get($colors, "border");
+    }
+}

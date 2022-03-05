@@ -1,0 +1,23 @@
+SONAR_PGUSER=sonar
+SONAR_PGPASS=secret
+SONAR_DB=sonar
+DOMAIN=mydomain.com.mx
+INSTALL4J_ADD_VM_PARAMS=-Xms128m -Xmx512m -XX:MaxDirectMemorySize=512m -Djava.util.prefs.userRoot=/nexus-data/javaprefs
+SONAR_WEB_JAVAOPTS=-Xms128m -Xmx256m
+SONAR_CE_JAVAOPTS=-Xms128m -Xmx256m
+#SONAR_SEARCH_JAVAOPTS=-Xms256m -Xmx512m
+JENKINS_JAVAOPTS=-Xms256m -Xmx512m
+GITLAB_VOLUME_CONFIG=/golden/volumes/gitlab/config
+GITLAB_VOLUME_DATA=/golden/volumes/gitlab/data
+JENKINS_VOLUME_HOME=/golden/volumes/jenkins
+# Fix volume permissions, see https://hub.docker.com/r/sonatype/nexus3
+NEXUS_VOLUME_DATA=/golden/volumes/nexus
+# Fix volume permissions, see https://hub.docker.com/_/sonarqube
+SONAR_VOLUME_CONFIG=/golden/volumes/sonarqube/config
+SONAR_VOLUME_DATA=/golden/volumes/sonarqube/data
+SONAR_VOLUME_EXT=/golden/volumes/sonarqube/ext
+SONAR_VOLUME_DB=/golden/volumes/sonarqube/pgdb
+TULEAP_FQDN=tuleap.example.com
+MYSQL_ROOT_PASSWORD=admin123
+TULEAP_SYS_DBPASSWD=admin123
+SITE_ADMINISTRATOR_PASSWORD=admin123

@@ -1,0 +1,171 @@
+/**
+ * Copyright (c) Enalean, 2011-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:map";
+@import "../../../../../src/themes/tlp/src/scss/variables/colors/common-colors";
+
+form[name="edit_chart_form"] label {
+    font-weight: bold;
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.tracker_report_renderer_graphontrackers_charts {
+    margin-top: 40px;
+    clear: both;
+
+    // stylelint-disable-next-line selector-class-pattern
+    > .widget_report_graph {
+        display: inline-block;
+        padding: 0 20px 20px 0;
+        text-align: right;
+        vertical-align: top;
+
+        > .widget {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.widget_content > .tracker_report_renderer_graphontrackers_charts {
+    margin-top: 0;
+
+    // stylelint-disable-next-line selector-class-pattern
+    > .widget_report_graph > .widget {
+        // stylelint-disable-next-line selector-class-pattern
+        > .widget_titlebar {
+            border-bottom-color: #b2b2b2;
+            color: #222222;
+
+            // stylelint-disable-next-line selector-class-pattern, selector-max-compound-selectors
+            > .plugin_graphontrackersv5_widget_actions {
+                display: none;
+            }
+        }
+
+        // stylelint-disable-next-line selector-class-pattern
+        > .widget_content {
+            border-top-color: #b2b2b2;
+        }
+    }
+}
+
+.dashboard-widget {
+    // stylelint-disable-next-line selector-class-pattern
+    .widget_titlebar {
+        color: #747474;
+        text-align: left;
+    }
+
+    // stylelint-disable-next-line selector-class-pattern
+    .plugin_graphontrackersv5_widget_actions {
+        display: none;
+    }
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.plugin_graphontrackersv5_widget_actions {
+    float: right;
+}
+
+// stylelint-disable-next-line selector-class-pattern
+.tracker_report_renderer_graphontrackers_graph {
+    text-align: center;
+
+    text {
+        fill: #222222;
+        font-size: 0.9em;
+    }
+
+    .legend {
+        font-size: inherit;
+
+        > text {
+            fill: #222222;
+            font-style: normal;
+        }
+    }
+
+    /* Render bar charts */
+    .axis {
+        path,
+        line {
+            stroke: #dddddd;
+            shape-rendering: crispEdges;
+        }
+
+        path {
+            display: none;
+        }
+    }
+
+    .y.axis line {
+        stroke-dasharray: 2, 2;
+        stroke: #bbbbbb;
+    }
+}
+
+@each $color-name, $colors in $tlp-swatch-color-map {
+    .graph-element-#{$color-name} {
+        fill: map.get($colors, "primary");
+    }
+
+    .cumulative-flowchart-legend-color-#{$color-name} {
+        background-color: map.get($colors, "primary");
+    }
+}
+
+.cumulative-flowchart-legend {
+    display: flex;
+    height: 60px;
+}
+
+.cumulative-flowchart-legend-list {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0;
+    list-style: none;
+}
+
+.cumulative-flowchart-legend-list-item {
+    display: flex;
+    align-items: center;
+}
+
+.cumulative-flowchart-legend-color {
+    flex: 0 0 auto;
+    width: 12px;
+    height: 12px;
+    min-height: 0;
+    margin: 0 5px 0 0;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.graphontrackersv5-chart-spinner {
+    min-height: 100px;
+    background: url("./../../../../../src/www/themes/common/images/tuleap-spinner.gif") no-repeat
+        center center;
+}
+
+.tlp-alert-danger.graphontrackersv5-chart-error {
+    margin: 20px 0;
+}

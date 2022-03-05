@@ -1,0 +1,35 @@
+{{# has_clone_urls }}
+    <button
+        type="button"
+        class="tlp-button-primary git-repository-actions-button"
+        id="git-repository-clone-popover-button"
+        data-placement="bottom"
+        data-trigger="click"
+    >
+        <i class="tlp-button-icon fa fa-download" aria-hidden="true"></i>
+        {{# dgettext }}tuleap-git | Clone{{/ dgettext }}
+        <i class="fa fa-caret-down tlp-button-icon-right" aria-hidden="true" id="git-repository-clone-popover-caret"></i>
+    </button>
+
+    <section class="tlp-popover" id="git-repository-clone-popover">
+        <div class="tlp-popover-arrow"></div>
+        <div class="tlp-popover-header">
+            <h1 class="tlp-popover-title">{{# dgettext }}tuleap-git | Clone or download{{/ dgettext }}</h1>
+        </div>
+        <div class="tlp-popover-body">
+            {{# clone_url_presenters }}
+                {{> repository/clone-bar-input }}
+            {{/ clone_url_presenters }}
+
+            {{# has_ssh_mirrors }}
+                <hr class="git-repository-clone-popover-separator">
+                <p>
+                    {{# dgettext }}tuleap-git | Clone from SSH mirrors{{/ dgettext }}
+                </p>
+                {{# ssh_mirrors_presenters }}
+                    {{> repository/clone-bar-input }}
+                {{/ ssh_mirrors_presenters }}
+            {{/ has_ssh_mirrors }}
+        </div>
+    </section>
+{{/ has_clone_urls }}

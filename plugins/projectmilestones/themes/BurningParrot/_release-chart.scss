@@ -1,0 +1,346 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+@use "../../../../plugins/tracker/themes/default/css/includes/burndown-chart";
+
+$timeline-color: var(--tlp-main-color-lighter-90);
+
+.release-charts-row {
+    display: flex;
+    flex-direction: row;
+
+    @media screen and (max-width: 1800px) {
+        flex-wrap: wrap;
+    }
+}
+
+.release-chart-row-element {
+    margin: 0 0 var(--tlp-medium-spacing);
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.release-chart-container {
+    position: relative;
+    padding-top: calc(45% + 20px);
+}
+
+.release-chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .chart-curve-remaining-effort,
+    .chart-curve-total,
+    .chart-curve-progression {
+        stroke-width: 2px;
+    }
+
+    .chart-y-axis > .tick > text,
+    .chart-x-axis > .tick > text {
+        opacity: 0.8;
+        color: var(--tlp-dimmed-color);
+    }
+}
+
+.release-line-scale,
+.release-chart .ideal-line > path {
+    stroke-width: 1px;
+    stroke: var(--tlp-neutral-normal-color);
+    fill: transparent;
+}
+
+.release-chart-badge-container {
+    animation: shadow-pulse 2s infinite cubic-bezier(0.65, 0.47, 0.76, 1);
+    fill: burndown-chart.$remaining-effort-color;
+}
+
+.release-chart-badge-value {
+    fill: var(--tlp-white-color);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.release-chart-end-icon {
+    align-self: center;
+    margin: 0 7px 0 0;
+    opacity: 0.9;
+    fill: burndown-chart.$remaining-effort-color;
+    font-size: 15px;
+}
+
+@keyframes shadow-pulse {
+    from {
+        filter: drop-shadow(0 0 0 burndown-chart.$remaining-effort-color);
+    }
+
+    to {
+        filter: drop-shadow(0 0 12px transparent);
+    }
+}
+
+.release-widget-pie-chart-ttm-slice > path {
+    stroke-width: 1.5px;
+    stroke: var(--tlp-white-color);
+}
+
+.release-widget-pie-chart-ttm-slice-blocked {
+    > path {
+        fill: var(--tlp-info-color);
+    }
+
+    > text {
+        fill: var(--tlp-info-color);
+        text-shadow: var(--tlp-white-color) 1px 1px, var(--tlp-white-color) -1px 1px,
+            var(--tlp-white-color) -1px -1px, var(--tlp-white-color) 1px -1px,
+            var(--tlp-white-color) 2px 2px, var(--tlp-white-color) -2px 2px,
+            var(--tlp-white-color) -2px -2px, var(--tlp-white-color) 2px -2px,
+            var(--tlp-white-color) 3px 3px, var(--tlp-white-color) -3px 3px,
+            var(--tlp-white-color) -3px -3px, var(--tlp-white-color) 3px -3px;
+    }
+}
+
+.release-widget-pie-chart-ttm-slice-notrun {
+    > path {
+        fill: var(--tlp-dimmed-color);
+    }
+
+    > text {
+        fill: var(--tlp-dimmed-color);
+        text-shadow: var(--tlp-white-color) 1px 1px, var(--tlp-white-color) -1px 1px,
+            var(--tlp-white-color) -1px -1px, var(--tlp-white-color) 1px -1px,
+            var(--tlp-white-color) 2px 2px, var(--tlp-white-color) -2px 2px,
+            var(--tlp-white-color) -2px -2px, var(--tlp-white-color) 2px -2px,
+            var(--tlp-white-color) 3px 3px, var(--tlp-white-color) -3px 3px,
+            var(--tlp-white-color) -3px -3px, var(--tlp-white-color) 3px -3px;
+    }
+}
+
+.release-widget-pie-chart-ttm-slice-passed {
+    > path {
+        fill: var(--tlp-success-color);
+    }
+
+    > text {
+        fill: var(--tlp-success-color);
+        text-shadow: var(--tlp-white-color) 1px 1px, var(--tlp-white-color) -1px 1px,
+            var(--tlp-white-color) -1px -1px, var(--tlp-white-color) 1px -1px,
+            var(--tlp-white-color) 2px 2px, var(--tlp-white-color) -2px 2px,
+            var(--tlp-white-color) -2px -2px, var(--tlp-white-color) 2px -2px,
+            var(--tlp-white-color) 3px 3px, var(--tlp-white-color) -3px 3px,
+            var(--tlp-white-color) -3px -3px, var(--tlp-white-color) 3px -3px;
+    }
+}
+
+.release-widget-pie-chart-ttm-slice-failed {
+    > path {
+        fill: var(--tlp-danger-color);
+    }
+
+    > text {
+        fill: var(--tlp-danger-color);
+        text-shadow: var(--tlp-white-color) 1px 1px, var(--tlp-white-color) -1px 1px,
+            var(--tlp-white-color) -1px -1px, var(--tlp-white-color) 1px -1px,
+            var(--tlp-white-color) 2px 2px, var(--tlp-white-color) -2px 2px,
+            var(--tlp-white-color) -2px -2px, var(--tlp-white-color) 2px -2px,
+            var(--tlp-white-color) 3px 3px, var(--tlp-white-color) -3px 3px,
+            var(--tlp-white-color) -3px -3px, var(--tlp-white-color) 3px -3px;
+    }
+}
+
+.release-widget-pie-chart-ttm-slice-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.release-widget-pie-chart-ttm-legend {
+    padding: 0 0 0 var(--tlp-small-spacing);
+    color: var(--tlp-dimmed-color);
+    font-size: 12px;
+    line-height: 20px;
+    cursor: default;
+}
+
+.release-widget-pie-chart-ttm,
+.release-widget-pie-chart-ttm-legend.release-widget-pie-chart-ttm-legend-notrun,
+.release-widget-pie-chart-ttm-legend.release-widget-pie-chart-ttm-legend-passed,
+.release-widget-pie-chart-ttm-legend.release-widget-pie-chart-ttm-legend-blocked,
+.release-widget-pie-chart-ttm-legend.release-widget-pie-chart-ttm-legend-failed {
+    display: flex;
+    align-items: center;
+    width: max-content;
+}
+
+.release-widget-pie-chart-ttm {
+    transform: translate(0, calc(-28px + var(--tlp-small-spacing)));
+}
+
+.release-widget-pie-chart-ttm-legend-color-span {
+    flex: 0 0 auto;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px 0 0;
+    transition: transform ease-out 75ms;
+    border-radius: 50%;
+    opacity: 0.8;
+
+    &.release-widget-pie-chart-ttm-legend-color-passed {
+        background-color: var(--tlp-success-color);
+    }
+
+    &.release-widget-pie-chart-ttm-legend-color-blocked {
+        background-color: var(--tlp-info-color);
+    }
+
+    &.release-widget-pie-chart-ttm-legend-color-notrun {
+        background-color: var(--tlp-dimmed-color);
+    }
+
+    &.release-widget-pie-chart-ttm-legend-color-failed {
+        background-color: var(--tlp-danger-color);
+    }
+}
+
+.release-widget-pie-chart-ttm-legend-selected {
+    font-weight: 600;
+
+    > .release-widget-pie-chart-ttm-legend-color-span {
+        transform: scale(1.2);
+    }
+}
+
+.release-ttm-section {
+    width: 100%;
+}
+
+.release-chart-displayer {
+    width: calc(220px + var(--tlp-small-spacing));
+    margin: 0;
+}
+
+.release-chart-displayer-burndown {
+    margin: 0 var(--tlp-medium-spacing) var(--tlp-medium-spacing) 0;
+}
+
+.project-milestones-display-description.project-milestones-display-burndown-chart.project-milestones-display-burnup-chart.project-milestones-display-ttm-chart {
+    .container-chart-burndown-burnup {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+    }
+
+    .container-chart-ttm {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
+
+    .release-charts-row {
+        flex-direction: row;
+    }
+}
+
+.project-milestones-display-burndown-chart.project-milestones-display-burnup-chart.project-milestones-display-ttm-chart
+    .release-charts-row {
+    flex-direction: column;
+
+    @media screen and (max-width: 1800px) {
+        flex-direction: row;
+    }
+}
+
+.container-chart-burndown-burnup {
+    grid-row: 1;
+
+    @media screen and (max-width: 1800px) {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+    }
+}
+
+.container-chart-burndown-burnup.only-one-chart {
+    grid-row: auto / 2;
+
+    @media screen and (max-width: 1800px) {
+        grid-row: 2;
+    }
+}
+
+.project-milestones-display-description .release-charts-row {
+    flex-direction: column;
+
+    @media screen and (max-width: 1800px) {
+        flex-direction: row;
+    }
+}
+
+.project-milestones-display-description .container-chart-ttm {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+}
+
+.container-chart-ttm {
+    grid-row: 1;
+
+    @media screen and (max-width: 1800px) {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
+}
+
+.two-columns-small-big > div:first-of-type,
+.two-columns-big-small > div:nth-of-type(2),
+.three-columns,
+.three-columns-big-small-small > div:nth-of-type(2),
+.three-columns-big-small-small > div:nth-of-type(3),
+.three-columns-small-big-small > div:first-of-type,
+.three-columns-small-big-small > div:nth-of-type(3),
+.three-columns-small-small-big > div:first-of-type,
+.three-columns-small-small-big > div:nth-of-type(2) {
+    .project-milestones-display-description .container-chart-burndown-burnup {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+    }
+
+    .project-milestones-display-burndown-chart.project-milestones-display-burnup-chart
+        .container-chart-burndown-burnup {
+        grid-row: 2;
+
+        .release-charts-row {
+            flex-direction: row;
+        }
+    }
+
+    .project-milestones-display-only-ttm .container-chart-ttm {
+        grid-column: auto;
+        grid-row: 1;
+    }
+
+    .project-milestones-display-description.project-milestones-display-only-ttm
+        .container-chart-ttm {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+    }
+
+    .container-chart-ttm {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
+}

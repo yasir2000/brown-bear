@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartBadgeGenerator - When the badge is created, Then value of remaining effort is displayed in the front of the badge 1`] = `
+<svg>
+  <svg
+    height="100"
+    width="100"
+  >
+    <g
+      class="release-chart-badge-remaining"
+      transform="translate(10, 15)"
+    >
+      <text
+        class="release-chart-badge-value"
+        id="release-chart-burndown-badge-value-103"
+      >
+        1
+      </text>
+      <rect
+        class="release-chart-badge-container"
+        height="10"
+        rx="5"
+        ry="5"
+        width="10"
+        x="10"
+        y="10"
+      />
+      <text
+        class="release-chart-end-icon fa"
+        style="font-family:'Font Awesome 5 Free';"
+        x="13"
+        y="9"
+      >
+        
+      </text>
+      <use
+        href="#release-chart-burndown-badge-value-103"
+      />
+    </g>
+  </svg>
+</svg>
+`;

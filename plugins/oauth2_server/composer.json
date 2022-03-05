@@ -1,0 +1,20 @@
+{
+    "name": "tuleap/plugin-oauth2-server",
+    "autoload": {
+        "psr-4": {
+            "Tuleap\\OAuth2Server\\": "include/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tuleap\\OAuth2Server\\": "tests/unit/",
+            "Tuleap\\OAuth2Server\\E2E\\RelyingPartyOIDC\\": "tests/e2e/cypress/rp-oidc/"
+        }
+    },
+    "require-dev": {
+        "amphp/http-server": "^2.0",
+        "amphp/log": "^1.1",
+        "amphp/http-server-router": "^1.0",
+        "php-http/logger-plugin": "^1.1"
+    }
+}

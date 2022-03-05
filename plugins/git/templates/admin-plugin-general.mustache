@@ -1,0 +1,34 @@
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">{{ access_control_title }}</h1>
+        </div>
+        <section class="tlp-pane-section">
+            <form method="POST"
+                  action="?pane=general-settings&action=enable-regexp-usage"
+            >
+                {{# csrf_token }}
+                    {{> csrf_token_input }}
+                {{/ csrf_token }}
+
+                <div class="tlp-alert-warning">{{ warning_admin_activation }}</div>
+
+                <div class="tlp-form-element">
+                    <label class="tlp-label" for="toggle-activate-regexp">
+                        {{ allow_regexp_info }}
+                    </label>
+
+                    <div class="tlp-switch">
+                        <input type="checkbox"
+                            id="toggle-activate-regexp"
+                            name="activate-regexp"
+                            class="tlp-switch-checkbox"
+                            {{# is_activated }} checked="checked" {{/ is_activated }}
+                            onchange="this.form.submit()">
+                        <label for="toggle-activate-regexp" class="tlp-switch-button" aria-hidden></label>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</section>

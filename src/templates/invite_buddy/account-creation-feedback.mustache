@@ -1,0 +1,16 @@
+<p>{{# gettext }}Hello,{{/ gettext }}</p>
+
+<p>
+    {{# gettext }}
+        %s with email %s created an account on %s.
+        | {{ user }}
+        | {{ email }}
+        | {{ instance_name }}
+    {{/ gettext }}
+</p>
+
+<p>
+    {{# gettext }}Best regards,{{/ gettext }}
+    <br>
+    {{# gettext }}The %s team. | {{ instance_name }}{{/ gettext }}
+</p>

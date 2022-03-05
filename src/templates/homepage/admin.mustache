@@ -1,0 +1,113 @@
+<h1>{{ title }}</h1>
+
+<form action="" method="POST" id="admin-homepage" enctype="multipart/form-data">
+    <input type="hidden" name="MAX_FILE_SIZE" value="500000">
+    <input type="hidden" name="update" value="1">
+
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+
+    <section class="tlp-pane">
+        <div class="tlp-pane-container">
+            <div class="tlp-pane-header">
+                <h1 class="tlp-pane-title">
+                    <i class="fa fa-cogs tlp-pane-title-icon"></i> {{ customize_title }}
+                </h1>
+            </div>
+            <section class="tlp-pane-section">
+                <h2 class="tlp-pane-subtitle">{{ logo }}</h2>
+                <p>{{ logo_help }}<br>{{ logo_help_end }}</p>
+
+                <div class="tlp-form-element headline-custom-logo-section">
+                    {{# use_custom_logo }}
+                        <img src="{{ path_logo }}" alt="Logo" class="headline-custom-logo-current">
+                    {{/ use_custom_logo }}
+
+                    <div class="headline-custom-logo-submit">
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="headline-logo">
+                                {{# use_custom_logo }}
+                                    {{ replace_upload }}
+                                {{/ use_custom_logo }}
+                                {{^ use_custom_logo }}
+                                    {{ upload }}
+                                {{/ use_custom_logo }}
+                            </label>
+                            <input type="file" id="headline-logo" name="logo" >
+                        </div>
+
+                        {{# use_custom_logo }}
+                            <span class="headline-custom-logo-or">{{ or_label }}</span>
+
+                            <button type="submit"
+                                class="tlp-button-danger tlp-button-outline"
+                                name="remove_custom_logo"
+                                value="1"
+                            >
+                                {{ remove_custom_logo }}
+                            </button>
+                        {{/ use_custom_logo }}
+                    </div>
+                </div>
+            </section>
+            <section class="tlp-pane-section">
+                <h2 class="tlp-pane-subtitle">{{ headline }}</h2>
+                <p>{{ headline_help }}</p>
+
+                <div class="tlp-form-element headline-form-element">
+                    <div class="tlp-label headline-label">
+                        <label class="headline-label">{{ label_language }}</label>
+                        <select id="admin-headline-select-language" class="tlp-select tlp-select-small tlp-select-adjusted headline-language-select">
+                            {{# headlines }}
+                                <option>{{ language_id }}</option>
+                            {{/ headlines }}
+                        </select>
+                    </div>
+                    {{# headlines }}
+                        <textarea id="admin-headline-{{ language_id }}"
+                            class="admin-headline tlp-textarea"
+                            name="headlines[{{ language_id }}]"
+                            placeholder="{{ placeholder_headline }}"
+                            rows="3"
+                        >{{ headline }}</textarea>
+                    {{/ headlines }}
+                </div>
+            </section>
+            <section class="tlp-pane-section">
+                <h2 class="tlp-pane-subtitle">{{# gettext }}Platform statistics{{/ gettext }}</h2>
+                <label class="tlp-label tlp-checkbox">
+                    <input
+                        type="checkbox"
+                        name="use_statistics_homepage"
+                        {{# display_statistics_on_home_page }} checked {{/display_statistics_on_home_page}}
+                    >
+                    {{# gettext }}Display platform statistics on home page.{{/ gettext}}
+                </label>
+            </section>
+
+            <section class="tlp-pane-section">
+                <h2 class="tlp-pane-subtitle">{{# gettext }}Site news{{/ gettext }}</h2>
+                {{# warn_local_inc }}
+                    <div class="tlp-alert-warning">
+                        {{# gettext }}You still have <code>$sys_display_homepage_news</code> variable defined in local.inc. It's now stored in DB, you should remove it from the file to avoid confusion.{{/ gettext }}
+                    </div>
+                {{/ warn_local_inc }}
+                <label class="tlp-label tlp-checkbox">
+                    <input
+                        type="checkbox"
+                        name="use_news_homepage"
+                        {{# display_news_on_home_page }} checked {{/display_news_on_home_page}}
+                    >
+                    {{# gettext }}Display site news on home page.{{/ gettext}}
+                </label>
+            </section>
+
+            <section class="tlp-pane-section tlp-pane-section-submit">
+                <button type="submit" class="tlp-button-primary">
+                    <i class="fa fa-save tlp-button-icon"></i> {{ save }}
+                </button>
+            </section>
+        </div>
+    </section>
+</form>

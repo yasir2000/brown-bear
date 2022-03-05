@@ -1,0 +1,29 @@
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">
+                <i class="fa fa-life-ring tlp-pane-title-icon"></i>
+                Aide
+            </h1>
+        </div>
+        <section class="tlp-pane-section">
+
+            <h2 class="tlp-pane-subtitle">Documentation</h2>
+
+            <p>Vous avez une question sur Tuleap ou vous êtes bloqué?
+               Nous vous suggérons de commencer par regarder dans la documentation :</p>
+
+            <ul>
+                <li><a href="/doc/en/">Guide Utilisateur en anglais</a></li>
+                <li><a href="/doc/fr/">Guide Utilisateur en français</a></li>
+            </ul>
+
+            <p>Parfois l'information est plus à jour dans le guide en anglais</p>
+
+            <h2 class="tlp-pane-subtitle">Posez vos questions</h2>
+
+            <p>Le site <a href="https://www.tuleap.org/get-started">tuleap.org</a> met à disposition de nombreuses ressources ainsi qu'un <a href="https://chat.tuleap.org">salon de discussion</a> communautaire.</p>
+
+        </section>
+    </div>
+</section>

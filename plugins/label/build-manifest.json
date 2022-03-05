@@ -1,0 +1,9 @@
+{
+    "name": "label",
+    "gettext-vue": {
+        "labeled-items": {
+            "src": "scripts/project-labeled-items/src",
+            "po": "scripts/project-labeled-items/po"
+        }
+    }
+}

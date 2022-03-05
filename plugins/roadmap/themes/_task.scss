@@ -1,0 +1,201 @@
+/**
+ * Copyright (c) Enalean, 2021 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+@use "roadmap-variables";
+@use "grid";
+@use "sass:math";
+@use "dependencies";
+@use "popover";
+@use "sass:map";
+
+.roadmap-gantt-task {
+    display: flex;
+    position: relative;
+    height: roadmap-variables.$task-height;
+
+    &:last-child > .roadmap-gantt-task-background-grid > .roadmap-gantt-task-background-grid-unit {
+        border-bottom: 0;
+    }
+}
+
+.roadmap-gantt-task-background-grid {
+    display: flex;
+}
+
+.roadmap-gantt-task-background-grid-unit {
+    @include grid.alternate-background;
+
+    display: flex;
+    width: roadmap-variables.$time-unit-width;
+}
+
+.roadmap-gantt-task-bar-milestone-container,
+.roadmap-gantt-task-bar-container {
+    position: absolute;
+    z-index: roadmap-variables.$z-index-bars;
+}
+
+.roadmap-gantt-task-bar-container {
+    display: flex;
+    top: math.floor((roadmap-variables.$task-height - roadmap-variables.$task-bar-height) / 2);
+    align-items: center;
+    height: roadmap-variables.$task-bar-height;
+}
+
+.roadmap-gantt-task-bar {
+    display: flex;
+    align-items: center;
+    min-width: roadmap-variables.$task-bar-min-width;
+    height: roadmap-variables.$task-bar-height;
+    padding: 1px;
+    overflow: hidden;
+    border: 1px solid var(--tlp-dimmed-color);
+    border-radius: var(--tlp-small-radius);
+    background: var(--tlp-dimmed-color);
+
+    &.roadmap-gantt-task-bar-with-progress-in-error {
+        justify-content: center;
+    }
+
+    &.tlp-skeleton-text {
+        border: 0;
+        background: none;
+
+        &::after {
+            height: 100%;
+        }
+
+        > .roadmap-gantt-task-bar-progress {
+            display: none;
+        }
+    }
+}
+
+.roadmap-gantt-task-bar-with-dates-implied {
+    border-style: dashed;
+}
+
+.roadmap-gantt-task-bar-with-progress-in-error,
+.roadmap-gantt-task-bar-progress-error-outside-bar {
+    font-size: 0.6875rem;
+    line-height: 0.75rem;
+}
+
+.roadmap-gantt-task-bar-progress-error-outside-bar {
+    margin: 0 0 0 5px;
+}
+
+.roadmap-gantt-task-bar-progress {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--tlp-small-radius) - 1px);
+}
+
+.roadmap-gantt-task-bar-progress-text-outside-bar,
+.roadmap-gantt-task-bar-progress-text-inside-progress-bar,
+.roadmap-gantt-task-bar-progress-text-outside-progress-bar {
+    margin: 0 4px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    cursor: default;
+}
+
+.roadmap-gantt-task-bar-progress-text-inside-progress-bar {
+    color: var(--tlp-white-color);
+}
+
+[data-user-has-accessibility-mode="1"] {
+    .roadmap-gantt-task-bar-progress::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+        left: 1px;
+        border-radius: var(--tlp-small-radius);
+        opacity: 0.5;
+    }
+
+    .roadmap-gantt-task-bar-progress-text-inside-progress-bar {
+        position: absolute;
+        padding: 0 3px;
+        border-radius: var(--tlp-small-radius);
+        line-height: 0.8rem;
+    }
+}
+
+.roadmap-gantt-task-bar-milestone-container {
+    display: flex;
+    top: math.round(
+        (roadmap-variables.$task-height - roadmap-variables.$task-milestone-height) / 2
+    );
+    align-items: center;
+}
+
+.roadmap-gantt-task-bar-milestone-border-with-dates-implied {
+    stroke-dasharray: 2;
+}
+
+@each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+    .roadmap-gantt-task-bar-container-#{$color-name} {
+        > .roadmap-gantt-task-bar {
+            border-color: map.get($colors, "border");
+            background: map.get($colors, "secondary");
+            color: map.get($colors, "text");
+
+            > .roadmap-gantt-task-bar-progress {
+                background: map.get($colors, "primary");
+
+                &::before {
+                    background: map.get($colors, "secondary");
+                    mask-image: url("#{map.get($colors, 'pattern')}");
+                }
+
+                > .roadmap-gantt-task-bar-progress-text-inside-progress-bar {
+                    background: map.get($colors, "primary");
+                }
+            }
+        }
+
+        > .roadmap-gantt-task-bar-milestone {
+            > .roadmap-gantt-task-bar-milestone-border {
+                stroke: map.get($colors, "border");
+                fill: map.get($colors, "secondary");
+            }
+
+            > .roadmap-gantt-task-bar-milestone-progress {
+                stroke: map.get($colors, "primary");
+                fill: map.get($colors, "primary");
+            }
+        }
+
+        > .roadmap-gantt-task-bar-progress-error-outside-bar,
+        > .roadmap-gantt-task-bar-progress-text-outside-bar {
+            color: map.get($colors, "text");
+        }
+    }
+}

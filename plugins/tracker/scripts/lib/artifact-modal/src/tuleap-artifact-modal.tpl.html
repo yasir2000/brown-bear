@@ -1,0 +1,476 @@
+<script type="text/ng-template" id="field-fieldset.tpl.html">
+<fieldset
+    class="tlp-pane tlp-pane-collapsable"
+    ng-class="{ 'tlp-pane-collapsed': field.collapsed, 'tlp-pane-hidden': field.is_hidden }"
+    data-test="fieldset"
+>
+    <div class="tlp-pane-container">
+        <legend class="tlp-pane-header" ng-click="modal.toggleFieldset(field)">
+            <h1 class="tlp-pane-title" data-test="fieldset-label">
+                <i class="tlp-pane-title-icon fa fa-fw" ng-class="{ 'fa-caret-right': field.collapsed, 'fa-caret-down': ! field.collapsed }"></i>
+                {{ field.label }}
+            </h1>
+        </legend>
+        <section class="tlp-pane-section" data-test="fieldset-content">
+            <ng-include
+                src="field.template_url"
+                ng-repeat="field in field.content"
+            ></ng-include>
+        </section>
+    </div>
+</fieldset>
+</script>
+
+<script type="text/ng-template" id="field-column.tpl.html">
+<ng-include
+    src="field.template_url"
+    ng-repeat="field in field.content"
+></ng-include>
+</script>
+
+<script type="text/ng-template" id="field-linebreak.tpl.html">
+<br>
+</script>
+
+<script type="text/ng-template" id="field-separator.tpl.html">
+<hr>
+</script>
+
+<script type="text/ng-template" id="field-staticrichtext.tpl.html">
+<div class="tlp-property">
+    <div ng-bind-html="modal.values[field.field_id].default_value"></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="field-sb.tpl.html">
+    <div
+        class="field"
+        tuleap-artifact-modal-list-picker-field="field"
+        is-disabled="modal.isDisabled(field)"
+        value-model="modal.values[field.field_id]"
+        options-value="field.filtered_values"
+        is-list-picker-enabled="modal.is_list_picker_enabled"
+    ></div>
+</script>
+
+<script type="text/ng-template" id="field-msb.tpl.html">
+<div class="tlp-form-element">
+    <div
+        class="field"
+        tuleap-artifact-modal-list-picker-multiple-field="field"
+        is-disabled="modal.isDisabled(field)"
+        value-model="modal.values[field.field_id]"
+        options-value="field.filtered_values"
+        is-list-picker-enabled="modal.is_list_picker_enabled"
+    ></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="field-rb.tpl.html">
+<tuleap-artifact-modal-radio-buttons-field
+    field-id="field.field_id"
+    name="field.name"
+    label="field.label"
+    required="field.required"
+    disabled="modal.isDisabled(field)"
+    value="modal.values[field.field_id].bind_value_ids[0]"
+    values="field.values"
+    on-value-changed="modal.setFieldValueForRadioButtonsCustomElement($event)"
+    ce-one-way
+    data-test="radiobutton-field"
+></tuleap-artifact-modal-radio-buttons-field>
+</script>
+
+<script type="text/ng-template" id="field-cb.tpl.html">
+<div class="tlp-form-element" data-test="checkbox-field">
+    <label class="tlp-label">
+        {{ field.label }}
+        <i ng-if="field.required" class="fa fa-asterisk"></i>
+    </label>
+
+    <label ng-repeat="field_value in field.values"
+        for="{{ 'cb_' + field.field_id + '_' + field_value.id }}"
+        class="tlp-label tlp-checkbox"
+        data-test="checkbox-field-value"
+    >
+        <input type="checkbox"
+            ng-model="modal.values[field.field_id].bind_value_ids[$index]"
+            ng-true-value="{{ field_value.id | json }}"
+            ng-false-value="null"
+            ng-disabled="modal.isDisabled(field)"
+            id="{{ 'cb_' + field.field_id + '_' + field_value.id }}"
+            data-test="checkbox-field-input"
+        >
+        {{ field_value.label }}
+    </label>
+</div>
+</script>
+
+<script type="text/ng-template" id="field-int.tpl.html">
+<tuleap-artifact-modal-int-field
+    field-id="field.field_id"
+    label="field.label"
+    required="field.required"
+    disabled="modal.isDisabled(field)"
+    value="modal.values[field.field_id].value"
+    on-value-changed="modal.setFieldValueForCustomElement($event)"
+    ce-one-way
+    data-test="int-field"
+></tuleap-artifact-modal-int-field>
+</script>
+
+<script type="text/ng-template" id="field-string.tpl.html">
+<tuleap-artifact-modal-string-field
+    field-id="field.field_id"
+    label="field.label"
+    required="field.required"
+    disabled="modal.isDisabled(field)"
+    value="modal.values[field.field_id].value"
+    on-value-changed="modal.setFieldValueForCustomElement($event)"
+    ce-one-way
+    data-test="string-field"
+></tuleap-artifact-modal-string-field>
+</script>
+
+<script type="text/ng-template" id="field-float.tpl.html">
+<tuleap-artifact-modal-float-field
+    field-id="field.field_id"
+    label="field.label"
+    required="field.required"
+    disabled="modal.isDisabled(field)"
+    value="modal.values[field.field_id].value"
+    on-value-changed="modal.setFieldValueForCustomElement($event)"
+    ce-one-way
+    data-test="float-field"
+></tuleap-artifact-modal-float-field>
+</script>
+
+<script type="text/ng-template" id="field-text.tpl.html">
+<tuleap-artifact-modal-text-field
+    field-id="field.field_id"
+    label="field.label"
+    format="modal.values[field.field_id].value.format"
+    content-value="modal.values[field.field_id].value.content"
+    required="field.required"
+    disabled="modal.isDisabled(field)"
+    project-id="modal.tracker.project.id"
+    on-value-changed="modal.setFieldValueForCustomElement($event)"
+    on-upload-image="modal.addToFilesAddedByTextField($event)"
+    ce-one-way
+    data-test="text-field"
+></tuleap-artifact-modal-text-field>
+</script>
+
+<script type="text/ng-template" id="field-art_link.tpl.html">
+<tuleap-artifact-modal-link-field-v2
+    ng-if="modal.is_links_field_v2_enabled === true"
+    field-id="field.field_id"
+    label="field.label"
+    controller="modal.link_field_controller"
+    ce-one-way
+></tuleap-artifact-modal-link-field-v2>
+<div
+    ng-if="modal.is_links_field_v2_enabled === false"
+    class="field"
+    tuleap-artifact-modal-link-field="field"
+    is-disabled="modal.isDisabled(field)"
+    value-model="modal.values[field.field_id]"
+    artifact-id="modal.artifact_id"
+    tracker="modal.tracker"
+    parent-artifact-id="modal.parent_artifact_id"
+    parent-artifact="modal.parent"
+    is-list-picker-enabled="modal.is_list_picker_enabled"
+    has-current-project-parents="modal.has_current_project_parents"
+></div>
+</script>
+<script type="text/ng-template" id="field-burndown.tpl.html">
+<tuleap-artifact-modal-burndown-field
+    field="field"
+    current-artifact-identifier="modal.current_artifact_identifier"
+    ce-one-way
+></tuleap-artifact-modal-burndown-field>
+</script>
+
+<script type="text/ng-template" id="field-cross.tpl.html">
+<tuleap-artifact-modal-cross-references-field
+    field="field"
+    ce-one-way
+></tuleap-artifact-modal-cross-references-field>
+</script>
+
+<script type="text/ng-template" id="field-aid.tpl.html">
+<tuleap-artifact-modal-artifact-id-field
+    field="field"
+    current-artifact-identifier="modal.current_artifact_identifier"
+    ce-one-way
+></tuleap-artifact-modal-artifact-id-field>
+</script>
+
+<script type="text/ng-template" id="field-atid.tpl.html">
+<tuleap-artifact-modal-artifact-id-field
+    field="field"
+    current-artifact-identifier="modal.current_artifact_identifier"
+    ce-one-way
+></tuleap-artifact-modal-artifact-id-field>
+</script>
+
+<script type="text/ng-template" id="field-priority.tpl.html">
+<tuleap-artifact-modal-priority-field
+    field="field"
+    ce-one-way
+></tuleap-artifact-modal-priority-field>
+</script>
+
+<script type="text/ng-template" id="field-computed.tpl.html">
+<tuleap-artifact-modal-computed-field
+    field-id="field.field_id"
+    label="field.label"
+    required="field.required"
+    disabled="modal.isDisabled(field)"
+    value="field.value"
+    manual-value="modal.values[field.field_id].manual_value"
+    autocomputed="modal.values[field.field_id].is_autocomputed"
+    on-value-changed="modal.setFieldValueForComputedFieldElement($event)"
+    ce-one-way
+    data-test="computed-field"
+></tuleap-artifact-modal-computed-field>
+</script>
+
+<script type="text/ng-template" id="field-subby.tpl.html">
+<tuleap-artifact-modal-user-avatar-field
+    field="field"
+    ce-one-way
+></tuleap-artifact-modal-user-avatar-field>
+</script>
+
+<script type="text/ng-template" id="field-luby.tpl.html">
+<tuleap-artifact-modal-user-avatar-field
+    field="field"
+    ce-one-way
+></tuleap-artifact-modal-user-avatar-field>
+</script>
+
+<script type="text/ng-template" id="field-subon.tpl.html">
+<tuleap-artifact-modal-date-readonly-field
+    field="field"
+    formatter="modal.readonly_date_field_formatter"
+    ce-one-way
+></tuleap-artifact-modal-date-readonly-field>
+</script>
+
+<script type="text/ng-template" id="field-lud.tpl.html">
+<tuleap-artifact-modal-date-readonly-field
+    field="field"
+    formatter="modal.readonly_date_field_formatter"
+    ce-one-way
+></tuleap-artifact-modal-date-readonly-field>
+</script>
+
+<script type="text/ng-template" id="field-file.tpl.html">
+<tuleap-artifact-modal-file-field
+    field="field"
+    controller="modal.getFileFieldController(field)"
+    disabled="modal.isDisabled(field)"
+    data-test="file-field"
+    ce-one-way
+></tuleap-artifact-modal-file-field>
+</script>
+
+<script type="text/ng-template" id="field-perm.tpl.html">
+<div
+    class="tlp-form-element"
+    tuleap-artifact-modal-permission-field="field"
+    is-disabled="modal.isDisabled(field)"
+    value-model="modal.values[field.field_id]"
+    data-test="permission-field"
+></div>
+</script>
+
+<script type="text/ng-template" id="field-date.tpl.html">
+<tuleap-artifact-modal-date-field
+    field="field"
+    is-disabled="modal.isDisabled(field)"
+    value="modal.values[field.field_id].value"
+    on-value-changed="modal.setFieldValueForCustomElement($event)"
+    date-picker-initializer="modal.date_picker_initializer"
+    ce-one-way
+></tuleap-artifact-modal-date-field>
+
+</script>
+
+<script type="text/ng-template" id="field-tbl.tpl.html">
+<div
+    ng-if="::field.bindings.type === 'static'"
+    class="field"
+    tuleap-artifact-modal-static-open-list-field="field"
+    is-disabled="modal.isDisabled(field)"
+    value-model="modal.values[field.field_id]"
+></div>
+<div
+    ng-if="::field.bindings.type === 'ugroups'"
+    class="field"
+    tuleap-artifact-modal-ugroups-open-list-field="field"
+    is-disabled="modal.isDisabled(field)"
+    value-model="modal.values[field.field_id]"
+></div>
+<div
+    ng-if="::field.bindings.type === 'users'"
+    class="field"
+    tuleap-artifact-modal-users-open-list-field="field"
+    is-disabled="modal.isDisabled(field)"
+    value-model="modal.values[field.field_id]"
+></div>
+</script>
+
+<form class="tlp-modal tlp-modal-medium-sized tuleap-artifact-modal"
+    ng-class="::{ 'creation-mode': modal.creation_mode, 'edition-mode': ! modal.creation_mode }"
+    role="dialog"
+    aria-labelledby="artifact-modal-label"
+    ng-submit="modal.submit()"
+    data-test="artifact-modal-form"
+>
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title tuleap-artifact-modal-title"
+            id="artifact-modal-label"
+            ng-if="modal.creation_mode"
+            translate
+        >Create a new {{ modal.title }}</h1>
+        <h1 class="tlp-modal-title tuleap-artifact-modal-title"
+            id="artifact-modal-label"
+            ng-if="! modal.creation_mode"
+        >
+            <span class="tuleap-artifact-modal-title-badge cross-ref-badge cross-ref-badge-{{ modal.color }}">{{ modal.tracker.item_name }} #{{ modal.artifact_id }}</span>
+            <span class="title">{{ modal.title }}</span>
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="{{ Close | translate }}"><i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i></button>
+    </div>
+
+    <modal-feedback
+        controller="modal.feedback_controller"
+        ce-one-way
+    ></modal-feedback>
+
+    <div class="tlp-modal-body tuleap-artifact-modal-body">
+        <div class="tuleap-artifact-modal-artifact">
+            <div class="tuleap-artifact-modal-show-hide-fieldsets" ng-if="modal.hasHiddenFieldsets()">
+                <label class="tlp-label">{{ 'Hidden fieldsets:' | translate }}</label>
+                <div class="tlp-button-bar">
+                    <div class="tlp-button-bar-item">
+                        <input type="radio" id="button-bar-left" name="button-bar-radio" class="tlp-button-bar-checkbox" ng-click="modal.showHiddenFieldsets(true)">
+                        <label for="button-bar-left" class="tlp-button-secondary tlp-button-outline">
+                            <i class="fa fa-eye"></i>
+                        </label>
+                    </div>
+                    <div class="tlp-button-bar-item">
+                        <input type="radio" id="button-bar-center" name="button-bar-radio" class="tlp-button-bar-checkbox" ng-click="modal.showHiddenFieldsets(false)" checked>
+                        <label for="button-bar-center" class="tlp-button-secondary tlp-button-outline">
+                            <i class="fa fa-eye-slash"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="tlp-alert-danger" ng-if="modal.hasRestError()">
+                {{ 'Error:' | translate }} {{ modal.getRestErrorMessage() }}
+            </div>
+            <ng-include src="field.template_url" ng-repeat="field in modal.ordered_fields"></ng-include>
+        </div>
+
+        <div class="tuleap-artifact-modal-followups"
+            ng-if="! modal.creation_mode"
+            ng-class="{'invert-order': modal.followups_comments.invert_order === 'desc' }"
+        >
+            <h2 class="tlp-modal-subtitle tuleap-artifact-modal-followups-title"
+                title="{{ 'Only comments are displayed' | translate }}"
+            >
+                <i class="far fa-comments tuleap-artifact-modal-followups-title-icon"></i><span translate>Follow-ups</span>
+            </h2>
+
+            <div class="tuleap-artifact-modal-followups-comments">
+                <div ng-repeat="comment in modal.followups_comments.content track by $index"
+                    class="tuleap-artifact-modal-followups-comment"
+                >
+                    <div class="tuleap-artifact-modal-followups-comment-header">
+                        <div class="tlp-avatar">
+                            <img ng-src="{{ comment.submitted_by_details.avatar_url }}">
+                        </div>
+
+                        <div class="tuleap-artifact-modal-followups-comment-header-authors tlp-text-muted" ng-class="{'multiple-authors': comment.submitted_on !== comment.last_modified_date}">
+                            <div class="tuleap-artifact-modal-followups-comment-header-author">
+                                <a ng-if="comment.email" href="mailto:{{comment.email}}">{{ comment.email }}</a>
+                                <a ng-if="! comment.email" href="{{ comment.submitted_by_details.user_url }}">{{ comment.submitted_by_details.display_name }}</a>
+                                <tlp-relative-date
+                                    class="tuleap-artifact-modal-followups-comment-header-time"
+                                    date="{{ comment.submitted_on }}"
+                                    absolute-date="{{ modal.formatDateUsingPreferredUserFormat(comment.submitted_on) }}"
+                                    preference="{{ modal.relativeDatePreference() }}"
+                                    locale="{{ modal.user_locale }}"
+                                    placement="{{ modal.relativeDatePlacement() }}"
+                                >
+                                    {{ modal.formatDateUsingPreferredUserFormat(comment.submitted_on) }}
+                                </tlp-relative-date>
+                            </div>
+
+                            <div ng-if="comment.submitted_on !== comment.last_modified_date"
+                                class="tuleap-artifact-modal-followups-comment-header-author"
+                            >
+                                <span><span translate>Edited by</span> {{ comment.last_modified_by.display_name }}</span>
+                                <tlp-relative-date
+                                    class="tuleap-artifact-modal-followups-comment-header-time"
+                                    date="{{ comment.last_modified_date }}"
+                                    absolute-date="{{ modal.formatDateUsingPreferredUserFormat(comment.last_modified_date) }}"
+                                    preference="{{ modal.relativeDatePreference() }}"
+                                    locale="{{ modal.user_locale }}"
+                                    placement="{{ modal.relativeDatePlacement() }}"
+                                >
+                                    {{ modal.formatDateUsingPreferredUserFormat(comment.last_modified_date) }}
+                                </tlp-relative-date>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tuleap-artifact-modal-followups-comment-content" ng-bind-html="comment.last_comment.post_processed_body"></div>
+                </div>
+
+                <div ng-if="modal.followups_comments.loading_comments" class="tuleap-artifact-modal-followups-comments-loading"></div>
+                <div ng-if="! modal.followups_comments.loading_comments && modal.followups_comments.content.length === 0" class="tuleap-artifact-modal-followups-comments-empty" translate>No follow-ups</div>
+            </div>
+
+            <tuleap-artifact-modal-followup-editor
+                ng-if="modal.isFollowupCommentFormDisplayed()"
+                class="artifact-modal-followups-add-form"
+                format="modal.new_followup_comment.format"
+                content-value="modal.new_followup_comment.body"
+                project-id="modal.tracker.project.id"
+                on-value-changed="modal.setFollowupComment($event)"
+                on-upload-image="modal.addToFilesAddedByTextField($event)"
+                ce-one-way
+                data-test="add-comment-form"
+            ></tuleap-artifact-modal-followup-editor>
+        </div>
+    </div>
+
+    <div class="tlp-modal-footer">
+        <tuleap-artifact-modal-file-upload-quota
+            ng-if="modal.isThereAtLeastOneFileField()"
+            class="angular-artifact-modal-disk-usage"
+            controller="modal.file_upload_quota_controller"
+            ce-one-way
+        ></tuleap-artifact-modal-file-upload-quota>
+        <button type="button"
+            class="tlp-button-primary tlp-button-outline tlp-modal-action"
+            data-dismiss="modal"
+            translate
+        >
+            Cancel
+        </button>
+        <input
+            type="submit"
+            data-test="artifact-modal-save-button"
+            class="tlp-modal-action"
+            ng-class="{'tlp-button-danger': modal.confirm_action_to_edit, 'tlp-button-primary': !modal.confirm_action_to_edit }"
+            ng-value="modal.getButtonText()"
+            ng-click="modal.reopenFieldsetsWithInvalidInput($event.target.form)"
+            ng-disabled="modal.isUploadingInCKEditor()"
+        >
+    </div>
+</form>

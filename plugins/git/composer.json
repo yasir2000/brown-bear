@@ -1,0 +1,34 @@
+{
+  "name": "tuleap/plugin-git",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Git\\": ["include/", "include/Git/"]
+    },
+    "classmap": ["include/"]
+  },
+  "require": {
+    "smarty/smarty": "^2.6",
+    "smarty-gettext/smarty-gettext": "^1.5"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tuleap\\Git\\": ["tests/unit/", "tests/integration/"]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ],
+      "exclude": [
+        "/include/Git/Repository/RepositoriesWithObjectsOverTheLimitCommand.php",
+        "/include/Git/Gitolite/RegenerateConfigurationCommand.php",
+        "/include/Git/Statistics/FrequenciesSample.php",
+        "/include/CommonMarkExtension/LinkToGitFileExtension.php"
+      ]
+    }
+  }
+}

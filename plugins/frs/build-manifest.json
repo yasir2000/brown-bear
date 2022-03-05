@@ -1,0 +1,9 @@
+{
+    "name": "frs",
+    "gettext-angularjs": {
+        "frs": {
+            "src": "scripts/release-notes/src",
+            "po": "scripts/release-notes/po"
+        }
+    }
+}

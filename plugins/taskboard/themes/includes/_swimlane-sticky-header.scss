@@ -1,0 +1,63 @@
+/**
+ * Copyright (c) Enalean, 2019 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../src/themes/BurningParrot/css/includes/global-variables";
+@use "header";
+
+.taskboard-cell-swimlane-header {
+    position: initial;
+    left: global-variables.$sidebar-expanded-width;
+    max-width: calc(100vw - #{global-variables.$sidebar-expanded-width});
+
+    &:not(.taskboard-cell-swimlane-header-edit-mode) {
+        position: sticky;
+        z-index: 9;
+    }
+
+    > .taskboard-cell-parent-card {
+        &:not(.taskboard-cell-parent-card-edit-mode):not(.taskboard-cell-parent-card-no-mapping) {
+            position: sticky;
+            z-index: 9;
+            top: calc(
+                #{global-variables.$navbar-height} + #{header.$taskboard-header-height} + 10px
+            );
+        }
+    }
+
+    &.taskboard-fullscreen {
+        left: 0;
+
+        > .taskboard-cell-parent-card {
+            &:not(.taskboard-cell-parent-card-edit-mode) {
+                top: calc(#{header.$taskboard-header-height} + 10px);
+            }
+        }
+    }
+}
+
+.sidebar-collapsed {
+    .taskboard-cell-swimlane-header {
+        left: global-variables.$sidebar-collapsed-width;
+        max-width: calc(100vw - #{global-variables.$sidebar-collapsed-width});
+
+        &.taskboard-fullscreen {
+            left: 0;
+        }
+    }
+}

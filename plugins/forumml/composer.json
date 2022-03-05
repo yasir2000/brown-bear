@@ -1,0 +1,15 @@
+{
+  "name": "tuleap/plugin-forumml",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\ForumML\\": ["include/"]
+    },
+    "classmap": ["include/"]
+  },
+  "require": {
+    "php-mime-mail-parser/php-mime-mail-parser": "^7.0"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

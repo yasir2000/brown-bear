@@ -1,0 +1,75 @@
+{{# navbar_presenter }}
+<header class="{{# should_logo_be_displayed }}full-width{{/ should_logo_be_displayed }}">
+    <div class="header-container">
+        {{# should_logo_be_displayed }}
+            {{> logo }}
+        {{/ should_logo_be_displayed }}
+
+        <div class="header-container-spacer"></div>
+
+        {{# user_nav_presenter }}
+            {{# has_platform_banner }}
+                {{# user_id }}
+                    <button
+                        type="button"
+                        id="platform-banner-bullhorn"
+                        class="
+                            {{# platform_banner_is_standard }}tlp-button-info{{/ platform_banner_is_standard }}
+                            {{# platform_banner_is_warning }}tlp-button-warning{{/ platform_banner_is_warning }}
+                            {{# platform_banner_is_critical }}tlp-button-danger{{/ platform_banner_is_critical }}
+                            tlp-button-round
+                            platform-banner-navbar-button
+                            {{# platform_banner_is_visible }}platform-banner-hidden{{/ platform_banner_is_visible }}
+                        "
+                        aria-labelledby="platform-banner-message"
+                    >
+                        <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                    </button>
+                {{/ user_id }}
+            {{/ has_platform_banner }}
+        {{/ user_nav_presenter }}
+
+        {{# is_super_user }}
+            <a href="/admin/" class="tlp-button-danger tlp-button-round tlp-button-outline go-to-admin" aria-label="{{# gettext }}Administration{{/ gettext }}" data-test="platform-administration-link">
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+            </a>
+        {{/ is_super_user }}
+
+        {{> navbar/new-nav }}
+
+        {{# switch_to }}
+            <button type="button" class="tlp-button-secondary tlp-button-outline" id="switch-to-button" data-target-modal-id="switch-to-modal" data-test="switch-to-button">
+                <i class="fa fa-random tlp-button-icon" aria-hidden="true"></i>
+                <span class="header-button-label">
+                    {{# is_forcing_legacy_label }}
+                        {{# gettext }}Projects…{{/ gettext }}
+                    {{/ is_forcing_legacy_label }}
+                    {{^ is_forcing_legacy_label }}
+                        {{# gettext }}Switch to…{{/ gettext }}
+                    {{/ is_forcing_legacy_label }}
+                </span>
+            </button>
+        {{/ switch_to }}
+
+        {{# invite_buddies_presenter }}
+            {{# can_buddies_be_invited }}
+                <button
+                    type="button"
+                    class="tlp-button-secondary tlp-button-outline"
+                    id="invite-buddies-button"
+                    data-target-modal-id="invite-buddies-modal"
+                    {{# is_limit_reached }}
+                    disabled
+                    title="{{# gettext }} You can no longer invite people to use %s you have reached the limit of %s invitations by day.| {{ instance_name }} | {{ max_limit_by_day }} {{/ gettext }}"
+                    {{/ is_limit_reached }}
+                >
+                    <i class="fa fa-paper-plane tlp-button-icon" aria-hidden="true"></i>
+                    <span class="header-button-label">{{# gettext }}Invite{{/ gettext }}</span>
+                </button>
+            {{/ can_buddies_be_invited }}
+        {{/ invite_buddies_presenter }}
+
+        {{> navbar/user-nav }}
+    </div>
+</header>
+{{/ navbar_presenter }}

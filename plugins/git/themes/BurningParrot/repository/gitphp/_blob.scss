@@ -1,0 +1,177 @@
+/**
+ * Copyright (c) Enalean, 2018-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$codemirror-like-line-numbers-color: #8c8c8c;
+
+.git-repository-blob-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--tlp-neutral-light-color);
+
+    > .git-repository-blob-header-title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 400;
+
+        > a {
+            color: inherit;
+        }
+    }
+}
+
+.git-repository-blob-header-actions {
+    display: flex;
+}
+
+.git-repository-blob-header-plain,
+.git-repository-blob-header-actions-bar,
+.git-repository-blob-header-history-datatag {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+.git-repository-blob-body {
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: var(--tlp-fade-background-color);
+}
+
+.git-repository-blob-image {
+    padding: var(--tlp-medium-spacing);
+    text-align: center;
+}
+
+#git-repository-blob-file-rendered {
+    padding: var(--tlp-medium-spacing);
+    background: var(--tlp-white-color);
+
+    pre {
+        overflow-x: auto;
+    }
+}
+
+#git-repository-blob-file,
+#git-repository-blame-file {
+    display: flex;
+    width: 100%;
+    background: var(--tlp-white-color);
+    font-family: var(--tlp-font-family-mono);
+    line-height: 1.5;
+}
+
+.git-repository-blob-file-code,
+.git-repository-blob-file-linenumbers {
+    border: 0;
+    font-family: var(--tlp-font-family-mono);
+}
+
+.git-repository-blob-file-linenumbers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 5px 0;
+    border-right: 1px solid var(--tlp-neutral-light-color);
+    background: var(--tlp-background-color-lighter-50);
+    line-height: 1.5;
+    text-align: right;
+    vertical-align: top;
+}
+
+.git-repository-blob-file-linenumbers-line {
+    width: 100%;
+    padding: 0 var(--tlp-small-spacing);
+    color: $codemirror-like-line-numbers-color;
+
+    &:target {
+        background: var(--tlp-main-color-transparent-50);
+        color: var(--tlp-white-color);
+    }
+
+    &:hover {
+        background: var(--tlp-main-color);
+        color: var(--tlp-white-color);
+        text-decoration: none;
+    }
+}
+
+$under-code: 1;
+$above-highlight-line: 2;
+
+.git-repository-blob-file-code {
+    position: relative;
+    width: 100%;
+    padding: 5px var(--tlp-small-spacing);
+    background: none;
+    color: var(--tlp-typo-default-text-color);
+    font-family: var(--tlp-font-family-mono);
+    line-height: 1.5;
+
+    &[class*="language-"] {
+        margin: 0;
+        padding: 5px var(--tlp-small-spacing);
+        background: none;
+    }
+
+    > code[class*="language-"] {
+        position: relative;
+        z-index: $above-highlight-line;
+        font-family: var(--tlp-font-family-mono);
+        text-shadow: none;
+    }
+}
+
+.git-repository-highlight-line {
+    display: none;
+    position: absolute;
+    width: 100%;
+    margin-left: -10px;
+    background: linear-gradient(
+        to right,
+        var(--tlp-main-color-transparent-90) 60%,
+        transparent 70%
+    );
+
+    &.shown {
+        display: block;
+        z-index: $under-code;
+    }
+}
+
+.git-repository-blob-diff-header-link {
+    margin: 0 var(--tlp-small-spacing) 0 0;
+}
+
+.git-repository-blame-line {
+    padding: 5px var(--tlp-small-spacing);
+    border-right: 1px solid var(--tlp-neutral-light-color);
+    background: var(--tlp-background-color-lighter-50);
+    text-align: left;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.git-repository-blame-linenumbers {
+    vertical-align: top;
+}
+
+.git-repository-blame-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

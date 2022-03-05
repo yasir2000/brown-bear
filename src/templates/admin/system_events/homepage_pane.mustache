@@ -1,0 +1,63 @@
+<section class="tlp-pane siteadmin-homepage-system-events">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">
+                <i class="fa fa-flag tlp-pane-title-icon"></i> {{ pane_title }}
+            </h1>
+        </div>
+        {{# sections }}
+            <div data-href="/admin/system_events/?queue={{ name }}" class="tlp-pane-section siteadmin-homepage-system-events-queue">
+                <h2 class="tlp-pane-subtitle">{{ title }}</h2>
+                <div class="siteadmin-homepage-system-events-queue-content">
+                    <i class="fa fa-flag siteadmin-homepage-system-events-queue-content-flag flag-{{ flag_type }}"></i>
+                    <div class="siteadmin-homepage-system-events-queue-content-details">
+                        <div class="siteadmin-homepage-system-events-queue-content-new-running-done">
+                            <a href="/admin/system_events/?queue={{ name}}&filter_status[]=NEW"
+                                class="system-event-type-count tlp-badge-secondary tlp-badge-rounded {{^ has_new }}tlp-badge-outline{{/ has_new }} tlp-tooltip tlp-tooltip-top"
+                                data-tlp-tooltip="{{ new_label_tooltip }}"
+                            >
+                                <i class="tlp-badge-icon fa fa-plus"></i> {{ new_count }}
+                            </a>
+                            <a href="/admin/system_events/?queue={{ name}}&filter_status[]=RUNNING"
+                                class="system-event-type-count tlp-badge-primary tlp-badge-rounded tlp-tooltip tlp-tooltip-top {{^ has_running }}tlp-badge-outline{{/ has_running}}"
+                                data-tlp-tooltip="{{ running_label_tooltip }}"
+                            >
+                                <i class="tlp-badge-icon fas fa-sync"></i> {{ running_count }}
+                            </a>
+                            <a href="/admin/system_events/?queue={{ name}}&filter_status[]=DONE"
+                                class="system-event-type-count tlp-badge-success tlp-badge-rounded tlp-badge-outline tlp-tooltip tlp-tooltip-top"
+                                data-tlp-tooltip="{{ done_label_tooltip }}"
+                            >
+                                <i class="tlp-badge-icon fa fa-check"></i> {{ done_count }}
+                            </a>
+                        </div>
+                        {{# has_warning_or_error }}
+                            <div class="siteadmin-homepage-system-events-queue-content-warning-error">
+                                <a href="/admin/system_events/?queue={{ name}}&filter_status[]=WARNING"
+                                    class="system-event-type-count tlp-badge-warning tlp-badge-rounded tlp-tooltip tlp-tooltip-top {{^ has_warning }}tlp-badge-outline{{/ has_warning}}"
+                                    data-tlp-tooltip="{{ warning_label_tooltip }}"
+                                >
+                                    <i class="tlp-badge-icon fas fa-exclamation-triangle"></i> {{ warning_count }} {{# has_warning_without_error }}{{ warning_label }}{{/ has_warning_without_error}}
+                                </a>
+                                <a href="/admin/system_events/?queue={{ name}}&filter_status[]=ERROR"
+                                    class="system-event-type-count tlp-badge-danger tlp-badge-rounded tlp-tooltip tlp-tooltip-top {{^ has_error }}tlp-badge-outline{{/ has_error}}"
+                                    data-tlp-tooltip="{{ error_label_tooltip }}"
+                                >
+                                    <i class="tlp-badge-icon fa fa-exclamation-circle"></i> {{ error_count }} {{# has_error }}{{ error_label }}{{/ has_error}}
+                                </a>
+                            </div>
+                        {{/ has_warning_or_error }}
+                    </div>
+                </div>
+            </div>
+        {{/ sections }}
+        <div class="tlp-pane-spacer"></div>
+        <section class="tlp-pane-section">
+            <a href="/admin/system_events" class="tlp-button-primary tlp-button-outline tlp-button-wide"
+                title="{{ view_all_label }}"
+            >
+                {{ view_all_label }}
+            </a>
+        </section>
+    </div>
+</section>

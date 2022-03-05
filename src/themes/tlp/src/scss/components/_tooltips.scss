@@ -1,0 +1,78 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "tooltips-mixins";
+
+.tlp-tooltip {
+    position: relative;
+
+    &[class*="tlp-button"] {
+        overflow: visible;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        z-index: 10000;
+        transition: opacity 100ms linear 250ms;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        transition: opacity 100ms linear 500ms;
+        opacity: 1;
+    }
+
+    &::before {
+        content: attr(data-tlp-tooltip);
+        padding: calc(var(--tlp-medium-spacing) / 2);
+        border-radius: tooltips-mixins.$tlp-tooltip-border-radius;
+        background: tooltips-mixins.$tlp-tooltip-background;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    &::after {
+        content: "";
+        width: 0;
+    }
+}
+
+.tlp-tooltip-top {
+    @include tooltips-mixins.tlp-tooltip-top;
+}
+
+.tlp-tooltip-right {
+    @include tooltips-mixins.tlp-tooltip-right;
+}
+
+.tlp-tooltip-bottom {
+    @include tooltips-mixins.tlp-tooltip-bottom;
+}
+
+.tlp-tooltip-left {
+    @include tooltips-mixins.tlp-tooltip-left;
+}

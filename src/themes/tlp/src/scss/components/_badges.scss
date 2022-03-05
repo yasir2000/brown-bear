@@ -1,0 +1,186 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:color";
+@use "sass:map";
+@use "../variables/colors/swatch-colors";
+
+$tlp-badge-radius: var(--tlp-small-radius);
+$tlp-badge-color: var(--tlp-white-color);
+$tlp-badge-font-size: 0.75rem;
+$tlp-badge-line-height: 0.75rem;
+$tlp-badge-font-weight: 600;
+$tlp-badge-padding: calc(5px - 1px * var(--tlp-is-condensed)) var(--tlp-small-spacing);
+
+%tlp-badge {
+    display: inline-block;
+    padding: $tlp-badge-padding;
+    border-radius: $tlp-badge-radius;
+    color: $tlp-badge-color;
+    font-size: $tlp-badge-font-size;
+    font-weight: $tlp-badge-font-weight;
+    line-height: $tlp-badge-line-height;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &.tlp-badge-rounded {
+        border-radius: var(--tlp-medium-spacing);
+    }
+
+    &.tlp-badge-outline.tlp-badge-on-dark-background {
+        font-weight: normal;
+    }
+}
+
+.tlp-badge-icon {
+    margin: 0 5px 0 0;
+    font-size: 0.625rem;
+}
+
+.tlp-badge-primary {
+    @extend %tlp-badge;
+
+    background: var(--tlp-main-color);
+
+    &.tlp-badge-outline {
+        background: var(--tlp-main-color-transparent-90);
+        color: var(--tlp-main-color);
+
+        &.tlp-badge-on-dark-background {
+            background: var(--tlp-main-color-transparent-80);
+            color: var(--tlp-main-color-lighter-50);
+        }
+    }
+}
+
+.tlp-badge-secondary {
+    @extend %tlp-badge;
+
+    background: var(--tlp-neutral-dark-color);
+    color: var(--tlp-dimmed-color-darker-10);
+
+    &.tlp-badge-outline {
+        background: var(--tlp-neutral-dark-color-transparent-50);
+        color: var(--tlp-dimmed-color-darker-10);
+
+        &.tlp-badge-on-dark-background {
+            background: var(--tlp-neutral-normal-color-transparent-80);
+            color: var(--tlp-neutral-dark-color);
+        }
+    }
+}
+
+.tlp-badge-info {
+    @extend %tlp-badge;
+
+    background: var(--tlp-info-color);
+
+    &.tlp-badge-outline {
+        background: var(--tlp-badge-info-background);
+        color: var(--tlp-info-dark-color);
+
+        &.tlp-badge-on-dark-background {
+            background: var(--tlp-info-color-transparent-85);
+            color: var(--tlp-info-color-lighter-35);
+        }
+    }
+}
+
+.tlp-badge-success {
+    @extend %tlp-badge;
+
+    background: var(--tlp-success-color);
+
+    &.tlp-badge-outline {
+        background: var(--tlp-badge-success-background);
+        color: var(--tlp-success-dark-color);
+
+        &.tlp-badge-on-dark-background {
+            background: var(--tlp-success-color-transparent-85);
+            color: var(--tlp-success-color-lighter-35);
+        }
+    }
+}
+
+.tlp-badge-warning {
+    @extend %tlp-badge;
+
+    background: var(--tlp-warning-color);
+
+    &.tlp-badge-outline {
+        background: var(--tlp-badge-warning-background);
+        color: var(--tlp-warning-dark-color);
+
+        &.tlp-badge-on-dark-background {
+            background: var(--tlp-warning-color-transparent-85);
+            color: var(--tlp-warning-color-lighter-20);
+        }
+    }
+}
+
+.tlp-badge-danger {
+    @extend %tlp-badge;
+
+    background: var(--tlp-danger-color);
+
+    &.tlp-badge-outline {
+        background: var(--tlp-badge-danger-background);
+        color: var(--tlp-danger-dark-color);
+
+        &.tlp-badge-on-dark-background {
+            background: var(--tlp-danger-color-transparent-75);
+            color: var(--tlp-danger-color-lighter-60);
+        }
+    }
+}
+
+@each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+    .tlp-badge-#{$color-name} {
+        @extend %tlp-badge;
+
+        background: map.get($colors, "text");
+
+        &.tlp-badge-outline {
+            background: map.get($colors, "secondary");
+            color: map.get($colors, "text");
+
+            &.tlp-badge-on-dark-background {
+                background: color.adjust(map.get($colors, "primary"), $alpha: - 0.85);
+                color: color.mix(map.get($colors, "border"), #ffffff, 90%);
+
+                @if $color-name ==
+                    "teddy-brown" or
+                    $color-name ==
+                    "plum-crazy" or
+                    $color-name ==
+                    "red-wine" or
+                    $color-name ==
+                    "army-green"
+                {
+                    color: color.mix(map.get($colors, "border"), #ffffff, 70%);
+                }
+            }
+        }
+    }
+}

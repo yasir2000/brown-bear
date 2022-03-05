@@ -1,0 +1,79 @@
+/**
+ * Copyright (c) Enalean, 2020 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see http://www.gnu.org/licenses/.
+ */
+
+@use "sass:map";
+@use "../../../../../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+
+.tracker-cross-reference-hide-referenced-by {
+    display: none;
+}
+
+.tracker-cross-reference-by-section-toggle {
+    display: flex;
+}
+
+.tracker-cross-reference-switch {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+.tracker-cross-reference-nature {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.tracker-cross-reference-delete-link {
+    position: absolute;
+    top: var(--tlp-medium-spacing);
+    right: var(--tlp-medium-spacing);
+    transition: color 150ms linear;
+}
+
+.tracker-cross-reference-card-main {
+    display: flex;
+    align-items: baseline;
+}
+
+.tracker-cross-reference-title {
+    flex-grow: 1;
+}
+
+.tracker-cross-reference-title-badge {
+    margin: 0 4px 0 0;
+}
+
+.tracker-cross-reference-additional-badge {
+    margin: 0 0 0 4px;
+}
+
+.tracker-cross-reference-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin: 0 4px 0 0;
+    border-radius: 50%;
+    font-size: 0.8125rem;
+}
+
+@each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+    .tracker-cross-reference-title-icon-#{$color-name} {
+        background: map.get($colors, "primary");
+    }
+}

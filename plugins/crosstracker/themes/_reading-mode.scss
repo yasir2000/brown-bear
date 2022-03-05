@@ -1,0 +1,82 @@
+/**
+ * Copyright (c) Enalean, 2017 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.reading-mode-report {
+    display: flex;
+    flex-direction: column;
+    color: var(--tlp-main-color);
+    font-size: 15px;
+
+    &:hover:not(.disabled) {
+        margin: 0;
+        background-color: var(--tlp-main-color-transparent-80);
+        cursor: pointer;
+    }
+}
+
+.reading-mode-query {
+    margin: 0 var(--tlp-medium-spacing) var(--tlp-medium-spacing);
+}
+
+.cross-tracker-reading-mode-trackers-list {
+    display: flex;
+    flex-direction: row;
+    margin: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-small-spacing);
+}
+
+.cross-tracker-reading-mode-trackers {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cross-tracker-reading-mode-tracker {
+    display: flex;
+    flex-direction: column;
+    margin: 0 var(--tlp-medium-spacing) var(--tlp-small-spacing) 0;
+}
+
+.cross-tracker-reading-mode-tracker-project-name {
+    display: flex;
+    align-items: center;
+    margin: 5px 0 0;
+    color: var(--tlp-dimmed-color);
+    font-size: 14px;
+    font-weight: 400;
+
+    > .cross-tracker-project-icon {
+        margin: 0 5px 0 0;
+        fill: var(--tlp-main-color);
+    }
+}
+
+.cross-tracker-reading-mode-trackers-empty {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+    font-style: italic;
+}
+
+.reading-mode-actions {
+    display: flex;
+    justify-content: center;
+    padding: var(--tlp-small-spacing) var(--tlp-medium-spacing) var(--tlp-medium-spacing);
+    border-bottom: 1px solid var(--tlp-neutral-light-color);
+}
+
+.reading-mode-actions-cancel {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}

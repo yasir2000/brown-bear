@@ -1,0 +1,53 @@
+<form action="permission_delegation.php?action=update-group"
+      method="post"
+      id="siteadmin-permission-delegation-{{# is_new }}add{{/ is_new }}{{^ is_new }}edit{{/ is_new }}-group-modal"
+      class="tlp-modal"
+      role="dialog"
+>
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title">
+            {{ group_title }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="group-name">{{ name_label }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="group-name"
+                   name="name"
+                   placeholder="PowerRangers"
+                   size="30"
+                   value="{{ name }}"
+                   data-test="permission-group-name"
+                   required>
+        </div>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="group-description">{{ description_label }}</label>
+            <textarea class="tlp-textarea"
+                      id="group-description"
+                      name="description"
+                      rows="5"
+                      placeholder="Comment…">{{ description }}</textarea>
+        </div>
+
+        {{^ is_new }}
+            <input type="hidden" name="id" value="{{ id }}" />
+        {{/ is_new }}
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+            {{ group_cancel }}
+        </button>
+        <button type="submit" class="tlp-button-primary tlp-modal-action" data-test="permission-delegation-create-button">
+            <i class="fa fa-{{# is_new }}plus{{/ is_new }}{{^ is_new }}pencil{{/ is_new }} tlp-button-icon"></i> {{ group_submit }}
+        </button>
+    </div>
+</form>

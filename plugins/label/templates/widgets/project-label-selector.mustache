@@ -1,0 +1,21 @@
+<div class="tlp-form-element">
+    <label class="tlp-label">{{ label_title }} <i class="fa fa-asterisk"></i></label>
+    <select class="tlp-select project-labels"
+            name="project-labels[]"
+            data-labels-endpoint="/api/v1/projects/{{ project_id }}/labels"
+            data-placeholder="{{ label_placeholder }}"
+            multiple
+            required
+    >
+        {{# selected_labels }}
+            <option value="{{ id }}"
+                    data-name="{{ name }}"
+                    data-is-outline="{{ is_outline }}"
+                    data-color="{{ color }}"
+                    selected
+            >
+                {{ name }}
+            </option>
+        {{/ selected_labels }}
+    </select>
+</div>

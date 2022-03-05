@@ -1,0 +1,75 @@
+<h3>{{# dgettext }} tuleap-tracker | Users having unsubscribed from the notifications {{/ dgettext }}</h3>
+<table class="table tracker-admin-notification-table">
+    <thead>
+    <tr>
+        <th>{{# dgettext }} tuleap-tracker | Unsubscribers {{/ dgettext }}</th>
+        <th></th>
+    </tr>
+    </thead>
+    {{# unsubscribers }}
+    <tr>
+        <td>
+            <span class="tracker-notification-email-list-entry">
+                <div class="avatar tracker-notification-user-avatar">
+                    <img src="{{ avatar_url }}" />
+                </div>
+                {{ label }}
+            </span>
+        </td>
+        <td class="tracker-notification-edit tracker-unsubscriber-actions">
+            <a href="#"
+               class="tracker-notification-delete"
+               data-toggle="popover"
+               data-trigger="click"
+               data-placement="left"
+               data-html="true"
+               data-popover-id="tracker-unsubscriber-delete-{{ user_id }}-popover"
+            >
+                <i class="far fa-trash-alt"></i>
+                {{# gettext }} Delete {{/ gettext }}
+            </a>
+            <div id="tracker-unsubscriber-delete-{{ user_id }}-popover"
+                 data-title="{{# dgettext }} tuleap-tracker | Wait a minute... {{/ dgettext }}"
+                 class="tracker-notification-delete-popover">
+                <p>{{# dgettext }} tuleap-tracker | You are about to remove the user from the unsubscriber list. Please confirm your action. {{/ dgettext }}</p>
+
+                <div class="tracker-notification-delete-popover-actions">
+                    <button type="button" class="btn btn-small btn-default dismiss-popover">{{# gettext }} Cancel {{/ gettext }}</button>
+                    <button type="submit"
+                            name="remove_unsubscribers[{{ user_id }}]"
+                            value="1"
+                            class="btn btn-small btn-danger">{{# dgettext }} tuleap-tracker | Confirm deletion {{/ dgettext }}
+                    </button>
+                </div>
+            </div>
+        </td>
+    </tr>
+    {{/ unsubscribers }}
+    {{^ unsubscribers }}
+        <tr>
+            <td class="table-cell-empty" colspan="2">
+                {{# dgettext }} tuleap-tracker | No users have unsubscribed. {{/ dgettext }}
+            </td>
+        </tr>
+    {{/ unsubscribers }}
+    <tr id="tracker-unsubscriber-row-add" class="tracker-unsubscriber-row-add-hidden">
+        <td id="tracker-unsubscriber-select">
+            <input type="hidden"
+                   id="add_unsubscriber"
+                   name="new_unsubscriber"
+                   class="tracker-unsubscriber autocompleter-users-and-ugroups-input"
+                   placeholder="{{# dgettext }} tuleap-tracker | User... {{/ dgettext }}"
+                   data-additional-info="{{ additional_information_for_autocompleter }}"
+                   multiple
+            />
+        </td>
+        <td class="tracker-notification-edit">
+            <button type="submit" class="btn btn-primary">{{# gettext }} Save {{/ gettext }}</button>
+            <button type="button" name="submit" class="btn tracker-notification-edit-hide">{{# gettext }} Cancel {{/ gettext }}</button>
+        </td>
+    </tr>
+</table>
+<button type="button" class="btn" id="tracker-unsubcriber-add">
+    <i class="fa fa-plus"></i>
+    {{# dgettext }} tuleap-tracker | Unsubscribe a user {{/ dgettext }}
+</button>

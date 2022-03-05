@@ -1,0 +1,26 @@
+{
+  "author": "Enalean Team",
+  "name": "@tuleap/tooltip",
+  "homepage": "https://tuleap.org",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "version": "0.0.0",
+  "module": "dist/tooltip.es.js",
+  "main": "dist/tooltip.umd.js",
+  "types": "src/tooltip.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/tooltip.es.js",
+      "require": "./dist/tooltip.umd.js"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "jquery": ">=1.7.0 <4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch --mode development --minify false"
+  }
+}

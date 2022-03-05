@@ -1,0 +1,14 @@
+# This file is deployed and managed by Tuleap.
+# DO NOT EDIT.
+
+location ^~ /plugins/%name%/ {
+    alias /usr/share/tuleap/plugins/%name%/www/;
+
+    if (!-f $request_filename) {
+        rewrite ^ /index.php last;
+    }
+
+    location ^~ /plugins/%name%/assets/ {
+        expires max;
+    }
+}

@@ -1,0 +1,136 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.git-repository-card {
+    transition: border 200ms;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-within {
+        border: 1px solid var(--tlp-main-color);
+    }
+}
+
+.git-repository-card-two-columns {
+    width: calc(50% - var(--tlp-small-spacing));
+    margin: 0 var(--tlp-small-spacing) var(--tlp-medium-spacing) 0;
+
+    &:nth-child(2n) {
+        margin: 0 0 var(--tlp-medium-spacing) var(--tlp-small-spacing);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .git-repository-card-two-columns {
+        width: 100%;
+        margin: 0 0 var(--tlp-medium-spacing);
+
+        &:nth-child(2n) {
+            margin: 0 0 var(--tlp-medium-spacing);
+        }
+    }
+}
+
+.git-repository-card-link {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+
+    > .tlp-pane-section {
+        padding-top: 0;
+    }
+}
+
+.git-repository-card-header {
+    display: flex;
+    flex: 0 1 auto;
+    align-items: baseline;
+
+    &:not(:only-child) {
+        padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-small-spacing);
+    }
+}
+
+.git-repository-card-title {
+    color: var(--tlp-main-color);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: none;
+    word-break: break-all;
+}
+
+.git-repository-card-path {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.git-repository-card-last-update-icon {
+    font-size: 0.65rem;
+}
+
+.git-repository-card-last-update {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+    color: var(--tlp-dimmed-color);
+    font-size: 0.75rem;
+}
+
+.git-repository-card-description {
+    color: var(--tlp-dimmed-color);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.git-pullrequest-badge-link {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+    transition: opacity 100ms;
+    color: var(--tlp-white-color);
+
+    &:hover,
+    &:focus {
+        opacity: 0.7;
+    }
+}
+
+.git-repository-card-admin-link {
+    position: relative;
+    top: 1px;
+    transition: color 100ms;
+    color: var(--tlp-neutral-dark-color);
+    font-size: 0.75rem;
+
+    &:hover,
+    &:focus {
+        color: var(--tlp-main-color);
+    }
+}
+
+.git-gerrit-icon {
+    // This color is expected to not be dependent of the theme
+    // It is the green used by Gerrit for positive texts/merged status
+    // https://gerrit.googlesource.com/gerrit/+/refs/tags/v3.4.0/polygerrit-ui/app/styles/themes/app-theme.ts#189
+    // https://gerrit.googlesource.com/gerrit/+/refs/tags/v3.4.0/polygerrit-ui/app/styles/themes/app-theme.ts#251
+    // https://gerrit.googlesource.com/gerrit/+/refs/tags/v3.4.0/polygerrit-ui/app/styles/themes/app-theme.ts#85
+    color: #188038;
+}

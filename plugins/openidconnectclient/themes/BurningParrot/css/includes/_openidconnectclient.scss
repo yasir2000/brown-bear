@@ -1,0 +1,65 @@
+#providers-configuration {
+    display: flex;
+    flex-direction: column;
+}
+
+#providers-configuration-header {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 0 var(--tlp-title-spacing);
+}
+
+.add-provider-button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#providers-configuration-header-title {
+    margin: 0 var(--tlp-large-spacing) 0 0;
+}
+
+.provider-info {
+    display: flex;
+
+    .tlp-property {
+        word-break: break-all;
+    }
+}
+
+.provider-client {
+    margin: 0 0 0 calc(var(--tlp-medium-spacing) * 2);
+}
+
+.provider-action-container {
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+}
+
+.provider-action {
+    display: flex;
+    align-items: center;
+}
+
+.provider-action-delete-button {
+    margin: 0 0 0 calc(var(--tlp-medium-spacing) / 2);
+}
+
+.provider-configuration-unique-authentication-source {
+    margin: 0 0 0 var(--tlp-small-spacing);
+}
+
+.provider-azure-ad-description-allowed-to-connect {
+    max-width: 375px;
+}
+
+@media screen and (max-width: 1300px) {
+    .tlp-pane {
+        flex-direction: column;
+    }
+
+    .provider-action-container {
+        align-items: flex-end;
+        border: 1px solid var(--tlp-neutral-light-color);
+    }
+}

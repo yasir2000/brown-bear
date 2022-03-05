@@ -1,0 +1,183 @@
+<section class="tlp-framed-vertically">
+
+<h1 class="tlp-framed-horizontally">{{ title }}</h1>
+
+<div id="admin-system-events">
+    <nav class="tlp-tabs">
+        <a href="/admin/system_events/" class="tlp-tab tlp-tab-active">{{ events_label }}</a>
+        <a href="/admin/system_events/notifications.php" class="tlp-tab">{{ notifications_label }}</a>
+    </nav>
+
+    <section class="tlp-framed-horizontally" id="systemevents">
+        {{# search }}
+            <section class="tlp-pane" id="systemevents-filter">
+                <div class="tlp-pane-container">
+                    <div class="tlp-pane-header">
+                        <h1 class="tlp-pane-title">
+                            <i class="fa fa-search tlp-pane-title-icon"></i> {{ filter_label }}
+                        </h1>
+                    </div>
+                    <form action="" method="GET" class="tlp-pane-section">
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="status">{{ status_label }}</label>
+                            <select class="tlp-select" id="status" name="filter_status[]" multiple size="6" autocomplete="off">
+                                {{# status }}
+                                    <option value="{{ value }}" {{# checked }}selected{{/ checked }}>
+                                        {{ label }}
+                                    </option>
+                                {{/ status }}
+                            </select>
+                        </div>
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="queue">{{ queue_label }}</label>
+                            <select class="tlp-select" id="queue" name="queue" autocomplete="off">
+                                {{# queues }}
+                                    <option value="{{ value }}" {{# checked }}selected{{/ checked }}>
+                                        {{ label }}
+                                    </option>
+                                {{/ queues }}
+                            </select>
+                        </div>
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="types">{{ types_label }}</label>
+                            {{# types_by_queue }}
+                                <select class="tlp-select systemevents-types {{# is_current }}systemevents-types-for-current-queue{{/ is_current }}"
+                                    id="types"
+                                    name="filter_type[]"
+                                    multiple
+                                    size="10"
+                                    {{^ is_current }}disabled{{/ is_current }}
+                                    data-queue="{{ queue }}"
+                                    autocomplete="off"
+                                >
+                                    {{# types }}
+                                        <option value="{{ value }}" {{# checked }}selected{{/ checked }} title="{{ label }}">
+                                            {{ label }}
+                                        </option>
+                                    {{/ types }}
+                                </select>
+                            {{/ types_by_queue }}
+                        </div>
+
+                        <button type="submit" class="tlp-button-primary tlp-button-wide">
+                            <i class="fa fa-search tlp-button-icon"></i> {{ search_label }}
+                        </button>
+                    </form>
+                </div>
+            </section>
+        {{/search}}
+
+        <section class="tlp-pane" id="systemevents-results">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title">
+                        <i class="fa fa-flag tlp-pane-title-icon"></i> {{ title }}
+                    </h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <table class="tlp-table">
+                        <thead>
+                            <tr>
+                                <th>{{ type_label }}</th>
+                                <th>{{ status_label }}</th>
+                                <th>{{ parameters_label }}</th>
+                                <th class="tlp-table-cell-numeric systemevents-time">{{ created_at }}</th>
+                                <th class="tlp-table-cell-numeric systemevents-time">{{ start_at }}</th>
+                                <th class="tlp-table-cell-numeric systemevents-time">{{ end_at }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        {{# sections }}
+                            <tbody>
+                                <tr>
+                                    <td class="tlp-table-cell-section" colspan="7">{{ label }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                {{# events }}
+                                    <tr>
+                                        <td>
+                                            {{# namespace }}
+                                                <div class="systemevents-namespace">{{ namespace }}</div>
+                                            {{/ namespace }}
+                                            {{ type }}
+                                        </td>
+                                        <td>
+                                            <div class="tlp-badge-{{ badge }}
+                                                {{^ status_need_attention }}tlp-badge-outline{{/ status_need_attention }}"
+                                            >
+                                                {{ status }}
+                                            </div>
+                                        </td>
+                                        <td class="systemevents-parameters">
+                                            {{{ purified_parameters }}}
+                                        </td>
+                                        <td class="tlp-table-cell-numeric">
+                                            <span class="tlp-tooltip tlp-tooltip-top"
+                                                  data-tlp-tooltip="{{ create_date }}"
+                                            >
+                                                {{ create_time }}
+                                            </span>
+                                        </td>
+                                        <td class="tlp-table-cell-numeric {{^ is_started }}systemevents-not-started{{/ is_started }}">
+                                            <span class="tlp-tooltip tlp-tooltip-top"
+                                                  data-tlp-tooltip="{{# is_started }}{{ start_date }}{{/ is_started }}{{^ is_started }}{{ not_started_yet }}{{/ is_started }}"
+                                            >
+                                                {{# is_started }}
+                                                    {{ start_time }}
+                                                {{/ is_started }}
+                                                {{^ is_started }}
+                                                    –
+                                                {{/ is_started }}
+                                            </span>
+                                        </td>
+                                        <td class="tlp-table-cell-numeric {{^ is_ended }}systemevents-not-ended{{/ is_ended }}">
+                                            <span class="tlp-tooltip tlp-tooltip-top"
+                                                  data-tlp-tooltip="{{# is_ended }}{{ end_date }}{{/ is_ended }}{{^ is_ended }}{{ not_ended_yet }}{{/ is_ended }}"
+                                            >
+                                                {{# is_ended }}
+                                                    {{ end_time }}
+                                                {{/ is_ended }}
+                                                {{^ is_ended }}
+                                                    –
+                                                {{/ is_ended }}
+                                            </span>
+                                        </td>
+                                        <td class="tlp-table-cell-actions">
+                                            <button type="button"
+                                                class="tlp-button-primary tlp-button-outline tlp-button-small tlp-table-cell-actions-button systemevents-display-edit-modal"
+                                                data-target-modal-id="systemevents-details-modal-{{ id }}"
+                                            >
+                                                <i class="fa fa-list tlp-button-icon"></i> {{ details_label }}
+                                            </button>
+
+                                            {{> modal-details-system-event }}
+                                        </td>
+                                    </tr>
+                                {{/ events }}
+                            </tbody>
+                        {{/ sections }}
+                        {{^ has_events }}
+                            <tbody>
+                                <tr>
+                                    <td colspan="7" class="tlp-table-cell-empty">
+                                        {{ empty_state }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        {{/ has_events }}
+                    </table>
+                    {{# has_events }}
+                        {{# pagination }}
+                            {{> pagination }}
+                        {{/ pagination }}
+                    {{/ has_events }}
+                </section>
+            </div>
+        </section>
+    </section>
+</div>
+
+</section>

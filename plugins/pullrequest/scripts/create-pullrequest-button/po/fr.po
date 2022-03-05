@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Joris MASSON <joris.masson@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid ""
+"An error occured while retrieving needed information to create a pull "
+"request."
+msgstr ""
+"Une erreur est survenue lors de la récupération d'informations nécessaires "
+"pour la création de pull request."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Create a pull request"
+msgstr "Créer une pull request"
+
+msgid "Create pull request"
+msgstr "Créer une pull request"
+
+msgid "Create the pull request"
+msgstr "Créer la pull request"
+
+msgid "Destination branch"
+msgstr "Branche destination"
+
+msgid "No pull request can currently be created"
+msgstr "Aucune pull request ne peut actuellement être créée"
+
+msgid "Oops"
+msgstr "Oups"
+
+msgid ""
+"Refresh the page and try again; if the error persists, contact your\n"
+"                administrator."
+msgstr ""
+"Rafraîchissez la page et essayez à nouveau ; si l'erreur persiste, alors "
+"contactez votre administrateur."
+
+msgid "Source branch"
+msgstr "Branche source"
+
+msgid "You don't have permission to see parent repository's branches."
+msgstr "Vous n'avez pas la permission de voir les branches du dépot parent."

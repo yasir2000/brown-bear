@@ -1,0 +1,75 @@
+<div class="tlp-framed-vertically">
+    <h1 class="tlp-framed-horizontally">{{ title }}</h1>
+
+    <nav class="tlp-tabs">
+        <a href="?view=installed" class="tlp-tab">{{ installed_tab_label }}</a>
+        <a href="?view=available" class="tlp-tab tlp-tab-active">{{ not_installed_tab_label }}</a>
+    </nav>
+
+    <div class="tlp-framed-horizontally">
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title">
+                        <i class="fa fa-cubes tlp-pane-title-icon"></i> {{ not_installed_pane_label }}
+                    </h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <div class="tlp-table-actions">
+                        <div class="tlp-table-actions-spacer"></div>
+                        <div class="tlp-form-element {{^ plugins }}tlp-form-element-disabled{{/ plugins }}">
+                            <input type="search"
+                                id="filter-plugins"
+                                data-target-table-id="plugins-list"
+                                autocomplete="off"
+                                class="tlp-search"
+                                size="28"
+                                placeholder="{{ filter_label }}"
+                                {{^ plugins }}disabled{{/ plugins }}>
+                        </div>
+                    </div>
+                    <table class="tlp-table" id="plugins-list">
+                        <thead>
+                        <tr>
+                            <th>{{ plugin_table_head }}</th>
+                            <th>{{ version_table_head }}</th>
+                            <th>{{ description_table_head }}</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tlp-table-empty-filter">
+                                <td colspan="4" class="tlp-table-cell-empty">
+                                    {{ filter_empty_state }}
+                                </td>
+                            </tr>
+                            {{# plugins }}
+                                <tr>
+                                    <td class="pluginsadministration-available-list-name-cell tlp-table-cell-filterable">{{ full_name }}</td>
+                                    <td>{{ version }}</td>
+                                    <td class="pluginsadministration-available-list-description-cell tlp-table-cell-filterable">{{ description }}</td>
+                                    <td>
+                                        <button class="tlp-button-primary tlp-button-outline tlp-button-small install-plugin-button"
+                                            data-modal-id="install-plugin-{{ name }}"
+                                        >
+                                            <i class="fa fa-download tlp-button-icon"></i> {{ install_label }}
+                                        </button>
+
+                                        {{> install-plugin-modal }}
+                                    </td>
+                                </tr>
+                            {{/ plugins }}
+                            {{^ plugins }}
+                                <tr>
+                                    <td colspan="4" class="tlp-table-cell-empty">
+                                        {{ no_local_plugins }}
+                                    </td>
+                                </tr>
+                            {{/ plugins }}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>

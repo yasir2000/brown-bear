@@ -1,0 +1,117 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+%tlp-alert {
+    position: relative;
+    margin: 0 0 var(--tlp-medium-spacing);
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-medium-spacing) 42px;
+    border-left: 5px solid transparent;
+    border-radius: var(--tlp-medium-radius);
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    &:last-child {
+        margin: 0;
+    }
+
+    &::before {
+        display: inline-block;
+        position: absolute;
+        top: calc(var(--tlp-medium-spacing) + 1px);
+        left: var(--tlp-medium-spacing);
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.125rem;
+    }
+
+    code {
+        color: inherit;
+    }
+}
+
+.tlp-alert-info {
+    @extend %tlp-alert;
+
+    border-left: var(--tlp-alert-info-border);
+    background: var(--tlp-alert-info-background);
+    box-shadow: var(--tlp-alert-info-shadow);
+    color: var(--tlp-alert-info-color);
+
+    &::before {
+        content: "\f05a"; // fa-info-circle
+        font-weight: 900;
+    }
+
+    code {
+        background: var(--tlp-info-color-transparent-90);
+    }
+}
+
+.tlp-alert-success {
+    @extend %tlp-alert;
+
+    border-left: var(--tlp-alert-success-border);
+    background: var(--tlp-alert-success-background);
+    box-shadow: var(--tlp-alert-success-shadow);
+    color: var(--tlp-alert-success-color);
+
+    &::before {
+        content: "\f164"; // fa-thumbs-up
+        font-weight: 400;
+    }
+
+    code {
+        background: var(--tlp-success-color-transparent-90);
+    }
+}
+
+.tlp-alert-warning {
+    @extend %tlp-alert;
+
+    border-left: var(--tlp-alert-warning-border);
+    background: var(--tlp-alert-warning-background);
+    box-shadow: var(--tlp-alert-warning-shadow);
+    color: var(--tlp-alert-warning-color);
+
+    &::before {
+        content: "\f071"; // fa-exclamation-triangle
+        font-weight: 900;
+    }
+
+    code {
+        background: var(--tlp-warning-color-transparent-90);
+    }
+}
+
+.tlp-alert-danger {
+    @extend %tlp-alert;
+
+    border-left: var(--tlp-alert-danger-border);
+    background: var(--tlp-alert-danger-background);
+    box-shadow: var(--tlp-alert-danger-shadow);
+    color: var(--tlp-alert-danger-color);
+
+    &::before {
+        content: "\f06a"; // fa-exclamation-circle
+        font-weight: 900;
+    }
+
+    code {
+        background: var(--tlp-danger-color-transparent-90);
+    }
+}

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoardWithoutAnyColumnsError is displays misconfiguration error for admin user 1`] = `
+<section
+  class="empty-state-page"
+>
+  <div
+    class="empty-state-illustration"
+  >
+    <!---->
+  </div>
+   
+  <h1
+    class="empty-state-title"
+  >
+    <translate-stub
+      tag="span"
+    >
+      This taskboard is not properly configured
+    </translate-stub>
+  </h1>
+   
+  <p
+    class="empty-state-text"
+  >
+    <translate-stub
+      tag="span"
+    >
+      You have to configure the columns mapping.
+    </translate-stub>
+  </p>
+   
+  <a
+    class="tlp-button-primary empty-state-action"
+    href="/path/to/admin"
+  >
+    <i
+      aria-hidden="true"
+      class="fas fa-long-arrow-alt-right tlp-button-icon"
+    />
+     
+    <translate-stub
+      tag="span"
+    >
+      Define columns
+    </translate-stub>
+  </a>
+</section>
+`;

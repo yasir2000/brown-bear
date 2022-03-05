@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardXrefLabel displays the xref and the label of a card 1`] = `
+<div
+  class="taskboard-card-xref-label"
+>
+  <a
+    class="taskboard-card-xref tlp-swatch-lake-placid-blue"
+    data-not-drag-handle="true"
+    data-test="xref"
+    href="/path/to/43"
+  >
+    
+        story #43
+    
+  </a>
+   
+  <span
+    class="taskboard-card-label"
+  >
+    Story 2
+  </span>
+</div>
+`;

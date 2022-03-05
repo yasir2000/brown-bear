@@ -1,0 +1,9 @@
+#
+# Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
+# This file is licensed under the GNU General Public License version 2. See the file COPYING.
+#
+
+account_login	page_title	Connexion à $1
+account_login	name	Nom d'utilisateur
+account_login	password	Mot de passe
+account_login	need_help	Problème de connexion ? Envoyer un email aux administrateurs

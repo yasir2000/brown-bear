@@ -1,0 +1,80 @@
+docman =
+    element item {
+        docman_folder
+    }
+
+docman_item =
+    element properties {
+        element title { xsd:string },
+        element description { xsd:string }?,
+        element create_date { docman_date_content }?,
+        element update_date { docman_date_content }?,
+        element owner { docman_user_content }?
+    },
+    element permissions {
+        element permission {
+            attribute ugroup { xsd:string },
+            attribute type { "PLUGIN_DOCMAN_READ" | "PLUGIN_DOCMAN_WRITE" | "PLUGIN_DOCMAN_MANAGE" }
+        }*
+    }?
+
+docman_folder =
+    attribute type { "folder" },
+    docman_item,
+    element item {
+        (
+            docman_folder |
+            docman_file |
+            docman_embedded |
+            docman_link |
+            docman_empty
+        )
+    }*
+
+docman_empty =
+    attribute type { "empty" },
+    docman_item
+
+docman_link =
+    attribute type { "link" },
+    docman_item,
+    element url { xsd:string }
+
+docman_file =
+    attribute type { "file" },
+    docman_item,
+    docman_file_versions
+
+docman_embedded =
+    attribute type { "embeddedfile" },
+    docman_item,
+    docman_file_versions
+
+docman_file_versions =
+    element versions {
+        element version {
+            element filename { xsd:string },
+            element filetype { xsd:string },
+            element filesize { xsd:string }?,
+            element date { docman_date_content }?,
+            element author { docman_user_content }?,
+            element label { xsd:string }?,
+            element changelog { xsd:string }?,
+            element content { xsd:string }
+        }*
+    }
+
+docman_date_content =
+    attribute format { "ISO8601" },
+    xsd:string
+
+docman_user_content =
+        (
+            (
+                attribute format { "username" | "ldap" | "id" | "email" }
+            ) | (
+                attribute format { "email" },
+                attribute is_anonymous { xsd:boolean }
+            )
+        ),
+        xsd:string

@@ -1,0 +1,11 @@
+{
+  "name": "tuleap/plugin-bugzilla-reference",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Bugzilla\\": ["include/", "include/Bugzilla/"]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

@@ -1,0 +1,91 @@
+/**
+ * Copyright (c) Enalean, 2019-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "@tuleap/list-picker";
+
+.register-new-project-list.register-new-project-information {
+    width: 500px;
+}
+
+.register-new-project-information-form-container {
+    display: flex;
+}
+
+.project-information-selected-template {
+    font-size: 18px;
+}
+
+.project-shortname-slugified-section {
+    display: flex;
+    margin: var(--tlp-small-spacing) 0;
+    padding-left: 4px;
+    color: var(--tlp-dimmed-color);
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.project-shortname-slugified {
+    margin: 0 0 0 5px;
+    font-weight: bold;
+}
+
+.project-information-name,
+.project-information-privacy {
+    width: 400px;
+}
+
+.project-short-name-hidden-section {
+    display: none;
+}
+
+.project-short-name-edit-section {
+    display: block;
+    padding: var(--tlp-medium-spacing) 0 0 0;
+}
+
+.project-shortname-edit-icon {
+    margin: 0 0 0 5px;
+}
+
+.project-information-input-privacy-list-option-label {
+    font-size: 16px;
+}
+
+.project-information-input-privacy-list-option-description {
+    display: none;
+}
+
+.list-picker-dropdown {
+    .project-information-input-privacy-list-option-label {
+        display: block;
+        margin: 0 0 5px;
+    }
+
+    .project-information-input-privacy-list-option-description {
+        display: block;
+        color: var(--tlp-dimmed-color);
+        font-size: 13px;
+        line-height: 20px;
+    }
+}
+
+.list-picker-item-highlighted .project-information-input-privacy-list-option-description {
+    color: var(--tlp-white-color);
+}

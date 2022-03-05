@@ -1,0 +1,122 @@
+/**
+ * Copyright (c) Enalean, 2019 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@keyframes skeleton-blink {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes skeleton-progress {
+    0% {
+        background-position: 0, 0;
+    }
+
+    100% {
+        background-position: 100vw, 0;
+    }
+}
+
+.tlp-skeleton-text {
+    display: inline-flex;
+    position: relative;
+    width: 150px;
+    overflow: hidden;
+
+    &::after {
+        content: " ";
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 6px;
+        animation: skeleton-progress 1.5s linear infinite;
+        border-radius: 2px;
+        background-image: linear-gradient(
+            to right,
+            var(--tlp-skeleton-color),
+            var(--tlp-skeleton-highlight-color),
+            var(--tlp-skeleton-color)
+        );
+        background-repeat: repeat-x;
+        background-position: -50vw bottom;
+        background-size: 100vw 100%;
+    }
+
+    &.tlp-label {
+        width: 30%;
+    }
+}
+
+h1 > .tlp-skeleton-text {
+    width: 350px;
+
+    &::after {
+        height: 16px;
+        border-radius: 4px;
+    }
+}
+
+h2 > .tlp-skeleton-text {
+    width: 300px;
+
+    &::after {
+        height: 12px;
+        border-radius: 3px;
+    }
+}
+
+p > .tlp-skeleton-text {
+    width: 100%;
+
+    &:last-child {
+        width: 70%;
+    }
+}
+
+.tlp-table > tbody > tr > td > .tlp-skeleton-text {
+    width: 70%;
+}
+
+.tlp-skeleton-icon {
+    animation: skeleton-blink 750ms linear infinite alternate;
+    color: var(--tlp-skeleton-color);
+
+    + .tlp-skeleton-text {
+        margin: 0 0 0 5px;
+    }
+}
+
+.tlp-skeleton-field {
+    animation: skeleton-blink 750ms linear infinite alternate;
+    border: 1px solid var(--tlp-skeleton-color);
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--tlp-skeleton-color);
+}
+
+.tlp-skeleton-card {
+    min-height: 58px;
+    animation: skeleton-blink 750ms linear infinite alternate;
+    border: 1px solid var(--tlp-skeleton-color);
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--tlp-skeleton-color);
+}

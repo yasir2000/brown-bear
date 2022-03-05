@@ -1,0 +1,235 @@
+<div class="kanban-feedbacks">
+    <kanban-filtered-updated-alert></kanban-filtered-updated-alert>
+    <feedback-message></feedback-message>
+    <under-the-fold-notification></under-the-fold-notification>
+</div>
+<div class="kanban-header">
+    <h1 class="kanban-header-title" data-test="kanban-header-title">{{ kanban.kanban.label }}</h1>
+    <div class="kanban-header-config">
+        <go-to-kanban></go-to-kanban>
+
+        <a
+            href="/plugins/tracker/?tracker={{kanban.kanban.tracker.id}}&func=new-artifact"
+            type="button"
+            class="tlp-button-primary tlp-button-small kanban-header-add-artifact-button"
+            ng-show="kanban.user_can_add_artifact"
+            ng-click="kanban.openAddArtifactModal($event)"
+            data-test="kanban-add-artifact"
+        >
+            <i class="fa fa-plus tlp-button-icon"
+               ng-class="{ 'fa-spinner fa-spin': kanban.is_artifact_modal_loading }"
+            ></i>
+            <span translate>Add new {{ kanban.kanban.tracker.item_name }}</span>
+        </a>
+
+        <button type="button"
+                class="tlp-button-primary tlp-button-outline tlp-button-small kanban-header-edit-button"
+                ng-click="kanban.editKanban()"
+                ng-show="kanban.showEditbutton()"
+                data-test="kanban-header-edit-button"
+        >
+            <i class="fas fa-pencil-alt tlp-button-icon"
+                ng-class="{ 'fa-spinner fa-spin': kanban.is_edit_loading }"
+            ></i>
+            <span translate>Edit this Kanban</span>
+        </button>
+        <button type="button"
+                class="tlp-button-primary tlp-button-outline tlp-button-small kanban-header-report-button"
+                ng-click="kanban.openReportModal()"
+        >
+            <i class="far fa-chart-bar tlp-button-icon"
+                ng-class="{ 'fa-spinner fa-spin': kanban.is_report_loading }"
+            ></i>
+            <span translate>Show reports</span>
+        </button>
+
+        <add-to-dashboard></add-to-dashboard>
+
+        <div class="kanban-header-spacer"></div>
+
+        <filter-tracker-report></filter-tracker-report>
+
+        <div class="kanban-header-filter-edit-buttons-spacer"></div>
+
+        <div class="tlp-button-bar kanban-header-edit-button">
+            <div class="tlp-button-bar-item" title="{{::'Compact view' | translate }}">
+                <input
+                        type="radio"
+                        id="kanban-header-compact-toggler"
+                        class="tlp-button-bar-checkbox"
+                        ng-change="kanban.saveCardsViewMode()"
+                        ng-model="kanban.user_prefers_collapsed_cards"
+                        ng-value="true"
+                >
+                <label
+                        for="kanban-header-compact-toggler"
+                        class="tlp-button-primary tlp-button-outline tlp-button-small kanban-header-compact-toggler-label"
+                >
+                    <i class="fa fa-list tlp-button-icon"></i>
+                </label>
+            </div>
+            <div class="tlp-button-bar-item" title="{{::'Detailed view' | translate }}">
+                <input
+                        type="radio"
+                        id="kanban-header-detailed-toggler"
+                        class="tlp-button-bar-checkbox"
+                        ng-change="kanban.saveCardsViewMode()"
+                        ng-model="kanban.user_prefers_collapsed_cards"
+                        ng-value="false"
+                        data-test="kanban-header-detailed-toggler"
+                >
+                <label
+                        for="kanban-header-detailed-toggler"
+                        class="tlp-button-primary tlp-button-outline tlp-button-small kanban-header-compact-toggler-label"
+                        data-test="kanban-header-detailed-toggler-label"
+                >
+                    <i class="fa fa-th-list tlp-button-icon"></i>
+                </label>
+            </div>
+        </div>
+        <input type="search"
+               class="tlp-search tlp-search-small kanban-header-search"
+               placeholder="{{ 'id, title, ...' | translate }}"
+               ng-model="kanban.filter.terms"
+               ng-keyup="kanban.filterCards()"
+               data-test="kanban-header-search"
+        >
+        <div class="tuleap-modal-loading" ng-if="kanban.loading_modal.loading"></div>
+    </div>
+</div>
+<div class="kanban-filtered-info">
+    <p class="tlp-text-info kanban-header-filter-text-info" ng-if="kanban.displayCardsAndWIPNotUpdated()">
+        <i class="far fa-life-ring"></i> <span translate>Your kanban is filtered, there is no update of cards in real time or WIP.</span>
+    </p>
+    <p class="tlp-text-info kanban-header-filter-text-info" ng-if="kanban.displayWIPNotUpdated()">
+        <i class="far fa-life-ring"></i> <span translate>Your kanban is filtered, there is no update of WIP.</span>
+    </p>
+</div>
+<div class="kanban-board" resize>
+    <div class="backlog kanban-column"
+         ng-class="{'kanban-column-open': kanban.backlog.is_open, 'kanban-column-closed': ! kanban.backlog.is_open}"
+         ng-click="kanban.expandBacklog()"
+         data-test="kanban-column-backlog"
+         ng-attr-title="{{ kanban.backlog.is_open ? '' : 'Toggle the backlog' | translate }}"
+    >
+        <div class="kanban-column-header">
+            <span class="kanban-column-header-toggle"
+                  title="{{ 'Toggle the backlog' | translate }}"
+                  ng-click="kanban.toggleBacklog(); $event.stopPropagation();"
+            >
+                <i class="fa fa-inbox"></i>
+            </span>
+            <span ng-if="kanban.backlog.is_open"
+                  class="kanban-column-header-label"
+                  title="{{ kanban.backlog.label }}"
+            >
+                {{ kanban.backlog.label }}
+            </span>
+            <column-wip-header column="kanban.backlog"></column-wip-header>
+        </div>
+        <kanban-column ng-init="$ctrl.column=kanban.backlog" ng-class="{'created-in-closed-column': $ctrl.column.have_new_item }"></kanban-column>
+        <add-in-place column="kanban.backlog" create-item="kanban.createItemInPlaceInBacklog" ng-if="kanban.backlog.user_can_add_in_place && kanban.backlog.is_open" data-test="add-in-place" class="add-in-place kanban-add-in-place-element"></add-in-place>
+        <div ng-if="! kanban.backlog.is_open" class="kanban-column-label">
+            <span class="kanban-column-label-title">{{ kanban.backlog.label }}</span>
+            <span
+                    ng-if="kanban.backlog.loading_items || kanban.backlog.fully_loaded"
+                    class="kanban-column-label-count"
+                    ng-class="{ loading: kanban.backlog.loading_items }"
+            >{{ kanban.backlog.content.length }}</span>
+            <span
+                    ng-if="! kanban.backlog.loading_items && ! kanban.backlog.fully_loaded"
+                    class="kanban-column-label-count"
+            >{{ kanban.backlog.nb_items_at_kanban_init }}</span>
+        </div>
+    </div>
+
+    <div ng-repeat="column in kanban.board.columns"
+         class="kanban-column"
+         ng-class="{'kanban-column-open': column.is_open,
+                    'kanban-column-closed': ! column.is_open,
+                    'wip-reached': kanban.isColumnWipReached(column)
+                   }"
+         ng-click="kanban.expandColumn(column)"
+         ng-attr-title="{{ column.is_open ? '' : 'Toggle this column' | translate }}"
+         data-column-id="{{ column.id }}"
+         data-test="kanban-column-{{kanban.slugifyLabel(column.label)}}"
+    >
+        <div class="kanban-column-header"
+             data-test="kanban-column-header"
+        >
+            <span class="kanban-column-header-toggle"
+                  title="{{ 'Toggle this column' | translate }}"
+                  ng-click="kanban.toggleColumn(column); $event.stopPropagation();"
+            >
+                <i ng-class="column.is_open ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i>
+            </span>
+            <span class="kanban-column-header-wip-warning"
+                  ng-if="column.is_open && kanban.isColumnWipReached(column)"
+                  title="{{ 'You have reached the work in progress limit for this column!' | translate }}"
+                  data-test="kanban-column-header-wip-warning"
+            >
+                <i class="fa fa-exclamation-triangle"></i>
+            </span>
+            <span ng-if="column.is_open"
+                  class="kanban-column-header-label"
+                  title="{{ column.label }}"
+                  data-test="kanban-column-label"
+            >
+                {{ column.label }}
+            </span>
+            <column-wip-header
+                column="column"
+                is-column-wip-reached="kanban.isColumnWipReached(column)"
+            ></column-wip-header>
+        </div>
+        <kanban-column ng-init="$ctrl.column=column" ng-class="{'created-in-closed-column': $ctrl.column.have_new_item }"></kanban-column>
+        <add-in-place column="column" create-item="kanban.createItemInPlace" ng-if="column.user_can_add_in_place && column.is_open"  data-test="add-in-place" class="add-in-place kanban-add-in-place-element"></add-in-place>
+        <div ng-if="! column.is_open" class="kanban-column-label">
+            <span class="kanban-column-label-title">{{ column.label }}</span>
+            <span
+                    ng-if="column.loading_items || column.fully_loaded"
+                    class="kanban-column-label-count"
+                    ng-class="{ loading: column.loading_items }"
+            >{{ column.content.length }}</span>
+            <span
+                    ng-if="! column.loading_items && ! column.fully_loaded"
+                    class="kanban-column-label-count"
+            >{{ column.nb_items_at_kanban_init }}</span>
+        </div>
+    </div>
+
+    <div class="archive kanban-column"
+         ng-class="{'kanban-column-open': kanban.archive.is_open, 'kanban-column-closed': ! kanban.archive.is_open}"
+         ng-click="kanban.expandArchive()"
+         ng-attr-title="{{ kanban.archive.is_open ? '' : 'Toggle the archive' | translate }}"
+    >
+        <div class="kanban-column-header">
+            <span class="kanban-column-header-toggle"
+                  title="{{ 'Toggle the archive' | translate }}"
+                  ng-click="kanban.toggleArchive(); $event.stopPropagation();"
+            >
+                <i class="fa fa-archive"></i>
+            </span>
+            <span ng-if="kanban.archive.is_open"
+                  class="kanban-column-header-label"
+                  title="{{ kanban.archive.label }}"
+            >
+                {{ kanban.archive.label }}
+            </span>
+            <column-wip-header column="kanban.archive"></column-wip-header>
+        </div>
+        <kanban-column ng-init="$ctrl.column=kanban.archive" ng-class="{'created-in-closed-column': $ctrl.column.have_new_item }"></kanban-column>
+        <div ng-if="! kanban.archive.is_open" class="kanban-column-label">
+            <span class="kanban-column-label-title">{{ kanban.archive.label }}</span>
+            <span
+                    ng-if="kanban.archive.loading_items || kanban.archive.fully_loaded"
+                    class="kanban-column-label-count"
+                    ng-class="{ loading: kanban.archive.loading_items }"
+            >{{ kanban.archive.content.length }}</span>
+            <span
+                    ng-if="! kanban.archive.loading_items && ! kanban.archive.fully_loaded"
+                    class="kanban-column-label-count"
+            >{{ kanban.archive.nb_items_at_kanban_init }}</span>
+        </div>
+    </div>
+</div>

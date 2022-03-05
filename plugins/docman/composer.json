@@ -1,0 +1,39 @@
+{
+  "name": "tuleap/plugin-docman",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Docman\\": "include/"
+    },
+    "classmap": ["include/"],
+    "files": [
+      "include/constants.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tuleap\\Docman\\Tests\\Stub\\": "tests/unit/Stubs",
+      "Tuleap\\Docman\\Test\\rest\\": ["./tests/rest/"]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ],
+      "exclude": [
+        "/include/REST/v1/Metadata/ProjectConfiguredMetadataRepresentation.php",
+        "/include/REST/v1/Metadata/ItemStatusMapper.php",
+        "/include/REST/v1/Metadata/PUTMetadataRepresentation.php",
+        "/include/REST/v1/Metadata/PUTRecursiveStatusRepresentation.php",
+        "/include/REST/v1/EmbeddedFiles/DocmanEmbeddedFilesPATCHRepresentation.php",
+        "/include/REST/v1/Files/DocmanFilesPATCHRepresentation.php",
+        "/include/REST/v1/Links/DocmanLinkPATCHRepresentation.php",
+        "/include/REST/v1/Wiki/DocmanWikiPATCHRepresentation.php",
+        "/include/Docman_Sample.php"
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<ul>
+    <li>When there are both cancel and primary action buttons, then the primary button is always on the right.</li>
+    <li>To be able to use large buttons on the footer you should use the class
+        <code class="code-inline">tlp-modal-footer-large</code>.</li>
+    <li>Buttons that have <code class="code-inline">data-dismiss="modal"</code> attribute in the modal
+        will close it.</li>
+    <li>Click on the backdrop or on the escape key will also close the modal.</li>
+    <li>Elements that have <code class="code-inline">data-modal-focus</code> attribute in the modal will take focus when it opens.</li>
+    <li>You must explicitly call the modal in javascript: <code class="code-inline">var the_modal = tlp.createModal('element-id');</code>.
+        This will return a <code class="code-inline">Modal</code> instance. You can then call
+        <code class="code-inline">show()</code>,
+        <code class="code-inline">hide()</code>, or
+        <code class="code-inline">toggle()</code> methods on this instance.
+    </li>
+    <li>On the <code class="code-inline">the_modal.show()</code> method an event <code class="code-inline">tlp-modal-shown</code> is dispatched on both the modal and Document.</li>
+    <li>On the <code class="code-inline">the_modal.hide()</code> method an event <code class="code-inline">tlp-modal-hidden</code> is dispatched on both the modal and Document.</li>
+</ul>
+
+<h4>Arguments:</h4>
+<ul>
+    <li>{ Element id } id</li>
+    <li>(Optional) { Object } options. Contains: <ul>
+        <li>{ Boolean } keyboard, defaults to true
+            <p>When true, enables closing the modal when pressing the <keycode>ESC</keycode> key.</p>
+        </li>
+        <li>{ Boolean } destroy_on_hide, defaults to false
+            <p>When true, destroys the event listeners when hiding the modal. Useful when for example you create new modals on a button click.</p>
+        </li>
+    </ul></li>
+</ul>

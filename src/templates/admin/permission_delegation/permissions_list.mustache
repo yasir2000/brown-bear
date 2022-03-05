@@ -1,0 +1,63 @@
+<section class="tlp-pane" id="siteadmin-permission-delegation-group-details-perms">
+    <form action="permission_delegation.php?action=delete-permissions" method="POST" class="tlp-pane-container">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">{{ permissions_title }}</h1>
+        </div>
+        <section class="tlp-pane-section">
+            <div id="siteadmin-permission-delegation-group-details-perms-actions">
+                <button type="button"
+                        id="siteadmin-permission-delegation-group-details-perms-actions-add"
+                        class="tlp-button-primary"
+                        data-group-id="{{ id }}"
+                        data-test="button-add-a-new-delegation"
+                >
+                    <i class="fa fa-plus tlp-button-icon"></i> {{ permissions_action_add }}
+                </button>
+
+                <input type="hidden" name="id" value="{{ id }}" />
+                <button type="submit"
+                        id="siteadmin-permission-delegation-group-details-perms-actions-delete"
+                        class="tlp-button-danger tlp-button-outline"
+                        disabled
+                >
+                    <i class="far fa-trash-alt tlp-button-icon"></i> {{ permissions_action_delete }}
+                </button>
+            </div>
+            {{# has_permissions }}
+                <table class="tlp-table">
+                    <tbody>
+                    {{# permissions }}
+                        <tr>
+                            <td>
+                                <input
+                                        type="checkbox"
+                                        name="permissions[]"
+                                        value="{{ id }}"
+                                    {{# can_be_removed }}
+                                        disabled
+                                        class="tlp-form-element-disabled"
+                                        title="{{ cannot_remove_label }}"
+                                    {{/ can_be_removed }}
+                                >
+                            </td>
+                            <td class="siteadmin-permission-delegation-group-details-perms-perm-name"
+                                title="{{ description }}"
+                            >
+                                {{ name }}
+                            </td>
+                        </tr>
+                    {{/ permissions }}
+                    </tbody>
+                </table>
+            {{/ has_permissions }}
+            {{^ has_permissions }}
+                <section class="empty-state-pane" data-test="delegation-has-no-permissions-set">
+                    <p class="empty-state-text empty-state-text-smaller">{{ no_permission }}</p>
+                </section>
+            {{/ has_permissions }}
+        </section>
+    </form>
+</section>

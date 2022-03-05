@@ -1,0 +1,8 @@
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+grammar {
+
+    include "xml_project_agiledashboard_planning.rnc"
+
+    start = element agiledashboard { agiledashboard }
+}

@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Benjamin Bouillot <thomas.gorka@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "An error has occurred loading content"
+msgstr "Une erreur s'est produite lors du chargement du contenu"
+
+msgid "An error occurred loading unplanned elements"
+msgstr ""
+"Une erreur s'est produite lors du chargement des éléments non plannifiés"
+
+msgid "Create the first %s"
+msgstr "Créer un(e) %s"
+
+msgid "Create the first iteration"
+msgstr "Créer la première itération"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "New %{ iteration_sub_label }"
+msgstr "Ajouter un(e) %{ iteration_sub_label }"
+
+msgid "Program"
+msgstr "Programme"
+
+msgid "The retrieval of %s has failed"
+msgstr "La récupération de %s a échoué"
+
+msgid "The retrieval of iterations has failed"
+msgstr "La récupération des itérations a échoué"
+
+msgid "There is no %s yet."
+msgstr "Il n'y a pas encore de %s."
+
+msgid "There is no iteration yet."
+msgstr "Il n'y a pas encore d'itérations."
+
+msgid "There is no unplanned element"
+msgstr "Il n'y a aucun élément non plannifié"
+
+msgid "To be planned by the Teams"
+msgstr "À plannifier par les équipes"

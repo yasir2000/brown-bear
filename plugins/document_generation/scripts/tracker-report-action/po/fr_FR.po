@@ -1,0 +1,140 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "After %s"
+msgstr "Après le"
+
+msgid "After %s and before %s"
+msgstr "Après le %S et avant le %s"
+
+msgid "Artifact ID"
+msgstr "Artéfact ID"
+
+msgid "Artifacts"
+msgstr "Artéfacts"
+
+msgid "Artifacts referenced by “%s”"
+msgstr "Les artéfacts qui sont référencés par “%s”"
+
+msgid "Artifacts that reference “%s”"
+msgstr "Les artéfacts qui référencent “%s”"
+
+msgid "As of %s"
+msgstr "Le %s"
+
+msgid "Before %s"
+msgstr "Avant le %s"
+
+msgid "Blocked"
+msgstr "Bloqué"
+
+msgid "Campaigns"
+msgstr "Campagnes"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Executed By"
+msgstr "Éxécuté par"
+
+msgid "Executed On"
+msgstr "Éxécuté le"
+
+msgid "Expected results"
+msgstr "Résultats attendus"
+
+msgid "Exported by"
+msgstr "Exporté par"
+
+msgid "Exported on"
+msgstr "Exporté le"
+
+msgid "Exported on %s by %s"
+msgstr "Exporté le %s par %s"
+
+msgid "Failed"
+msgstr "Échoué"
+
+msgid "Link type"
+msgstr "Type de lien"
+
+msgid ""
+"No filter has been applied to this report because no TQL query has been set"
+msgstr ""
+"Aucun filtre n'a été appliqué à ce rapport car aucune requête TQL n'a été "
+"définie"
+
+msgid ""
+"No filter has been applied to this report because no search criteria has a "
+"value set"
+msgstr ""
+"Aucun filtre n'a été appliqué à ce rapport car aucun critère de recherche "
+"n'a de valeur définie"
+
+msgid "Not run"
+msgstr "Non executé"
+
+msgid "Passed"
+msgstr "Passé"
+
+msgid "Platform"
+msgstr "Plateforme"
+
+msgid "Project"
+msgstr "Projet"
+
+msgid "Report URL"
+msgstr "URL du rapport"
+
+msgid "Requirements"
+msgstr "Exigences"
+
+msgid "Results"
+msgstr "Résultats"
+
+msgid "Search criteria"
+msgstr "Critère de recherche"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Step"
+msgstr "Étape"
+
+msgid "Step %d"
+msgstr "Étape %d"
+
+msgid "TQL query: "
+msgstr "Requête TQL : "
+
+msgid "Table of contents"
+msgstr "Table des matières"
+
+msgid "Tests"
+msgstr "Tests"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Traceability Matrix"
+msgstr "Matrice de traçabilité"
+
+msgid "Tracker"
+msgstr "Outil de suivi"
+
+msgid "Tracker Report"
+msgstr "Rapport de l'outil de suivi"
+
+msgid "Value"
+msgstr "Valeur"

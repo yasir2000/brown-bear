@@ -1,0 +1,15 @@
+{
+    "name": "pullrequest",
+    "gettext-vue": {
+        "create-pullrequest-button": {
+            "src": "scripts/create-pullrequest-button",
+            "po": "scripts/create-pullrequest-button/po"
+        }
+    },
+    "gettext-angularjs": {
+        "pullrequest": {
+            "src": "scripts/src/app",
+            "po": "scripts/po"
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<select name="planning[backlog_tracker_ids][]" style="vertical-align: top;" multiple="multiple">
+    {{# available_backlog_trackers }}
+        <option value="{{ id }}" {{# selected }} selected {{/ selected }}>{{ name }}</option>
+    {{/ available_backlog_trackers }}
+</select>

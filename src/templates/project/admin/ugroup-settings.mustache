@@ -1,0 +1,28 @@
+<div class="tlp-framed-horizontally">
+    <div class="project-admin-user-groups-header">
+        <h2 class="project-admin-user-groups-header-title" data-test="project-admin-user-groups-header-title">{{ name }}</h2>
+        {{# is_static_ugroup }}
+            <a class="tlp-button-primary tlp-button-outline"
+               href="{{ permissions_per_group_url }}"
+            >
+                <i class="fa fa-lock tlp-button-icon"></i>
+                {{# gettext }}See permissions{{/ gettext }}
+            </a>
+        {{/ is_static_ugroup }}
+    </div>
+    <div class="project-admin-user-groups-container">
+        {{# is_static_ugroup }}
+            <div class="project-admin-user-groups-details">
+                {{> ugroup-settings-details }}
+                {{> ugroup-settings-delegation }}
+                {{> ugroup-settings-binding }}
+            </div>
+        {{/ is_static_ugroup }}
+        <div
+                class="project-admin-user-groups-member-list-container"
+                id="project-admin-user-groups-member-list-container"
+        >
+            {{> ugroup-settings-member-list }}
+        </div>
+    </div>
+</div>

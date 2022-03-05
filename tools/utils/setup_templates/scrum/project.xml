@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project unix-name="scrumtemplate" full-name="Scrum Template" description="Collect stories, plan releases, monitor sprints with a ready-to-use Scrum area" access="public">
+  <long-description></long-description>
+  <services>
+    <service shortname="summary" enabled="0"/>
+    <service shortname="plugin_agiledashboard" enabled="1" />
+    <service shortname="plugin_tracker" enabled="1" />
+    <service shortname="plugin_git" enabled="0" />
+    <service shortname="plugin_svn" enabled="0" />
+    <service shortname="docman" enabled="0"/>
+    <service shortname="file" enabled="0"/>
+    <service shortname="hudson" enabled="0"/>
+    <service shortname="plugin_baseline" enabled="0"/>
+    <service shortname="plugin_mediawiki" enabled="0"/>
+    <service shortname="plugin_testmanagement" enabled="0"/>
+    <service shortname="plugin_program_management" enabled="0"/>
+  </services>
+    <dashboards>
+        <dashboard name="0 - Main Dashboard">
+            <line>
+              <column>
+                <widget name="dashboardprojectmilestone"/>
+                <widget name="projectmembers"/>
+              </column>
+              <column>
+                <widget name="projectnote">
+                  <preference name="note">
+                    <value name="title">Note from the Tuleap team</value>
+                    <value name="content"><![CDATA[
+Welcome to your new project!
+
+It is based on Scrum template.
+
+You will find a ready-to-use Scrum environment
+to collect stories, plan releases and monitor sprints.
+]]></value>
+                  </preference>
+                </widget>
+                <widget name="projectheartbeat"/>
+              </column>
+            </line>
+        </dashboard>
+        <dashboard name="1 - Epics (backlog)">
+            <line>
+                <column>
+                    <widget name="plugin_tracker_projectrenderer">
+                        <preference name="renderer">
+                            <reference name="id" REF="R1743"></reference>
+                            <value name="title">Epics</value>
+                        </preference>
+                    </widget>
+                </column>
+            </line>
+        </dashboard>
+        <dashboard name="2 - Bugs">
+            <line>
+                <column>
+                    <widget name="plugin_tracker_projectrenderer">
+                        <preference name="renderer">
+                            <reference name="id" REF="R1740"></reference>
+                            <value name="title">New bugs not assigned</value>
+                        </preference>
+                    </widget>
+                    <widget name="plugin_tracker_projectrenderer">
+                        <preference name="renderer">
+                            <reference name="id" REF="R1735"></reference>
+                            <value name="title">Global Charts</value>
+                        </preference>
+                    </widget>
+                </column>
+            </line>
+        </dashboard>
+    </dashboards>
+</project>

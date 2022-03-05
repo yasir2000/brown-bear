@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.4\n"
+
+msgid "An error occurred while loading your recent items."
+msgstr "Une erreur est survenue lors du chargement de votre historique."
+
+msgid "Browse all projects"
+msgstr "Parcourir tous les projets"
+
+msgid "Browse all…"
+msgstr "Tout parcourir…"
+
+msgid "Go to project administration of %s"
+msgstr "Aller à l'administration du projet $s"
+
+msgid "Legacy search"
+msgstr "Recherche"
+
+msgid "My projects"
+msgstr "Mes projets"
+
+msgid "Project, recent item, …"
+msgstr "Projet, éléments récents, …"
+
+msgid "Recent items"
+msgstr "Éléments récents"
+
+msgid "Start exploring Tuleap"
+msgstr "Démarrer l'exploration de Tuleap"
+
+msgid "Switch to…"
+msgstr "Basculer vers…"
+
+msgid "You didn't visit recently any items matching your query."
+msgstr "Vous n'avez pas visité d'élément récemment qui corresponde à votre recherche."
+
+msgid "You don't belong to any projects"
+msgstr "Vous n'appartenez à aucun projet"
+
+msgid "You don't belong to any projects matching your query."
+msgstr "Vous n'appartenez à aucun projet qui corresponde à votre recherche."
+
+msgid "You don’t belong to any project or haven’t viewed anything yet"
+msgstr "Vous n'appartenez à aucun projet ou n'avez rien visité pour l'instant"
+
+msgid "Your Tuleap history will appear here"
+msgstr "Votre historique Tuleap apparaîtra ici"

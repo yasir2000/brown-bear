@@ -1,0 +1,23 @@
+<ul>
+    {{# backlog_trackers }}
+        <li>
+            <a href="{{ tracker_url }}">{{ name }}</a>
+            {{# has_misconfigured_semantics }}
+                <span class="text-warning velocity-missing-semantic">
+                 <i class="fa fa-exclamation-triangle"></i>
+                    {{# dngettext }}
+                        tuleap-velocity |
+                        The following semantic is not defined: |
+                        The following semantics are not defined: |
+                        {{ nb_semantic_misconfigured }}
+                    {{/ dngettext }}
+                    {{# misconfigured_semantics }}
+                        <a href={{ semantic_url }}>{{ semantic_name }}</a><span class="misconfigured-semantic-display-comma">, </span>
+                    {{/ misconfigured_semantics }}
+                </span>
+            {{/ has_misconfigured_semantics }}
+        </li>
+    {{/ backlog_trackers }}
+</ul>
+
+{{> velocity-all-tracker-misconfigured }}

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BacklogItemCard Displays the backlog item as a card 1`] = `
+<a
+  class="tlp-card tlp-card-selectable test-plan-backlog-item-card"
+  href="/plugins/tracker/?aid=123&ttm_backlog_item_id=123&ttm_milestone_id=11"
+>
+  <div>
+    <i
+      aria-hidden="true"
+      class="fa fa-fw test-plan-backlog-item-caret fa-caret-right"
+    />
+     
+    <span
+      class="cross-ref-badge cross-ref-badge-fiesta-red"
+    >
+      
+            bug #123
+        
+    </span>
+     
+    <span
+      class="test-plan-backlog-item-title"
+    >
+      
+            A backlog item
+        
+    </span>
+     
+    <add-test-button-stub
+      backlog_item="[object Object]"
+    />
+  </div>
+   
+  <backlog-item-coverage-stub
+    backlog_item="[object Object]"
+  />
+</a>
+`;

@@ -1,0 +1,801 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "\"%{ title }\" is being copied…"
+msgstr "\"%{ title }\" est en train d'être copié…"
+
+msgid "\"%{ title }\" is being moved…"
+msgstr "\"%{ title }\" est en train d'être déplacé…"
+
+msgid ""
+"%{ filename } has been locked for edition by <a href=\"%{ lock_owner_url }\">"
+"%{ lock_owner_name }</a>.\n"
+"                You can't upload a new version of this file until the lock "
+"is released."
+msgstr ""
+"L'édition de %{ filename } a été bloquée par <a href=\"%{ lock_owner_url }\">"
+"%{ lock_owner_name }</a>. Vous ne pouvez pas téléverser de nouvelle version "
+"tant que le verrou n'a pas été levé."
+
+msgid "%{ from } – %{ to } of %{ total }"
+msgstr "%{ from } – %{ to } sur %{ total }"
+
+msgid "*lorem => finishing by \"lorem\""
+msgstr "*lorem => finissant par \"lorem\""
+
+msgid "1 warning"
+msgid_plural "%{ nb_warnings } warnings"
+msgstr[0] "1 avertissement"
+msgstr[1] "2 avertissements"
+
+msgid "12 months"
+msgstr "12 mois"
+
+msgid "3 months"
+msgstr "3 mois"
+
+msgid "6 months"
+msgstr "6 mois"
+
+msgid "A document already exists with the same title."
+msgstr "Un document existe déjà avec le même titre."
+
+msgid ""
+"A document already exists with the same title. However you can create a new "
+"version of\n"
+"        this document by dropping the item on the file you want to update."
+msgstr ""
+"Un document existe déjà avec le même titre. Cependant vous pouvez créer une "
+"nouvelle version de ce document en déposant l'objet sur le fichier que vous "
+"voulez mettre à jour."
+
+msgid "A folder already exists with the same title."
+msgstr "Un dossier existe déjà avec le même titre."
+
+msgid "Accepted input is the user id or its username."
+msgstr "Les entrées acceptées sont l'id ou son nom d'utilisateur."
+
+msgid "Actions in Documents service"
+msgstr "Actions dans le service Documents"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Advanced"
+msgstr "Avancé"
+
+msgid "After"
+msgstr "Après"
+
+msgid ""
+"All the properties values that you define here will be proposed as default "
+"values\n"
+"            for the items that will be created within this folder."
+msgstr ""
+"Toutes les valeurs des propriétés que vous définirez ici seront proposées "
+"comme valeurs par défaut pour les éléments qui seront créés dans ce dossier."
+
+msgid "An error has occurred, please contact your administrator"
+msgstr "Une erreur est servenue, merci de contacter votre administrateur"
+
+msgid "An error occurred while searching for results."
+msgstr "Une erreur est survenue lors de la recherche."
+
+msgid "Any"
+msgstr "Tous"
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "Apply new values on this folder and all its content"
+msgstr "Appliquer les nouvelles valeurs sur ce dossier et son contenu"
+
+msgid "Apply new values on this folder and its subfolders only"
+msgstr "Appliquer les nouvelles valeurs sur ce dossier et ses sous-dossiers"
+
+msgid "Apply same permissions to all sub-items of this folder"
+msgstr ""
+"Appliquer les mêmes permissions pour tous les sous-éléments de ce dossier"
+
+msgid "Approval table"
+msgstr "Table d'approbation"
+
+msgid "Approval table status"
+msgstr "Status de la table d'approbation"
+
+msgid "Approval tables"
+msgstr "Tables d'approbation"
+
+msgid "Approved"
+msgstr "Approuvé"
+
+msgid "Archive size warning threshold reached"
+msgstr "Seuil d'avertissement de taille d'archive atteint"
+
+msgid "Before"
+msgstr "Avant"
+
+msgid "Begin"
+msgstr "Début"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Cancel upload"
+msgstr "Annuler le téléversement"
+
+msgid "Changelog"
+msgstr "Description des changements"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid ""
+"Contact your administrator or try to reorganize this folder, then try again."
+msgstr ""
+"Contactez votre administrateur ou essayez de réorganiser ce dossier, puis "
+"réessayez à nouveau."
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Copy"
+msgstr "Copier"
+
+msgid "Copy the previous approval table."
+msgstr "Copier la table d'approbation précédente."
+
+msgid "Corrupted"
+msgstr "Corrompu"
+
+msgid "Create a new document"
+msgstr "Créer un nouveau document"
+
+msgid "Create a new empty approval table."
+msgstr "Créer une nouvelle table d'approbation vide."
+
+msgid "Create a new folder"
+msgstr "Créer un nouveau dossier"
+
+msgid "Create a new version of document"
+msgstr "Créer une nouvelle version du document"
+
+msgid "Create document"
+msgstr "Créer le document"
+
+msgid "Create folder"
+msgstr "Créer le dossier"
+
+msgid "Create new version"
+msgstr "Créer une nouvelle version"
+
+msgid "Creation"
+msgstr "Création"
+
+msgid "Cut"
+msgstr "Couper"
+
+msgid "Default properties"
+msgstr "Propriétés par défaut"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgctxt "keyboard key"
+msgid "Delete"
+msgstr "Suppr"
+
+msgid ""
+"Depending on the speed of your network, it can take some time to complete.\n"
+"                    Do you want to continue?"
+msgstr ""
+"En fonction de la vitesse de votre réseau, cela peut prendre un certain "
+"temps. Voulez-vous continuer ?"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "Document locked by %s."
+msgstr "Document verrouillé par %s."
+
+msgid "Documents"
+msgstr "Documents"
+
+msgid "Download"
+msgstr "Télécharger"
+
+msgid "Download anyway"
+msgstr "Télécharger quand même"
+
+msgid "Download as zip"
+msgstr "Télécharger au format zip"
+
+msgid "Draft"
+msgstr "Brouillon"
+
+msgid "Drop one file to upload it to %(folder)s (max size is %(size)s)."
+msgid_plural ""
+"Drop up to %(nb_files)s files to upload them to %(folder)s (max size is "
+"%(size)s)."
+msgstr[0] ""
+"Déposez un fichier pour le téléverser dans %(folder)s (la taille max est "
+"%(size)s)."
+msgstr[1] ""
+"Déposez jusqu'à %(nb_files)s fichiers pour les téléverser dans %(folder)s "
+"(la taille max est %(size)s)."
+
+msgid "Drop to upload a new version"
+msgstr "Déposer pour téléverser une nouvelle version"
+
+msgid "Drop to upload in folder"
+msgstr "Déposer pour téléverser dans le dossier"
+
+msgid "Dropping files in %s is forbidden."
+msgstr "Déposer des fichiers dans %s n'est pas permis."
+
+msgid "Edit \"%s\" permissions"
+msgstr "Editer les permissions de \"%s\""
+
+msgid "Edit \"%s\" properties"
+msgstr "Editer les propriétés de \"%s\""
+
+msgid "Embedded"
+msgstr "Embarqué"
+
+msgid "Empty"
+msgstr "Vide"
+
+msgid "End"
+msgstr "Fin"
+
+msgid "File"
+msgstr "Fichier"
+
+msgid "File size"
+msgstr "Taille du fichier"
+
+msgid "Fixed date"
+msgstr "Date fixe"
+
+msgid "Focus the document search bar"
+msgstr "Se placer dans la barre de recherche"
+
+msgid "Global search"
+msgstr "Recherche globale"
+
+msgid "Global search information"
+msgstr "Information sur la recherche globale"
+
+msgid ""
+"Global search will search in all text properties of document (but does not "
+"look\n"
+"                inside the document)."
+msgstr ""
+"La recherche globale va chercher dans toutes les propriétés textes d'un "
+"document (mais ne va pas chercher à l'intérieur du document)."
+
+msgid "Go to Document manager home page"
+msgstr "Aller à la page d'accueil du service Gestion de documents"
+
+msgid "Go to my home page"
+msgstr "Aller à la page d'accueil"
+
+msgid "Go to parent folder"
+msgstr "Aller au dossier parent"
+
+msgid "Go to the wiki page"
+msgstr "Aller à la page wiki"
+
+msgid "Got it"
+msgstr "J'ai compris"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Hold on a second!"
+msgstr "Attendez une seconde !"
+
+msgid "Id"
+msgstr "Id"
+
+msgid "It seems an action you tried to perform can't be done."
+msgstr ""
+"Il semble que l'action que vous venez de tenter ne peut pas être réalisée."
+
+msgid "It seems the content of this element can't be loaded."
+msgstr "Le contenu de cet élément n'a pas pu être chargé."
+
+msgid "It's time to add new documents!"
+msgstr "Il est temps d'ajouter des documents !"
+
+msgid "Keep lock?"
+msgstr "Garder le verrou ?"
+
+msgid "Keep reviewers, comments and commitments."
+msgstr "Garder les approbateurs, commentaires et les engagements."
+
+msgid "Large view"
+msgstr "Vue large"
+
+msgid "Last update date"
+msgstr "Mise à jour"
+
+msgid "Link"
+msgstr "Lien"
+
+msgid "Lock"
+msgstr "Verrouiller"
+
+msgid "Lock and unlock document"
+msgstr "Verrouiller et déverrouiller le document"
+
+msgid "Lock new version"
+msgstr "Verrouiller la nouvelle version"
+
+msgid "Mail content is required"
+msgstr "Le contenu du mail est requis"
+
+msgid "Manager"
+msgstr "Gestionnaire"
+
+msgid "Maximum archive size allowed: %{ max_archive_size } MB"
+msgstr "Taille maximum de l'archive autorisée : %{ max_archive_size } Mo"
+
+msgid "Maximum archive size threshold exceeded"
+msgstr "Seuil de taille maximum de l'archive dépassé"
+
+msgid "My content..."
+msgstr "Mon contenu..."
+
+msgid "My document"
+msgstr "Mon document"
+
+msgid "My new version name"
+msgstr "Mon nom de nouvelle version"
+
+msgid "My useful document description"
+msgstr "Ma description de document"
+
+msgid "My wiki page"
+msgstr "Ma page wiki"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Name, description..."
+msgstr "Nom, description..."
+
+msgid "Narrow view"
+msgstr "Vue étroite"
+
+msgid "Navigation in Documents service"
+msgstr "Navigation dans le service Documents"
+
+msgid "New document"
+msgstr "Nouveau document"
+
+msgid "New folder"
+msgstr "Nouveau dossier"
+
+msgid "New version for \"%s\""
+msgstr "Nouvelle version de \"%s\""
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "No matching results"
+msgstr "Il n'y a aucun résultat"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "Not yet"
+msgstr "Pas encore"
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "Obsolescence date"
+msgstr "Date d'obsolescence"
+
+msgid "Obsolete today"
+msgstr "Obsolète aujourd'hui"
+
+msgid "On"
+msgstr "Le"
+
+msgid ""
+"Only the table structure will be kept. Reviewer comments and commitments "
+"will be\n"
+"                discarded."
+msgstr ""
+"Seule la structure de la table sera gardée. Les approbateurs et les "
+"engagements seront annulés."
+
+msgid "Oops, there's an issue."
+msgstr "Oups, il y a eu un problème."
+
+msgid "Oops…"
+msgstr "Oups…"
+
+msgid "Oops… Unable to upload file"
+msgid_plural "Oops… Unable to upload files"
+msgstr[0] "Oups… Impossible de téléverser un fichier"
+msgstr[1] "Oups… Impossible de téléverser des fichiers"
+
+msgid "Open approval tables"
+msgstr "Ouvrir les tables d'approbation"
+
+msgid "Open dropdown menu"
+msgstr "Ouvrir le menu déroulant"
+
+msgid "Open history"
+msgstr "Ouvrir l'historique"
+
+msgid "Open link"
+msgstr "Ouvrir le lien"
+
+msgid "Open notifications settings"
+msgstr "Ouvrir les paramètres de notification"
+
+msgid "Open permissions settings"
+msgstr "Ouvrir les paramètres de permissions"
+
+msgid "Other information"
+msgstr "Autres informations"
+
+msgid "Owner"
+msgstr "Propriétaire"
+
+msgid "Owner search information"
+msgstr "Information sur la recherche de propriétaire"
+
+msgid "Parent folders are not displayed to not clutter the interface"
+msgstr ""
+"Les dossiers parents ne sont pas affichés pour ne pas encombrer l'interface"
+
+msgid "Paste"
+msgstr "Coller"
+
+msgid "Permanent"
+msgstr "Permanent"
+
+msgid "Permissions"
+msgstr "Permissions"
+
+msgid "Please describe the changes of the new version here"
+msgstr "Merci de décrire ici le changement de version"
+
+msgid "Please enter a reason for why you need to access this document."
+msgstr ""
+"Merci d'indiquer la raison pour laquelle vous avez besoin d'accéder à ce "
+"document."
+
+msgid ""
+"Please note that if you check this option, the referenced wiki page will no\n"
+"                longer exist in the wiki service too."
+msgstr ""
+"Veuillez noter que si vous activez cette option, la page wiki référencée "
+"n'existera également plus dans le service wiki."
+
+msgid ""
+"Please note that the OSX archive extraction tool might not succeed in\n"
+"                    opening it."
+msgstr ""
+"Veuillez noter que l'outil d'extraction d'archive de OSX peut ne pas réussir "
+"à l'ouvrir."
+
+msgid "Please start again."
+msgstr "Merci de bien vouloir recommencer."
+
+msgid "Please write something meaningful for the admin."
+msgstr "Veuillez soumettre un message pertinent afin d'aider l'administrateur."
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Project documentation"
+msgstr "Documentation du projet"
+
+msgid "Propagate deletion to wiki service"
+msgstr "Propager la suppression au service wiki"
+
+msgid "Quick look"
+msgstr "Aperçu"
+
+msgid "Reader"
+msgstr "Lecteur"
+
+msgid "Recursion option"
+msgstr "Options de récursion"
+
+msgid "Rejected"
+msgstr "Rejeté"
+
+msgid "Reload the page"
+msgstr "Recharger la page"
+
+msgid "Reset the approval cycle."
+msgstr "Recommencer le cycle d'approbation."
+
+msgid "Search"
+msgstr "Recherche"
+
+msgid "Search allowed pattern:"
+msgstr "Modèles de recherche authorisés :"
+
+msgid "Search criteria"
+msgstr "Critères de recherche"
+
+msgid "Search in whole project documentation"
+msgstr "Chercher dans toute la documentation du projet"
+
+msgid "Searching in"
+msgstr "Recherche dans"
+
+msgid "Select bottom item"
+msgstr "Sélectionner le dernier élément"
+
+msgid "Select next item"
+msgstr "Sélectionner l'élément suivant"
+
+msgid "Select previous item"
+msgstr "Sélectionner l'élément précédent"
+
+msgid "Select top item"
+msgstr "Sélectionner le premier élément"
+
+msgid "Send mail"
+msgstr "Envoyer un Email"
+
+msgid ""
+"Shortcuts will apply to the selected document or folder. If there is no "
+"selected item they will apply to the current folder."
+msgstr ""
+"Les raccourcis s'appliquent au document ou dossier sélectionné. S'il n'y a "
+"pas d'élément sélectionné, ils s'appliqueront au dossier courant."
+
+msgid "Show error details"
+msgstr "Voir les détails de l'erreur"
+
+msgid "Size of the archive to be downloaded: %{ size_in_MB } MB"
+msgstr "Taille de l'archive à télécharger: %{ size_in_MB } Mo"
+
+msgid "Some files are being uploaded, click here to see the whole list."
+msgstr ""
+"Des fichiers sont en cours de téléversement, cliquez ici pour voir la liste "
+"complète."
+
+msgid "Start over with a completely new approval table."
+msgstr "Commencer avec une nouvelle table d'approbation."
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Switch to old user interface"
+msgstr "Basculer sur l'ancienne interface utilisateur"
+
+msgid ""
+"The archive you want to download has a size greater than %{\n"
+"                    warning_threshold } MB."
+msgstr ""
+"L'archive à télécharger a une taille supérieure à %{ warning_threshold } Mo."
+
+msgid ""
+"The archive you want to download has a size greater than or equal to 4GB or\n"
+"                    contains more than 64000 files."
+msgstr ""
+"L'archive que vous souhaitez télécharger a une taille supérieure ou égale à "
+"4Go ou contient plus de 64000 fichiers."
+
+msgid "The current date is the same or before the obsolescence date"
+msgstr "La date actuelle est la même ou antérieure à la date d'obsolescence"
+
+msgid "The document has been created below."
+msgstr "Le document a été créé ci-dessous."
+
+msgid "The folder has been created below."
+msgstr "Le dossier a été créé ci-dessous."
+
+msgid "The item has been deleted successfully."
+msgstr "L'objet a été supprimé avec succès."
+
+msgid ""
+"The item you have dropped is not a file. If you want to upload a folder, we "
+"advise you\n"
+"        to create a new folder first, then upload its content inside in a "
+"second time."
+msgid_plural ""
+"The items you have dropped contain an item which is not a file. If you want "
+"to upload a folder, we advise you to create a new folder first, then upload "
+"its content inside in a second time."
+msgstr[0] ""
+"L'objet que vous avez déposé n'est pas un fichier. Si vous voulez téléverser "
+"un dossier, nous vous conseillons de d'abord créer un nouveau dossier, puis "
+"d'y téléverser son contenu."
+msgstr[1] ""
+"Les objets que vous avez déposé contiennent un objet qui n'est pas un "
+"fichier. Si vous voulez téléverser un dossier, nous vous conseillons de "
+"d'abord créer un nouveau dossier, puis d'y téléverser son contenu."
+
+msgid ""
+"The size of the zip file you are attempting to download is exceeding the "
+"threshold\n"
+"            defined by the site administrators."
+msgstr ""
+"La taille du fichier zip que vous tentez de télécharger dépasse le seuil "
+"défini par les administrateurs du site."
+
+msgid "There are no items here or you don't have permissions to see them."
+msgstr ""
+"Il n’y a aucun élément ou alors vous n'avez pas le droit de le(s) voir."
+
+msgid "There is no upload in progress"
+msgstr "Il n'y a aucun téléversement en cours"
+
+msgid "This document is currently locked by"
+msgstr "Ce document est actuellement verrouillé par"
+
+msgid "This folder is empty"
+msgstr "Ce dossier est vide"
+
+msgid "This is a private folder"
+msgstr "Ce dossier est privé"
+
+msgid ""
+"This page is asking you to confirm that you want to leave - data you have "
+"entered may not be saved. Do you want to leave this page?"
+msgstr ""
+"Cette page vous demande de confirmer que vous souhaitez partir - les données "
+"que vous avez entrées ne seront pas sauvegardées. Voulez-vous quitter cette "
+"page ?"
+
+msgid "This wiki has a approval table, you can't update it."
+msgstr ""
+"Ce wiki a une table d'approbation, vous ne pouvez pas le mettre à jour."
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Today"
+msgstr "Aujourd'hui"
+
+msgid "Toggle selected folder open and closed"
+msgstr "Ouvrir ou fermer le dossier sélectionné"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unlock"
+msgstr "Déverrouiller"
+
+msgid "Update permissions"
+msgstr "Mettre à jour les permissions"
+
+msgid "Update properties"
+msgstr "Mettre à jour les propriétés"
+
+msgid "Upload error"
+msgstr "Erreur de téléversement"
+
+msgid "Uploading documents"
+msgstr "Documents en cours de téléversement"
+
+msgid "User avatar"
+msgstr "Avatar de l'utilisateur"
+
+msgid "Validity"
+msgstr "Validité"
+
+msgid "Version name"
+msgstr "Nom de version"
+
+msgid "We detect you are using OSX"
+msgstr "Nous détectons que vous utilisez OSX"
+
+msgid ""
+"When you delete a folder, all its content is also deleted. Please think "
+"wisely!"
+msgstr ""
+"Lorsque vous supprimez un dossier, tout son contenu est également supprimé. "
+"Réfléchissez bien !"
+
+msgid "Wiki page"
+msgstr "Page wiki"
+
+msgid ""
+"Write your message below and click on the button to send your\n"
+"                            request to the project administrators"
+msgstr ""
+"Ecrivez votre message ci-dessous et cliquez sur le bouton pour envoyer votre "
+"requête aux administrateurs du projet"
+
+msgid "Writer"
+msgstr "Rédacteur"
+
+msgid "You are about to delete \"%s\" permanently. Please confirm your action."
+msgstr ""
+"Vous êtes sur le point de supprimer \"%s\" de manière définitive. Veuillez "
+"confirmer cette action."
+
+msgid ""
+"You are currently copying \"%{ title }\". You can paste it in a folder you "
+"are allowed to\n"
+"        write into using the folder action drop-down."
+msgstr ""
+"Vous êtes en train de copier \"%{ title }\". Vous pouvez le coller dans un "
+"dossier dans lequel vous êtes autorisé à écrire en utilisant le menu "
+"déroulant."
+
+msgid ""
+"You are currently moving \"%{ title }\". You can paste it in a folder you "
+"are allowed to\n"
+"        write into using the folder action drop-down. You also cannot move "
+"the item somewhere\n"
+"        where the name is already used by another item."
+msgstr ""
+"Vous êtes en train de déplacer \"%{ title }\". Vous pouvez le coller dans un "
+"dossier dans lequel vous êtes autorisé à écrire en utilisant le menu "
+"déroulant. Il n'est pas autorisé de déplacer un élément dans un dossier où "
+"le nom est déjà utilisé par un autre élément."
+
+msgid "You are not allowed to drag 'n drop more than %{ nb } file at once."
+msgid_plural ""
+"You are not allowed to drag 'n drop more than %{ nb } files at once."
+msgstr[0] ""
+"Vous n'êtes pas autorisé à glisser-déposer plus d'un fichier à la fois."
+msgstr[1] ""
+"Vous n'êtes pas autorisé à glisser-déposer plus de %{ nb } fichiers à la "
+"fois."
+
+msgid "You are not allowed to upload a new version of this file"
+msgstr ""
+"Vous n'êtes pas autorisé à téléverser une nouvelle version de ce fichier"
+
+msgid "You are not allowed to upload files bigger than %s."
+msgstr ""
+"Vous n'êtes pas autorisé à téléverser des fichiers avec une taille excédant "
+"%s."
+
+msgid "You are not allowed to write in this folder"
+msgstr "Vous n'êtes pas autorisé à écrire dans ce dossier"
+
+msgid "You can search documents owned by a user."
+msgstr "Vous pouvez rechercher des documents possédés par un utilisateur."
+
+msgid "You don't have read permission for this item"
+msgstr "Vous n'avez pas le droit de lecture sur cet élément"
+
+msgid "You may only access documents you are granted read permission on."
+msgstr ""
+"Vous pouvez seulement accéder aux documents pour lesquels vous avez la "
+"permission de lecture."
+
+msgid ""
+"You should also be aware that the following wiki documents referencing page "
+"\"%s\" will no longer be valid if you choose to propagate the deletion to "
+"the wiki service:"
+msgstr ""
+"Vous devez également être conscient que les documents wiki suivants "
+"référençant la page \"%s\" ne seront plus valides si vous choisissez de "
+"propager la suppression au service wiki :"
+
+msgid "lorem => exactly \"lorem\""
+msgstr "lorem => exactement \"lorem\""
+
+msgid "lorem* => starting by \"lorem\""
+msgstr "lorem* => commençant par \"lorem\""

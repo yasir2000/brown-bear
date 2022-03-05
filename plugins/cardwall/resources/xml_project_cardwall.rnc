@@ -1,0 +1,8 @@
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+grammar {
+
+    include "xml_project_cardwall_data.rnc"
+
+    start = element cardwall { cardwall }
+}

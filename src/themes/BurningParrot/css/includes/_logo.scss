@@ -1,0 +1,101 @@
+/**
+ * Copyright (c) Enalean, 2020 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "global-variables";
+
+#logo {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: global-variables.$sidebar-expanded-width;
+    height: global-variables.$navbar-height;
+    background: var(--tlp-main-color) var(--logo-url) no-repeat center center;
+}
+
+.sidebar > #logo {
+    height: 80px;
+    background-color: var(--tlp-dark-color);
+    background-position: var(--tlp-medium-spacing) center;
+}
+
+.logo-svg-link {
+    display: flex;
+    align-items: center;
+    height: global-variables.$navbar-height;
+    min-height: global-variables.$navbar-height;
+
+    > .logo-svg-normal > svg {
+        width: auto;
+        max-height: 34px;
+    }
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+header.pinned .logo-svg-link {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+/* stylelint-enable selector-no-qualifying-type */
+
+.logo-svg-fill-theme-color {
+    fill: var(--tlp-main-color-lighter-15);
+}
+
+.logo-svg-fill-default-text-color {
+    fill: var(--tlp-dark-color);
+}
+
+.sidebar > .logo-svg-link {
+    width: global-variables.$sidebar-expanded-width;
+    height: 80px;
+    min-height: 80px;
+    margin: 0;
+    padding: 0 0 0 var(--tlp-medium-spacing);
+
+    > .logo-svg-normal > svg,
+    > .logo-svg-small > svg {
+        max-height: none;
+    }
+
+    .logo-svg-fill-default-text-color {
+        fill: var(--tlp-white-color);
+    }
+}
+
+.logo-svg-normal {
+    display: flex;
+}
+
+.logo-svg-small {
+    display: none;
+}
+
+.sidebar-collapsed {
+    .logo-svg-link {
+        justify-content: center;
+        width: global-variables.$sidebar-collapsed-width;
+        padding: 0;
+    }
+
+    .logo-svg-normal {
+        display: none;
+    }
+
+    .logo-svg-small {
+        display: flex;
+    }
+}

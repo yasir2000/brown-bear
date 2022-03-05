@@ -1,0 +1,94 @@
+/**
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.release-toggle {
+    margin: 0 0 0 35px;
+}
+
+.project-release-infos-badges {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 var(--tlp-small-spacing) 0;
+}
+
+.on-open-sprints-details {
+    flex-direction: column;
+}
+
+.project-release-infos-badges .project-release-info-badge {
+    margin: 0 var(--tlp-small-spacing) var(--tlp-small-spacing) 0;
+}
+
+.release-content-description {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: var(--tlp-large-spacing);
+    height: inherit;
+    margin: 0 0 var(--tlp-small-spacing);
+
+    .tlp-pane-subtitle {
+        margin: 0 0 var(--tlp-small-spacing);
+        color: var(--tlp-dimmed-color);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+    }
+}
+
+.release-description {
+    width: initial;
+    margin: var(--tlp-medium-spacing) 0 0 0;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.release-description-link-icon {
+    margin: 0 2px 0 0;
+    color: var(--tlp-main-color);
+    font-size: 14px;
+}
+
+.release-description-link {
+    display: flex;
+    flex-flow: wrap row;
+}
+
+.release-planning-link {
+    align-self: baseline;
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+    font-size: 14px;
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.release-planning-link-item:hover {
+    text-decoration: none;
+}
+
+.release-description-row {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    margin: var(--tlp-medium-spacing) 0 0 var(--tlp-medium-spacing);
+    padding: 0 var(--tlp-medium-spacing) 0 0;
+}

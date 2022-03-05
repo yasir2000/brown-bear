@@ -1,0 +1,28 @@
+<h2>{{adminTitle}}</h2>
+<div class="agiledashboard">
+    <h3>{{createPlanning}}</h3>
+    <form method="post" action="/plugins/agiledashboard/?group_id={{group_id}}&amp;action=create">
+        <p>
+            <label for="planning_name">{{planningNameFieldLabel}}</label>
+            <input type="text" name="planning[name]" id="planning_name" value="Sprint Planning" />
+        </p>
+        <p>
+            <label for="planning_backlog_title">{{planningBacklogTitleFieldLabel}}</label>
+            <input type="text" name="planning[backlog_title]" id="planning_backlog_title" value="Release Backlog" />
+        </p>
+        <p>
+            <label for="planning_plan_title">{{planningPlanTitleFieldLabel}}</label>
+            <input type="text" name="planning[plan_title]" id="planning_plan_title" value="Sprint Plan" />
+        </p>
+        <p>
+            <label for="">{{ planningPriorityChangePermissionFieldLabel }}</label>
+            {{{ priority_change_permission }}}
+        </p>
+        <p>
+            {{ planning_allows_assignment_intro }} {{> select-backlog }} {{ planning_allows_assignment_to }} {{> select-planning }}
+        </p>
+        <p>
+            <input type="submit" value="{{btnSubmit}}"/>
+        </p>
+    </form>
+</div>

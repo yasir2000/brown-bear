@@ -1,0 +1,127 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#, php-format
+msgid ""
+"%s commented on #%d: %s in %s:\n"
+"\n"
+"%s\n"
+"\n"
+"%s"
+msgstr ""
+"%s a laissé un commentaire sur #%d: %s dans %s :\n"
+"\n"
+"%s\n"
+"\n"
+"%s"
+
+#, php-format
+msgid "%s commented on #%d: %s."
+msgstr "%s a laissé un commentaire sur #%d: %s."
+
+#, php-format
+msgid "%s has abandoned the pull request #%d: %s"
+msgstr "%s a abandonné la pull request #%d: %s"
+
+#, php-format
+msgid "%s has merged the pull request #%d: %s into %s"
+msgstr "%s a fusionné la pull request #%d: %s dans %s"
+
+#, php-format
+msgid "%s pushed %d commit updating the pull request #%d: %s."
+msgid_plural "%s pushed %d commits updating the pull request #%d: %s."
+msgstr[0] "%s a publié %d commit mettant à jour la pull request #%d: %s."
+msgstr[1] "%s a publié %d commits mettant à jour la pull request #%d: %s."
+
+#, php-format
+msgid "%s requested your review on #%d: %s"
+msgstr "%s a demandé une revue de votre part sur #%d: %s"
+
+msgid "<a href=\"%s\">%s</a> commented on <a href=\"%s\">#%s</a>: %s in %s:"
+msgstr ""
+"<a href=\"%s\">%s</a> a laissé un commentaire sur <a href=\"%s\">#%s</a>: %s "
+"dans %s :"
+
+msgid "<a href=\"%s\">%s</a> commented on <a href=\"%s\">#%s</a>: %s."
+msgstr ""
+"<a href=\"%s\">%s</a> a laissé un commentaire sur <a href=\"%s\">#%s</a>: %s."
+
+msgid ""
+"<a href=\"%s\">%s</a> has abandoned the pull request <a href=\"%s\">#%s</a>: "
+"%s"
+msgstr ""
+"<a href=\"%s\">%s</a> a abandonné la pull request <a href=\"%s\">#%s</a>: %s"
+
+msgid ""
+"<a href=\"%s\">%s</a> has merged the pull request <a href=\"%s\">#%s</a>: %s "
+"into %s"
+msgstr ""
+"<a href=\"%s\">%s</a> a fusionné la pull request <a href=\"%s\">#%s</a>: %s "
+"into %s"
+
+msgid ""
+"<a href=\"%s\">%s</a> pushed %s commit updating the pull request <a href=\"%s"
+"\">#%s</a>: %s."
+msgid_plural ""
+"<a href=\"%s\">%s</a> pushed %s commits updating the pull request <a href="
+"\"%s\">#%s</a>: %s."
+msgstr[0] ""
+"<a href=\"%s\">%s</a> a publié %s commit mettant à jour la pull request <a "
+"href=\"%s\">#%s</a>: %s."
+msgstr[1] ""
+"<a href=\"%s\">%s</a> a publié %s commits mettant à jour la pull request <a "
+"href=\"%s\">#%s</a>: %s."
+
+msgid ""
+"<a href=\"%s\">%s</a> requested your review on <a href=\"%s\">#%s</a>: %s"
+msgstr ""
+"<a href=\"%s\">%s</a> a demandé une revue de votre part sur <a href=\"%s\">#"
+"%s</a>: %s"
+
+msgid "Abandonned"
+msgstr "Abandonnée"
+
+msgid ""
+"Default (Will fast-forward when possible, fallback to merge when not "
+"possible)"
+msgstr ""
+"Par défaut (avance rapide \"fast-forward\" si possible, sinon création d'un "
+"commit de fusion)"
+
+msgid "Default pull requests settings updated"
+msgstr "Les paramètres par defaut des pull requests ont été mis à jour"
+
+msgid "Fast-forward only"
+msgstr "Avance rapide uniquement"
+
+msgid "Merge"
+msgstr "Fusion"
+
+msgid "Merged"
+msgstr "Intégrée"
+
+msgid "Pull request"
+msgstr "Pull request"
+
+msgid "Pull requests"
+msgstr "Pull requests"
+
+msgid "Pull requests settings updated"
+msgstr "Les paramètres des pull requests ont été mis à jour"
+
+msgid "Review"
+msgstr "En revue"
+
+msgid "The pull request is not accessible anymore"
+msgstr "Cette pull request n'est plus accessible"

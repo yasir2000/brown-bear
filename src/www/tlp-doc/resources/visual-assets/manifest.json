@@ -1,0 +1,12 @@
+{
+  "label": "Visual assets",
+  "children": [
+    "colors",
+    "avatars",
+    "typo",
+    "relative-dates",
+    "icons",
+    "badges",
+    "skeletons"
+  ]
+}

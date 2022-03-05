@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testmanagement>
+  <configuration>
+    <campaigns>T20</campaigns>
+    <definitions>T17</definitions>
+    <executions>T18</executions>
+  </configuration>
+  <executions>
+    <execution execution_artifact_id="29" definition_changeset_id="CHANGESET_34"/>
+    <execution execution_artifact_id="30" definition_changeset_id="CHANGESET_35"/>
+    <execution execution_artifact_id="31" definition_changeset_id="CHANGESET_36"/>
+    <execution execution_artifact_id="32" definition_changeset_id="CHANGESET_37"/>
+    <execution execution_artifact_id="33" definition_changeset_id="CHANGESET_38"/>
+    <execution execution_artifact_id="34" definition_changeset_id="CHANGESET_39"/>
+    <execution execution_artifact_id="35" definition_changeset_id="CHANGESET_40"/>
+    <execution execution_artifact_id="36" definition_changeset_id="CHANGESET_41"/>
+    <execution execution_artifact_id="37" definition_changeset_id="CHANGESET_42"/>
+  </executions>
+</testmanagement>

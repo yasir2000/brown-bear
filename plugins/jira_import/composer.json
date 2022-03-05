@@ -1,0 +1,11 @@
+{
+  "name": "tuleap/jira-import-plugin",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\JiraImport\\": "include/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

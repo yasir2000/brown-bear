@@ -1,0 +1,159 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Marie Ange GARNIER <marie-ange.garnier@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid ""
+"<b>Done</b> semantic is needed since Velocity computation is made over "
+"<b>done</b> artifacts. Please select a <a href=\"%s\">Done</a> semantic "
+"first."
+msgstr ""
+"La sémantique <b>fini</b> est nécessaire puisque le calcul de la vélocité "
+"est effectué sur les artéfacts <b>fini</b>. Merci de choisir une sémantique "
+"<a href=\"%s\">fini</a> d'abord."
+
+msgid ""
+"<b>Done</b> semantic is needed since Velocity computation is made over "
+"<b>done</b> artifacts. Please select a Done semantic first."
+msgstr ""
+"La sémantique <b>fini</b> est nécessaire puisque le calcul de la vélocité "
+"est effectué sur les artéfacts <b>fini</b>. Merci de choisir une sémantique "
+"<b>fini</b> d'abord."
+
+msgid ""
+"<b>Status</b> semantic should be a select box or a radiobutton, status must "
+"have only one possible value."
+msgstr ""
+"La sémantique <b>status</b> doit être une liste déroulante ou des boutons "
+"radio, le status doit avoir une seule valeur possible."
+
+msgid "Adds velocity chart into Agiledashboard"
+msgstr "Ajoute le graphique de vélocité dans le tableau de bord Agile"
+
+msgid ""
+"Artifact velocity will always be set to 0, because no backlog tracker have "
+"the following semantic:"
+msgid_plural ""
+"Artifact velocity will always be set to 0, because no backlog tracker have "
+"the following semantics:"
+msgstr[0] ""
+"La vélocité de l'artéfact sera toujours sauvegardée à 0, parce qu'aucun "
+"élément du backlog n'a la sémantique :"
+msgstr[1] ""
+"La vélocité de l'artéfact sera toujours sauvegardée à 0, parce qu'aucun "
+"élément du backlog n'a les sémantiques :"
+
+msgid "Choose a field"
+msgstr "Choisissez un champ"
+
+msgid "Define the field to use to compute velocity."
+msgstr "Définissez le champ à utiliser pour calculer la vélocité"
+
+msgid "Field used for velocity computation:"
+msgstr "Champ utilisé pour le calcul de la vélocité:"
+
+msgid ""
+"Following artifact won't be displayed because it doesn't have a start date:"
+msgid_plural ""
+"Following artifacts won't be displayed because they don't have a start date:"
+msgstr[0] ""
+"L'artéfact suivant ne sera pas affiché parce qu'il n'a pas de date de "
+"départ :"
+msgstr[1] ""
+"Les artéfacts suivants ne seront pas affichés parce qu'ils n'ont pas de date "
+"de départ :"
+
+msgid "Following tracker should have <b>velocity</b> semantic:"
+msgid_plural "Following trackers should have <b>velocity</b> semantic:"
+msgstr[0] "L'outil de suivi suivant n'a pas de sémantique <b>vélocité</b>."
+msgstr[1] ""
+"Les outils de suivi suivants n'ont pas de sémantique <b>vélocité</b>."
+
+msgid "No field defined for velocity computation."
+msgstr "Aucun champ défini pour le calcul de la vélocité"
+
+msgid ""
+"Only integers and float fields are listed. By choosing one of these fields, "
+"it will be automatically computed in order to give you the velocity value."
+msgstr ""
+"Seuls les champs entiers et flottants sont listés. Ce champ contiendra la "
+"valeur de la vélocité calculée"
+
+msgid "Save your change"
+msgstr "Sauvegarder vos changements"
+
+msgid "Semantic done is not defined."
+msgstr "La sémantique finie n'est pas définie"
+
+msgid "Semantic updated successfully."
+msgstr "La sémantique a été correctement sauvegardée"
+
+msgid "Semantic velocity unset with success"
+msgstr "La sémantique vélocité a été réinitialisée avec succès"
+
+msgid ""
+"The <i>velocity</i> of this tracker will be represented in the Agile "
+"Dashboard by the field"
+msgstr ""
+"La <i>vélocité</i> de ce tracker sera représentée dans le tableau de bord "
+"agile par le champ"
+
+#, php-format
+msgid "The field %s will be automatically set to %s"
+msgstr "Le champ %s sera automatiquement valué à %s"
+
+msgid "The following semantic is not defined:"
+msgid_plural "The following semantics are not defined:"
+msgstr[0] "La sémantique suivante n'est pas définie:"
+msgstr[1] "Les sémantiques suivantes ne sont pas définies:"
+
+msgid "The request is not valid."
+msgstr "La requête n'est pas valide"
+
+msgid "The velocity chart only displays the last 7 artifacts found."
+msgstr ""
+"Le graphique de vélocité affiche seulement les 7 artéfacts les plus récents "
+"trouvés."
+
+msgid "This tracker does not have a <i>velocity</i> field yet."
+msgstr "Cet outil de suivi n'a pas encore de champ <i>vélocité</i>."
+
+msgid "Tracker %s does not have a configured Timeframe semantic"
+msgstr "L'outil de suivi %s n'a pas de sémantique plage de temps configurée"
+
+msgid "Tracker semantic velocity"
+msgstr "Sémantique vélocité de l'outil de suivi"
+
+msgid "Unset this semantic"
+msgstr "Supprimer cette sémantique"
+
+msgid "Velocity"
+msgstr "Vélocité"
+
+msgid ""
+"Velocity chart represents the sum of <b>initial effort</b> of <b>done</b> "
+"backlog elements of %s."
+msgstr ""
+"Le graphique de vélocité represente la somme de l'<b>effort initial</b> des "
+"elements du backlog <b>fini</b> de %s."
+
+msgid "Velocity semantic"
+msgstr "Sémantique vélocité"
+
+msgid "Velocity semantic successfully updated."
+msgstr "La sémantique vélocité a été mis à jour avec succès"
+
+msgid "go back to semantic overview"
+msgstr "retour à l'administration de la sémantique"
+
+msgid "or"
+msgstr "ou"

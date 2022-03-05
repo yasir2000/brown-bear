@@ -1,0 +1,65 @@
+/**
+ * Copyright (c) Enalean, 2017 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.dashboard-widget-my-projects-legend-title {
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}
+
+.dashboard-widget-my-projects-legend-content {
+    margin: 0 calc(var(--tlp-medium-spacing) / 2) 0 0;
+}
+
+.dashboard-widget-my-projects-icons {
+    margin: 0 5px 0 0;
+    color: var(--tlp-dimmed-color);
+}
+
+.dashboard-widget-my-projects-project-name {
+    width: 100%;
+}
+
+.dashboard-widget-my-projects-project-name-icon {
+    width: 1rem;
+    margin: 0 calc(var(--tlp-small-spacing) / 2) 0 0;
+    text-align: center;
+}
+
+.empty-project-box-inside {
+    fill: var(--tlp-white-color);
+}
+
+.empty-project-box-icons {
+    fill: var(--tlp-illustration-main-color);
+}
+
+.empty-project-box-shadow {
+    fill: var(--tlp-illustration-grey-on-background);
+}
+
+.empty-project-box {
+    fill: var(--tlp-illustration-grey-on-background);
+}
+
+.empty-project-box-top-shadow {
+    fill: var(--tlp-neutral-dark-color-darker-05);
+}
+
+.empty-project-box-top {
+    fill: var(--tlp-illustration-grey-on-background);
+}

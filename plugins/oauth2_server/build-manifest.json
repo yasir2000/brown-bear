@@ -1,0 +1,9 @@
+{
+    "name": "oauth2_server",
+    "gettext-ts": {
+        "project-administration": {
+            "src": "scripts/src",
+            "po": "scripts/po"
+        }
+    }
+}

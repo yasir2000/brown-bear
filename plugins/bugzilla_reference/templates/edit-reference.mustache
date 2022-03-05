@@ -1,0 +1,121 @@
+<form action="?action=edit-reference"
+      method="post"
+      id="edit-modal-{{ getId }}"
+      class="tlp-modal"
+      role="dialog"
+>
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title">
+            {{ bugzilla_title_edit }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <input type="hidden"
+           class="tlp-input"
+           id="id"
+           name="id"
+           placeholder="bz_stuff"
+           value="{{ getId }}"
+    >
+    <input type="hidden"
+           class="tlp-input"
+           id="keyword"
+           name="keyword"
+           placeholder="bz_stuff"
+           value="{{ getKeyword }}"
+    >
+
+    <div class="tlp-modal-body">
+        <div class="tlp-form-element tlp-form-element-disabled">
+            <label class="tlp-label" for="keyword-disabled">{{ keyword }}</label>
+            <input type="text"
+                   class="tlp-input"
+                   id="keyword-disabled"
+                   name="keyword-disabled"
+                   placeholder="bz"
+                   value="{{ getKeyword }}"
+                   disabled
+            >
+        </div>
+        <p class="tlp-text-info">{{{ purified_rest_url_helper }}}</p>
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="server">{{ server }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="server"
+                   name="server"
+                   placeholder="https://example.com"
+                   required
+                   pattern="https?://.+"
+                   value="{{ getServer }}"
+            >
+        </div>
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="rest_url">{{ rest_url }}</label>
+            <input type="text"
+                   class="tlp-input"
+                   id="rest_url"
+                   name="rest_url"
+                   placeholder="https://example.com"
+                   pattern="https?://.+"
+                   value="{{ getRestUrl }}"
+            >
+        </div>
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="username">{{ username }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="username"
+                   name="username"
+                   placeholder="{{ username }}"
+                   required
+                   value="{{ getUsername }}"
+            >
+        </div>
+        {{^ isApiKeySet }}
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="api_key">{{ api_key }} <i class="fa fa-asterisk"></i></label>
+                <input type="password" class="tlp-input" id="api_key" name="api_key" placeholder="{{ api_key }}"
+                       required>
+            </div>
+        {{/ isApiKeySet }}
+        {{# isApiKeySet }}
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="api_key">{{ change_api_key }} </label>
+                <input type="password"
+                       class="tlp-input"
+                       id="api_key"
+                       name="api_key"
+                       placeholder="{{ api_key }}"
+                >
+                {{^ hasApiKeyAlwaysBeenEncrypted }}
+                    <p class="tlp-text-danger"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> {{ api_key_stored_plaintext_warning }}</p>
+                {{/ hasApiKeyAlwaysBeenEncrypted }}
+            </div>
+        {{/ isApiKeySet }}
+        <div class="tlp-form-element">
+            <label class="tlp-label tlp-checkbox">
+                <input
+                        type="checkbox"
+                        name="are_follow_up_private"
+                        value="1"
+                    {{# areFollowUpPrivate }} checked {{/ areFollowUpPrivate }}
+                > {{ are_followup_private }}
+            </label>
+        </div>
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+            {{ cancel }}
+        </button>
+        <button type="submit" class="tlp-button-primary tlp-modal-action">
+            <i class="fas fa-pencil-alt tlp-button-icon"></i> {{ bugzilla_edit }}
+        </button>
+    </div>
+</form>

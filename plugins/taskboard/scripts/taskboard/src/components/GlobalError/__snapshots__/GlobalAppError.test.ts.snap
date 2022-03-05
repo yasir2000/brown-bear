@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalAppError warns user that something is wrong with a button to show details 1`] = `
+<section
+  class="empty-state-page"
+>
+  <div
+    class="empty-state-illustration"
+  >
+    <!---->
+  </div>
+   
+  <h1
+    class="empty-state-title"
+  >
+    <translate-stub
+      tag="span"
+    >
+      Oops, there's an issue
+    </translate-stub>
+  </h1>
+   
+  <p
+    class="empty-state-text"
+    data-current-language="en_US"
+    data-msgid="
+        It seems an action you tried to perform can't be done.
+    "
+  >
+    
+        It seems an action you tried to perform can't be done.
+    
+  </p>
+   
+  <p
+    class="empty-state-text taskboard-error-link"
+  >
+    <a
+      data-current-language="en_US"
+      data-msgid="
+                Show error details
+            "
+      data-test="show-details"
+    >
+      
+                Show error details
+            
+    </a>
+  </p>
+   
+  <!---->
+   
+  <button
+    class="tlp-button-primary empty-state-action"
+    type="button"
+  >
+    <i
+      aria-hidden="true"
+      class="fas fa-sync tlp-button-icon"
+    />
+     
+    <translate-stub
+      tag="span"
+    >
+      Reload the page
+    </translate-stub>
+  </button>
+</section>
+`;

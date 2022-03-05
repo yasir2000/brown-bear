@@ -1,0 +1,69 @@
+/**
+ * Copyright (c) Enalean, 2019 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+h1.almost-tlp-title {
+    margin: 0 0 30px;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+h2.almost-tlp-title {
+    margin: 0 0 20px;
+    color: var(--tlp-main-color);
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.almost-tlp-menu-title {
+    margin: var(--tlp-small-spacing) 0 0;
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-small-spacing);
+    border-top: 1px solid var(--tlp-neutral-light-color);
+    color: var(--tlp-dimmed-color);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.tlp-date-on-right::after {
+    content: attr(title);
+    display: inline-block;
+    margin: 0 0 0 8px;
+    color: #afafaf;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.tlp-date-on-top {
+    position: relative;
+
+    &::before {
+        content: attr(title);
+        display: inline-block;
+        position: absolute;
+        top: -9px;
+        color: #afafaf;
+        font-size: 11px;
+        line-height: 10px;
+        white-space: nowrap;
+    }
+}

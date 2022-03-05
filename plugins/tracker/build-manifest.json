@@ -1,0 +1,55 @@
+{
+    "name": "tracker",
+    "gettext-js": {
+        "burndown-chart": {
+            "src": "scripts/burndown-chart/src",
+            "po": "scripts/burndown-chart/po"
+        },
+        "ckeditor-image-upload-form": {
+            "src": "scripts/lib/artifact-ckeditor-image-upload/src",
+            "po": "scripts/lib/artifact-ckeditor-image-upload/po"
+        }
+    },
+    "gettext-ts": {
+        "rich-text-editor": {
+            "src": "scripts/lib/rich-text-editor/src",
+            "po": "scripts/lib/rich-text-editor/po"
+        },
+        "artifact": {
+            "src": "scripts/artifact",
+            "po": "scripts/artifact/po"
+        }
+    },
+    "gettext-vue": {
+        "colorpicker": {
+            "src": "scripts/colorpicker",
+            "po": "scripts/colorpicker/po"
+        },
+        "artifact-action-buttons": {
+            "src": "scripts/artifact-action-buttons",
+            "po": "scripts/artifact-action-buttons/po"
+        },
+        "permissions-per-group": {
+            "src": "scripts/permissions-per-group",
+            "po": "scripts/permissions-per-group/po"
+        },
+        "workflow-transitions": {
+            "src": "scripts/workflow-transitions",
+            "po": "scripts/workflow-transitions/po"
+        },
+        "tracker-creation": {
+            "src": "scripts/tracker-creation",
+            "po": "scripts/tracker-creation/po"
+        },
+        "timeframe-admin": {
+            "src": "scripts/semantics/timeframe/src",
+            "po": "scripts/semantics/timeframe/po"
+        }
+    },
+    "gettext-angularjs": {
+        "artifact-modal": {
+            "src": "scripts/lib/artifact-modal/src",
+            "po": "scripts/lib/artifact-modal/po"
+        }
+    }
+}

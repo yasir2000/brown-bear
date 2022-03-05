@@ -1,0 +1,35 @@
+<div id="login-box">
+    <h1 id="login-openid-title">{{ link_page_title }}<br>{{ link_page_title_to }}</h1>
+
+    <div id="login-intro">
+        {{# is_registering_possible }}
+            {{ link_page_header_with_registration }}
+        {{/ is_registering_possible }}
+        {{^ is_registering_possible }}
+            {{ link_page_header_without_registration }}
+        {{/ is_registering_possible }}
+    </div>
+
+    <form action="?action=link-existing" method="post" name="form_login" autocomplete="off">
+        <input type="hidden" name="return_to" value="{{ return_to }}">
+
+        <input type="text" id="loginname" name="loginname" placeholder="{{ account_login_name }}" required autofocus>
+        <input type="password" id="password" name="password" placeholder="{{ account_login_password }}" required>
+
+        <button type="submit" name="login" class="btn btn-primary">{{ account_login_login_btn }}</button>
+    </form>
+
+    {{# provider_login_presenter }}
+        {{> login_connector }}
+    {{/ provider_login_presenter }}
+
+    {{# is_registering_possible }}
+        <div id="login-openid-register">
+            <span class="login-openid-or">
+                <span>{{ or_label }}</span>
+            </span>
+
+            <a id="login-openid-register-button" href="{{ link_to_register_page }}" class="btn">{{ register }}</a>
+        </div>
+    {{/ is_registering_possible}}
+</div>

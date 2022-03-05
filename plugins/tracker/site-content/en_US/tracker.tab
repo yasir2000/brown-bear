@@ -1,0 +1,31 @@
+plugin_tracker	service_lbl_key	Trackers
+plugin_tracker	service_desc_key	Project Trackers
+
+project_admin_utils	tracker_date_reminder_title	Date Reminder Settings
+project_admin_utils	tracker_date_reminder_add	Added tracker date reminder $1
+project_admin_utils	tracker_date_reminder_edit	Updated tracker date reminder $1
+project_admin_utils	tracker_date_reminder_delete	deleted tracker date reminder $1
+project_admin_utils	tracker_date_reminder_sent	Sent tracker date reminder $1
+project_admin_utils	tracker_date_reminder_before	Before
+project_admin_utils	tracker_date_reminder_after	After
+project_admin_utils	tracker_date_reminder_enabled	Enabled
+project_admin_utils	tracker_date_reminder_disabled	Disabled
+project_admin_utils	tracker_date_reminder_invalid_field	'$1' is not a valid Field Id
+project_admin_utils	tracker_date_reminder_invalid_distance	'$1' is not a valid Distance
+project_admin_utils	tracker_date_reminder_invalid_Tracker	'$1' is not a valid Tracker Id
+project_admin_utils	tracker_date_reminder_invalid_notification_type	'$1' is not a valid Notification type
+project_admin_utils	tracker_date_reminder_invalid_status	'$1' is not a valid Reminder Status
+project_admin_utils	tracker_date_reminder_invalid_reminder	'$1' is not a valid Date Reminder
+project_admin_utils	tracker_date_reminder_invalid_ugroup	'$1' is not a valid project user group
+project_admin_utils	tracker_date_reminder_invalid_role_param	You should select a valid Tracker role
+project_admin_utils	tracker_date_reminder_empty_people_param	You should select at least one ugroup or one tracker role
+project_admin_utils	tracker_date_reminder_before_submittedOn	Unable to add Date Reminder before 'SubmittedOn' Field
+project_admin_utils	tracker_date_reminder_duplicated	A Date Reminder with the same params already exists, you should update it
+project_admin_utils	tracker_date_reminder_optgroup_label_ugroup	User groups
+project_admin_utils	tracker_date_reminder_optgroup_label_role	Roles
+project_admin_utils	global_notification_update	Update global notifications for tracker $1.
+project_admin_utils	user_notification_update	User $1($2) has updated the configuration of its notifications for tracker $3
+project_admin_utils	global_notification_update_with_force	Update global notifications and force tracker notification usage for users for tracker $1.
+project_admin_utils	tracker_formelement_update	Update field
+project_admin_utils	tracker_artifact_delete	Artifact deleted
+project_admin_utils	tracker_promotion	Promotion of tracker $1

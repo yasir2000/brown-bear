@@ -1,0 +1,34 @@
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+grammar {
+    include "../ugroups-definition.rnc"
+    include "../references-definition.rnc"
+    include "../project-definition.rnc"
+    include "../git-definition.rnc"
+    include "../frs-definition.rnc"
+    include "../nature-definition.rnc"
+    include "../mediawiki-definition.rnc"
+    include "../dashboard.rnc"
+    include "../../../../../plugins/agiledashboard/resources/xml_project_agiledashboard_planning.rnc"
+    include "../../../../../plugins/cardwall/resources/xml_project_cardwall_data.rnc"
+    include "../../../../../plugins/tracker/resources/tracker-definition.rnc"
+    include "../../../../../plugins/svn/resources/svn-definition.rnc"
+    include "../../../../../plugins/docman/resources/docman-definition.rnc"
+
+    start =
+        element project {
+            project_attributes &
+            project_tags &
+            element dashboards  { dashboards }*&
+            element trackers { trackers }* &
+            element svn { svn }? &
+            element git { git }? &
+            element frs { frs }? &
+            element natures { natures }? &
+            element mediawiki { mediawiki }? &
+            element agiledashboard { agiledashboard }? &
+            element cardwall { cardwall }? &
+            element ugroups { ugroups }? &
+            element docman { docman }?
+        }
+}

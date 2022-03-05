@@ -1,0 +1,48 @@
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+frs =
+    element   read-access         { element ugroup { ugroup_name }+ }? &
+    element   admin-access        { element ugroup { ugroup_name }+ }? &
+    element package {
+        attribute id     { xsd:long }? &
+        attribute name   { xsd:string  }  &
+        attribute rank   { xsd:long }? &
+        attribute hidden { xsd:boolean }? &
+        element read-access {
+            element ugroup { ugroup_name }*
+        } &
+        element release {
+            attribute id   { xsd:long }? &
+            attribute name { xsd:string } &
+            attribute time { xsd:dateTime } &
+            attribute preformatted { xsd:boolean } &
+            attribute artifact_id { xsd:string }? &
+            element notes { xsd:string } &
+            element changes { xsd:string } &
+            element user { user_content } &
+            element read-access {
+                  element ugroup { ugroup_name }*
+            } &
+            element file {
+                  attribute md5sum { xsd:string }? &
+                  attribute src { xsd:string } &
+                  attribute name { xsd:string }? &
+                  attribute release-time { xsd:dateTime }? &
+                  attribute post-date { xsd:dateTime }? &
+                  attribute arch { xsd:string }? &
+                  attribute filetype { xsd:string }? &
+                  element description { xsd:string }? &
+                  element user { user_content }?
+            }* &
+            element link {
+                  attribute name { xsd:string }? &
+                  attribute url { xsd:string }? &
+                  attribute release-time { xsd:dateTime }? &
+                  element user { user_content }?
+            }*
+        }*
+    }* &
+    element references {
+        references
+    }?
+

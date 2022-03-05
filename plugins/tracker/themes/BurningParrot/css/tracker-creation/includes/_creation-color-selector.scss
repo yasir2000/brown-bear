@@ -1,0 +1,123 @@
+/**
+ * Copyright (c) Enalean, 2020 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "sass:map";
+@use "../../../../../../../src/themes/tlp/src/scss/variables/colors/swatch-colors";
+
+.tracker-color-selector {
+    width: 75px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.select2-container--open.select2-container--tlp-select2 > .select2-dropdown.tracker-color-results {
+    height: 250px;
+    border: 0;
+    border-radius: 0 var(--tlp-medium-radius) var(--tlp-medium-radius);
+
+    /* stylelint-disable selector-class-pattern,selector-no-qualifying-type */
+    .select2-results__option[aria-selected="true"]::before,
+    span.select2-container--tlp-select2-large
+        .select2-dropdown
+        .select2-results__option[aria-selected="true"]::before,
+    span.select2-container--tlp-select2-small
+        .select2-dropdown
+        .select2-results__option[aria-selected="true"]::before {
+        top: 15px;
+    }
+    /* stylelint-enable selector-class-pattern,selector-no-qualifying-type */
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    &.select2-dropdown--above #select2-tracker-creation-field-color-results {
+        margin-top: 1px;
+        border-radius: var(--tlp-medium-radius) var(--tlp-medium-radius) var(--tlp-medium-radius) 0;
+    }
+}
+
+#select2-tracker-creation-field-color-results {
+    min-width: 110px;
+    margin-top: -1px;
+    border: 1px solid var(--tlp-main-color);
+    border-radius: 0 var(--tlp-medium-radius) var(--tlp-medium-radius);
+}
+
+#select2-tracker-creation-field-color-container {
+    width: 32px;
+    height: 32px;
+    overflow: auto;
+}
+
+#select2-tracker-creation-field-color-container > span,
+#select2-tracker-creation-field-color-results > li > span {
+    display: block;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        border: 3px solid transparent;
+        border-radius: 50%;
+    }
+
+    @each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+        &.#{$color-name} {
+            background: map.get($colors, "secondary");
+
+            &::after {
+                border-color: map.get($colors, "primary");
+            }
+        }
+    }
+}
+
+body[data-user-has-accessibility-mode="1"] {
+    #select2-tracker-creation-field-color-container > span,
+    #select2-tracker-creation-field-color-results > li > span {
+        @each $color-name, $colors in swatch-colors.$tlp-swatch-color-map {
+            &.#{$color-name} {
+                &::before {
+                    background: map.get($colors, "primary");
+                    mask-image: url("#{map-get($colors, 'pattern')}");
+                }
+            }
+        }
+    }
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type,selector-class-pattern */
+span.select2-container--tlp-select2 .select2-selection--single.tracker-color-container {
+    height: 46px;
+    padding: 7px 32px 7px 9px;
+}

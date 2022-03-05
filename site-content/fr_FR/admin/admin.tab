@@ -1,0 +1,594 @@
+#
+# Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
+# This file is licensed under the GNU General Public License version 2. See the file COPYING.
+#
+
+#
+#-----------------------------------------------
+# Script: SF/www/admin/admin_utils.php
+#
+admin_utils	title	Administration du site $1
+admin_utils	menu	Accueil admin. site
+
+#
+#-----------------------------------------------
+# Script: SF/www/admin/approve_pending.php
+#
+admin_approve_pending	title	Projets en attente de validation
+admin_approve_pending	no_pending	Aucun projet à valider
+admin_approve_pending	go_back	Retour à la page d'administration
+admin_approve_pending	approve	Approuver le projet
+admin_approve_pending	delete	Détruire le projet
+admin_approve_pending	remove_category	Enlever de la catégorie
+admin_approve_pending	approve_all	Tout approuver sur cette page
+admin_approve_pending	creator_and_creation_date	Créé le $3 par <a href="/admin/usergroup.php?user_id=$1">$2</a>
+admin_approve_pending	distributed_services	Serveurs pour les services distribués
+admin_approve_pending	error_update	Erreur lors de la mise à jour du projet
+admin_approve_pending	description	Description
+admin_approve_pending	see_project_details	Voir les détails du projet
+admin_approve_pending	description_label	Description
+admin_approve_pending	submitted_by_label	Soumis par
+admin_approve_pending	creation_date_label	Date de création
+admin_approve_pending	delete_label	Supprimer
+admin_approve_pending	validate_label	Valider
+admin_approve_pending	validate_all_label	Valider tous les projets
+admin_approve_pending	activate_all_label	Activer tous les projets
+
+#
+#-----------------------------------------------
+# Script: SF/www/admin/approve-pending_users.php
+#
+admin_approve_pending_users	title	Utilisateurs en attente de validation
+admin_approve_pending_users	title_validated	Utilisateurs validés à activer
+admin_approve_pending_users	go_back	Retour à la page d'administration
+admin_approve_pending_users	no_pending	Aucun utilisateur en attente d'approbation
+admin_approve_pending_users	no_pending_validated	Aucun utilisateur en attente de validation
+admin_approve_pending_users	no_validated	Aucun utilisateur validé en attente d'approbation
+admin_approve_pending_users	user_info	Montrer les infos utilisateur / Envoyer un e-mail
+admin_approve_pending_users	user_edit	Voir les détails de l'utilisateur
+admin_approve_pending_users	activate	Activer
+admin_approve_pending_users	activate_all	Activer tous les utilisateurs
+admin_approve_pending_users	validate_notice	Valider : Un email est envoyé à l'utilisateur pour confirmation. Si ce dernier suit le lien contenu dans l'email, le compte est activé.
+admin_approve_pending_users	activate_notice	Activer : Le compte est immédiatement actif.
+admin_approve_pending_users	delete	Détruire
+admin_approve_pending_users	purpose	Motif
+admin_approve_pending_users	other_info	Autre information
+admin_approve_pending_users	name	Nom de l'utilisateur
+admin_approve_pending_users	id	Id
+admin_approve_pending_users	email	E-mail
+admin_approve_pending_users	reg_date	Date d'enregistrement
+admin_approve_pending_users	empty	Pas de motif
+admin_approve_pending_users	validate	Valider
+admin_approve_pending_users	validate_all	Valider tous les utilisateurs
+admin_approve_pending_users	account	le compte
+admin_approve_pending_users	ok	Ok
+admin_approve_pending_users	all_accounts	tous les comptes
+admin_approve_pending_users	status	avec le statut
+admin_approve_pending_users	status_restricted	Utilisateur restreint
+admin_approve_pending_users	status_all_restricted	Utilisateurs restreints
+admin_approve_pending_users	status_standard	standard
+admin_approve_pending_users	email_title	Bienvenue sur $1 !
+admin_approve_pending_users	data_not_parsed	Désolé, le format de la date du d'expiration est incorrect. Il doit suivre le format AAAA-MM-JJ.
+admin_approve_pending_users	expiry_date	Date d'expiration
+admin_approve_pending_users	expiry_date_directions	Une fois cette date passée, le compte sera suspendu.<br>Ne remplissez pas le champs si vous en souhaitez pas que le compte ait de date d'expiration.
+admin_approve_pending_users	resend	Renvoyer l'email
+admin_approve_pending_users	resend_notice	Renvoyer l'email d'activation du compte
+admin_approve_pending_users	resend_mail_success	L'email à destination de $1 a été renvoyé avec succès
+admin_approve_pending_users	resend_mail_error	Une erreur est survenue lors de l'envoie du mail à destination de $1
+admin_approve_pending_users	users_activated_success	Les utilisateurs ont été activés avec succès
+admin_approve_pending_users	user_activated_success	L'utilisateur a été activé avec succès
+admin_approve_pending_users	users_validated_success	Les utilisateurs ont été validés avec succès
+admin_approve_pending_users	user_validated_success	L'utilisateur a été validé avec succès
+admin_approve_pending_users	users_deleted_success	Les utilisateurs ont été supprimés avec succès
+admin_approve_pending_users	user_deleted_success	L'utilisateur a été supprimé avec succès
+
+#
+#-----------------------------------------------
+# Script: SF/www/admin/lastlogins.php
+#
+admin_lastlogins	title	Connexions récentes
+admin_lastlogins	pane_title	Connexions récentes
+admin_lastlogins	no_result	Il n'y a pas encore de connexion récente
+admin_lastlogins	username_column_header	Nom d'utilisateur
+admin_lastlogins	ip_column_header	Addresse IP
+admin_lastlogins	date_column_header	Date
+admin_lastlogins	filter_placeholder	Nom d'utilisateur, IP, date
+admin_lastlogins	filter_no_matching_result	Il n'y a aucune connexion récente correspondante au filtre
+
+#
+#-----------------------------------------------
+# Script: SF/www/admin/newprojectmail.php
+#
+admin_newprojectmail	title	Notification par courrier électronique d'un nouveau projet
+admin_newprojectmail	success	Courrier électronique envoyé avec succès.
+#
+#-----------------------------------------------
+# Script: SF/www/admin/search.php
+#
+admin_search	title	Administration - Recherche dans les utilisateurs et projets
+admin_search	header	Fonctions de recherche de l'administrateur
+admin_search	maintenance	Maintenance des utilisateurs/projets/catégories
+admin_search	criteria	Critère de recherche
+admin_search	error_nowholedb	Un critère de recherche vide aura pour effet d'afficher toute la base de données.
+admin_search	nomatch	Aucun résultat
+admin_search	login	Nom de login
+admin_search	user_name	Nom d'utilisateur
+admin_search	unix_grp_name	Nom du groupe unix
+admin_search	grp_name	Nom du projet
+#
+#-----------------------------------------------
+# Script: SF/www/admin/user_changepw.php
+#
+admin_user_changepw	error_userid	Pas d'ID utilisateur
+admin_user_changepw	error_nopasswd	Vous devez fournir un mot de passe.
+admin_user_changepw	error_passwd	Les mots de passe ne sont pas identiques.
+admin_user_changepw	title_changed	Mot de passe modifié avec succès
+admin_user_changepw	header_changed	Confirmation du changement de mot de passe
+admin_user_changepw	msg_changed	Le mot de passe utilisateur a été modifié.
+admin_user_changepw	title	Changement de mot de passe
+admin_user_changepw	ldap_warning	Changer le mot de passe ici ne changera pas le mot de passe LDAP.
+admin_user_changepw	header	Changement du mot de passe
+admin_user_changepw	save	Mettre à jour
+admin_user_changepw	cancel	Annuler
+admin_user_changepw	password_field_label	Mot de passe
+admin_user_changepw	confirm_password_field_label	Mot de passe (confirmation)
+#
+#-----------------------------------------------
+# Script: SF/www/admin/usergroup.php
+#
+admin_usergroup	title	Administration - Information utilisateur
+admin_usergroup	error_del_u	Erreur lors de la destruction de l'utilisateur
+admin_usergroup	success_del_u	Utilisateur détruit avec succès
+admin_usergroup	error_upd_ug	Erreur lors de la mise à jour utilisateur/groupe
+admin_usergroup	success_upd_ug	Utilisateur/groupe mis à jour avec succès
+admin_usergroup	error_upd_u	Erreur lors de la mise à jour de l'utilisateur
+admin_usergroup	success_upd_u	Utilisateur mis à jour avec succès
+admin_usergroup	error_upd_ux	Erreur lors de la mise à jour du statut unix
+admin_usergroup	success_upd_ux	Statut unix mis à jour avec succès
+admin_usergroup	error_nouid	ID utilisateur manquant !
+admin_usergroup	error_nogid	ID groupe manquant !
+admin_usergroup	error_add_ug	Erreur lors de l'ajout d'un utilisateur au groupe
+admin_usergroup	success_add_ug	Utilisateur ajouté au groupe avec succès
+admin_usergroup	error_member	L'utilisateur est déjà membre du groupe $1
+admin_usergroup	header	Gestion des association utilisateur/groupe pour l'utilisateur
+admin_usergroup	shell	Shell
+admin_usergroup	email	E-mail
+admin_usergroup	expiry_date	Date d'expiration
+admin_usergroup	data_not_parsed	Désolé, le format de la date d'expiration est incorrect. Il doit suivre le format AAAA-MM-JJ.
+admin_usergroup	ldap_id	Identifiant LDAP
+admin_usergroup	unix_details	Détails Unix :
+admin_usergroup	unix_status	Statut du compte Unix
+admin_usergroup	status	Statut
+admin_usergroup	no_account	Pas de compte Unix
+admin_usergroup	active	Actif
+admin_usergroup	restricted	Restreint
+admin_usergroup	suspended	Suspendu
+admin_usergroup	deleted	Détruit
+admin_usergroup	current_groups	Groupes actuels
+admin_usergroup	remove_ug	Enlever l'utilisateur de ce groupe
+admin_usergroup	admin_flags	Drapeaux d'administration
+admin_usergroup	add_ug	Ajouter l'utilisateur au groupe (ID du groupe)
+admin_usergroup	change_passwd	Changer le mot de passe
+admin_usergroup	was	Intialement :
+admin_usergroup	rename_user_msg	Le changement de Login utilisateur sur le système va être traité dans quelques instants ($1 -> $2).
+admin_usergroup	rename_user_warn	La mise à jour du Login ne sera effective qu'après le traitement de l'événement système correspondant.
+admin_usergroup	rename_user_already_queued	Il y a déjà une opération de renommage prévue pour cet utilisteur. Merci de consulter les <a href="/admin/system_events/">Événements Système</a>.
+admin_usergroup	account_details	Détails du compte
+admin_usergroup	access	Accès
+admin_usergroup	current_projects	Projets
+admin_usergroup	is_admin	Est administrateur du projet
+admin_usergroup	no_project	Membre d'aucun projet
+admin_usergroup	last_pwd_update	Dernière mise à jour du mot de passe
+admin_usergroup	last_access_date	Dernier accès
+admin_usergroup	cannot_change_status	Impossible de changer le statut avant la validation du compte
+admin_usergroup	user_public_profile	Profil public
+admin_usergroup	more_info	Plus d'information
+admin_usergroup	update_information	Sauvegarder les informations
+admin_usergroup	purpose_label	Motif
+admin_usergroup	empty_purpose	Vide
+#
+#-----------------------------------------------
+# Script: SF/www/admin/userlist.php
+#
+admin_userlist	title	Administration - Liste des utilisateurs
+admin_userlist	user_deleted	Utilisateur mis à jour avec le statut DETRUIT - Le compte Unix est planifié pour la destruction
+admin_userlist	user_active	Utilisateur mis à jour avec le statut ACTIF
+admin_userlist	user_validated	Utilisateur mis à jour avec le statut VALIDE
+admin_userlist	user_suspended	Utilisateur mis à jour avec le statut SUSPENDU
+admin_userlist	user_restricted	Utilisateur mis à jour avec le statut RESTREINT
+admin_userlist	error_uid	Erreur - L'utilisateur avec l'ID $1 est introuvable
+admin_userlist	error_noadd	Erreur - Impossibilité d'ajouter l'utilisateur au groupe
+admin_userlist	user_list	Utilisateurs
+admin_userlist	all_groups	Tous les projets
+admin_userlist	uid_toadd	ID utilisateur à ajouter
+admin_userlist	active	Actif
+admin_userlist	validated	Validé
+admin_userlist	validated_restricted	Validé et Restreint
+admin_userlist	restricted	Restreint
+admin_userlist	deleted	Détruit
+admin_userlist	suspended	Suspendu
+admin_userlist	pending	En attente
+admin_userlist	activate	Activer
+admin_userlist	validate	Valider
+admin_userlist	restrict	Restreindre
+admin_userlist	delete	Détruire
+admin_userlist	suspend	Suspendre
+admin_userlist	status	Statut
+admin_userlist	active_sessions_label	Purger toutes les sessions en cours
+admin_userlist	active_sessions_confirm	Êtes-vous sûr de vouloir obliger tous vos utilisateurs ($1) à se reconnecter ?
+admin_userlist	nb_projects	# Projets
+admin_userlist	not_member_of	Membre d'aucun projet
+admin_userlist	member_of	Membre de $1 projet(s)
+admin_userlist	admin_of	Admin de $1 projet(s)
+admin_userlist	id_user	Id utilisateur
+admin_userlist	any	Tous
+admin_userlist	filter	Filtre
+admin_userlist	matching_users	Utilisateurs correspondants au filtre
+admin_userlist	export_csv	Export CSV
+admin_userlist	profile	Profile
+admin_userlist	no_matching_users	Il n'y a aucun utilisateur qui correspond au filtre
+admin_userlist	name	Nom
+admin_userlist	login	Login
+admin_userlist	filter_name	Email, nom, id
+admin_userlist	pending_users_text	Pour votre information, <a href="$1">$2 utilisateurs attendent d'être validés</a>.
+admin_userlist	email	Adresse email
+admin_userlist	last_access_date	Dernier accès
+admin_userlist	never_logged	Jamais connecté
+
+#
+#-----------------------------------------------
+# Script: SF/www/admin/trove/trove_cat_add.php
+#
+admin_trove_cat_add	add_trove_cat	Ajouter une catégorie de projet
+admin_trove_cat_add	add	Ajouter une catégorie
+admin_trove_cat_add	short_name	Nom court de la catégorie
+admin_trove_cat_add	full_name	Nom complet de la catégorie
+admin_trove_cat_add	description	Description de la catégorie
+#
+#-----------------------------------------------
+# Script: SF/www/admin/trove/trove_cat_delete.php
+#
+admin_trove_cat_delete	delete_trove_cat	Supprimer la catégorie
+admin_trove_cat_delete	alert_description_delete_modal	Wow, attendez une minute. Vous êtes sur le point de supprimer la catégorie de projet <b>$1</b>. Veuillez confirmer votre action.
+admin_trove_cat_delete	parent_is_root	Il est impossible de supprimer une catégorie parente.
+
+#-----------------------------------------------
+# Script: SF/www/admin/trove/trove_cat_edit.php
+#
+admin_trove_cat_edit	header	Modifier une catégorie
+admin_trove_cat_edit	root	Racine
+admin_trove_cat_edit	edit	Mettre à jour la catégorie
+admin_trove_cat_edit	label_fullname	Nom complet
+admin_trove_cat_edit	label_shortname	Nom court
+admin_trove_cat_edit	label_mandatory	Requis
+admin_trove_cat_edit	mandatory_info	Sélectionnable uniquement si le parent est "Root"
+admin_trove_cat_edit	label_display	Afficher lors de la création d'un projet
+admin_trove_cat_edit	display_info	Sélectionnable si le parent est un parent requis de premier niveau
+admin_trove_cat_edit	label_description	Description
+admin_trove_cat_edit	description_placeholder	Description de la catégorie de projet
+admin_trove_cat_edit	parent_category_label	Catégorie du parent
+admin_trove_cat_edit	missing_fullname	Le nom complet est obligatoire
+admin_trove_cat_edit	missing_shortname	Le nom court est obligatoire
+admin_trove_cat_edit	update_forbidden	Il est impossible de déplacer une catégorie dans sa catégorie fille ou dans elle même.
+
+#-----------------------------------------------
+# Script: SF/www/admin/trove/trove_cat_list.php
+#
+admin_trove_cat_list	title	Catégories de projets publics
+admin_trove_cat_list	header_name	Nom complet
+admin_trove_cat_list	header_description	Description
+admin_trove_cat_list	header	Catégories de projets publics
+admin_trove_cat_list	edit	Modifier
+admin_trove_cat_list	delete	Supprimer
+admin_trove_cat_list	add	Ajouter une catégorie
+admin_trove_cat_list	cancel	Annuler
+#-----------------------------------------------
+# Script: src/www/admin/index.php
+#
+admin_servers	all_add	Ajouter un serveur
+admin_servers	all_choose	Choisir le serveur principal
+admin_servers	all_delete	Supprimer le serveur $1
+admin_servers	all_description	Description
+admin_servers	all_edit	Editer le serveur $1
+admin_servers	all_is_master	Principal ?
+admin_servers	all_master	Principal
+admin_servers	all_name	Nom
+admin_servers	delete	Oui, je veux supprimer ce serveur !
+admin_servers	delete_using	Les services suivants utilisent ce serveur :
+admin_servers	delete_R_U_sure	Êtes-vous sûr de vouloir supprimer ce serveur ?
+admin_servers	error_notfound	Serveur introuvable
+admin_servers	form_descr	Description :
+admin_servers	form_http	HTTP :
+admin_servers	form_https	HTTPS :
+admin_servers	form_id	Id :
+admin_servers	form_name	Nom :
+admin_servers	info_created	Le serveur <em>$1</em> a été créé
+admin_servers	info_deleted	Le serveur <em>$1</em> a été supprimé
+admin_servers	info_mastered	Le serveur <em>$1</em> est désormais le serveur principal
+admin_servers	info_updated	Le serveur <em>$1</em> a été modifié
+admin_servers	info_notcreated	Le serveur n'a pas été créé
+admin_servers	info_notdeleted	Le serveur <em>$1</em> n'a pas été supprimé
+admin_servers	info_notupdated	Le serveur <em>$1</em> n'a pas été modifié
+#-----------------------------------------------
+# Script: src/www/admin/descfields/desc_fields_edit.php
+#
+admin_desc_fields	title	Champs de projet personnalisés
+admin_desc_fields	header_add	Ajouter un champ
+admin_desc_fields	desc_name	Nom
+admin_desc_fields	desc_description	Description
+admin_desc_fields	desc_required	Obligatoire ?
+admin_desc_fields	desc_type	Type
+admin_desc_fields	desc_yes	Champ requis
+admin_desc_fields	desc_no	Champ optionnel
+admin_desc_fields	desc_line	Chaîne de caractères
+admin_desc_fields	desc_text	Zone de texte
+admin_desc_fields	rank	Rang
+admin_desc_fields	rank_on_screen	Rang à l'écran
+admin_desc_fields	update_required_desc_field_fail	La mise à jour du champ a echoué.
+admin_desc_fields	info_missed	Informations manquantes. Veuillez remplir tous les champs obligatoires.
+admin_desc_fields	info_rank_noint	Le rang doit être une valeur numérique.
+admin_desc_fields	add_success	Le champ a été ajouté avec succès.
+admin_desc_fields	update_success	Le champ a été modifié avec succès.
+admin_desc_fields	remove_success	Le champ a été supprimé avec succès.
+admin_desc_fields	edit_btn	Éditer
+admin_desc_fields	delete_btn	Supprimer
+admin_desc_fields	add_modal_title	Ajouter un champ
+admin_desc_fields	add_modal_cancel	Annuler
+admin_desc_fields	add_modal_submit	Ajouter
+admin_desc_fields	edit_modal_title	Éditer le champ
+admin_desc_fields	edit_modal_cancel	Annuler
+admin_desc_fields	edit_modal_submit	Mettre à jour
+admin_desc_fields	modal_field_form_name_label	Nom
+admin_desc_fields	modal_field_form_name_placeholder	Description du projet
+admin_desc_fields	modal_field_form_rank_label	Rang à l'écran
+admin_desc_fields	modal_field_form_required_label	Ce champ est obligatoire
+admin_desc_fields	modal_field_form_type_label	Type
+admin_desc_fields	modal_field_form_description_label	Description
+admin_desc_fields	modal_field_form_description_placeholder	La description du projet sera utilisé par les managers pour…
+admin_desc_fields	modal_field_form_description_info	Ce texte sera positionné en dessous du champ et doit aider l'utilisateur final à le remplir.
+admin_desc_fields	modal_field_form_type_label_line	Chaîne de caractères
+admin_desc_fields	modal_field_form_type_label_text	Zone de texte
+admin_desc_fields	delete_modal_title	Supprimer le champ
+admin_desc_fields	delete_modal_content	Vous êtes sur le point de supprimer un champ de projet personnalisé. Veuillez confirmer votre action.
+admin_desc_fields	delete_modal_cancel	Annuler
+admin_desc_fields	delete_modal_submit	Supprimer le champ
+
+admin_system_events	title	Événements système
+admin_system_events	notifications	Alertes
+admin_system_events	send_email	Envoyer un email à :
+admin_system_events	nobody	Personne
+admin_system_events	default_queue	Queue principale
+admin_system_events	fts_queue	Full Text Search
+admin_system_events	tv3tv5_queue	Migration TV3 -> TV5
+admin_system_events	empty_state	Aucun événement système ne correspond à votre filtre.
+admin_system_events	filter_label	Filtrer
+admin_system_events	search_label	Chercher
+admin_system_events	types_label	Types
+admin_system_events	type_label	Type
+admin_system_events	all_status_label	Status
+admin_system_events	status_label	Status
+admin_system_events	queue_label	Queue
+admin_system_events	parameters_label	Paramètres
+admin_system_events	time_taken_label	Temps
+admin_system_events	details_label	Détails
+admin_system_events	replay_label	Relancer
+admin_system_events	id_label	Id
+admin_system_events	created_label	Date de création
+admin_system_events	created_at	Créé à
+admin_system_events	owner_label	Propriétaire
+admin_system_events	priority_label	Priorité
+admin_system_events	start_label	Date de début
+admin_system_events	start_at	Débuté à
+admin_system_events	end_label	Date de fin
+admin_system_events	end_at	Fini à
+admin_system_events	log_label	Log
+admin_system_events	replayed_label	relancé
+admin_system_events	details_title	Détails de l'événement système
+admin_system_events	duration_years	%y ans %m mois %d jours %h h %i m %s s
+admin_system_events	duration_months	%m mois %d jours %h h %i m %s s
+admin_system_events	duration_days	%d jours %h h %i m %s s
+admin_system_events	duration_hours	%h h %i m %s s
+admin_system_events	duration_minutes	%i m %s s
+admin_system_events	duration_seconds	%s s
+admin_system_events	section_date_format	%e %h %Y
+admin_system_events	priority_1	Haute
+admin_system_events	priority_2	Moyenne
+admin_system_events	priority_3	Basse
+admin_system_events	not_ended_yet	Pas encore fini
+admin_system_events	not_started_yet	Pas encore démarré
+admin_system_events	events	Événements
+admin_system_events	add_notification	Ajouter une alerte
+admin_system_events	emails	Emails
+admin_system_events	listen	Niveau d'alerte
+admin_system_events	edit	Éditer
+admin_system_events	delete	Supprimer
+admin_system_events	delete_confirm	Vous êtes sur le point du supprimer définitivement cette alerte. Merci de confirmer votre action.
+admin_system_events	delete_notif_label	Supprimer l'alerte
+admin_system_events	edit_notif_label	Éditer l'alerte
+admin_system_events	save_notif_label	Sauvegarder les modifications
+admin_system_events	notifs_empty	Il n'y a pas d'alerte définie.
+admin_system_events	notified_label	Personnes à alerter
+admin_system_events	status_to_listen	Niveaux d'alerte écoutés
+admin_system_events	emails_instructions	Entrez logins, emails ou mailing lists. Séparez-les par une virgule.
+
+admin_system_events	save_success	L'alerte a été sauvegardée
+admin_system_events	save_error	Une erreur est survenue lors de la sauvegarde de l'alerte
+admin_system_events	delete_success	L'alerte a été supprimée
+admin_system_events	delete_error	Une erreur est survenue lors de la suppression de l'alerte
+admin_system_events	at_least_one_status	Les personnes doivent écouter au moins un niveau d'alerte
+admin_system_events	people_not_empty	La liste des personnes à alerter ne peut pas être vide
+
+#-----------------------------------------------
+# Script: SF/www/admin/show_pending_documents.php
+#
+admin_show_pending_documents	pending_doc	Les supprimés documents en suspens pour le projet <a href="/project/admin/?group_id=$1"> $2 </a>
+admin_show_pending_documents	delay_info	Comme défini dans la configuration <code>/etc/tuleap/conf/local.inc</code> par la variable <code>$sys_file_deletion_delay</code>, les éléments seront <strong>définitivement purgés</strong> du système de fichier après <strong>$1 jour.</strong>
+
+admin_show_pending_documents	note_intro	Info : il peut exister un délai (30 minutes maximum) entre le temps où un fichier a été supprimé et le temps où il peut devenir restaurable.
+admin_show_pending_documents	note_intro_system	Lorsqu'un fichier est supprimé par l'utilisateur, il devient restaurable après le SYSTEM_CHECK
+admin_show_pending_documents	note_intro_system_end	est terminé.
+admin_show_pending_documents	note_intro_restaure	Merci de noter que la restauration du fichier sera faite lors du prochain SYSTEM_CHECK. Cette interface permet seulement de planifier la restauration.
+
+admin_show_pending_documents	frs_filename	Nom du fichier
+admin_show_pending_documents	frs_release	Nom de la livraison
+admin_show_pending_documents	frs_package	Nom du paquet
+admin_show_pending_documents	frs_deleted	Date de suppression
+admin_show_pending_documents	frs_forecast	Date de purge prévue
+admin_show_pending_documents	frs_confirm_message	Confirmer la restauration du fichier
+admin_show_pending_documents	frs_restore	Restaurer
+admin_show_pending_documents	frs_no_restore	Pas de fichier restaurable
+admin_show_pending_documents	frs_restore_info	Fichiers a restaurer au prochain SYSTEM_CHECK
+admin_show_pending_documents	frs_restore_file_info	Fichier marqué à restaurer dans une livraison supprimée
+admin_show_pending_documents	frs_not_yet	Pas encore restaurable
+admin_show_pending_documents	frs_restored	Fichier marqué à restaurer
+admin_show_pending_documents	frs_not_restored	Fichier non restauré
+admin_show_pending_documents	frs_active	Il existe déjà un fichier avec le même nom et un status actif.
+admin_show_pending_documents	frs_same	Un fichier avec le même identifiant est déjà restauré
+admin_show_pending_documents	frs_bad	Mauvais identifiant de fichier
+
+admin_show_pending_documents	wiki_name	Nom du fichier
+admin_show_pending_documents	wiki_date	Date de suppression
+admin_show_pending_documents	wiki_purge	Date de purge prévue
+admin_show_pending_documents	wiki_restore	Restaurer
+admin_show_pending_documents	wiki_confirm	Confirmer la restauration de la pièce jointe
+admin_show_pending_documents	wiki_no_restore	Aucune pièce jointe restaurable trouvée
+admin_show_pending_documents	wiki_restore_attachment	Pièce jointe Wiki restaurée
+admin_show_pending_documents	wiki_restore_error	Pièce jointe Wiki non restaurée
+admin_show_pending_documents	wiki_bad_id	Mauvais identifiant de pièce jointe
+
+admin_generic_user	title	Modifier les utilisateurs génériques
+admin_generic_user	help	Les "utilisateurs génériques" de projet sont des utilisateurs dédiés aux processus automatiques de chaque projet comme l'intégration continue. A l'heure actuelle, les utilisateurs génériques s'activent uniquement par un appel à l'API SOAP, projet par projet (nécessite les droits d'administrateur projet).
+admin_generic_user	help_update	Cette page présente les valeurs par défaut qui s'appliquent à tous les projets. Le suffixe du nom peut être adapté au travers de la variable '$1' dans local.inc
+admin_generic_user	invalid_suffix	Suffixe invalide, merci de changer la valeur de la variable $1 dans local.inc au plus vite!
+admin_generic_user	unix_name_template	%nom_de_projet%
+admin_generic_user	name_template	%Nom de projet%
+admin_generic_user	back	« Retour
+admin_generic_user	set_by_project	Configurable au niveau de chaque projet (chaque administrateur peut définir sa propre valeur dans les pages d'administration du projet)
+admin_generic_user	email	Email
+admin_generic_user	password	Mot de passe
+
+admin_permission_delegation	page_title	Délégation de permission
+admin_permission_delegation	page_description	Ici vous pouvez assigner des permissions à des groupes portants sur l'ensemble de la plateforme.
+admin_permission_delegation	group_action_add	Ajouter un groupe
+admin_permission_delegation	group_action_edit	Editer
+admin_permission_delegation	group_action_delete	Supprimer
+admin_permission_delegation	no_group	Il n'y a rien ici, commencez par ajouter un groupe
+admin_permission_delegation	permissions_title	Permissions
+admin_permission_delegation	no_permission	Il n'y a aucune permission associée à ce groupe
+admin_permission_delegation	users_title	Utilisateurs
+admin_permission_delegation	no_user	Il n'y a aucun utilisateur associé à ce groupe
+admin_permission_delegation	permissions_list_title	Permission
+admin_permission_delegation	users_list_title	Utilisateur
+admin_permission_delegation	permissions_action_add	Ajouter des permissions
+admin_permission_delegation	permissions_action_delete	Supprimer les permissions
+admin_permission_delegation	users_action_add	Ajouter l'utilisateur
+admin_permission_delegation	users_action_delete	Supprimer les utilisateurs
+admin_permission_delegation	group_title_create	Ajouter un nouveau groupe
+admin_permission_delegation	group_title_edit	Editer le groupe "$1"
+admin_permission_delegation	group_name	Nom
+admin_permission_delegation	group_description	Description
+admin_permission_delegation	group_submit_create	Créer le groupe
+admin_permission_delegation	group_submit_edit	Sauvegarder
+admin_permission_delegation	group_cancel	Annuler
+admin_permission_delegation	group_title_delete	Supprimer le groupe "$1"
+admin_permission_delegation	group_delete_confirmation	Vous êtes sur le point de supprimer le groupe <b>$1</b>. Cette action est irréversible. Confirmez-vous la suppression ?
+admin_permission_delegation	group_submit_delete	Supprimer le groupe
+admin_permission_delegation	group_cancel_delete	Annuler
+admin_permission_delegation	user_group_already_exists	Le nom du groupe d'utilisateurs est invalide (vide ou déjà existant)
+admin_permission_delegation	ugroup_not_found	Ce groupe d'utilisateurs n'existe pas
+admin_permission_delegation	permissions_modal_title	Ajouter des permissions au groupe "$1"
+admin_permission_delegation	permissions_modal_description	Selectionnez les permissions que vous voulez ajouter au groupe "<b>$1</b>"
+admin_permission_delegation	permissions_modal_submit	Ajouter les permissions
+admin_permission_delegation	permissions_modal_cancel	Annuler
+admin_permission_delegation	no_permission_to_add	Ce groupe possède déjà toutes les permissions disponibles.
+admin_permission_delegation	permission_not_found	Cette permission n'existe pas
+
+admin_project	information_label	Informations
+admin_project	history_label	Historique
+admin_project	project_details_label	Détails du projet
+admin_project	access_label	Accès au projet
+admin_project	description_label	Description
+admin_project	more_label	Plus d'information
+admin_project	admin_label	Administration du projet
+admin_project	homepage_label	Page d'accueil du projet
+admin_project	members_label	Membres du projet
+admin_project	pending_label	Docs supprimés en attente
+admin_project	manage_access_label	Gérer l'accès
+admin_project	incl_restricted_label	incl. les utilisateurs restreints
+admin_project	public_label	Public
+admin_project	private_label	Privé
+admin_project	unix_name_label	Nom du groupe unix
+admin_project	save_label	Sauvegarder les informations
+admin_project	status_label	Status
+admin_project	instructions_label	Instructions
+admin_project	instructions_desc	Un e-mail est envoyé aux administrateurs du projet lors de l'activation de ce dernier. L'e-mail sert de notification et contient des instructions basiques à propos du projet. Vous pouvez renvoyer manuellement cet e-mail.
+admin_project	send_email_label	Envoyer les instructions
+admin_project	filter_label	Filtrer
+admin_project	search_label	Rechercher
+admin_project	change_label	Historique des changements
+admin_project	history_empty_state	Il n'y a pas encore eu de changement.
+admin_project	history_empty_results	Rien dans l'historique ne correspond à votre recherche.
+#
+#-----------------------------------------------
+# Script: SF/www/admin/grouplist.php
+#
+admin_projectlist	title	Administration - Liste des projets
+admin_projectlist	project_list	Projets
+admin_projectlist	new_project	Ajouter un projet
+admin_projectlist	detail_button_label	Détails
+admin_projectlist	more_button_project_dashboard	Aller au dashboard du projet
+admin_projectlist	more_button_project_administration	Aller à l'administration du projet
+admin_projectlist	filter_name	Nom du Projet
+admin_projectlist	status	Statut
+admin_projectlist	filter	Filtrer
+admin_projectlist	any	Tous
+admin_projectlist	active	Actif
+admin_projectlist	system	Système
+admin_projectlist	pending	En attente
+admin_projectlist	suspended	Suspendu
+admin_projectlist	deleted	Supprimés
+admin_projectlist	matching_projects	Projets correspondants
+admin_projectlist	no_matching_projects	Aucun projet correspondant
+admin_projectlist	export_csv	Export CSV
+admin_projectlist	project_name	Nom du Projet
+admin_projectlist	unix_group_name	Nom du groupe Unix
+admin_projectlist	type	Type de Projet
+admin_projectlist	members	Membres
+admin_projectlist	private	Privé
+admin_projectlist	public_unrestricted	Public incluant les utilisateurs restreints
+admin_projectlist	public	Public
+admin_projectlist	pending_projects_text	Pour votre information, <a href="$1">$2 projets attendent d'être validés</a>.
+
+admin	allowed_projects_filter_empty	Il n'y a pas de projets correspondant au filtre.
+
+admin_project_configuration	webhook_tab_title	Webhooks
+admin_project_configuration	webhook_pane_title	Webhooks de création de projet
+admin_project_configuration	webhook_project_creation_description	Les webhooks suivants sont appelés lors de chaque validation d'un nouveau projet.
+admin_project_configuration	webhook_name	Nom
+admin_project_configuration	webhook_url	URL
+admin_project_configuration	webhook_last_push_date	Dernière date de push
+admin_project_configuration	webhook_last_push_status	Dernier status de push
+admin_project_configuration	no_webhooks	Il n'y a aucun webhook
+admin_project_configuration	show_logs	Voir les logs
+admin_project_configuration	close_modal	Fermer
+admin_project_configuration	cancel_modal	Annuler
+admin_project_configuration	date_modal	Date
+admin_project_configuration	status_modal	Status
+admin_project_configuration	add_new_webhook	Ajouter un webhook de création de projet
+admin_project_configuration	add_webhook_modal	Ajouter le webhook
+admin_project_configuration	add_webhook_description_modal	Le nouveau webhook sera appelé lors de chaque validation d'un nouveau projet avec la charge utile suivante:
+admin_project_configuration	webhook_name_placeholder_modal	Mon nouveau webhook
+admin_project_configuration	webhook_add_error	Une erreur est survenue lors de la création du webhook
+admin_project_configuration	webhook_add_success	Le nouveau webhook a été créé avec succès
+admin_project_configuration	edit	Éditer
+admin_project_configuration	show_logs_title_modal	Logs de "$1"
+admin_project_configuration	update_title_modal	Mettre à jour le webhook "$1"
+admin_project_configuration	update_webhook_modal	Mettre à jour le webhook
+admin_project_configuration	webhook_edit_error	Une erreur est survenue lors de la mise à jour du webhook
+admin_project_configuration	webhook_edit_success	Le webhook a été mis à jour avec succès
+admin_project_configuration	webhook_delete_error	Une erreur est survenue lors de la suppression du webhook
+admin_project_configuration	webhook_delete_success	Le webhook a été supprimé avec succès
+admin_project_configuration	delete	Supprimer
+admin_project_configuration	delete_title_modal	Supprimer le webhook "$1"
+admin_project_configuration	delete_webhook_modal	Supprimer le webhook
+admin_project_configuration	delete_webhook_warning_modal	Vous êtes sur le point de supprimer le webhook "$1". Veuillez confirmer votre action.

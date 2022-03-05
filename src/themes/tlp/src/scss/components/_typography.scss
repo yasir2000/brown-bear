@@ -1,0 +1,229 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$tlp-paragraph-line-height: 1.5rem;
+$tlp-h1-color: var(--tlp-dark-color);
+
+body {
+    color: var(--tlp-typo-default-text-color);
+    font-family: var(--tlp-font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 var(--tlp-medium-spacing);
+    text-rendering: optimizeLegibility;
+
+    small {
+        margin: 0 0 0 5px;
+        color: var(--tlp-dimmed-color);
+    }
+}
+
+h1 {
+    margin: 0 0 var(--tlp-title-spacing);
+    color: $tlp-h1-color;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 40px;
+
+    small {
+        font-size: 24px;
+    }
+}
+
+h2 {
+    color: var(--tlp-main-color);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 36px;
+
+    small {
+        font-size: 20px;
+    }
+}
+
+h3 {
+    color: var(--tlp-dimmed-color);
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    small {
+        font-size: 14px;
+        text-transform: none;
+    }
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 600;
+
+    small {
+        font-size: 13px;
+    }
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 600;
+
+    small {
+        font-size: 13px;
+    }
+}
+
+h6 {
+    font-size: 17px;
+    font-weight: 600;
+
+    small {
+        font-size: 13px;
+    }
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid var(--tlp-neutral-normal-color);
+}
+
+p {
+    margin: 0 0 var(--tlp-medium-spacing);
+    line-height: $tlp-paragraph-line-height;
+
+    &:last-child,
+    &[class^="text-"] {
+        margin: 0;
+    }
+}
+
+ul,
+ol {
+    margin: 0 0 var(--tlp-medium-spacing);
+    padding: 0 0 0 calc(1.5 * var(--tlp-medium-spacing));
+    line-height: $tlp-paragraph-line-height;
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+a {
+    color: var(--tlp-main-color);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+sub {
+    font-size: smaller;
+    vertical-align: sub;
+}
+
+sup {
+    font-size: smaller;
+    vertical-align: super;
+}
+
+blockquote {
+    margin: 0 0 var(--tlp-medium-spacing);
+    padding: 0 0 0 calc(var(--tlp-medium-spacing) / 2);
+    border-left: 5px solid #d7d7d7;
+    line-height: $tlp-paragraph-line-height;
+}
+
+.tlp-text-muted {
+    color: var(--tlp-dimmed-color);
+}
+
+.tlp-text-info {
+    color: var(--tlp-info-dark-color);
+}
+
+.tlp-text-success {
+    color: var(--tlp-success-dark-color);
+}
+
+.tlp-text-warning {
+    color: var(--tlp-warning-dark-color);
+}
+
+.tlp-text-danger {
+    color: var(--tlp-danger-dark-color);
+}
+
+%tlp-code {
+    background: var(--tlp-main-color-transparent-90);
+    color: var(--tlp-main-color);
+    font-family: var(--tlp-font-family-mono);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+}
+
+kbd {
+    display: inline-block;
+    padding: 2px var(--tlp-small-spacing);
+    border-radius: var(--tlp-medium-radius);
+    background: var(--tlp-dark-color);
+    color: var(--tlp-white-color);
+    font-family: var(--tlp-font-family-mono);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    vertical-align: 1px;
+
+    kbd {
+        padding: 0;
+        vertical-align: 0;
+    }
+}
+
+code {
+    @extend %tlp-code;
+
+    padding: 3px;
+    border-radius: var(--tlp-medium-radius);
+}
+
+pre {
+    @extend %tlp-code;
+
+    padding: 5px 3px 5px calc(var(--tlp-medium-spacing) / 2);
+    border-left: 5px solid var(--tlp-main-color-transparent-50);
+
+    code {
+        padding: 0;
+        background: none;
+    }
+}

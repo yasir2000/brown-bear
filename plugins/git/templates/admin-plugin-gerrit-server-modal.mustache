@@ -1,0 +1,84 @@
+<form method="POST" action="?pane=gerrit_servers_admin&action=add-gerrit-server">
+    {{# csrf_token }}
+        {{> csrf_token_input }}
+    {{/ csrf_token }}
+    <div id="modal-add-gerrit-server" class="tlp-modal" role="dialog" aria-labelledby="modal-big-content-label">
+        <div class="tlp-modal-header">
+            <h1 class="tlp-modal-title" id="modal-big-content-label">
+                {{ gerrit_add_server }}
+            </h1>
+            <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+                <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="tlp-modal-body">
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="host-required">{{ gerrit_label_host }} <i class="fa fa-asterisk"></i></label>
+                <input type="text" class="tlp-input" id="host-required" name="host" placeholder="gerrit.example.com" required />
+            </div>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="http-port-required">{{ gerrit_label_http_port }} <i class="fa fa-asterisk"></i></label>
+                <input type="text" class="tlp-input" id="http-port-required" name="http_port" placeholder="80" maxlength="5" size="6" required />
+            </div>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label tlp-checkbox">
+                    <input type="checkbox" name="use_ssl" value="1"> {{ gerrit_label_use_ssl }}
+                </label>
+            </div>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="ssh-port-required">{{ gerrit_label_ssh_port }} <i class="fa fa-asterisk"></i></label>
+                <input type="text" class="tlp-input" id="ssh-port-required" name="ssh_port" placeholder="29418" maxlength="5" size="6" required />
+            </div>
+
+            <hr class="tlp-modal-separator">
+
+            <p class="tlp-text-info">
+                {{# dgettext }} tuleap-git | This section gather credentials of the gerrit user who can perform admin tasks on Gerrit.{{/ dgettext }}
+            </p>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="login-required">{{ gerrit_label_login }} <i class="fa fa-asterisk"></i></label>
+                <input type="text" class="tlp-input" id="login-required" name="login" placeholder="gerrit"  size="25" required />
+            </div>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="http-password-required">{{ gerrit_label_http_password }} <i class="fa fa-asterisk"></i></label>
+                <input type="password" class="tlp-input" id="http-password-required" name="http_password" placeholder="************" size="40" required />
+                 <p class="tlp-text-info"><i class="far fa-life-ring"></i>{{# dgettext }} tuleap-git | Tuleap will use Basic Auth to interact with Gerrit REST API, check you gerrit.config.{{/ dgettext }}</p>
+            </div>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="identity-file-required">{{ gerrit_label_identity_file }} <i class="fa fa-asterisk"></i></label>
+                <input type="text" class="tlp-input" id="identity-file-required" name="identity_file" placeholder="/var/lib/tuleap/.ssh/id_rsa-gerrit.pub" required />
+            </div>
+
+            <hr class="tlp-modal-separator">
+
+            <p class="tlp-text-info">
+                {{ gerrit_replication_information }}
+            </p>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="replication-ssh-key-required">{{ gerrit_label_replication_key }}</label>
+                <textarea class="tlp-textarea" id="replication-ssh-key-required" name="replication_key" placeholder="Key..."></textarea>
+            </div>
+
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="replication-password">{{ gerrit_label_replication_password }} </label>
+                <input type="password" class="tlp-input" id="replication-password" name="replication_password" placeholder="************" size="40" />
+            </div>
+        </div>
+
+        <div class="tlp-modal-footer">
+            <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+                {{ btn_cancel }}
+            </button>
+            <button type="submit" class="tlp-button-primary tlp-modal-action">
+                <i class="fa fa-plus tlp-button-icon"></i> {{ add_server }}
+            </button>
+        </div>
+    </div>
+</form>

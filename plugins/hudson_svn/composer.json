@@ -1,0 +1,19 @@
+{
+  "name": "tuleap/plugin-hudson-svn",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\HudsonSvn\\": ["include/"]
+    },
+    "classmap": ["include/"]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "tuleap": {
+    "preload": {
+      "include": [
+        "/include"
+      ]
+    }
+  }
+}

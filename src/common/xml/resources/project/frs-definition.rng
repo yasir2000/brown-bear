@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="frs">
+    <interleave>
+      <optional>
+        <element name="read-access">
+          <oneOrMore>
+            <element name="ugroup">
+              <ref name="ugroup_name"/>
+            </element>
+          </oneOrMore>
+        </element>
+      </optional>
+      <optional>
+        <element name="admin-access">
+          <oneOrMore>
+            <element name="ugroup">
+              <ref name="ugroup_name"/>
+            </element>
+          </oneOrMore>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <element name="package">
+          <interleave>
+            <optional>
+              <attribute name="id">
+                <data type="long"/>
+              </attribute>
+            </optional>
+            <attribute name="name">
+              <data type="string"/>
+            </attribute>
+            <optional>
+              <attribute name="rank">
+                <data type="long"/>
+              </attribute>
+            </optional>
+            <optional>
+              <attribute name="hidden">
+                <data type="boolean"/>
+              </attribute>
+            </optional>
+            <element name="read-access">
+              <zeroOrMore>
+                <element name="ugroup">
+                  <ref name="ugroup_name"/>
+                </element>
+              </zeroOrMore>
+            </element>
+            <zeroOrMore>
+              <element name="release">
+                <interleave>
+                  <optional>
+                    <attribute name="id">
+                      <data type="long"/>
+                    </attribute>
+                  </optional>
+                  <attribute name="name">
+                    <data type="string"/>
+                  </attribute>
+                  <attribute name="time">
+                    <data type="dateTime"/>
+                  </attribute>
+                  <attribute name="preformatted">
+                    <data type="boolean"/>
+                  </attribute>
+                  <optional>
+                    <attribute name="artifact_id">
+                      <data type="string"/>
+                    </attribute>
+                  </optional>
+                  <element name="notes">
+                    <data type="string"/>
+                  </element>
+                  <element name="changes">
+                    <data type="string"/>
+                  </element>
+                  <element name="user">
+                    <ref name="user_content"/>
+                  </element>
+                  <element name="read-access">
+                    <zeroOrMore>
+                      <element name="ugroup">
+                        <ref name="ugroup_name"/>
+                      </element>
+                    </zeroOrMore>
+                  </element>
+                  <zeroOrMore>
+                    <element name="file">
+                      <interleave>
+                        <optional>
+                          <attribute name="md5sum">
+                            <data type="string"/>
+                          </attribute>
+                        </optional>
+                        <attribute name="src">
+                          <data type="string"/>
+                        </attribute>
+                        <optional>
+                          <attribute name="name">
+                            <data type="string"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <attribute name="release-time">
+                            <data type="dateTime"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <attribute name="post-date">
+                            <data type="dateTime"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <attribute name="arch">
+                            <data type="string"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <attribute name="filetype">
+                            <data type="string"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <element name="description">
+                            <data type="string"/>
+                          </element>
+                        </optional>
+                        <optional>
+                          <element name="user">
+                            <ref name="user_content"/>
+                          </element>
+                        </optional>
+                      </interleave>
+                    </element>
+                  </zeroOrMore>
+                  <zeroOrMore>
+                    <element name="link">
+                      <interleave>
+                        <optional>
+                          <attribute name="name">
+                            <data type="string"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <attribute name="url">
+                            <data type="string"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <attribute name="release-time">
+                            <data type="dateTime"/>
+                          </attribute>
+                        </optional>
+                        <optional>
+                          <element name="user">
+                            <ref name="user_content"/>
+                          </element>
+                        </optional>
+                      </interleave>
+                    </element>
+                  </zeroOrMore>
+                </interleave>
+              </element>
+            </zeroOrMore>
+          </interleave>
+        </element>
+      </zeroOrMore>
+      <optional>
+        <element name="references">
+          <ref name="references"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+</grammar>

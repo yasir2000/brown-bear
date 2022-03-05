@@ -1,0 +1,42 @@
+@use "sass:color";
+
+$footer-white: #e5e8e9;
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    background: var(--tlp-dark-color);
+    color: color.adjust($footer-white, $alpha: - 0.4);
+}
+
+.footer-section {
+    width: 20%;
+    margin: 0 2.5%;
+}
+
+.footer-section-title {
+    margin: 0 0 10px;
+    color: $footer-white;
+    font-size: 18px;
+    line-height: 24px;
+    text-transform: none;
+}
+
+.footer-paragraph {
+    font-size: 13px;
+    line-height: 20px;
+
+    > a {
+        color: $footer-white;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--tlp-main-color);
+        }
+    }
+}
+
+.footer-link {
+    line-height: 25px;
+}

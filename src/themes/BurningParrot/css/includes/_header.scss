@@ -1,0 +1,105 @@
+/**
+ * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "global-variables";
+
+/* stylelint-disable selector-no-qualifying-type */
+body.has-visible-project-banner > .platform-banner:not(.platform-banner-hidden) {
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing)
+        calc(
+            var(--tlp-medium-spacing) + #{global-variables.$extra-platform-banner-white-space-height}
+        );
+
+    + header > .header-container {
+        padding: var(--tlp-small-spacing) var(--tlp-medium-spacing) 0 0;
+    }
+
+    + header.pinned > .header-container {
+        padding: 0 var(--tlp-medium-spacing) 0 0;
+    }
+}
+
+header {
+    position: fixed;
+    z-index: 2004;
+    top: 0;
+    right: 0;
+    justify-content: space-between;
+    transition: background ease-in-out 100ms, box-shadow ease-in-out 100ms, top ease-in-out 50ms;
+
+    &.full-width {
+        width: 100%;
+
+        + #main-container {
+            margin-top: 61px;
+        }
+    }
+
+    &.pinned {
+        background: var(--tlp-white-color);
+        box-shadow: var(--tlp-sticky-header-shadow);
+
+        > .header-container {
+            padding: 0 var(--tlp-medium-spacing) 0 0;
+        }
+    }
+}
+
+.theme-condensed header.full-width + #main-container {
+    margin-top: 57px;
+}
+/* stylelint-enable */
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) 0;
+    transition: padding ease-in-out 100ms;
+
+    a[class*="tlp-button"],
+    button[class*="tlp-button"] {
+        height: 40px;
+        margin: 0 0 0 var(--tlp-small-spacing);
+        transition: padding ease-in-out 100ms, box-shadow ease-in-out 100ms;
+        border-radius: 30px;
+
+        > .tlp-button-icon {
+            font-size: 0.85rem;
+        }
+
+        @media screen and (max-width: 1100px) {
+            width: 40px;
+
+            > .tlp-button-icon {
+                margin: 0;
+            }
+
+            > .header-button-label {
+                position: absolute;
+                clip-path: inset(50%);
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.header-container-spacer {
+    flex: 1 1 auto;
+}

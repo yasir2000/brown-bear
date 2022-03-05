@@ -1,0 +1,8 @@
+{
+  "name": "tuleap/plugin-captcha",
+  "autoload": {
+    "psr-4": {
+      "Tuleap\\Captcha\\": "include/Captcha/"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="provider-endpoint">
+    <div class="tlp-property">
+        <label class="tlp-label">
+            {{ authorization_endpoint }}
+        </label>
+        <p>{{ getAuthorizationEndpoint }}</p>
+    </div>
+    <div class="tlp-property">
+        <label class="tlp-label">
+            {{ token_endpoint }}
+        </label>
+        <p>{{ getTokenEndpoint }}</p>
+    </div>
+    <div class="tlp-property">
+        <label class="tlp-label">
+            {{# dgettext }} tuleap-openidconnectclient | JWKS endpoint {{/ dgettext }}
+        </label>
+        {{# jwks_endpoint }}
+            <p>{{ jwks_endpoint }}</p>
+        {{/ jwks_endpoint }}
+        {{^ jwks_endpoint }}
+            <p class="tlp-property-empty">{{ empty_content }}</p>
+        {{/ jwks_endpoint }}
+    </div>
+    <div class="tlp-property">
+        <label class="tlp-label">
+            {{ userinfo_endpoint }}
+        </label>
+        {{# getUserInfoEndpoint }}
+            <p>{{ getUserInfoEndpoint }}</p>
+        {{/ getUserInfoEndpoint }}
+        {{^ getUserInfoEndpoint }}
+            <p class="tlp-property-empty">{{ empty_content }}</p>
+        {{/ getUserInfoEndpoint }}
+    </div>
+</div>

@@ -1,0 +1,220 @@
+/**
+ * Copyright (c) Enalean, 2022 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../src/themes/BurningParrot/css/includes/global-variables";
+
+.document-header.document-header-search {
+    padding: var(--tlp-large-spacing) var(--tlp-medium-spacing)
+        calc(var(--tlp-title-spacing) - var(--tlp-medium-spacing));
+}
+
+.document-search-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - #{global-variables.$breadcrumb-height});
+    margin: 0 0 var(--tlp-medium-spacing);
+
+    + .document-switch-to-docman {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.sidebar-collapsed .document-search-container {
+    height: calc(100vh - #{global-variables.$breadcrumb-height-with-collapsed-sidebar});
+}
+
+.has-visible-project-banner .document-search-container {
+    height: calc(
+        100vh - #{global-variables.$breadcrumb-height} - #{global-variables.$project-banner-base-height}
+    );
+}
+
+.has-visible-project-banner.sidebar-collapsed .document-search-container {
+    height: calc(
+        100vh - #{global-variables.$breadcrumb-height-with-collapsed-sidebar} - #{global-variables.$project-banner-base-height}
+    );
+}
+
+.has-visible-platform-banner {
+    .document-search-container {
+        height: calc(
+            100vh - #{global-variables.$breadcrumb-height} - #{global-variables.$platform-banner-base-height}
+        );
+    }
+
+    &.sidebar-collapsed .document-search-container {
+        height: calc(
+            100vh - #{global-variables.$breadcrumb-height-with-collapsed-sidebar} - #{global-variables.$platform-banner-base-height}
+        );
+    }
+
+    &.has-visible-project-banner .document-search-container {
+        height: calc(
+            100vh - #{global-variables.$breadcrumb-height} - #{global-variables.$project-banner-base-height} -
+                #{global-variables.$platform-banner-base-height} - #{global-variables.$extra-platform-banner-white-space-height}
+        );
+    }
+
+    &.has-visible-project-banner.sidebar-collapsed .document-search-container {
+        height: calc(
+            100vh - #{global-variables.$breadcrumb-height-with-collapsed-sidebar} - #{global-variables.$project-banner-base-height} -
+                #{global-variables.$platform-banner-base-height} - #{global-variables.$extra-platform-banner-white-space-height}
+        );
+    }
+}
+
+.document-search-error-quote {
+    margin: var(--tlp-small-spacing) 0 0;
+}
+
+.document-search-criteria {
+    display: flex;
+    gap: var(--tlp-medium-spacing);
+    flex-wrap: wrap;
+}
+
+.document-search-criterion {
+    margin: 0;
+}
+
+.document-search-criterion-owner,
+.document-search-criterion-text {
+    min-width: 300px;
+}
+
+.document-search-criterion-number {
+    max-width: 8em;
+}
+
+.document-search-submit {
+    min-width: 120px;
+}
+
+.document-search-table-container {
+    flex: 0 1 auto;
+    overflow: auto;
+    border-top: 1px solid var(--tlp-neutral-normal-color);
+    border-bottom: 1px solid var(--tlp-neutral-normal-color);
+
+    + .tlp-pagination {
+        margin: var(--tlp-medium-spacing) 0 var(--tlp-medium-spacing);
+    }
+}
+
+.document-search-table {
+    position: relative;
+
+    > thead {
+        position: sticky;
+        z-index: 1;
+        top: 0;
+    }
+
+    > thead > tr,
+    > tbody > tr {
+        > th,
+        > td {
+            max-width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            &:first-child {
+                padding-left: var(--tlp-medium-spacing);
+            }
+
+            &:last-child {
+                padding-right: var(--tlp-medium-spacing);
+            }
+        }
+
+        > td {
+            color: var(--tlp-dimmed-color);
+        }
+
+        > .document-search-result-id,
+        > .document-search-result-title {
+            color: var(--tlp-dark-color);
+        }
+    }
+}
+
+.document-search-result-html-content {
+    max-width: 400px;
+    max-height: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+.tlp-table > tbody > tr > th.document-search-result-icon,
+.tlp-table > tbody > tr > td.document-search-result-icon {
+    width: 1px;
+    padding-right: 0;
+}
+/* stylelint-enable selector-no-qualifying-type */
+
+.document-search-criterion-with-popover {
+    display: flex;
+    align-items: center;
+    margin: 0 0 var(--tlp-small-spacing);
+
+    > .tlp-label {
+        margin: 0;
+    }
+}
+
+.tlp-popover.popover-search.tlp-popover-shown {
+    transform: translate(-10px, 5px);
+}
+
+.popover-search-icon {
+    position: relative;
+    top: -1px;
+    margin: 0 0 0 calc(var(--tlp-small-spacing) / 2);
+    color: var(--tlp-dimmed-color);
+    font-size: 0.75rem;
+}
+
+.document-search-breadcrumbs {
+    display: flex;
+    align-items: baseline;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+}
+
+.document-search-breadcrumbs-label {
+    margin: 0 calc(var(--tlp-small-spacing) / 2) 0 0;
+}
+
+.document-search-breadcrumbs-crumb:hover {
+    background: var(--tlp-main-color-transparent-90);
+    color: var(--tlp-main-color);
+}
+
+.document-search-breadcrumbs-separator {
+    padding: 0 calc(var(--tlp-small-spacing) / 2);
+    font-size: 0.5rem;
+}
+
+.document-search-breadcrumbs-final-separator {
+    padding: 0 calc(var(--tlp-small-spacing) / 2) 0 2px;
+}

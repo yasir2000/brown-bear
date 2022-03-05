@@ -1,0 +1,63 @@
+/**
+ * Copyright (c) Enalean, 2017 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#project-admin-ugroup-add-ldap-binding {
+    margin: 0 0 var(--tlp-medium-spacing);
+}
+
+#project-admin-ugroup-ldap-binding-modal-unlink-button {
+    margin: 0 var(--tlp-small-spacing) 0 calc(var(--tlp-small-spacing) * 3);
+}
+
+#project-admin-ugroup-ldap-binding-modal-preview {
+    &:not(.shown) {
+        display: none;
+    }
+
+    &.loading {
+        height: 100px;
+        background: var(--tlp-white-color) url("../images/spinner.gif") center center no-repeat;
+    }
+}
+
+.project-admin-ugroup-ldap-binding-modal-preview-add-alert::before {
+    content: "\f067"; // fas fa-plus
+    font-weight: 900;
+}
+
+.project-admin-ugroup-ldap-binding-modal-preview-remove-alert::before {
+    content: "\f2ed"; // fas fa-trash-alt
+    font-weight: 900;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+ul.project-admin-ugroup-ldap-binding-modal-preview-list {
+    margin: var(--tlp-small-spacing) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.project-admin-ugroup-ldap-binding-modal-preview-list-item {
+    margin: 5px 0 0;
+}
+
+.project-admin-ugroup-ldap-binding-modal-linked-with,
+.project-admin-ugroup-ldap-binding-modal-preview-title {
+    word-wrap: break-word;
+}

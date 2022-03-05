@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Git LFS"
+msgstr "Git LFS"
+
+msgid "Max file size"
+msgstr "Taille maximale des fichiers"
+
+msgid "Max file size (in MiB)"
+msgstr "Taille maximale des fichiers (en Mio)"
+
+msgid "Max file size configuration"
+msgstr "Configuration de la taille maximale des fichiers"
+
+msgid "Max file size updated."
+msgstr "Taille maximale des fichiers mise à jour."
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Support of large file upload and download in Git"
+msgstr "Supporte l'envoi et la réception de fichiers volumineux dans Git"
+
+msgid "The configuration could not be updated through the Web UI."
+msgstr "La configuration ne peut être mise à jour via l'interface."
+
+msgid "The configuration page is not available."
+msgstr "La page de configuration n'est pas disponible."
+
+msgid "The provided LFS object does not exist."
+msgstr "L'objet LFS demandé n'existe pas."
+
+msgid "You should be site administrator to access this page"
+msgstr "Vous devez être administrateur site pour accéder à cette page"

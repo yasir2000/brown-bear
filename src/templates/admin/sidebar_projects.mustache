@@ -1,0 +1,28 @@
+<section class="admin-sidebar-section">
+    <h1 class="admin-sidebar-section-title">
+        <i class="fa fa-archive admin-sidebar-section-title-icon"></i> {{ projects_section_title }}
+        <span class="tlp-badge-primary tlp-badge-outline tlp-badge-rounded tlp-badge-on-dark-background">{{ all_projects_count }}</span>
+    </h1>
+
+    <form action="/admin/grouplist.php" method="get" class="admin-sidebar-form">
+        <div class="tlp-form-element">
+            <input type="search"
+                   class="tlp-search tlp-search-small admin-sidebar-search"
+                   name="group_name_search"
+                   placeholder="{{ projects_search_placeholder }}"
+            >
+        </div>
+    </form>
+
+    <nav class="admin-sidebar-section-nav">
+        <a href="/admin/grouplist.php" class="admin-sidebar-section-nav-item">{{ projects_nav_all_projects }}</a>
+        <a href="/admin/approve-pending.php"  class="admin-sidebar-section-nav-item {{# isTherePendingProjects }}tlp-text-warning{{/ isTherePendingProjects }}">
+            {{ projects_nav_pending_projects }}
+            {{# isTherePendingProjects }}
+                <span class="tlp-badge-warning tlp-badge-outline tlp-badge-rounded tlp-badge-on-dark-background">{{ pending_projects_count }}</span>
+            {{/ isTherePendingProjects }}
+        </a>
+        <a href="/admin/project-creation/moderation" class="admin-sidebar-section-nav-item" data-test="project-settings-link">{{ projects_nav_configuration }}</a>
+        <a href="/project/admin/reference.php?group_id=100" class="admin-sidebar-section-nav-item">{{ configuration_nav_predefined_references }}</a>
+    </nav>
+</section>

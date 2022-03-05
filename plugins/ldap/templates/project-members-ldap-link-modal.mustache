@@ -1,0 +1,90 @@
+<form id="project-admin-members-link-ldap-modal"
+      class="tlp-modal"
+      role="dialog"
+      aria-labelledby="project-admin-members-link-ldap-modal-title"
+      method="post"
+      action=""
+>
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title" id="project-admin-members-link-ldap-modal-title">
+            <i class="fa fa-link tlp-button-icon"></i>
+            {{ action_label }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+            <div class="tlp-form-element">
+                <label class="tlp-label"
+                       for="project-admin-members-ldap-group-select"
+                >
+                    {{# dgettext }} tuleap-ldap | Link with %s group| {{ ldap_server_common_name }} {{/ dgettext }}
+                </label>
+                <select name="ldap_group"
+                        id="project-admin-members-ldap-group-select"
+                        data-placeholder="{{# dgettext }} tuleap-ldap | %s group name| {{ ldap_server_common_name }} {{/ dgettext }}"
+                        data-project-id="{{ project_id }}"
+                        data-display-name="{{ display_name }}"
+                        data-locale="{{ locale }}"
+                        class="tlp-input"
+                >
+                    <option></option>
+                    {{# ldap_group_name }}
+                        <option value="{{ ldap_group_name }}" selected>{{ ldap_display_name }}</option>
+                    {{/ ldap_group_name }}
+                </select>
+
+              <p class="tlp-text-info">{{# dgettext }} tuleap-ldap | Please select a %s group.| {{ ldap_server_common_name }} {{/ dgettext }}</p>
+            </div>
+            <div class="tlp-form-element">
+                <label class="tlp-label tlp-checkbox">
+                <input type="checkbox"
+                       id="project-admin-members-ldap-group-preserve"
+                       name="preserve_members"
+                       {{# is_preserved_members_checked }}checked{{/ is_preserved_members_checked }}
+                >
+                    {{# dgettext }} tuleap-ldap | Preserve members{{/ dgettext }}
+                </label>
+                <p class="tlp-text-info">{{# dgettext }} tuleap-ldap | Preserve users that are not part of the %s group.| {{ ldap_server_common_name }} {{/ dgettext }}</p>
+            </div>
+            <div class="tlp-form-element">
+                <label class="tlp-label tlp-checkbox">
+                <input type="checkbox"
+                       id="project-admin-members-ldap-group-sync"
+                       name="synchronize"
+                       {{# is_synchro_daily_checked }}checked{{/ is_synchro_daily_checked }}
+                >
+                    {{# dgettext }} tuleap-ldap | Synchronize daily{{/ dgettext }}
+                </label>
+            <p class="tlp-text-info">{{# dgettext }} tuleap-ldap | Every night the group will be synchronized with the %s one.| {{ ldap_server_common_name }}{{/ dgettext }}</p>
+            </div>
+      <div id="project-admin-members-ldap-group-link-preview"></div>
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">{{# dgettext }} tuleap-ldap | Cancel{{/ dgettext }}</button>
+        {{# is_linked }}
+            <button type="submit"
+                    class="tlp-button-danger tlp-button-outline tlp-modal-action"
+                    id="project-admin-ugroup-ldap-binding-modal-unlink-button"
+                    name="action"
+                    value="ldap_remove_binding"
+            >
+                <i class="fa fa-unlink tlp-button-icon"></i>
+                {{# dgettext }}tuleap-ldap | Unlink group and %s| {{ ldap_server_common_name }} {{/ dgettext }}
+            </button>
+        {{/ is_linked }}
+        <button type="submit"
+              name="action"
+              value="ldap_add_binding"
+              class="tlp-button-primary tlp-modal-action"
+              id="project-admin-members-ldap-group-link"
+        >
+            <i class="fa fa-link tlp-button-icon"></i>
+            {{# dgettext }} tuleap-ldap | Synchronize{{/ dgettext }}
+        </button>
+    </div>
+</form>

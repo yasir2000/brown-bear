@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+import type {
+    Card,
+    ColumnDefinition,
+    Swimlane,
+    Tracker,
+    User,
+    UserProperties,
+} from "../../../type";
+import type { DataFormat } from "tlp";
+
+export interface NewRemainingEffortPayload {
+    readonly card: Card;
+    readonly value: number;
+}
+
+export interface UpdateCardPayload {
+    readonly card: Card;
+    readonly label: string;
+    readonly assignees: User[];
+    readonly tracker: Tracker;
+}
+
+export interface NewCardPayload {
+    readonly label: string;
+    readonly swimlane: Swimlane;
+    readonly column: ColumnDefinition;
+}
+
+export interface TrackerAssignableUsersPayload {
+    readonly assigned_to_field_id: number;
+    readonly users: UserForPeoplePicker[];
+}
+
+export type UserForPeoplePicker = DataFormat & UserProperties;

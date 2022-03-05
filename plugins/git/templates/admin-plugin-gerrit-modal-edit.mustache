@@ -1,0 +1,140 @@
+<form method="POST"
+      action="?pane=gerrit_servers_admin&action=edit-gerrit-server"
+      id="gerrit-edit-modal-{{ id }}"
+      class="tlp-modal"
+      role="dialog"
+>
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title">
+            {{ edit_title }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        <input type="hidden" name="gerrit_server_id" value="{{ id }}">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="host-required-{{ id }}">{{ gerrit_label_host }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="host-required-{{ id }}"
+                   name="host"
+                   placeholder="gerrit.example.com"
+                   value="{{ host }}"
+                   required
+            />
+        </div>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="http-port-required-{{ id }}">{{ gerrit_label_http_port }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="http-port-required-{{ id }}"
+                   name="http_port"
+                   placeholder="80"
+                   maxlength="5"
+                   size="6"
+                   value="{{ http_port }}"
+                   required
+            />
+        </div>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label tlp-checkbox" for="use-ssl-{{ id }}">
+                <input type="checkbox" name="use_ssl" id="use-ssl-{{ id }}" value="1" {{ use_ssl_checked }} /> {{ gerrit_label_use_ssl }}
+            </label>
+        </div>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="ssh-port-required-{{ id }}">{{ gerrit_label_ssh_port }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="ssh-port-required-{{ id }}"
+                   name="ssh_port"
+                   placeholder="22"
+                   maxlength="5"
+                   size="6"
+                   value="{{ ssh_port }}"
+                   required
+            />
+        </div>
+
+        <hr class="tlp-modal-separator">
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="login-required-{{ id }}">{{ gerrit_label_login }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="login-required-{{ id }}"
+                   name="login"
+                   placeholder="gerrit"
+                   size="25"
+                   value="{{ login }}"
+                   required
+            />
+        </div>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="identity-file-required-{{ id }}">{{ gerrit_label_identity_file }} <i class="fa fa-asterisk"></i></label>
+            <input type="text"
+                   class="tlp-input"
+                   id="identity-file-required-{{ id }}"
+                   name="identity_file"
+                   placeholder="/etc/..."
+                   value="{{ identity_file }}"
+                   required
+            />
+        </div>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="http-password-required-{{ id }}">{{ gerrit_label_http_password_edit }}</label>
+            <input type="password"
+                   class="tlp-input"
+                   id="http-password-required-{{ id }}"
+                   name="http_password"
+                   placeholder="************"
+                   size="40"
+            />
+        </div>
+
+        <hr class="tlp-modal-separator">
+
+        <p class="tlp-text-info">
+            {{ gerrit_replication_information }}
+        </p>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="replication-ssh-key-required-{{ id }}">{{ gerrit_label_replication_key }}
+            <textarea
+                    class="tlp-textarea"
+                    id="replication-ssh-key-required-{{ id }}"
+                    name="replication_key"
+                    placeholder="Key..."
+            >{{ replication_key }}</textarea>
+        </div>
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="replication-password-{{ id }}">{{ gerrit_label_replication_password_edit }}</label>
+            <input type="password"
+                   class="tlp-input"
+                   id="replication-password-{{ id }}"
+                   name="replication_password"
+                   placeholder="************"
+                   size="40"
+            />
+        </div>
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="button" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+            {{ btn_cancel }}
+        </button>
+        <button type="submit" class="tlp-button-primary tlp-modal-action">
+            <i class="fas fa-pencil-alt tlp-button-icon"></i> {{ btn_edit }}
+        </button>
+    </div>
+</form>

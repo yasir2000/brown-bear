@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+msgid "Add a new service"
+msgstr "Ajouter un nouveau service"
+
+msgid "Add service"
+msgstr "Ajouter un service"
+
+msgid "Available (also available for new projects)"
+msgstr "Disponible (également disponible dans les nouveaux projets)"
+
+msgid "Awesome service to manage extra stuff"
+msgstr "Le service qui gère des trucs"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Choose an icon"
+msgstr "Choisissez une icône"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Display in iframe"
+msgstr "Afficher dans une iframe"
+
+msgid "Edit service"
+msgstr "Éditer le service"
+
+msgid "Enabled"
+msgstr "Activé"
+
+msgid "Icon"
+msgstr "Icône"
+
+msgid "Label"
+msgstr "Label"
+
+msgid "Link"
+msgstr "Lien"
+
+msgid "My service"
+msgstr "Mon service"
+
+msgid "Open in a new tab"
+msgstr "Ouvrir dans un nouvel onglet"
+
+msgid ""
+"Opening in iframe is deprecated. If you switch it off, you won't be able to "
+"switch\n"
+"            it back on again."
+msgstr ""
+"L'ouverture dans une iframe est dépréciée. Si vous la désactivez, vous ne "
+"pourrez plus la réactiver plus tard."
+
+msgid "Please, enter a http:// or https:// link"
+msgstr "Veuillez utiliser un lien http:// ou https://"
+
+msgid "Preview"
+msgstr "Aperçu"
+
+msgid "Rank"
+msgstr "Rang"
+
+msgid "Save modifications"
+msgstr "Enregistrer les modifications"
+
+msgid "Short name"
+msgstr "Nom court"
+
+msgid ""
+"The service can't be displayed in an iframe because you want it to be open "
+"in a new\n"
+"            tab."
+msgstr ""
+"Ce service ne peut pas être affiché dans une iframe parce que vous souhaitez "
+"l'ouvrir dans un nouvel onglet."
+
+#. javascript-format
+msgid ""
+"You are about to delete the <b>%s</b> service. Please, confirm your action"
+msgstr ""
+"Vous êtes sur le point de supprimer le service <b>%s</b>. Veuillez confirmer "
+"votre action"
+
+msgid "my_service"
+msgstr "mon_service"

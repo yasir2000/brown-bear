@@ -1,0 +1,9 @@
+{
+  "label": "Panes",
+  "shortcode": ".tlp-pane",
+  "children": [
+    "simple",
+    "splitted",
+    "buttons"
+  ]
+}

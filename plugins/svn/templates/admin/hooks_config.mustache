@@ -1,0 +1,34 @@
+<div class="tabbable" id="svn-administration">
+    {{> admin/section_presenter }}
+
+    <div class="tab-content">
+        <h3>{{ hooks_config_subtitle }}</h3>
+        <p>{{ comment }}</p>
+
+        <form action="/plugins/svn/?group_id={{ project_id }}&repo_id={{ repository_id }}&action=save-hooks-config" method="post">
+            <fieldset>
+                <label class="checkbox">
+                    <input type="checkbox"
+                        name="pre_commit_must_contain_reference"
+                        {{# pre_commit_must_contain_reference }}checked="checked"{{/ pre_commit_must_contain_reference }}
+                        value="true"
+                    >
+                    {{ label_pre_commit_must_contain_reference }}
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox"
+                        name="allow_commit_message_changes"
+                        {{# allow_commit_message_changes }}checked="checked"{{/ allow_commit_message_changes }}
+                        value="true" />
+                    {{ label_allow_commit_message_changes }}
+                </label>
+            </fieldset>
+
+            {{{ csrf_input }}}
+            <input type="hidden" name="group_id" value="{{ project_id }}">
+            <input type="hidden" name="repo_id" value="{{ repository_id }}">
+            <button type="submit" name="submit" class="btn btn-primary"><i class="far fa-save"></i> {{ submit }}</button>
+        </form>
+    </div>
+</div>

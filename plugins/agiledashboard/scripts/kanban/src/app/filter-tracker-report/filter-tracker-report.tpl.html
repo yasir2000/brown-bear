@@ -1,0 +1,15 @@
+<div class="kanban-header-filter" ng-if="filter_tracker_report.displaySelectbox()">
+    <div class="tlp-form-element kanban-header-filter-form">
+        <label class="tlp-label kanban-header-filter-label" for="kanban-filter" translate>Filters:</label>
+        <select class="tlp-select tlp-select-small kanban-header-filter-select"
+                id="kanban-filter"
+                ng-model="filter_tracker_report.selected_item"
+                ng-change="filter_tracker_report.changeFilter()"
+        >
+            <option value="0" translate>None</option>
+            <option ng-repeat="filter in filter_tracker_report.getSelectableReports()" value="{{ filter.id }}">
+                {{ filter.name }}
+            </option>
+        </select>
+    </div>
+</div>

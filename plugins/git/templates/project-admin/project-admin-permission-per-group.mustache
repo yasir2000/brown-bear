@@ -1,0 +1,50 @@
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">{{# dgettext }} tuleap-git | Git {{/ dgettext }}</h1>
+        </div>
+
+        {{# service_presenter}}
+        <section class="tlp-pane-section">
+            <h2 class="tlp-pane-subtitle">{{# dgettext }} tuleap-git | Global permissions {{/ dgettext }}</h2>
+            <table class="tlp-table permission-per-group-table">
+                <thead>
+                    <tr class="permission-per-group-double-column-table">
+                        <th>{{# dgettext }} tuleap-git | Permission {{/ dgettext }}</th>
+                        <th>{{# dgettext }} tuleap-git | Granted groups {{/ dgettext }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{# has_permissions }}
+                    <tr>
+                        <td><a href="{{ url }}">{{# dgettext }} tuleap-git | Git Administrators {{/ dgettext }}</a></td>
+                        <td>
+                            {{# permissions }}
+                                <span class="
+                                    {{# is_project_admin }}tlp-badge-danger tlp-badge-outline{{/ is_project_admin }}
+                                    {{# is_static }}tlp-badge-primary tlp-badge-outline{{/ is_static }}
+                                    {{# is_custom }}tlp-badge-secondary tlp-badge-outline{{/ is_custom }}
+                                ">{{ name }}</span>
+                            {{/ permissions }}
+                        </td>
+                    </tr>
+                {{/ has_permissions }}
+                {{^ has_permissions }}
+                    <tr>
+                        <td colspan="2" class="tlp-table-cell-empty">
+                            {{# dgettext }} tuleap-git | {{ user_group_name }} has no global permission for Git {{/ dgettext }}
+                        </td>
+                    </tr>
+                {{/ has_permissions }}
+                </tbody>
+            </table>
+        </section>
+        {{/ service_presenter }}
+
+        <div id="git-permission-per-group"
+             data-selected-ugroup-id="{{ ugroup_id }}"
+             data-selected-project-id="{{ project_id }}"
+             data-selected-ugroup-name="{{ selected_ugroup_name }}">
+        </div>
+    </div>
+</section>

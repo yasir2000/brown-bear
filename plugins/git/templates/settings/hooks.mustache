@@ -1,0 +1,136 @@
+<div class="git_webhook">
+    <h2>{{ title }}</h2>
+
+    <p class="hooks-desc">{{ description }}</p>
+
+    {{# create_buttons }}
+        {{# has_reached_the_limit }}
+        <span class="only-one-webhook"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="{{ only_one }}"
+        >
+        {{/ has_reached_the_limit }}
+
+        <button
+            type="button"
+            class="btn btn-primary create-webhook-btn"
+            {{# has_reached_the_limit }}
+                disabled
+            {{/ has_reached_the_limit }}
+            {{^ has_reached_the_limit }}
+                data-toggle="modal"
+                data-target="#{{ target_modal }}"
+            {{/ has_reached_the_limit }}
+        >
+            <i class="fa fa-plus"></i> {{ label }}
+        </button>
+
+        {{# has_reached_the_limit }}
+        </span>
+        {{/ has_reached_the_limit }}
+    {{/ create_buttons }}
+
+    {{# additional_description }}
+        <p class="hooks-desc alert alert-info">{{ . }}</p>
+    {{/ additional_description }}
+
+    <table class="table hooks-list">
+        <thead>
+            <tr>
+                <th>{{ url }}</th>
+                <th>{{ last_push }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        {{# sections }}
+            <tbody>
+                <tr>
+                    <td class="table-cell-section" colspan="3">
+                        {{ label }}
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                {{# webhooks }}
+                    {{# isSimple }}
+                    <tr>
+                        <td colspan="3">{{ webhook_url }}</td>
+                    </tr>
+                    {{/ isSimple }}
+                    {{^ isSimple }}
+                    <tr>
+                        <td>{{ webhook_url }}</td>
+                        <td class="last-push">{{{ purified_last_push_info }}}</td>
+                        <td class="action-buttons">
+                            <a role="button" data-toggle="modal" href="#modal-logs-{{ id }}">
+                                <i class="fa fa-list"></i> {{ logs }}
+                            </a>
+                            <a role="button" data-toggle="modal" href="#modal-edit-{{ id }}">
+                                <i class="far fa-edit"></i> {{ edit_hook }}
+                            </a>
+                            <a href="#"
+                                class="remove-hook"
+                                data-toggle="popover"
+                                data-trigger="click"
+                                data-placement="left"
+                                data-html="true"
+                                data-popover-id="remove-{{ id }}-popover"
+                            >
+                                <i class="far fa-trash-alt"></i> {{ remove }}
+                            </a>
+
+                            {{> modal-logs }}
+                            {{> popover-remove-hook }}
+                        </td>
+                    </tr>
+                    {{/ isSimple }}
+                {{/ webhooks }}
+                {{# external_information }}
+                    <tr>
+                        <td colspan="3">{{ title }}</td>
+                    </tr>
+                {{/ external_information }}
+            </tbody>
+        {{/ sections }}
+        {{^ has_sections }}
+            <tbody>
+                <tr>
+                    <td class="table-cell-empty" colspan="3">
+                        {{ empty_hooks }}
+                    </td>
+                </tr>
+            </tbody>
+        {{/ has_sections }}
+    </table>
+</div>
+
+{{# sections }}
+    {{# webhooks }}
+        {{# use_default_edit_modal }}
+            {{# edit_modal }}
+                <div id="modal-edit-{{ id }}"
+                    class="modal hide fade modal-webhook"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="modal-webhook-title"
+                    aria-hidden="true"
+                >
+                    {{> modal-webhook }}
+                </div>
+            {{/ edit_modal }}
+        {{/ use_default_edit_modal }}
+    {{/ webhooks }}
+{{/ sections }}
+
+{{# create_modal }}
+    <div id="modal-create-webhook"
+        class="modal hide fade modal-webhook"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modal-webhook-title"
+        aria-hidden="true"
+    >
+        {{> modal-webhook }}
+    </div>
+{{/ create_modal }}

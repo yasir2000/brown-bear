@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tracker instantiate_for_new_projects="0">
+  <name>Empty</name>
+  <item_name>empty</item_name>
+  <description>Empty Tracker</description>
+  <cannedResponses/>
+  <formElements>
+  </formElements>
+  <semantics>
+    <semantic type="tooltip"/>
+  </semantics>
+  <reports>
+    <report is_default="0">
+      <name>Default</name>
+      <description>The system default artifact report</description>
+      <criterias/>
+      <renderers>
+        <renderer type="table" rank="0" chunksz="15" multisort="15">
+          <name>Results</name>
+          <columns/>
+        </renderer>
+      </renderers>
+    </report>
+  </reports>
+  <workflow/>
+  <permissions>
+    <permission scope="tracker" ugroup="UGROUP_ANONYMOUS" type="PLUGIN_TRACKER_ACCESS_FULL"/>
+  </permissions>
+</tracker>

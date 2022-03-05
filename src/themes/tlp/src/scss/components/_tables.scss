@@ -1,0 +1,222 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$tlp-table-cell-padding: calc(var(--tlp-small-spacing) / 2) var(--tlp-small-spacing);
+
+/**
+ * Table actions
+ */
+.tlp-table-actions {
+    display: flex;
+    margin: 0 0 var(--tlp-medium-spacing);
+}
+
+.tlp-table-actions-element {
+    margin: 0 calc(var(--tlp-medium-spacing) / 2) 0 0;
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.tlp-table-actions-spacer {
+    flex: 1;
+    min-width: var(--tlp-medium-spacing);
+}
+
+.tlp-table-actions-filter {
+    min-width: 150px;
+}
+
+/**
+ * Table
+ */
+%tlp-table-th {
+    padding: $tlp-table-cell-padding;
+    background: var(--tlp-white-color);
+    color: var(--tlp-main-color);
+    font-weight: 600;
+
+    &.tlp-table-cell-numeric {
+        text-align: right;
+    }
+}
+
+.tlp-table {
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+
+    /* stylelint-disable selector-no-qualifying-type */
+    > thead > tr > th {
+        @extend %tlp-table-th;
+
+        border-bottom: 2px solid var(--tlp-main-color);
+    }
+
+    > tfoot > tr > th {
+        @extend %tlp-table-th;
+
+        border-top: 2px solid var(--tlp-main-color);
+    }
+
+    > tbody {
+        &.tlp-table-tbody-hidden {
+            display: none;
+        }
+
+        > tr:nth-child(even) > td {
+            background: var(--tlp-table-row-background-even);
+        }
+
+        > tr:nth-child(odd) > td {
+            background: var(--tlp-table-row-background-odd);
+        }
+
+        > tr:hover > td,
+        > tr:focus-within > td {
+            background: var(--tlp-main-color-lighter-85);
+        }
+
+        > tr > td {
+            padding: $tlp-table-cell-padding;
+            line-height: 1.5rem;
+            vertical-align: middle;
+
+            &.tlp-table-cell-section {
+                background: var(--tlp-background-color);
+                color: var(--tlp-main-color);
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            &.tlp-table-cell-empty {
+                height: 100px;
+                background: var(--tlp-table-row-background-odd);
+                color: var(--tlp-dimmed-color);
+                font-style: italic;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            > .tlp-badge-primary,
+            > .tlp-badge-secondary,
+            > .tlp-badge-info,
+            > .tlp-badge-success,
+            > .tlp-badge-warning,
+            > .tlp-badge-danger {
+                margin: -4px 0 -3px;
+            }
+
+            .tlp-avatar-jumbo,
+            .tlp-avatar-extra-large,
+            .tlp-avatar-large,
+            .tlp-avatar,
+            .tlp-avatar-small,
+            .tlp-avatar-mini {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        > .tlp-table-row-hidden {
+            display: none;
+        }
+
+        > .tlp-table-empty-filter {
+            > td {
+                border: 0;
+            }
+
+            &:not(.tlp-table-empty-filter-shown) {
+                display: none;
+            }
+        }
+    }
+    /* stylelint-enable */
+}
+
+.tlp-table-cell-numeric {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.tlp-table-cell-actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.tlp-button-primary,
+.tlp-button-secondary,
+.tlp-button-info,
+.tlp-button-success,
+.tlp-button-warning,
+.tlp-button-danger {
+    &.tlp-table-cell-actions-button {
+        max-height: 24px;
+        padding: 0 var(--tlp-small-spacing);
+        border-color: transparent;
+        background: none;
+        box-shadow: none;
+    }
+}
+
+.tlp-table-cell-actions-button {
+    margin: -8px 0 -5px;
+
+    + .tlp-table-cell-actions-button {
+        margin: -8px 0 -5px 5px;
+
+        &.tlp-switch {
+            margin: -5px 0 -5px 5px;
+        }
+    }
+
+    &.tlp-switch {
+        margin: -5px 0;
+    }
+}
+
+.tlp-table-sort {
+    display: block;
+}
+
+.tlp-table-sort-icon {
+    margin: 0 0 0 calc(var(--tlp-medium-spacing) / 2);
+}
+
+.tlp-pane-section .tlp-table {
+    width: calc(100% + 2 * var(--tlp-medium-spacing));
+    margin: 0 calc((-1) * var(--tlp-medium-spacing));
+
+    &:last-child {
+        margin: 0 calc((-1) * var(--tlp-medium-spacing)) calc((-1) * var(--tlp-medium-spacing));
+    }
+
+    > thead > tr > th:first-child,
+    > tbody > tr > td:first-child {
+        padding-left: var(--tlp-medium-spacing);
+    }
+
+    > thead > tr > th:last-child,
+    > tbody > tr > td:last-child {
+        padding-right: var(--tlp-medium-spacing);
+    }
+}

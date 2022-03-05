@@ -1,0 +1,14 @@
+<textarea
+        id="{{ id }}"
+        class="user-mention"
+        wrap="soft"
+        rows="{{ rows }}"
+        cols="{{ cols }}"
+        name="{{ name }}"
+        {{# is_required }}required{{/ is_required }}
+        {{# data_attributes }}
+            data-{{ name }}="{{ value }}"
+        {{/ data_attributes }}
+        data-test="{{ name }}"
+>{{ value }}</textarea>
+<div class="muted tracker-richtexteditor-help" id="{{ help_id }}"></div>

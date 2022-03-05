@@ -1,0 +1,35 @@
+.userlog-table-uri-column {
+    width: 50%;
+    word-break: break-all;
+}
+
+.userlog-table-referrer-column {
+    width: 50%;
+    word-break: break-all;
+}
+
+#user-logging-list {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.user-logging-filter-container {
+    width: 300px;
+    margin: 0 var(--tlp-medium-spacing) 0 0;
+}
+
+.user-logging-table-container {
+    width: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+    #user-logging-list {
+        flex-direction: column;
+    }
+
+    .user-logging-filter-container {
+        width: 100%;
+        margin: 0 0 var(--tlp-medium-spacing);
+    }
+}

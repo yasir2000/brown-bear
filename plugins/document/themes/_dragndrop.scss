@@ -1,0 +1,96 @@
+/**
+ * Copyright (c) Enalean, 2019 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../src/themes/BurningParrot/css/includes/global-variables";
+
+.document-upload-to-current-folder {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: global-variables.$sidebar-expanded-width;
+    width: calc(100% - #{global-variables.$sidebar-expanded-width});
+    height: 100vh;
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-small-spacing);
+    transition: box-shadow 100ms ease-in-out;
+    box-shadow: inset 0 0 0 var(--tlp-small-spacing) transparent;
+    color: var(--tlp-white-color);
+    text-align: center;
+    pointer-events: none;
+
+    &.shown-success {
+        box-shadow: inset 0 0 0 var(--tlp-small-spacing) var(--tlp-main-color-transparent-15);
+
+        > .document-upload-to-current-folder-message {
+            transform: translateY(calc(-1 * var(--tlp-small-spacing)));
+            background: var(--tlp-main-color-transparent-15);
+        }
+    }
+
+    &.shown-error {
+        box-shadow: inset 0 0 0 var(--tlp-small-spacing) var(--tlp-danger-color-transparent-15);
+
+        > .document-upload-to-current-folder-message {
+            transform: translateY(calc(-1 * var(--tlp-small-spacing)));
+            background: var(--tlp-danger-color-transparent-15);
+        }
+    }
+}
+
+.has-visible-project-banner .document-upload-to-current-folder {
+    top: global-variables.$project-banner-base-height;
+    height: calc(100vh - #{global-variables.$project-banner-base-height});
+}
+
+.has-visible-platform-banner .document-upload-to-current-folder {
+    top: global-variables.$platform-banner-base-height;
+    height: calc(100vh - #{global-variables.$platform-banner-base-height});
+}
+
+.has-visible-platform-banner.has-visible-project-banner .document-upload-to-current-folder {
+    top: calc(
+        #{global-variables.$project-banner-base-height} + #{global-variables.$platform-banner-base-height} +
+            #{global-variables.$extra-platform-banner-white-space-height}
+    );
+    height: calc(
+        100vh - #{global-variables.$project-banner-base-height} - #{global-variables.$platform-banner-base-height} -
+            #{global-variables.$extra-platform-banner-white-space-height}
+    );
+}
+
+.document-upload-to-current-folder-message {
+    position: absolute;
+    bottom: 0;
+    left: var(--tlp-small-spacing);
+    width: calc(100% - var(--tlp-medium-spacing));
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-small-spacing);
+    transform: translateY(100%);
+    transition: background 100ms ease-in-out, transform 100ms ease-in-out;
+    background: transparent;
+}
+
+.document-upload-to-current-folder-icon {
+    display: inline-block;
+    margin: 0 0 var(--tlp-small-spacing);
+    font-size: 24px;
+}
+
+.sidebar-collapsed .document-upload-to-current-folder {
+    left: global-variables.$sidebar-collapsed-width;
+    width: calc(100% - #{global-variables.$sidebar-collapsed-width});
+}

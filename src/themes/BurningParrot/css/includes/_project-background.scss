@@ -1,0 +1,276 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../../themes/common/css/project-background/background" with (
+    $project-background-images-path: "../../common/images/project-background/"
+);
+@use "sass:map";
+@use "global-variables";
+@import "../../../common/css/project-background/project-background";
+
+@each $identifier, $definition in background.$definitions {
+    .project-admin-background-preview-#{$identifier} {
+        background: linear-gradient(
+                var(--tlp-dark-color-transparent-70),
+                var(--tlp-dark-color-transparent-70)
+            ),
+            map.get($definition, "image-1680px"),
+            linear-gradient(map.get($definition, "color"), map.get($definition, "color"));
+        background-size: map.get($definition, "size");
+    }
+}
+
+.project-with-background {
+    .project-administration-title {
+        @include background.project-background-title-header-typography;
+
+        margin: 0;
+        padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) var(--tlp-title-spacing);
+    }
+
+    .dashboard-project-title {
+        @include background.project-background-title-header-typography;
+    }
+
+    .dashboard-project-header-trovecat {
+        @include background.project-background-title-header-typography;
+
+        font-weight: 500;
+    }
+
+    .dashboard-project-header-trovecat-icon {
+        @include background.project-background-title-header-typography;
+    }
+
+    .dashboard-project-header-trovecat > .tlp-text-warning {
+        @include background.project-background-title-header-typography;
+
+        > .dashboard-project-header-trovecat-link {
+            color: inherit;
+        }
+    }
+
+    .main-project-tabs > .tlp-tabs {
+        @include background.background-for-links;
+
+        box-shadow: none;
+
+        > .tlp-tab {
+            border: 0;
+            border-top: 3px solid transparent;
+            color: var(--tlp-white-color);
+
+            &:hover,
+            &:focus,
+            &.tlp-tab-active {
+                @include background.background-for-links;
+
+                border-top-color: var(--tlp-white-color);
+            }
+
+            &:hover > .tlp-tab-menu,
+            &:focus > .tlp-tab-menu {
+                bottom: 0;
+            }
+
+            > .tlp-tab-badge-append {
+                border-color: var(--tlp-white-color);
+                background: var(--tlp-white-color-transparent-80);
+                color: var(--tlp-white-color);
+            }
+        }
+    }
+
+    .breadcrumb,
+    .breadcrumb-link,
+    #dashboard-tabs-dropdown-trigger {
+        @include background.project-background-title-header-typography;
+    }
+
+    .breadcrumb-dropdown-item,
+    .breadcrumb-dropdown-section-title {
+        text-shadow: initial;
+    }
+
+    .breadcrumb-item:not(.breadcrumb-item-disabled):hover > .breadcrumb-link,
+    .breadcrumb-item:not(.breadcrumb-item-disabled):focus-within > .breadcrumb-link {
+        @include background.background-for-links;
+
+        color: var(--tlp-white-color);
+    }
+
+    .breadcrumb-switchable:hover > .breadcrumb-link::after,
+    .breadcrumb-switchable:focus-within > .breadcrumb-link::after {
+        color: var(--tlp-white-color);
+    }
+
+    .breadcrumb-project-privacy-icon {
+        &.fa-lock,
+        &.fa-tlp-lock-plus-r {
+            background: var(--tlp-white-color);
+            color: var(--tlp-dark-color);
+        }
+
+        &.fa-lock-open,
+        &.fa-tlp-unlock-plus-r {
+            @include background.background-for-links;
+
+            color: var(--tlp-white-color);
+        }
+    }
+
+    .breadcrumb-project-privacy-icon-with-flags {
+        @include background.background-for-links;
+
+        color: var(--tlp-white-color);
+
+        > .breadcrumb-project-privacy-icon {
+            background: none;
+            color: var(--tlp-white-color);
+        }
+    }
+
+    .project-administration-content,
+    .dashboard-widgets-container {
+        background: var(--tlp-background-color);
+    }
+
+    .dashboard-project-header-members.tlp-badge-primary,
+    .dashboard-project-header-access.tlp-badge-primary {
+        background: var(--tlp-white-color-transparent-80);
+        color: var(--tlp-white-color);
+        text-shadow: 0 0 1px rgb(0 0 0);
+    }
+}
+
+#project-admin-background-error,
+#project-admin-background-success {
+    padding: var(--tlp-medium-spacing) var(--tlp-medium-spacing) 0;
+}
+
+.project-admin-background-feedback-hidden {
+    display: none;
+}
+
+.project-admin-background-list {
+    display: grid;
+    grid-gap: var(--tlp-medium-spacing) var(--tlp-medium-spacing);
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media screen and (min-width: 1600px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.project-admin-background {
+    position: relative;
+    height: 150px;
+
+    &:hover {
+        .project-admin-background-author {
+            opacity: 1;
+        }
+    }
+}
+
+.project-admin-background-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+
+    &:focus + .project-admin-background-card,
+    &:checked + .project-admin-background-card {
+        border-color: var(--tlp-main-color);
+    }
+}
+
+.project-admin-background-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--tlp-small-spacing);
+    height: 100%;
+}
+
+.project-admin-background-author {
+    position: absolute;
+    bottom: var(--tlp-medium-spacing);
+    width: calc(100% - (2 * var(--tlp-medium-spacing) + 2px));
+    padding: var(--tlp-small-spacing);
+    transition: opacity 300ms ease-in-out;
+    opacity: 0;
+    background: var(--tlp-dark-color-transparent-30);
+    color: var(--tlp-white-color);
+    font-size: 0.75rem;
+}
+
+.project-admin-background-preview {
+    flex-grow: 1;
+    border-radius: var(--tlp-medium-radius);
+}
+
+.project-admin-background-preview-0 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tlp-background-color);
+    color: var(--tlp-dimmed-color);
+    font-size: 0.875rem;
+}
+
+#project-admin-background-submit-section.pinned {
+    margin: 40px 0 0;
+
+    > .project-admin-background-submit-button-container {
+        position: fixed;
+        bottom: 0;
+        left: global-variables.$sidebar-expanded-width;
+        width: calc(100% - #{global-variables.$sidebar-expanded-width});
+        padding: var(--tlp-large-spacing);
+        animation: footer-appear ease-out 150ms;
+        border-top: 0;
+        background: var(--tlp-white-color-transparent-10);
+        box-shadow: var(--tlp-sticky-footer-shadow);
+        text-align: center;
+
+        @keyframes footer-appear {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+.sidebar-collapsed
+    #project-admin-background-submit-section.pinned
+    > .project-admin-background-submit-button-container {
+    left: global-variables.$sidebar-collapsed-width;
+    width: calc(100% - #{global-variables.$sidebar-collapsed-width});
+}

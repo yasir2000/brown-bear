@@ -1,0 +1,77 @@
+<div class="tlp-framed-vertically">
+
+    {{> creation-settings-tabs }}
+
+    <div class="tlp-framed-horizontally">
+        <form action="" method="POST" id="siteadmin-project-creation-moderation">
+            {{# csrf_token }}
+                {{> csrf_token_input }}
+            {{/ csrf_token }}
+
+            <section class="tlp-pane">
+                <div class="tlp-pane-container">
+                    <div class="tlp-pane-header">
+                        <h1 class="tlp-pane-title">
+                            <i class="tlp-pane-title-icon fa fa-archive"></i>
+                            {{# gettext }}Project creation moderation{{/ gettext}}
+                        </h1>
+                    </div>
+
+                    <section class="tlp-pane-section">
+                        <p class="tlp-text-info">{{# gettext }}Configure how project creation is controlled by administrators{{/ gettext}}</p>
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-checkbox">
+                                <input
+                                    type="checkbox"
+                                    name="projects_must_be_approved"
+                                    value="1"
+                                    {{# projects_must_be_approved }}checked{{/ projects_must_be_approved }}
+                                >
+                                {{# gettext }}Project must be approved by administrators{{/ gettext}}
+                            </label>
+                        </div>
+
+                        {{# platform_have_restricted }}
+                            <div class="tlp-form-element">
+                                <label class="tlp-label" for="toggle-restricted-users-can-create-projects">
+                                    {{# gettext }}Restricted users can create projects{{/ gettext}}
+                                </label>
+                                <div class="tlp-switch">
+                                    <input
+                                            type="checkbox"
+                                            name="restricted_users_can_create_projects"
+                                            id="toggle-restricted-users-can-create-projects"
+                                            class="tlp-switch-checkbox"
+                                            value="1"
+                                            data-test="restricted-users-can-create-project"
+                                            {{# restricted_users_can_create_projects }}checked{{/ restricted_users_can_create_projects }}
+                                    >
+                                    <label for="toggle-restricted-users-can-create-projects" class="tlp-switch-button" aria-hidden></label>
+                                </div>
+                            </div>
+                        {{/ platform_have_restricted }}
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="nb-max-projects-waiting-for-validation">{{# gettext }}Maximum number of projects waiting for validation (-1 means no limits){{/ gettext }}</label>
+                            <input type="number" class="tlp-input" id="nb-max-projects-waiting-for-validation" name="nb_max_projects_waiting_for_validation" size="4" value="{{ nb_max_projects_waiting_for_validation }}"/>
+                        </div>
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="nb-max-projects-waiting-for-validation-per-user">{{# gettext }}Maximum number of projects waiting for validation for one requester (-1 means no limits){{/ gettext }}</label>
+                            <input type="number" class="tlp-input" id="nb-max-projects-waiting-for-validation-per-user" name="nb_max_projects_waiting_for_validation_per_user" size="4" value="{{ nb_max_projects_waiting_for_validation_per_user }}"/>
+                        </div>
+
+                        <div class="tlp-pane-section-submit">
+                            <button class="tlp-button-primary" type="submit" data-test="save-settings">
+                                <i class="fa fa-save tlp-button-icon"></i>
+                                {{# gettext }}Save settings{{/ gettext }}
+                            </button>
+                        </div>
+
+                    </section>
+                </div>
+            </section>
+        </form>
+    </div>
+</div>

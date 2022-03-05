@@ -1,0 +1,23 @@
+{
+    "name": "program_management",
+    "gettext-vue": {
+        "program_management": {
+            "src": "scripts/program_management",
+            "po": "scripts/program_management/po"
+        },
+        "planned_iterations": {
+            "src": "scripts/planned-iterations",
+            "po": "scripts/planned-iterations/po"
+        }
+    },
+    "gettext-ts": {
+        "artifact-additional-action": {
+            "src": "scripts/artifact-additional-action/src",
+            "po": "scripts/artifact-additional-action/po"
+        },
+        "program_management_admin": {
+            "src": "scripts/admin/src",
+            "po": "scripts/admin/po"
+        }
+    }
+}

@@ -1,0 +1,126 @@
+<div class="current-test-comment-attachements-container">
+    <div class="current-test-comment-attachments">
+        <a
+            ng-repeat="file in $ctrl.execution.attachments track by file.id"
+            ng-href="{{ file.html_url }}"
+            class="current-test-comment-attachment"
+            title="{{ file.filename }}"
+            target="_blank"
+            rel="noreferrer"
+        >
+            <i class="fas fa-paperclip" aria-hidden="true"></i>
+            <span
+                class="current-test-comment-attachment-label"
+                ng-class="{'current-test-comment-attachment-label-deleted': $ctrl.isInCommentMode && file.is_deleted}"
+                data-test="comment-file-attachment">
+                {{ file.filename }}
+            </span>
+            <div class="current-test-comment-attachment-buttons-container">
+                <button
+                    ng-if="$ctrl.isInCommentMode && !file.is_deleted && $ctrl.can_user_attach_files"
+                    type="button"
+                    class="tlp-button-danger tlp-button-outline current-test-comment-attachment-button"
+                    title="{{ 'Remove file' | translate }}"
+                    aria-label="{{ 'Remove file' | translate }}"
+                    ng-click="$ctrl.addFileToRemovedFiles($event, file)"
+                    data-test="remove-attachment-file-button"
+                >
+                    <i class="far fa-fw fa-trash-alt tlp-button-icon current-test-comment-attachment-button-icon" aria-hidden="true"></i>
+                </button>
+                <button
+                    ng-if="$ctrl.isInCommentMode && file.is_deleted"
+                    type="button"
+                    class="tlp-button-secondary tlp-button-outline current-test-comment-attachment-button"
+                    title="{{ 'Undo remove file' | translate }}"
+                    aria-label="{{ 'Undo remove file' | translate }}"
+                    ng-click="$ctrl.cancelFileRemoval($event, file)"
+                >
+                    <i class="fas fa-fw fa-undo tlp-button-icon current-test-comment-attachment-button-icon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </a>
+        <span
+            ng-repeat="file in $ctrl.execution.uploaded_files_through_attachment_area track by file.id"
+            class="current-test-comment-attachment"
+            ng-class="{'current-test-comment-attachment-upload-error': file.upload_error_message.length > 0}"
+            title="{{ file.filename }}"
+        >
+            <i class="fas fa-paperclip" aria-hidden="true"></i>
+            <span class="current-test-comment-attachment-label">{{ file.filename }}</span>
+            <span ng-if="file.progress < 100" class="execution-attachment-progress">
+                <span class="execution-attachment-upload-progress-bar-value">{{ file.progress }}%</span>
+                <progress
+                    class="execution-attachment-upload-progress-bar"
+                    max="100"
+                    value="{{ file.progress }}"
+                ></progress>
+                <span class="attachment-upload-cancel" ng-click="$ctrl.abortUpload(file)">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </span>
+            <div
+                class="current-test-comment-attachment-buttons-container"
+            >
+                <button
+                    ng-if="$ctrl.isInCommentMode && !file.is_deleted && file.progress >= 100 && file.upload_error_message.length === 0"
+                    type="button"
+                    class="tlp-button-danger tlp-button-outline current-test-comment-attachment-button"
+                    title="{{ 'Remove file' | translate }}"
+                    aria-label="{{ 'Remove file' | translate }}"
+                    ng-click="$ctrl.removeFileUploadedThroughAttachmentArea(file)"
+                >
+                    <i class="far fa-fw fa-trash-alt tlp-button-icon current-test-comment-attachment-button-icon" aria-hidden="true"></i>
+                </button>
+                <div ng-if="file.upload_error_message.length > 0">
+                    <button id="popover-upload-error-attachment-{{ file.id }}-trigger"
+                        class="tlp-button-warning tlp-button-outline current-test-comment-attachment-button"
+                        data-placement="top"
+                        title="{{ 'Click to see the error message' | translate }}"
+                    >
+                        <i
+                            class="fas fa-fw fa-exclamation-triangle tlp-button-icon current-test-comment-attachment-button-icon"
+                            aria-hidden="true"
+                        ></i>
+                    </button>
+                    <section id="popover-upload-error-attachment-{{ file.id }}-content" class="tlp-popover tlp-popover-warning">
+                        <div class="tlp-popover-arrow"></div>
+                        <div class="tlp-popover-header">
+                            <h1 class="tlp-popover-title" translate>Attachment upload error</h1>
+                        </div>
+                        <div class="tlp-popover-body">
+                            <p>{{ file.upload_error_message }}</p>
+                        </div>
+                        <div class="tlp-popover-footer">
+                            <button
+                                type="button"
+                                class="tlp-button-warning tlp-button-small"
+                                data-dismiss="popover"
+                                ng-click="$ctrl.removeAttachmentFromList(file)"
+                                translate
+                            >
+                                Ok, got it
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </span>
+    </div>
+    <div ng-if="$ctrl.isInCommentMode && $ctrl.can_user_attach_files" class="current-test-comment-attachements-controls" ng-class="{'current-test-comment-attachements-controls-no-placeholder': $ctrl.execution.attachments.length > 0}">
+        <p ng-if="$ctrl.execution.attachments.length === 0 && $ctrl.execution.uploaded_files_through_attachment_area.length === 0" class="test-files-empty-placeholder" translate>
+            Select files to attach or drop them here...
+        </p>
+        <label
+            for="test-files-upload-button"
+            class="test-files-upload-button-label tlp-button-secondary tlp-button-small tlp-button-outline"
+        >
+            <input
+                id="test-files-upload-button"
+                type="file"
+                multiple
+            >
+            <span translate>Attach files...</span>
+        </label>
+    </div>
+    <execution-attachments-creation-error-modal errors="$ctrl.file_creation_errors"></execution-attachments-creation-error-modal>
+</div>

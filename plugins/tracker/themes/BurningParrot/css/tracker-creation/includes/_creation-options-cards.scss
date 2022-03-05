@@ -1,0 +1,128 @@
+/**
+ * Copyright (c) Enalean, 2020 - present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "creation-screen-breakpoints";
+
+.tracker-creation-template-card {
+    display: flex;
+    width: calc(50% - var(--tlp-small-spacing));
+    min-height: 120px;
+    margin: 0 0 var(--tlp-medium-spacing);
+
+    @media screen and (max-width: creation-screen-breakpoints.$creation-small-screen-width) {
+        width: 100%;
+    }
+
+    .tracker-creation-template-card-radio-button {
+        display: none;
+    }
+
+    .card-glyph-stroke {
+        stroke: var(--tlp-neutral-dark-color);
+    }
+
+    .card-glyph-fill {
+        fill: var(--tlp-neutral-dark-color);
+    }
+
+    #tracker-creation-template-selector {
+        width: 100%;
+    }
+
+    &.tracker-creation-template-card-active {
+        .tlp-card {
+            border-color: var(--tlp-main-color);
+        }
+
+        .tlp-label {
+            color: var(--tlp-main-color);
+        }
+
+        .tlp-select {
+            border-color: var(--tlp-main-color);
+        }
+
+        .card-glyph-stroke {
+            stroke: var(--tlp-main-color);
+        }
+
+        .card-glyph-fill {
+            fill: var(--tlp-main-color);
+        }
+    }
+
+    > .tracker-creation-template-card-label {
+        display: flex;
+        position: relative;
+        width: 100%;
+        cursor: pointer;
+
+        > .card-glyph {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            width: 110px;
+            height: calc(100% - 40px);
+
+            &.card-glyph-stay-at-top {
+                height: 78px;
+            }
+        }
+
+        > .card-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0 0 0 130px;
+
+            > .card-title {
+                margin: 0 0 10px;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 18px;
+                text-align: unset;
+            }
+
+            > .tracker-creation-xml-file-error {
+                margin: 0;
+            }
+
+            > .card-description {
+                display: flex;
+                flex-direction: column;
+
+                > .card-description-content {
+                    color: var(--tlp-dimmed-color);
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}
+
+#tracker-creation-xml-file-selector {
+    padding: 0;
+    border: 0;
+}
+
+.create-from-jira-button {
+    margin: var(--tlp-medium-spacing) 0 0;
+}

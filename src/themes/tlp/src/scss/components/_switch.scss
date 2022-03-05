@@ -1,0 +1,163 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$tlp-switch-height: 24px;
+$tlp-switch-width: 64px;
+$tlp-switch-large-height: 48px;
+$tlp-switch-large-width: 96px;
+$tlp-switch-mini-height: 16px;
+$tlp-switch-mini-width: 40px;
+$tlp-switch-background: var(--tlp-neutral-dark-color);
+$tlp-switch-button-background: var(--tlp-white-color);
+$tlp-switch-button-width: 37px;
+$tlp-switch-large-button-width: 57px;
+$tlp-switch-mini-button-width: 22px;
+$tlp-switch-button-padding: 1px;
+$tlp-switch-button-slider-margin: 1px;
+$tlp-switch-button-spinner-size: $tlp-switch-height - 2 *
+    ($tlp-switch-button-padding + $tlp-switch-button-slider-margin);
+
+@keyframes tlp-switch-loading-spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.tlp-switch-checkbox {
+    position: absolute;
+    opacity: 0;
+
+    &:focus + label::before {
+        box-shadow: var(--tlp-shadow-focus);
+    }
+}
+
+.tlp-switch-button {
+    display: block;
+    position: relative;
+    width: $tlp-switch-width;
+    height: $tlp-switch-height;
+    outline: none;
+    font-size: 0;
+    cursor: pointer;
+    user-select: none;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: $tlp-switch-button-padding;
+        right: $tlp-switch-button-padding;
+        bottom: $tlp-switch-button-padding;
+        left: $tlp-switch-button-padding;
+        transition: background-color 200ms, box-shadow 350ms;
+        border-radius: $tlp-switch-height / 2;
+        background-color: $tlp-switch-background;
+    }
+
+    &::after {
+        content: "\f00c"; // fa-check
+        display: flex;
+        position: absolute;
+        top: $tlp-switch-button-padding + $tlp-switch-button-slider-margin;
+        bottom: $tlp-switch-button-padding + $tlp-switch-button-slider-margin;
+        left: $tlp-switch-button-padding + $tlp-switch-button-slider-margin;
+        align-items: center;
+        justify-content: center;
+        width: $tlp-switch-button-width;
+        transition: left 200ms, color 200ms, width 200ms;
+        border-radius: ($tlp-switch-height - (2 * $tlp-switch-button-padding)) / 2;
+        background-color: $tlp-switch-button-background;
+        color: #ffffff;
+        font-family: "Font Awesome 5 Free";
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    &.loading {
+        &::before {
+            background: $tlp-switch-background;
+        }
+
+        &::after {
+            content: "\f1ce"; // fa-spinner
+            left: ($tlp-switch-width - $tlp-switch-button-spinner-size) / 2;
+            width: $tlp-switch-button-spinner-size;
+            height: $tlp-switch-button-spinner-size;
+            animation: tlp-switch-loading-spin 2s infinite linear;
+            color: var(--tlp-dimmed-color);
+        }
+    }
+}
+
+.tlp-switch-large > .tlp-switch-button {
+    width: $tlp-switch-large-width;
+    height: $tlp-switch-large-height;
+
+    &::before {
+        border-radius: $tlp-switch-large-height / 2;
+    }
+
+    &::after {
+        width: $tlp-switch-large-button-width;
+        border-radius: ($tlp-switch-large-height - (2 * $tlp-switch-button-padding)) / 2;
+        font-size: 18px;
+    }
+}
+
+.tlp-switch-checkbox:checked + .tlp-switch-button:not(.loading) {
+    &::before {
+        background-color: var(--tlp-main-color);
+    }
+
+    &::after {
+        left: 25px;
+        color: var(--tlp-main-color);
+    }
+}
+
+.tlp-switch-large > .tlp-switch-checkbox:checked + .tlp-switch-button:not(.loading)::after {
+    left: 37px;
+}
+
+.tlp-switch-checkbox:disabled + .tlp-switch-button {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tlp-switch-mini > .tlp-switch-button {
+    width: $tlp-switch-mini-width;
+    height: $tlp-switch-mini-height;
+
+    &::before {
+        content: "";
+        border-radius: $tlp-switch-mini-height / 2;
+        background-color: $tlp-switch-background;
+    }
+
+    &::after {
+        width: $tlp-switch-mini-button-width;
+        border-radius: ($tlp-switch-mini-height - (2 * $tlp-switch-button-padding)) / 2;
+        font-size: 8px;
+    }
+}
+
+.tlp-switch-mini > .tlp-switch-checkbox:checked + .tlp-switch-button:not(.loading)::after {
+    left: 16px;
+}

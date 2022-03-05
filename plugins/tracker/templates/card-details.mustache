@@ -1,0 +1,14 @@
+{{#hasFields}}
+<div class="card-details">
+    <div class="toggler-noajax">
+        <i class="fa fa-caret-right"></i><i class="fa fa-caret-down"></i> {{details}}
+    </div>
+    <div>
+        <table>
+            {{#getFields}}
+                {{{getField}}}
+            {{/getFields}}
+        </table>
+    </div>
+</div>
+{{/hasFields}}

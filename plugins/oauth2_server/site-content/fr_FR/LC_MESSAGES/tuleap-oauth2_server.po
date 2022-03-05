@@ -1,0 +1,153 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Joris MASSON <joris.masson@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid "%s by project %s wants to connect to your Tuleap account."
+msgstr "%s du projet %s souhaite se connecter à votre compte Tuleap."
+
+msgid "%s wants to connect to your Tuleap account."
+msgstr "%s souhaite se connecter à votre compte Tuleap."
+
+msgid "Access has been revoked."
+msgstr "L'accès a été révoqué."
+
+msgid "Add an App"
+msgstr "Ajouter une App"
+
+msgid "App"
+msgstr "App"
+
+msgid "App name"
+msgstr "Nom de l'App"
+
+msgid "Application (client) ID"
+msgstr "ID de l'application (client)"
+
+msgid "Authorization not found for this App, aborting revocation."
+msgstr ""
+"Aucune autorisation trouvée pour cette App, annulation de la révocation."
+
+msgid "Authorize"
+msgstr "Autoriser"
+
+msgid "Authorize application"
+msgstr "Autoriser l'application"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Client secret copied!"
+msgstr "Secret client copié !"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Copy the client secret"
+msgstr "Copier le secret client"
+
+msgid "Delegate access to Tuleap resources"
+msgstr "Déléguer l'accès aux ressources de Tuleap"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Delete App"
+msgstr "Supprimer l'App"
+
+msgid "Deny"
+msgstr "Refuser"
+
+msgid "Edit"
+msgstr "Éditer"
+
+msgid "Edit an App"
+msgstr "Éditer une App"
+
+msgid "Force PKCE usage?"
+msgstr "Force l'utilisation de PKCE ?"
+
+msgid "Force usage of PKCE to authenticate"
+msgstr "Forcer à utiliser PKCE pour s'authentifier"
+
+msgid "Generate a new client secret"
+msgstr "Générer un nouveau secret client"
+
+msgid ""
+"Here is the generated secret for your app %s. Make sure to copy it. You "
+"won't be able to see it again!"
+msgstr ""
+"Voici le secret généré pour votre app %s. Prenez soin de le copier. Vous ne "
+"pourrez pas le voir de nouveau !"
+
+msgid "My REST API consumer App"
+msgstr "Mon App utilisant l'API REST"
+
+msgid "No App have been defined yet. Start by adding one."
+msgstr "Aucune App n'a encore été configurée. Commencez par en ajouter une."
+
+msgid "OAuth2 Apps"
+msgstr "Apps OAuth2"
+
+msgid "OAuth2 Server"
+msgstr "Server OAuth2"
+
+msgid "OAuth2 apps common to the whole instance"
+msgstr "Apps OAuth2 communes à l'ensemble de la plateforme"
+
+msgid "Please review the permissions you are about to give to %s:"
+msgstr ""
+"Veuillez prendre connaissance des permissions que vous allez accorder à %s :"
+
+msgid "Project"
+msgstr "Projet"
+
+msgid "Redirect endpoint"
+msgstr "Route de redirection"
+
+msgid ""
+"Redirect endpoint must use HTTPS. It must not include a fragment component "
+"(#anchor)"
+msgstr ""
+"La route de redirection doit utiliser HTTPS. Elle ne doit pas inclure un "
+"identificateur de fragment (#ancre)"
+
+msgid "Revoke access"
+msgstr "Révoquer l'accès"
+
+msgid "Revoke access to this App"
+msgstr "Révoquer l'accès de cette App"
+
+msgid "Revoke authorization"
+msgstr "Révoquer l'autorisation"
+
+msgid "Scopes"
+msgstr "Portées"
+
+msgid "The App has been successfully deleted."
+msgstr "L'App a correctement été supprimée."
+
+msgid "The App's ID is required."
+msgstr "L'ID de l'App est obligatoire."
+
+msgid "The provided app data is not valid."
+msgstr "Les informations fournies pour l'app ne sont pas valides."
+
+msgid ""
+"This is a list of OAuth2 apps you have authorized access to Tuleap on your "
+"behalf."
+msgstr ""
+"Voici une liste des apps OAuth2 auxquelles vous avez autorisé l'accès à "
+"Tuleap en votre nom."
+
+msgid "You did not authorize any OAuth2 App yet."
+msgstr "Vous n'avez pas encore autorisé d'app OAuth2."

@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "esnext",
+        "types": [
+            "unplugin-vue2-script-setup/types",
+            "jest"
+        ],
+        "incremental": false
+    },
+    "include": [
+        "scripts/test-plan/**/*"
+    ]
+}

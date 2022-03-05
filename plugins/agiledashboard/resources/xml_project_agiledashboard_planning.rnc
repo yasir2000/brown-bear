@@ -1,0 +1,44 @@
+agiledashboard = element admin {
+    element scrum {
+        element explicit_backlog {
+            attribute is_used { xsd:boolean }
+        }
+    }
+}?,
+element top_backlog {
+    element artifact {
+        attribute artifact_id { xsd:long }
+    }+
+}?,
+element plannings  {
+    element planning {
+        attribute name { xsd:string },
+        attribute plan_title { xsd:string },
+        attribute planning_tracker_id { xsd:string },
+        attribute backlog_title { xsd:string },
+
+        element backlogs {
+            element backlog { xsd:string }+
+        },
+
+        element permissions {
+            element permission {
+                attribute ugroup { xsd:string },
+                attribute type { xsd:string }
+            }+
+        }?
+    }*
+},
+element kanban_list {
+    attribute title { xsd:string },
+    element kanban {
+         attribute ID { xsd:ID },
+         attribute tracker_id { xsd:string },
+         attribute name { xsd:string },
+
+         element column {
+            attribute REF { xsd:IDREF },
+            attribute wip { xsd:long }?
+         }*
+    }*
+}?

@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Thomas Gorka <thomas.gorka@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#, javascript-format
+msgid "%s - Remaining effort"
+msgstr "%s - Effort restant"
+
+msgid "Ideal burndown"
+msgstr "Burndown idéal"
+
+msgid "MM/DD"
+msgstr "DD/MM"
+
+msgid "Remaining effort"
+msgstr "Effort restant"
+
+#, javascript-format
+msgid "Remaining effort: %s"
+msgstr "Effort  restant : %s"
+
+msgid "ddd DD"
+msgstr "ddd DD"
+
+msgid "n/k"
+msgstr "n/c"

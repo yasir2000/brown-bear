@@ -1,0 +1,57 @@
+{
+    "name": "core",
+    "gettext-js": {
+        "chart-builders": {
+            "src": "src/scripts/charts-builders",
+            "po": "src/scripts/charts-builders/po"
+        }
+    },
+    "gettext-ts": {
+        "list-picker": {
+            "src": "src/scripts/lib/list-picker/src",
+            "po": "src/scripts/lib/list-picker/po"
+        },
+        "access-denied-error": {
+            "src": "src/scripts/BurningParrot/src/",
+            "po": "src/scripts/BurningParrot/po"
+        },
+        "global-shortcuts": {
+            "src": "src/scripts/global-shortcuts/src",
+            "po": "src/scripts/global-shortcuts/po"
+        },
+        "project-admin-ugroups": {
+            "src": "src/scripts/project/admin/src/",
+            "po": "src/scripts/project/admin/po"
+        }
+    },
+    "gettext-vue": {
+        "permissions-per-group-frs": {
+            "src": "src/scripts/frs/permissions-per-group",
+            "po": "src/scripts/frs/permissions-per-group/po"
+        },
+        "permissions-per-group-news": {
+            "src": "src/scripts/news/permissions-per-group",
+            "po": "src/scripts/news/permissions-per-group/po"
+        },
+        "project-admin-services": {
+            "src": "src/scripts/project/admin/services/src",
+            "po": "src/scripts/project/admin/services/po"
+        },
+        "project-admin-banner": {
+            "src": "src/scripts/project/admin/banner/src",
+            "po": "src/scripts/project/admin/banner/po"
+        },
+        "project-registration": {
+            "src": "src/scripts/project/registration/src",
+            "po": "src/scripts/project/registration/po"
+        },
+        "switch-to": {
+            "src": "src/scripts/switch-to/src",
+            "po": "src/scripts/switch-to/po"
+        },
+        "platform-banner-admin": {
+            "src": "src/scripts/platform/banner/admin/src",
+            "po": "src/scripts/platform/banner/admin/po"
+        }
+    }
+}

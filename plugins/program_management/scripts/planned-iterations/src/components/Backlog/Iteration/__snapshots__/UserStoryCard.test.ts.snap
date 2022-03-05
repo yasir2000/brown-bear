@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserStoryCard should display the user_story as a card with tracker and background color 1`] = `
+<div
+  class="element-backlog-item"
+>
+  <div
+    class="element-card element-card-red-wine element-card-background-peggy-pink element-card-with-accessibility"
+    data-test="user-story-card"
+  >
+    <div
+      class="element-card-content"
+    >
+      <div
+        class="element-card-metadata"
+      >
+        <div
+          class="element-card-xref-label"
+        >
+          <a
+            class="element-card-xref element-card-xref-red-wine"
+            href="/plugins/tracker/?aid=101"
+          >
+            <div
+              class="element-card-xref-project"
+            >
+              <span
+                class="element-card-xref-project-icon"
+              >
+                
+                                🐹
+                            
+              </span>
+              
+                            Guinea Pigs
+                            
+              <i
+                class="fas fa-long-arrow-alt-right element-card-xref-icon"
+              />
+              
+                            user_story #101
+                        
+            </div>
+          </a>
+        </div>
+         
+        <div
+          class="element-card-feature-title tlp-badge-secondary tlp-badge-outline"
+        >
+          <i
+            class="fas fa-level-up-alt"
+          />
+           
+          <a
+            class="feature-link"
+            href="uri/to/feature"
+          >
+            
+                        My parent feature
+                    
+          </a>
+        </div>
+      </div>
+       
+      <span
+        class="element-card-label"
+      >
+        User Story 101
+      </span>
+    </div>
+     
+    <div
+      class="element-card-accessibility"
+      data-test="element-card-accessibility"
+    />
+  </div>
+</div>
+`;

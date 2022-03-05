@@ -1,0 +1,88 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Nicolas Terray <nicolas.terray@enalean.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Actually there isn't any children you can see here."
+msgstr "En fait il n'y a aucun enfant que vous pouvez voir ici."
+
+msgid "An error occurred while retrieving the children."
+msgstr "Une erreur est survenue lors de la récupération des enfants."
+
+msgid "Displayed artifacts don't have any links to each other."
+msgstr "Les artéfacts affichés ne possèdent pas de liens entre eux."
+
+msgid "End date"
+msgstr "Date de fin"
+
+msgid "End date is lesser than start date!"
+msgstr "La date de fin est inférieure à la date de début !"
+
+msgid "Linked to"
+msgstr "Lié à"
+
+msgid "Links"
+msgstr "Liens"
+
+msgid "Month"
+msgstr "Mois"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "Ok, got it"
+msgstr "Ok, j'ai compris"
+
+msgid "Oops, something went wrong."
+msgstr "Oups, quelque chose ne va pas."
+
+msgid "Please come back later."
+msgstr "Veuillez revenir plus tard."
+
+msgid "Progress"
+msgstr "Progression"
+
+msgid "Q%{ quarter }"
+msgstr "Trim. %{ quarter }"
+
+msgid "Quarter"
+msgstr "Trimestre"
+
+msgid "Quarter %{ quarter } of %{ year }"
+msgstr "Trimestre %{ quarter } de %{ year }"
+
+msgid "Show closed items"
+msgstr "Afficher les éléments fermés"
+
+msgid "Start date"
+msgstr "Date de début"
+
+msgid "There is no data to show."
+msgstr "Il n'y a pas de données à afficher."
+
+msgid "Timescale"
+msgstr "Échelle"
+
+msgid "Today: %{ date }"
+msgstr "Aujourd'hui : %{ date }"
+
+msgid "Undefined"
+msgstr "Non définie"
+
+msgid "W%{ week }"
+msgstr "S%{ week }"
+
+msgid "Week"
+msgstr "Semaine"
+
+msgid "Week %{ week } of %{ year }"
+msgstr "Semaine %{ week } de %{ year }"

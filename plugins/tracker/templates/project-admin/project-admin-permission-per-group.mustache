@@ -1,0 +1,28 @@
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">
+                {{# dgettext }} tuleap-tracker | Tracker {{/ dgettext }}
+                <span class="tlp-tooltip tlp-tooltip-top permission-per-group-header-tooltip" data-tlp-tooltip="
+                    {{# dgettext }}
+                        tuleap-tracker
+                        | Tracker configuration permission and artifacts permissions are not listed.
+                    {{/ dgettext }}
+                ">
+                    <i class="fa fa-question-circle" aria-label="
+                        {{# dgettext }}
+                        tuleap-tracker
+                        | Tracker configuration permission and artifacts permissions are not listed.
+                    {{/ dgettext }}
+                    "></i>
+                </span>
+            </h1>
+        </div>
+
+        <div id="tracker-permissions-per-group"
+             data-selected-ugroup-id="{{ ugroup_id }}"
+             data-selected-project-id="{{ project_id }}"
+             data-selected-ugroup-name="{{ selected_ugroup_name }}"
+        ></div>
+    </div>
+</section>

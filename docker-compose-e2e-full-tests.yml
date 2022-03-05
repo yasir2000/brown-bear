@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  tuleap:
+    image: ${DOCKER_REGISTRY:-docker.io}/tuleap/tuleap-community-edition:latest
+    entrypoint: /usr/share/tuleap/tests/e2e/full/tuleap/setup.sh
+    environment:
+      - TULEAP_FQDN=tuleap
+      - DB_HOST=${DB_HOST}
+      - DB_ADMIN_USER=root
+      - DB_ADMIN_PASSWORD=welcome0
+    volumes:
+      - .:/usr/share/tuleap:ro
+    networks:
+      - tuleap
+
+networks:
+  tuleap:
+    internal: true
+  external-connectivity:

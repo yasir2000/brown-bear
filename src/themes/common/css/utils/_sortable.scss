@@ -1,0 +1,19 @@
+/* stylelint-disable-next-line selector-no-qualifying-type */
+tbody.ui-sortable tr > td:first-child {
+    background-image: url("#{$tuleap-common-theme-basepath}images/sortable-table-left.png");
+    background-repeat: repeat-y;
+    background-position: right top;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+tbody.ui-sortable tr > td:nth-child(2) {
+    border-left: 0;
+    background-image: url("#{$tuleap-common-theme-basepath}images/sortable-table-right.png");
+    background-repeat: repeat-y;
+    background-position: left top;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+tbody.ui-sortable tr > td:last-child {
+    background-image: none;
+}

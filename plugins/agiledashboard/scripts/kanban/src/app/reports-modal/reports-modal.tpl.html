@@ -1,0 +1,52 @@
+<div id="reports-modal"
+    class="tlp-modal tlp-modal-medium-sized"
+    role="dialog"
+    aria-labelledby="reports-modal-label"
+>
+    <div class="tlp-modal-header">
+        <h1 id="reports-modal-label"
+            class="tlp-modal-title"
+            translate
+        >
+            {{ reports_modal.kanban_label }} reports
+        </h1>
+        <button class="tlp-modal-close"
+            type="button"
+            aria-label="{{ Close | translate }}"
+            ng-click="reports_modal.close()"
+        >
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="tlp-modal-body">
+        <h3 class="tlp-modal-subtitle chart-title" translate>Cumulative flow chart</h3>
+        <div ng-if="reports_modal.loading" class="loading"></div>
+        <div class="params">
+            <div class="tlp-form-element">
+                <label class="tlp-label" for="params-select">{{ 'Timeframe:' | translate }}
+                    <select
+                            id="params-select"
+                            class="tlp-select tlp-form-element"
+                            name="params-select"
+                            ng-model="reports_modal.key_last_data"
+                            ng-change="reports_modal.loadData()"
+                    >
+                        <option value="last_seven_days" selected="selected" translate>Last 7 days</option>
+                        <option value="last_month" translate>Last month</option>
+                        <option value="last_three_months" translate>Last 3 months</option>
+                        <option value="last_six_months" translate>Last 6 months</option>
+                        <option value="last_year" translate>Last year</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="chart">
+            <graph id="cumulative-chart"
+                   class="chart-content"
+                   ng-if="! reports_modal.loading"
+                   data="reports_modal.data"
+            ></graph>
+        </div>
+    </div>
+</div>

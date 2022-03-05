@@ -1,0 +1,46 @@
+<section class="tlp-pane">
+    <div class="tlp-pane-container">
+        <div class="tlp-pane-header">
+            <h1 class="tlp-pane-title">{{ title }}</h1>
+        </div>
+        <section class="tlp-pane-section">
+            <table class="tlp-table">
+                <thead>
+                    <tr>
+                        <th>{{ repository_name }}</th>
+                        <th>{{ deleted_date }}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{# repositories }}
+                        <tr>
+                            <td>{{ name }}</td>
+                            <td>{{{ purified_deletion_date }}}</td>
+                            <td class="tlp-table-cell-actions">
+                                <form method="post" action="/plugins/svn/" onsubmit="return confirm('{{ restore_confirm }} {{ name }}.')">
+                                    {{# csrf_token }}
+                                        {{> csrf_token_input }}
+                                    {{/ csrf_token }}
+                                    <input type="hidden" name="action" value="restore">
+                                    <input type="hidden" name="group_id" value="{{ project_id }}">
+                                    <input type="hidden" name="repo_id" value="{{ repository_id }}">
+                                    <button class="tlp-table-cell-actions-button tlp-button-small tlp-button-primary tlp-button-outline">
+                                        <i class="fas fa-redo tlp-button-icon"></i> Restore
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{/ repositories }}
+                    {{^ repositories }}
+                        <tr>
+                            <td class="tlp-table-cell-empty" colspan="3">
+                                {{ restore_not_found }}
+                            </td>
+                        </tr>
+                    {{/ repositories }}
+                </tbody>
+            </table>
+        </section>
+    </div>
+</section>

@@ -1,0 +1,46 @@
+/*
+ * Copyright (c) Enalean, 2020-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+import { buildGeneralSection } from "./general-information-builder";
+import { createVueGettextProviderPassthrough } from "../../../vue-gettext-provider-for-test";
+import { DateCell, TextCell } from "../report-cells";
+
+describe("Build general information section", () => {
+    it("builds section", () => {
+        const gettext_provider = createVueGettextProviderPassthrough();
+        const current_date = new Date(2020, 8, 7, 17, 15);
+
+        const section = buildGeneralSection(
+            gettext_provider,
+            "My project",
+            "My milestone",
+            "User name",
+            current_date
+        );
+
+        expect(section).toStrictEqual({
+            rows: [
+                [new TextCell("Project"), new TextCell("My project")],
+                [new TextCell("Milestone"), new TextCell("My milestone")],
+                [new TextCell("Report extracted on"), new DateCell(current_date)],
+                [new TextCell("Report extracted by"), new TextCell("User name")],
+            ],
+        });
+    });
+});

@@ -1,0 +1,81 @@
+codendi.locales['tracker'] = {
+    create_anyway: 'Got it, create it anyway!'
+};
+codendi.locales['tracker_formelement_admin'] = {
+    cancel: 'cancel',
+    add_another_file: 'Add another file',
+    unique_field: 'This field type cannot be added twice on a same tracker',
+    lose_follows: 'There are changes that have not been saved. Do you want to continue?'
+};
+codendi.locales['tracker_artifact'] = {
+    masschange: 'Masschange',
+    masschange_check_all: 'Check all',
+    masschange_uncheck_all: 'Uncheck all',
+    always_expand_fieldset: 'This fieldset is always collapsed. Click to always expand it.',
+    always_collapse_fieldset: 'This fieldset is always expanded. Click to always collapse it.',
+    edit_followup_ok: 'Submit',
+    edit_followup_cancel: 'Cancel',
+    disable_notifications: 'Disable notifications',
+    enable_notifications: 'Enable notifications',
+    disable_notifications_alternate_text: 'Stop receiving notifications for this artifact',
+    enable_notifications_alternate_text: 'Receive notifications for this artifact',
+    notification_update_error: 'An error occured while saving your notification settings',
+    please_select_at_least_one: 'Please select at least one of these options',
+    please_fill_out: 'Please fill out this field',
+    artifactlink_async_loading: 'Search and preview artifact links actions are not available while artifact links are loading.'
+};
+
+codendi.locales['tracker_renderer'] = {
+    order_dragdrop: 'You can order tabs with drag \'n drop'
+};
+codendi.locales['tracker_artifact_link'] = {
+    nb_artifacts: 'artifact(s)',
+    or: ' or ',
+    select: 'Select artifacts to link',
+    create: 'Create a new artifact',
+    advanced: 'Advanced functionalities (browse artifacts...) are not available at artifact creation.',
+    trackers_label: 'Trackers',
+    type_label: 'By type'
+};
+codendi.locales['tracker_hierarchy'] = {
+    no_child_artifacts: 'This artifact has no children yet',
+    title_column_name: 'Title',
+    status_column_name: 'Status'
+};
+codendi.locales['tracker_trigger'] = {
+    at_least_one: {
+        name: 'at least one child',
+        operator: 'or',
+        have_field: 'has its field'
+    },
+    all_of: {
+        name: 'all children',
+        operator: 'and',
+        have_field: 'have their field'
+    },
+    of_type: 'of type',
+    set_to: 'set to',
+    will_be_set_to: 'will be set to',
+    and: 'and',
+    or: 'or',
+    save_missing_data: 'Cannot save: missing data in form'
+};
+codendi.locales['tracker_modal_errors'] = {
+    bad_request: 'You are not able to perform this action'
+};
+codendi.locales['tracker_report'] = {
+    delete_report: 'Are you sure that you want to delete this report ?'
+};
+codendi.locales['type_column_editor'] = {
+    title                    : 'Column configuration',
+    how_to                   : 'You can define how artifacts will be displayed in this column by using the following format: <code>%field_name</code>',
+    supported_types          : 'Only fields of type string, artifact id, integer, float, or select box can be formatted.',
+    something_went_wrong     : 'An error has occured. Please contact an administrator.',
+    column_format_label      : 'Format:',
+    column_format_placeholder: '#%id %title (%status)',
+    cancel                   : 'Cancel',
+    save                     : 'Save'
+};
+codendi.locales['tracker_webhooks'] = {
+    title: 'Wait a minute…'
+};

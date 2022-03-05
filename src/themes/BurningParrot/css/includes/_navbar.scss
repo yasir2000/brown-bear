@@ -1,0 +1,155 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "global-variables";
+
+/* stylelint-disable selector-no-qualifying-type */
+
+$dropdown-width: 250px;
+
+header.pinned > .header-container {
+    .tlp-button-outline {
+        padding: 0 var(--tlp-small-spacing);
+        transition: opacity ease-in-out 75ms;
+        background: none;
+        box-shadow: none;
+
+        &:focus,
+        &:active,
+        &:hover {
+            opacity: 0.7;
+            background: none;
+            box-shadow: none;
+        }
+    }
+
+    .tlp-avatar {
+        padding: 0;
+    }
+}
+
+.has-sidebar {
+    header.pinned {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: calc(100% - #{global-variables.$sidebar-expanded-width});
+        height: global-variables.$navbar-height;
+    }
+
+    &.sidebar-collapsed header.pinned {
+        width: calc(100% - #{global-variables.$sidebar-collapsed-width});
+    }
+}
+/* stylelint-enable */
+
+.nav-link {
+    margin: 0 0 0 var(--tlp-large-spacing);
+    transition: opacity ease-in-out 75ms;
+    color: var(--tlp-dimmed-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &:hover {
+        color: var(--tlp-dark-color);
+        text-decoration: none;
+    }
+}
+
+.nav-dropdown {
+    width: $dropdown-width;
+
+    > .tlp-popover-arrow {
+        background: var(--tlp-dark-color);
+    }
+
+    > .tlp-popover-header {
+        display: flex;
+        align-items: center;
+        min-height: 4px;
+        padding: 0 var(--tlp-small-spacing);
+        background: var(--tlp-dark-color);
+    }
+
+    > .tlp-popover-body {
+        padding: 0;
+    }
+}
+
+.nav-dropdown-title:first-child {
+    margin: var(--tlp-small-spacing) 0 0;
+}
+
+.nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    &:last-child {
+        margin: 0 0 var(--tlp-small-spacing);
+    }
+}
+
+#user-nav {
+    display: flex;
+    margin: 0 0 0 var(--tlp-small-spacing);
+    white-space: nowrap;
+
+    .tlp-avatar {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+#nav-dropdown-user-content > .tlp-popover-header > .tlp-avatar {
+    margin: var(--tlp-small-spacing) var(--tlp-small-spacing) var(--tlp-small-spacing) 0;
+}
+
+.nav-dropdown-user-names {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    letter-spacing: normal;
+    text-transform: none;
+
+    > .name {
+        // we substract the size of the tlp-avatar and the padding around and between the elements
+        max-width: calc(
+            #{$dropdown-width} - (var(--tlp-small-spacing) + 40px + var(--tlp-small-spacing) +
+                        var(--tlp-small-spacing))
+        );
+        margin: 0 0 4px;
+        overflow: hidden;
+        color: var(--tlp-white-color);
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-overflow: ellipsis;
+    }
+
+    > .username {
+        color: var(--tlp-neutral-dark-color);
+        font-size: 0.75rem;
+        font-weight: 400;
+    }
+}
+
+.nav-dropdown-item-unique-dashboard:last-child {
+    margin: var(--tlp-small-spacing) 0;
+}

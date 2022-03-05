@@ -1,0 +1,47 @@
+<div class="dragular-handle backlog-item-details"
+    ng-class="backlogItemController.getClassNames(backlogItemController.backlog_item)"
+    backlog-item-details="backlogItemController.backlog_item"
+    move-to-top="backlogItemController.moveToTopInParent(backlogItemController.backlog_item)"
+    move-to-bottom="backlogItemController.moveToBottomInParent(backlogItemController.backlog_item)"
+    current-milestone="current_milestone"
+></div>
+
+<div class="backlog-item-show-children"
+    ng-hide="(backlogItemController.backlog_item.children.data.length === 0 && (! backlogItemController.backlog_item.has_children || backlogItemController.backlog_item.children.loaded))"
+    data-nodrag="true"
+>
+    <div class="backlog-item-children"
+        ng-show="! backlogItemController.backlog_item.children.collapsed"
+    >
+        <div class="backlog-item-children-list"
+            data-backlog-item-id="{{ backlogItemController.backlog_item.id }}"
+            data-nodrop="{{ ! canUserMoveCards() }}"
+            data-accept="{{ backlogItemController.backlog_item.accepted_types.toString() }}"
+        >
+            <div ng-repeat="backlog_item in backlogItemController.backlog_item.children.data"
+                class="backlog-item child {{ planning.current_view_class }}"
+                data-type="{{ backlog_item.trackerId }}"
+                ng-show="planning.canShowBacklogItem(backlog_item)"
+                data-nodrag="{{ ! canUserMoveCards() }}"
+                data-item-id="{{ backlog_item.id }}"
+                backlog-item-index="$index"
+                backlog-item-select="backlog_item"
+            >
+                <div class="backlog-item-details dragular-handle-child"
+                    ng-class="backlogItemController.getClassNames(backlog_item)"
+                    backlog-item-details="backlog_item"
+                    children-context="true"
+                    move-to-top="backlogItemController.moveToTop(backlog_item)"
+                    move-to-bottom="backlogItemController.moveToBottom(backlog_item)"
+                ></div>
+            </div>
+        </div>
+
+        <div class="backlog-item-children-loading" ng-if="backlogItemController.backlog_item.loading"></div>
+    </div>
+
+    <div class="backlog-item-show-children-handle"
+        ng-class="{'closed': ! backlogItemController.backlog_item.children.collapsed}"
+        ng-click="backlogItemController.toggleChildrenDisplayed()"
+    ></div>
+</div>

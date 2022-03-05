@@ -1,0 +1,11 @@
+[Unit]
+Description=Tuleap statistics system events
+Documentation=https://docs.tuleap.org
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/tuleap process-system-event statistics
+
+[Install]
+WantedBy=multi-user.target

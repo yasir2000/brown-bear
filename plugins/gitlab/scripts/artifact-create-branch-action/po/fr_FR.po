@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "An error occurred while creating %{ branch_name }, please try again"
+msgstr ""
+"Une erreur est survenue pendant la création de %{ branch_name }, veuillez "
+"réessayer"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Create branch"
+msgstr "Créer la branche"
+
+msgid "Create branch on a GitLab repository"
+msgstr "Créer une branche dans un dépôt GitLab"
+
+msgid "Git reference from where the branch should be created"
+msgstr "La référence Git à partir de laquelle la branche va être créée"
+
+msgid "GitLab repositories integrations"
+msgstr "Intégrations de dépôts GitLab"
+
+msgid "Must be an existing git commit SHA-1 or a branch name"
+msgstr "Doit être le SHA-1 d'un commit existant ou le nom d'une branche"
+
+msgid "The branch %{ branch_name } already exists on %{ repo_name }"
+msgstr "La branch %{ branch_name } existe déjà dans le dépôt %{ repo_name }"
+
+msgid ""
+"The branch <a href=\"%{ branch_url }\">%{ branch_name }</a> has been "
+"successfully created on <a href=\"%{ repo_url }\">%{ repo_name }</a>"
+msgstr ""
+"La branche <a href=\"%{ branch_url }\">%{ branch_name }</a> a été créé avec succés dans le dépôt <a href="
+"\"%{ repo_url }\">%{ repo_name }</a>"
+
+msgid "The following branch will be created"
+msgstr "La branche suivante sera créée"
+
+msgid "The reference %{ ref_name } does not seem to exist on %{ repo_name }"
+msgstr ""
+"La référence %{ ref_name } ne semble pas exister dans le dépôt %{ repo_name }"

@@ -1,0 +1,44 @@
+<div class="tuleap-modal-background">
+</div>
+<div class="tuleap-modal">
+    <div class="tuleap-modal-main-panel">
+        <form enctype="multipart/form-data">
+            <div class="tuleap-modal-title modal-header">
+                <a role="button" class="tuleap-modal-close close" data-dismiss="modal">
+                    <i class="fas fa-times modal-close-icon" aria-hidden="true"></i>
+                </a>
+                <h3>{{ tracker_title }}</h3>
+            </div>
+            <div class="tuleap-modal-content">
+                <div id="artifact-form-errors" class="alert alert-error">
+                    <h5></h5>
+                    <ul></ul>
+                </div>
+
+                {{# has_linked_artifact }}
+                <div class="alert alert-info">
+                    {{ artifact_to_link_title }}
+                </div>
+                {{/ has_linked_artifact }}
+
+                <div>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                        <tr valign="top">
+                            <td>
+                                {{{ form_elements }}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <input type="hidden" name="from_overlay" value="1">
+            {{{ javascript_rules }}}
+            </div>
+            <div class="tuleap-modal-actions modal-footer">
+                <div>
+                    <a class="btn tuleap-modal-close">{{ cancel }}</a>
+                    <input type="submit" id="tuleap-modal-submit" class="btn btn-primary" data-normal-text="{{ submit }}" data-loading-text="{{ submit }}..." value="{{ submit }}">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="tlp-framed-vertically">
+    {{> creation-settings-tabs }}
+
+    <form action="" method="POST" id="site-admin-project-visibility-form">
+        <input type="hidden" name="update" value="1">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+
+        <div class="tlp-framed-horizontally">
+            <div class="tlp-pane">
+                <div class="tlp-pane-container">
+                    <div class="tlp-pane-header">
+                        <h1 class="tlp-pane-title"><i class="fa fa-eye tlp-pane-title-icon"></i>{{# gettext }}Projects visibility{{/ gettext }}</h1>
+                    </div>
+                    <section class="tlp-pane-section">
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-checkbox">
+                                <input
+                                    type="checkbox"
+                                    name="project_admin_can_choose_visibility"
+                                    value="1"
+                                    {{# project_admin_can_choose }}checked{{/ project_admin_can_choose }}
+                                >
+                                {{# gettext }}Project administrators can choose project visibility{{/ gettext }}
+                            </label>
+                            <p class="tlp-text-info">{{# gettext }}If, in your organization, the strict privacy of the projects must be preserved by 'design', then you should uncheck this option so that project admins cannot disclose confidential resources to other platform users.{{/ gettext }}</p>
+                        </div>
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-checkbox">
+                                <input
+                                    type="checkbox"
+                                    name="send_mail_on_visibility_change"
+                                    value="1"
+                                    {{# send_mail_on_project_visibility_change }}checked{{/ send_mail_on_project_visibility_change }}
+                                >
+                                {{# gettext }}Send an email when the project visibility changes{{/ gettext }}
+                            </label>
+                            <p class="tlp-text-info">{{# gettext }}If enabled, an email will be sent to all the project members if the visibility of the project is changed.{{/ gettext }}</p>
+                        </div>
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="default_project_visibility">
+                                {{# gettext }}Default project visibility{{/ gettext }}
+                            </label>
+                            <select class="tlp-select tlp-select-adjusted" name="default_project_visibility" id="default_project_visibility">
+                                {{# default_project_visibility_options }}
+                                    <option value="{{ value }}" {{ selected }}>{{ label }}</option>
+                                {{/ default_project_visibility_options }}
+                            </select>
+                        </div>
+                        <div class="tlp-pane-section-submit">
+                            <button class="tlp-button-primary" type="submit">
+                                <i class="fa fa-save tlp-button-icon"></i>{{# gettext }}Save settings{{/gettext}}
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

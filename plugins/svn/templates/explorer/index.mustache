@@ -1,0 +1,115 @@
+<h1 class="project-administration-title">
+    {{# dgettext }} tuleap-svn | Project SVN repositories {{/ dgettext }}
+    {{# is_admin }}
+        <button
+            type="button"
+            id="create-repository-button"
+            class="tlp-button-primary svn-homepage-create-repository-button"
+            data-test="create-repository-creation"
+            data-target-modal-id="create-repository-modal"
+        >
+            <i class="fas fa-plus tlp-button-icon"></i>
+            {{# dgettext }} tuleap-svn | New repository{{/ dgettext }}
+        </button>
+    {{/ is_admin }}
+</h1>
+
+{{# is_admin }}
+    <form
+        class="tlp-modal"
+        role="dialog"
+        id="create-repository-modal"
+        aria-labelledby="create-repository-modal-label"
+        method="POST"
+        action="/plugins/svn/?group_id={{ group_id }}&action=create-repository"
+    >
+    <div class="tlp-modal-header">
+        <h1 class="tlp-modal-title" id="create-repository-modal-label">
+            {{# dgettext }} tuleap-svn | Create a new SVN repository {{/ dgettext }}
+        </h1>
+        <button class="tlp-modal-close" type="button" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times tlp-modal-close-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="tlp-modal-body">
+        {{# csrf_token }}
+            {{> csrf_token_input }}
+        {{/ csrf_token }}
+
+        <div class="tlp-form-element">
+            <label class="tlp-label" for="create-repository-field-name">
+                {{# dgettext }} tuleap-svn | Repository name {{/ dgettext }}
+                <i class="fas fa-asterisk" aria-hidden="true"></i>
+            </label>
+            <input
+                type="text"
+                class="tlp-input"
+                id="create-repository-field-name"
+                name="repo_name"
+                data-test="create-repository-field-name"
+                pattern="{{ validate_name }}"
+                placeholder="{{# dgettext }} tuleap-svn | my-new-repository {{/ dgettext }}"
+                required
+            >
+            <p class="tlp-text-info">
+                {{# dgettext }}
+                    tuleap-svn |
+                    Must start by a letter, have a length of 3 characters minimum, only - _ . specials characters are allowed.
+                {{/ dgettext }}
+            </p>
+        </div>
+    </div>
+    <div class="tlp-modal-footer">
+        <button type="reset" class="tlp-button-primary tlp-button-outline tlp-modal-action" data-dismiss="modal">
+            {{# gettext }}Cancel{{/ gettext }}
+        </button>
+        <button type="submit" class="tlp-button-primary tlp-modal-action" data-test="create-repository">
+            <i class="fas fa-plus tlp-button-icon" aria-hidden="true"></i>
+            {{# dgettext }} tuleap-svn | Create repository{{/ dgettext }}
+        </button>
+    </div>
+    </form>
+{{/ is_admin }}
+
+{{# has_repositories }}
+    <section class="svn-homepage">
+        {{# repository_list }}
+            {{# repository }}
+                <div class="svn-homepage-repository" data-test="svn-repository-card">
+                    {{# is_admin }}
+                        <a href="{{ getSettingUrl }}" class="svn-homepage-repository-settings" data-test="svn-admin-repository-access" title="{{# dgettext }} tuleap-svn | Settings {{/ dgettext }}">
+                            <i class="fas fa-cog"></i>
+                        </a>
+                    {{/ is_admin }}
+                    <a class="tlp-card tlp-card-selectable svn-homepage-repository-card" href="{{ getHtmlPath }}" data-test="svn-repository-access-{{ getName }}">
+                        <span class="svn-homepage-repository-name">{{ getName }}</span>
+                        {{# is_core }}
+                            <span
+                                class="tlp-badge-secondary tlp-badge-outline"
+                                title="{{# dgettext }} tuleap-svn |This is the historical repository provided by legacy 'Subversion' service.{{/ dgettext }}"
+                            >
+                            {{# dgettext }} tuleap-svn | Core {{/ dgettext }}
+                            </span>
+                        {{/ is_core }}
+                        {{# commit_date }}
+                            <span
+                                class="svn-homepage-repository-date"
+                                title="{{# dgettext }} tuleap-svn | Last commit {{/ dgettext }}"
+                            >
+                                <i class="far fa-clock svn-homepage-repository-date-icon" aria-hidden="true"></i>
+                                {{{ purified_commit_date }}}
+                            </span>
+                        {{/ commit_date }}
+                    </a>
+                </div>
+            {{/ repository }}
+        {{/ repository_list }}
+    </section>
+{{/ has_repositories }}
+{{^ has_repositories }}
+    <section class="empty-state-page">
+        <h1 class="empty-state-title">
+            {{# dgettext }} tuleap-svn | No SVN repository{{/ dgettext }}
+        </h1>
+    </section>
+{{/ has_repositories }}

@@ -1,0 +1,11 @@
+#gitolite sudoer file
+Defaults:codendiadm !requiretty
+Defaults:codendiadm !env_reset
+
+# Gitolite restore tar repository
+Cmnd_Alias RESTORE_TAR_REPO_CMD = %libbin_dir%/restore-tar-repository.php
+
+# Gitolite clone bundle
+Cmnd_Alias BUNDLE_CMD = /usr/share/tuleap/plugins/git/bin/gl-clone-bundle.sh
+
+codendiadm ALL= (gitolite) SETENV: NOPASSWD: RESTORE_TAR_REPO_CMD, BUNDLE_CMD

@@ -1,0 +1,11 @@
+[Unit]
+Description=Tuleap plugins job
+Documentation=https://docs.tuleap.org
+
+[Service]
+Type=simple
+User=codendiadm
+ExecStart=/usr/bin/tuleap launch-every-minute-job
+
+[Install]
+WantedBy=multi-user.target

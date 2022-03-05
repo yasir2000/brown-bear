@@ -1,0 +1,122 @@
+version: '3'
+services:  
+  gitlab:
+    image: gitlab/gitlab-ce:13.9.6-ce.0
+    ports:
+    - "8060:80"
+    - "2222:22"
+    volumes:
+    - ${GITLAB_VOLUME_CONFIG:-gitlab-volume-config}:/etc/gitlab
+    - ${GITLAB_VOLUME_DATA:-gitlab-volume-data}:/var/opt/gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.${DOMAIN}'
+        nginx['listen_https'] = false
+        nginx['listen_port'] = 80
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.gitlab.rule=Host(`gitlab.${DOMAIN}`)"
+    - "traefik.http.routers.gitlab.entrypoints=web"
+    - "traefik.http.services.gitlab.loadbalancer.server.port=80"
+
+  jenkins:    
+    image: jenkins/jenkins:lts
+    ports:
+    - "8080:8080"
+    - "50000:50000"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - /usr/bin/docker:/usr/bin/docker:ro
+    - /usr/bin/docker-compose:/usr/bin/docker-compose:ro
+    - ${JENKINS_VOLUME_HOME:-jenkins-volume-home}:/var/jenkins_home:Z
+    environment:
+    - JAVA_OPTS=${JENKINS_JAVAOPTS}
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.jenkins.rule=Host(`jenkins.${DOMAIN}`)"
+    - "traefik.http.routers.jenkins.entrypoints=web"
+    - "traefik.http.services.jenkins.loadbalancer.server.port=80"
+
+  nexus:
+    image: sonatype/nexus3:3.30.0
+    ports:
+    - "8090:8081"
+    volumes:
+    - ${NEXUS_VOLUME_DATA:-nexus-volume-data}:/nexus-data:Z
+    environment:
+    - INSTALL4J_ADD_VM_PARAMS
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.nexus.rule=Host(`nexus.${DOMAIN}`)"
+    - "traefik.http.routers.nexus.entrypoints=web"
+    - "traefik.http.services.nexus.loadbalancer.server.port=80"
+
+  sonarqube:
+    image: sonarqube:community
+    ports:
+    - "9000:9000"
+    depends_on:
+    - sonarpgdb
+    volumes:
+    - ${SONAR_VOLUME_CONFIG:-sonar-volume-config}:/opt/sonarqube/conf:Z
+    - ${SONAR_VOLUME_DATA:-sonar-volume-data}:/opt/sonarqube/data:Z
+    - ${SONAR_VOLUME_EXT:-sonar-volume-ext}:/opt/sonarqube/extensions:Z
+    environment: 
+    - SONAR_WEB_JAVAOPTS
+    - SONAR_CE_JAVAOPTS
+    - SONAR_SEARCH_JAVAOPTS
+    - SONARQUBE_JDBC_USERNAME=${SONAR_PGUSER}
+    - SONARQUBE_JDBC_PASSWORD=${SONAR_PGPASS}
+    - SONARQUBE_JDBC_URL=jdbc:postgresql://sonarpgdb:5432/sonar
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.sonarqube.rule=Host(`sonarqube.${DOMAIN}`)"
+    - "traefik.http.routers.sonarqube.entrypoints=web"
+
+  sonarpgdb:
+    image: postgres:13.2
+    ports:
+    - "5438:5432"
+    volumes:
+    - ${SONAR_VOLUME_DB:-sonar-volume-dbdata}:/var/lib/postgresql/data
+    environment: 
+    - POSTGRES_USER=${SONAR_PGUSER}
+    - POSTGRES_PASSWORD=${SONAR_PGPASS}
+    logging:
+      options:
+        max-size: 10m
+        max-file: "5"
+    labels:
+    - "traefik.enable=false"
+
+  ingress:
+    image: traefik:2.4
+    command:
+    - "--log.level=DEBUG"  # disable on prod
+    - "--api.insecure=true"
+    - "--providers.docker=true"
+    - "--providers.docker.exposedbydefault=false"
+    - "--entrypoints.web.address=:80"
+    - "--log.filePath=/var/log/traefik.log"  # disable on prod
+    ports:
+    - "80:80"
+    - "443:443"
+    - "8050:8080"
+    depends_on:
+    - gitlab
+    - nexus
+    - jenkins
+    - sonarqube
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+
+volumes:
+  gitlab-volume-config:
+  gitlab-volume-logs:
+  gitlab-volume-data:
+  jenkins-volume-home:
+  nexus-volume-data:
+  sonar-volume-config:
+  sonar-volume-data:
+  sonar-volume-ext:
+  sonar-volume-dbdata:

@@ -1,0 +1,130 @@
+/**
+ * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.tlp-card {
+    margin: 0 0 var(--tlp-medium-spacing);
+    padding: var(--tlp-medium-spacing);
+    border: 1px solid var(--tlp-neutral-normal-color);
+    border-radius: var(--tlp-large-radius);
+    background: var(--tlp-white-color);
+    box-shadow: var(--tlp-pane-shadow);
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+.tlp-card-inactive {
+    background: var(--tlp-fade-background-color-darker-01);
+}
+
+.tlp-card-selectable {
+    display: block;
+    transition: border-color 100ms linear;
+    color: var(--tlp-typo-default-text-color);
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+        border-color: var(--tlp-main-color);
+        color: var(--tlp-typo-default-text-color);
+        text-decoration: none;
+
+        &.tlp-card-inactive {
+            border-color: var(--tlp-fade-background-color-hover-border);
+        }
+    }
+}
+
+.tlp-card-container {
+    position: relative;
+}
+
+.tlp-pane-section-for-cards,
+.tlp-pane-section-for-cards-under-tabs {
+    > .tlp-pane-subtitle {
+        margin: var(--tlp-medium-spacing) var(--tlp-medium-spacing) 0;
+    }
+
+    > .tlp-card-container {
+        border-bottom: 1px solid var(--tlp-neutral-light-color);
+
+        &:last-child,
+        > .tlp-card {
+            margin: 0;
+            border: 0;
+        }
+    }
+
+    > .tlp-card {
+        margin: 0;
+        border: 0;
+        border-bottom: 1px solid var(--tlp-neutral-light-color);
+        border-radius: 0;
+
+        &:first-child {
+            border-radius: var(--tlp-large-radius) var(--tlp-large-radius) 0 0;
+        }
+
+        &:last-child {
+            border: 0;
+            border-radius: 0 0 var(--tlp-large-radius) var(--tlp-large-radius);
+        }
+
+        &:only-child {
+            border-radius: var(--tlp-large-radius);
+        }
+    }
+
+    > .tlp-card-container > .tlp-card-selectable,
+    > .tlp-card-selectable {
+        transition: background-color 100ms linear;
+
+        &:hover,
+        &:focus {
+            border-color: var(--tlp-neutral-light-color);
+            background-color: var(--tlp-main-color-hover-background);
+            text-decoration: none;
+        }
+    }
+
+    > .tlp-card-container > .tlp-card-inactive,
+    > .tlp-card-inactive {
+        border: 0;
+        background: var(--tlp-fade-background-color);
+
+        &:hover,
+        &:focus {
+            background-color: var(--tlp-fade-background-color-hover-border);
+        }
+
+        + .tlp-card-inactive {
+            border-top: 1px solid var(--tlp-neutral-light-color-darker-05);
+        }
+
+        + .tlp-card:not(.tlp-card-inactive) {
+            border-top: 1px solid var(--tlp-neutral-light-color);
+        }
+    }
+}
+
+.tlp-pane-section-for-cards-under-tabs {
+    padding: var(--tlp-medium-spacing) 0 0;
+}

@@ -1,0 +1,21 @@
+svn = element repository {
+
+    # name of the repository
+    attribute name { xsd:string } &
+
+    # Path to the svn dump file
+    attribute dump-file { xsd:string }? &
+
+    # Content of the .SVNAccessFile inline in the XML
+    element access-file { xsd:string }? &
+
+    # E-mail subscriptions
+    element notification {
+        attribute path { xsd:string },
+        attribute emails { xsd:string }
+    }* &
+
+    # References
+    element references { references }?
+}*
+

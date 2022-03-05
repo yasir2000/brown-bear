@@ -1,0 +1,265 @@
+/**
+ * Copyright (c) Enalean, 2019-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../src/themes/BurningParrot/css/includes/global-variables";
+
+.document-tree-head-name {
+    width: 100%;
+}
+
+.document-tree-head-owner,
+.document-tree-head-updatedate {
+    white-space: nowrap;
+
+    &.document-tree-head-skeleton {
+        min-width: 150px;
+    }
+}
+
+.document-tree-cell-owner,
+.document-tree-cell-updatedate {
+    color: var(--tlp-dimmed-color);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.document-tree-item-toggle-quicklook {
+    cursor: pointer;
+
+    .quick-look-button,
+    .document-dropdown-menu,
+    .document-dropdown-menu-button > button {
+        visibility: hidden;
+    }
+}
+
+.document-tree-item-toggle-quicklook-spacer {
+    flex: 1 1 auto;
+}
+
+.document-tree-item-toggle-quicklook-lock-icon,
+.document-tree-item-toggle-quicklook-approval-badge {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+.document-preview-item-is-locked-icon {
+    &::before {
+        content: "\f023"; // fa-lock
+    }
+}
+
+.document-tree-item-toggle-quicklook:hover {
+    .quick-look-button,
+    .document-dropdown-menu-button > button {
+        visibility: visible;
+    }
+}
+
+.document-tree-item-toggle-quicklook:focus-within {
+    .quick-look-button,
+    .document-dropdown-menu-button > button {
+        visibility: visible;
+    }
+}
+
+.document-tree-item-toggle-quicklook .document-dropdown-menu.tlp-dropdown-shown {
+    visibility: visible;
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+.tlp-table > tbody > tr.document-tree-item-created:nth-child(odd) > td,
+.tlp-table > tbody > tr.document-tree-item-updated:nth-child(odd) > td {
+    animation: 5s ease-in-out document-created-item-animation-odd;
+}
+
+.tlp-table > tbody > tr.document-tree-item-created:nth-child(even) > td,
+.tlp-table > tbody > tr.document-tree-item-updated:nth-child(even) > td {
+    animation: 5s ease-in-out document-created-item-animation-even;
+}
+/* stylelint-enable selector-no-qualifying-type */
+
+@keyframes document-created-item-animation-odd {
+    0% {
+        background: var(--tlp-success-color-transparent-90);
+    }
+
+    80% {
+        background: var(--tlp-success-color-transparent-90);
+    }
+
+    100% {
+        background: var(--tlp-table-row-background-odd);
+    }
+}
+
+@keyframes document-created-item-animation-even {
+    0% {
+        background: var(--tlp-success-color-transparent-90);
+    }
+
+    80% {
+        background: var(--tlp-success-color-transparent-90);
+    }
+
+    100% {
+        background: var(--tlp-table-row-background-even);
+    }
+}
+
+.document-folder-title-loading {
+    width: 300px;
+}
+
+.quick-look-button {
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+.document-badge-avatar {
+    display: flex;
+    align-items: center;
+}
+
+.document-badge-avatar-img {
+    flex: 0 0 auto;
+    margin: 0 5px 0 0;
+}
+
+.document-badge-avatar-username {
+    &:not(:hover) {
+        color: var(--tlp-dimmed-color);
+    }
+}
+
+.document-folder-content-title {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.document-folder-content-icon {
+    position: relative;
+
+    &.document-wiki-icon {
+        margin: 0 8px 0 1px;
+        font-size: 13px;
+    }
+
+    &::after {
+        content: "\f067";
+        position: absolute;
+        top: -7px;
+        right: -4px;
+        transform: scale(0);
+        transition: opacity ease-in-out 100ms, transform ease-in-out 100ms;
+        opacity: 0;
+        font-family: "Font Awesome 5 Free";
+        font-size: 12px;
+        font-weight: 900;
+    }
+}
+
+.document-folder-content-fake-caret {
+    visibility: hidden;
+}
+
+.document-folder-toggle {
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0 5px 0 0;
+    color: var(--tlp-dimmed-color);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: #111111;
+    }
+}
+
+.document-tree-item-hidden {
+    display: none;
+}
+
+.document-folder-error-link {
+    margin: var(--tlp-medium-spacing) 0 0;
+    text-align: center;
+}
+
+.document-folder-error-details {
+    text-align: left;
+}
+
+.document-folder-subitem-link:not(:hover) {
+    color: inherit;
+}
+
+.document-empty-folder-for-writers {
+    margin: var(--tlp-x-large-spacing) auto;
+}
+
+.document-folder-with-error,
+.document-folder-container-empty {
+    flex: 1 0 auto;
+}
+
+.document-request-permission-pane {
+    margin: var(--tlp-x-large-spacing) 0 0;
+}
+
+.document-folder-content-quicklook {
+    display: flex;
+    align-items: flex-start;
+}
+
+.document-folder-pane {
+    flex: 1 1 auto;
+    margin: 0;
+}
+
+.document-folder-right-container {
+    position: sticky;
+    top: calc(#{global-variables.$navbar-height} + var(--tlp-medium-spacing));
+    min-width: 400px;
+    max-width: 35%;
+    margin: 0 0 0 var(--tlp-medium-spacing);
+}
+
+.has-visible-platform-banner .document-folder-right-container {
+    top: calc(
+        #{global-variables.$navbar-height} + var(--tlp-medium-spacing) + #{global-variables.$platform-banner-base-height}
+    );
+}
+
+.document-folder-content-quick-look-and-item-uploading {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1100px) {
+    .document-tree-head-owner,
+    .document-tree-head-updatedate,
+    .document-tree-cell-owner,
+    .document-tree-cell-updatedate {
+        display: none;
+    }
+}
+
+.document-badge-corrupted {
+    margin: 0 0 0 var(--tlp-small-spacing);
+}

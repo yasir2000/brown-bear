@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateModal Display the modal when mounted 1`] = `
+<form
+  aria-labelledby="test-plan-create-campaign-modal-title"
+  class="tlp-modal"
+  role="dialog"
+>
+  <div
+    class="tlp-modal-header"
+  >
+    <h1
+      class="tlp-modal-title"
+      id="test-plan-create-campaign-modal-title"
+    >
+      <translate-stub
+        tag="span"
+      >
+        Create new campaign
+      </translate-stub>
+    </h1>
+     
+    <button
+      aria-label="Close"
+      class="tlp-modal-close"
+      data-dismiss="modal"
+      type="button"
+    >
+      <i
+        aria-hidden="true"
+        class="fas fa-times tlp-modal-close-icon"
+      />
+    </button>
+  </div>
+   
+  <!---->
+   
+  <div
+    class="tlp-modal-body"
+  >
+    <div>
+      <div
+        class="tlp-form-element"
+      >
+        <label
+          class="tlp-label"
+          for="new-campaign-label"
+        >
+          <translate-stub
+            tag="span"
+          >
+            Name
+          </translate-stub>
+           
+          <i
+            aria-hidden="true"
+            class="fa fa-asterisk"
+          />
+        </label>
+         
+        <input
+          class="tlp-input"
+          data-test="new-campaign-label"
+          id="new-campaign-label"
+          required="required"
+          type="text"
+        />
+      </div>
+       
+      <create-campaign-test-selector-stub
+        testdefinition_tracker_reports=""
+        value="[object Object]"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="tlp-modal-footer"
+  >
+    <button
+      class="tlp-button-primary tlp-button-outline tlp-modal-action"
+      data-current-language="en_US"
+      data-dismiss="modal"
+      data-msgid="
+            Cancel
+        "
+      type="button"
+    >
+      
+            Cancel
+        
+    </button>
+     
+    <button
+      class="tlp-button-primary tlp-modal-action"
+      data-test="new-campaign-submit-button"
+      type="submit"
+    >
+      <i
+        aria-hidden="true"
+        class="fa tlp-button-icon fa-save"
+      />
+       
+      <translate-stub
+        tag="span"
+      >
+        Create campaign
+      </translate-stub>
+    </button>
+  </div>
+</form>
+`;

@@ -1,0 +1,252 @@
+<h1 class="agiledashboard-administration-title">{{# dgettext }} tuleap-agiledashboard | Agile Dashboard administration {{/ dgettext }}</h1>
+
+<div class="main-project-tabs">
+    <nav class="tlp-tabs">
+        <a class="tlp-tab tlp-tab-active"
+           href="?group_id={{ group_id }}&action=admin&pane=scrum">{{# dgettext }} tuleap-agiledashboard | Scrum {{/ dgettext }}
+        </a>
+        <a class="tlp-tab"
+           href="?group_id={{ group_id }}&action=admin&pane=kanban" data-test="admin-kanban-pane">{{# dgettext }} tuleap-agiledashboard | Kanban {{/ dgettext }}
+        </a>
+        {{# can_burnup_be_configured }}
+            <a class="tlp-tab"
+               href="?group_id={{ group_id }}&action=admin&pane=charts">{{# dgettext }} tuleap-agiledashboard | Charts {{/ dgettext }}
+            </a>
+        {{/ can_burnup_be_configured }}
+    </nav>
+</div>
+
+<div class="agiledashboard-administration-scrum tlp-framed">
+    <div class="agiledashboard-administration-scrum-main">
+        <form action="?group_id={{ group_id }}&action=updateConfiguration" method="POST">
+            <input type="hidden" name="activate-scrum" value="0">
+            <section class="tlp-pane">
+                <div class="tlp-pane-container">
+                    <div class="tlp-pane-header">
+                        <h1 class="tlp-pane-title">
+                            <i class="fa fa-cogs tlp-pane-title-icon"></i> {{ general_settings_section }}
+                        </h1>
+                    </div>
+                    <section class="tlp-pane-section">
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-checkbox">
+                                <input type="checkbox"
+                                    id="activate-scrum"
+                                    name="activate-scrum"
+                                    value="1"
+                                    {{# scrum_activated }} checked {{/ scrum_activated }}
+                                > {{ activate_scrum_label }}
+                            </label>
+                            {{^ scrum_activated }}
+                                {{^ has_plannings }}
+                                    <p class="tlp-text-info">
+                                        <i class="fa fa-info-circle"></i> {{ first_scrum_will_be_created }}
+                                    </p>
+                                {{/ has_plannings }}
+                            {{/ scrum_activated }}
+                        </div>
+
+                        {{# can_scrum_mono_milestone_be_enabled }}
+                            <div class="tlp-form-element">
+                                <label class="tlp-label tlp-checkbox">
+                                    <input type="checkbox"
+                                        id="activate-scrum-v2"
+                                        name="activate-scrum-v2"
+                                        value="1"
+                                        {{# use_mono_milestone }} checked {{/ use_mono_milestone }}
+                                    > {{ activate_scrum_mono_milestone_label }} ({{ scrum_monomilestone_title }})
+                                </label>
+                                <p class="tlp-text-warning">
+                                    <i class="fas fa-exclamation-triangle"></i> {{ warning_feature_under_construction }}
+                                </p>
+                            </div>
+                        {{/ can_scrum_mono_milestone_be_enabled }}
+
+                        <div class="tlp-form-element">
+                            <label class="tlp-label" for="scrum-title-admin">{{ title_label }}</label>
+                            <input type="text"
+                                class="tlp-input"
+                                id="scrum-title-admin"
+                                name="scrum-title-admin"
+                                value="{{ scrum_title }}"
+                                placeholder="{{ title_label }}"
+                                size="30"
+                                required
+                            >
+                            <p class="tlp-text-info">
+                                <i class="fa fa-info-circle"></i> {{ title_label_help }}
+                            </p>
+                        </div>
+
+                        {{# additional_scrum_sections_controllers }}
+                            {{{ content }}}
+                        {{/ additional_scrum_sections_controllers }}
+
+                        <input type="hidden" name="use-explicit-top-backlog" value="0">
+                        <div class="tlp-form-element">
+                            <label class="tlp-label tlp-checkbox">
+                                <input type="checkbox"
+                                       id="use-explicit-top-backlog"
+                                       class="{{# is_planning_administration_delegated }}tlp-form-element-disabled{{/ is_planning_administration_delegated }}"
+                                       name="use-explicit-top-backlog"
+                                       value="1"
+                                    {{# explicit_top_backlog_enabled }} checked {{/ explicit_top_backlog_enabled }}
+                                    {{# is_planning_administration_delegated }} disabled {{/ is_planning_administration_delegated }}
+                                > {{# dgettext }}tuleap-agiledashboard | Explicit top backlog{{/ dgettext }}
+                            </label>
+                            <p class="tlp-text-info">
+                                <i class="fa fa-info-circle"></i>
+                                {{# dgettext }}tuleap-agiledashboard | Explicit backlog allows to select, item per item, what goes in Scrum top backlog.{{/ dgettext }}
+                                <a href="/doc/en/user-guide/agile-dashboard.html?#explicit-backlog">
+                                    {{# dgettext }}tuleap-agiledashboard | See documentation for more details. {{/ dgettext }}
+                                </a>
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <section class="tlp-pane-section tlp-pane-section-submit">
+                        {{{ token }}}
+                        <button type="submit"
+                                class="tlp-button-primary submit-without-modal"
+                                id="ad-service-submit"
+                        >
+                            <i class="fa fa-save tlp-button-icon"></i> {{# dgettext }}tuleap-agiledashboard | Save{{/ dgettext }}
+                        </button>
+
+                        <button type="button"
+                                class="tlp-button-primary scrum-administration-submit-hidden"
+                                id="scrum-configuration-edit-options-button"
+                                data-target-modal-id="scrum-explicit-backlog-switch-usage-modal"
+                                data-explicit-backlog-value="{{ explicit_top_backlog_enabled }}"
+                        >
+                            <i class="fa fa-save tlp-button-icon"></i> {{# dgettext }}tuleap-agiledashboard | Save{{/ dgettext }}
+                        </button>
+
+                        {{> admin-scrum/switch-explicit-backlog-usage-modal }}
+                    </section>
+                </div>
+            </section>
+        </form>
+        <section class="tlp-pane">
+            <div class="tlp-pane-container">
+                <div class="tlp-pane-header">
+                    <h1 class="tlp-pane-title"><i class="fas fa-sign-in-alt"></i> {{ planning_section }}</h1>
+                </div>
+                <section class="tlp-pane-section">
+                    <div class="tlp-table-actions">
+                        {{# does_configuration_allows_planning_creation }}
+                            <a href="/plugins/agiledashboard/?group_id={{ group_id }}&amp;action=new"
+                                id="planning_create"
+                                class="tlp-button-primary tlp-table-actions-element"
+                            >
+                                <i class="fa fa-plus tlp-button-icon"></i> {{ create_planning }}
+                            </a>
+                        {{/ does_configuration_allows_planning_creation }}
+                        {{^ does_configuration_allows_planning_creation }}
+                            <div id="agiledashboard-administration-cannot-create-planning-popover-trigger" data-placement="right">
+                                <button class="tlp-button-primary tlp-table-actions-element" disabled>
+                                    <i class="fa fa-plus tlp-button-icon"></i> {{ create_planning }}
+                                </button>
+                            </div>
+                            <section class="tlp-popover tlp-popover-info" id="agiledashboard-administration-cannot-create-planning-popover">
+                                <div class="tlp-popover-arrow"></div>
+                                <div class="tlp-popover-header">
+                                    <h1 class="tlp-popover-title">{{ cannot_create_planning_popover_title }}</h1>
+                                </div>
+                                <div class="tlp-popover-body">
+                                    {{# use_mono_milestone }}
+                                        <p>
+                                            {{ cannot_create_planning_in_scrum_v2 }}
+                                        </p>
+                                    {{/ use_mono_milestone }}
+                                    {{^ use_mono_milestone }}
+                                        {{^ can_create_planning }}
+                                            <p>{{ cannot_create_planning }}</p>
+                                            <ul>
+                                                <li>{{ cannot_create_planning_no_trackers }}</li>
+                                                <li>{{ cannot_create_planning_hierarchy }}</li>
+                                            </ul>
+                                            <p>{{{ cannot_create_planning_config }}}</p>
+                                        {{/ can_create_planning }}
+                                    {{/ use_mono_milestone }}
+                                </div>
+                            </section>
+                        {{/ does_configuration_allows_planning_creation }}
+                    </div>
+
+                    {{# has_plannings }}
+                        <table class="tlp-table">
+                            <thead>
+                                <tr>
+                                    <th>Planning</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{# plannings }}
+                                    <tr>
+                                        <td>
+                                            {{ name }}
+                                        </td>
+                                        <td>
+                                            {{# extra_message }}
+                                                <span class="tlp-tooltip tlp-tooltip-right" data-tlp-tooltip="{{ extra_message }}">
+                                                    <i class="fas fa-exclamation-triangle agiledashboard-administration-scrum-planning-warning"></i>
+                                                </span>
+                                            {{/ extra_message }}
+                                        </td>
+                                        <td class="tlp-table-cell-actions">
+                                            <a href="{{ edit_url }}" class="tlp-table-cell-actions-button tlp-button-small tlp-button-primary tlp-button-outline">
+                                                <i class="fas fa-pencil-alt tlp-button-icon"></i> {{ edit_action_label }}
+                                            </a>
+                                            {{> admin-scrum/admin-planning-deletion }}
+                                        </td>
+                                    </tr>
+                                {{/ plannings }}
+                            </tbody>
+                        </table>
+                    {{/ has_plannings }}
+
+                </section>
+            </div>
+        </section>
+    </div>
+
+    {{# has_side_panes }}
+        <div class="agiledashboard-administration-scrum-side-panes">
+            {{^ is_planning_administration_delegated }}
+                <section class="tlp-pane">
+                    <div class="tlp-pane-container">
+                        <div class="tlp-pane-header">
+                            <h1 class="tlp-pane-title">
+                                <i class="fas fa-exchange-alt tlp-pane-title-icon"></i> {{ import_export_section }}
+                            </h1>
+                        </div>
+                        <section class="tlp-pane-section">
+                            <ul>
+                                <li>
+                                    <a href="/plugins/agiledashboard/?group_id={{ group_id }}&amp;action=import-form" id="template_import">
+                                        {{ import_template }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/plugins/agiledashboard/?group_id={{ group_id }}&amp;action=export-to-file" id="template_export">
+                                        {{ export_template }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </section>
+            {{/ is_planning_administration_delegated }}
+
+            {{# additional_content }}
+                <section>
+                    {{{ additional_content }}}
+                </section>
+            {{/ additional_content }}
+        </div>
+    {{/ has_side_panes }}
+</div>

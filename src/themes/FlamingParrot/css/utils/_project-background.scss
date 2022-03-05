@@ -1,0 +1,178 @@
+/**
+ * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ *
+ * This file is a part of Tuleap.
+ *
+ * Tuleap is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Tuleap is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Tuleap. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@use "../../../common/css/project-background/background";
+@use "../../../common/css/project-background/project-background";
+@use "variables-color-common";
+
+.project-with-background {
+    .project-administration-title,
+    .administration-title,
+    .cvs-header > .administration-title,
+    .project-header-title {
+        @include background.project-background-title-header-typography;
+
+        margin: 0;
+        padding: 0 var(--tlp-medium-spacing) 30px;
+    }
+
+    .toolbar.nav-pills {
+        border-bottom: initial;
+
+        li > a {
+            @include background.project-background-title-header-typography;
+        }
+
+        li > a:hover,
+        li > a:focus {
+            color: variables-color-common.$grey;
+        }
+    }
+
+    .breadcrumb,
+    .breadcrumb-link {
+        @include background.project-background-title-header-typography;
+    }
+
+    .breadcrumb-dropdown-item,
+    .breadcrumb-dropdown-section-title {
+        text-shadow: initial;
+    }
+
+    .breadcrumb-item:not(.breadcrumb-item-disabled):hover > .breadcrumb-link {
+        @include background.background-for-links;
+
+        color: var(--tlp-white-color);
+    }
+
+    .breadcrumb-switchable:hover > .breadcrumb-link::after {
+        color: var(--tlp-white-color);
+    }
+
+    .breadcrumb-project-privacy-icon {
+        &.fa-lock,
+        &.fa-tlp-lock-plus-r {
+            background: var(--tlp-white-color);
+            color: var(--tlp-dark-color);
+        }
+
+        &.fa-lock-open,
+        &.fa-tlp-unlock-plus-r {
+            @include background.background-for-links;
+
+            color: var(--tlp-white-color);
+        }
+    }
+
+    .breadcrumb-project-privacy-icon-with-flags {
+        @include background.background-for-links;
+
+        color: var(--tlp-white-color);
+
+        > .breadcrumb-project-privacy-icon {
+            background: none;
+            color: var(--tlp-white-color);
+        }
+    }
+
+    // stylelint-disable selector-no-qualifying-type,max-nesting-depth,selector-max-compound-selectors
+    .main-project-tabs > .nav-tabs {
+        @include background.background-for-links;
+
+        margin: 0;
+        box-shadow: none;
+
+        > li {
+            border: 0;
+
+            &.active,
+            &:hover,
+            &:focus {
+                box-shadow: none;
+
+                > a,
+                > a:hover,
+                > a:focus {
+                    @include background.background-for-links;
+
+                    border: 0;
+                    border-top: 3px solid var(--tlp-white-color);
+                    color: var(--tlp-white-color);
+
+                    > .caret {
+                        border-top-color: var(--tlp-white-color);
+                        border-bottom-color: var(--tlp-white-color);
+                    }
+                }
+            }
+
+            > a {
+                border: 0;
+                border-top: 3px solid transparent;
+                color: var(--tlp-white-color);
+            }
+
+            &.dropdown.open > a:hover > .caret {
+                border-top-color: var(--tlp-white-color);
+                border-bottom-color: var(--tlp-white-color);
+            }
+
+            &.active {
+                &.open {
+                    color: var(--tlp-white-color);
+                }
+
+                > a {
+                    @include background.background-for-links;
+
+                    border-bottom: 0;
+                    border-top-color: var(--tlp-white-color);
+                }
+            }
+
+            > .dropdown-toggle > .caret {
+                border-top-color: var(--tlp-white-color);
+                border-bottom-color: var(--tlp-white-color);
+            }
+        }
+    }
+    // stylelint-enable
+
+    #feedback {
+        padding: var(--tlp-medium-spacing) 0;
+
+        &:empty {
+            padding: 0;
+        }
+
+        // stylelint-disable selector-class-pattern
+        > .feedback_error,
+        > .feedback_warning,
+        > .feedback_info {
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        // stylelint-enable
+    }
+}
