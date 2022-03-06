@@ -5,7 +5,7 @@ The Brown Bear Project
 
 Brown Bear is a project repo aims to provide "All in One" box for small and medium agile software startup, as most of SaaS startups I have seen in my area, always yearn to find one total solution for total Application Lifecycle Management, integrated with Git SCM (Source Code Management) as well as Issue Management and Code MR, PR full control, all integrated with full automated workflow 
 
-Brown Bear عبارة عن مشروع ريبو يهدف إلى توفير حزمة "الكل في واحد" لبدء تشغيل البرامج الصغيرة والمتوسطة ، نظرًا لأن معظم الشركات الناشئة SaaS التي رأيتها في منطقتي ، تتوق دائمًا إلى إيجاد حل كامل لإدارة دورة حياة التطبيقات بالكامل ، ومتكاملة مع Git SCM (إدارة كود المصدر) بالإضافة إلى إدارة المشكلات و Code MR والتحكم الكامل في العلاقات العامة ، وكلها متكاملة مع سير عمل مؤتمت كامل
+ عبارة عن مشروع ريبوزيتوري يهدف إلى توفير حزمة "الكل في واحد" لبدء تشغيل البرامج الصغيرة والمتوسطة ، نظرًا لأن معظم الشركات الناشئة SaaS التي رأيتها في منطقتي ، تتوق دائمًا إلى إيجاد حل كامل لإدارة دورة حياة التطبيقات بالكامل ، ومتكاملة مع Git SCM (إدارة كود المصدر) بالإضافة إلى إدارة المشكلات و Code MR والتحكم الكامل في العلاقات العامة بين فرق العمل، وكلها متكاملة مع سير عمل مؤتمت كامل
 
 ## Principles
 
@@ -19,7 +19,7 @@ It is open to the community to help set its direction.
 They are not necessarily intended as end user tools but as components aimed at developers.
 Documentation and UX is aimed at developers not end users.
 
- Brown Bear هو مشروع مفتوح المصدر يسترشد بمبادئ قوية ، ويهدف إلى أن يكون معياريًا ومرنًا وبدون رأي قوي للغاية بشأن تجربة المستخدم.
+ هو مشروع مفتوح المصدر يسترشد بمبادئ قوية ، ويهدف إلى أن يكون معياريًا ومرنًا وبدون رأي قوي للغاية بشأن تجربة المستخدم.
 إنه مفتوح للمجتمع للمساعدة في تحديد اتجاهه.
 
 - نمطي: يتضمن المشروع الكثير من المكونات التي لها وظائف محددة جيدًا وواجهات برمجة التطبيقات التي تعمل معًا.
