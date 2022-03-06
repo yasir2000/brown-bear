@@ -19,7 +19,7 @@ It is open to the community to help set its direction.
 They are not necessarily intended as end user tools but as components aimed at developers.
 Documentation and UX is aimed at developers not end users.
 
-Brown Bear هو مشروع مفتوح المصدر يسترشد بمبادئ قوية ، ويهدف إلى أن يكون معياريًا ومرنًا وبدون رأي قوي للغاية بشأن تجربة المستخدم.
+ Brown Bear هو مشروع مفتوح المصدر يسترشد بمبادئ قوية ، ويهدف إلى أن يكون معياريًا ومرنًا وبدون رأي قوي للغاية بشأن تجربة المستخدم.
 إنه مفتوح للمجتمع للمساعدة في تحديد اتجاهه.
 
 - نمطي: يتضمن المشروع الكثير من المكونات التي لها وظائف محددة جيدًا وواجهات برمجة التطبيقات التي تعمل معًا.
