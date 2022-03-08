@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2015-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2015-Present. All Rights Reserved.
  * Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
  *
  * SourceForge: Breaking Down the Barriers to Open Source Development

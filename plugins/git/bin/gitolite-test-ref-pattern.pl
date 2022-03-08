@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+# Copyright (c) BrownBear, 2018 - Present. All Rights Reserved.
 #
 # This file is a part of Tuleap.
 #

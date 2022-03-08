@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © STMicroelectronics, 2007. All Rights Reserved.
- * Copyright © Enalean, 2018-Present. All Rights Reserved.
+ * Copyright © BrownBear, 2018-Present. All Rights Reserved.
  *
  * Originally written by Manuel VACELET, 2007.
  *

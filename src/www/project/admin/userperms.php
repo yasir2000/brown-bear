@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright 1999-2000 (c) The SourceForge Crew
- * Copyright (c) Enalean, 2012 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2012 - Present. All Rights Reserved.
  *
  * This file is a part of Tuleap.
  *

@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) Xerox Corporation, Codendi Team, 2001-2010. All rights reserved
- * Copyright (c) Enalean, 2017-present. All rights reserved
+ * Copyright (c) BrownBear, 2017-present. All rights reserved
  *
  * This file is a part of Tuleap.
  *

@@ -2,7 +2,7 @@
 /**
  * ArtifactFile.class.php - Class to handle files within an artifact
  *
- * Copyright (c) Enalean, 2013-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2013-Present. All Rights Reserved.
  * SourceForge: Breaking Down the Barriers to Open Source Development
  * Copyright 1999-2001 (c) VA Linux Systems
  * http://sourceforge.net

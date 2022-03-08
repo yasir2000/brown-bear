@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Enalean, 2019-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2019-Present. All Rights Reserved.
  * Copyright (c) STMicroelectronics, 2007. All Rights Reserved.
  *
  * Originally written by Mohamed CHAARI, 2007

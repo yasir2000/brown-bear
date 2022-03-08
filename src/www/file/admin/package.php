@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2016 - Present. All Rights Reserved.
  * SourceForge: Breaking Down the Barriers to Open Source Development
  *
  * This file is a part of Tuleap.

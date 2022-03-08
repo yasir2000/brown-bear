@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2015 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2015 - Present. All Rights Reserved.
  * SourceForge: Breaking Down the Barriers to Open Source Development
  * Copyright 1999-2001 (c) VA Linux Systems
  *

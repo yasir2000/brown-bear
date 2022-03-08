@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (c) Enalean, 2018 - Present. All rights reserved
+# Copyright (c) BrownBear, 2018 - Present. All rights reserved
 #
 # This file is a part of Tuleap.
 #

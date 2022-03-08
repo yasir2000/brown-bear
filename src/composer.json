@@ -36,11 +36,11 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/Enalean/mustache.php.git"
+      "url": "https://github.com/BrownBear/mustache.php.git"
     },
     {
       "type": "vcs",
-      "url": "https://github.com/Enalean/Restler.git"
+      "url": "https://github.com/BrownBear/Restler.git"
     }
   ],
   "require": {

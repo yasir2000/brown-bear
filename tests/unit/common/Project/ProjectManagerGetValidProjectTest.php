@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2012-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2012-Present. All Rights Reserved.
  * Copyright (c) Xerox, 2008. All Rights Reserved.
  *
  * Originally written by Nicolas Terray, 2008. Xerox Codendi Team.

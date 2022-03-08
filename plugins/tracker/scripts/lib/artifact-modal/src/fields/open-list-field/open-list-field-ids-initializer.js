@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Enalean, 2021 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2021 - Present. All Rights Reserved.
  *
  * Tuleap is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

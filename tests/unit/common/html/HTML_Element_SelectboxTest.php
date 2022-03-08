@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) STMicroelectronics 2011. All rights reserved
- * Copyright Enalean (c) 2019-present. All rights reserved.
+ * Copyright BrownBear (c) 2019-present. All rights reserved.
  *
  * Tuleap is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

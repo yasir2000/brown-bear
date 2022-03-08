@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2020-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2020-Present. All Rights Reserved.
  *
  * This file is a part of Tuleap.
  *
@@ -19,7 +19,7 @@
  */
 
 /**
- * Copyright (c) Enalean, 2020-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2020-Present. All Rights Reserved.
  *
  * This file is a part of Tuleap.
  *

@@ -1,6 +1,6 @@
 <?php
 // SourceForge: Breaking Down the Barriers to Open Source Development
-// Copyright (c) Enalean, 2015-Present. All rights reserved
+// Copyright (c) BrownBear, 2015-Present. All rights reserved
 // Copyright 1999-2000 (c) The SourceForge Crew
 // http://sourceforge.net
 require_once __DIR__ . '/../include/pre.php';

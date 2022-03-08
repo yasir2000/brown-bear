@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Enalean, 2013-Present. All rights reserved
+ * Copyright (c) BrownBear, 2013-Present. All rights reserved
  *
  * This file is a part of Tuleap.
  *
@@ -44,7 +44,7 @@
 
         /**
          * Comes from http://www.sitepoint.com/html5-full-screen-api/
-         * Modified in December 2013 by the Enalean team
+         * Modified in December 2013 by the BrownBear team
          *
          */
         function RunPrefixMethod(obj, method) {

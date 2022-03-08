@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2018 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2018 - Present. All Rights Reserved.
  * Copyright (c) Jtekt, 2014. All Rights Reserved.
  *
  * Originally written by Yoann Celton, 2014. Jtekt Europe SAS.

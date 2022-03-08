@@ -2,7 +2,7 @@
 /**
  * Copyright 1999-2000 (c) The SourceForge Crew
  * Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
- * Copyright (c) Enalean, 2011 - Present. All rights reserved
+ * Copyright (c) BrownBear, 2011 - Present. All rights reserved
  *
  * This file is a part of Tuleap.
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2017-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2017-Present. All Rights Reserved.
  * Copyright (c) The Codendi Team, Xerox, 2008. All Rights Reserved.
  *
  * This file is a part of Tuleap.

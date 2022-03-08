@@ -2465,12 +2465,12 @@
             "version": "dev-master-tuleap",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Enalean/Restler.git",
+                "url": "https://github.com/BrownBear/Restler.git",
                 "reference": "20201118"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Enalean/Restler/zipball/20201118",
+                "url": "https://api.github.com/repos/BrownBear/Restler/zipball/20201118",
                 "reference": "20201118",
                 "shasum": ""
             },
@@ -2527,7 +2527,7 @@
                 "server"
             ],
             "support": {
-                "source": "https://github.com/Enalean/Restler/tree/20201118"
+                "source": "https://github.com/BrownBear/Restler/tree/20201118"
             },
             "time": "2020-11-18T09:27:20+00:00"
         },
@@ -2786,12 +2786,12 @@
             "version": "dev-master-tuleap",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Enalean/mustache.php.git",
+                "url": "https://github.com/BrownBear/mustache.php.git",
                 "reference": "355139014ad7ba14c3e04a4244a53a256e7e6555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Enalean/mustache.php/zipball/355139014ad7ba14c3e04a4244a53a256e7e6555",
+                "url": "https://api.github.com/repos/BrownBear/mustache.php/zipball/355139014ad7ba14c3e04a4244a53a256e7e6555",
                 "reference": "355139014ad7ba14c3e04a4244a53a256e7e6555",
                 "shasum": ""
             },
@@ -2825,7 +2825,7 @@
                 "templating"
             ],
             "support": {
-                "source": "https://github.com/Enalean/mustache.php/tree/master-tuleap-20191219"
+                "source": "https://github.com/BrownBear/mustache.php/tree/master-tuleap-20191219"
             },
             "time": "2019-12-19T13:50:00+00:00"
         },
@@ -5444,12 +5444,12 @@
             "version": "v1.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Enalean/php-prometheus-client.git",
+                "url": "https://github.com/BrownBear/php-prometheus-client.git",
                 "reference": "bd2676b5384d66a502175c89f879112f6c44bd6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Enalean/php-prometheus-client/zipball/bd2676b5384d66a502175c89f879112f6c44bd6c",
+                "url": "https://api.github.com/repos/BrownBear/php-prometheus-client/zipball/bd2676b5384d66a502175c89f879112f6c44bd6c",
                 "reference": "bd2676b5384d66a502175c89f879112f6c44bd6c",
                 "shasum": ""
             },
@@ -5481,7 +5481,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Enalean\\Prometheus\\": "src/"
+                    "BrownBear\\Prometheus\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5490,8 +5490,8 @@
             ],
             "description": "Prometheus instrumentation library",
             "support": {
-                "issues": "https://github.com/Enalean/php-prometheus-client/issues",
-                "source": "https://github.com/Enalean/php-prometheus-client/tree/v1.3.0"
+                "issues": "https://github.com/BrownBear/php-prometheus-client/issues",
+                "source": "https://github.com/BrownBear/php-prometheus-client/tree/v1.3.0"
             },
             "time": "2021-11-24T10:34:05+00:00"
         },

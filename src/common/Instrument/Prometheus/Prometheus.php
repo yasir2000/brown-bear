@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2018-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2018-Present. All Rights Reserved.
  *
  * This file is a part of Tuleap.
  *
@@ -23,14 +23,14 @@ declare(strict_types=1);
 
 namespace Tuleap\Instrument\Prometheus;
 
-use Enalean\Prometheus\Registry\CollectorRegistry;
-use Enalean\Prometheus\Renderer\RenderTextFormat;
-use Enalean\Prometheus\Storage\InMemoryStore;
-use Enalean\Prometheus\Storage\NullStore;
-use Enalean\Prometheus\Storage\RedisStore;
-use Enalean\Prometheus\Value\HistogramLabelNames;
-use Enalean\Prometheus\Value\MetricLabelNames;
-use Enalean\Prometheus\Value\MetricName;
+use BrownBear\Prometheus\Registry\CollectorRegistry;
+use BrownBear\Prometheus\Renderer\RenderTextFormat;
+use BrownBear\Prometheus\Storage\InMemoryStore;
+use BrownBear\Prometheus\Storage\NullStore;
+use BrownBear\Prometheus\Storage\RedisStore;
+use BrownBear\Prometheus\Value\HistogramLabelNames;
+use BrownBear\Prometheus\Value\MetricLabelNames;
+use BrownBear\Prometheus\Value\MetricName;
 use ForgeConfig;
 use Tuleap\Config\ConfigKey;
 use Tuleap\Redis\ClientFactory;

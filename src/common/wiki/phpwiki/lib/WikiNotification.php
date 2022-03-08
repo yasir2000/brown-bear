@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2015 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2015 - Present. All Rights Reserved.
  *
  * This file is a part of Tuleap.
  *

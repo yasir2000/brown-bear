@@ -1,5 +1,5 @@
 <!--
-  - Copyright (c) Enalean, 2021 - present. All Rights Reserved.
+  - Copyright (c) BrownBear, 2021 - present. All Rights Reserved.
   -
   - This file is a part of Tuleap.
   -

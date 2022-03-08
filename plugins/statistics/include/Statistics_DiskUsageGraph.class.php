@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) STMicroelectronics, 2009. All Rights Reserved.
- * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2016 - Present. All Rights Reserved.
  *
  * Originally written by Nouha Terzi, 2009
  *

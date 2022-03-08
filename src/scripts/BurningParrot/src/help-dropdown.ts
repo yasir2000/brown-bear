@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020-present, Enalean. All rights reserved
+ * Copyright (c) 2020-present, BrownBear. All rights reserved
  *
  * This file is a part of Tuleap.
  *

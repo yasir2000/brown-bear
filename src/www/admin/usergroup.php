@@ -4,7 +4,7 @@
  * Copyright 1999-2000 (c) VA Linux Systems
  * http://sourceforge.net
  *
- * Copyright (c) Enalean, 2016 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2016 - Present. All Rights Reserved.
  *
  * This file is a part of Tuleap.
  *

@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) STMicroelectronics, 2006. All Rights Reserved.
- * Copyright (c) Enalean, 2015 - Present. All rights reserved
+ * Copyright (c) BrownBear, 2015 - Present. All rights reserved
  *
  * This file is a part of Tuleap.
  *

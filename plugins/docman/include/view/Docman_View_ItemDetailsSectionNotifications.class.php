@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2013-Present. All rights reserved
+ * Copyright (c) BrownBear, 2013-Present. All rights reserved
  * Copyright (c) STMicroelectronics, 2006. All Rights Reserved.
  *
  * Originally written by Nicolas Terray, 2006

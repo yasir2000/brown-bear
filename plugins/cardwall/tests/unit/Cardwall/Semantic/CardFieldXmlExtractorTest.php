@@ -1,8 +1,8 @@
 <?php
 /**
- * Copyright Enalean (c) 2013 - Present. All rights reserved.
- * Tuleap and Enalean names and logos are registrated trademarks owned by
- * Enalean SAS. All other trademarks or names are properties of their respective
+ * Copyright BrownBear (c) 2013 - Present. All rights reserved.
+ * Tuleap and BrownBear names and logos are registrated trademarks owned by
+ * BrownBear SAS. All other trademarks or names are properties of their respective
  * owners.
  *
  * This file is a part of Tuleap.

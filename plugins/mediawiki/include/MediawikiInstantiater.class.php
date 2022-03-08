@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (C) 2010  Olaf Lenz
- * Copyright (c) Enalean, 2013 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2013 - Present. All Rights Reserved.
  *
  * This file is part of FusionForge.
  *

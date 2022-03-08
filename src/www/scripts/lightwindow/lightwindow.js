@@ -1,11 +1,11 @@
 // lightwindow.js v2.0
 //
-// Copyright (c) 2007 stickmanlabs, Enalean (c) 2013 - Present
+// Copyright (c) 2007 stickmanlabs, BrownBear (c) 2013 - Present
 // Author: Kevin P Miller | http://www.stickmanlabs.com
-// Contributors: Enalean
+// Contributors: BrownBear
 //
-// Tuleap and Enalean names and logos are registrated trademarks owned by
-// Enalean SAS. All other trademarks or names are properties of their respective
+// Tuleap and BrownBear names and logos are registrated trademarks owned by
+// BrownBear SAS. All other trademarks or names are properties of their respective
 // owners.
 // 
 // LightWindow is freely distributable under the terms of an MIT-style license.

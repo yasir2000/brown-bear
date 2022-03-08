@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
- * Copyright (c) Enalean 2017 - Present. All rights reserved
+ * Copyright (c) BrownBear 2017 - Present. All rights reserved
  *
  * Originally written by Nicolas Guerin 2004, Codendi Team, Xerox
  *

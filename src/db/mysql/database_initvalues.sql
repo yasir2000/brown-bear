@@ -1,5 +1,5 @@
 #
-# Copyright (c) Enalean 2014 - Present. All rights reserved
+# Copyright (c) BrownBear 2014 - Present. All rights reserved
 # Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
 #
 # This file is a part of Tuleap.

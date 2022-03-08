@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2019 - present. All Rights Reserved.
  * Copyright (c) STMicroelectronics, 2008. All Rights Reserved.
  *
  * Originally written by Manuel Vacelet, 2008

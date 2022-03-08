@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2018-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2018-Present. All Rights Reserved.
  * Copyright (c) STMicroelectronics, 2016. All Rights Reserved.
  *
  * This file is a part of Tuleap.

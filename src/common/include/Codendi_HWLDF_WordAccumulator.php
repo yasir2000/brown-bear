@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2016-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2016-Present. All Rights Reserved.
  * Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
  *
  * Copied and Adapted from phpwiki diff formatter

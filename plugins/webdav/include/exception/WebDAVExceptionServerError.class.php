@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2021 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2021 - Present. All Rights Reserved.
  * Copyright (c) STMicroelectronics 2011. All rights reserved
  *
  * Tuleap is free software; you can redistribute it and/or modify

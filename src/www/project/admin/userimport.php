@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) STMicroelectronics, 2006. All Rights Reserved.
- * Copyright (c) Enalean, 2017 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2017 - Present. All Rights Reserved.
  *
  * Originally written by Mohamed CHAARI, 2006. STMicroelectronics.
  *

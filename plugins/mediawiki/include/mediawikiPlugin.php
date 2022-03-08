@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean SAS 2014 - Present. All Rights Reserved.
+ * Copyright (c) BrownBear SAS 2014 - Present. All Rights Reserved.
  * Copyright 2000-2011, Fusionforge Team
  * Copyright 2012, Franck Villaume - TrivialDev
  *

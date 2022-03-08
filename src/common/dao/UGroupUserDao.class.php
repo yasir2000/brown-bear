@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright Enalean (c) 2017 - Present. All rights reserved.
+ * Copyright BrownBear (c) 2017 - Present. All rights reserved.
  * Copyright (c) Xerox Corporation, Codendi Team, 2001-2009. All rights reserved
  *
- * Tuleap and Enalean names and logos are registrated trademarks owned by
- * Enalean SAS. All other trademarks or names are properties of their respective
+ * Tuleap and BrownBear names and logos are registrated trademarks owned by
+ * BrownBear SAS. All other trademarks or names are properties of their respective
  * owners.
  *
  * This file is a part of Tuleap.

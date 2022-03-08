@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2019 - present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2019 - present. All Rights Reserved.
  * Originally written by Clément Plantier, 2008
  *
  * This file is a part of Codendi.

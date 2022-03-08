@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2020-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2020-Present. All Rights Reserved.
  * Copyright (c) Luracast, 2010.
  *
  * This code has been extracted from Luracast\Restler 3.0.0RC6

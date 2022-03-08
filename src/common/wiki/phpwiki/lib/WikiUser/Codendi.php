@@ -1,7 +1,7 @@
 <?php
 //-*-php-*-
 /*
- * Copyright (c) Enalean, 2018-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2018-Present. All Rights Reserved.
  * Copyright (c) STMicroelectronics, 2006
  *
  * Originally written by Manuel Vacelet, STMicroelectronics, 2006.

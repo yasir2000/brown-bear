@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Enalean, 2013-Present. All Rights Reserved.
+ * Copyright (c) BrownBear, 2013-Present. All Rights Reserved.
  * Copyright 1999,2000,2001,2002,2004,2005 $ThePhpWikiProgrammingTeam
  *
  * This file is a part of Tuleap.

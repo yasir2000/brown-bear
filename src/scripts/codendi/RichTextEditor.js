@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Enalean, 2013 - Present. All rights reserved
+ * Copyright (c) BrownBear, 2013 - Present. All rights reserved
  * Copyright (c) STMicroelectronics, 2010. All rights reserved
  *
  * This file is a part of Tuleap.

@@ -85,6 +85,7 @@ Various types of events can trigger a build, multiple builds can be triggered by
 Multiple Gerrit server connections can be established per Jenkins instance. Each job can be configured with one Gerrit server.
 
 https://github.com/jenkinsci/gerrit-trigger-plugin
+https://plugins.jenkins.io/gerrit-trigger/
 
 
 # What's SonarQube
@@ -164,7 +165,7 @@ https://github.com/prometheus/prometheus
 
 Development occurs in realtime on [https://tuleap.net](https://tuleap.net).
 Sources are available in a [Git repository on Tuleap.net](https://tuleap.net/plugins/git/tuleap/tuleap/stable).
-You can find a mirror on [GitHub](https://github.com/Enalean/tuleap).
+You can find a mirror on [GitHub](https://github.com/BrownBear/tuleap).
 
 Use case, screen shots & more on [https://tuleap.org](https://www.tuleap.org/what-is-tuleap).
 
