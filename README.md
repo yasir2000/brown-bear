@@ -1,5 +1,5 @@
-The Brown Bear Project
-=======================
+The Brown Bear Project    مشروع ((براون بير)) مفتوح المصدر
+==============================================================
 
 ![Brown Bear logo](media/Screenshot_1.png "The Brown Bear Project")
 
