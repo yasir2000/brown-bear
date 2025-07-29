@@ -90,11 +90,52 @@
     "webpack-remove-empty-scripts": "^0.7.1"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+
     "typecheck": "turbo run typecheck",
     "build": "turbo run build",
-    "eslint": "eslint --config .eslintrc.js --no-eslintrc --ext .js,.ts,.vue",
-    "stylelint": "stylelint --config .stylelintrc.js",
-    "test": "turbo run test --concurrency=2 -- -- --verbose=false"
+    "build:watch": "turbo run build --watch",
+    "build:production": "NODE_ENV=production turbo run build",
+
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "lint:js": "eslint --config .eslintrc.js --no-eslintrc --ext .js,.ts,.vue",
+    "lint:js:fix": "pnpm lint:js --fix",
+    "lint:css": "stylelint --config .stylelintrc.js",
+    "lint:css:fix": "pnpm lint:css --fix",
+
+    "test": "turbo run test --concurrency=2 -- -- --verbose=false",
+    "test:unit": "turbo run test:unit",
+    "test:integration": "turbo run test:integration",
+    "test:e2e": "turbo run test:e2e",
+    "test:watch": "turbo run test --watch",
+    "test:coverage": "turbo run test:coverage",
+
+    "security:audit": "pnpm audit --audit-level moderate",
+    "security:check": "turbo run security-check",
+
+    "clean": "turbo run clean && rimraf node_modules/.cache",
+    "clean:all": "turbo run clean && rimraf node_modules dist build",
+
+    "dev": "turbo run dev",
+    "dev:watch": "turbo run build --watch",
+
+    "format": "prettier --write \"**/*.{js,ts,vue,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,ts,vue,json,md}\"",
+
+    "docker:build": "docker-compose -f docker-compose-enhanced.yml build",
+    "docker:up": "docker-compose -f docker-compose-enhanced.yml up -d",
+    "docker:down": "docker-compose -f docker-compose-enhanced.yml down",
+    "docker:logs": "docker-compose -f docker-compose-enhanced.yml logs -f",
+
+    "ci:install": "pnpm install --frozen-lockfile",
+    "ci:build": "pnpm run build:production",
+    "ci:test": "pnpm run test && pnpm run lint && pnpm run typecheck",
+    "ci:security": "pnpm run security:check",
+
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run"
   },
   "packageManager": "pnpm@6.25.0"
 }

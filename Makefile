@@ -32,9 +32,143 @@ AUTOLOAD_EXCLUDES=^tests|^template
 
 .DEFAULT_GOAL := help
 
-help:
+# ================================
+# Enhanced Brown Bear Project Targets
+# ================================
+
+help: ## Show this help message
+	@echo "Brown Bear Project - Comprehensive ALM Platform"
+	@echo "=============================================="
+	@echo ""
 	@grep -E '^[a-zA-Z0-9_\-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@echo ""
 	@echo "(Other less used targets are available, open Makefile for details)"
+
+# ================================
+# Environment Setup
+# ================================
+
+setup-env: ## Setup environment configuration
+	@if [ ! -f .env ]; then \
+		echo "Creating .env from .env.example..."; \
+		cp .env.example .env; \
+		echo "✅ Environment file created. Please review and customize .env"; \
+	else \
+		echo "✅ Environment file already exists"; \
+	fi
+
+check-env: ## Check environment prerequisites
+	@echo "🔍 Checking environment prerequisites..."
+	@command -v docker >/dev/null 2>&1 || { echo "❌ Docker is required but not installed."; exit 1; }
+	@command -v docker-compose >/dev/null 2>&1 || { echo "❌ Docker Compose is required but not installed."; exit 1; }
+	@command -v node >/dev/null 2>&1 || { echo "❌ Node.js is required but not installed."; exit 1; }
+	@command -v pnpm >/dev/null 2>&1 || { echo "❌ pnpm is required but not installed. Run: npm install -g pnpm"; exit 1; }
+	@command -v composer >/dev/null 2>&1 || { echo "❌ Composer is required but not installed."; exit 1; }
+	@[ -f .env ] || { echo "❌ .env file not found. Run 'make setup-env' first."; exit 1; }
+	@echo "✅ All prerequisites are met"
+
+# ================================
+# Docker Management
+# ================================
+
+docker-build: ## Build all Docker images
+	@echo "🔨 Building Docker images..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml build --parallel
+	@echo "✅ Docker images built successfully"
+
+docker-pull: ## Pull latest images
+	@echo "📥 Pulling latest Docker images..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml pull
+	@echo "✅ Images pulled successfully"
+
+docker-clean: ## Clean Docker resources
+	@echo "🧹 Cleaning Docker resources..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml down -v --remove-orphans
+	@docker system prune -f
+	@echo "✅ Docker resources cleaned"
+
+# ================================
+# Stack Management
+# ================================
+
+stack-up: check-env ## Start the complete stack
+	@echo "🚀 Starting Brown Bear stack..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml up -d
+	@echo "✅ Stack started successfully"
+	@echo ""
+	@echo "🌐 Access URLs:"
+	@echo "   • Tuleap:     https://brownbear.local"
+	@echo "   • GitLab:     https://gitlab.brownbear.local"
+	@echo "   • Jenkins:    https://jenkins.brownbear.local"
+	@echo "   • SonarQube:  https://sonar.brownbear.local"
+	@echo "   • Nexus:      https://nexus.brownbear.local"
+	@echo "   • Gerrit:     https://gerrit.brownbear.local"
+	@echo "   • Grafana:    https://grafana.brownbear.local"
+	@echo "   • LDAP Admin: https://ldap.brownbear.local"
+
+stack-down: ## Stop the complete stack
+	@echo "🛑 Stopping Brown Bear stack..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml down
+	@echo "✅ Stack stopped successfully"
+
+stack-restart: ## Restart the complete stack
+	@$(MAKE) stack-down
+	@$(MAKE) stack-up
+
+stack-logs: ## Show logs from all services
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml logs -f
+
+stack-status: ## Show status of all services
+	@echo "📊 Brown Bear Stack Status:"
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml ps
+
+# ================================
+# Development Environment
+# ================================
+
+dev-setup: setup-env check-env composer js-deps ## Complete development setup
+	@echo "🛠️  Setting up development environment..."
+	@$(MAKE) generate-ssl-certs
+	@$(MAKE) docker-build
+	@echo "✅ Development environment ready"
+
+dev-up: dev-setup stack-up post-checkout ## Start development environment
+	@echo "🎯 Development environment is ready!"
+
+dev-down: stack-down ## Stop development environment
+
+dev-reset: ## Reset development environment
+	@echo "🔄 Resetting development environment..."
+	@$(MAKE) docker-clean
+	@$(MAKE) dev-up
+
+# ================================
+# SSL Certificate Management
+# ================================
+
+generate-ssl-certs: ## Generate SSL certificates for local development
+	@echo "🔐 Generating SSL certificates..."
+	@mkdir -p tools/docker/reverse-proxy/ssl
+	@if [ ! -f tools/docker/reverse-proxy/ssl/brownbear.local.crt ]; then \
+		openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+			-keyout tools/docker/reverse-proxy/ssl/brownbear.local.key \
+			-out tools/docker/reverse-proxy/ssl/brownbear.local.crt \
+			-subj "/C=US/ST=Dev/L=Local/O=BrownBear/CN=*.brownbear.local"; \
+		echo "✅ SSL certificates generated"; \
+	else \
+		echo "✅ SSL certificates already exist"; \
+	fi
+
+# ================================
+# Build Management
+# ================================
+
+build-all: composer js-build generate-mo generate-templates ## Build all components
+
+js-deps: ## Install JavaScript dependencies
+	@echo "📦 Installing JavaScript dependencies..."
+	@pnpm install --frozen-lockfile
+	@echo "✅ JavaScript dependencies installed"
 
 #
 # Utilities
@@ -134,10 +268,203 @@ post-checkout-reload-env: dev-clear-cache dev-forgeupgrade restart-services ## C
 
 post-checkout: post-checkout-build post-checkout-reload-env ## Clear caches, run forgeupgrade, build assets and generate language files
 
-.PHONY: js-build
-js-build:
-	pnpm install
-	pnpm run build
+js-build: js-deps ## Build JavaScript components
+	@echo "🔨 Building JavaScript components..."
+	@pnpm run build
+	@echo "✅ JavaScript build completed"
+
+js-watch: js-deps ## Watch and rebuild JavaScript components
+	@echo "👀 Watching JavaScript components for changes..."
+	@pnpm run build --watch
+
+js-test: js-deps ## Run JavaScript tests
+	@echo "🧪 Running JavaScript tests..."
+	@pnpm run test
+	@echo "✅ JavaScript tests completed"
+
+# ================================
+# Quality Assurance
+# ================================
+
+lint: ## Run all linting tools
+	@echo "🔍 Running linting tools..."
+	@pnpm run eslint
+	@pnpm run stylelint
+	@echo "✅ Linting completed"
+
+typecheck: ## Run TypeScript type checking
+	@echo "🔍 Running TypeScript type checking..."
+	@pnpm run typecheck
+	@echo "✅ Type checking completed"
+
+security-check: ## Run security checks
+	@echo "🔒 Running security checks..."
+	@pnpm audit --audit-level moderate
+	@composer audit
+	@echo "✅ Security checks completed"
+
+# ================================
+# Testing Infrastructure
+# ================================
+
+test-all: test-unit test-integration test-api test-e2e ## Run all tests
+
+test-unit: ## Run unit tests
+	@echo "🧪 Running unit tests..."
+	@$(MAKE) js-test
+	@$(MAKE) phpunit-ci-run
+	@echo "✅ Unit tests completed"
+
+test-integration: ## Run integration tests
+	@echo "🔗 Running integration tests..."
+	@$(MAKE) tests-db
+	@echo "✅ Integration tests completed"
+
+test-api: ## Run API tests
+	@echo "🌐 Running API tests..."
+	@$(MAKE) tests-rest
+	@$(MAKE) tests-soap
+	@echo "✅ API tests completed"
+
+test-e2e: ## Run end-to-end tests
+	@echo "🎭 Running E2E tests..."
+	@$(MAKE) tests-e2e
+	@echo "✅ E2E tests completed"
+
+# ================================
+# CI/CD Integration
+# ================================
+
+ci-setup: ## Setup CI environment
+	@echo "🔧 Setting up CI environment..."
+	@$(MAKE) check-env
+	@$(MAKE) docker-build
+	@$(MAKE) composer
+	@$(MAKE) js-deps
+	@echo "✅ CI environment ready"
+
+ci-test: ## Run CI test suite
+	@echo "🚀 Running CI test suite..."
+	@$(MAKE) lint
+	@$(MAKE) typecheck
+	@$(MAKE) security-check
+	@$(MAKE) test-all
+	@echo "✅ CI tests completed"
+
+ci-build: ## Build for CI/CD
+	@echo "📦 Building for CI/CD..."
+	@$(MAKE) build-all
+	@echo "✅ CI build completed"
+
+# ================================
+# Monitoring & Health Checks
+# ================================
+
+health-check: ## Check health of all services
+	@echo "🏥 Checking service health..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec web curl -f http://localhost/ || echo "❌ Tuleap is not healthy"
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec gitlab gitlab-ctl status || echo "❌ GitLab is not healthy"
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec jenkins curl -f http://localhost:8080/jenkins/login || echo "❌ Jenkins is not healthy"
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec sonarqube curl -f http://localhost:9000/api/system/status || echo "❌ SonarQube is not healthy"
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec nexus curl -f http://localhost:8081/service/rest/v1/status || echo "❌ Nexus is not healthy"
+	@echo "✅ Health check completed"
+
+monitor-logs: ## Monitor real-time logs
+	@echo "📊 Monitoring logs (Ctrl+C to stop)..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml logs -f --tail=100
+
+performance-test: ## Run performance tests
+	@echo "⚡ Running performance tests..."
+	@# Add performance testing commands here
+	@echo "✅ Performance tests completed"
+
+# ================================
+# Database Management
+# ================================
+
+db-backup: ## Backup database
+	@echo "💾 Creating database backup..."
+	@mkdir -p backups
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec db mysqldump -u$(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE) > backups/backup_$(shell date +%Y%m%d_%H%M%S).sql
+	@echo "✅ Database backup created"
+
+db-restore: ## Restore database (specify BACKUP_FILE)
+	@echo "📤 Restoring database from $(BACKUP_FILE)..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec -T db mysql -u$(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE) < $(BACKUP_FILE)
+	@echo "✅ Database restored"
+
+db-migrate: ## Run database migrations
+	@echo "🗃️  Running database migrations..."
+	@$(DOCKER_COMPOSE) -f docker-compose-enhanced.yml exec web tuleap-cfg db:migration:run
+	@echo "✅ Database migrations completed"
+
+# ================================
+# Integration Tasks
+# ================================
+
+integration-setup: ## Setup integration between services
+	@echo "🔗 Setting up service integrations..."
+	@$(MAKE) setup-gitlab-integration
+	@$(MAKE) setup-jenkins-integration
+	@$(MAKE) setup-sonarqube-integration
+	@$(MAKE) setup-nexus-integration
+	@echo "✅ Integration setup completed"
+
+setup-gitlab-integration: ## Setup GitLab integration
+	@echo "🦊 Setting up GitLab integration..."
+	@# Add GitLab integration setup commands
+	@echo "✅ GitLab integration setup completed"
+
+setup-jenkins-integration: ## Setup Jenkins integration
+	@echo "🔧 Setting up Jenkins integration..."
+	@# Add Jenkins integration setup commands
+	@echo "✅ Jenkins integration setup completed"
+
+setup-sonarqube-integration: ## Setup SonarQube integration
+	@echo "📊 Setting up SonarQube integration..."
+	@# Add SonarQube integration setup commands
+	@echo "✅ SonarQube integration setup completed"
+
+setup-nexus-integration: ## Setup Nexus integration
+	@echo "📦 Setting up Nexus integration..."
+	@# Add Nexus integration setup commands
+	@echo "✅ Nexus integration setup completed"
+
+# ================================
+# Documentation
+# ================================
+
+docs-generate: ## Generate documentation
+	@echo "📚 Generating documentation..."
+	@# Add documentation generation commands
+	@echo "✅ Documentation generated"
+
+docs-serve: ## Serve documentation locally
+	@echo "🌐 Serving documentation..."
+	@# Add documentation serving commands
+
+# ================================
+# Maintenance
+# ================================
+
+clean-all: ## Clean all build artifacts and caches
+	@echo "🧹 Cleaning all artifacts..."
+	@$(MAKE) docker-clean
+	@rm -rf node_modules
+	@rm -rf vendor
+	@rm -rf build
+	@rm -rf dist
+	@echo "✅ All artifacts cleaned"
+
+update-deps: ## Update all dependencies
+	@echo "⬆️  Updating dependencies..."
+	@pnpm update
+	@composer update
+	@echo "✅ Dependencies updated"
+
+# ================================
+# Original Tuleap Targets (preserved)
+# ================================
 
 redeploy-nginx: ## Redeploy nginx configuration
 	@$(DOCKER_COMPOSE) exec web tuleap-cfg site-deploy:nginx

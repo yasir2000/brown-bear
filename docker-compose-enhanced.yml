@@ -1,0 +1,493 @@
+# Brown Bear Project - Enhanced Docker Compose Configuration
+# Please see https://docs.tuleap.org/installation-guide/docker-image.html
+#
+# This enhanced docker-compose file provides full integration of all components
+version: "3.8"
+
+networks:
+  brownbear:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+services:
+  # ================================
+  # Reverse Proxy & Load Balancer
+  # ================================
+  reverse-proxy:
+    build:
+      context: tools/docker/reverse-proxy
+      dockerfile: Dockerfile
+    container_name: brownbear-reverse-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./tools/docker/reverse-proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./tools/docker/reverse-proxy/ssl:/etc/nginx/ssl:ro
+      - reverse-proxy-cert:/etc/pki/tls
+      - ./tools/docker/reverse-proxy/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - web
+      - realtime
+      - gitlab
+      - jenkins
+      - sonarqube
+      - nexus
+      - gerrit
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.2
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ================================
+  # Core Tuleap Application
+  # ================================
+  web:
+    image: ghcr.io/enalean/tuleap-aio-dev:c7-php80-nginx
+    container_name: brownbear-web
+    volumes:
+      - .:/usr/share/tuleap:cached
+      - tuleap-data:/data
+      - realtime-cert:/etc/pki/ca-trust/source/anchors
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - .env:/root/.tuleap_env:ro
+      - ./tools/docker/web/custom-configs:/etc/tuleap/conf/custom:ro
+    tmpfs:
+      - /run
+      - /tmp
+    environment:
+      - TULEAP_SYS_DBHOST=db
+      - TULEAP_ENVIRONMENT=${TULEAP_ENVIRONMENT:-development}
+      - TULEAP_ENABLE_FORGE_ACCESS=${TULEAP_ENABLE_FORGE_ACCESS:-1}
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+      - ldap
+      - realtime
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.10
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ================================
+  # Real-time Communication
+  # ================================
+  realtime:
+    build:
+      context: tools/docker/realtime
+      dockerfile: Dockerfile
+    container_name: brownbear-realtime
+    command: /tuleap/tools/docker/realtime/run.sh
+    volumes:
+      - .:/tuleap:ro,cached
+      - realtime-conf:/etc/tuleap-realtime
+      - realtime-cert:/published-certificate
+    env_file:
+      - .env
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.11
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ================================
+  # Database Services
+  # ================================
+  db:
+    image: mysql:5.7
+    container_name: brownbear-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./src/etc/tuleap-mysql57-dev.cnf:/etc/mysql/mysql.conf.d/tuleap.cnf:ro
+      - db57-data:/var/lib/mysql
+      - ./tools/docker/database/init-scripts:/docker-entrypoint-initdb.d:ro
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.20
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ================================
+  # Redis Cache
+  # ================================
+  redis:
+    image: redis:6.2-alpine
+    container_name: brownbear-redis
+    volumes:
+      - redis-data:/data
+      - ./tools/docker/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.21
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ================================
+  # LDAP Authentication
+  # ================================
+  ldap:
+    image: ghcr.io/enalean/ldap
+    container_name: brownbear-ldap
+    environment:
+      LDAP_MANAGER_PASSWORD: ${LDAP_MANAGER_PASSWORD}
+      LDAP_ROOT_PASSWORD: ${LDAP_ROOT_PASSWORD}
+    volumes:
+      - ldap-data:/data
+      - ./tools/docker/ldap/schemas:/opt/docker/etc/openldap/schemas:ro
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.30
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "ldapsearch", "-x", "-b", "dc=tuleap,dc=local"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ================================
+  # LDAP Admin Interface
+  # ================================
+  ldap-admin:
+    image: osixia/phpldapadmin:0.9.0
+    container_name: brownbear-ldap-admin
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: ldap
+      PHPLDAPADMIN_HTTPS: "false"
+    volumes:
+      - ldap-data:/data
+    depends_on:
+      - ldap
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.31
+    restart: unless-stopped
+
+  # ================================
+  # GitLab Source Control
+  # ================================
+  gitlab:
+    build:
+      context: tools/docker/gitlab
+      dockerfile: Dockerfile
+    container_name: brownbear-gitlab
+    hostname: ${GITLAB_HOSTNAME:-gitlab.brownbear.local}
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://${GITLAB_HOSTNAME:-gitlab.brownbear.local}'
+        letsencrypt['enable'] = false
+        gitlab_rails['initial_root_password'] = '${GITLAB_ROOT_PASSWORD}'
+        gitlab_rails['ldap_enabled'] = true
+        gitlab_rails['ldap_servers'] = YAML.load <<-EOS
+          main:
+            label: 'LDAP'
+            host: 'ldap'
+            port: 389
+            uid: 'uid'
+            method: 'plain'
+            bind_dn: 'cn=admin,dc=tuleap,dc=local'
+            password: '${LDAP_MANAGER_PASSWORD}'
+            base: 'ou=people,dc=tuleap,dc=local'
+        EOS
+        registry_external_url 'https://${GITLAB_HOSTNAME:-gitlab.brownbear.local}:5050'
+        gitlab_rails['registry_enabled'] = true
+    volumes:
+      - gitlab-config:/etc/gitlab
+      - gitlab-data:/var/opt/gitlab
+      - gitlab-logs:/var/log/gitlab
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.40
+        aliases:
+          - ${GITLAB_HOSTNAME:-gitlab.brownbear.local}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "gitlab-ctl", "status"]
+      interval: 60s
+      timeout: 30s
+      retries: 5
+
+  # ================================
+  # Gerrit Code Review
+  # ================================
+  gerrit:
+    build:
+      context: tools/docker/gerrit
+      dockerfile: Dockerfile
+    container_name: brownbear-gerrit
+    environment:
+      CANONICAL_WEB_URL: http://${GERRIT_HOSTNAME:-gerrit.brownbear.local}:8080
+      GERRIT_ADMIN_USER: ${GERRIT_ADMIN_USER:-admin}
+      GERRIT_ADMIN_EMAIL: ${GERRIT_ADMIN_EMAIL:-admin@brownbear.local}
+      GERRIT_ADMIN_PASSWORD: ${GERRIT_ADMIN_PASSWORD}
+      AUTH_TYPE: LDAP
+      LDAP_SERVER: ldap://ldap:389
+      LDAP_ACCOUNTBASE: ou=people,dc=tuleap,dc=local
+    volumes:
+      - gerrit-data:/data
+      - ./tools/docker/gerrit/config:/var/gerrit/etc:ro
+    depends_on:
+      - ldap
+      - gitlab
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.50
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ================================
+  # Jenkins CI/CD
+  # ================================
+  jenkins:
+    build:
+      context: tools/docker/jenkins
+      dockerfile: Dockerfile
+    container_name: brownbear-jenkins
+    environment:
+      JENKINS_OPTS: "--prefix=/jenkins --httpPort=8080"
+      JAVA_OPTS: "-Djenkins.install.runSetupWizard=false -Xmx2g"
+      JENKINS_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD}
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - reverse-proxy-cert:/opt/reverse-proxy-cert:ro
+      - ./tools/docker/jenkins/plugins.txt:/usr/share/jenkins/ref/plugins.txt:ro
+      - ./tools/docker/jenkins/jobs:/usr/share/jenkins/ref/jobs:ro
+    depends_on:
+      - gitlab
+      - sonarqube
+      - nexus
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.60
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/jenkins/login"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ================================
+  # SonarQube Code Quality
+  # ================================
+  sonarqube:
+    build:
+      context: tools/docker/sonarqube
+      dockerfile: Dockerfile
+    image: sonarqube:9.9-community
+    container_name: brownbear-sonarqube
+    environment:
+      SONAR_WEB_JAVAOPTS: ${SONAR_WEB_JAVAOPTS:--Xmx512m -Xms128m}
+      SONAR_CE_JAVAOPTS: ${SONAR_CE_JAVAOPTS:--Xmx512m -Xms128m}
+      SONAR_SEARCH_JAVAOPTS: ${SONAR_SEARCH_JAVAOPTS:--Xmx512m -Xms512m}
+      SONARQUBE_JDBC_USERNAME: ${SONAR_PGUSER}
+      SONARQUBE_JDBC_PASSWORD: ${SONAR_PGPASS}
+      SONARQUBE_JDBC_URL: jdbc:postgresql://sonarpgdb:5432/sonar
+    volumes:
+      - sonar-volume-config:/opt/sonarqube/conf:Z
+      - sonar-volume-data:/opt/sonarqube/data:Z
+      - sonar-volume-ext:/opt/sonarqube/extensions:Z
+      - ./tools/docker/sonarqube/plugins:/opt/sonarqube/extensions/plugins:ro
+    depends_on:
+      - sonarpgdb
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.70
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/api/system/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ================================
+  # SonarQube Database
+  # ================================
+  sonarpgdb:
+    build:
+      context: tools/docker/sonarpgdb
+      dockerfile: Dockerfile
+    image: postgres:13.2
+    container_name: brownbear-sonar-db
+    environment:
+      POSTGRES_USER: ${SONAR_PGUSER}
+      POSTGRES_PASSWORD: ${SONAR_PGPASS}
+      POSTGRES_DB: sonar
+    volumes:
+      - sonar-volume-dbdata:/var/lib/postgresql/data
+      - ./tools/docker/sonarpgdb/init-scripts:/docker-entrypoint-initdb.d:ro
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.71
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${SONAR_PGUSER}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ================================
+  # Nexus Repository Manager
+  # ================================
+  nexus:
+    build:
+      context: tools/docker/nexus
+      dockerfile: Dockerfile
+    image: sonatype/nexus3:3.44.0
+    container_name: brownbear-nexus
+    environment:
+      INSTALL4J_ADD_VM_PARAMS: ${INSTALL4J_ADD_VM_PARAMS:--Xms1g -Xmx1g}
+      NEXUS_SECURITY_RANDOMPASSWORD: false
+    volumes:
+      - nexus-volume-data:/nexus-data:Z
+      - ./tools/docker/nexus/config:/opt/sonatype/nexus/etc:ro
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.80
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/service/rest/v1/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ================================
+  # Prometheus Monitoring
+  # ================================
+  prometheus:
+    image: prom/prometheus:v2.40.0
+    container_name: brownbear-prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=${PROMETHEUS_RETENTION_TIME:-30d}'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./tools/docker/prometheus/rules:/etc/prometheus/rules:ro
+      - .metrics_secret.key:/metrics_secret.key:ro
+      - prom-data:/prometheus
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.90
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ================================
+  # Grafana Dashboard
+  # ================================
+  grafana:
+    image: grafana/grafana:9.3.0
+    container_name: brownbear-grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD}
+      GF_INSTALL_PLUGINS: grafana-piechart-panel
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./tools/docker/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./tools/docker/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.91
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ================================
+  # Mail Services (Development)
+  # ================================
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: brownbear-mailhog
+    networks:
+      brownbear:
+        ipv4_address: 172.20.0.100
+    restart: unless-stopped
+
+# ================================
+# Persistent Volumes
+# ================================
+volumes:
+  tuleap-data:
+    name: brownbear-tuleap-data
+  ldap-data:
+    name: brownbear-ldap-data
+  gerrit-data:
+    name: brownbear-gerrit-data
+  gitlab-config:
+    name: brownbear-gitlab-config
+  gitlab-data:
+    name: brownbear-gitlab-data
+  gitlab-logs:
+    name: brownbear-gitlab-logs
+  db57-data:
+    name: brownbear-mysql-data
+  redis-data:
+    name: brownbear-redis-data
+  realtime-conf:
+    name: brownbear-realtime-conf
+  realtime-cert:
+    name: brownbear-realtime-cert
+  reverse-proxy-cert:
+    name: brownbear-reverse-proxy-cert
+  prom-data:
+    name: brownbear-prometheus-data
+  grafana-data:
+    name: brownbear-grafana-data
+  jenkins-data:
+    name: brownbear-jenkins-data
+  nexus-volume-data:
+    name: brownbear-nexus-data
+  sonar-volume-config:
+    name: brownbear-sonar-config
+  sonar-volume-data:
+    name: brownbear-sonar-data
+  sonar-volume-ext:
+    name: brownbear-sonar-ext
+  sonar-volume-dbdata:
+    name: brownbear-sonar-dbdata

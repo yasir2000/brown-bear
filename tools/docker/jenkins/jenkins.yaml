@@ -1,0 +1,155 @@
+# Jenkins Configuration as Code for Brown Bear Project
+jenkins:
+  systemMessage: "Brown Bear ALM Platform - Jenkins CI/CD Server"
+  numExecutors: 4
+  mode: NORMAL
+  scmCheckoutRetryCount: 3
+  labelString: "docker brownbear"
+
+  securityRealm:
+    ldap:
+      configurations:
+        - server: "ldap://ldap:389"
+          rootDN: "dc=tuleap,dc=local"
+          userSearchBase: "ou=people"
+          userSearch: "uid={0}"
+          groupSearchBase: "ou=groups"
+          groupSearchFilter: "memberUid={1}"
+          managerDN: "cn=admin,dc=tuleap,dc=local"
+          managerPasswordSecret: "ldap-manager-password"
+          inhibitInferRootDN: false
+          disableMailAddressResolver: false
+          displayNameAttributeName: "displayName"
+          mailAddressAttributeName: "mail"
+
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Jenkins administrators"
+            permissions:
+              - "Overall/Administer"
+            entries:
+              - user: "admin"
+          - name: "developer"
+            description: "Developers with build permissions"
+            permissions:
+              - "Overall/Read"
+              - "Job/Build"
+              - "Job/Cancel"
+              - "Job/Read"
+              - "Job/Workspace"
+              - "View/Read"
+            entries:
+              - group: "developers"
+
+  globalNodeProperties:
+    - envVars:
+        env:
+          DOCKER_HOST: "unix:///var/run/docker.sock"
+          SONAR_HOST_URL: "http://sonarqube:9000"
+          NEXUS_URL: "http://nexus:8081"
+          GITLAB_URL: "http://gitlab.brownbear.local"
+          GERRIT_URL: "http://gerrit.brownbear.local:8080"
+
+  clouds:
+    - docker:
+        name: "brownbear-docker"
+        dockerApi:
+          dockerHost:
+            uri: "unix:///var/run/docker.sock"
+        templates:
+          - labelString: "docker-agent"
+            dockerTemplateBase:
+              image: "jenkins/agent:latest"
+              mounts:
+                - "type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock"
+            remoteFs: "/home/jenkins/agent"
+            connector:
+              attach:
+                user: "jenkins"
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: "gitlab-credentials"
+              username: "jenkins"
+              password: "${GITLAB_TOKEN}"
+              description: "GitLab integration credentials"
+          - usernamePassword:
+              scope: GLOBAL
+              id: "nexus-credentials"
+              username: "admin"
+              password: "${NEXUS_ADMIN_PASSWORD}"
+              description: "Nexus repository credentials"
+          - string:
+              scope: GLOBAL
+              id: "sonar-token"
+              secret: "${SONAR_TOKEN}"
+              description: "SonarQube authentication token"
+          - basicSSHUserPrivateKey:
+              scope: GLOBAL
+              id: "git-ssh-key"
+              username: "git"
+              privateKeySource:
+                directEntry:
+                  privateKey: "${GIT_SSH_PRIVATE_KEY}"
+              description: "Git SSH private key"
+
+unclassified:
+  sonarGlobalConfiguration:
+    installations:
+      - name: "SonarQube"
+        serverUrl: "http://sonarqube:9000"
+        credentialsId: "sonar-token"
+
+  gitLabConnectionConfig:
+    connections:
+      - name: "GitLab"
+        url: "http://gitlab.brownbear.local"
+        credentialsId: "gitlab-credentials"
+
+  prometheusConfiguration:
+    collectingMetricsPeriodInSeconds: 120
+    defaultNamespace: "jenkins"
+    path: "/prometheus"
+
+jobs:
+  - script: |
+      folder('BrownBear') {
+        description('Brown Bear ALM Platform Jobs')
+      }
+
+  - script: |
+      pipelineJob('BrownBear/build-and-test') {
+        description('Main build and test pipeline for Brown Bear')
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('http://gitlab.brownbear.local/brownbear/brown-bear.git')
+                  credentials('gitlab-credentials')
+                }
+                branch('*/main')
+              }
+            }
+            scriptPath('Jenkinsfile')
+          }
+        }
+        triggers {
+          gitlabPush {
+            buildOnMergeRequestEvents(true)
+            buildOnPushEvents(true)
+            enableCiSkip(true)
+            setBuildDescription(true)
+            addNoteOnMergeRequest(true)
+            addCiMessage(true)
+            addVoteOnMergeRequest(true)
+          }
+        }
+      }

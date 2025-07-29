@@ -1,0 +1,73 @@
+# Essential Jenkins Plugins for Brown Bear Integration
+ant:latest
+build-timeout:latest
+credentials-binding:latest
+timestamper:latest
+ws-cleanup:latest
+gradle:latest
+workflow-aggregator:latest
+github:latest
+gitlab-plugin:latest
+ssh-slaves:latest
+matrix-auth:latest
+pam-auth:latest
+ldap:latest
+email-ext:latest
+mailer:latest
+configuration-as-code:latest
+job-dsl:latest
+
+# Docker and containerization
+docker-plugin:latest
+docker-workflow:latest
+kubernetes:latest
+
+# Code quality and testing
+sonar:latest
+junit:latest
+jacoco:latest
+cobertura:latest
+checkstyle:latest
+warnings-ng:latest
+test-results-analyzer:latest
+
+# Git and SCM
+git:latest
+github-branch-source:latest
+gitlab-branch-source:latest
+gerrit-trigger:latest
+bitbucket:latest
+
+# Deployment and DevOps
+pipeline-stage-view:latest
+blueocean:latest
+parameterized-trigger:latest
+copyartifact:latest
+deploy:latest
+ssh:latest
+
+# Monitoring and notifications
+prometheus:latest
+slack:latest
+hipchat:latest
+monitoring:latest
+
+# Security
+role-strategy:latest
+authorize-project:latest
+script-security:latest
+
+# Build tools
+nodejs:latest
+maven-plugin:latest
+gradle:latest
+msbuild:latest
+
+# Utilities
+dashboard-view:latest
+view-job-filters:latest
+nested-view:latest
+build-name-setter:latest
+description-setter:latest
+groovy:latest
+pipeline-utility-steps:latest

