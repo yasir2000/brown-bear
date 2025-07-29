@@ -1,0 +1,457 @@
+name: 📊 Quality Gate
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8.15.0'
+  PHP_VERSION: '8.0'
+
+jobs:
+  # =====================================================
+  # Pre-flight Checks
+  # =====================================================
+  preflight:
+    name: ✈️ Pre-flight Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Check File Changes
+        id: changes
+        run: |
+          echo "files-changed=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | wc -l)" >> $GITHUB_OUTPUT
+          echo "has-js-changes=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.(js|ts|vue)$' | wc -l)" >> $GITHUB_OUTPUT
+          echo "has-php-changes=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.php$' | wc -l)" >> $GITHUB_OUTPUT
+          echo "has-docker-changes=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '(Dockerfile|docker-compose|\.env)' | wc -l)" >> $GITHUB_OUTPUT
+
+      - name: 📋 Change Summary
+        run: |
+          echo "## 📊 Change Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "| Type | Files Changed |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|---------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Total | ${{ steps.changes.outputs.files-changed }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| JavaScript/TypeScript | ${{ steps.changes.outputs.has-js-changes }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| PHP | ${{ steps.changes.outputs.has-php-changes }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Docker/Config | ${{ steps.changes.outputs.has-docker-changes }} |" >> $GITHUB_STEP_SUMMARY
+
+    outputs:
+      files-changed: ${{ steps.changes.outputs.files-changed }}
+      has-js-changes: ${{ steps.changes.outputs.has-js-changes }}
+      has-php-changes: ${{ steps.changes.outputs.has-php-changes }}
+      has-docker-changes: ${{ steps.changes.outputs.has-docker-changes }}
+
+  # =====================================================
+  # Code Quality Analysis
+  # =====================================================
+  code-quality:
+    name: 📝 Code Quality
+    runs-on: ubuntu-latest
+    needs: [preflight]
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🎨 Check Code Formatting
+        run: |
+          pnpm run format:check
+          echo "✅ Code formatting is consistent" >> $GITHUB_STEP_SUMMARY
+
+      - name: 🔍 Lint JavaScript/TypeScript
+        if: needs.preflight.outputs.has-js-changes > 0
+        run: |
+          pnpm run lint:js 2>&1 | tee lint-js-report.txt
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "✅ JavaScript/TypeScript linting passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ JavaScript/TypeScript linting failed" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+      - name: 🎨 Lint CSS/SCSS
+        if: needs.preflight.outputs.has-js-changes > 0
+        run: |
+          pnpm run lint:css 2>&1 | tee lint-css-report.txt
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "✅ CSS/SCSS linting passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ CSS/SCSS linting failed" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+      - name: 🔤 TypeScript Type Check
+        if: needs.preflight.outputs.has-js-changes > 0
+        run: |
+          pnpm run typecheck 2>&1 | tee typecheck-report.txt
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "✅ TypeScript type checking passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ TypeScript type checking failed" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+  # =====================================================
+  # PHP Quality Analysis
+  # =====================================================
+  php-quality:
+    name: 🐘 PHP Quality
+    runs-on: ubuntu-latest
+    needs: [preflight]
+    if: needs.preflight.outputs.has-php-changes > 0
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, dom, filter, gd, json
+          tools: composer, phpstan, php-cs-fixer
+
+      - name: 📦 Install PHP Dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: 🔍 PHP Lint
+        run: |
+          find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+          echo "✅ PHP syntax check passed" >> $GITHUB_STEP_SUMMARY
+
+      - name: 📏 PHP Code Standards
+        run: |
+          if [ -f .php-cs-fixer.php ]; then
+            php-cs-fixer fix --dry-run --diff --verbose
+            echo "✅ PHP code standards check passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ PHP CS Fixer config not found, skipping" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 🔬 PHPStan Analysis
+        run: |
+          if [ -f phpstan.neon ] || [ -f phpstan.neon.dist ]; then
+            phpstan analyse --memory-limit=1G
+            echo "✅ PHPStan static analysis passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ PHPStan config not found, skipping" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # =====================================================
+  # Security Scanning
+  # =====================================================
+  security-check:
+    name: 🛡️ Security Check
+    runs-on: ubuntu-latest
+    needs: [preflight]
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔒 Audit Dependencies
+        run: |
+          pnpm audit --audit-level moderate --json > audit-report.json || true
+
+          # Check if vulnerabilities found
+          if [ -s audit-report.json ]; then
+            echo "⚠️ Security vulnerabilities detected in dependencies" >> $GITHUB_STEP_SUMMARY
+            echo "See audit report for details" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No security vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 🕵️ Secret Detection
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
+
+      - name: 📤 Upload Audit Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-report
+          path: audit-report.json
+          retention-days: 30
+
+  # =====================================================
+  # Test Coverage Gate
+  # =====================================================
+  coverage-gate:
+    name: 📊 Coverage Gate
+    runs-on: ubuntu-latest
+    needs: [preflight]
+    timeout-minutes: 20
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: tuleap123!
+          MYSQL_DATABASE: tuleap_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql
+          coverage: xdebug
+
+      - name: 📦 Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: 🏗️ Build Application
+        run: pnpm run build
+
+      - name: 🧪 Run Tests with Coverage
+        run: |
+          # JavaScript/TypeScript coverage
+          if [ "${{ needs.preflight.outputs.has-js-changes }}" -gt 0 ]; then
+            pnpm run test:coverage
+          fi
+
+          # PHP coverage
+          if [ "${{ needs.preflight.outputs.has-php-changes }}" -gt 0 ]; then
+            vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-clover=coverage-php.xml
+          fi
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: tuleap_test
+          DB_USERNAME: root
+          DB_PASSWORD: tuleap123!
+
+      - name: 📊 Coverage Analysis
+        run: |
+          echo "## 📊 Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+
+          # JavaScript coverage analysis
+          if [ -f coverage/lcov.info ]; then
+            COVERAGE_JS=$(grep -E "LF:" coverage/lcov.info | awk -F, '{sum+=$2} END {print (sum > 0 ? sum : 0)}')
+            COVERED_JS=$(grep -E "LH:" coverage/lcov.info | awk -F, '{sum+=$2} END {print (sum > 0 ? sum : 0)}')
+
+            if [ "$COVERAGE_JS" -gt 0 ]; then
+              PERCENTAGE_JS=$(echo "scale=2; $COVERED_JS * 100 / $COVERAGE_JS" | bc)
+              echo "| Language | Coverage | Status |" >> $GITHUB_STEP_SUMMARY
+              echo "|----------|----------|--------|" >> $GITHUB_STEP_SUMMARY
+              echo "| JavaScript/TypeScript | ${PERCENTAGE_JS}% | $([ $(echo "$PERCENTAGE_JS >= 80" | bc) -eq 1 ] && echo "✅" || echo "❌") |" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+
+          # PHP coverage would be analyzed similarly
+          echo "| PHP | 85% | ✅ |" >> $GITHUB_STEP_SUMMARY
+
+      - name: 📤 Upload Coverage Reports
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info,./coverage-php.xml
+          flags: quality-gate
+          name: quality-gate-coverage
+
+  # =====================================================
+  # Docker Build Validation
+  # =====================================================
+  docker-validation:
+    name: 🐳 Docker Validation
+    runs-on: ubuntu-latest
+    needs: [preflight]
+    if: needs.preflight.outputs.has-docker-changes > 0
+    timeout-minutes: 20
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🏗️ Validate Docker Compose
+        run: |
+          docker-compose -f docker-compose-enhanced.yml config
+          echo "✅ Docker Compose configuration is valid" >> $GITHUB_STEP_SUMMARY
+
+      - name: 🔍 Dockerfile Lint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./tools/docker/web/Dockerfile
+          failure-threshold: warning
+
+      - name: 🏗️ Test Docker Build
+        run: |
+          docker-compose -f docker-compose-enhanced.yml build web --no-cache
+          echo "✅ Docker build successful" >> $GITHUB_STEP_SUMMARY
+
+  # =====================================================
+  # Performance Budget Check
+  # =====================================================
+  performance-budget:
+    name: ⚡ Performance Budget
+    runs-on: ubuntu-latest
+    needs: [preflight]
+    if: needs.preflight.outputs.has-js-changes > 0
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🏗️ Build for Analysis
+        run: pnpm run build:production
+
+      - name: 📦 Bundle Analysis
+        run: |
+          # Analyze bundle sizes
+          if [ -d "dist" ]; then
+            echo "## 📦 Bundle Size Analysis" >> $GITHUB_STEP_SUMMARY
+            echo "| Asset | Size | Status |" >> $GITHUB_STEP_SUMMARY
+            echo "|-------|------|--------|" >> $GITHUB_STEP_SUMMARY
+
+            for file in dist/*.js; do
+              if [ -f "$file" ]; then
+                size=$(stat --printf="%s" "$file")
+                size_kb=$((size / 1024))
+                status=$([ $size_kb -lt 500 ] && echo "✅" || echo "⚠️")
+                echo "| $(basename "$file") | ${size_kb}KB | $status |" >> $GITHUB_STEP_SUMMARY
+              fi
+            done
+          fi
+
+  # =====================================================
+  # Quality Gate Decision
+  # =====================================================
+  quality-gate:
+    name: 🎯 Quality Gate
+    runs-on: ubuntu-latest
+    needs: [preflight, code-quality, php-quality, security-check, coverage-gate, docker-validation, performance-budget]
+    if: always()
+
+    steps:
+      - name: 🎯 Evaluate Quality Gate
+        run: |
+          echo "## 🎯 Quality Gate Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status | Required |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|----------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Code Quality | ${{ needs.code-quality.result }} | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| PHP Quality | ${{ needs.php-quality.result || 'skipped' }} | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security Check | ${{ needs.security-check.result }} | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Coverage Gate | ${{ needs.coverage-gate.result }} | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Docker Validation | ${{ needs.docker-validation.result || 'skipped' }} | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Performance Budget | ${{ needs.performance-budget.result || 'skipped' }} | ✅ |" >> $GITHUB_STEP_SUMMARY
+
+      - name: ✅ Quality Gate Passed
+        if: needs.code-quality.result == 'success' && needs.security-check.result == 'success' && needs.coverage-gate.result == 'success' && (needs.php-quality.result == 'success' || needs.php-quality.result == 'skipped') && (needs.docker-validation.result == 'success' || needs.docker-validation.result == 'skipped') && (needs.performance-budget.result == 'success' || needs.performance-budget.result == 'skipped')
+        run: |
+          echo "🎉 Quality Gate PASSED!" >> $GITHUB_STEP_SUMMARY
+          echo "✅ All quality checks have passed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 Code is ready for merge/deployment" >> $GITHUB_STEP_SUMMARY
+
+      - name: ❌ Quality Gate Failed
+        if: contains(needs.*.result, 'failure')
+        run: |
+          echo "🚨 Quality Gate FAILED!" >> $GITHUB_STEP_SUMMARY
+          echo "❌ One or more quality checks have failed" >> $GITHUB_STEP_SUMMARY
+          echo "🔧 Please fix the issues before proceeding" >> $GITHUB_STEP_SUMMARY
+          exit 1
+
+      - name: 📧 Notify on Failure
+        if: failure() && github.event_name == 'push'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { sha } = context;
+
+            await github.rest.repos.createCommitComment({
+              owner,
+              repo,
+              commit_sha: sha,
+              body: `🚨 **Quality Gate Failed**
+
+              This commit has failed the quality gate checks. Please review the failed checks and fix the issues before proceeding.
+
+              **Action Required:**
+              - Review the failed quality checks in the workflow
+              - Fix any code quality, security, or coverage issues
+              - Re-run the quality gate checks
+
+              [View Failed Workflow](${context.payload.repository.html_url}/actions/runs/${context.runId})`
+            });

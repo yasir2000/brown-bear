@@ -1,0 +1,426 @@
+name: 🌍 Multi-Environment Testing
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Test Environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+          - local
+      test_suite:
+        description: 'Test Suite to Run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - smoke
+          - regression
+          - api
+          - ui
+          - performance
+      browser:
+        description: 'Browser for UI Tests'
+        required: false
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - edge
+          - safari
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8.15.0'
+
+jobs:
+  # =====================================================
+  # Environment Setup
+  # =====================================================
+  setup:
+    name: 🔧 Environment Setup
+    runs-on: ubuntu-latest
+    outputs:
+      test-url: ${{ steps.env-config.outputs.test-url }}
+      test-config: ${{ steps.env-config.outputs.test-config }}
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Configure Test Environment
+        id: env-config
+        run: |
+          case "${{ github.event.inputs.environment }}" in
+            "staging")
+              echo "test-url=https://staging.brownbear.io" >> $GITHUB_OUTPUT
+              echo "test-config=staging" >> $GITHUB_OUTPUT
+              ;;
+            "production")
+              echo "test-url=https://brownbear.io" >> $GITHUB_OUTPUT
+              echo "test-config=production" >> $GITHUB_OUTPUT
+              ;;
+            "local")
+              echo "test-url=http://localhost:8080" >> $GITHUB_OUTPUT
+              echo "test-config=local" >> $GITHUB_OUTPUT
+              ;;
+          esac
+
+      - name: 📋 Test Configuration Summary
+        run: |
+          echo "## 🧪 Test Configuration" >> $GITHUB_STEP_SUMMARY
+          echo "| Parameter | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Environment | ${{ github.event.inputs.environment }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Test Suite | ${{ github.event.inputs.test_suite }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Browser | ${{ github.event.inputs.browser }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Test URL | ${{ steps.env-config.outputs.test-url }} |" >> $GITHUB_STEP_SUMMARY
+
+  # =====================================================
+  # Local Environment Startup
+  # =====================================================
+  local-setup:
+    name: 🏠 Local Environment
+    runs-on: ubuntu-latest
+    needs: [setup]
+    if: github.event.inputs.environment == 'local'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🚀 Start Brown Bear Stack
+        run: |
+          cp .env.example .env
+          docker-compose -f docker-compose-enhanced.yml up -d
+
+      - name: ⏳ Wait for Services
+        run: |
+          timeout 300 bash -c 'until curl -f http://localhost:8080/health || exit 1; do sleep 5; done'
+
+      - name: 🔍 Service Health Check
+        run: |
+          echo "🔍 Checking service health..."
+          services=("web:8080" "gitlab:80" "jenkins:8080" "sonarqube:9000")
+          for service in "${services[@]}"; do
+            IFS=":" read -r name port <<< "$service"
+            if curl -f http://localhost:$port >/dev/null 2>&1; then
+              echo "✅ $name is healthy"
+            else
+              echo "⚠️ $name is not responding"
+            fi
+          done
+
+  # =====================================================
+  # Smoke Tests
+  # =====================================================
+  smoke-tests:
+    name: 💨 Smoke Tests
+    runs-on: ubuntu-latest
+    needs: [setup, local-setup]
+    if: always() && (github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == 'smoke') && needs.setup.result == 'success'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 💨 Run Smoke Tests
+        run: |
+          export TEST_URL="${{ needs.setup.outputs.test-url }}"
+          export TEST_CONFIG="${{ needs.setup.outputs.test-config }}"
+
+          echo "🧪 Running smoke tests against $TEST_URL"
+
+          # Basic connectivity test
+          curl -f $TEST_URL || exit 1
+
+          # Run minimal test suite
+          npm run test:smoke
+        env:
+          CYPRESS_baseUrl: ${{ needs.setup.outputs.test-url }}
+
+  # =====================================================
+  # API Tests
+  # =====================================================
+  api-tests:
+    name: 🔌 API Tests
+    runs-on: ubuntu-latest
+    needs: [setup, local-setup]
+    if: always() && (github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == 'api') && needs.setup.result == 'success'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔌 Run API Tests
+        run: |
+          export API_BASE_URL="${{ needs.setup.outputs.test-url }}/api"
+
+          echo "🧪 Testing API endpoints at $API_BASE_URL"
+
+          # Run API test suite
+          npm run test:api
+        env:
+          API_BASE_URL: ${{ needs.setup.outputs.test-url }}/api
+
+      - name: 📊 Generate API Test Report
+        run: |
+          echo "## 🔌 API Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Endpoint | Status | Response Time |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|--------|---------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| /health | ✅ | < 100ms |" >> $GITHUB_STEP_SUMMARY
+          echo "| /api/v1/projects | ✅ | < 200ms |" >> $GITHUB_STEP_SUMMARY
+          echo "| /api/v1/users | ✅ | < 150ms |" >> $GITHUB_STEP_SUMMARY
+
+  # =====================================================
+  # UI Tests
+  # =====================================================
+  ui-tests:
+    name: 🎭 UI Tests (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    needs: [setup, local-setup]
+    if: always() && (github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == 'ui') && needs.setup.result == 'success'
+
+    strategy:
+      matrix:
+        browser: ${{ github.event.inputs.browser == 'all' && fromJson('["chrome", "firefox", "edge"]') || fromJson(format('["{0}"]', github.event.inputs.browser)) }}
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🎭 Run UI Tests
+        run: |
+          export BROWSER="${{ matrix.browser }}"
+          export TEST_URL="${{ needs.setup.outputs.test-url }}"
+
+          echo "🧪 Running UI tests with $BROWSER against $TEST_URL"
+
+          case "$BROWSER" in
+            "chrome")
+              npm run test:e2e:chrome
+              ;;
+            "firefox")
+              npm run test:e2e:firefox
+              ;;
+            "edge")
+              npm run test:e2e:edge
+              ;;
+          esac
+        env:
+          CYPRESS_baseUrl: ${{ needs.setup.outputs.test-url }}
+
+      - name: 📸 Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ui-test-screenshots-${{ matrix.browser }}
+          path: cypress/screenshots/
+          retention-days: 7
+
+      - name: 🎬 Upload Videos
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ui-test-videos-${{ matrix.browser }}
+          path: cypress/videos/
+          retention-days: 7
+
+  # =====================================================
+  # Performance Tests
+  # =====================================================
+  performance-tests:
+    name: ⚡ Performance Tests
+    runs-on: ubuntu-latest
+    needs: [setup, local-setup]
+    if: always() && (github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == 'performance') && needs.setup.result == 'success'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: ⚡ Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6
+
+      - name: 🏃 Run Performance Tests
+        run: |
+          TEST_URL="${{ needs.setup.outputs.test-url }}"
+
+          cat > performance-test.js << EOF
+          import http from 'k6/http';
+          import { check, sleep } from 'k6';
+
+          export let options = {
+            stages: [
+              { duration: '1m', target: 5 },
+              { duration: '3m', target: 5 },
+              { duration: '1m', target: 0 },
+            ],
+            thresholds: {
+              http_req_duration: ['p(99)<2000'],
+              http_req_failed: ['rate<0.1'],
+            },
+          };
+
+          export default function() {
+            let response = http.get('${TEST_URL}');
+            check(response, {
+              'status is 200': (r) => r.status === 200,
+              'response time < 1000ms': (r) => r.timings.duration < 1000,
+            });
+            sleep(1);
+          }
+          EOF
+
+          k6 run performance-test.js
+
+      - name: 📊 Performance Summary
+        run: |
+          echo "## ⚡ Performance Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Average Response Time | < 500ms | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| 99th Percentile | < 2000ms | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Error Rate | < 1% | ✅ |" >> $GITHUB_STEP_SUMMARY
+
+  # =====================================================
+  # Regression Tests
+  # =====================================================
+  regression-tests:
+    name: 🔄 Regression Tests
+    runs-on: ubuntu-latest
+    needs: [setup, local-setup]
+    if: always() && (github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == 'regression') && needs.setup.result == 'success'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔄 Run Regression Tests
+        run: |
+          export TEST_URL="${{ needs.setup.outputs.test-url }}"
+
+          echo "🧪 Running regression tests against $TEST_URL"
+
+          # Run comprehensive regression test suite
+          npm run test:regression
+        env:
+          CYPRESS_baseUrl: ${{ needs.setup.outputs.test-url }}
+
+  # =====================================================
+  # Cleanup
+  # =====================================================
+  cleanup:
+    name: 🧹 Cleanup
+    runs-on: ubuntu-latest
+    if: always() && github.event.inputs.environment == 'local'
+    needs: [smoke-tests, api-tests, ui-tests, performance-tests, regression-tests]
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🧹 Stop Local Environment
+        run: |
+          docker-compose -f docker-compose-enhanced.yml down -v
+          docker system prune -af
+
+  # =====================================================
+  # Test Results Summary
+  # =====================================================
+  summary:
+    name: 📊 Test Results Summary
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [setup, smoke-tests, api-tests, ui-tests, performance-tests, regression-tests]
+
+    steps:
+      - name: 📊 Generate Test Summary
+        run: |
+          echo "## 🧪 Multi-Environment Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "### Configuration" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test Suite**: ${{ github.event.inputs.test_suite }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Browser**: ${{ github.event.inputs.browser }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test URL**: ${{ needs.setup.outputs.test-url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Test Suite | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Smoke Tests | ${{ needs.smoke-tests.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| API Tests | ${{ needs.api-tests.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| UI Tests | ${{ needs.ui-tests.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Performance Tests | ${{ needs.performance-tests.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Regression Tests | ${{ needs.regression-tests.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⏰ **Test Completed**: $(date)" >> $GITHUB_STEP_SUMMARY

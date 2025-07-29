@@ -1,0 +1,433 @@
+name: 🚀 Continuous Integration
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8.15.0'
+  PHP_VERSION: '8.0'
+
+jobs:
+  # =====================================================
+  # Code Quality & Security Checks
+  # =====================================================
+  quality-checks:
+    name: 🔍 Quality & Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm ci:install
+
+      - name: 🔍 Lint Code
+        run: pnpm run lint
+
+      - name: 🎨 Check Code Formatting
+        run: pnpm run format:check
+
+      - name: 🔒 Security Audit
+        run: pnpm run security:audit
+        continue-on-error: true
+
+      - name: 🛡️ CodeQL Analysis
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, php
+
+      - name: 🛡️ Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+  # =====================================================
+  # TypeScript Type Checking
+  # =====================================================
+  typecheck:
+    name: 🔤 TypeScript Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm ci:install
+
+      - name: 🔤 TypeScript Type Check
+        run: pnpm run typecheck
+
+  # =====================================================
+  # Unit Tests
+  # =====================================================
+  unit-tests:
+    name: 🧪 Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    strategy:
+      matrix:
+        node-version: ['16', '18', '20']
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm ci:install
+
+      - name: 🧪 Run Unit Tests
+        run: pnpm run test:unit --coverage
+
+      - name: 📊 Upload Coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage/lcov.info
+          flags: unit-tests
+          name: unit-tests-${{ matrix.node-version }}
+
+  # =====================================================
+  # PHP Backend Tests
+  # =====================================================
+  php-tests:
+    name: 🐘 PHP Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: tuleap123!
+          MYSQL_DATABASE: tuleap_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, json, pcre, session, spl, tokenizer
+          coverage: xdebug
+
+      - name: 📦 Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: 📦 Cache Composer Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: 📦 Install PHP Dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: 🧪 Run PHP Tests
+        run: |
+          vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-clover=coverage.xml
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: tuleap_test
+          DB_USERNAME: root
+          DB_PASSWORD: tuleap123!
+
+      - name: 📊 Upload PHP Coverage
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          flags: php-tests
+          name: php-tests
+
+  # =====================================================
+  # Integration Tests
+  # =====================================================
+  integration-tests:
+    name: 🔗 Integration Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: tuleap123!
+          MYSQL_DATABASE: tuleap_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+      redis:
+        image: redis:6
+        ports:
+          - 6379:6379
+        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, json, pcre, session, spl, tokenizer
+
+      - name: 📦 Install Dependencies
+        run: |
+          pnpm ci:install
+          composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: 🏗️ Build Application
+        run: pnpm run build:production
+
+      - name: 🔗 Run Integration Tests
+        run: pnpm run test:integration
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: tuleap_test
+          DB_USERNAME: root
+          DB_PASSWORD: tuleap123!
+          REDIS_HOST: 127.0.0.1
+          REDIS_PORT: 6379
+
+  # =====================================================
+  # Build & Package
+  # =====================================================
+  build:
+    name: 🏗️ Build & Package
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [quality-checks, typecheck]
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm ci:install
+
+      - name: 🏗️ Build Production
+        run: pnpm run ci:build
+
+      - name: 📦 Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist/
+            build/
+            src/www/assets/
+          retention-days: 7
+
+  # =====================================================
+  # Docker Build & Test
+  # =====================================================
+  docker:
+    name: 🐳 Docker Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: [build]
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 📥 Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+
+      - name: 🏗️ Build Docker Images
+        run: |
+          docker-compose -f docker-compose-enhanced.yml build web
+          docker-compose -f docker-compose-enhanced.yml build realtime
+
+      - name: 🧪 Test Docker Compose
+        run: |
+          docker-compose -f docker-compose-enhanced.yml config
+          docker-compose -f docker-compose-enhanced.yml up -d db redis
+          sleep 30
+          docker-compose -f docker-compose-enhanced.yml up -d web
+          sleep 60
+          docker-compose -f docker-compose-enhanced.yml ps
+          docker-compose -f docker-compose-enhanced.yml logs web
+          docker-compose -f docker-compose-enhanced.yml down
+
+      - name: 🧹 Cleanup
+        if: always()
+        run: |
+          docker-compose -f docker-compose-enhanced.yml down -v
+          docker system prune -af
+
+  # =====================================================
+  # End-to-End Tests
+  # =====================================================
+  e2e-tests:
+    name: 🎭 E2E Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    needs: [docker]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 📦 Install Dependencies
+        run: pnpm ci:install
+
+      - name: 🚀 Start Application Stack
+        run: |
+          cp .env.example .env
+          docker-compose -f docker-compose-enhanced.yml up -d
+
+      - name: ⏳ Wait for Services
+        run: |
+          timeout 300 bash -c 'until curl -f http://localhost:8080/health || exit 1; do sleep 5; done'
+
+      - name: 🎭 Run E2E Tests
+        run: pnpm run test:e2e
+        env:
+          CYPRESS_baseUrl: http://localhost:8080
+
+      - name: 📸 Upload E2E Screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: e2e-screenshots
+          path: cypress/screenshots/
+          retention-days: 7
+
+      - name: 🎬 Upload E2E Videos
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: e2e-videos
+          path: cypress/videos/
+          retention-days: 7
+
+      - name: 🧹 Cleanup
+        if: always()
+        run: docker-compose -f docker-compose-enhanced.yml down -v
+
+  # =====================================================
+  # Results Summary
+  # =====================================================
+  ci-results:
+    name: ✅ CI Results Summary
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [quality-checks, typecheck, unit-tests, php-tests, integration-tests, build, docker, e2e-tests]
+
+    steps:
+      - name: 📊 Check Results
+        run: |
+          echo "## 🚀 CI/CD Pipeline Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Quality Checks | ${{ needs.quality-checks.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| TypeScript | ${{ needs.typecheck.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Unit Tests | ${{ needs.unit-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| PHP Tests | ${{ needs.php-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Integration Tests | ${{ needs.integration-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Docker | ${{ needs.docker.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| E2E Tests | ${{ needs.e2e-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: ❌ Fail if any job failed
+        if: contains(needs.*.result, 'failure')
+        run: exit 1

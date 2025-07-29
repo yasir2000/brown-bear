@@ -1,0 +1,530 @@
+name: 🔒 Security Audit
+
+on:
+  schedule:
+    # Run weekly security audit on Sundays at 3 AM UTC
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'composer.json'
+      - 'composer.lock'
+      - '.github/workflows/security.yml'
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8.15.0'
+  PHP_VERSION: '8.0'
+
+jobs:
+  # =====================================================
+  # Dependency Vulnerability Scanning
+  # =====================================================
+  dependency-scan:
+    name: 📦 Dependency Scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          composer install --no-dev --optimize-autoloader
+
+      - name: 🔍 JavaScript Security Audit
+        run: |
+          echo "🔍 Scanning JavaScript dependencies..."
+          pnpm audit --audit-level moderate --json > js-audit.json || true
+
+          # Count vulnerabilities
+          if [ -s js-audit.json ]; then
+            echo "⚠️ JavaScript vulnerabilities detected" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No JavaScript vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 🔍 PHP Security Audit
+        run: |
+          echo "🔍 Scanning PHP dependencies..."
+          composer audit --format=json > php-audit.json || true
+
+          if [ -s php-audit.json ]; then
+            echo "⚠️ PHP vulnerabilities detected" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No PHP vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 📤 Upload Audit Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-audit-reports
+          path: |
+            js-audit.json
+            php-audit.json
+          retention-days: 90
+
+  # =====================================================
+  # Container Security Scanning
+  # =====================================================
+  container-scan:
+    name: 🐳 Container Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    strategy:
+      matrix:
+        image: [web, realtime, reverse-proxy]
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🏗️ Build Container Image
+        run: |
+          docker build -t brownbear/${{ matrix.image }}:security-scan -f tools/docker/${{ matrix.image }}/Dockerfile .
+
+      - name: 🛡️ Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: brownbear/${{ matrix.image }}:security-scan
+          format: sarif
+          output: trivy-${{ matrix.image }}.sarif
+
+      - name: 📤 Upload Trivy Scan Results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-${{ matrix.image }}.sarif
+          category: container-${{ matrix.image }}
+
+      - name: 🛡️ Run Grype Vulnerability Scanner
+        uses: anchore/scan-action@v3
+        with:
+          image: brownbear/${{ matrix.image }}:security-scan
+          fail-build: false
+          severity-cutoff: medium
+
+      - name: 📊 Container Security Summary
+        run: |
+          echo "## 🐳 Container Security: ${{ matrix.image }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Trivy scan completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Grype scan completed" >> $GITHUB_STEP_SUMMARY
+          echo "📁 Results uploaded to Security tab" >> $GITHUB_STEP_SUMMARY
+
+  # =====================================================
+  # Secret Scanning
+  # =====================================================
+  secret-scan:
+    name: 🕵️ Secret Scanning
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🕵️ TruffleHog Secret Scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified --json --output=trufflehog-results.json
+
+      - name: 🔍 GitLeaks Secret Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📊 Secret Scan Summary
+        run: |
+          echo "## 🕵️ Secret Scanning Results" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f trufflehog-results.json ] && [ -s trufflehog-results.json ]; then
+            echo "⚠️ Potential secrets detected by TruffleHog" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No secrets detected by TruffleHog" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "✅ GitLeaks scan completed" >> $GITHUB_STEP_SUMMARY
+
+      - name: 📤 Upload Secret Scan Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-scan-results
+          path: |
+            trufflehog-results.json
+            gitleaks-report.json
+          retention-days: 90
+
+  # =====================================================
+  # Static Application Security Testing (SAST)
+  # =====================================================
+  sast-scan:
+    name: 🔬 SAST Scanning
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      security-events: write
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🛡️ Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, php
+          queries: security-and-quality
+
+      - name: 🏗️ Build Application
+        run: pnpm run build
+
+      - name: 🛡️ Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript"
+
+      - name: 🔍 ESLint Security Scan
+        run: |
+          pnpm run lint:security || true
+          echo "✅ ESLint security scan completed" >> $GITHUB_STEP_SUMMARY
+
+      - name: 🔍 Semgrep Security Scan
+        uses: semgrep/semgrep-action@v1
+        continue-on-error: true
+
+  # =====================================================
+  # Infrastructure Security
+  # =====================================================
+  infrastructure-scan:
+    name: 🏗️ Infrastructure Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔍 Terraform Security Scan
+        if: hashFiles('**/*.tf') != ''
+        uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          soft_fail: true
+
+      - name: 🔍 Kubernetes Security Scan
+        if: hashFiles('**/*.yaml', '**/*.yml') != ''
+        run: |
+          # Install kubesec
+          curl -sSX GET "https://api.github.com/repos/controlplaneio/kubesec/releases/latest" \
+            | grep '"browser_download_url":' \
+            | grep linux \
+            | cut -d '"' -f 4 \
+            | xargs curl -sSL -o kubesec
+          chmod +x kubesec
+
+          # Scan Kubernetes manifests
+          find . -name "*.yaml" -o -name "*.yml" | grep -E "(k8s|kubernetes|manifests)" | while read file; do
+            if [ -f "$file" ]; then
+              echo "Scanning $file"
+              ./kubesec scan "$file" || true
+            fi
+          done
+
+      - name: 🔍 Docker Compose Security Scan
+        run: |
+          echo "🔍 Analyzing Docker Compose security..."
+
+          # Check for security issues in docker-compose files
+          find . -name "docker-compose*.yml" | while read file; do
+            echo "Analyzing $file"
+
+            # Check for privileged containers
+            if grep -q "privileged.*true" "$file"; then
+              echo "⚠️ Privileged containers found in $file"
+            fi
+
+            # Check for host network mode
+            if grep -q "network_mode.*host" "$file"; then
+              echo "⚠️ Host network mode found in $file"
+            fi
+
+            # Check for bind mounts to sensitive paths
+            if grep -qE "/(etc|proc|sys):" "$file"; then
+              echo "⚠️ Potentially dangerous bind mounts found in $file"
+            fi
+          done
+
+      - name: 📊 Infrastructure Security Summary
+        run: |
+          echo "## 🏗️ Infrastructure Security Summary" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Docker Compose security analysis completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Kubernetes manifest scanning completed" >> $GITHUB_STEP_SUMMARY
+
+  # =====================================================
+  # License Compliance
+  # =====================================================
+  license-compliance:
+    name: ⚖️ License Compliance
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ⚖️ Check JavaScript Licenses
+        run: |
+          echo "⚖️ Checking JavaScript dependency licenses..."
+
+          # Install license checker
+          npm install -g license-checker
+
+          # Generate license report
+          license-checker --json --out js-licenses.json --excludePrivatePackages
+
+          # Check for problematic licenses
+          if license-checker --failOn 'GPL;AGPL;LGPL;CPAL;OSL' --excludePrivatePackages; then
+            echo "✅ No problematic licenses found in JavaScript dependencies" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Potentially problematic licenses detected in JavaScript dependencies" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: ⚖️ Check PHP Licenses
+        run: |
+          echo "⚖️ Checking PHP dependency licenses..."
+
+          # Check composer.lock for license information
+          if [ -f composer.lock ]; then
+            # Extract license information from composer.lock
+            jq -r '.packages[] | "\(.name): \(.license // ["Unknown"])"' composer.lock > php-licenses.txt
+            echo "✅ PHP license information extracted" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ composer.lock not found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 📤 Upload License Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: license-reports
+          path: |
+            js-licenses.json
+            php-licenses.txt
+          retention-days: 90
+
+  # =====================================================
+  # Security Policy Validation
+  # =====================================================
+  policy-validation:
+    name: 📋 Policy Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 📋 Check Security Policy
+        run: |
+          echo "📋 Validating security policies..."
+
+          # Check if SECURITY.md exists
+          if [ -f SECURITY.md ]; then
+            echo "✅ SECURITY.md file found" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ SECURITY.md file missing" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check if .env.example exists and doesn't contain secrets
+          if [ -f .env.example ]; then
+            if grep -qE "(password|secret|key|token).*=" .env.example; then
+              if grep -qE "(password|secret|key|token).*=\s*$" .env.example; then
+                echo "✅ .env.example contains placeholder values" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "⚠️ .env.example may contain actual secrets" >> $GITHUB_STEP_SUMMARY
+              fi
+            else
+              echo "✅ .env.example security check passed" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+
+          # Check for common security files
+          security_files=("SECURITY.md" ".github/SECURITY.md" "NOTICE" "LICENSE")
+          for file in "${security_files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file found" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "⚠️ $file missing" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+  # =====================================================
+  # Security Report Generation
+  # =====================================================
+  security-report:
+    name: 📄 Security Report
+    runs-on: ubuntu-latest
+    needs: [dependency-scan, container-scan, secret-scan, sast-scan, infrastructure-scan, license-compliance, policy-validation]
+    if: always()
+
+    steps:
+      - name: 📥 Download All Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: 📄 Generate Security Report
+        run: |
+          echo "# 🔒 Security Audit Report" > security-report.md
+          echo "" >> security-report.md
+          echo "**Date:** $(date)" >> security-report.md
+          echo "**Repository:** ${{ github.repository }}" >> security-report.md
+          echo "**Commit:** ${{ github.sha }}" >> security-report.md
+          echo "" >> security-report.md
+
+          echo "## 📊 Scan Results Summary" >> security-report.md
+          echo "" >> security-report.md
+          echo "| Component | Status | Details |" >> security-report.md
+          echo "|-----------|--------|---------|" >> security-report.md
+          echo "| Dependency Scan | ${{ needs.dependency-scan.result }} | JavaScript & PHP dependencies |" >> security-report.md
+          echo "| Container Scan | ${{ needs.container-scan.result }} | Docker images |" >> security-report.md
+          echo "| Secret Scan | ${{ needs.secret-scan.result }} | TruffleHog & GitLeaks |" >> security-report.md
+          echo "| SAST Scan | ${{ needs.sast-scan.result }} | CodeQL & Semgrep |" >> security-report.md
+          echo "| Infrastructure | ${{ needs.infrastructure-scan.result }} | Docker Compose & K8s |" >> security-report.md
+          echo "| License Compliance | ${{ needs.license-compliance.result }} | License validation |" >> security-report.md
+          echo "| Policy Validation | ${{ needs.policy-validation.result }} | Security policies |" >> security-report.md
+          echo "" >> security-report.md
+
+          echo "## 🎯 Recommendations" >> security-report.md
+          echo "" >> security-report.md
+          echo "- ✅ Keep dependencies updated regularly" >> security-report.md
+          echo "- ✅ Review and rotate secrets periodically" >> security-report.md
+          echo "- ✅ Monitor security advisories for used components" >> security-report.md
+          echo "- ✅ Implement security training for development team" >> security-report.md
+          echo "- ✅ Regular penetration testing" >> security-report.md
+
+      - name: 📤 Upload Security Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: comprehensive-security-report
+          path: security-report.md
+          retention-days: 365
+
+      - name: 📢 Security Summary
+        run: |
+          echo "## 🔒 Security Audit Completed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Results Overview" >> $GITHUB_STEP_SUMMARY
+          echo "- **Dependency Scan**: ${{ needs.dependency-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Container Security**: ${{ needs.container-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Secret Detection**: ${{ needs.secret-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Static Analysis**: ${{ needs.sast-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Infrastructure**: ${{ needs.infrastructure-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **License Compliance**: ${{ needs.license-compliance.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Policy Validation**: ${{ needs.policy-validation.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📄 **Comprehensive security report generated and uploaded**" >> $GITHUB_STEP_SUMMARY
+
+      - name: 🚨 Create Security Issue on Critical Findings
+        if: contains(needs.*.result, 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `🚨 Security Audit Alert - ${new Date().toISOString().split('T')[0]}`;
+            const body = `
+            ## 🚨 Security Audit Alert
+
+            **Date**: ${new Date().toISOString()}
+            **Workflow**: ${{ github.run_id }}
+
+            Critical security issues have been detected during the automated security audit.
+
+            ### 🔍 Failed Security Checks:
+            ${JSON.stringify({
+              dependencyScan: '${{ needs.dependency-scan.result }}',
+              containerScan: '${{ needs.container-scan.result }}',
+              secretScan: '${{ needs.secret-scan.result }}',
+              sastScan: '${{ needs.sast-scan.result }}',
+              infrastructureScan: '${{ needs.infrastructure-scan.result }}',
+              licenseCompliance: '${{ needs.license-compliance.result }}',
+              policyValidation: '${{ needs.policy-validation.result }}'
+            }, null, 2)}
+
+            ### 🚨 Immediate Actions Required:
+            1. Review the failed security checks in the workflow
+            2. Address any critical vulnerabilities immediately
+            3. Update dependencies with known security issues
+            4. Remove any exposed secrets or credentials
+            5. Review and update security policies
+
+            ### 📄 Resources:
+            - [Security Workflow Results](${context.payload.repository.html_url}/actions/runs/${context.runId})
+            - [Security Tab](${context.payload.repository.html_url}/security)
+            - [Security Policy](${context.payload.repository.html_url}/security/policy)
+
+            **Priority**: 🔴 High - Address immediately
+            `;
+
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['security', 'critical', 'audit-failure']
+            });

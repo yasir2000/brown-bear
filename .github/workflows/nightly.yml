@@ -1,0 +1,410 @@
+name: 🧪 Nightly Tests
+
+on:
+  schedule:
+    # Run nightly at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8.15.0'
+  PHP_VERSION: '8.0'
+
+jobs:
+  # =====================================================
+  # Full Integration Test Suite
+  # =====================================================
+  full-integration:
+    name: 🔄 Full Integration Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    strategy:
+      matrix:
+        test-suite: [auth, project-management, code-review, ci-cd, monitoring]
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 📦 Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🚀 Start Full Brown Bear Stack
+        run: |
+          cp .env.example .env
+          docker-compose -f docker-compose-enhanced.yml up -d
+
+      - name: ⏳ Wait for All Services
+        run: |
+          echo "⏳ Waiting for services to be ready..."
+          timeout 600 bash -c '
+            services=("web:8080" "gitlab:80" "jenkins:8080" "sonarqube:9000" "nexus:8081" "gerrit:8080")
+            for service in "${services[@]}"; do
+              IFS=":" read -r name port <<< "$service"
+              echo "🔍 Checking $name on port $port..."
+              until curl -f http://localhost:$port/health 2>/dev/null || curl -f http://localhost:$port 2>/dev/null; do
+                echo "⏳ Waiting for $name..."
+                sleep 10
+              done
+              echo "✅ $name is ready"
+            done
+          '
+
+      - name: 🧪 Run ${{ matrix.test-suite }} Integration Tests
+        run: |
+          case "${{ matrix.test-suite }}" in
+            "auth")
+              echo "🔐 Testing authentication flows..."
+              npm run test:integration:auth
+              ;;
+            "project-management")
+              echo "📋 Testing project management features..."
+              npm run test:integration:projects
+              ;;
+            "code-review")
+              echo "👁️ Testing code review workflows..."
+              npm run test:integration:codereview
+              ;;
+            "ci-cd")
+              echo "🚀 Testing CI/CD pipelines..."
+              npm run test:integration:cicd
+              ;;
+            "monitoring")
+              echo "📊 Testing monitoring and metrics..."
+              npm run test:integration:monitoring
+              ;;
+          esac
+
+      - name: 📊 Collect Service Logs
+        if: failure()
+        run: |
+          mkdir -p logs
+          docker-compose -f docker-compose-enhanced.yml logs web > logs/web.log
+          docker-compose -f docker-compose-enhanced.yml logs gitlab > logs/gitlab.log
+          docker-compose -f docker-compose-enhanced.yml logs jenkins > logs/jenkins.log
+          docker-compose -f docker-compose-enhanced.yml logs sonarqube > logs/sonarqube.log
+
+      - name: 📤 Upload Service Logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: service-logs-${{ matrix.test-suite }}
+          path: logs/
+          retention-days: 7
+
+      - name: 🧹 Cleanup
+        if: always()
+        run: docker-compose -f docker-compose-enhanced.yml down -v
+
+  # =====================================================
+  # Performance Testing
+  # =====================================================
+  performance:
+    name: ⚡ Performance Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🚀 Start Application
+        run: |
+          cp .env.example .env
+          docker-compose -f docker-compose-enhanced.yml up -d web db redis
+          sleep 120
+
+      - name: ⚡ Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6
+
+      - name: 🏃 Run Performance Tests
+        run: |
+          cat > performance-test.js << 'EOF'
+          import http from 'k6/http';
+          import { check, sleep } from 'k6';
+
+          export let options = {
+            stages: [
+              { duration: '2m', target: 10 },  // Ramp up
+              { duration: '5m', target: 10 },  // Stay at 10 users
+              { duration: '2m', target: 20 },  // Ramp up to 20 users
+              { duration: '5m', target: 20 },  // Stay at 20 users
+              { duration: '2m', target: 0 },   // Ramp down
+            ],
+            thresholds: {
+              http_req_duration: ['p(99)<1500'], // 99% of requests must complete below 1.5s
+              http_req_failed: ['rate<0.1'],     // Error rate must be below 10%
+            },
+          };
+
+          export default function() {
+            // Test main page
+            let response = http.get('http://localhost:8080/');
+            check(response, {
+              'status is 200': (r) => r.status === 200,
+              'response time < 500ms': (r) => r.timings.duration < 500,
+            });
+
+            sleep(1);
+
+            // Test API endpoint
+            response = http.get('http://localhost:8080/api/health');
+            check(response, {
+              'API status is 200': (r) => r.status === 200,
+              'API response time < 200ms': (r) => r.timings.duration < 200,
+            });
+
+            sleep(1);
+          }
+          EOF
+
+          k6 run performance-test.js
+
+      - name: 🧹 Cleanup
+        if: always()
+        run: docker-compose -f docker-compose-enhanced.yml down -v
+
+  # =====================================================
+  # Security Testing
+  # =====================================================
+  security:
+    name: 🛡️ Security Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🚀 Start Application
+        run: |
+          cp .env.example .env
+          docker-compose -f docker-compose-enhanced.yml up -d web
+          sleep 60
+
+      - name: 🛡️ Install OWASP ZAP
+        run: |
+          docker pull owasp/zap2docker-stable
+
+      - name: 🔍 Run Security Scan
+        run: |
+          docker run -v $(pwd):/zap/wrk/:rw \
+            -t owasp/zap2docker-stable \
+            zap-baseline.py -t http://host.docker.internal:8080 \
+            -J zap-report.json \
+            -w zap-report.md
+
+      - name: 📤 Upload Security Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: |
+            zap-report.json
+            zap-report.md
+          retention-days: 30
+
+      - name: 🧹 Cleanup
+        if: always()
+        run: docker-compose -f docker-compose-enhanced.yml down -v
+
+  # =====================================================
+  # Dependency Audit
+  # =====================================================
+  dependency-audit:
+    name: 📦 Dependency Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          composer install --no-dev --optimize-autoloader
+
+      - name: 🔍 Audit JavaScript Dependencies
+        run: |
+          pnpm audit --audit-level moderate --json > npm-audit.json || true
+
+      - name: 🔍 Audit PHP Dependencies
+        run: |
+          composer audit --format=json > composer-audit.json || true
+
+      - name: 📊 Dependency Report
+        run: |
+          echo "## 📦 Dependency Audit Report" >> $GITHUB_STEP_SUMMARY
+          echo "### JavaScript Dependencies" >> $GITHUB_STEP_SUMMARY
+          if [[ -s npm-audit.json ]]; then
+            echo "⚠️ Issues found in JavaScript dependencies" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No issues found in JavaScript dependencies" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "### PHP Dependencies" >> $GITHUB_STEP_SUMMARY
+          if [[ -s composer-audit.json ]]; then
+            echo "⚠️ Issues found in PHP dependencies" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No issues found in PHP dependencies" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 📤 Upload Audit Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-audit
+          path: |
+            npm-audit.json
+            composer-audit.json
+          retention-days: 30
+
+  # =====================================================
+  # Database Migration Tests
+  # =====================================================
+  database-migration:
+    name: 🗃️ Database Migration Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: tuleap123!
+          MYSQL_DATABASE: tuleap_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql
+
+      - name: 📦 Install Dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: 🗃️ Test Database Migrations
+        run: |
+          echo "🗃️ Testing database schema migrations..."
+
+          # Run migrations
+          php src/forgeupgrade/forgeupgrade.php check-update
+          php src/forgeupgrade/forgeupgrade.php update
+
+          # Verify schema integrity
+          mysql -h 127.0.0.1 -u root -ptuleap123! tuleap_test -e "SHOW TABLES;" | wc -l
+
+          echo "✅ Database migrations completed successfully"
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: tuleap_test
+          DB_USERNAME: root
+          DB_PASSWORD: tuleap123!
+
+  # =====================================================
+  # Results Notification
+  # =====================================================
+  notify-results:
+    name: 📢 Test Results Summary
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [full-integration, performance, security, dependency-audit, database-migration]
+
+    steps:
+      - name: 📊 Generate Summary
+        run: |
+          echo "## 🧪 Nightly Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Test Suite | Status | Duration |" >> $GITHUB_STEP_SUMMARY
+          echo "|------------|--------|----------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Full Integration | ${{ needs.full-integration.result }} | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| Performance | ${{ needs.performance.result }} | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | ${{ needs.security.result }} | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| Dependency Audit | ${{ needs.dependency-audit.result }} | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| Database Migration | ${{ needs.database-migration.result }} | - |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⏰ **Test Date**: $(date)" >> $GITHUB_STEP_SUMMARY
+
+      - name: 🚨 Create Issue on Failure
+        if: contains(needs.*.result, 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `🚨 Nightly Tests Failed - ${new Date().toISOString().split('T')[0]}`;
+            const body = `
+            ## 🚨 Nightly Test Failure Report
+
+            **Date**: ${new Date().toISOString()}
+            **Workflow**: ${{ github.run_id }}
+
+            ### Failed Jobs:
+            ${context.payload.workflow_run && JSON.stringify({
+              fullIntegration: '${{ needs.full-integration.result }}',
+              performance: '${{ needs.performance.result }}',
+              security: '${{ needs.security.result }}',
+              dependencyAudit: '${{ needs.dependency-audit.result }}',
+              databaseMigration: '${{ needs.database-migration.result }}'
+            }, null, 2)}
+
+            ### Action Required:
+            Please investigate the failed tests and fix any issues.
+
+            **Workflow Run**: [View Details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            `;
+
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['bug', 'ci', 'nightly-test-failure']
+            });

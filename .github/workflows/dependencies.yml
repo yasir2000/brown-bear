@@ -1,0 +1,462 @@
+name: 📦 Dependencies Update
+
+on:
+  schedule:
+    # Run weekly on Mondays at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      update_type:
+        description: 'Update Type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - all
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8.15.0'
+  PHP_VERSION: '8.0'
+
+jobs:
+  # =====================================================
+  # Dependency Analysis
+  # =====================================================
+  analyze-dependencies:
+    name: 🔍 Analyze Dependencies
+    runs-on: ubuntu-latest
+    outputs:
+      js-updates: ${{ steps.check-js.outputs.updates }}
+      php-updates: ${{ steps.check-php.outputs.updates }}
+      security-updates: ${{ steps.security.outputs.updates }}
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          composer install --no-dev --optimize-autoloader
+
+      - name: 🔍 Check JavaScript Updates
+        id: check-js
+        run: |
+          echo "🔍 Checking for JavaScript/TypeScript updates..."
+
+          # Check for outdated packages
+          pnpm outdated --format json > js-outdated.json || true
+
+          if [ -s js-outdated.json ]; then
+            echo "updates=true" >> $GITHUB_OUTPUT
+            echo "📦 JavaScript updates available" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "updates=false" >> $GITHUB_OUTPUT
+            echo "✅ All JavaScript packages are up to date" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 🔍 Check PHP Updates
+        id: check-php
+        run: |
+          echo "🔍 Checking for PHP updates..."
+
+          # Check for outdated packages
+          composer outdated --format=json > php-outdated.json || true
+
+          if [ -s php-outdated.json ]; then
+            echo "updates=true" >> $GITHUB_OUTPUT
+            echo "📦 PHP updates available" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "updates=false" >> $GITHUB_OUTPUT
+            echo "✅ All PHP packages are up to date" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 🛡️ Check Security Updates
+        id: security
+        run: |
+          echo "🛡️ Checking for security updates..."
+
+          # Check for security vulnerabilities
+          pnpm audit --audit-level moderate --json > js-audit.json || true
+          composer audit --format=json > php-audit.json || true
+
+          if [ -s js-audit.json ] || [ -s php-audit.json ]; then
+            echo "updates=true" >> $GITHUB_OUTPUT
+            echo "🚨 Security updates required" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "updates=false" >> $GITHUB_OUTPUT
+            echo "✅ No security vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 📤 Upload Analysis Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-analysis
+          path: |
+            js-outdated.json
+            php-outdated.json
+            js-audit.json
+            php-audit.json
+          retention-days: 30
+
+  # =====================================================
+  # Security Updates (Priority)
+  # =====================================================
+  security-updates:
+    name: 🚨 Security Updates
+    runs-on: ubuntu-latest
+    needs: [analyze-dependencies]
+    if: needs.analyze-dependencies.outputs.security-updates == 'true'
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: 📦 Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          composer install --no-dev --optimize-autoloader
+
+      - name: 🚨 Apply Security Updates
+        run: |
+          echo "🚨 Applying security updates..."
+
+          # Update vulnerable JavaScript packages
+          pnpm audit fix --audit-level moderate || true
+
+          # Update vulnerable PHP packages
+          composer audit --fix || true
+
+          echo "✅ Security updates applied" >> $GITHUB_STEP_SUMMARY
+
+      - name: 🧪 Run Tests
+        run: |
+          pnpm run test:unit
+          pnpm run lint
+
+      - name: 📝 Create Security Update PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "🚨 Security updates - $(date +'%Y-%m-%d')"
+          title: "🚨 Security Updates - $(date +'%Y-%m-%d')"
+          body: |
+            ## 🚨 Security Updates
+
+            This PR contains security updates for vulnerable dependencies.
+
+            ### 🔍 Changes:
+            - Updated JavaScript packages with security vulnerabilities
+            - Updated PHP packages with security vulnerabilities
+
+            ### ✅ Verification:
+            - [x] Tests passing
+            - [x] Linting checks passed
+            - [x] Security vulnerabilities resolved
+
+            **Priority**: 🔴 High - Please review and merge ASAP
+          branch: security-updates-${{ github.run_number }}
+          labels: security,dependencies,high-priority
+
+  # =====================================================
+  # Regular Updates
+  # =====================================================
+  regular-updates:
+    name: 📦 Regular Updates
+    runs-on: ubuntu-latest
+    needs: [analyze-dependencies]
+    if: (needs.analyze-dependencies.outputs.js-updates == 'true' || needs.analyze-dependencies.outputs.php-updates == 'true') && github.event_name == 'workflow_dispatch'
+
+    strategy:
+      matrix:
+        update-type: ['javascript', 'php']
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔧 Setup Node.js
+        if: matrix.update-type == 'javascript'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: 📦 Setup pnpm
+        if: matrix.update-type == 'javascript'
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: 🐘 Setup PHP
+        if: matrix.update-type == 'php'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: 📦 Update JavaScript Dependencies
+        if: matrix.update-type == 'javascript'
+        run: |
+          echo "📦 Updating JavaScript dependencies..."
+
+          case "${{ github.event.inputs.update_type }}" in
+            "patch")
+              pnpm update --latest --depth 0
+              ;;
+            "minor")
+              pnpm update --latest
+              ;;
+            "major")
+              pnpm update --latest --interactive=false
+              ;;
+            "all")
+              pnpm update --latest --interactive=false
+              ;;
+          esac
+
+      - name: 📦 Update PHP Dependencies
+        if: matrix.update-type == 'php'
+        run: |
+          echo "📦 Updating PHP dependencies..."
+
+          case "${{ github.event.inputs.update_type }}" in
+            "patch")
+              composer update --with-dependencies --prefer-lowest
+              ;;
+            "minor")
+              composer update --with-dependencies
+              ;;
+            "major")
+              composer update --with-dependencies --ignore-platform-reqs
+              ;;
+            "all")
+              composer update --with-dependencies --ignore-platform-reqs
+              ;;
+          esac
+
+      - name: 🧪 Run Tests
+        run: |
+          if [ "${{ matrix.update-type }}" == "javascript" ]; then
+            pnpm install
+            pnpm run test:unit
+            pnpm run lint
+            pnpm run typecheck
+          fi
+
+          if [ "${{ matrix.update-type }}" == "php" ]; then
+            composer install
+            vendor/bin/phpunit --configuration tests/phpunit.xml
+          fi
+
+      - name: 📝 Create Update PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "📦 ${{ matrix.update-type }} dependency updates - $(date +'%Y-%m-%d')"
+          title: "📦 ${{ matrix.update-type }} Dependency Updates - $(date +'%Y-%m-%d')"
+          body: |
+            ## 📦 ${{ matrix.update-type }} Dependency Updates
+
+            This PR contains regular dependency updates for ${{ matrix.update-type }} packages.
+
+            ### 🔧 Update Type: ${{ github.event.inputs.update_type }}
+
+            ### ✅ Verification:
+            - [x] Tests passing
+            - [x] Linting checks passed
+            - [x] Type checking passed (JavaScript/TypeScript)
+
+            ### 📋 Review Checklist:
+            - [ ] Check for breaking changes in updated packages
+            - [ ] Verify application functionality
+            - [ ] Review package changelogs for important updates
+
+            **Type**: ${{ github.event.inputs.update_type }} updates
+          branch: ${{ matrix.update-type }}-updates-${{ github.run_number }}
+          labels: dependencies,${{ matrix.update-type }},maintenance
+
+  # =====================================================
+  # Dependency Health Report
+  # =====================================================
+  health-report:
+    name: 📊 Dependency Health Report
+    runs-on: ubuntu-latest
+    needs: [analyze-dependencies]
+    if: always()
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 📥 Download Analysis Results
+        uses: actions/download-artifact@v4
+        with:
+          name: dependency-analysis
+
+      - name: 📊 Generate Health Report
+        run: |
+          echo "# 📦 Dependency Health Report" > dependency-health-report.md
+          echo "" >> dependency-health-report.md
+          echo "**Date:** $(date)" >> dependency-health-report.md
+          echo "**Repository:** ${{ github.repository }}" >> dependency-health-report.md
+          echo "" >> dependency-health-report.md
+
+          echo "## 📊 Summary" >> dependency-health-report.md
+          echo "" >> dependency-health-report.md
+          echo "| Category | Status | Updates Available |" >> dependency-health-report.md
+          echo "|----------|--------|--------------------|" >> dependency-health-report.md
+          echo "| JavaScript/TypeScript | ${{ needs.analyze-dependencies.outputs.js-updates == 'true' && '⚠️ Updates Available' || '✅ Up to Date' }} | ${{ needs.analyze-dependencies.outputs.js-updates }} |" >> dependency-health-report.md
+          echo "| PHP | ${{ needs.analyze-dependencies.outputs.php-updates == 'true' && '⚠️ Updates Available' || '✅ Up to Date' }} | ${{ needs.analyze-dependencies.outputs.php-updates }} |" >> dependency-health-report.md
+          echo "| Security | ${{ needs.analyze-dependencies.outputs.security-updates == 'true' && '🚨 Action Required' || '✅ Secure' }} | ${{ needs.analyze-dependencies.outputs.security-updates }} |" >> dependency-health-report.md
+          echo "" >> dependency-health-report.md
+
+          # Add detailed analysis if files exist
+          if [ -f js-outdated.json ] && [ -s js-outdated.json ]; then
+            echo "## 📦 JavaScript/TypeScript Updates Available" >> dependency-health-report.md
+            echo "\`\`\`json" >> dependency-health-report.md
+            cat js-outdated.json >> dependency-health-report.md
+            echo "\`\`\`" >> dependency-health-report.md
+            echo "" >> dependency-health-report.md
+          fi
+
+          if [ -f php-outdated.json ] && [ -s php-outdated.json ]; then
+            echo "## 🐘 PHP Updates Available" >> dependency-health-report.md
+            echo "\`\`\`json" >> dependency-health-report.md
+            cat php-outdated.json >> dependency-health-report.md
+            echo "\`\`\`" >> dependency-health-report.md
+            echo "" >> dependency-health-report.md
+          fi
+
+          echo "## 🎯 Recommendations" >> dependency-health-report.md
+          echo "" >> dependency-health-report.md
+          echo "### Security Updates" >> dependency-health-report.md
+          echo "- 🚨 Apply security updates immediately when available" >> dependency-health-report.md
+          echo "- 🔍 Review security advisories for critical packages" >> dependency-health-report.md
+          echo "" >> dependency-health-report.md
+          echo "### Regular Updates" >> dependency-health-report.md
+          echo "- 📦 Update patch versions monthly" >> dependency-health-report.md
+          echo "- 🔄 Update minor versions quarterly" >> dependency-health-report.md
+          echo "- 🎯 Plan major version updates carefully" >> dependency-health-report.md
+          echo "- 🧪 Always run full test suite after updates" >> dependency-health-report.md
+
+      - name: 📤 Upload Health Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-health-report
+          path: dependency-health-report.md
+          retention-days: 90
+
+      - name: 📢 Summary
+        run: |
+          echo "## 📦 Dependency Health Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| Category | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| JavaScript Updates | ${{ needs.analyze-dependencies.outputs.js-updates == 'true' && '⚠️ Available' || '✅ Current' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| PHP Updates | ${{ needs.analyze-dependencies.outputs.php-updates == 'true' && '⚠️ Available' || '✅ Current' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security Updates | ${{ needs.analyze-dependencies.outputs.security-updates == 'true' && '🚨 Required' || '✅ Secure' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📄 **Detailed health report generated and uploaded**" >> $GITHUB_STEP_SUMMARY
+
+  # =====================================================
+  # Notify Maintainers
+  # =====================================================
+  notify-maintainers:
+    name: 📢 Notify Maintainers
+    runs-on: ubuntu-latest
+    needs: [analyze-dependencies, security-updates, regular-updates]
+    if: always() && (needs.analyze-dependencies.outputs.security-updates == 'true' || github.event_name == 'schedule')
+
+    steps:
+      - name: 📢 Create Maintenance Issue
+        if: needs.analyze-dependencies.outputs.security-updates == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `🚨 Security Updates Required - ${new Date().toISOString().split('T')[0]}`;
+            const body = `
+            ## 🚨 Security Updates Required
+
+            **Date**: ${new Date().toISOString()}
+            **Priority**: 🔴 High
+
+            Security vulnerabilities have been detected in project dependencies.
+
+            ### 🔍 Affected Areas:
+            - JavaScript/TypeScript dependencies: ${{ needs.analyze-dependencies.outputs.js-updates == 'true' && 'Updates available' || 'No updates' }}
+            - PHP dependencies: ${{ needs.analyze-dependencies.outputs.php-updates == 'true' && 'Updates available' || 'No updates' }}
+
+            ### 🚨 Action Required:
+            1. Review the automated security update PR
+            2. Test the updates thoroughly
+            3. Merge the security updates ASAP
+            4. Monitor for any issues after deployment
+
+            ### 📄 Resources:
+            - [Dependency Update Workflow](${context.payload.repository.html_url}/actions/runs/${context.runId})
+            - [Security Tab](${context.payload.repository.html_url}/security)
+
+            **This issue will be auto-closed when security updates are applied.**
+            `;
+
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['security', 'dependencies', 'high-priority', 'maintenance']
+            });
+
+      - name: 📊 Weekly Summary
+        if: github.event_name == 'schedule'
+        run: |
+          echo "## 📦 Weekly Dependency Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Current Status:" >> $GITHUB_STEP_SUMMARY
+          echo "- **JavaScript Dependencies**: ${{ needs.analyze-dependencies.outputs.js-updates == 'true' && 'Updates Available ⚠️' || 'Up to Date ✅' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **PHP Dependencies**: ${{ needs.analyze-dependencies.outputs.php-updates == 'true' && 'Updates Available ⚠️' || 'Up to Date ✅' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Security Status**: ${{ needs.analyze-dependencies.outputs.security-updates == 'true' && 'Action Required 🚨' || 'Secure ✅' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🎯 Next Actions:" >> $GITHUB_STEP_SUMMARY
+          echo "- Use manual workflow dispatch to apply regular updates" >> $GITHUB_STEP_SUMMARY
+          echo "- Review and merge any security update PRs" >> $GITHUB_STEP_SUMMARY
+          echo "- Monitor dependency health reports" >> $GITHUB_STEP_SUMMARY
