@@ -1,0 +1,30 @@
+# Azure Configuration
+resource_group_name = "brownbear-rg"
+location           = "East US 2"
+
+# Environment
+environment = "production"
+
+# AKS Configuration
+cluster_name       = "brownbear-aks"
+kubernetes_version = "1.27"
+
+# Node Pool Configuration
+node_count       = 3
+min_node_count   = 1
+max_node_count   = 5
+node_vm_size     = "Standard_D4s_v3"
+os_disk_size_gb  = 50
+
+# MySQL Configuration
+mysql_admin_username = "dbadmin"
+mysql_sku_name      = "GP_Standard_D4s_v3"
+mysql_storage_gb    = 100
+
+# Redis Configuration
+redis_capacity = 1
+redis_family   = "C"
+redis_sku_name = "Standard"
+
+# Domain Configuration
+domain_name = "brownbear.example.com"
