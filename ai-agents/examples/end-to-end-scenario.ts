@@ -1,6 +1,6 @@
 /**
  * End-to-End Scenario: Complete Pull Request Review & Deployment
- * 
+ *
  * This example demonstrates a full workflow where AI agents:
  * 1. Review a pull request
  * 2. Run security scans
@@ -9,7 +9,7 @@
  * 5. Update documentation
  * 6. Deploy to staging
  * 7. Monitor deployment
- * 
+ *
  * Technologies used:
  * - LangGraph for workflow orchestration
  * - CrewAI for agent collaboration
@@ -29,7 +29,7 @@ import { BaseMessage } from '@langchain/core/messages';
 
 async function initializeFramework() {
   console.log('🚀 Initializing Brown Bear AI Multi-Agent Framework...\n');
-  
+
   const framework = new AgentFramework({
     provider: 'ollama',
     model: 'codellama',
@@ -51,7 +51,7 @@ async function initializeFramework() {
 
   await framework.initialize();
   console.log('✅ Framework initialized successfully\n');
-  
+
   return framework;
 }
 
@@ -124,7 +124,7 @@ import { JWTService } from './jwt';
 export function authMiddleware(jwtService: JWTService) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization?.split(' ')[1];
-    
+
     if (!token) {
       return res.status(401).json({ error: 'No token provided' });
     }
@@ -190,7 +190,7 @@ function createPRReviewWorkflow() {
   // Node 1: Code Review
   async function reviewCode(state: PRReviewState) {
     console.log('📝 Step 1: Running code review...');
-    
+
     const llm = new ChatOllama({
       model: 'codellama:13b',
       temperature: 0.2,
@@ -230,7 +230,7 @@ Provide a JSON response with: issues (array), suggestions (array), score (0-100)
   // Node 2: Security Scan
   async function scanSecurity(state: PRReviewState) {
     console.log('🔒 Step 2: Running security scan...');
-    
+
     const llm = new ChatOllama({
       model: 'mistral:7b',
       temperature: 0.1,
@@ -272,7 +272,7 @@ Provide JSON with: vulnerabilities (array of strings), severity (low/medium/high
   // Node 3: Performance Analysis
   async function analyzePerformance(state: PRReviewState) {
     console.log('⚡ Step 3: Analyzing performance...');
-    
+
     const llm = new ChatOllama({
       model: 'codellama:13b',
       temperature: 0.2,
@@ -309,7 +309,7 @@ Provide JSON with: bottlenecks (array), recommendations (array)`,
   // Node 4: Generate Tests
   async function generateTests(state: PRReviewState) {
     console.log('🧪 Step 4: Generating tests...');
-    
+
     const llm = new ChatOllama({
       model: 'codellama:13b',
       temperature: 0.3,
@@ -343,7 +343,7 @@ Return complete, runnable test code.`,
   // Node 5: Update Documentation
   async function updateDocumentation(state: PRReviewState) {
     console.log('📚 Step 5: Updating documentation...');
-    
+
     const llm = new ChatOllama({
       model: 'llama2:13b',
       temperature: 0.5,
@@ -378,7 +378,7 @@ Use Markdown format.`,
   // Node 6: Make Final Decision
   async function makeFinalDecision(state: PRReviewState) {
     console.log('⚖️  Step 6: Making final decision...');
-    
+
     const llm = new ChatOllama({
       model: 'llama2:70b',
       temperature: 0.1,
@@ -541,7 +541,7 @@ async function runEndToEndScenario() {
     console.log('═══════════════════════════════════════════════════════════');
     console.log('  📊 REVIEW RESULTS SUMMARY');
     console.log('═══════════════════════════════════════════════════════════\n');
-    
+
     console.log('Code Quality:');
     console.log(`  Score: ${reviewResult.codeReview?.score}/100`);
     console.log(`  Issues: ${reviewResult.codeReview?.issues.length}`);
@@ -564,9 +564,9 @@ async function runEndToEndScenario() {
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
       const deploymentCrew = createDeploymentCrew();
-      
+
       console.log('🚀 Starting deployment process...\n');
-      
+
       const deploymentResult = await deploymentCrew.kickoff({
         context: {
           pr: examplePullRequest,
