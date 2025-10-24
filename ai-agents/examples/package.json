@@ -1,0 +1,48 @@
+{
+  "name": "@brownbear/ai-agents-examples",
+  "version": "1.0.0",
+  "description": "Examples for Brown Bear AI Multi-Agent System",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "e2e": "ts-node end-to-end-scenario.ts",
+    "simple": "ts-node simple-code-review.ts",
+    "multi-agent": "ts-node multi-agent-collaboration.ts",
+    "ollama": "ts-node ollama-local.ts",
+    "langchain": "ts-node langchain-workflow.ts",
+    "langgraph": "ts-node langgraph-state-machine.ts",
+    "crewai": "ts-node crewai-hierarchical.ts",
+    "hybrid": "ts-node hybrid-deployment.ts"
+  },
+  "dependencies": {
+    "@brownbear/ai-agents-framework": "workspace:*",
+    "@brownbear/ai-agents-sdk": "workspace:*",
+    "@langchain/core": "^0.1.17",
+    "@langchain/langgraph": "^0.0.20",
+    "@langchain/openai": "^0.0.14",
+    "@langchain/anthropic": "^0.0.7",
+    "@langchain/community": "^0.0.25",
+    "crewai": "^0.1.0",
+    "autogen-agentchat": "^0.2.0",
+    "dotenv": "^16.3.1",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1",
+    "cli-table3": "^0.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "keywords": [
+    "ai",
+    "multi-agent",
+    "langchain",
+    "langgraph",
+    "crewai",
+    "ollama",
+    "examples"
+  ],
+  "author": "Brown Bear Team",
+  "license": "MIT"
+}
