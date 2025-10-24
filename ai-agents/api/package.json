@@ -1,0 +1,49 @@
+{
+  "name": "@brownbear/ai-agents-api",
+  "version": "1.0.0",
+  "description": "REST and GraphQL API for Brown Bear AI Multi-Agent System",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": ["api", "rest", "graphql", "ai", "agents"],
+  "author": "BrownBear Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@brownbear/ai-agents-framework": "workspace:*",
+    "express": "^4.18.2",
+    "apollo-server-express": "^3.13.0",
+    "graphql": "^16.8.1",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "joi": "^17.12.0",
+    "ws": "^8.16.0",
+    "swagger-ui-express": "^5.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "@types/ws": "^8.5.10",
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/compression": "^1.7.5",
+    "@types/morgan": "^1.9.9",
+    "@types/swagger-ui-express": "^4.1.6",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0",
+    "jest": "^29.7.0",
+    "eslint": "^8.56.0"
+  }
+}

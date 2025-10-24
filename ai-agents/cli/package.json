@@ -1,0 +1,33 @@
+{
+  "name": "@brownbear/ai-agents-cli",
+  "version": "1.0.0",
+  "description": "Command-line interface for Brown Bear AI Multi-Agent System",
+  "bin": {
+    "bb-ai": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublish": "pnpm build"
+  },
+  "keywords": ["cli", "ai", "agents", "brownbear"],
+  "author": "BrownBear Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@brownbear/ai-agents-sdk": "workspace:*",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1",
+    "cli-table3": "^0.6.3",
+    "yaml": "^2.3.4",
+    "dotenv": "^16.4.0",
+    "axios": "^1.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/inquirer": "^9.0.7",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0"
+  }
+}
